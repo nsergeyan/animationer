@@ -146,8 +146,18 @@ playwright install chromium
 
 cd remotion && npm install && cd ..
 
-cp .env.example .env   # fill in ELEVENLABS_API_KEY, ELEVENLABS_VOICE_ID
+cp .env.example .env   # fill in the values below
 ```
+
+Fill in `.env`:
+
+- `ELEVENLABS_API_KEY` - your ElevenLabs key.
+- `ELEVENLABS_VOICES` - comma-separated `name:voice_id` pairs from your
+  ElevenLabs account (e.g. `narrator:abc123,sidekick:def456`), and
+  `ELEVENLABS_DEFAULT_VOICE` - which of those names to use by default.
+- `GOOGLE_FLOW_PROJECT_URL` - the URL of your own project on
+  [labs.google/fx/tools/flow](https://labs.google/fx/tools/flow) (create one,
+  then copy the URL from the address bar).
 
 Put your character/environment reference art in `assets/reference/` before
 running - every generated image is locked to it.

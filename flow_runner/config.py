@@ -12,7 +12,10 @@ lists here with the exact selectors it prints. Each setting is a LIST and is
 tried in order, so you can leave a fallback guess after the real one.
 """
 
+import os
 from pathlib import Path
+
+from dotenv import load_dotenv
 
 # --- Directories -----------------------------------------------------------
 ROOT_DIR = Path(__file__).parent
@@ -20,14 +23,21 @@ OUTPUT_DIR = ROOT_DIR / "output"                  # scene_001.png, scene_002.png
 SCENES_FILE = ROOT_DIR / "scenes.txt"
 USER_DATA_DIR = ROOT_DIR / ".chrome-profile"      # keeps you logged in between runs
 
+load_dotenv(ROOT_DIR.parent / ".env")
+
 # --- Target ----------------------------------------------------------------
 # Point this at the PROJECT, not the tool landing page. The landing page has no
 # prompt box and none of your existing media, so the run would stall waiting for
-# an element that is not there. Swap the id to work on a different project.
-FLOW_URL = (
-    "https://labs.google/fx/tools/flow/project/"
-    "33ac9cf7-3723-4d9e-8010-83f8ca0b2c69"
-)
+# an element that is not there.
+#
+# Loaded from .env rather than hardcoded, since a project id is specific to
+# one Google account: labs.google/fx/tools/flow/project/<your-project-id>
+FLOW_URL = os.getenv("GOOGLE_FLOW_PROJECT_URL", "")
+if not FLOW_URL:
+    raise RuntimeError(
+        "GOOGLE_FLOW_PROJECT_URL is not set in .env. Open your project on "
+        "labs.google/fx/tools/flow, copy its URL, and set it there."
+    )
 
 # --- Reference image -------------------------------------------------------
 # The character art every generation is locked to. Picked up automatically:

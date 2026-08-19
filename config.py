@@ -131,13 +131,22 @@ OUTRO_LINE = "If you want more of these, subscribe and hit like."
 # app's own request. Do not "simplify" this back to the default base URL.
 ELEVENLABS_BASE_URL = "https://api.us.elevenlabs.io"
 
-ELEVENLABS_VOICES = {
-    "animatoryoung": "xlnOCsItpCGtYrgUKVqx",   # designed for this channel
-    "hamid": "yr43K8H5LoTp6S1QFSGg",
-    "Molodoy": "YjESejviApN7SHrbfnA2",
-    "spanish_guy": "nR2KQXVwn2zMK8FALNCh",
-}
-ELEVENLABS_DEFAULT_VOICE = "animatoryoung"
+# Loaded from .env rather than hardcoded: these are voice IDs from one
+# specific ElevenLabs account, one of them a voice custom-designed for this
+# channel. Keeping them out of source means the repo carries no identifiers
+# tied to a real account. Format: comma-separated name:voice_id pairs, e.g.
+#   ELEVENLABS_VOICES=narrator:abc123,sidekick:def456
+def _parse_voice_map(raw: str) -> dict[str, str]:
+    voices = {}
+    for pair in raw.split(","):
+        name, _, voice_id = pair.strip().partition(":")
+        if name and voice_id:
+            voices[name] = voice_id
+    return voices
+
+
+ELEVENLABS_VOICES = _parse_voice_map(os.getenv("ELEVENLABS_VOICES", ""))
+ELEVENLABS_DEFAULT_VOICE = os.getenv("ELEVENLABS_DEFAULT_VOICE", next(iter(ELEVENLABS_VOICES), ""))
 
 # English goes through text_to_dialogue + eleven_v3, which is what gives the
 # lively read and supports inline emotion tags like [surprised]. ru/es fall back
