@@ -1,0 +1,4 @@
+google-genai
+elevenlabs
+python-dotenv
+openai-whisper
