@@ -246,6 +246,8 @@ the whole video on a label.
     WEAK:   "Nifan is here to explain vaccines."
     STRONG: "Nifan just got a shot that is mostly dead virus."
     STRONG: "Nifan is holding the thing everyone thinks stops a cold."
+    STRONG: "Nifan is holding a rejection letter that almost changed the
+             twentieth century."
 
 Then beat one opens on the WRONG ASSUMPTION almost everyone believes about this
 topic. It is not a scene. It is not an event. It is a specific, nameable
@@ -356,6 +358,18 @@ Concrete nouns, verbs doing the work, something specific enough to picture.
 THE JOKE IS NIFAN'S REACTION, NOT A JOKE. State the real fact flat, then let
 Nifan react in a short line. Never invent a funny fact and never explain one.
 His reactions are restrained.
+
+    FLAT FACT: "Stalin renamed the city of Tsaritsyn after himself. Twice,
+               under two different spellings."
+    REACTION:  "[flatly] Once wasn't enough for him, apparently."
+
+    FLAT FACT: "Hitler's art school rejection letter said his work showed
+               too many buildings and not enough people."
+    REACTION:  "[deadpan] So the problem was never the drawing."
+
+The reaction never lands on suffering. It reacts to vanity, hypocrisy,
+bureaucracy and absurd detail - never to a death toll, a victim or an
+atrocity. If the flat fact is a body count, Nifan gets no line on it at all.
 
 SHORT WORDS. Always the short twin:
 
