@@ -1,4 +1,4 @@
-TOPIC:   <describe the real-world mechanism to explain here>
+TOPIC:   How a Soviet spy network operated inside Nazi Germany during WWII
 FORMAT:  explainer
 BEATS:   45
 
@@ -24,9 +24,9 @@ Work in this order and do not skip:
 Every rule in this file exists because something specific came out wrong. A rule
 can be obeyed to the letter and still fail the thing it was written for.
 
-    RULE: "introduce Nifan by name in the first sentence"
-    OBEYED, AND USELESS: "Nifan is here to explain vaccines."
-    The rule got its name. The video got a label instead of a hook.
+    RULE: "open on the wrong assumption almost everyone believes"
+    OBEYED, AND USELESS: "Most people think spies work alone. They don't."
+    The rule got its label. The video got a fact instead of a hook.
 
 Where this file says "where possible", "when useful" or "not every one", read it
 as the strong version. Those phrases are there for the rare genuine exception,
@@ -41,20 +41,29 @@ you have found the beat worth spending real effort on.
 ## 1. THE NAMING LAW
 
 This is the rule the pipeline actually enforces. Get it wrong and the run
-breaks. It has exactly two halves and they are opposites. Read both.
+breaks. It has exactly two halves and they are NOT symmetrical: one never
+names him, the other always does. Read both.
 
-### NARRATION: always "Nifan". Never "the reference character".
+### NARRATION: never names him. Not even a pronoun.
 
-Nifan is the channel's main character and the person walking the viewer
-through this. The narration names him.
+This is an explainer, not a story about a character. The reference character
+is not the narrator, not someone being followed, and not the "you" of the
+video. The narration explains the real subject directly, exactly as a
+documentary voiceover would if there were no illustrated character in the
+frame at all.
 
-    RIGHT:  "Nifan checks the label before he answers."
-    WRONG:  "The reference character checks the label."
-    WRONG:  "You check the label before you answer."
+    RIGHT:  "The message went out in a burst too short for the receiver to
+             trace."
+    WRONG:  "Nifan watches the message go out, too short to trace."
+    WRONG:  "You watch the message go out, too short to trace."
 
-Never use "you" for Nifan. Never use "the reference character" in narration,
-in `plan`, or in any other text field. Name him naturally: use "Nifan" wherever
-there is any ambiguity about who acted, and a pronoun where there is not.
+Never write "Nifan" in narration. Never write "the reference character" in
+narration either - that phrase is for image prompts only, below. Never use
+"he", "him" or "his" in narration to mean the illustrated character; every
+pronoun in the narration points at a real person or thing the topic is
+actually about. Test it: read a beat's narration back with him erased from its
+image entirely. If the sentence still makes complete sense, it was never about
+him. It should always still make complete sense.
 
 ### IMAGE PROMPTS: always "the reference character". Never "Nifan".
 
@@ -63,12 +72,17 @@ string:
 
     the reference character
 
-The image generator has Nifan's reference art attached as a picture. It has
-never heard the name "Nifan" and cannot draw a name. "the reference character"
-is the phrase that points at the attached art.
+The image generator has never heard the name "Nifan" and cannot draw a name -
+it only has his reference art, attached as a picture. "the reference
+character" is the phrase that points at that attached art.
 
     RIGHT:  "the reference character leaning against the lab bench..."
     WRONG:  "Nifan leaning against the lab bench..."
+
+He still belongs in most frames, staged reacting to whatever is on screen -
+see Section 5 and Section 7. He is simply never spoken about. A viewer should
+be able to mute the video and read everything he is doing from posture alone,
+then unmute to a narration that never once refers to him.
 
 ### AND NEVER DESCRIBE HIM
 
@@ -85,12 +99,12 @@ relationship to objects.
 
 ### SUMMARY TABLE
 
-    field                | main character is called   | described visually
-    ---------------------+----------------------------+-------------------
-    narration            | Nifan                      | never
-    plan (all fields)    | Nifan                      | never
-    image_prompt         | the reference character    | never
-    image_prompt_alt     | the reference character    | never
+    field                | spoken about at all?          | described visually
+    ---------------------+--------------------------------+-------------------
+    narration             | never, not even a pronoun     | never
+    plan (all fields)     | staging notes only, Section 3 | never
+    image_prompt          | "the reference character"     | never
+    image_prompt_alt      | "the reference character"     | never
 
 Every other person in the story is the opposite: described fully in every
 single image prompt they appear in. See Section 7 for why they are never given
@@ -156,8 +170,10 @@ These are countable. Count them before you output.
 15. BUT or THEREFORE between every pair of beats. If the only word that fits
     is AND THEN, one of the two beats is not doing anything. Rewrite it.
 
-16. Nifan never gains a power, a weapon or a talent, and he is never the
-    expert. He is a witness things get explained near, not a specialist.
+16. The reference character never gains a power, a weapon or a talent in the
+    image prompts, and he is never staged as the expert. He is a visual
+    witness things get explained near, never named or spoken about in the
+    narration (Section 1).
 
 
 ---
@@ -235,37 +251,33 @@ any `visual_anchor` also names.
 
 ## 4. BEAT ONE, AND THE FIRST THREE
 
-Beat one must introduce Nifan by name in its FIRST sentence, and that sentence
-must also establish that he is about to explain something. Naming him is not
-the job, it is the minimum. The wording is yours and should differ from video
-to video.
+Beat one opens directly on the WRONG ASSUMPTION almost everyone believes about
+this topic. Not a scene, not an event, not a character being introduced - a
+specific, nameable misconception, stated as a claim.
 
-Banned: the bare "Nifan is a X" form. It spends the most valuable sentence in
-the whole video on a label.
+Banned: any bare "here's what this video explains" label. It spends the most
+valuable sentence in the whole video on a table of contents instead of a hook.
 
-    WEAK:   "Nifan is here to explain vaccines."
-    STRONG: "Nifan just got a shot that is mostly dead virus."
-    STRONG: "Nifan is holding the thing everyone thinks stops a cold."
-    STRONG: "Nifan is holding a rejection letter that almost changed the
-             twentieth century."
+    WEAK:   "This video explains how vaccines work."
+    STRONG: "Most people think this shot kills the virus that infects them.
+             It doesn't."
+    STRONG: "A rejection letter almost changed the twentieth century."
 
-Then beat one opens on the WRONG ASSUMPTION almost everyone believes about this
-topic. It is not a scene. It is not an event. It is a specific, nameable
-misconception, stated as a claim, not as a mood.
-
-    Shape:  [NIFAN INTRODUCED, EXPLAINING]. [THE WRONG ASSUMPTION]. [WHY THAT
-            ASSUMPTION CANNOT SURVIVE THE FIRST REAL FACT].
+    Shape:  [THE WRONG ASSUMPTION]. [WHY THAT ASSUMPTION CANNOT SURVIVE THE
+            FIRST REAL FACT].
 
 Keep the assumption specific to this exact topic.
 
 Never open with: "you wake up", "it is the year", "you are standing",
-"you are watching", "picture this". Nifan does not wake up in beat one.
+"you are watching", "picture this". There is no character to wake up or stand
+anywhere - the hook is the fact, not a scene.
 
 THE TEST: if the wrong-assumption line would fit unchanged at the front of any
 other explainer in the same genre, it is a stock intro, not a hook.
 
-Beat two does not restate beat one. It keeps Nifan physically present and
-moves toward naming the true mechanism.
+Beat two does not restate beat one. It moves toward naming the true mechanism.
+The reference character may already be staged in frame reacting to it
+(Section 5, Section 7) - the narration still never mentions him.
 
 Beat three contains the spine question, said out loud, AND the true mechanism
 must be named by the end of beat three - not merely contradicted, actually
@@ -279,11 +291,12 @@ to say what the right one actually is.
 
 ### THE ONE DIAL
 
-A beat that moves nothing for Nifan is a still photo. Rewrite it. There is only
-one dial here, because Nifan has no personal stake in the mechanism:
+A beat that moves nothing for the viewer is a still photo. Rewrite it. There is
+only one dial here, because there is no character with a personal stake in the
+mechanism:
 
-* information: Nifan, and the viewer through him, now understands a rule, a
-  cause, or a consequence he did not know a beat ago.
+* information: the viewer now understands a rule, a cause, or a consequence
+  they did not know a beat ago.
 
 Every section must end with a turn: the answer just given creates a new
 question, or overturns what the previous answer seemed to settle. A section
@@ -295,9 +308,11 @@ from nowhere in the last few beats.
 
 ### EXPLAINER
 
-One mechanism, made clear to someone who knows nothing. Nifan is a witness, so
-keep him reacting rather than presenting, and keep him physically in the scene
-next to whatever is being explained.
+One mechanism, made clear to someone who knows nothing. The reference
+character is a visual witness only, never a narrator or a presenter: stage him
+reacting rather than presenting, physically in the scene next to whatever is
+being explained. The narration carries the explanation entirely on its own and
+never refers to him - see Section 1.
 
 * The cold open is that the answer everyone believes is wrong (Section 4).
 * Kill the wrong answer first: what everyone assumes, why it is wrong, what
@@ -327,7 +342,8 @@ next to whatever is being explained.
   one's IMAGE, never to its words. Never "so that is how it works".
 
 Four to six locations, same as always. A mechanism explained in one room is a
-lecture. Move Nifan through the places the mechanism actually touches.
+lecture. Move the reference character through the places the mechanism
+actually touches, staged in each one.
 
 
 ---
@@ -355,21 +371,25 @@ VOICE. Both of these are accurate. Only one is worth watching.
 
 Concrete nouns, verbs doing the work, something specific enough to picture.
 
-THE JOKE IS NIFAN'S REACTION, NOT A JOKE. State the real fact flat, then let
-Nifan react in a short line. Never invent a funny fact and never explain one.
-His reactions are restrained.
+THE JOKE IS A DRY ASIDE, NOT A JOKE. State the real fact flat, then land a
+short, unattributed line that reacts to it. Never invent a funny fact and
+never explain one. The line stays in the same narration voice as every other
+sentence and never says who or what is reacting - no "Nifan", no pronoun for
+him (Section 1). The [flatly]/[deadpan] tag carries the tone on its own; the
+reference character may be staged in frame at that exact moment, but the
+words never point at him.
 
     FLAT FACT: "Stalin renamed the city of Tsaritsyn after himself. Twice,
                under two different spellings."
-    REACTION:  "[flatly] Once wasn't enough for him, apparently."
+    ASIDE:     "[flatly] Once wasn't enough, apparently."
 
     FLAT FACT: "Hitler's art school rejection letter said his work showed
                too many buildings and not enough people."
-    REACTION:  "[deadpan] So the problem was never the drawing."
+    ASIDE:     "[deadpan] So the problem was never the drawing."
 
-The reaction never lands on suffering. It reacts to vanity, hypocrisy,
-bureaucracy and absurd detail - never to a death toll, a victim or an
-atrocity. If the flat fact is a body count, Nifan gets no line on it at all.
+The aside never lands on suffering. It reacts to vanity, hypocrisy, bureaucracy
+and absurd detail - never to a death toll, a victim or an atrocity. If the flat
+fact is a body count, no aside follows it at all.
 
 SHORT WORDS. Always the short twin:
 
@@ -809,9 +829,13 @@ Go back through the beats and LOOK. Do not answer these from memory.
 
 ### The naming law, checked one field at a time
 
-* every `narration` that refers to the main character says "Nifan"
+* no `narration` contains "Nifan"
 * no `narration` contains "the reference character"
-* no `narration` uses "you" for Nifan
+* no `narration` uses "he", "him" or "his" to mean the illustrated character,
+  and no `narration` uses "you" for him either - every pronoun points at a
+  real person or thing the topic is about
+* every `narration` still makes complete sense with him erased from its
+  beat's image entirely
 * every `image_prompt` contains the exact string "the reference character"
 * every `image_prompt_alt` contains the exact string "the reference character"
 * no `image_prompt` or `image_prompt_alt` contains "Nifan"
@@ -850,17 +874,17 @@ Go back through the beats and LOOK. Do not answer these from memory.
   they appear in
 * no image prompt contains a style block, an art style or an aspect ratio
 * at least a quarter of beats are consequences unique to this mechanism; at
-  most a fifth are facts with nothing happening in the place Nifan is standing
+  most a fifth are facts with nothing happening in the place the reference
+  character is staged
 
 ### Read
 
-* beat one introduces Nifan by name in its first sentence, and that sentence
-  establishes he is about to explain something, rather than being a bare
-  "Nifan is a X" label
-* beat one then states the wrong assumption almost everyone believes about
-  this topic, not a scene, and it is specific enough that it would not fit
-  unchanged at the front of a different explainer
-* beat two neither restates beat one nor has Nifan waking up
+* beat one opens directly on the wrong assumption almost everyone believes
+  about this topic, not a scene and not a character being introduced, and it
+  is specific enough that it would not fit unchanged at the front of a
+  different explainer
+* beat two does not restate beat one, and nothing in the narration ever wakes
+  up, stands anywhere, or gets introduced by name
 * the true mechanism is named by the end of beat three, not merely contradicted
 * beat three contains the spine question
 * the next question is said out loud roughly every twelve to fifteen beats,
