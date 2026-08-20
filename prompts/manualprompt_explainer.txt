@@ -414,6 +414,21 @@ BANNED IN NARRATION. Literal. If a beat contains one, rewrite the sentence:
 Also cut when only filling space: completely, totally, absolutely, incredibly,
 extremely, massively, entirely, actually, really.
 
+PLAIN WORDS, NOT JUST A LIST. The lines above are not the whole rule, only the
+words that kept coming back. Read every word before you commit to it.
+
+TEST: would a fluent adult who learned English as a second language - not a
+native speaker with a large vocabulary, someone who reads and speaks it well
+but did not grow up with it - know this exact word on sight, with no pause to
+place it? If there is any doubt, replace it with the plain word that means the
+same thing, even when the fancier word is not on any banned list above.
+
+The only exception is a proper noun, an official title, a rank, an
+organisation's real name, or a specific technical term the topic is actually
+about. Those are never simplified - a name cannot be swapped for a plainer
+word - but explain what it means in plain words the first time it appears, the
+same way "oxytocin, the bonding chemical" works above.
+
 NEVER PAD TO REACH THE WORD COUNT.
 
     PADDED: "the vaccine produces a completely comprehensive immune response"
@@ -865,6 +880,9 @@ Go back through the beats and LOOK. Do not answer these from memory.
 * at least one beat in three carries a tag, all from the list, and no
   [whispers], [excited] or [laughs] is followed by an untagged beat
 * every narration is 17 to 21 spoken words, averaging near nineteen
+* no word in any narration would make a fluent adult ESL speaker pause to
+  place it, unless it is a proper noun, title or named technical term
+  translated in plain words on its first use
 * no two beats share an image_prompt
 * every image_prompt_alt is genuinely different from its primary in its
   staging: camera distance, framing family, foreground object, or which
