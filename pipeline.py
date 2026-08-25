@@ -1,38 +1,3 @@
-"""
-Stage runner for the video pipeline.
-
-One folder per video under output/<slug>/. You paste Claude's JSON into
-script.json, then run the stages in order. Every stage reads files and writes
-files - nothing is carried in memory between them - so any stage can be re-run
-on its own without redoing the ones before it.
-
-NORMAL USE - paste and run:
-
-    1. Fill in TOPIC / FORMAT / BEATS at the top of prompts/manualprompt.txt
-       and paste that whole file into Claude with web search on.
-    2. Paste the JSON it returns into NEW_SCRIPT below.
-    3. Run this file. It makes the run folder itself and does everything.
-
-That last command runs every stage in order. A Chrome window appears during
-the image stage and drives itself; leave it alone and it closes when done.
-Safe to re-run - finished work is skipped, so an interrupted run resumes.
-
-Individual stages, for when you want to redo just one thing:
-
-    python pipeline.py prompts                # script.json -> scenes.txt
-    python pipeline.py images                 # opens Flow, fills images/
-    python pipeline.py voice                  # ElevenLabs -> audio/
-    python pipeline.py manifest               # pairs it all up + durations
-    python pipeline.py music                  # compose this video's own bed
-    python pipeline.py render                 # Remotion -> final.mp4
-
-    python pipeline.py check                  # what is done, what is missing
-    python pipeline.py demo                   # fake a whole run, no APIs
-
-Every command takes --run <slug>. Without it the most recently touched run is
-used, which is almost always the one you mean.
-"""
-
 import argparse
 import json
 import os
@@ -45,21 +10,398 @@ from modules import transcriber
 
 FLOW_RUNNER = config.ROOT_DIR / "flow_runner" / "runner.py"
 
-# ===========================================================================
-# PASTE CLAUDE'S JSON HERE, THEN JUST RUN THIS FILE.
-#
-# Either form works - keep the triple quotes and paste inside them, or delete
-# them and paste the JSON as a plain Python dict. Both are handled.
-#
-# A run folder is created for you, named from the script's "topic", and the
-# whole pipeline runs into it. Leave it empty to work on the most recent run
-# instead.
-#
-# Re-running with the same text does NOT make a second folder: an identical
-# script is recognised and reused, so you can hit Run as often as you like.
-# ===========================================================================
+NEW_SCRIPT = {
+  "topic": "moon-landing-fake",
+  "format": "explainer",
+  "plan": {
+    "spine_question": "Why do millions of people still think the Apollo 11 moon landing was a giant movie set?",
+    "payoff_line": "So, the moon landing is real, but human paranoia? That's the real infinite universe.",
+    "deflations": [
+      {
+        "assumed": "The flag blowing in the wind proves it was filmed on Earth.",
+        "actual": "It is rippling because of a metal rod and the twisting motion used to plant it, not wind.",
+        "who_decided": "People who do not understand vacuum physics.",
+        "build_beat": "[frustrated] 'Look at it! It is blowing in the wind!'",
+        "drop_beat": "[laughs] It is not wind. It is just... physics."
+      }
+    ],
+    "specifics": [
+      {
+        "fact": "Over 400,000 people worked on the Apollo project.",
+        "source": "NASA historical archives",
+        "beat": "Four hundred thousand people worked on the Apollo project."
+      }
+    ],
+    "facts_to_check": [
+      {
+        "claim": "Astronauts passing through the Van Allen belts received only a small, non-lethal dose of radiation.",
+        "source": "NASA / radiation dosimetry records from Apollo missions"
+      }
+    ],
+    "locations": [
+      {
+        "name": "sun-bright lunar photograph archive",
+        "visual_anchor": "pale grey plaster walls, polished pale wood flooring, one wide arched window, a long oak reading table, a tall steel shelving unit, red archive folders and blue photograph sleeves stacked along the shelves, exposed white ceiling beams"
+      },
+      {
+        "name": "flag rigging workshop",
+        "visual_anchor": "rough concrete walls, scuffed grey rubber flooring, one tall metal roller door, a heavy steel workbench, a rack of thin metal rods, a folded fabric flag draped across a stand, red tool cabinets and blue storage crates nearby"
+      },
+      {
+        "name": "camera exposure testing chamber",
+        "visual_anchor": "matte black felt-lined walls, dark rubber flooring, one small round porthole window, a heavy tripod-mounted camera on a steel stand, a wide white photo backdrop screen, red camera equipment cases and blue calibration charts stacked nearby"
+      },
+      {
+        "name": "film prop and set-dressing storage bay",
+        "visual_anchor": "rough plywood walls, painted concrete flooring, one large sliding freight door, a tall shelving rack of foam props, a large canvas backdrop rolled against the wall, red gaffer tape spools and blue plastic prop crates stacked in the corner"
+      },
+      {
+        "name": "radiation dosimetry monitoring room",
+        "visual_anchor": "brushed steel wall panels, dark grey tiled flooring, one thick round viewing window, a wide instrument console with dial gauges, a tall rack of cabled equipment, red warning lamps and blue indicator lights fixed along the panels"
+      },
+      {
+        "name": "overflowing conspiracy theory archive",
+        "visual_anchor": "cluttered cork board walls, worn checkered tile flooring, one narrow frosted window, a long cluttered worktable, a tall filing cabinet stuffed with folders, red string connecting pinned photographs and blue evidence folders scattered across the table"
+      }
+    ],
+    "setting_anchor": "recurring red archival accents paired with blue equipment and evidence markings appear across every location"
+  },
+  "beats": [
+    {
+      "narration": "[curious] Let's travel back to 1969.",
+      "location": "sun-bright lunar photograph archive",
+      "image_prompt": "reference character sits at a long oak table scattered with lunar photographs, leaning forward with a curious expression while opening a thick red folder, wide shot, pale wood table surface, one blue photograph sleeve resting open beside a stack of glossy prints",
+      "image_prompt_alt": "reference character stands beside a tall steel shelving unit stacked with photograph sleeves, tilting their head with curious interest while holding a thick red folder open in both hands, medium shot, one blue folder resting on a nearby stack of glossy prints"
+    },
+    {
+      "narration": "The US sent humans to the moon... or so they say.",
+      "location": "sun-bright lunar photograph archive",
+      "image_prompt": "reference character holds up a large photograph showing an astronaut in a bulky white pressure suit standing on a grey cratered surface, studying it with a flat skeptical expression, medium close-up, red folder tucked under one arm, blue photograph sleeve resting on the table",
+      "image_prompt_alt": "reference character examines a large photograph of a figure in a bulky white fabric suit with a rounded reflective helmet standing on a grey cratered surface, deadpan expression, three-quarter view, red folder tucked underarm, blue photograph sleeve resting nearby on the table"
+    },
+    {
+      "narration": "[sarcastic] Because some people think the whole thing was filmed in a Hollywood basement.",
+      "location": "sun-bright lunar photograph archive",
+      "image_prompt": "reference character stands with arms crossed and one eyebrow raised in sarcastic disbelief, looking toward a crude pinned sketch of a soundstage on the wall, medium shot, red folder resting on the table nearby, blue photograph sleeve tucked beneath a stack of prints",
+      "image_prompt_alt": "reference character leans against the oak table with arms crossed and a sarcastic half-smile, glancing sideways at a crude pinned sketch of a soundstage on the wall, three-quarter shot, red folder resting nearby, blue photograph sleeve tucked beneath the stack of prints"
+    },
+    {
+      "narration": "Yes. A basement.",
+      "location": "sun-bright lunar photograph archive",
+      "image_prompt": "reference character gestures flatly toward a small cardboard diorama of a cluttered basement film set resting on the oak table, unimpressed expression, close-up, red folder pushed aside, blue photograph sleeve visible at the table's edge",
+      "image_prompt_alt": "reference character points with an unimpressed flat expression toward a small cardboard model of a cluttered basement film set on the table, close-up, red folder pushed aside, blue photograph sleeve visible near the table's edge"
+    },
+    {
+      "narration": "But WHY do people believe this?",
+      "location": "sun-bright lunar photograph archive",
+      "image_prompt": "reference character leans back in a wooden chair with a puzzled thoughtful expression, surrounded by scattered folders and photograph sleeves across the oak table, wide shot, red folder open in the foreground, blue photograph sleeve resting beside stacked prints",
+      "image_prompt_alt": "reference character tilts their head back against the chair with a genuinely puzzled expression, surrounded by scattered folders and loose prints across the table, wider shot, red folder open in the foreground, blue photograph sleeve resting among the stacked prints"
+    },
+    {
+      "narration": "First, let's look at the famous flag.",
+      "location": "flag rigging workshop",
+      "image_prompt": "reference character stands beside a folded fabric flag draped across a metal stand, looking toward it with curious attention, medium shot, heavy steel workbench nearby, a rack of thin metal rods mounted on the wall, red tool cabinet in the background",
+      "image_prompt_alt": "reference character stands close to a folded fabric flag resting on a metal stand, curious expression, wider shot, heavy steel workbench nearby, a rack of thin metal rods mounted on the wall, red tool cabinet visible in the background"
+    },
+    {
+      "narration": "[frustrated] 'Look at it! It is blowing in the wind!'",
+      "location": "flag rigging workshop",
+      "image_prompt": "reference character watches with a skeptical raised eyebrow while an unnamed frustrated bystander in a rumpled jacket points urgently at a rippling flag mounted on a metal rod, medium two-shot, heavy steel workbench beside them, blue storage crate resting on the floor",
+      "image_prompt_alt": "reference character observes with a skeptical raised eyebrow while a frustrated man in a rumpled jacket and messy hair jabs a finger toward a rippling flag on a metal rod, wider two-shot, heavy steel workbench beside them, blue storage crate resting nearby on the floor"
+    },
+    {
+      "narration": "There is NO wind in space, genius.",
+      "location": "flag rigging workshop",
+      "image_prompt": "reference character stands with a flat, mildly annoyed expression beside the rippling flag replica, one hand resting on the metal rod, close medium shot, heavy steel workbench in the background, red tool cabinet and blue storage crate along the wall",
+      "image_prompt_alt": "reference character rests one hand on the metal flag rod with a flat, mildly annoyed expression, close-up, heavy steel workbench visible behind them, red tool cabinet and blue storage crate along the back wall"
+    },
+    {
+      "narration": "So it MUST be fake, right?",
+      "location": "flag rigging workshop",
+      "image_prompt": "reference character raises both eyebrows in exaggerated mock doubt, gesturing loosely toward the flag mounted on its stand, medium shot, heavy steel workbench beside them, a rack of thin metal rods mounted on the wall, blue storage crate on the floor",
+      "image_prompt_alt": "reference character shrugs with an exaggerated doubtful expression, one hand raised toward the flag on its stand, wider shot, heavy steel workbench nearby, a rack of thin metal rods mounted on the wall, blue storage crate resting on the floor"
+    },
+    {
+      "narration": "[sighs] Wrong.",
+      "location": "flag rigging workshop",
+      "image_prompt": "reference character shakes their head slowly with a resigned expression, standing beside the heavy steel workbench, close-up, the flag mounted on its stand behind them, red tool cabinet and blue storage crate visible along the wall",
+      "image_prompt_alt": "reference character exhales with a resigned, slightly tired expression, standing near the steel workbench, close medium shot, the flag on its stand visible behind them, red tool cabinet and blue storage crate along the back wall"
+    },
+    {
+      "narration": "NASA knew a regular flag would just hang straight down and look sad.",
+      "location": "flag rigging workshop",
+      "image_prompt": "reference character points toward a second fabric flag hanging limply straight down from a bare rod, mildly amused expression, medium shot, heavy steel workbench nearby, red tool cabinet and blue storage crate along the wall",
+      "image_prompt_alt": "reference character gestures toward a plain fabric flag drooping straight down from a bare metal rod, faint amused expression, wider shot, heavy steel workbench nearby, red tool cabinet and blue storage crate along the back wall"
+    },
+    {
+      "narration": "So they put a metal rod along the top to hold it out.",
+      "location": "flag rigging workshop",
+      "image_prompt": "reference character watches closely as a thin metal rod is fitted along the top edge of the fabric flag on the workbench, curious expression, close-up, heavy steel workbench surface, red tool cabinet visible in the background",
+      "image_prompt_alt": "reference character leans in with curious attention as a thin metal rod is slid along the top hem of the fabric flag resting on the workbench, close-up, heavy steel workbench surface, red tool cabinet visible behind them"
+    },
+    {
+      "narration": "But the rod got stuck.",
+      "location": "flag rigging workshop",
+      "image_prompt": "reference character tilts their head with a puzzled expression at a metal rod jammed at an awkward angle within the flag's top hem, medium close-up, heavy steel workbench beneath, blue storage crate resting on the floor nearby",
+      "image_prompt_alt": "reference character squints with a puzzled expression at a metal rod caught at an awkward angle inside the flag's top hem, close-up, heavy steel workbench beneath, blue storage crate resting nearby on the floor"
+    },
+    {
+      "narration": "Plus, the astronauts twisted the pole to push it into the hard dirt.",
+      "location": "flag rigging workshop",
+      "image_prompt": "reference character watches an astronaut in a bulky white pressure suit twisting a metal pole downward into a small tray of packed grey dirt on the workbench, medium shot, rack of thin metal rods mounted on the wall, red tool cabinet nearby",
+      "image_prompt_alt": "reference character observes a figure in a bulky white fabric suit with a rounded helmet twisting a metal pole into a tray of packed grey dirt on the workbench, wider shot, rack of thin metal rods mounted on the wall, red tool cabinet nearby"
+    },
+    {
+      "narration": "That twisting made the flag ripple.",
+      "location": "flag rigging workshop",
+      "image_prompt": "reference character points closely at the rippled folds of fabric along the flag mounted on its stand, focused expression, close-up, heavy steel workbench in the background, blue storage crate resting on the floor",
+      "image_prompt_alt": "reference character traces a finger near the rippled folds of the fabric flag on its stand, focused expression, extreme close-up, heavy steel workbench blurred behind, blue storage crate resting nearby on the floor"
+    },
+    {
+      "narration": "[laughs] It is not wind. It is just... physics.",
+      "location": "flag rigging workshop",
+      "image_prompt": "reference character stands with arms crossed, laughing openly beside the rippled flag mounted on its stand, medium shot, heavy steel workbench nearby, red tool cabinet and blue storage crate along the back wall",
+      "image_prompt_alt": "reference character laughs with head tilted back, arms loosely crossed near the rippled flag on its stand, wider shot, heavy steel workbench nearby, red tool cabinet and blue storage crate along the back wall"
+    },
+    {
+      "narration": "Okay, next point.",
+      "location": "camera exposure testing chamber",
+      "image_prompt": "reference character walks through a narrow doorway into the chamber with a neutral curious expression, one hand trailing along a steel equipment case, medium shot, heavy tripod-mounted camera visible ahead, red camera case resting on the floor",
+      "image_prompt_alt": "reference character steps forward through a narrow doorway with a neutral, mildly curious expression, glancing toward a heavy tripod-mounted camera across the room, wider shot, red camera case resting on the floor nearby"
+    },
+    {
+      "narration": "Conspiracy fans say: 'Where are the stars in the photos?'",
+      "location": "camera exposure testing chamber",
+      "image_prompt": "reference character holds up a dark lunar surface photograph with no visible stars, one eyebrow raised skeptically, medium close-up, heavy tripod-mounted camera beside them, blue calibration chart resting against the wall",
+      "image_prompt_alt": "reference character studies a dark lunar surface photograph empty of stars, skeptical raised eyebrow, close-up, heavy tripod-mounted camera positioned beside them, blue calibration chart leaning against the wall"
+    },
+    {
+      "narration": "Space is full of stars, right?",
+      "location": "camera exposure testing chamber",
+      "image_prompt": "reference character looks upward with a curious expression toward a small illuminated star chart mounted on the wall, medium shot, heavy tripod-mounted camera nearby, red camera case resting on the floor",
+      "image_prompt_alt": "reference character tilts their head upward, curious expression, toward a small round star chart fixed to the wall, wider shot, heavy tripod-mounted camera nearby, red camera case resting on the floor"
+    },
+    {
+      "narration": "True. But think about how cameras work.",
+      "location": "camera exposure testing chamber",
+      "image_prompt": "reference character examines a heavy tripod-mounted camera closely, adjusting a dial with a thoughtful expression, close-up, blue calibration chart resting against the wall, red camera case on the floor nearby",
+      "image_prompt_alt": "reference character crouches beside the heavy tripod-mounted camera, thoughtful expression, fingers resting near a dial on its side, close medium shot, blue calibration chart against the wall, red camera case nearby on the floor"
+    },
+    {
+      "narration": "The sun was shining VERY brightly on the moon.",
+      "location": "camera exposure testing chamber",
+      "image_prompt": "reference character shields their eyes with one raised hand while facing a wide white photo backdrop screen, squinting expression, medium shot, heavy tripod-mounted camera beside them, red camera case resting on the floor",
+      "image_prompt_alt": "reference character raises one hand to shield their eyes, squinting toward a wide white backdrop screen filling the frame, wider shot, heavy tripod-mounted camera beside them, red camera case resting nearby on the floor"
+    },
+    {
+      "narration": "The astronauts were wearing bright white suits.",
+      "location": "camera exposure testing chamber",
+      "image_prompt": "reference character stands beside an astronaut in a bulky white fabric pressure suit positioned near the white backdrop screen, curious expression, medium two-shot, heavy tripod-mounted camera in the foreground, blue calibration chart nearby",
+      "image_prompt_alt": "reference character observes a figure in a bulky white fabric suit with a rounded helmet standing near the white backdrop screen, curious expression, wider two-shot, heavy tripod-mounted camera in the foreground, blue calibration chart nearby"
+    },
+    {
+      "narration": "To take a good picture of bright things, your camera needs a quick snap.",
+      "location": "camera exposure testing chamber",
+      "image_prompt": "reference character adjusts a small dial on the tripod-mounted camera with focused concentration, close-up, white backdrop screen visible behind, red camera case resting on the floor nearby",
+      "image_prompt_alt": "reference character turns a small dial on the tripod-mounted camera with careful focus, close-up hands and camera body, white backdrop screen behind, red camera case nearby on the floor"
+    },
+    {
+      "narration": "If the camera waited long enough to see the dim stars...",
+      "location": "camera exposure testing chamber",
+      "image_prompt": "reference character studies a slightly blurred overexposed print held in both hands, curious contemplative expression, medium close-up, heavy tripod-mounted camera resting beside them, blue calibration chart nearby",
+      "image_prompt_alt": "reference character tilts a blurred overexposed print toward the light with a contemplative expression, close-up, heavy tripod-mounted camera resting nearby, blue calibration chart against the wall"
+    },
+    {
+      "narration": "[loudly] The astronauts would look like giant glowing ghosts.",
+      "location": "camera exposure testing chamber",
+      "image_prompt": "reference character reacts with wide-eyed surprise at an overexposed white print pinned to the wall showing a barely visible figure, medium shot, heavy tripod-mounted camera nearby, red camera case resting on the floor",
+      "image_prompt_alt": "reference character startles back with wide-eyed surprise, staring at an overexposed white print pinned up showing a barely visible outline, wider shot, heavy tripod-mounted camera nearby, red camera case resting on the floor"
+    },
+    {
+      "narration": "Try taking a picture of the stars with your phone while standing under a bright street lamp.",
+      "location": "camera exposure testing chamber",
+      "image_prompt": "reference character holds a small rectangular device toward a tall metal lamp post prop standing in the corner, demonstrating expression, medium shot, heavy tripod-mounted camera resting nearby, red camera case on the floor",
+      "image_prompt_alt": "reference character extends a small rectangular device toward a tall metal lamp post prop in the corner, explaining expression, wider shot, heavy tripod-mounted camera resting nearby, red camera case on the floor"
+    },
+    {
+      "narration": "[annoyed] See? No stars.",
+      "location": "camera exposure testing chamber",
+      "image_prompt": "reference character holds up a plain dark print with a flat, mildly annoyed expression, close-up, heavy tripod-mounted camera resting beside them, blue calibration chart against the wall",
+      "image_prompt_alt": "reference character presents a plain dark print at arm's length with a flat, mildly annoyed expression, medium close-up, heavy tripod-mounted camera resting nearby, blue calibration chart against the wall"
+    },
+    {
+      "narration": "Now, let\u2019s talk about Stanley Kubrick.",
+      "location": "film prop and set-dressing storage bay",
+      "image_prompt": "reference character stands beside an empty canvas director's chair and a wooden clapperboard resting on a shelf, mildly intrigued expression, medium shot, tall shelving rack of foam props nearby, red gaffer tape spool on the floor",
+      "image_prompt_alt": "reference character leans against an empty canvas director's chair near a wooden clapperboard, mildly intrigued expression, wider shot, tall shelving rack of foam props nearby, red gaffer tape spool resting on the floor"
+    },
+    {
+      "narration": "Some people think the government hired this famous movie maker to direct the fake landing.",
+      "location": "film prop and set-dressing storage bay",
+      "image_prompt": "reference character watches with a skeptical expression as Stanley Kubrick sits in a canvas director's chair studying a script, medium two-shot, tall shelving rack of foam props behind them, blue plastic prop crate resting on the floor",
+      "image_prompt_alt": "reference character observes with a skeptical expression as a lean middle-aged film director with a thick dark beard and round wire-frame glasses sits in a canvas director's chair studying a script, wider two-shot, tall shelving rack of foam props behind them, blue plastic prop crate on the floor"
+    },
+    {
+      "narration": "Because he made a famous space movie.",
+      "location": "film prop and set-dressing storage bay",
+      "image_prompt": "reference character glances toward Stanley Kubrick, who stands holding a round metal film reel case beside a large canvas backdrop rolled against the wall, medium shot, red gaffer tape spool resting on the floor nearby",
+      "image_prompt_alt": "reference character glances toward a lean bearded film director in a rumpled cardigan holding a round metal film reel case beside a large canvas backdrop rolled against the wall, wider shot, red gaffer tape spool resting on the floor nearby"
+    },
+    {
+      "narration": "[laughs harder] But here is the funny part.",
+      "location": "film prop and set-dressing storage bay",
+      "image_prompt": "reference character laughs with head tilted back, one hand braced on the tall shelving rack of foam props, Stanley Kubrick visible nearby examining a prop, medium shot, blue plastic prop crate on the floor",
+      "image_prompt_alt": "reference character laughs openly, bracing one hand on the shelving rack of foam props, a bearded film director in a rumpled cardigan visible nearby examining a prop, wider shot, blue plastic prop crate on the floor"
+    },
+    {
+      "narration": "Kubrick was known for wanting everything to be absolutely perfect.",
+      "location": "film prop and set-dressing storage bay",
+      "image_prompt": "reference character watches Stanley Kubrick inspecting a foam prop closely with a meticulous expression, medium two-shot, tall shelving rack behind them, red gaffer tape spool and blue plastic prop crate on the floor",
+      "image_prompt_alt": "reference character watches a bearded film director in round wire-frame glasses inspecting a foam prop closely with a meticulous expression, wider two-shot, tall shelving rack behind them, red gaffer tape spool and blue plastic prop crate on the floor"
+    },
+    {
+      "narration": "If he directed the moon landing...",
+      "location": "film prop and set-dressing storage bay",
+      "image_prompt": "reference character raises an eyebrow skeptically while Stanley Kubrick points toward a small lunar module mockup resting on a shelf, medium shot, canvas backdrop rolled against the wall behind them, blue plastic prop crate nearby",
+      "image_prompt_alt": "reference character raises a skeptical eyebrow while a bearded film director points toward a small lunar module mockup resting on a shelf, wider shot, canvas backdrop rolled against the wall behind them, blue plastic prop crate nearby"
+    },
+    {
+      "narration": "He would have demanded they shoot it on real location.",
+      "location": "film prop and set-dressing storage bay",
+      "image_prompt": "reference character watches Stanley Kubrick gesturing firmly toward the large canvas backdrop rolled against the wall, unimpressed expression, medium shot, tall shelving rack of foam props nearby, red gaffer tape spool on the floor",
+      "image_prompt_alt": "reference character observes a bearded film director gesturing firmly toward the large canvas backdrop rolled against the wall, unimpressed expression, wider shot, tall shelving rack of foam props nearby, red gaffer tape spool on the floor"
+    },
+    {
+      "narration": "[snorts] On the actual moon.",
+      "location": "film prop and set-dressing storage bay",
+      "image_prompt": "reference character smirks with a short amused snort, arms crossed, standing beside the rolled canvas backdrop, close-up, tall shelving rack of foam props blurred behind, blue plastic prop crate on the floor",
+      "image_prompt_alt": "reference character huffs a short amused laugh, arms crossed, standing near the rolled canvas backdrop, close medium shot, tall shelving rack of foam props behind, blue plastic prop crate resting on the floor"
+    },
+    {
+      "narration": "What about the deadly radiation?",
+      "location": "radiation dosimetry monitoring room",
+      "image_prompt": "reference character steps toward a wide instrument console with dial gauges, curious expression, medium shot, tall rack of cabled equipment beside them, red warning lamp fixed above the console",
+      "image_prompt_alt": "reference character approaches a wide instrument console covered in dial gauges, curious expression, wider shot, tall rack of cabled equipment nearby, red warning lamp fixed above the console"
+    },
+    {
+      "narration": "Earth has invisible rings of radiation around it.",
+      "location": "radiation dosimetry monitoring room",
+      "image_prompt": "reference character studies a curved ring-shaped diagram model mounted above the instrument console, thoughtful expression, medium close-up, blue indicator light fixed nearby, tall rack of cabled equipment in the background",
+      "image_prompt_alt": "reference character leans in to study a curved ring-shaped model fixed above the instrument console, thoughtful expression, close-up, blue indicator light nearby, tall rack of cabled equipment blurred behind"
+    },
+    {
+      "narration": "People say flying through them would cook the astronauts like hot pockets.",
+      "location": "radiation dosimetry monitoring room",
+      "image_prompt": "reference character raises an eyebrow with dry amusement while dial gauges on the console spike sharply, medium shot, red warning lamp fixed above, tall rack of cabled equipment beside them",
+      "image_prompt_alt": "reference character smirks with dry amusement watching the console's dial gauges spike sharply, wider shot, red warning lamp fixed above, tall rack of cabled equipment beside them"
+    },
+    {
+      "narration": "[calm] But NASA was not stupid.",
+      "location": "radiation dosimetry monitoring room",
+      "image_prompt": "reference character leans calmly against the wide instrument console, arms folded, composed expression, medium shot, blue indicator light fixed nearby, tall rack of cabled equipment in the background",
+      "image_prompt_alt": "reference character rests calmly against the edge of the instrument console, arms folded, composed expression, wider shot, blue indicator light nearby, tall rack of cabled equipment behind"
+    },
+    {
+      "narration": "The rocket moved VERY fast.",
+      "location": "radiation dosimetry monitoring room",
+      "image_prompt": "reference character points toward a small rocket model mounted beside the instrument rack, focused expression, medium close-up, red warning lamp fixed above, blue indicator light nearby",
+      "image_prompt_alt": "reference character gestures toward a small metallic rocket model mounted beside the instrument rack, focused expression, close-up, red warning lamp fixed above, blue indicator light nearby"
+    },
+    {
+      "narration": "They passed through the thinnest part of the rings.",
+      "location": "radiation dosimetry monitoring room",
+      "image_prompt": "reference character traces a finger along a narrow section of the curved ring-shaped diagram model, focused expression, close-up, tall rack of cabled equipment blurred behind, red warning lamp fixed above",
+      "image_prompt_alt": "reference character points precisely at a narrow section of the curved ring-shaped model, focused expression, extreme close-up, tall rack of cabled equipment behind, red warning lamp fixed above"
+    },
+    {
+      "narration": "Total radiation they got was about the same as a hospital X-ray.",
+      "location": "radiation dosimetry monitoring room",
+      "image_prompt": "reference character holds a small handheld dosimeter device, comparing its dial reading with a thoughtful expression, medium close-up, wide instrument console beside them, blue indicator light fixed nearby",
+      "image_prompt_alt": "reference character studies the dial reading on a small handheld dosimeter device with a thoughtful expression, close-up, wide instrument console beside them, blue indicator light fixed nearby"
+    },
+    {
+      "narration": "Not great, but definitely not deadly.",
+      "location": "radiation dosimetry monitoring room",
+      "image_prompt": "reference character shrugs mildly with a resigned expression, standing beside the wide instrument console, medium shot, tall rack of cabled equipment behind them, red warning lamp fixed above",
+      "image_prompt_alt": "reference character gives a small resigned shrug, leaning against the instrument console, wider shot, tall rack of cabled equipment behind them, red warning lamp fixed above"
+    },
+    {
+      "narration": "So, the science clearly shows the landing was real.",
+      "location": "overflowing conspiracy theory archive",
+      "image_prompt": "reference character stands with arms crossed and a confident, satisfied expression amid a cluttered worktable covered with folders, medium shot, tall filing cabinet stuffed with folders behind them, red string connecting pinned photographs on the wall",
+      "image_prompt_alt": "reference character stands with arms crossed and a quietly satisfied expression beside the cluttered worktable, wider shot, tall filing cabinet stuffed with folders behind them, red string connecting pinned photographs on the wall"
+    },
+    {
+      "narration": "Why do the fake stories survive?",
+      "location": "overflowing conspiracy theory archive",
+      "image_prompt": "reference character tilts their head with a puzzled expression, looking toward a cork board covered with pinned photographs connected by red string, medium shot, cluttered worktable in the foreground, blue evidence folder resting on top",
+      "image_prompt_alt": "reference character tilts their head, genuinely puzzled, studying a cork board of pinned photographs connected by red string, wider shot, cluttered worktable in the foreground, blue evidence folder resting on top"
+    },
+    {
+      "narration": "Because our brains are built to look for secrets.",
+      "location": "overflowing conspiracy theory archive",
+      "image_prompt": "reference character examines a pinned diagram connected by red string on the cork board, curious focused expression, medium close-up, tall filing cabinet nearby, blue evidence folder resting on the worktable",
+      "image_prompt_alt": "reference character leans close to study a pinned diagram connected by red string, curious focused expression, close-up, tall filing cabinet nearby, blue evidence folder resting on the worktable"
+    },
+    {
+      "narration": "When something HUGE happens, a simple explanation feels boring.",
+      "location": "overflowing conspiracy theory archive",
+      "image_prompt": "reference character flips through a thin folder with an unimpressed flat expression, medium shot, cluttered worktable covered with scattered papers, blue evidence folder resting nearby, tall filing cabinet in the background",
+      "image_prompt_alt": "reference character leafs through a thin folder with a flat, unimpressed expression, close medium shot, cluttered worktable covered with scattered papers, blue evidence folder nearby, tall filing cabinet behind"
+    },
+    {
+      "narration": "We want a big mystery.",
+      "location": "overflowing conspiracy theory archive",
+      "image_prompt": "reference character leans back against the tall filing cabinet with a faint amused expression, arms crossed, medium shot, cluttered worktable in the foreground, red string connecting pinned photographs on the wall behind",
+      "image_prompt_alt": "reference character rests against the tall filing cabinet with a faint amused expression, arms loosely crossed, wider shot, cluttered worktable in the foreground, red string connecting pinned photographs behind"
+    },
+    {
+      "narration": "It makes the believer feel special. Like they know a secret we do not.",
+      "location": "overflowing conspiracy theory archive",
+      "image_prompt": "reference character holds a small magnifying glass over a photograph on the worktable, skeptical focused expression, close-up, tall filing cabinet blurred behind, blue evidence folder resting nearby",
+      "image_prompt_alt": "reference character peers through a small magnifying glass at a photograph on the worktable, skeptical focused expression, close medium shot, tall filing cabinet behind, blue evidence folder nearby"
+    },
+    {
+      "narration": "[thoughtful] Plus, trusting the government is hard.",
+      "location": "overflowing conspiracy theory archive",
+      "image_prompt": "reference character sits at the cluttered worktable resting their chin on one hand, thoughtful expression, medium shot, tall filing cabinet behind them, red string connecting pinned photographs on the wall",
+      "image_prompt_alt": "reference character sits at the worktable with chin propped on one hand, quietly thoughtful, wider shot, tall filing cabinet behind them, red string connecting pinned photographs on the wall"
+    },
+    {
+      "narration": "But keeping a secret THIS big?",
+      "location": "overflowing conspiracy theory archive",
+      "image_prompt": "reference character raises both eyebrows doubtfully at a tall stack of folders piled on the worktable, medium close-up, tall filing cabinet nearby, blue evidence folder resting on top of the stack",
+      "image_prompt_alt": "reference character eyes a tall stack of folders on the worktable with doubtful raised eyebrows, close-up, tall filing cabinet nearby, blue evidence folder resting on top of the stack"
+    },
+    {
+      "narration": "Four hundred thousand people worked on the Apollo project.",
+      "location": "overflowing conspiracy theory archive",
+      "image_prompt": "reference character gestures broadly across the worktable spread with rows of small folders and identification badges, matter-of-fact expression, wide shot, tall filing cabinet stuffed with folders in the background",
+      "image_prompt_alt": "reference character sweeps an open hand across the worktable covered in rows of small folders and identification badges, matter-of-fact expression, wider shot, tall filing cabinet stuffed with folders behind"
+    },
+    {
+      "narration": "You can not even get four friends to agree on a pizza topping.",
+      "location": "overflowing conspiracy theory archive",
+      "image_prompt": "reference character holds up a small handful of mismatched papers with a wry smirk, close-up, cluttered worktable in the background, blue evidence folder resting nearby",
+      "image_prompt_alt": "reference character fans out a small handful of mismatched papers with a wry smirking expression, medium close-up, cluttered worktable behind, blue evidence folder resting nearby"
+    },
+    {
+      "narration": "[chuckles] Imagine keeping 400,000 people quiet for fifty years.",
+      "location": "overflowing conspiracy theory archive",
+      "image_prompt": "reference character chuckles with head shaking slightly, leaning against the tall filing cabinet, medium shot, cluttered worktable in the foreground, red string connecting pinned photographs on the wall",
+      "image_prompt_alt": "reference character laughs quietly with a small headshake, resting against the tall filing cabinet, wider shot, cluttered worktable in the foreground, red string connecting pinned photographs behind"
+    },
+    {
+      "narration": "So, the moon landing is real, but human paranoia? That's the real infinite universe.",
+      "location": "overflowing conspiracy theory archive",
+      "image_prompt": "reference character closes a folder on the cluttered worktable with a resigned, faintly amused expression, sitting back in a wooden chair, medium shot, tall filing cabinet behind them, red string connecting pinned photographs on the wall",
+      "image_prompt_alt": "reference character shuts a folder on the worktable, leaning back with a resigned, faintly amused expression, wider shot, tall filing cabinet behind them, red string connecting pinned photographs on the wall"
+    }
+  ],
+  "music_prompt": "Sparse instrumental bed matching the topic's dry, inquisitive mood, around eighty-two BPM. Plucked acoustic guitar, soft marimba, low sustained cello, and light brushed drum kit. Flat consistent energy with no build, no swells and no drops. Sits far in the background under a spoken narrator with the mid range left clear. Purely instrumental with no vocals of any kind. Understated rather than comedic."
+}
 
-NEW_SCRIPT = {}
+
 
 SCRIPT_TEMPLATE = {
     "topic": "",
@@ -252,6 +594,44 @@ def cmd_init(args) -> int:
 
 # --- prompts ---------------------------------------------------------------
 
+def _fragment(text: str) -> str:
+    """Flatten to one line and end it with a period, so fragments join cleanly."""
+    t = " ".join((text or "").split())
+    if not t:
+        return ""
+    return t if t.endswith((".", "!", "?")) else t + "."
+
+
+def _anchor_map(data: dict) -> tuple[str, dict[str, str]]:
+    """
+    The location description, lifted out of the beats and stored once.
+
+    Measured across five finished videos: 60-78% of every image_prompt's
+    content words were the SAME location description, retyped in every beat of
+    that location - and paraphrased slightly each time. "pale plaster rooms"
+    became "pale plaster walls", "packed earth yard" became "packed earth
+    courtyard". Every variant is a different instruction to the image model, so
+    the script was injecting drift INSIDE a single location, on top of the
+    drift that already comes from the generator.
+
+    Same argument as config.STYLE_PREFIX/STYLE_BLOCK, applied one level down:
+    anything an LLM writes it will eventually paraphrase, so text that must not
+    vary is written once and pasted in here rather than retyped per beat.
+
+    The payoff is also budget. At ~55 unique words a beat instead of ~173, a
+    90-beat script is SMALLER than the 45-beat scripts this replaces.
+    """
+    plan = data.get("plan") or {}
+    setting = _fragment(plan.get("setting_anchor") or "")
+    locations = {}
+    for loc in plan.get("locations") or []:
+        name = " ".join((loc.get("name") or "").split()).lower()
+        anchor = _fragment(loc.get("visual_anchor") or "")
+        if name and anchor:
+            locations[name] = anchor
+    return setting, locations
+
+
 def cmd_prompts(args) -> int:
     run_dir = resolve_run(args.run)
     data = load_script(run_dir)
@@ -264,8 +644,14 @@ def cmd_prompts(args) -> int:
         f"# {len(beats)} beats from script.json",
         "",
     ]
+    # Location/setting anchors come from plan, not from the beat text. See
+    # _anchor_map: the beats used to carry a paraphrased copy each.
+    setting_anchor, location_anchors = _anchor_map(data)
+    missing_anchor: list[int] = []
+    anchored = 0
+
     collapsed = stripped = 0
-    for beat in beats:
+    for index, beat in enumerate(beats, 1):
         # scenes.txt is strictly one prompt per line. A newline inside a prompt
         # scenes.txt is strictly one prompt per line. A newline inside a prompt
         # would split one beat into two and shift every scene after it, so
@@ -282,7 +668,20 @@ def cmd_prompts(args) -> int:
             text = text[:cut].rstrip(" .,;") + "."
             stripped += 1
 
-        lines.append(f"{config.STYLE_PREFIX} {text} {config.STYLE_BLOCK}")
+        # Order matches the prompts that already worked: subject and action
+        # first, then the place, then the style. Leading with the place buries
+        # the subject a hundred words deep.
+        loc = " ".join((beat.get("location") or "").split()).lower()
+        loc_anchor = location_anchors.get(loc, "")
+        if location_anchors and not loc_anchor:
+            missing_anchor.append(index)
+        anchor = " ".join(a for a in (loc_anchor, setting_anchor) if a)
+        if anchor:
+            anchored += 1
+
+        lines.append(" ".join(part for part in (
+            config.STYLE_PREFIX, _fragment(text), anchor, config.STYLE_BLOCK
+        ) if part))
 
     out_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
@@ -300,7 +699,12 @@ def cmd_prompts(args) -> int:
             cut = text.lower().find("style:")
             if cut != -1:
                 text = text[:cut].rstrip(" .,;") + "."
-            alt_lines.append(f"{config.STYLE_PREFIX} {text} {config.STYLE_BLOCK}")
+            loc = " ".join((beat.get("location") or "").split()).lower()
+            anchor = " ".join(a for a in (location_anchors.get(loc, ""),
+                                          setting_anchor) if a)
+            alt_lines.append(" ".join(part for part in (
+                config.STYLE_PREFIX, _fragment(text), anchor, config.STYLE_BLOCK
+            ) if part))
         alt_path.write_text("\n".join(alt_lines) + "\n", encoding="utf-8")
         print(f"[prompts] {sum(1 for a in alts if a)} fallback description(s) "
               f"-> {alt_path.name}")
@@ -310,6 +714,15 @@ def cmd_prompts(args) -> int:
     print(f"[prompts] {len(beats)} beats -> {out_path}")
     print(f"[prompts] style block appended to all {len(beats)} "
           f"(identical every scene, every video)")
+    if anchored:
+        print(f"[prompts] location anchor injected into {anchored}/{len(beats)} "
+              f"(byte-identical within each location)")
+    if missing_anchor:
+        shown = ",".join(str(n) for n in missing_anchor[:12])
+        more = f" (+{len(missing_anchor) - 12})" if len(missing_anchor) > 12 else ""
+        print(f"[warn] no matching plan.locations entry: {shown}{more}")
+        print("       beat.location must match plan.locations[].name exactly; "
+              "these beats carry no location description at all")
     if collapsed:
         print(f"[prompts] flattened whitespace in {collapsed} prompt(s)")
     if stripped:
@@ -325,21 +738,114 @@ def cmd_prompts(args) -> int:
     return 0
 
 
-# Words per beat, by format. Arithmetic, not taste: the narrator runs at about
-# 206 words a minute and one image is held for its whole narration, so 19 words
-# is the ~5.5s per image this channel is cut at. Skits cut faster still, because
-# a joke's timing is the image change.
-WORD_BANDS = {"skit": (12, 15)}
+# Words per beat, by format. Arithmetic, not taste: one image is held for its
+# whole narration, so the word count IS the cut rate. Skits cut faster still,
+# because a joke's timing is the image change. Progression runs short too,
+# because the format is built on short declarative sentences.
+#
+# These are the SINGLE-BAND formats: every beat aims at the same length. The
+# explainer format no longer works this way - see RHYTHM_FORMATS below.
+WORD_BANDS = {"skit": (12, 15), "progression": (14, 19)}
 DEFAULT_WORD_BAND = (17, 21)
 
-# Measured from the animatoryoung voice at NARRATION_SPEED 1.0, over a real
-# 17-beat run (330 words in 96.3s). An earlier figure of 183 came from a single
-# 30-word sample and made every length estimate ~12% too long.
-WORDS_PER_MINUTE = 206
+# Measured over 231 shipped beats across five finished videos: 4207 spoken
+# words against 1425s of narration audio. The audio is tightly trimmed (no
+# detectable silence at -30dB), so this is real delivery rate, not padding.
+#
+# The previous 206 came from a single 17-beat run and made every length
+# estimate ~16% short. Do not restore it without re-measuring across several
+# finished runs: sum the spoken words in each manifest entry and divide by the
+# sum of its durations. One run is not enough to see it.
+#
+# Lives in config because modules/voice_generator.py needs it as well, and a
+# module importing pipeline would be a cycle.
+WORDS_PER_MINUTE = config.WORDS_PER_MINUTE
+
+# --- Two-tier rhythm (explainer) -------------------------------------------
+# Video length fixes the total spoken words, so more beats does NOT mean more
+# narration - it means the same words cut into smaller pieces. A 4.6 minute
+# video is ~810 spoken words whether that is 45 beats or 90.
+#
+#   SHORT beat   4-8 words   ~2.0s   a consequence, a reaction, one hard image
+#   LONG beat   10-15 words  ~4.1s   the information, the number, the turn
+#
+# Half and half averages ~9 words a beat, which is the ~3.0s per image this
+# channel is now cut at, down from 6.2s.
+#
+# The MIX is the rule, not the shortness. Uniformly short beats are not a
+# faster video, they are a faster metronome - and a metronome was the original
+# complaint. So the checks below police the ratio and the runs, and only flag
+# an individual beat when it is too long to sit under one still image.
+RHYTHM_FORMATS = {"explainer"}
+SHORT_MAX_WORDS = 8       # at or under this, a beat counts as SHORT
+LONG_MAX_WORDS = 15       # over this, the image freezes while narration runs
+MIN_WORDS = 4             # under this it does not register as a beat at all
+SHORT_SHARE = (0.35, 0.65)  # acceptable fraction of SHORT beats
+MAX_RUN_SHORT = 3         # more than this in a row reads as machine-gun
+MAX_RUN_LONG = 2          # more than this in a row is the old slideshow
 
 # Mirrors OUTRO_FRAMES in remotion/src/constants.ts (30 frames at 30fps):
 # the hold on the last image after the final word.
 OUTRO_HOLD_SECONDS = 1.0
+
+
+def _check_rhythm(beats: list[dict], spoken_words, report) -> None:
+    """
+    Police the two-tier rhythm for RHYTHM_FORMATS.
+
+    Deliberately does NOT warn on a beat merely for being short - short IS the
+    format now. What it polices is the shape of the whole script: the ratio of
+    short to long, and how many of either run back to back.
+    """
+    counts = [spoken_words(b["narration"]) for b in beats]
+    n = len(counts)
+    if not n:
+        return
+
+    report(f"narration over {LONG_MAX_WORDS} words",
+           [i for i, c in enumerate(counts, 1) if c > LONG_MAX_WORDS],
+           "the image sits frozen while the narration keeps going")
+    report(f"narration under {MIN_WORDS} words",
+           [i for i, c in enumerate(counts, 1) if c < MIN_WORDS],
+           "too short to register as its own beat")
+
+    shorts = [c <= SHORT_MAX_WORDS for c in counts]
+    share = sum(shorts) / n
+    lo_s, hi_s = SHORT_SHARE
+    if share < lo_s:
+        print(f"[warn] only {share:.0%} of beats are short "
+              f"(want {lo_s:.0%}-{hi_s:.0%})")
+        print("       too few short beats - this is still slideshow pacing")
+    elif share > hi_s:
+        print(f"[warn] {share:.0%} of beats are short "
+              f"(want {lo_s:.0%}-{hi_s:.0%})")
+        print("       nearly all short is a metronome, not a faster video")
+
+    # Collapse the short/long sequence into runs so a stretch of six short
+    # beats is reported once, as a range, not as six separate warnings.
+    runs, start = [], 0
+    for i in range(1, n + 1):
+        if i == n or shorts[i] != shorts[start]:
+            runs.append((shorts[start], start + 1, i))
+            start = i
+
+    for is_short, limit, why in (
+        (True, MAX_RUN_SHORT,
+         "break the run with a long beat - back-to-back short beats "
+         "read as machine-gun"),
+        (False, MAX_RUN_LONG,
+         "insert a short beat - this stretch cuts at the old slow rate"),
+    ):
+        bad = [f"{a}-{b}" for s_, a, b in runs
+               if s_ is is_short and b - a + 1 > limit]
+        if bad:
+            kind = "short" if is_short else "long"
+            print(f"[warn] {len(bad)} run(s) of more than {limit} {kind} "
+                  f"beats: {', '.join(bad[:8])}")
+            print(f"       {why}")
+
+    print(f"[prompts] rhythm: {sum(shorts)} short / {n - sum(shorts)} long, "
+          f"avg {sum(counts) / n:.1f} words a beat")
 
 
 def _warn_off_spec(beats: list[dict], fmt: str = "") -> None:
@@ -354,12 +860,19 @@ def _warn_off_spec(beats: list[dict], fmt: str = "") -> None:
         import re
         return len(re.sub(r"\[[^\]]*\]", " ", text).split())
 
-    lo, hi = WORD_BANDS.get(fmt.strip().lower(), DEFAULT_WORD_BAND)
-    if fmt:
+    key = fmt.strip().lower()
+    rhythm = key in RHYTHM_FORMATS
+    lo, hi = WORD_BANDS.get(key, DEFAULT_WORD_BAND)
+    if fmt and rhythm:
+        print(f"[prompts] format {fmt!r}: two-tier rhythm, "
+              f"short <={SHORT_MAX_WORDS} words / long <={LONG_MAX_WORDS}")
+    elif fmt:
         print(f"[prompts] format {fmt!r}: expecting {lo}-{hi} words per beat")
 
-    short = [i for i, b in enumerate(beats, 1) if spoken_words(b["narration"]) < lo]
-    long_ = [i for i, b in enumerate(beats, 1) if spoken_words(b["narration"]) > hi]
+    short = [] if rhythm else [i for i, b in enumerate(beats, 1)
+                               if spoken_words(b["narration"]) < lo]
+    long_ = [] if rhythm else [i for i, b in enumerate(beats, 1)
+                               if spoken_words(b["narration"]) > hi]
     no_ref = [i for i, b in enumerate(beats, 1)
               if "reference character" not in b["image_prompt"].lower()]
 
@@ -371,10 +884,13 @@ def _warn_off_spec(beats: list[dict], fmt: str = "") -> None:
         print(f"[warn] {label}: {shown}{more}")
         print(f"       {why}")
 
-    report(f"narration under {lo} words", short,
-           "beat is short; the video cuts faster than the script needs")
-    report(f"narration over {hi} words", long_,
-           "beat runs long; the image sits frozen while narration continues")
+    if rhythm:
+        _check_rhythm(beats, spoken_words, report)
+    else:
+        report(f"narration under {lo} words", short,
+               "beat is short; the video cuts faster than the script needs")
+        report(f"narration over {hi} words", long_,
+               "beat runs long; the image sits frozen while narration continues")
     report('missing "the reference character"', no_ref,
            "the character may not be locked to your reference art")
 
@@ -435,11 +951,37 @@ def _warn_off_spec(beats: list[dict], fmt: str = "") -> None:
         print("       describe WHAT is there, not how it is lit or rendered")
 
     total_words = sum(spoken_words(b["narration"]) for b in beats)
-    est = total_words / WORDS_PER_MINUTE * 60 / config.NARRATION_SPEED
-    per_beat = est / len(beats) if beats else 0
-    print(f"[prompts] ~{total_words} spoken words, estimated "
-          f"{est:.0f}s of video ({est / 60:.1f} min)")
+    narration_s = total_words / WORDS_PER_MINUTE * 60 / config.NARRATION_SPEED
+
+    # The finished video is longer than its narration. Every hard cut adds a
+    # breath that no transition eats (config.CUT_PAD_SECONDS), and the pipeline
+    # bolts on an outro beat afterwards. A dissolve costs nothing - its tail is
+    # consumed by the overlap - so only same-location boundaries are counted.
+    locations = [" ".join((b.get("location") or "").split()) for b in beats]
+    hard_cuts = sum(1 for a, b in zip(locations, locations[1:]) if a and a == b)
+    pad_s = hard_cuts * config.CUT_PAD_SECONDS
+    outro_s = (OUTRO_HOLD_SECONDS + 2.1) if config.OUTRO_ENABLED else 0.0
+
+    est = narration_s + pad_s + outro_s
+    per_beat = narration_s / len(beats) if beats else 0
+    print(f"[prompts] ~{total_words} spoken words, {narration_s:.0f}s narration "
+          f"+ {pad_s:.0f}s cut pads + {outro_s:.0f}s outro")
+    print(f"[prompts] estimated final video {est:.0f}s ({est / 60:.1f} min)")
     print(f"[prompts] ~{per_beat:.1f}s per image across {len(beats)} beats")
+
+    # Catch a script that is the wrong LENGTH while it is still just text. The
+    # alternative is finding out after a full Flow run and a full TTS run.
+    target = getattr(config, "TARGET_VIDEO_SECONDS", 0.0)
+    tol = getattr(config, "TARGET_VIDEO_TOLERANCE", 0.15)
+    if target and beats:
+        drift = (est - target) / target
+        if abs(drift) > tol:
+            direction = "over" if drift > 0 else "under"
+            need = round(abs(est - target) / max(per_beat, 0.1))
+            print(f"[warn] {abs(drift):.0%} {direction} the "
+                  f"{target / 60:.1f} min target ({est / 60:.1f} min)")
+            print(f"       adjust the script's total word budget - roughly "
+                  f"{need} beat(s) {'too many' if drift > 0 else 'short'}")
 
 
 # --- images ----------------------------------------------------------------
@@ -504,20 +1046,53 @@ def cmd_voice(args) -> int:
     # text_to_speech, which has request stitching and does not need this.
     size = 1 if args.lang != "en" else max(1, config.ELEVENLABS_BATCH_SIZE)
 
-    # --limit and --force can leave holes, and a batch spanning a hole would
-    # be performed as continuous speech that is not continuous in the video.
-    # So only group beats that are actually adjacent.
-    groups: list[list] = []
+    # The ~2000 character API ceiling is what actually binds, and beat length
+    # is bimodal now (see config.ELEVENLABS_BATCH_CHARS), so group by
+    # characters and treat the beat count as a cap on top of that.
+    budget = max(1, getattr(config, "ELEVENLABS_BATCH_CHARS", 1400))
+
+    def fill(run: list, cap: int) -> list[list]:
+        """Greedy fill of one contiguous run, respecting both caps."""
+        out: list[list] = []
+        chars = 0
+        for index, beat in run:
+            size_of = len(beat["narration"])
+            if out and len(out[-1]) < cap and chars + size_of <= budget:
+                out[-1].append((index, beat))
+                chars += size_of
+            else:
+                out.append([(index, beat)])
+                chars = size_of
+        return out
+
+    # Only group beats that are actually adjacent: --limit and --force can
+    # leave holes, and a batch spanning a hole would be performed as continuous
+    # speech that is not continuous in the video.
+    runs: list[list] = []
     for index, beat in todo:
-        if (groups and len(groups[-1]) < size
-                and groups[-1][-1][0] == index - 1):
-            groups[-1].append((index, beat))
+        if runs and runs[-1][-1][0] == index - 1:
+            runs[-1].append((index, beat))
         else:
-            groups.append([(index, beat)])
+            runs.append([(index, beat)])
+
+    # Balance each run instead of filling greedily to the cap, because a
+    # straight greedy fill leaves a remainder: 55 beats at 18 gives 18/18/18/1,
+    # and a group of ONE skips the batch path entirely (len(group) > 1 below).
+    # That beat then becomes its own performance and drifts from the other 54 -
+    # precisely what batching exists to prevent. Splitting the same run into
+    # equal groups gives 14/14/14/13 for the same number of requests.
+    groups: list[list] = []
+    for run in runs:
+        needed = len(fill(run, size))
+        even = -(-len(run) // needed) if needed else size
+        groups.extend(fill(run, even))
 
     if size > 1:
+        biggest = max((sum(len(b["narration"]) for _, b in g) for g in groups),
+                      default=0)
         print(f"[voice] {len(todo)} beat(s) in {len(groups)} request(s), "
-              f"up to {size} per request")
+              f"up to {size} per request / {budget} chars "
+              f"(largest {biggest})")
 
     failures = []
     for group in groups:
@@ -691,6 +1266,10 @@ def cmd_manifest(args) -> int:
             "image": f"images/{image.name}",
             "audio": f"audio/{audio.name}",
             "duration": round(duration, 3),
+            # Carried so the render can tell a cut WITHIN a place from a move
+            # BETWEEN places: same location cuts hard, a change dissolves.
+            # See remotion/src/compositions/LectureVideo.tsx.
+            "location": " ".join((beat.get("location") or "").split()),
         }
 
 

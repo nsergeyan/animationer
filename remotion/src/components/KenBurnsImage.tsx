@@ -1,19 +1,22 @@
 import { AbsoluteFill, Img, interpolate, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
-import { ZOOM_MIN, ZOOM_SCALE, PAN_PERCENT } from "../constants";
+import { ZOOM_MIN, ZOOM_SCALE, PAN_SCALE, PAN_PERCENT } from "../constants";
 
-// Alternates two gentle moves by beat: a slight push in, then a left-to-right
-// drift, then push in again, and so on.
+// Four moves cycled by beat index: push in, pan left-to-right, pull out, pan
+// right-to-left.
 //
-// Both stay inside ZOOM_SCALE, which is deliberately small. Every percent above
-// 1.0 is a percent of the drawing cropped away, and full-bleed scene art has no
-// spare margin - 1.06 was visibly eating the edges.
+// Four rather than the old two because the video now shows twice as many
+// images at roughly 3.0s each, and a two-move cycle at that rate is legible as
+// a pattern - in, across, in, across. Reversing the direction of each move on
+// its second appearance breaks the pattern without introducing a new KIND of
+// movement, which would start to look like an effect rather than a camera.
 //
-// Alternating by INDEX, not at random, so a re-render is byte-identical and two
-// renders of the same video can actually be compared.
+// Cycling by INDEX rather than at random keeps a re-render byte-identical, so
+// two renders of the same video can still be compared.
 //
 // PAN SAFETY: at scale S the image overhangs by (S-1)/2 each side, so a pan of
-// X% is safe while X <= 50*(S-1)/S. At 1.03 the limit is 1.46% and the drift
-// uses 1.0%. The push-in move does not pan at all, so it cannot expose an edge.
+// X% is safe while X <= 50*(S-1)/S. PAN_SCALE and PAN_PERCENT are set against
+// that ceiling in constants.ts. The push and pull never pan, so they cannot
+// expose an edge at any point in the move.
 
 export const KenBurnsImage: React.FC<{ src: string; index?: number }> = ({
   src,
@@ -24,20 +27,32 @@ export const KenBurnsImage: React.FC<{ src: string; index?: number }> = ({
 
   const range: [number, number] = [0, durationInFrames];
   const clamp = { extrapolateLeft: "clamp" as const, extrapolateRight: "clamp" as const };
-  const drifting = index % 2 === 1;
+  const move = index % 4;
+  const panning = move === 1 || move === 3;
 
-  // Push in: scale grows, no sideways travel.
-  // Drift: scale held at the top so the pan has room; the view travels left
-  // to right across the image.
-  const scale = drifting
-    ? ZOOM_SCALE
-    : interpolate(frame, range, [ZOOM_MIN, ZOOM_SCALE], clamp);
+  // A pan holds one scale for the whole beat, so it pays the crop the entire
+  // time and sits at the lower PAN_SCALE. A push or pull travels the full zoom
+  // range, but starts (or ends) at zero crop.
+  const scale = panning
+    ? PAN_SCALE
+    : interpolate(
+        frame,
+        range,
+        move === 0 ? [ZOOM_MIN, ZOOM_SCALE] : [ZOOM_SCALE, ZOOM_MIN],
+        clamp,
+      );
+
   // Note the direction: translating the IMAGE is the opposite of moving the
   // camera. Starting at +PAN and ending at -PAN slides the image leftward,
-  // which walks the visible window from the left edge to the right edge -
-  // a left-to-right pan. The reverse reads as right-to-left.
-  const x = drifting
-    ? interpolate(frame, range, [PAN_PERCENT, -PAN_PERCENT], clamp)
+  // which walks the visible window from the left edge to the right edge - a
+  // left-to-right pan. Move 3 runs the same travel the other way.
+  const x = panning
+    ? interpolate(
+        frame,
+        range,
+        move === 1 ? [PAN_PERCENT, -PAN_PERCENT] : [-PAN_PERCENT, PAN_PERCENT],
+        clamp,
+      )
     : 0;
 
   return (

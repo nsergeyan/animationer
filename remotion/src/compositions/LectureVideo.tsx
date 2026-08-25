@@ -2,7 +2,7 @@ import { AbsoluteFill, Audio, staticFile } from "remotion";
 import { TransitionSeries, linearTiming } from "@remotion/transitions";
 import { fade } from "@remotion/transitions/fade";
 import { KenBurnsImage } from "../components/KenBurnsImage";
-import { FPS, CROSSFADE_FRAMES, OUTRO_FRAMES, Beat } from "../constants";
+import { DISSOLVE_FRAMES, Beat, beatFrames, dissolvesAfter } from "../constants";
 
 // One beat: image (Ken Burns) + its narration audio. No captions - the art
 // carries the frame and the narration carries the meaning.
@@ -17,32 +17,37 @@ export const LectureVideo: React.FC<{ beats: Beat[] }> = ({ beats }) => {
   return (
     <TransitionSeries>
       {beats.flatMap((beat, i) => {
-        const isLast = i === beats.length - 1;
+        const dissolving = dissolvesAfter(beats, i);
 
         // A Transition OVERLAPS its two neighbours rather than sitting between
-        // them, so without padding the next beat's audio starts CROSSFADE_FRAMES
-        // before this one's finishes and the two narrations talk over each
-        // other. Adding that many frames as a silent tail means the overlap
-        // eats the tail instead of speech, and beat N+1 begins exactly as beat
-        // N's audio ends. The last beat gets OUTRO_FRAMES instead, so the
-        // video holds briefly rather than cutting on the final syllable.
-        const durationInFrames =
-          Math.max(1, Math.round(beat.duration * FPS)) +
-          (isLast ? OUTRO_FRAMES : CROSSFADE_FRAMES);
+        // them, so without padding the next beat's audio would start
+        // DISSOLVE_FRAMES before this one's finished and the two narrations
+        // would talk over each other. Padding by exactly the overlap means the
+        // overlap eats silence instead of speech, and beat N+1 begins as beat
+        // N's audio ends.
+        //
+        // A hard cut has no overlap to absorb, so its pad is a real gap and is
+        // deliberately much shorter - a breath, not a beat. The last beat gets
+        // OUTRO_FRAMES so the video holds rather than cutting on the final
+        // syllable. All three cases live in beatFrames, which Root.tsx also
+        // uses to size the composition.
+        const durationInFrames = beatFrames(beats, i);
 
         const seq = (
           <TransitionSeries.Sequence key={`seq-${i}`} durationInFrames={durationInFrames}>
             <BeatScene beat={beat} index={i} />
           </TransitionSeries.Sequence>
         );
-        if (isLast) return [seq];
-        // Crossfade into the next beat.
+
+        // Omitting the Transition IS the hard cut - TransitionSeries plays
+        // adjacent Sequences back to back with nothing between them.
+        if (!dissolving) return [seq];
         return [
           seq,
           <TransitionSeries.Transition
             key={`t-${i}`}
             presentation={fade()}
-            timing={linearTiming({ durationInFrames: CROSSFADE_FRAMES })}
+            timing={linearTiming({ durationInFrames: DISSOLVE_FRAMES })}
           />,
         ];
       })}

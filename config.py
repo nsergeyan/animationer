@@ -67,6 +67,14 @@ STYLE_PREFIX = "Drawn crudely in flat MS Paint doodle style."
 #   - Naming a paint program invites the model to draw the program. Forbidding
 #     the window furniture outright is what stops the dashed marquee and the
 #     grey canvas border showing up around the picture.
+#
+# The edge-margin clause is the one rule here that is not driven by a bad
+# generation - it is driven by the render. Ken Burns crops up to 10% off the
+# frame (remotion/src/constants.ts), and the previous move was clamped down to
+# an invisible 3% precisely because full-bleed art had no margin to give. This
+# asks for the margin instead, so the camera can move. Phrased as what the
+# composition IS, per rule 1 - "leave space at the edges" reads as an
+# instruction about the canvas, not about where to put the subject.
 STYLE_BLOCK = (
     "STYLE: crude MS Paint doodle, drawn shakily with a computer mouse. "
     "Thick wobbly black outlines of uneven weight. Flat bucket-filled colour, "
@@ -77,6 +85,8 @@ STYLE_BLOCK = (
     "the scene did not ask for. "
     "Never show an application window, toolbar, menu, canvas edge or dashed "
     "selection outline - the drawing fills the whole frame edge to edge. "
+    "The main subject sits well inside the frame with clear space along all "
+    "four edges. "
     "Childlike, amateur, deliberately badly drawn. 16:9 horizontal."
 )
 
@@ -168,19 +178,29 @@ ELEVENLABS_STABILITY = 0.5
 # ends, and the batch audio is cut back into per-beat files on those bounds.
 #
 # HARD CEILING: ElevenLabs documents ~2000 characters per text_to_dialogue
-# request. At ~105 characters a beat that is about 18 beats, and 15 is the
-# largest batch that still fits when the longest beats happen to land
-# together. Do not raise this past 15 without re-measuring the script.
+# request. That ceiling is measured in CHARACTERS, so characters are what the
+# batcher counts - a beat count was only ever a proxy for it.
 #
-# Ten is the balance. It is ~1150 characters worst case, comfortably past the
-# ~250 ElevenLabs suggests for stable output and comfortably under the
-# ceiling, and it halves the number of seams versus five. Bigger batches mean
-# fewer seams but a failed batch drops more beats onto the inconsistent
-# per-beat fallback, and long single generations are what v3 is least
-# reliable at.
+# The proxy broke with the two-tier rhythm. Beat length used to be uniform at
+# ~105 characters, so "10 beats" reliably meant ~1050. Now beats are bimodal:
+# a short beat is ~35 characters and a long one ~85, so the same 10 beats is
+# anywhere from 350 to 850 - and a batch of long beats could approach the
+# ceiling while a batch of short ones wastes most of the request.
 #
-# 1 disables batching and restores the old one-request-per-beat behaviour.
-ELEVENLABS_BATCH_SIZE = 10
+# So ELEVENLABS_BATCH_CHARS is the real limit and BATCH_SIZE is just a safety
+# cap on top of it. 1400 leaves headroom under the documented 2000 for the
+# per-line overhead the dialogue endpoint adds, and sits far above the ~250
+# ElevenLabs suggests for stable output.
+#
+# Bigger batches mean fewer seams, but a failed batch drops more beats onto
+# the inconsistent per-beat fallback, and long single generations are what v3
+# is least reliable at. At the new ~52 characters a beat, 1400 works out to
+# ~27 beats, so BATCH_SIZE 18 is what actually binds - roughly five requests
+# for a 90-beat script, the same request count 45-beat scripts used to need.
+#
+# Set BATCH_SIZE to 1 to disable batching and restore one request per beat.
+ELEVENLABS_BATCH_SIZE = 18
+ELEVENLABS_BATCH_CHARS = 1400
 
 # Post-generation speed-up via FFmpeg atempo. 1.0 disables it entirely and
 # skips the re-encode. Valid range for one atempo pass is 0.5-2.0.
@@ -196,14 +216,46 @@ NARRATION_SPEED = 1.0
 IMAGE_MODEL = "gemini-2.5-flash-image"            # "Nano Banana"
 CONSISTENCY_MODEL = "gemini-2.5-flash"            # future: scores image vs reference
 
+# --- Narration rate --------------------------------------------------------
+# Measured over 231 shipped beats across five finished videos: 4207 spoken
+# words against 1425s of narration audio, which is tightly trimmed (no
+# detectable silence at -30dB), so this is real delivery rate, not padding.
+#
+# Used in two places: estimating a script's finished length before anything is
+# generated, and sanity-checking that a batched beat's audio is not far
+# shorter than its text could possibly be spoken in.
+WORDS_PER_MINUTE = 177
+
 # --- Video / pacing --------------------------------------------------------
+# What a script is aiming at, in seconds. Only used to sanity-check a script
+# before any money is spent on it: pipeline.py estimates the finished length
+# from the spoken word count and warns when it lands well off this.
+#
+# It is a target, not a constraint - nothing truncates a video to fit. Change
+# it here AND change the total word budget in the prompt template, or the two
+# will disagree and the warning will fire on every run.
+TARGET_VIDEO_SECONDS = 180.0
+TARGET_VIDEO_TOLERANCE = 0.15      # warn outside +/-15%
+
 FPS = 30                                           # Remotion runs at 30fps
 WIDTH = 1920                                        # 16:9
 HEIGHT = 1080
 
 # --- Ken Burns + transitions -----------------------------------------------
-ZOOM_MIN = 1.0                                      # start scale
-ZOOM_MAX = 1.06                                     # end scale; mirrored in remotion/src/constants.ts
-CROSSFADE_SECONDS = 0.5                             # overlap between beats
+# ALL of these mirror remotion/src/constants.ts and are kept in sync BY HAND.
+# Remotion is the one that actually renders; these exist so the Python side can
+# predict a finished video's length without running a render. Change one, change
+# the other, or the length estimate silently drifts from reality.
+ZOOM_MIN = 1.0                    # start scale of a push in
+ZOOM_MAX = 1.10                   # end scale (was 1.06, invisible at this pace)
+PAN_SCALE = 1.06                  # fixed scale a pan holds
+PAN_PERCENT = 2.5                 # travel, under the 2.83% ceiling for 1.06
+
+# Two kinds of boundary now. Within a location beats hard cut; a change of
+# location dissolves. A dissolve's tail is consumed by the overlap so it costs
+# no timeline, but a hard cut's pad is real added length - which is why the
+# estimate below has to count them.
+DISSOLVE_SECONDS = 8 / 30         # 0.27s, only where the location changes
+CUT_PAD_SECONDS = 4 / 30          # 0.13s breath between beats on a hard cut
 
 

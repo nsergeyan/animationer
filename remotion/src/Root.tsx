@@ -1,6 +1,6 @@
 import { Composition } from "remotion";
 import { LectureVideo } from "./compositions/LectureVideo";
-import { FPS, WIDTH, HEIGHT, OUTRO_FRAMES, Beat } from "./constants";
+import { FPS, WIDTH, HEIGHT, Beat, totalFrames } from "./constants";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -14,19 +14,13 @@ export const RemotionRoot: React.FC = () => {
       durationInFrames={1}
       defaultProps={{ beats: [] as Beat[] }}
       calculateMetadata={({ props }) => {
-        const beats = props.beats ?? [];
-        const seqFrames = beats.reduce(
-          (sum, b) => sum + Math.max(1, Math.round(b.duration * FPS)),
-          0
-        );
-        // MUST match LectureVideo's timeline exactly. Every beat but the last
-        // carries a CROSSFADE_FRAMES tail that its transition then consumes, so
-        // the two cancel and the timeline is simply the sum of the audio, plus
-        // the outro hold. Subtracting the overlap here (as this used to) caps
-        // the composition SHORT of its own content and silently truncates the
-        // end - it cut the final beat off entirely.
+        // MUST match LectureVideo's timeline exactly, or the composition is
+        // capped short of its own content and the end is silently truncated.
+        // Both sides call totalFrames so the rule lives in exactly one place -
+        // see the Timeline section of constants.ts for why summing the audio
+        // is no longer enough.
         return {
-          durationInFrames: Math.max(1, seqFrames + OUTRO_FRAMES),
+          durationInFrames: totalFrames(props.beats ?? []),
           fps: FPS,
           width: WIDTH,
           height: HEIGHT,
