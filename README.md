@@ -10,10 +10,12 @@ in. Each beat becomes one AI-generated still, one narrated audio clip timed to
 the narration, and one entry in a final Remotion render with Ken Burns
 pan/zoom, cuts and dissolves, and a music bed mixed under the voice.
 
-<!-- Paste the video URL below, then delete these two comment lines. -->
 ## Demo
 
-[Watch an example video](https://www.youtube.com/watch?v=702-w9Sanws)
+[Why do SOME people believe that the moon landing was fake](https://www.youtube.com/watch?v=702-w9Sanws)
+
+A finished video: written as beats, then generated, narrated and rendered end to
+end by this pipeline.
 
 ## Why this exists
 
