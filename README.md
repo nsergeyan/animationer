@@ -1,8 +1,8 @@
 # Animationer
 
 An automated pipeline that turns a single topic into a finished, narrated, 16:9
-animated video, no manual editing. Built to run an anime/history "lore"
-YouTube Shorts / TikTok channel end to end: one script in, one `.mp4` out.
+animated video, no manual editing. Built to run an explainer YouTube Shorts /
+TikTok channel end to end: one script in, one `.mp4` out.
 
 A script of ~30-100 short beats (narration sentence + image description) goes
 in. Each beat becomes one AI-generated still, one narrated audio clip timed to
