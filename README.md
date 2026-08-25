@@ -161,7 +161,6 @@ remotion/                the render project
 prompts/                the two prompts pasted into an LLM to author a script
   pass1_narration.txt    pass 1: topic and beat count in, narration beats out
   pass2_visuals.txt      pass 2: those beats in, image and music prompts added
-  examples/              a real generated script, as a reference for good output
 assets/
   reference/              hand-drawn character/environment art, locked into every image call
   music/                   fallback music bed
