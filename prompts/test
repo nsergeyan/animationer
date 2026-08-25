@@ -1,0 +1,135 @@
+I'll research this properly since the brief requires verified, citable facts rather than invented ones. Let me gather sourced specifics before drafting.```json
+{
+  "topic": "history-of-exorcism-paperwork-not-magic",
+  "format": "explainer",
+  "plan": {
+    "spine_question": "Which part of casting out a demon actually does the work, the prayer or the paperwork behind it?",
+    "payoff_line": "The ritual never really changed. What changed is who signs for it now.",
+    "locations": [
+      { "name": "a mudbrick healer's house beside the Tigris river", "beats": "1-9" },
+      { "name": "a signing chamber inside Saint Peter's Basilica", "beats": "10-18" },
+      { "name": "a candlelit seminary chapel", "beats": "19-27" },
+      { "name": "a Jesuit hospital ward in Saint Louis", "beats": "28-36" },
+      { "name": "a farmhouse bedroom in Klingenberg", "beats": "37-46" },
+      { "name": "a courtroom in Aschaffenburg", "beats": "47-55" }
+    ],
+    "deflations": [
+      {
+        "assumed": "Becoming an exorcist meant receiving a rare spiritual gift, power over demons",
+        "actual": "For centuries nearly every priesthood candidate received the same exorcist title as a routine step, and most never used it before it was abolished",
+        "who_decided": "The Church's traditional four minor orders, porter, lector, exorcist, acolyte, assigned the title to seminary candidates automatically until Pope Paul VI abolished the minor orders in 1972",
+        "build_beat": "21",
+        "drop_beat": "22"
+      },
+      {
+        "assumed": "The exorcism rite was a fixed, unchanging secret spell handed down whole",
+        "actual": "The rite is a printed manual, revised more than once, and the original 1614 text itself told the priest to check for sickness before assuming possession",
+        "who_decided": "The Rituale Romanum's own printed instructions, issued under Pope Paul V in 1614",
+        "build_beat": "14",
+        "drop_beat": "15"
+      },
+      {
+        "assumed": "One priest ended a possession alone, in a single dramatic night",
+        "actual": "The Archbishop of Saint Louis only granted permission on condition a diary be kept, and multiple priests logged more than twenty sessions over about two months",
+        "who_decided": "The Archbishop of Saint Louis, who required the written diary as the condition for permission, recorded by Father Raymond Bishop",
+        "build_beat": "30",
+        "drop_beat": "31"
+      },
+      {
+        "assumed": "Priests forced the ritual on a helpless girl against her will",
+        "actual": "Anneliese Michel was an adult who herself refused to see a doctor as the sessions went on, and the court later found medical help, not the ritual, was the missing factor",
+        "who_decided": "Anneliese Michel's own refusal of medical treatment, and the Aschaffenburg court's finding that a doctor could likely have saved her",
+        "build_beat": "41",
+        "drop_beat": "42"
+      },
+      {
+        "assumed": "A modern court like this one finally ended the whole practice for good",
+        "actual": "Rome kept its own exorcist working for decades afterward, and even a canon lawyer inside the Church doubted his own numbers",
+        "who_decided": "Gabriele Amorth, appointed exorcist for the diocese of Rome in 1986 and active until his death in 2016; canon lawyer Edward Peters publicly questioned Amorth's count",
+        "build_beat": "51",
+        "drop_beat": "52"
+      }
+    ],
+    "specifics": [
+      { "fact": "On 17 June 1614 Pope Paul V authorized the first official edition of the Rituale Romanum by the constitution Apostolicae Sedis", "source": "Wikipedia: Roman Ritual", "beat": "10" },
+      { "fact": "In 1952 two small language revisions were made to the Rituale Romanum, the first change since 1614", "source": "OCCULT WORLD: Roman Ritual", "beat": "17" },
+      { "fact": "On 26 January 1999 the Vatican issued an 84-page revised edition of the exorcism rite, De Exorcismis et Supplicationibus Quibusdam", "source": "Wikipedia: Of Exorcisms and Certain Supplications", "beat": "18" },
+      { "fact": "The minor orders, including exorcist, belonged to the Church's ordination structure for at least seventeen hundred years before being set aside", "source": "New Liturgical Movement: 50 Years Ago Today", "beat": "19" },
+      { "fact": "On 15 August 1972 Pope Paul VI signed Ministeria Quaedam, abolishing the minor orders of porter, lector, exorcist, and acolyte, effective 1 January 1973", "source": "Adoremus Bulletin: Ministeria Quaedam", "beat": "25" },
+      { "fact": "The Archbishop of Saint Louis granted permission for a secret exorcism only on condition that a detailed diary be kept", "source": "Exorcism of Roland Doe case document, citing Father Raymond Bishop's diary (Scribd)", "beat": "31" },
+      { "fact": "Father William Bowdern and fellow priests performed more than twenty documented exorcism sessions over about two months in 1949", "source": "Skeptical Inquirer: Demoniac, Who Is Roland Doe", "beat": "33" },
+      { "fact": "Bishop Josef Stangl approved the exorcism of Anneliese Michel after doctors had failed to stop her convulsions", "source": "Medium: Mental Illness or Demonic Possession, Anneliese Michel", "beat": "40" },
+      { "fact": "Anneliese Michel herself asked not to see a doctor as the exorcism sessions continued through her final months", "source": "Medium: She Endured 67 Exorcisms, Then Starved to Death", "beat": "42" },
+      { "fact": "Fathers Arnold Renz and Ernst Alt performed sixty seven exorcism sessions on Anneliese Michel over about ten months", "source": "Wikipedia: Anneliese Michel", "beat": "43" },
+      { "fact": "Anneliese Michel weighed about sixty eight pounds when she died on 1 July 1976", "source": "Time magazine archive, 8 May 1978", "beat": "45" },
+      { "fact": "Investigators concluded Anneliese Michel could likely have survived if a doctor had been called even a week before her death", "source": "Medium: She Endured 67 Exorcisms, Then Starved to Death", "beat": "49" },
+      { "fact": "Gabriele Amorth, exorcist for the diocese of Rome from 1986, claimed to have performed more than sixty thousand exorcism sessions", "source": "The Conversation: Gabriele Amorth conducted over 60,000 exorcisms", "beat": "53" },
+      { "fact": "Canon lawyer Edward Peters called Amorth's claim of thirty thousand personal exorcisms over nine years astounding, since Amorth himself said fewer than one hundred involved actual possession", "source": "Wikipedia: Gabriele Amorth", "beat": "54" }
+    ],
+    "facts_to_check": [
+      { "claim": "The 1614 Rituale Romanum instructed exorcists to rule out natural illness before assuming possession", "source": "OCCULT WORLD: Roman Ritual" },
+      { "claim": "The Archbishop of Saint Louis required a written diary as a condition of granting permission for the Roland Doe exorcism", "source": "Exorcism of Roland Doe case document, citing Father Raymond Bishop's diary (Scribd)" },
+      { "claim": "Anneliese Michel refused to see a doctor herself as the exorcism sessions continued", "source": "Medium: She Endured 67 Exorcisms, Then Starved to Death" },
+      { "claim": "Investigators concluded Anneliese Michel could likely have survived had a doctor been called even a week before her death", "source": "Medium: She Endured 67 Exorcisms, Then Starved to Death" },
+      { "claim": "Canon lawyer Edward Peters publicly doubted Gabriele Amorth's count of exorcisms performed", "source": "Wikipedia: Gabriele Amorth" }
+    ]
+  },
+  "beats": [
+    { "location": "a mudbrick healer's house beside the Tigris river", "narration": "Most people think exorcism began with the Catholic Church itself." },
+    { "location": "a mudbrick healer's house beside the Tigris river", "narration": "[flatly] It is much older than that." },
+    { "location": "a mudbrick healer's house beside the Tigris river", "narration": "One ancient healer treated fever and demons in the same single visit." },
+    { "location": "a mudbrick healer's house beside the Tigris river", "narration": "So which part actually worked?" },
+    { "location": "a mudbrick healer's house beside the Tigris river", "narration": "[curious] An ashipu was part doctor, part priest, treating fever as possession." },
+    { "location": "a mudbrick healer's house beside the Tigris river", "narration": "Amulets and chants counted as medicine." },
+    { "location": "a mudbrick healer's house beside the Tigris river", "narration": "The Greek word daimon, root of demon, could mean good or evil." },
+    { "location": "a mudbrick healer's house beside the Tigris river", "narration": "[flatly] Rome later borrowed that word." },
+    { "location": "a mudbrick healer's house beside the Tigris river", "narration": "Centuries later the followers of Jesus took up the same practice." },
+    { "location": "a signing chamber inside Saint Peter's Basilica", "narration": "By sixteen fourteen the Church wanted one approved script for priests." },
+    { "location": "a signing chamber inside Saint Peter's Basilica", "narration": "[flatly] Pope Paul the Fifth signed it." },
+    { "location": "a signing chamber inside Saint Peter's Basilica", "narration": "The order was given at Rome, at Saint Peters, under his seal." },
+    { "location": "a signing chamber inside Saint Peter's Basilica", "narration": "The instructions were strict and specific." },
+    { "location": "a signing chamber inside Saint Peter's Basilica", "narration": "Many still picture the rite as a fixed secret spell, unchanged forever." },
+    { "location": "a signing chamber inside Saint Peter's Basilica", "narration": "[deadpan] It told him to check for sickness first." },
+    { "location": "a signing chamber inside Saint Peter's Basilica", "narration": "More than three centuries passed before Rome changed a single word." },
+    { "location": "a signing chamber inside Saint Peter's Basilica", "narration": "Then two words were quietly updated." },
+    { "location": "a signing chamber inside Saint Peter's Basilica", "narration": "[flatly] By nineteen ninety nine the exorcism section became an eighty four page document." },
+    { "location": "a candlelit seminary chapel", "narration": "For at least seventeen hundred years, exorcist required no special calling." },
+    { "location": "a candlelit seminary chapel", "narration": "It was one stop toward priesthood." },
+    { "location": "a candlelit seminary chapel", "narration": "Picture a seminarian kneeling to receive a rare gift, power over demons." },
+    { "location": "a candlelit seminary chapel", "narration": "[flatly] Nearly every candidate got the same title." },
+    { "location": "a candlelit seminary chapel", "narration": "The words stayed the same for centuries, a formula and a gesture." },
+    { "location": "a candlelit seminary chapel", "narration": "[deadpan] Most never touched a real case." },
+    { "location": "a candlelit seminary chapel", "narration": "In nineteen seventy two Pope Paul the Sixth erased the minor orders." },
+    { "location": "a candlelit seminary chapel", "narration": "Exorcist stopped being a step." },
+    { "location": "a candlelit seminary chapel", "narration": "[flatly] From then on, only a priest with written permission could try one." },
+    { "location": "a Jesuit hospital ward in Saint Louis", "narration": "In nineteen forty nine a Missouri family asked the Jesuits for help." },
+    { "location": "a Jesuit hospital ward in Saint Louis", "narration": "Doctors and ministers had failed." },
+    { "location": "a Jesuit hospital ward in Saint Louis", "narration": "[deadpan] Picture one priest locked in a room, ending it in a single night." },
+    { "location": "a Jesuit hospital ward in Saint Louis", "narration": "[deadpan] The archbishop demanded a written diary first." },
+    { "location": "a Jesuit hospital ward in Saint Louis", "narration": "Father Raymond Bishop wrote down every session exactly as it happened." },
+    { "location": "a Jesuit hospital ward in Saint Louis", "narration": "[surprised] The rite ran more than twenty times." },
+    { "location": "a Jesuit hospital ward in Saint Louis", "narration": "Three priests rotated through the vigil, each one logging that night." },
+    { "location": "a Jesuit hospital ward in Saint Louis", "narration": "No single hero performed the rite." },
+    { "location": "a Jesuit hospital ward in Saint Louis", "narration": "[sad] Decades later another family trusted the same church for a different ordeal." },
+    { "location": "a farmhouse bedroom in Klingenberg", "narration": "A German student named Anneliese Michel had already seen doctors for years." },
+    { "location": "a farmhouse bedroom in Klingenberg", "narration": "Seizures had started at sixteen." },
+    { "location": "a farmhouse bedroom in Klingenberg", "narration": "[sighs] Doctors diagnosed epilepsy, but the fits kept returning despite treatment." },
+    { "location": "a farmhouse bedroom in Klingenberg", "narration": "Bishop Josef Stangl finally approved an exorcism." },
+    { "location": "a farmhouse bedroom in Klingenberg", "narration": "Picture two priests overpowering a helpless girl, forcing ritual against her will." },
+    { "location": "a farmhouse bedroom in Klingenberg", "narration": "[deadpan] She refused to see a doctor herself." },
+    { "location": "a farmhouse bedroom in Klingenberg", "narration": "Over ten months the two priests performed sixty seven exorcism sessions." },
+    { "location": "a farmhouse bedroom in Klingenberg", "narration": "She stopped eating in her final months." },
+    { "location": "a farmhouse bedroom in Klingenberg", "narration": "[sad] By July she weighed about sixty eight pounds, like a large dog." },
+    { "location": "a farmhouse bedroom in Klingenberg", "narration": "She died on the first of July." },
+    { "location": "a courtroom in Aschaffenburg", "narration": "Two years later a court in Aschaffenburg heard the parents and priests." },
+    { "location": "a courtroom in Aschaffenburg", "narration": "[flatly] All four faced negligent homicide charges." },
+    { "location": "a courtroom in Aschaffenburg", "narration": "The court found medical help could likely have saved her." },
+    { "location": "a courtroom in Aschaffenburg", "narration": "Not the ritual, but the delay." },
+    { "location": "a courtroom in Aschaffenburg", "narration": "Many assume a modern court like this one ended the whole practice." },
+    { "location": "a courtroom in Aschaffenburg", "narration": "[deadpan] Rome's own exorcist kept working for decades." },
+    { "location": "a courtroom in Aschaffenburg", "narration": "Gabriele Amorth, the diocese of Rome's exorcist, claimed sixty thousand sessions himself." },
+    { "location": "a courtroom in Aschaffenburg", "narration": "[sarcastic] A church lawyer called the count astounding." },
+    { "location": "a courtroom in Aschaffenburg", "narration": "The ritual never really changed. What changed is who signs for it now." }
+  ]
+}
+```

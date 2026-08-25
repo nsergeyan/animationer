@@ -1,0 +1,396 @@
+TOPIC:   Why do SOME people think moon landing was fake?
+FORMAT:  explainer
+BEATS:   55
+
+
+## PASS 1 OF 2 - THE SCRIPT
+
+You write the plan and the narration. Pass 2 adds image prompts, anchors and
+music. Do not write those here.
+
+The narration you write gooships exactly as written. Pass 2 may not change it.
+
+Every rule below has a REASON printed next to it. A rule can be obeyed to the
+letter and still fail its reason - that has happened on every past run, and the
+failures are quoted in place so you can recognise yourself doing it. When a
+rule is easy to satisfy, you have found the beat worth real effort.
+
+Order: fill the plan, write the last beat first, write beats 1 to N, add tags,
+run Section 7 by LOOKING at each beat. Output one raw JSON object, nothing else.
+
+
+## 1. NEVER NAME THE CHARACTER
+
+The finished video has an illustrated character in most frames. Pass 2 stages
+him. The narration never mentions him: not by name, not as "the reference
+character", not as "he", not as "you".
+
+    RIGHT: "The message went out too short to trace."
+    WRONG: "He watches the message go out."
+
+TEST: erase him from the frame. Every narration line must still make complete
+sense. Every pronoun you write points at a real person the topic is about.
+
+Everyone else in the topic is the opposite - name them freely.
+
+
+## 2. NUMBERS THAT CANNOT MOVE
+
+These set the video's runtime and cut rate. Count them before output.
+
+* EXACTLY 55 beats.
+* 500 to 540 spoken words total. Strip emotion tags before counting.
+  REASON: this is the runtime. It outranks everything below.
+* Every beat is either SHORT (4 to 8 words) or LONG (10 to 15). Nothing lands
+  on 9 and nothing exceeds 15. Roughly half and half, never under a third of
+  either. Max three SHORT in a row, max two LONG.
+  REASON: one image is held per beat, so beat length is how fast the video
+  cuts. All-long is a slideshow, all-short is a metronome.
+* 5 or 6 locations, each covering 8+ consecutive beats, ranges covering every
+  beat with no gaps. Every beat's `location` matches a plan name exactly.
+  A location is a real drawable place, and every beat inside it must actually
+  HAPPEN there. Past failure: a block labelled "MIT Instrumentation Laboratory"
+  where six of its nine beats were set in Houston. Pass 2 pastes one room
+  description across the whole block, so a mislabelled beat gets the wrong room.
+  NO DATES OR ERA WORDS IN A LOCATION NAME. Not "a street in nineteen eighty",
+  not "first-century Galilee", not "the Gosplan office in the fifties". Pass 2
+  turns the name into the image description for every beat in the block, and it
+  is forbidden from putting a date in an image: the generator cannot draw a
+  year, so it draws the most photographed version of that year and grounds the
+  whole frame against real photos. Name the place by what is visibly there.
+* Numbers are spelled as words. "twelve zero two", never "1202".
+  REASON: the voice model reads 1202 as "one thousand two hundred two".
+* One beat in three carries an emotion tag, from this list only:
+  [flatly] [deadpan] [sighs] [exhales] [curious] [surprised] [gasps]
+  [whispers] [sarcastic] [hesitates] [nervous] [sad] [excited] [laughs]
+  [mischievously]
+  [flatly] and [deadpan] are the house voice. A tag persists in the voice model
+  until replaced, so the beat after [whispers], [excited] or [laughs] must
+  carry its own tag.
+* No quotation marks. Reported speech instead, and use it - "the lieutenant
+  said his compass was fine and kept flying west" does everything a quote does.
+* Plain ASCII. No em dashes. No markdown. Square brackets only for tags.
+* Never mention the video, the viewer, the channel, or subscribing.
+
+
+## 3. OUTPUT SHAPE
+
+{
+  "topic": "short slug-like title",
+  "format": "explainer",
+  "plan": {
+    "spine_question": "the one question the video answers, in plain words",
+    "payoff_line": "the last beat, written before the others",
+    "locations": [ { "name": "", "beats": "1-11" } ],
+    "deflations": [
+      { "assumed": "", "actual": "", "who_decided": "", "build_beat": "", "drop_beat": "" }
+    ],
+    "specifics": [ { "fact": "", "source": "", "beat": "" } ],
+    "facts_to_check": [ { "claim": "", "source": "" } ]
+  },
+  "beats": [ { "location": "", "narration": "" } ]
+}
+
+Nothing else. No image prompts, no anchors, no music prompt.
+
+
+## 4. THE THREE THINGS THAT MAKE IT GOOD
+
+Fill all three BEFORE writing any beat.
+
+### DEFLATIONS - four to six
+
+A mechanism is interesting when the viewer expected something clever and got
+something stupid. That gap is the engine of the whole video.
+
+    `assumed`      what a reasonable viewer would guess and be wrong about
+    `actual`       the real thing, usually smaller, older, cheaper or dumber
+    `who_decided`  the named person or group who made it this way, and what
+                   they actually wanted: money, time, laziness, a deadline,
+                   tooling they already owned.
+
+                   MOTIVE MUST BE DOCUMENTED OR IT IS NOT WRITTEN. If no
+                   source states why they did it, write what the decision DID,
+                   never what they wanted. The effect is checkable; the motive
+                   is a guess wearing a fact's clothes.
+
+                   GUESS: "The church just wanted the legal monopoly."
+                   FACT:  "After that, only men approved by a bishop could
+                          perform it."
+
+                   A whole script about the history of exorcism asserted
+                   institutional motive as flat fact six times - "it is a
+                   management strategy", "the main goal is protecting the
+                   brand" - and cited real documents that say nothing of the
+                   kind. Every one read as confident and none was checkable.
+                   Institutions across centuries rarely leave their reasons
+                   written down. Say what changed instead.
+    `build_beat`   the LONG beat that states the assumption straight
+    `drop_beat`    the SHORT beat that takes it away. Always build_beat + 1.
+
+The build plays completely straight, with no wink. The drop is short, flat, and
+does not explain itself. A third beat saying "which shows that simple is best"
+throws the whole thing away.
+
+    LONG:  "Houston had giant procedure manuals for every possible computer crisis."
+    SHORT: "[deadpan] Jack Garman used a cheat sheet."
+
+Tag every drop [flatly] or [deadpan] unless there is a reason not to.
+
+WHY THIS IS THE ENGINE. A script that only explains how something works gives
+correct information and no reaction. The distance between how impressive a
+thing looks and how unimpressive the reason is - that is the reaction.
+
+DO NOT MANUFACTURE ONE. Some things really were designed carefully by people
+who knew what they were doing. A past run invented "standard IBM computers
+melted in deep space" to fill this field; nothing melted, and it became the
+foundation of a whole section. Three real deflations beat six with two invented.
+
+DO NOT WRITE THE SAME ONE SIX TIMES. A past run filled all six with variations
+of "the computer was not enough, the human was needed", and wrote "optimizing"
+into all six `who_decided` fields. That is the field completed, not used.
+
+### SPECIFICS - ten or more
+
+Each is one hard, checkable thing this topic contains.
+
+    `fact`    MUST contain a number, a date, or a named person doing a named
+              thing. A bare name is not a specific. Rejected: "Apollo Eleven",
+              "NASA", "West Crater", "Neil Armstrong". Accepted: "Garman had
+              the alarm codes written on a sheet under his desk."
+    `source`  a real document with a locator. Rejected: "NASA history",
+              "tech specs", "interviews", "lunar maps". Accepted: "Apollo 11
+              Lunar Surface Journal: Program Alarms", "MIT report R-700".
+              The source must contain the exact number in `fact`. A past run
+              cited a correct alarm timestamp next to a wrong altitude, which
+              is worse than no citation because it looks verified.
+              THE SOURCE MUST CONTAIN THE CLAIM. Not the general topic - the
+              claim. Citing a real document next to a sentence it does not
+              state is the worst failure in this file, because it reads as
+              verified and nothing downstream will catch it. This has happened
+              three runs in a row: a correct alarm timestamp cited beside a
+              wrong altitude; a genuine third-century letter listing clergy
+              cited for a claim about monopoly that the letter never makes.
+              Before you write a source, ask whether that exact document says
+              that exact thing. If it only says something nearby, drop the
+              claim or rewrite it down to what the document actually supports.
+              If you cannot name a source, you have not verified it. Drop it.
+    `beat`    filled in afterwards.
+
+WHY. A past script ran 55 beats with ZERO proper nouns and four numbers. Every
+fact in it was true, the prose was clean, and it was unwatchable - a physics
+lesson about a hypothetical object. Specificity is not decoration on top of a
+clear explanation. It IS the interest.
+
+BINDING: at least twenty beats carry a specific. Count them.
+
+### THE HOOK - beat one
+
+Open on the specific wrong thing almost everyone believes, stated as a claim.
+Or open on a tiny everyday version of the same mystery, in the third person.
+
+    "Most people think this shot kills the virus. It doesn't."
+    "Every lift has a close-door button and none of them do anything."
+
+Never "picture this", "you wake up", "it is the year". Never a table of
+contents. If the line would fit unchanged in front of a different explainer in
+the same genre, it is a stock intro.
+
+Beat three names the true mechanism and asks the spine question out loud.
+
+KEEP IT ALIVE. Most scripts open adversarially and turn into a neutral
+walkthrough by beat four. Every section reopens the gap: what it looks like,
+what is really happening, who made it that way.
+
+
+## 5. WRITING THE BEATS
+
+### EVERY SHORT BEAT MUST CARRY NEW INFORMATION
+
+The most broken rule here. A filler short beat reads fine alone, and arrives
+when the beat quota starts to hurt. Real examples from one finished script:
+
+    "The answer begins in the sky."   "That solved one big problem."
+    "It worked perfectly at first."   "Then the plane landed again."
+
+Nineteen of that script's 55 beats were like this - a minute of screen time
+saying nothing.
+
+TEST: delete the beat, read its neighbours back to back. If nothing is lost, it
+was padding. Do not rewrite it. Delete it and spend the beat on a deflation or
+a specific that did not make the cut.
+
+A short beat may be a consequence, a reaction, or a deflation drop. Never a
+transition, a signpost, a restatement, or a promise that something is coming.
+
+### CAUSATION, NOT CONNECTORS
+
+Between every pair of beats, check SILENTLY that BUT or THEREFORE fits. If only
+AND THEN fits, one beat is doing nothing - rewrite it.
+
+DO NOT WRITE THE WORD. This is an editing test, not a sentence template. At
+most three beats in the whole script may begin with "But" or "Therefore".
+
+A past run took this literally and opened 53 of 55 beats with one of the two
+words, using "Therefore" 32 times in a 521-word script. Worse, gluing the
+connector on made a run of nine thesis-restating beats LOOK causally chained
+when nothing was happening. The causation belongs in what the beats say.
+
+### LAND ON A PERSON
+
+When a beat says why something is the way it is, the answer is a named human
+who wanted something.
+
+    PROCESS: "The standard was adopted for manufacturing efficiency."
+    PERSON:  "Stephenson already owned the tooling, so everyone matched him."
+
+"Efficiency", "cost pressures", "practical considerations" are categories with
+the person hidden inside. Find the person.
+
+### USE SIMPLE WORDS. THIS IS NOT OPTIONAL.
+
+Write every sentence in the simplest words that carry the meaning. If a
+shorter, more common word means the same thing, use the shorter one. Every
+time. No exceptions for sounding clever.
+
+The viewer is a fluent adult who learned English as a second language. She
+reads and speaks it well but did not grow up with it. She hears this once, at
+speed, and cannot rewind. If she has to stop and work out a word, she has
+already missed the next sentence.
+
+TEST EVERY WORD: would she know it instantly, on sight, with no pause? If there
+is any doubt at all, swap it for the plain one.
+
+ALWAYS THE SHORT TWIN:
+
+    money not economic          city not settlement       food not supplies
+    trade not commerce          fell apart not collapsed  showed not demonstrated
+    guess not estimate          found not uncovered       about not approximately
+    because of not due to       so not consequently       but not however
+    most of not the majority of also not furthermore      let not enable
+
+NEVER USE THESE. If a beat contains one, rewrite the sentence:
+
+    systemic, economic, psychological, unavoidable, devastating, catastrophic,
+    significant, substantial, fundamental, essentially, effectively, ultimately,
+    consequently, furthermore, moreover, thereby, whereby, utilise, facilitate,
+    comprise, constitute, in terms of, the concept of, the notion of, a
+    testament to, plays a role in, serves as.
+
+CUT THESE, they only fill space:
+
+    completely, totally, absolutely, incredibly, extremely, massively,
+    entirely, actually, really.
+
+THE LISTS ARE NOT THE WHOLE RULE. They are only the words that kept coming
+back. Read every word you write and apply the test above, even when the fancy
+word is on no list here.
+
+THE ONE EXCEPTION: proper nouns, real names, official titles and the technical
+term the topic is actually about are NEVER simplified. Explain what it means in
+plain words the first time - "oxytocin, the bonding chemical" - and keep the
+name. Simplifying names is how a script ends up with none in it.
+
+Simple words for the writing. Never for the facts.
+
+### SCALE ANCHORS
+
+Every number gets a physical comparison or it does not ship.
+
+    WEAK:   "It had very little working memory."
+    ANCHOR: "The whole computer held about four kilobytes."
+    ANCHOR: "The walls were as thin as three sheets of cooking foil."
+    ANCHOR: "Rocks the size of cars waited there."
+
+An abstract ratio is not an anchor. "Millions of times faster" is nothing to
+picture; a musical greeting card is.
+
+THIS APPLIES TO QUANTITIES ONLY. Never to a date. A year is not a quantity the
+viewer needs a sense of scale for, and anchoring one produces a beat about
+something else entirely.
+
+    BANNED: "Galileo was building his first telescope then."
+    BANNED: "Boston was just a small wooden village."
+    BANNED: "Cell phones were just becoming common back then."
+
+Those are real beats from one script about the history of exorcism. Each one
+stops the video to mention an unrelated event on another continent. Three of
+them cost ten seconds and broke the frame three times. If a date needs context,
+give it in the topic's own terms - what had already happened in THIS story -
+or give it none.
+
+### DEAD AND LIVE
+
+    DEAD: "Ancient texts mention conflicts, suggesting warfare happened there."
+    LIVE: "Hittite kings wrote letters complaining about a troublesome city in
+           exactly that spot."
+
+Concrete nouns, verbs doing the work. Note what the live version has: names.
+
+Read every line aloud once. If you trip, cut the clause. Vary sentence length -
+nine words forty times running is a metronome once a voice reads it.
+
+
+## 6. ACCURACY
+
+Search the web. Do not rely on memory. Prefer primary sources: papers, official
+data, museum and university pages, original reporting.
+
+* If you cannot verify it, do not use it. There is no invented-mechanics
+  exception in an explainer.
+* Say plainly what is disputed or estimated. Name whoever produced an estimate.
+* NEVER INVENT CAUSATION. No beat asserts that one fact caused another unless
+  that causal link is itself in `facts_to_check` with a source. A past run
+  wrote "because the machine was overloaded, it steered them past the safe
+  zone" - two true facts joined by a link that does not exist, and it became
+  the bridge between two sections. Smoothing the story is where fabrication
+  gets in.
+* `facts_to_check` is a constraint list, not a disclaimer list. Whatever you
+  write in it binds the beats. Read it back before beat one and again after.
+
+
+## 7. CHECK BY LOOKING
+
+Do not answer these from memory.
+
+* 55 beats; 500-540 words with tags stripped; nothing on 9 words or over 15
+* a third to two thirds SHORT; max three SHORT and two LONG in a row
+* 5-6 locations, 8+ beats each, every beat actually happens where its label
+  says, and no location name contains a date, a year, a decade or an era word
+* no narration names the illustrated character or uses "he"/"you" for him
+* one beat in three tagged, all from the list, none after
+  [whispers]/[excited]/[laughs] left untagged
+* no digits, no quote marks, no em dashes in any narration
+* READ EVERY WORD of every beat. Not one would make a fluent ESL speaker
+  pause to place it. No word from the never-use or space-filler lists appears
+  anywhere. The only hard words left are proper nouns and the topic's own
+  technical term, each explained in plain words on first use
+* at most THREE beats begin with "But" or "Therefore" - count them
+* every `deflations` entry: drop_beat = build_beat + 1, build is 10-15 words,
+  drop is 4-8, and the `assumed` line is actually SAID by the build beat
+* the deflations are four to six DIFFERENT ideas, not one idea restated
+* every `specifics.fact` has a number, date or person doing something - no
+  bare names; every `source` is a real document whose locator covers that
+  exact number
+* twenty or more beats carry a specific
+* EVERY short beat survives the deletion test, one at a time
+* every "why" beat names a person, not a category
+* every QUANTITY has a physical scale anchor, and no beat anchors a DATE by
+  naming an unrelated event somewhere else in the world
+* no beat asserts causation absent from `facts_to_check`
+* no beat states what a person or institution WANTED unless a source says so.
+  Read every "they wanted / just wanted / the real goal was / in order to"
+  and check it against a document. If there is none, rewrite it as what the
+  decision did
+* for every `specifics` entry, the named source actually contains that exact
+  claim - not the surrounding topic, the claim. Check them one at a time
+* no joke is an invented comparison. Every aside reacts to a fact that is in
+  the script; if the humour comes from a simile you wrote, cut it
+* beat one is specific enough that it would not fit another explainer
+* the true mechanism is named by beat three
+* the wrong assumption is still doing work after beat twenty
+* the last five beats make five DIFFERENT points
+* the last beat answers the opening question and never says "so that is how
+  it works"
+
+Then output the JSON, and nothing else.

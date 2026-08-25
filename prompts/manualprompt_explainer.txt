@@ -1,6 +1,6 @@
-TOPIC:   How a Soviet spy network operated inside Nazi Germany during WWII
+TOPIC:   Was the Moon Landing Really as Simple as We Were Told?
 FORMAT:  explainer
-BEATS:   45
+BEATS:   55
 
 
 ## 0. PRIORITY
@@ -121,18 +121,46 @@ These are countable. Count them before you output.
 
 2.  Section 1 holds in every beat with no exception.
 
-3.  FOUR to SIX locations. Each held for six or more consecutive beats.
+3.  FIVE to SIX locations. Each held for eight or more consecutive beats.
     Ranges cover every beat with no gaps and no overlaps. Every beat's
     `location` string matches a name in `plan.locations` character for
     character.
 
-4.  Narration: 17 to 21 words per beat, aiming at 19. No sentence over
-    fifteen words. Emotion tags do not count toward the word budget.
+    Five or six is what fifty-five beats allows: eight beats is the floor for
+    a location, so seven locations will not fit. Nine to eleven beats each
+    works out to roughly half a minute in one place, which is about as long as
+    a single setting holds before it stops being a setting and starts being a
+    backdrop.
+
+4.  TWO KINDS OF BEAT, mixed. See Section 6.
+
+      LONG beat   10 to 15 words   carries the fact, the number, the turn
+      SHORT beat   4 to 8 words    a consequence, a reaction, one hard image
+
+    Roughly half and half, and never fewer than a third of either. No sentence
+    over fifteen words. Emotion tags do not count toward the word budget.
+
+    The total spoken words do NOT go up. Beat count controls how often the
+    picture changes, not how much gets said.
+
+4a. TOTAL BUDGET: 500 to 540 spoken words across the whole script. Count them
+    before you output.
+
+    This is the rule that sets the video's length, and it OUTRANKS the per-beat
+    bands. The bands shape the rhythm; this number decides whether the video is
+    three minutes or three and three quarters. Both bands sat at their tops
+    would run the script to 630 words and the video to 3:45.
+
+    If you are over budget, cut a beat rather than shaving words off every
+    beat - trimming across the board is how a script full of long beats becomes
+    a script full of medium ones, which is the metronome again.
 
 5.  No quotation marks anywhere. Nobody is ever quoted. People still talk,
     but the narrator reports what was said.
 
-6.  One beat in three opens with a sentence of five words or fewer.
+6.  Never more than THREE short beats in a row, and never more than TWO long
+    beats in a row. The alternation is the rule - a run of short beats is a
+    machine gun and a run of long ones is the old slideshow.
 
 7.  One beat in three carries an emotion tag from the Section 6 list.
     Nothing outside that list.
@@ -187,18 +215,21 @@ One raw JSON object, exactly these keys:
   "format": "explainer",
   "plan": {
     "spine_question": "the one question the video answers, in plain words",
-    "setting_anchor": "six or seven words carried into every image prompt, or empty string - see below",
+    "setting_anchor": "six or seven words the pipeline appends to every image prompt, or empty string - see below",
     "payoff_line": "the final beat's narration, written before the others",
     "locations": [
       {
         "name": "",
-        "beats": "1-9",
+        "beats": "1-12",
         "why_he_is_here": "",
         "visual_anchor": ""
       }
     ],
     "sections": [
-      { "beats": "1-9", "step": "the question this section answers, a few words", "job": "" }
+      { "beats": "1-18", "step": "the question this section answers, a few words", "job": "" }
+    ],
+    "absurdities": [
+      { "who": "", "what": "", "shape": "" }
     ],
     "facts_to_check": [
       { "claim": "", "source": "" }
@@ -219,8 +250,43 @@ Only `location`, `narration`, `image_prompt` and `image_prompt_alt` reach the
 pipeline. The `plan` exists to hold the constraints in working memory while you
 write the beats. Fill it anyway, and fill it FIRST.
 
-`setting_anchor` and each `visual_anchor` are strings you will paste verbatim
-into image prompts, so write them as prompt fragments, not as sentences.
+`absurdities` is a FACT-FINDING field, not a joke list. Filled BEFORE any beat
+is written. List seven to nine moments in this topic where a PERSON is
+ridiculous - confident and wrong, vain, lazy, or following a rule past the
+point of sense. `who` is the person or group. `what` is the ridiculous thing
+they actually did, in plain words. `shape` is left as an empty string.
+
+This exists so the script actually CONTAINS the funny parts of the topic rather
+than walking past them, which is what happens when the beats are planned around
+the mechanism alone. Whether any of them earns a dry aside is decided later, in
+Section 6.
+
+This exists because comedy cannot be retrofitted. If the beats are written
+first and the jokes added wherever a short beat happens to fall, the asides
+end up reacting to whatever is nearby, which is how you get mild observations
+about processes. Finding the absurd human moments first means the beats can be
+built to set them up.
+
+If a topic yields fewer than five, it is a topic to be explained straight.
+Write the script with two or three asides and no more. A thin joke in a
+serious explainer costs more than no joke at all - and some subjects, like an
+engineering disaster investigated by careful people, genuinely have very
+little to laugh at.
+
+`setting_anchor` and each `visual_anchor` are appended to image prompts BY THE
+PIPELINE, so write them as prompt fragments, not as sentences. You never paste
+them into a beat yourself - see Section 7, DO NOT WRITE THE LOCATION INTO THE
+BEAT.
+
+This makes them the highest-leverage strings in the whole script. A
+`visual_anchor` is not a note to yourself; it is the literal text that will
+describe that place in all nine to eleven of its beats, unchanged. Write it
+as carefully as you would write one image prompt, because that is what it is.
+Too thin and every frame in the location is underspecified; too long and it
+crowds out the beat's own subject in every single frame.
+
+Aim for twenty-five to forty words: wall and floor materials, window or door
+shapes, the two or three fixed furnishings, and two saturated colours.
 
 Write both from visible materials, shapes and colours only. No dates, no era
 names, and nothing that cannot be seen in the frame.
@@ -350,8 +416,46 @@ actually touches, staged in each one.
 
 ## 6. NARRATION
 
-One or two short sentences per beat. Two short ones usually beat one long one,
-and they should do different jobs: state then explain, or set up then land.
+### TWO KINDS OF BEAT
+
+Every beat is one of two lengths, and the video alternates between them.
+
+    LONG beat    10 to 15 words   the fact, the number, the turn
+    SHORT beat    4 to 8 words    the consequence, the reaction, the image
+
+A long beat is one or two short sentences that do different jobs: state then
+explain, or set up then land. A short beat is usually a single clause. It is
+not half a thought - it is a whole one that happens to be small.
+
+    LONG:  "Every message went out as five-digit groups, keyed to a page in
+            an ordinary printed book."
+    SHORT: "Any book. That was the point."
+
+    LONG:  "The transmitter needed forty minutes on air to send one full
+            report to Moscow."
+    SHORT: "Forty minutes was long enough to find them."
+
+WHY THIS EXISTS. One image is held for the whole of its beat, so beat length
+IS how fast the video cuts. At nineteen words a beat the picture changed every
+six seconds and the result was a slideshow. At nine words on average it changes
+every three.
+
+WHAT IT IS NOT. It is not "write less". The narration total does not move -
+video length fixes it at roughly five hundred spoken words however it is cut.
+Fifty-five beats is the same script cut into smaller pieces, not half the
+content said twice as fast. If the fact needs fifteen words, it gets a long
+beat.
+
+WHAT IT IS NOT, PART TWO. It is not "make every beat short". Fifty-five short
+beats is not a faster video, it is a metronome, and a metronome was the
+problem the long beats were causing in the first place. Roughly half and half,
+never fewer than a third of either kind, at most three short in a row and at
+most two long.
+
+A short beat must still carry NEW information. A short beat that only restates
+the long beat before it is padding that happens to be brief - delete it and
+give its time back to a beat that says something.
+
 
 Write for the same fluent adult ESL speaker as the plain-word test further
 below: good English, learned as a second language, not a huge vocabulary. She
@@ -438,7 +542,9 @@ NEVER PAD TO REACH THE WORD COUNT.
 If a beat is short, add a new short sentence carrying NEW information.
 
 RHYTHM. Short sentences, VARIED lengths. Nine words then nine words, forty times
-running, is a metronome once a voice reads it.
+running, is a metronome once a voice reads it. This holds INSIDE a beat as well
+as across beats: the long/short alternation above fixes the cut rate, not the
+sentences, and a script can obey the tiers perfectly and still read flat.
 
     METRONOME: "The needle goes in fast. A small dose of dead virus enters
                 the muscle right away."
@@ -479,16 +585,50 @@ after [whispers], [excited] or [laughs] MUST carry its own tag.
 ## 7. IMAGE PROMPTS (PRIMARY)
 
 Write each `image_prompt` as a caption for a paused film frame. One single line,
-140 to 220 words, in this order:
+40 to 70 words, in this order:
 
 1. "the reference character" and what his BODY is doing
 2. any other people, each physically described in full, by role never by name
-3. the setting: the location's `visual_anchor`, verbatim
-4. a short form of `plan.setting_anchor`, six or seven words - ONLY if it is
-   filled in (Section 3); skip this entirely for topics with no world constant
-5. the framing, plus two or three more named objects filling the frame
+3. the framing, plus two or three named objects filling the frame
 
-Start the line lowercase. The pipeline prepends a style sentence.
+Start the line lowercase. The pipeline prepends a style sentence and appends
+the location description.
+
+### DO NOT WRITE THE LOCATION INTO THE BEAT
+
+This is the rule that changed most, and it is why the word count above is a
+third of what it used to be.
+
+You write each location's `visual_anchor` ONCE, in `plan.locations`. The
+pipeline pastes it into every image prompt of that location automatically.
+Never repeat it, summarise it, or work it into the beat's own words. The same
+goes for `plan.setting_anchor`.
+
+    WRONG: "the reference character kneels beside a reed broom in a yard of
+            pale plaster walls, dark timber beams, packed earth and
+            blue-painted doors with red tile coping"
+    RIGHT: "the reference character kneels beside a reed broom, torso bent
+            toward the ground, while three recruits stand in a line beyond it"
+
+Both frames end up describing the same place. Only one of them makes you type
+it out fifteen times.
+
+WHY. Measured across five finished videos, sixty to seventy-eight percent of
+every image prompt was the location description, retyped in every beat of that
+location - and paraphrased slightly each time. "pale plaster rooms" became
+"pale plaster walls"; "packed earth yard" became "packed earth courtyard".
+Every variant is a different instruction to the generator, so repeating the
+anchor by hand was itself a source of drift WITHIN a single location. Written
+once and pasted in, it is identical in all fifteen.
+
+So the beat describes only what CHANGES from beat to beat: who is in frame,
+what their bodies are doing, the camera, and the two or three objects this
+particular moment needs. The place is already handled.
+
+THE ONE EXCEPTION. If this beat brings something into frame the anchor does
+not cover - a machine wheeled in, a wall of files, a vehicle - describe it in
+full, exactly as Section 7's bare-noun rule demands. The anchor covers the
+room, not everything that ever enters it.
 
 ### DESCRIBE THE REAL THING, NEVER THE FAMOUS PHOTO OF IT
 
@@ -591,11 +731,12 @@ Also cut anything that is true but invisible from the frame you are drawing.
 
 ### GRAMMAR
 
-* 140 to 220 words, and never more than 260. A beat with one other person
-  lands near 140, two people near 180, a crowded beat near 220. If you are
+* 40 to 70 words, and never more than 90. A beat with nobody else in frame
+  lands near 40, one other person near 55, a crowded beat near 70. If you are
   under, something in frame is still a bare noun: find it and describe it. If
-  you are over 260, you are describing something the frame does not actually
-  show.
+  you are over 90, you are either describing something the frame does not show
+  or you have written the location description into the beat - check the DO NOT
+  WRITE THE LOCATION rule above first, it is the usual cause.
 
 * Positive construction only. "an empty room" is a state of the room; "a room
   with no windows" is a banned negative construction. Name what fills the
@@ -758,7 +899,7 @@ against that beat's narration.
 Because the primary already names no real person, landmark, brand or
 institution (Section 7), the alternate has no name to remove or buy back -
 there was never one in the primary. Its whole job is DIFFERENT STAGING and
-SAFETY RECOVERY. It runs the same 140 to 220 word band as the primary, never
+SAFETY RECOVERY. It runs the same 40 to 70 word band as the primary, never
 more than 260.
 
 ### DIFFERENT STAGING
@@ -860,13 +1001,15 @@ Go back through the beats and LOOK. Do not answer these from memory.
 ### Count
 
 * beats equal BEATS exactly
-* four to six locations, none shorter than six beats, ranges cover every beat,
-  every `location` string matches the plan character for character
+* five to six locations, none shorter than eight beats, ranges cover every
+  beat, every `location` string matches the plan character for character
 * every image_prompt contains its location's exact `visual_anchor`
 * if `setting_anchor` is filled in, it names no building material, wall, roof
   or ground surface that any `visual_anchor` also names; if it is empty, no
   image_prompt invents one anyway
-* every image_prompt is 140 to 220 words, none over 260
+* every image_prompt is 40 to 70 words, none over 90
+* no image_prompt repeats, summarises or paraphrases its location's
+  `visual_anchor` or `plan.setting_anchor` - the pipeline appends both
 * no image_prompt uses negative construction or abstract nouns
 * no image_prompt or anchor contains a century, a decade or an era name
 * no person, group, building or environment in any image_prompt is left as a
@@ -877,10 +1020,18 @@ Go back through the beats and LOOK. Do not answer these from memory.
 * no container or function-named surface is named by its contents or its job
 * a stranger reading each image_prompt alone would name the same place its
   location label describes
-* at least one beat in three opens with five words or fewer
+* `plan.absurdities` is filled in before the beats, each entry naming a person
+  and what they actually did, and every one of them reaches the script as a beat
+* between a third and two thirds of beats are SHORT (4 to 8 spoken words),
+  the rest LONG (10 to 15), and no beat exceeds 15
+* no more than three short beats in a row, and no more than two long
+* every short beat carries new information rather than restating the beat
+  before it
 * at least one beat in three carries a tag, all from the list, and no
   [whispers], [excited] or [laughs] is followed by an untagged beat
-* every narration is 17 to 21 spoken words, averaging near nineteen
+* the whole script totals 500 to 540 spoken words - count them, this sets the
+  video's length and outranks the per-beat bands
+* the whole script averages near nine spoken words a beat
 * no word in any narration would make a fluent adult ESL speaker pause to
   place it, unless it is a proper noun, title or named technical term
   translated in plain words on its first use
@@ -888,7 +1039,7 @@ Go back through the beats and LOOK. Do not answer these from memory.
 * every image_prompt_alt is genuinely different from its primary in its
   staging: camera distance, framing family, foreground object, or which
   person is closest to camera
-* every image_prompt_alt is 140 to 220 words, none over 260
+* every image_prompt_alt is 40 to 70 words, none over 90
 * recurring people carry the same core physical description in every beat
   they appear in
 * no image prompt contains a style block, an art style or an aspect ratio
@@ -906,8 +1057,11 @@ Go back through the beats and LOOK. Do not answer these from memory.
   up, stands anywhere, or gets introduced by name
 * the true mechanism is named by the end of beat three, not merely contradicted
 * beat three contains the spine question
-* the next question is said out loud roughly every twelve to fifteen beats,
-  and each `plan.sections` entry is labelled with the question it answers
+* the next question is said out loud roughly every sixteen to twenty beats,
+  giving three sections across the video, and each `plan.sections` entry is
+  labelled with the question it answers. Judge this in TIME, not in beats:
+  beats are half as long as they used to be, so the same one-minute cadence
+  needs about twice the count
 * every beat answers the question the beat before it raised; no two beats
   could swap places without breaking anything
 * every pair of beats joins with BUT or THEREFORE

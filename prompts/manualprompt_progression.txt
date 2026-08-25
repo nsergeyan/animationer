@@ -1,0 +1,1832 @@
+TOPIC:   Your Life as Every Rank in Imperial China
+WORLD:   real
+FORMAT:  progression
+BEATS:   45
+LEVELS:  auto
+LOCATIONS: auto
+BACK_CLAUSE: "seen from behind, showing the back of his plain white head with no face and a single drooping antenna hair"
+MODE:     staged
+
+
+# 0. PRIORITY
+
+If two instructions collide, the earlier section wins.
+
+Work in this order:
+
+1. Understand the TOPIC, WORLD, and FORMAT.
+2. Determine the actual progression being covered.
+3. Research the progression and important facts when necessary.
+4. Build the complete story plan.
+5. Design the opening and ending.
+6. Write all narration beats.
+7. Write all image prompts.
+8. Run every validation check.
+9. Output only valid JSON.
+
+STORY QUALITY is the primary creative priority.
+
+Machine-readable formatting, exact beat counts, naming rules, image rules, and JSON validity are hard technical requirements.
+
+Do NOT sacrifice storytelling merely to satisfy an artificial creative pattern.
+
+
+# 1. CORE PRINCIPLE
+
+THE TOPIC IS THE STORY.
+
+This prompt is a universal storytelling framework.
+
+It must adapt to the topic instead of forcing every topic into the same story.
+
+The story must be created by the actual subject, world, progression, mechanics, events, people, problems, and consequences.
+
+If the topic is about ranks, use its real ranks.
+
+If the topic is about levels, use its real levels.
+
+If the topic is about transformations, use its actual transformations.
+
+If the topic is about a character's life, use the actual stages of that character's life.
+
+If the topic is about an organization, use its actual hierarchy and responsibilities.
+
+If the topic is about history, use the actual historical progression.
+
+If the topic is about technology, use the actual technological progression.
+
+If the topic is about survival, use the actual changing conditions and challenges.
+
+If the topic does not have a formal progression, construct a natural progression from the subject itself.
+
+NEVER turn every topic into a generic:
+
+"start weak → work hard → get promoted → become powerful → lose something → teach someone"
+
+story.
+
+The subject must determine the events.
+
+
+# 2. WHAT A PROGRESSION VIDEO IS
+
+A progression video follows the protagonist through a sequence of meaningful stages.
+
+The basic viewer experience should be:
+
+CURRENT LEVEL/RANK
+→ experience what life is like there
+→ understand what that level actually means
+→ encounter its unique problem or limitation
+→ progress
+→ experience the next level
+→ discover what changed
+→ continue upward/forward
+→ reach the most significant stage
+→ receive a satisfying payoff
+
+The progression must be visible.
+
+The viewer should never be confused about where the protagonist currently stands.
+
+
+# 3. START AT LEVEL 1 / RANK 1
+
+For progression videos, BEGIN at the FIRST meaningful level, rank, stage, or position.
+
+Do NOT begin with a random later event and hide the progression structure.
+
+The viewer should understand very early:
+
+"Where am I in this progression?"
+
+However:
+
+DO NOT introduce Level 1 or Rank 1 as a boring encyclopedia definition.
+
+The first level must be established through an active situation.
+
+The ideal pattern is:
+
+1. Establish the current level/rank.
+2. Immediately put the protagonist into a specific situation.
+3. Show what that level actually means.
+4. Reveal its limitations, advantages, responsibilities, dangers, or opportunities.
+5. Create the reason to progress.
+
+Example:
+
+BAD:
+
+"Grade 4 is the lowest rank. Grade 4 sorcerers fight weak curses."
+
+BETTER:
+
+"You start at Grade 4, and your first mission looks harmless until your supervisor refuses to let you enter."
+
+This establishes the rank while creating a situation.
+
+Then the following beats explain the rank through what happens.
+
+The viewer should learn:
+
+"WHAT IS THIS LEVEL?"
+by watching:
+
+"WHAT HAPPENS TO ME AT THIS LEVEL?"
+
+
+# 4. LEVEL-TO-LEVEL STRUCTURE
+
+Every major stage should follow this general rhythm:
+
+ENTER THE LEVEL
+→ EXPERIENCE THE LEVEL
+→ UNDERSTAND THE LEVEL
+→ ENCOUNTER ITS UNIQUE PROBLEM
+→ ACHIEVE / FAIL / DISCOVER SOMETHING
+→ PROGRESS
+
+Do NOT explain every level in one sentence.
+
+Do NOT immediately rush through the ladder.
+
+The viewer should spend enough time in each stage to understand what makes it different.
+
+Example:
+
+"Rank 1" is not merely a label.
+
+It should answer:
+
+- What can you do?
+- What are you trusted with?
+- What can you not do?
+- Who deals with you?
+- What problems do you face?
+- What does success look like?
+- What makes this rank different from the next one?
+
+Only include questions that actually matter to the topic.
+
+
+# 5. LEVEL TRANSITIONS
+
+Make transitions clear.
+
+When the protagonist progresses, the viewer should understand that the change has happened.
+
+Use natural transitions such as:
+
+"You finally reach Rank 2."
+
+"Then the rules change."
+
+"At Level 3, the problem is no longer strength."
+
+"Your new position gives you access to..."
+
+"The next stage looks better. It is also much worse."
+
+"When you enter the fourth tier, nobody gives you the same missions anymore."
+
+Do not repeat the exact same transition language every time.
+
+The transition should preferably introduce a new problem, ability, responsibility, or situation.
+
+BAD:
+
+"You reach Rank 2. You are stronger now."
+
+BETTER:
+
+"You reach Rank 2, and suddenly the missions you were protected from are now assigned directly to you."
+
+
+# 6. THE FIRST BEAT
+
+Beat 1 must do TWO jobs:
+
+1. Clearly establish that the protagonist is at the first level/rank/stage.
+2. Create immediate curiosity.
+
+Do not use a generic introduction.
+
+Avoid:
+
+"You start at Level 1."
+
+"You begin at the lowest rank."
+
+"First, you are..."
+
+"Level 1 is..."
+
+unless the sentence immediately continues into an interesting situation.
+
+The preferred structure is:
+
+LEVEL/RANK + CONCRETE SITUATION + CURIOSITY
+
+Example:
+
+"You start at Rank 1, and your first assignment is the exact job nobody wants to give a beginner."
+
+The viewer immediately understands the progression and wants to know why.
+
+
+# 7. THE HOOK
+
+The opening must make the viewer want the next beat.
+
+The hook should come from the topic itself.
+
+Possible hook mechanisms:
+
+- immediate danger
+- strange rule
+- unexpected limitation
+- unusual responsibility
+- contradiction
+- surprising consequence
+- difficult decision
+- mysterious situation
+- absurd situation
+- unusual ability
+- specific threat
+- important object
+- unexpected character interaction
+
+Do NOT manufacture random drama.
+
+The hook must belong to the WORLD and TOPIC.
+
+
+# 8. DO NOT FRONT-LOAD THE ENTIRE EXPLANATION
+
+The first beat establishes the level.
+
+The next beats should reveal what that level means.
+
+Do NOT immediately explain the entire hierarchy.
+
+Instead:
+
+BEAT 1:
+Current level + situation.
+
+BEAT 2:
+Consequence or complication.
+
+BEAT 3:
+Reveal an important rule or limitation.
+
+BEAT 4:
+Show the protagonist acting within that system.
+
+BEAT 5:
+Create the first meaningful turn.
+
+This is a guideline, not a rigid formula.
+
+Adapt it when the topic naturally demands another structure.
+
+
+# 9. THE PROGRESSION IS THE STORY
+
+Do not write:
+
+"Rank 1 is X."
+
+"Rank 2 is Y."
+
+"Rank 3 is Z."
+
+That creates a list.
+
+Instead:
+
+"At Rank 1, this happens."
+
+"That creates this problem."
+
+"Solving it gets you here."
+
+"Now Rank 2 changes this."
+
+"This new ability creates another problem."
+
+"That pushes you toward Rank 3."
+
+The viewer should feel like they are moving through the system rather than reading about it.
+
+
+# 10. DETERMINE THE ACTUAL PROGRESSION
+
+Before writing, identify what is actually progressing.
+
+Possible progression types include:
+
+- ranks
+- levels
+- stages
+- ages
+- transformations
+- abilities
+- historical periods
+- social positions
+- organizational positions
+- technologies
+- generations
+- locations
+- enemies
+- increasingly difficult challenges
+- stages of a journey
+- stages of a character's life
+- combinations of these
+
+Do not assume every progression is a formal hierarchy.
+
+If a real hierarchy exists, use it.
+
+If no hierarchy exists, construct the most natural progression possible from the topic.
+
+
+# 11. CANONICAL / REAL PROGRESSION
+
+If the topic has an established progression, use the real progression.
+
+Do not invent ranks.
+
+Do not invent official levels.
+
+Do not invent promotions.
+
+Do not remove important stages simply because the script has limited beats.
+
+If there are too many stages for the requested beat count, intelligently combine adjacent stages.
+
+If the highest stage is an exception rather than a normal promotion, represent it correctly.
+
+Do NOT force a normal progression where the subject itself does not have one.
+
+
+# 12. LEVEL DESIGN
+
+Each level must feel meaningfully different.
+
+Ask:
+
+"What can happen here that could not happen at the previous level?"
+
+Possible differences:
+
+- new abilities
+- new restrictions
+- new responsibilities
+- new enemies
+- new environments
+- new social treatment
+- new risks
+- new opportunities
+- new rules
+- new knowledge
+- new consequences
+- new expectations
+
+If the only difference is:
+
+"the same thing but harder"
+
+the level is too weak.
+
+Redesign it around a qualitative change.
+
+
+# 13. NO GENERIC FIVE-PHASE STORY
+
+Do NOT automatically use:
+
+FLOOR
+→ FIRST YES
+→ SWITCH
+→ ADMINISTRATION
+→ BILL / EXIT
+
+Do NOT force every topic into:
+
+weakness → success → promotion → burnout → successor.
+
+The story architecture must come from the topic.
+
+Possible structures include:
+
+- discovery → mastery → escalation → crisis → payoff
+- weakness → adaptation → breakthrough → consequence → transformation
+- ignorance → discovery → obsession → revelation → aftermath
+- outsider → insider → responsibility → crisis → changed perspective
+- survival → competence → escalation → breaking point → aftermath
+
+These are examples only.
+
+Choose the structure that best fits the subject.
+
+
+# 14. STORY ENGINE
+
+Before writing the beats, identify the STORY ENGINE.
+
+The story engine is the thing that naturally creates events.
+
+Examples:
+
+A power system:
+new abilities create new problems.
+
+A military hierarchy:
+higher rank creates greater responsibility.
+
+A dangerous world:
+greater experience exposes the protagonist to greater threats.
+
+A character's life:
+each stage changes relationships and circumstances.
+
+A technological progression:
+each improvement creates new capabilities and new limitations.
+
+A historical progression:
+each event creates conditions for the next.
+
+Do not invent an unrelated story engine.
+
+
+# 15. SCENE-FIRST STORYTELLING
+
+Beats are scenes or meaningful moments, not encyclopedia entries.
+
+Every beat should show something happening.
+
+Prefer:
+
+EVENT → INFORMATION
+
+over:
+
+INFORMATION → INFORMATION
+
+Example:
+
+BAD:
+
+"Rank 2 members are trusted with stronger enemies."
+
+BETTER:
+
+"At Rank 2, the escort leaves you alone with the target. Nobody checks whether you can handle it."
+
+The second version teaches the same idea through an event.
+
+
+# 16. EVERY BEAT MUST CHANGE SOMETHING
+
+Each beat should contain at least one meaningful change.
+
+Possible changes:
+
+- protagonist learns something
+- protagonist gains something
+- protagonist loses something
+- situation becomes harder
+- situation becomes easier
+- new person appears
+- relationship changes
+- rule is revealed
+- ability is demonstrated
+- threat changes
+- goal changes
+- environment changes
+- expectation is overturned
+- protagonist makes a decision
+
+If nothing changes, the beat is probably filler.
+
+
+# 17. INFORMATION DENSITY
+
+Prefer beats that accomplish two or more functions.
+
+A beat can:
+
+- advance the story
+- reveal a fact
+- show the world
+- develop a relationship
+- demonstrate a power
+- increase stakes
+- create curiosity
+- create a visual
+- foreshadow something
+- establish a consequence
+
+Do not force every beat to contain many facts.
+
+Clarity and entertainment are more important than density.
+
+
+# 18. NO DEAD BEATS
+
+Ask:
+
+"If I delete this beat, does anything important change?"
+
+If no:
+
+rewrite it or remove it.
+
+Never stretch the story simply to reach BEATS.
+
+Never repeat an explanation just because another level needs a beat.
+
+
+# 19. ESCALATION
+
+Escalation does not simply mean bigger numbers.
+
+It can mean:
+
+- stronger opponents
+- more dangerous environments
+- less room for mistakes
+- greater responsibility
+- more complicated rules
+- greater consequences
+- harder decisions
+- greater public attention
+- more people depending on the protagonist
+- loss of an old advantage
+- increasing uncertainty
+- increasingly strange situations
+
+The progression should become more significant, not merely larger.
+
+
+# 20. SUCCESS MUST CHANGE SOMETHING
+
+Whenever the protagonist succeeds, ask:
+
+"What does this success unlock?"
+
+It may unlock:
+
+- a new rank
+- a new ability
+- a new location
+- a new responsibility
+- a new enemy
+- a new relationship
+- new information
+- a new problem
+
+Success should move the story.
+
+
+# 21. FAILURE MUST CHANGE SOMETHING
+
+Whenever the protagonist fails, ask:
+
+"What does this failure cause?"
+
+A failure can:
+
+- reveal a weakness
+- change the strategy
+- introduce a new threat
+- damage a relationship
+- force adaptation
+- expose a hidden rule
+- change the protagonist's goal
+
+Do not insert failures simply because stories are supposed to have failures.
+
+
+# 22. CONSEQUENCES
+
+Actions should have consequences.
+
+Consequences can be:
+
+- physical
+- social
+- strategic
+- emotional
+- financial
+- political
+- relational
+- environmental
+- practical
+- informational
+
+Do NOT force arbitrary sacrifices.
+
+Never add:
+
+- random injuries
+- random deaths
+- random poverty
+- random betrayal
+- random romance
+- random money problems
+
+unless the topic naturally supports them.
+
+
+# 23. CHARACTER AGENCY
+
+The protagonist must actively participate.
+
+Use actions such as:
+
+- enters
+- chooses
+- refuses
+- investigates
+- fights
+- escapes
+- tests
+- learns
+- adapts
+- challenges
+- accepts
+- protects
+- confronts
+- risks
+- discovers
+- changes
+
+Do not make the protagonist spend the entire video watching other people do things.
+
+
+# 24. WORLD CREATES THE EVENTS
+
+This is one of the most important rules.
+
+THE WORLD MUST CREATE THE EVENTS.
+
+If the WORLD has:
+
+- monsters, use the monsters
+- ranks, use the ranks
+- magic, use the magic
+- politics, use the politics
+- technology, use the technology
+- war, use the war
+- survival mechanics, use the survival mechanics
+- social rules, use the social rules
+
+The events should be difficult to transplant into another topic.
+
+If the narration could be rewritten by changing only the nouns, it is too generic.
+
+
+# 25. NO GENERIC STORY TEST
+
+Temporarily replace all topic-specific nouns with generic nouns.
+
+If the story still works as:
+
+"you start weak, become stronger, gain respect, face a crisis, and reach the top"
+
+then rewrite it.
+
+The TOPIC must fundamentally determine what happens.
+
+
+# 26. TOPIC-SPECIFIC NOVELTY
+
+Prioritize interesting information that casual viewers may not know.
+
+Look for:
+
+- lesser-known mechanics
+- surprising rules
+- unusual consequences
+- misunderstood details
+- important exceptions
+- strange historical facts
+- hidden relationships
+- unexpected limitations
+- facts that change how the viewer understands the progression
+
+Do not fill beats with universally obvious facts.
+
+
+# 27. FACTS THROUGH EVENTS
+
+Whenever possible, explain facts by showing them.
+
+Do not write several encyclopedia-style beats.
+
+Instead of:
+
+"This rank allows X."
+
+show:
+
+"At this rank, you are finally trusted with X."
+
+Then explain why that matters through what happens.
+
+The audience should learn while watching the progression.
+
+
+# 28. CHARACTER CAMEOS
+
+Use named characters only when they affect the story.
+
+A character can:
+
+- teach something
+- create a challenge
+- create an opportunity
+- reveal information
+- demonstrate a level
+- change a decision
+- create a consequence
+- represent what the protagonist is progressing toward
+
+Never insert famous characters merely for recognition.
+
+
+# 29. RELATIONSHIPS
+
+Relationships should change the story.
+
+Do not create artificial friendships, rivalries, romances, betrayals, or mentorships merely to add emotion.
+
+If a relationship matters, show how it affects:
+
+- decisions
+- opportunities
+- danger
+- knowledge
+- progression
+- consequences
+
+
+# 30. REVERSALS
+
+Use meaningful reversals when appropriate.
+
+Examples:
+
+- success creates a new problem
+- an ability has an unexpected weakness
+- an advantage becomes a liability
+- the next level is not what the protagonist expected
+- a seemingly minor rule becomes important
+- the protagonist discovers they misunderstood the system
+- reaching the top creates a completely different problem
+
+For approximately 20 beats, aim for roughly 2–4 meaningful turns when the topic naturally supports them.
+
+Do not force reversals.
+
+
+# 31. MIDPOINT
+
+The middle should not simply repeat the opening.
+
+Around the midpoint, introduce a meaningful change such as:
+
+- new understanding
+- new threat
+- new ability
+- new responsibility
+- new environment
+- reversal
+- revelation
+- change in objective
+
+The viewer should feel that the story has entered a new phase.
+
+
+# 32. PEAK
+
+The highest or most important stage must feel different from the beginning.
+
+Do not make the peak:
+
+"the same thing with a bigger number."
+
+The peak should demonstrate what the progression has been building toward.
+
+It should reveal:
+
+- what the protagonist can now do
+- what they now face
+- what the system ultimately demands
+- what changes when someone reaches this stage
+
+
+# 33. ENDING
+
+The ending should feel like a payoff.
+
+Do not automatically:
+
+- add a successor
+- add a moral
+- explain the lesson
+- say "and that is how..."
+- repeat the entire progression
+
+Choose the ending that naturally belongs to the topic.
+
+Whenever possible, establish a small element near the beginning that can return at the end.
+
+Possible elements:
+
+- object
+- location
+- rule
+- phrase
+- enemy
+- ability
+- problem
+- action
+- visual composition
+
+
+# 34. ENDING ECHO
+
+Whenever it fits naturally, make the final beat echo the beginning.
+
+For example:
+
+Beginning:
+the protagonist faces a problem they cannot handle.
+
+Ending:
+the protagonist encounters the same type of problem, but their position has completely changed.
+
+The final image should show the difference.
+
+Do not explain the symbolism.
+
+Let the event communicate it.
+
+
+# 35. SUCCESSOR ENDING
+
+A successor/newcomer ending is OPTIONAL.
+
+Use it only when it naturally fits the topic.
+
+It is especially useful when the progression represents:
+
+- ranks
+- careers
+- generations
+- organizations
+- training
+- recurring systems
+- inherited positions
+
+Do NOT force a successor into topics where the progression naturally ends elsewhere.
+
+
+# 36. HOOK → PAYOFF
+
+Before writing, establish:
+
+HOOK:
+What happens immediately?
+
+CENTRAL QUESTION:
+What does the viewer now want to know?
+
+PROGRESSION:
+What changes from stage to stage?
+
+MAJOR TURN:
+Where does the viewer's understanding change?
+
+PEAK:
+What is the most important stage or event?
+
+PAYOFF:
+What earlier setup gains new meaning?
+
+ENDING IMAGE:
+What should the viewer see at the end?
+
+
+# 37. NARRATION STYLE
+
+Narration must be:
+
+- second person
+- present tense
+- clear
+- conversational
+- fast-moving
+- visual
+- specific
+- restrained
+- natural
+- easy to understand
+
+Use "You" because the viewer is experiencing the progression.
+
+Do not refer to the protagonist as:
+
+- "the reference character"
+- "the protagonist"
+- "the viewer"
+
+inside narration.
+
+The narration should speak directly to the viewer as "You."
+
+
+# 38. NARRATION RHYTHM
+
+Avoid robotic structures.
+
+BAD:
+
+"You enter.
+
+You fight.
+
+You win.
+
+You leave."
+
+Use natural variation.
+
+Example:
+
+"You enter expecting one opponent. Instead, the room is already full, and nobody looks surprised to see you."
+
+Vary:
+
+- sentence length
+- openings
+- pacing
+- sentence structure
+
+Do not start every beat with "You."
+
+
+# 39. NARRATION WORD COUNT
+
+Each beat should contain:
+
+14–19 words.
+
+Aim for approximately 16–17 words.
+
+Never add meaningless filler to reach the count.
+
+Never destroy a strong sentence simply to hit the count.
+
+If a sentence is slightly outside the range, rewrite it naturally.
+
+
+# 40. BEAT STRUCTURE
+
+A beat should generally contain:
+
+ACTION + CHANGE
+
+or:
+
+SITUATION + CONSEQUENCE
+
+or:
+
+DISCOVERY + IMPLICATION
+
+or:
+
+DECISION + RESULT
+
+or:
+
+EVENT + NEW QUESTION
+
+Do not use the same structure repeatedly.
+
+
+# 41. TRANSITIONS
+
+Each beat should naturally cause or motivate the next.
+
+Think:
+
+EVENT
+→ CONSEQUENCE
+→ NEW SITUATION
+→ DECISION
+→ RESULT
+→ NEXT STAGE
+
+Do not make every transition explicit.
+
+Do not repeatedly write:
+
+"Because of this..."
+
+"Therefore..."
+
+"The next step is..."
+
+
+# 42. EMOTION
+
+Emotion should come from the situation.
+
+Do not constantly state:
+
+"You feel scared."
+
+"You feel sad."
+
+"You feel proud."
+
+Instead, show the situation producing the emotion.
+
+The narration can remain restrained while the events carry emotional weight.
+
+
+# 43. HUMOR
+
+Humor is allowed when it naturally fits.
+
+Possible forms:
+
+- dry observation
+- irony
+- absurdity
+- understatement
+- character reaction
+- unexpected consequence
+
+Do not force jokes.
+
+
+# 44. APHORISMS
+
+Do NOT require an aphorism at the end of every level.
+
+Do not manufacture fortune-cookie lines.
+
+A memorable observation is allowed when earned by the story.
+
+The event is more important than the quote.
+
+
+# 45. NUMBERS
+
+Use numbers only when they matter.
+
+Good uses:
+
+- actual ranks
+- ages
+- dates
+- distances
+- quantities
+- durations
+- statistics
+- costs
+- measurements
+- power values
+- historical figures
+
+Do not invent numbers simply to make narration sound specific.
+
+Specific events are usually better than meaningless statistics.
+
+
+# 46. NO FAKE SPECIFICITY
+
+Do not add random:
+
+- salaries
+- dates
+- durations
+- distances
+- weather
+- objects
+- injuries
+- costs
+- body problems
+
+unless they matter to the story or are factually relevant.
+
+Specificity should make the story more memorable or informative.
+
+
+# 47. IMAGE PROMPT NAMING LAW
+
+Narration:
+
+"You"
+
+Image prompts:
+
+"the reference character"
+
+Never use "you" in image prompts to refer to the protagonist.
+
+Never use the protagonist's personal name in image prompts unless explicitly required by the input.
+
+Never call the protagonist:
+
+- the narrator
+- the protagonist
+- the viewer
+
+in image prompts.
+
+Always use:
+
+"the reference character"
+
+This rule covers the protagonist ONLY. Every other character, creature, place
+and organisation keeps its official name in image_prompt. See Section 51A.
+
+
+# 48. BACK TO CAMERA
+
+The reference character faces the camera by default. Vary his framing like any
+other subject: front, three-quarter, profile, over the shoulder, back.
+
+The reference art is a single front-facing pose. So ANY prompt using "from
+behind", "over the shoulder", "rear view", "walking away" or "facing away" MUST
+also contain, near those words, the BACK_CLAUSE string from the header.
+
+Without it the model pastes the front-facing head onto a back-facing body and
+the head comes out rotated.
+
+Do not add the BACK_CLAUSE to a prompt that is not a back view.
+
+Never describe his face, hair, skin, clothes, expression, mood, age or build in
+any prompt, at any angle. The attached art already defines those, and
+re-describing them competes with it. Only ever write what his BODY is DOING.
+
+
+# 49. REFERENCE CHARACTER CONSISTENCY
+
+The reference character must remain visually consistent.
+
+Do not randomly change:
+
+- clothing
+- body proportions
+- accessories
+- hairstyle
+- identity
+- age
+
+unless the topic explicitly requires a change.
+
+The reference character does not age unless explicitly required.
+
+Never describe their appearance at all. The attached reference art defines it.
+
+
+# 50. IMAGE PROMPT PURPOSE
+
+Every image must depict the actual event of the beat.
+
+Do not generate generic:
+
+- portraits
+- standing poses
+- empty rooms
+- generic action scenes
+
+unless they are actually what the beat is about.
+
+The image should communicate the narration visually.
+
+
+# 51. IMAGE PROMPT CONTENT
+
+When relevant, specify:
+
+- what the reference character is doing
+- environment
+- location
+- important objects
+- other characters
+- background activity
+- composition
+- camera angle
+- framing
+- lighting
+- atmosphere
+- visual consequences
+- continuity with previous images
+- the BACK_CLAUSE, on back-view shots only
+
+Prioritize concrete visual information over decorative adjectives.
+
+
+# 51A. OFFICIAL NAMES IN IMAGE PROMPTS
+
+This section covers everything in frame EXCEPT the protagonist. He is always
+"the reference character" and is never described. Sections 47 and 49 still win
+for him.
+
+image_prompt uses the OFFICIAL name.
+
+If the topic sits inside an existing universe, name things the way the source
+names them: Gojo Satoru, Eren Yeager, a Grade 1 curse, the Survey Corps
+uniform, Shiganshina. Never a generic stand-in when a real name exists.
+
+AN OFFICIAL NAME IS NEVER ENOUGH ON ITS OWN.
+
+The generator has never read the TOPIC and has no memory between beats. A name
+it cannot picture becomes a blank, and it fills every blank from the real
+world. So every named element must ALSO carry a full physical description in
+the SAME prompt, every time it appears.
+
+    WRONG: "Gojo stands in the doorway"
+    RIGHT: "Gojo Satoru, a tall slim man with short spiked white hair and a
+            black cloth band covering his eyes, in a dark navy high-collared
+            uniform jacket, dark trousers and black boots, stands in the
+            doorway"
+
+Describe a character by: approximate height, build, hair colour and shape,
+clothing silhouette, clothing colours and materials, boots, belts, accessories,
+weapons, distinctive visible traits.
+
+Describe a creature by: overall size, body proportions, anatomy, head shape,
+limbs, surface colour and texture, distinctive structures.
+
+Describe an object or weapon by: shape, size, material, colour, construction,
+distinctive components, position in the scene.
+
+Describe a location by: architecture, materials, colours, structures,
+distinctive environmental objects.
+
+An organisation is not visible. Naming a corps, a school, a police force or a
+clan shows nothing. What is visible is the uniform, the equipment and the shape
+of the insignia. The name tells YOU which thing to describe. The description is
+the only part that reaches the picture.
+
+Repeat the SAME core description for a recurring character every time they
+appear: same build, same hair, same clothing silhouette and colours, same
+accessories, same weapon. Story changes may be added on top. The core identity
+never drifts.
+
+Match the SOURCE's version, never the closest real-world equivalent. If you are
+not certain how something looks in the source, look it up. A wrong uniform is
+more obvious to a fan than a wrong date, and it sits in every frame it appears
+in.
+
+
+# 52. VISUAL PROGRESSION
+
+Images should visually show progression.
+
+Across the video, change things such as:
+
+- environments
+- scale
+- danger
+- opponents
+- responsibilities
+- abilities
+- social situations
+- objects
+- lighting
+- composition
+
+Do not create 20 visually identical scenes.
+
+
+# 53. LOCATION DESIGN
+
+LOCATIONS: auto.
+
+Determine locations from the story.
+
+Do not force a fixed number of locations.
+
+A location can persist across multiple beats if that is natural.
+
+A location should change when the story requires a new environment.
+
+Maintain continuity when it does not.
+
+
+# 54. FACTUAL ACCURACY
+
+For real-world topics:
+
+Verify factual claims.
+
+For fictional topics:
+
+Verify canon claims whenever possible.
+
+Do not:
+
+- invent official rules
+- invent official ranks
+- invent powers
+- invent relationships
+- invent historical events
+- invent statistics
+- contradict established canon
+
+If the story includes fictionalized "you experience this" events, they may be invented when necessary, but they must remain consistent with the source material.
+
+
+# 55. INVENTED EVENTS
+
+A progression story may require invented events involving the viewer.
+
+Invented events are acceptable when:
+
+- they do not contradict canon
+- they do not falsely claim to be established events
+- they make the progression understandable
+- they fit the world's rules
+
+Track intentionally invented details internally in facts_to_check.
+
+
+# 56. RESEARCH
+
+Research only what is necessary.
+
+Prioritize:
+
+- official sources
+- primary sources
+- reliable references
+- high-quality reporting
+- established canon sources
+
+Do not turn the narration into a research report.
+
+Research supports the story.
+
+
+# 57. FACTS_TO_CHECK
+
+Create a facts_to_check array.
+
+For each important claim, track:
+
+- claim
+- type
+- status
+- source_needed
+- invented
+
+Possible types:
+
+- canon
+- real_world
+- statistic
+- date
+- rank
+- rule
+- character
+- location
+- invented_event
+
+Never present an uncertain factual claim as established truth.
+
+
+# 58. STORY VS FACTS
+
+Facts should serve the story.
+
+Do not write:
+
+"According to..."
+
+"Research shows..."
+
+"Sources say..."
+
+inside narration unless specifically required by the format.
+
+Instead, integrate facts into events.
+
+
+# 59. FIRST FIVE BEATS
+
+The first five beats are especially important.
+
+They should generally accomplish:
+
+1. Establish the first level/rank/stage and create the hook.
+2. Make the situation more interesting.
+3. Reveal an important part of what this level actually means.
+4. Show the protagonist acting within that system.
+5. Create the first meaningful turn, consequence, or reason to progress.
+
+Do not spend the first five beats merely defining the system.
+
+
+# 60. RETENTION RHYTHM
+
+Do not let several consecutive beats do the same thing.
+
+Whenever possible, introduce a:
+
+- discovery
+- consequence
+- escalation
+- decision
+- reveal
+- reversal
+- new situation
+
+every few beats.
+
+Do not force a mathematical rhythm.
+
+The purpose is to prevent the middle from becoming flat.
+
+
+# 61. STORY MOMENTUM
+
+Every beat should create forward movement.
+
+Ask:
+
+"Why does the viewer need the next beat?"
+
+Possible answers:
+
+- they want to know what happens
+- they want to understand the new rule
+- they want to see whether the protagonist succeeds
+- they want to see the next rank
+- they want to know the consequence
+- they want to see the new ability
+- they want to understand the reveal
+
+If there is no reason to continue, strengthen the beat.
+
+
+# 62. NO REPETITION
+
+Do not repeat:
+
+- the same information
+- the same emotional reaction
+- the same action
+- the same type of image
+- the same transition
+- the same sentence structure
+- the same explanation
+
+unless repetition is intentionally used for payoff.
+
+
+# 63. STORY PLAN
+
+Before writing the script, internally determine:
+
+- progression type
+- actual progression stages
+- level count
+- opening rank/stage
+- opening situation
+- central question
+- major events
+- major discoveries
+- major turns
+- escalation
+- peak
+- ending payoff
+- recurring elements
+- important facts
+- relevant characters
+- locations
+- visual progression
+
+Do not skip planning.
+
+Do not output hidden reasoning.
+
+
+# 64. LEVEL COUNT
+
+LEVELS: auto.
+
+Determine the appropriate number of meaningful levels.
+
+Do not arbitrarily force every topic into 4 or 5 levels.
+
+If the progression has many stages, intelligently group related stages when necessary.
+
+If the progression has few stages, use multiple meaningful beats within each stage.
+
+Never skip a major stage simply because it is inconvenient.
+
+
+# 65. LEVEL LABELS
+
+When the progression has official names, use the official names.
+
+Examples may include:
+
+- Rank 1
+- Grade 4
+- Level 1
+- Stage 1
+- Apprentice
+- Junior
+- Phase 1
+
+Do not rename official stages unnecessarily.
+
+When no official labels exist, create concise descriptive labels that accurately represent the progression.
+
+
+# 66. LEVEL TRANSITION VISIBILITY
+
+The viewer should always understand:
+
+WHERE YOU ARE
+→ WHAT LIFE IS LIKE HERE
+→ WHAT CHANGES
+→ WHERE YOU GO NEXT
+
+Do not make the viewer decode the progression.
+
+
+# 67. OUTPUT FORMAT
+
+Return ONLY valid JSON.
+
+No markdown.
+
+No explanation.
+
+No commentary before or after the JSON.
+
+Use exactly this structure:
+
+{
+  "topic": "short slug-like title",
+  "format": "progression",
+  "plan": {
+    "spine_question": "the one question the video answers, in plain words",
+    "setting_anchor": "six or seven words carried into every image prompt, or empty string - see below",
+    "payoff_line": "the final beat's narration, written before the others",
+    "locations": [
+      {
+        "name": "",
+        "beats": "1-9",
+        "why_he_is_here": "",
+        "visual_anchor": ""
+      }
+    ],
+    "sections": [
+      { "beats": "1-9", "step": "the question this section answers, a few words", "job": "" }
+    ],
+    "facts_to_check": [
+      { "claim": "", "source": "" }
+    ]
+  },
+  "music_prompt": "one paragraph, see Section 9",
+  "beats": [
+    {
+      "location": "",
+      "narration": "",
+      "image_prompt": "",
+      "image_prompt_alt": ""
+    }
+  ]
+}
+
+while writing "invented" set it to eather True or False with capital letters
+
+Only `location`, `narration`, `image_prompt` and `image_prompt_alt` reach the
+pipeline. The `plan` exists to hold the constraints in working memory while you
+write the beats. Fill it anyway, and fill it FIRST.
+
+
+# 68. JSON RULES
+
+The output must be valid JSON.
+
+Use double quotes.
+
+Escape internal quotation marks correctly.
+
+Do not use trailing commas.
+
+Do not use comments.
+
+Do not use markdown fences.
+
+Do not add extra text outside the JSON.
+
+The number of script objects must exactly equal BEATS.
+
+"beat" must be an integer.
+
+All required fields must exist.
+
+
+# 69. IMAGE_PROMPT_ALT
+
+image_prompt_alt is the RECOVERY prompt, not a caption. The pipeline writes it
+to scenes_alt.txt line for line, and when the generator refuses the primary,
+the runner retries that beat with the alternate. Retrying the same words gets
+refused identically, so the alternate must differ in the two ways below.
+
+It shows the SAME story moment: same main action, same characters, same
+setting, same important objects. It must still make sense read against that
+beat's narration.
+
+DIFFERENCE ONE: EVERY OFFICIAL NAME IS GONE.
+
+No character names, no creature names, no place names, no weapon names, no
+organisation names, no franchise terminology. "the reference character" is not
+an official name and stays: it is the pointer to the attached art. Section 47
+still holds, and he is still never described.
+
+Do NOT merely delete a name. REPLACE IT WITH DESCRIPTION. The alternate spends
+words buying back everything the name was carrying for free.
+
+    PRIMARY: "Gojo Satoru, a tall slim man with short spiked white hair and a
+              black cloth band covering his eyes, in a dark navy high-collared
+              uniform jacket, stands in the doorway"
+
+    ALT:     "a tall slim young man with short spiked bright white hair and a
+              wide black cloth band wrapped across his eyes, wearing a dark
+              navy high-collared jacket with a zip front over a black shirt,
+              dark trousers and tall black boots, stands in the doorway"
+
+Expand a character by: height, proportions, build, skin tone, hair colour,
+length and shape, face shape, clothing layers, colours, materials, boots,
+belts, straps, accessories, weapons, posture.
+
+Expand a creature by: proportions, size, anatomy, head shape, limbs, surface
+colour, surface texture, distinctive structures.
+
+Expand an object by: shape, size, materials, colours, construction, components,
+position in the scene.
+
+Expand a location by: building shape, architecture, materials, colours, doors,
+windows, roofs, walls, streets, furniture.
+
+THE ALTERNATE IS LONGER FOR THIS REASON ONLY.
+
+The primary is the prompt that actually gets generated. The alternate runs only
+on the minority of beats that get refused. So nothing may be held back from the
+primary to make the alternate look richer. If the alternate mentions something
+the primary does not, the PRIMARY is missing it and needs it back.
+
+DIFFERENCE TWO: DIFFERENT STAGING.
+
+Change at least one major visual variable and use a different framing family.
+If the primary is a close up, the alternate is wide or medium, never another
+close up with the words reordered. Variables: camera distance, foreground
+object, character position, which character is closest to camera, visible
+environmental feature.
+
+SAFETY RECOVERY.
+
+Move anything violent into its aftermath. A body becomes an empty coat. Drop
+blood, wounds and bodies entirely.
+
+
+# 70. FINAL STORY CHECK
+
+Before outputting, ask:
+
+HOOK:
+
+- Does Beat 1 establish the first level/rank/stage?
+- Does it also create curiosity?
+- Is it an actual situation rather than a definition?
+- Would it make someone continue watching?
+
+PROGRESSION:
+
+- Are the stages accurate?
+- Is the progression easy to follow?
+- Does every level feel different?
+- Does each transition change the situation?
+
+STORY:
+
+- Is the protagonist active?
+- Does something meaningful happen in every beat?
+- Are there consequences?
+- Are there discoveries?
+- Are there meaningful turns?
+- Is the middle still interesting?
+- Does the peak feel different from the beginning?
+
+TOPIC:
+
+- Does the WORLD create the events?
+- Are the events specific to the TOPIC?
+- Would the story still work if the topic were replaced?
+- If yes, rewrite it.
+
+FACTS:
+
+- Are important factual claims verified?
+- Are invented events clearly tracked?
+- Are there canon contradictions?
+- Are numbers actually useful?
+
+ENDING:
+
+- Does the ending pay something off?
+- Does it connect naturally to the progression?
+- Does it avoid an unnecessary moral?
+- Does it avoid a forced successor?
+- Does it feel like the natural ending of THIS topic?
+
+IMAGES:
+
+- Does every image depict its beat?
+- Is the reference character consistent?
+- Does every back-view prompt carry the BACK_CLAUSE, and no other prompt?
+- Are locations consistent?
+- Does the visual progression match the narrative?
+- Does every named character, creature and organisation in an image_prompt also
+  carry a full physical description?
+- Does every image_prompt_alt drop all official names, replace each with
+  description, and change the staging?
+
+
+# 71. FINAL RETENTION TEST
+
+Read only the narration.
+
+Imagine hearing it for the first time.
+
+After every beat, ask:
+
+"Would I want the next beat?"
+
+If several beats in a row produce no curiosity, consequence, discovery, escalation, or payoff, rewrite them.
+
+The script should not feel like:
+
+"Here is Rank 1.
+Here is Rank 2.
+Here is Rank 3.
+Here is Rank 4."
+
+It should feel like:
+
+"You are at Rank 1.
+This is what happens.
+This is what you discover.
+This changes your situation.
+You finally reach Rank 2.
+Now the rules are different.
+This creates a new problem.
+You adapt.
+You reach the next stage.
+And eventually, you understand what the entire progression was leading toward."
+
+
+# 72. FINAL UNIVERSALITY TEST
+
+Before outputting, ask:
+
+"Would this exact storytelling template work for a completely different topic?"
+
+The answer should be YES.
+
+The prompt must provide the storytelling framework while allowing the TOPIC and WORLD to determine:
+
+- the events
+- the progression
+- the challenges
+- the characters
+- the consequences
+- the locations
+- the escalation
+- the payoff
+
+Never inject topic-specific assumptions that are not present in the input.
+
+The template is universal.
+
+The STORY is not.
+
+Only output the final valid JSON.

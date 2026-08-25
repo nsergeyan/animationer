@@ -1,0 +1,914 @@
+TOPIC:   Why do SOME people think moon landing was fake?
+FORMAT:  explainer
+BEATS:   55
+
+
+## PASS 1 OF 2 - THE SCRIPT
+
+You write the plan and the narration. That is all.
+
+A second prompt takes your JSON and adds the image prompts, the emotion tags,
+the visual anchors and the music. Do not write any of those here. Any field you
+invent outside the shape in Section 3 is thrown away, and inventing them costs
+you the attention this pass is for.
+
+Nothing in this pass is a draft. The narration you write here is the narration
+that ships, character for character. Pass 2 is forbidden from rewriting it.
+
+
+## 0. PRIORITY
+
+If two instructions collide, the earlier section wins. Section 1 beats
+everything, always, with no exception.
+
+Work in this order and do not skip:
+
+1. Fill in the whole `plan` object. `deflations`, `specifics` and
+   `absurdities` are filled BEFORE any beat is written, and they are the
+   reason this pass exists.
+2. Write the LAST beat and put it in `plan.payoff_line`.
+3. Re-read `plan.facts_to_check` and `plan.specifics`. Those constrain the
+   beats you are about to write. They are not notes you file and forget.
+4. Write beats 1 to N in order, inside the ranges the plan assigns.
+5. Go back over the finished beats and add the emotion tags. Section 5.
+6. Run Section 8 by LOOKING at each beat, not by remembering it.
+7. Output one raw JSON object. No markdown fences, no commentary, nothing else.
+
+### SATISFY THE REASON, NOT THE WORDING
+
+Every rule in this file exists because something specific came out wrong. A rule
+can be obeyed to the letter and still fail the thing it was written for.
+
+    RULE: "open on the wrong assumption almost everyone believes"
+    OBEYED, AND USELESS: "Most people think spies work alone. They don't."
+    The rule got its label. The video got a fact instead of a hook.
+
+Where this file says "where possible", "when useful" or "not every one", read it
+as the strong version. Those phrases are there for the rare genuine exception,
+not as permission to skip the work.
+
+When you are about to satisfy a rule in its cheapest form, that is the signal
+you have found the beat worth spending real effort on.
+
+
+---
+
+## 1. THE NARRATION NEVER NAMES HIM
+
+The finished video has an illustrated character in almost every frame. He is
+added in pass 2. You never write him, and the narration never refers to him.
+
+This is an explainer, not a story about a character. He is not the narrator,
+not someone being followed, and not the "you" of the video. The narration
+explains the real subject directly, exactly as a documentary voiceover would if
+there were no illustrated character in the frame at all.
+
+    RIGHT:  "The message went out in a burst too short for the receiver to
+             trace."
+    WRONG:  "Nifan watches the message go out, too short to trace."
+    WRONG:  "You watch the message go out, too short to trace."
+
+Never write "Nifan" in narration. Never write "the reference character" in
+narration either. Never use "he", "him" or "his" in narration to mean the
+illustrated character; every pronoun in the narration points at a real person
+or thing the topic is actually about.
+
+TEST: read a beat's narration back with the illustrated character erased from
+its frame entirely. If the sentence still makes complete sense, it was never
+about him. It should always still make complete sense.
+
+Every other person in the topic is the opposite. Name them, in the narration,
+as often as the story needs. See Section 5.
+
+
+---
+
+## 2. HARD RULES
+
+These are countable. Count them before you output.
+
+1.  EXACTLY the number in BEATS. Not close. Count the array.
+
+2.  Section 1 holds in every beat with no exception.
+
+3.  FIVE to SIX locations. Each held for eight or more consecutive beats.
+    Ranges cover every beat with no gaps and no overlaps. Every beat's
+    `location` string matches a name in `plan.locations` character for
+    character.
+
+    Five or six is what fifty-five beats allows: eight beats is the floor for
+    a location, so seven locations will not fit. Nine to eleven beats each
+    works out to roughly half a minute in one place, which is about as long as
+    a single setting holds before it stops being a setting and starts being a
+    backdrop.
+
+    A location is a real physical place the mechanism actually touches. Pass 2
+    has to draw it, so it must be somewhere that can be drawn: a room, a yard,
+    a factory floor, a hillside. Never an abstraction, never "inside the
+    bloodstream of an idea".
+
+4.  TWO KINDS OF BEAT, mixed. See Section 5.
+
+      LONG beat   10 to 15 words   carries the fact, the number, the turn
+      SHORT beat   4 to 8 words    a consequence, a reaction, one hard image
+
+    Roughly half and half, and never fewer than a third of either. No sentence
+    over fifteen words.
+
+    The total spoken words do NOT go up. Beat count controls how often the
+    picture changes, not how much gets said.
+
+4a. TOTAL BUDGET: 500 to 540 spoken words across the whole script. Count them
+    before you output.
+
+    This is the rule that sets the video's length, and it OUTRANKS the per-beat
+    bands. The bands shape the rhythm; this number decides whether the video is
+    three minutes or three and three quarters. Both bands sat at their tops
+    would run the script to 630 words and the video to 3:45.
+
+    Emotion tags do not count toward the budget - strip them before counting.
+    Every other word you write is a spoken word.
+
+    If you are over budget, cut a beat rather than shaving words off every
+    beat - trimming across the board is how a script full of long beats becomes
+    a script full of medium ones, which is the metronome again.
+
+5.  No quotation marks anywhere. Nobody is ever quoted directly.
+
+    This bans the punctuation, not the talking. Reported speech is wanted:
+    "the lieutenant told them his compass was fine and kept flying west" does
+    everything a quote would do and needs no quote marks. A script where
+    nobody ever says anything to anybody is a worse script than one that
+    reports what was said.
+
+6.  Never more than THREE short beats in a row, and never more than TWO long
+    beats in a row. The alternation is the rule - a run of short beats is a
+    machine gun and a run of long ones is the old slideshow.
+
+7.  BUT or THEREFORE between every pair of beats. If the only word that fits
+    is AND THEN, one of the two beats is not doing anything. Rewrite it.
+
+8.  Plain ASCII inside every string. No markdown, no bullets, no curly quotes,
+    no em dashes, no line breaks inside a string. The only square brackets
+    allowed are emotion tags from the Section 5 list, at the front of a
+    narration.
+
+9.  Never mention the video, the viewer, the channel, subscribing, liking, or
+    "as we saw". There is no outro and no call to action: the pipeline bolts
+    a fixed outro on afterwards.
+
+
+---
+
+## 3. OUTPUT SHAPE
+
+One raw JSON object, exactly these keys and no others:
+
+{
+  "topic": "short slug-like title",
+  "format": "explainer",
+  "plan": {
+    "spine_question": "the one question the video answers, in plain words",
+    "payoff_line": "the final beat's narration, written before the others",
+    "locations": [
+      {
+        "name": "",
+        "beats": "1-12",
+        "why_here": "what the mechanism does in this place that it does nowhere else"
+      }
+    ],
+    "sections": [
+      { "beats": "1-18", "step": "the question this section answers, a few words", "job": "" }
+    ],
+    "deflations": [
+      { "assumed": "", "actual": "", "who_decided": "", "build_beat": "", "drop_beat": "" }
+    ],
+    "specifics": [
+      { "fact": "", "source": "", "beat": "" }
+    ],
+    "absurdities": [
+      { "who": "", "what": "", "shape": "" }
+    ],
+    "facts_to_check": [
+      { "claim": "", "source": "" }
+    ]
+  },
+  "beats": [
+    {
+      "location": "",
+      "narration": ""
+    }
+  ]
+}
+
+No `image_prompt`. No `image_prompt_alt`. No `music_prompt`. No
+`visual_anchor`. No `setting_anchor`. Pass 2 writes all of those.
+
+### DEFLATIONS
+
+Filled BEFORE any beat is written. Six to eight entries.
+
+A mechanism is interesting when the viewer expected something clever and got
+something stupid instead. That gap is what this field collects.
+
+    `assumed`      what a reasonable viewer would guess is behind this, and
+                   would be wrong about. Usually: deliberate design, advanced
+                   engineering, careful science, or a good reason.
+    `actual`       what is really going on. Usually smaller, cheaper, older or
+                   dumber than the assumption.
+    `who_decided`  the named person, company or committee that made it this
+                   way, and what they were actually optimising for. Money,
+                   time, laziness, a deadline, a grudge, or an accident.
+    `build_beat`   empty string. Afterwards, the number of the LONG beat that
+                   states the assumption at full height.
+    `drop_beat`    empty string. Afterwards, the number of the SHORT beat that
+                   takes it away. It MUST be `build_beat` plus one, and it
+                   must be the shorter of the two.
+
+    Both are filled in only after the beats exist, and filling them is a
+    CHECK, not paperwork. If you cannot point at a long beat that states the
+    assumption, the drop has nothing to fall from and the deflation did not
+    reach the script. If the two numbers come out in the wrong order, the pair
+    is inverted and the effect is gone - swap the beats.
+
+    assumed:      the round window is an elegant aerodynamic solution
+    actual:       square windows tore the plane open and they changed the shape
+    who_decided:  de Havilland's engineers, after three aircraft broke apart
+                  and they sank a whole fuselage in a water tank to find out why
+
+    assumed:      railway track width was calculated for stability
+    actual:       it was copied from the horse-drawn tramways already there
+    who_decided:  George Stephenson, who reused the tooling he already owned
+
+WHY THIS EXISTS. The reliable engine of an interesting explainer is not the
+mechanism. It is the distance between how impressive the thing looks and how
+unimpressive the reason for it is. A script that only explains how something
+works produces the correct information and no reaction. A script that explains
+how it works AND why it is that way for an embarrassing reason produces both.
+
+WHAT IT IS NOT. This is not debunking, and it is not "everything is fake".
+The mechanism is real and it genuinely works. You are explaining the real
+thing and being honest about how it got here. Do not manufacture a deflation
+where there isn't one - some things really were designed carefully by people
+who knew what they were doing, and forcing a cynical origin onto those is
+worse than having none.
+
+If the topic honestly yields fewer than three, say so by writing three and
+leaving the rest out. Do not invent.
+
+BINDING RULE. Every entry reaches the script. See THE DEFLATION in Section 5
+for the beat shape that spends one.
+
+### SPECIFICS - THE FIELD THIS PASS EXISTS FOR
+
+Filled BEFORE any beat is written. Ten to fourteen entries.
+
+Each entry is one hard, checkable, NAMED thing in this topic: a person with a
+name, a machine with a model number, a place, an organisation, a date, a
+measured quantity, a price, a duration, a body count, a distance.
+
+    `fact`   the specific thing, in plain words. It MUST contain a number, a
+             date, or a named person doing a named thing. A bare name is not a
+             specific: "Apollo Eleven", "NASA" and "the Atlantic Ocean" are
+             all rejected, because you can write them without looking anything
+             up. "Garman had written the alarm codes on a sheet under his
+             desk" is accepted.
+    `source` a nameable document, publication, archive or person. NOT a
+             category. "NASA history", "tech specs", "interviews", "lunar
+             maps" and "historical record" are all rejected - they are the
+             shape of a source with the source removed. "Apollo 11 Flight
+             Journal, 102:38:26", "MIT Instrumentation Lab report R-700" and
+             "Garman, NASA oral history interview, 2001" are accepted.
+             If you cannot name one, you have not verified the fact. Drop it.
+    `beat`   left as an empty string. Pass over it again after the beats are
+             written and fill in the beat number that spends it.
+
+WHY THIS EXISTS. A script can obey every rule in Section 5 - plain words, no
+banned vocabulary, correct beat lengths, clean rhythm - and still be
+unwatchable, because it never says anything specific. A finished explainer in
+this series about aircraft windows ran fifty-five beats and contained ZERO
+proper nouns and four numbers, two of which were "ninety degree" and "one
+design change". It described three unnamed airliners falling out of an unnamed
+sky in an unnamed decade, investigated by unnamed people. Every fact in it was
+true. Nothing in it was interesting. The prose was not the problem. The prose
+was fine. The script had sanded off every name, number, person and place in the
+story and left a physics lesson about a hypothetical object.
+
+Specificity is not a decoration on top of a clear explanation. It IS the
+interest. "Three early jet airliners fell apart" is a fact. "The Comet's whole
+fuselage was sunk in a water tank and pressurised eighteen thousand times until
+it split at a window corner" is a video.
+
+BINDING RULE. At least TWENTY of the fifty-five beats carry a specific: a
+proper noun, a real number with its unit, or a named person doing a named
+thing. Count them in Section 8. A beat that could be about any topic in the
+genre is not carrying one.
+
+TEST FOR AN ENTRY: if you could write the entry without having looked anything
+up, it is not a specific, it is a summary. "Metal gets tired from repeated
+stress" is a summary. "It failed after one thousand eight hundred and thirty
+cycles" is a specific.
+
+### ABSURDITIES
+
+Also filled BEFORE any beat is written. Seven to nine entries.
+
+A FACT-FINDING field, not a joke list. List moments in this topic where a
+PERSON is ridiculous: confident and wrong, vain, lazy, or following a rule past
+the point of sense. `who` is the person or group. `what` is the ridiculous
+thing they actually did, in plain words. `shape` is left as an empty string.
+
+This exists so the script actually CONTAINS the funny parts of the topic rather
+than walking past them, which is what happens when the beats are planned around
+the mechanism alone. Whether any of them earns a dry aside is decided in
+Section 5.
+
+This exists because comedy cannot be retrofitted. If the beats are written
+first and the jokes added wherever a short beat happens to fall, the asides end
+up reacting to whatever is nearby, which is how you get mild observations about
+processes. Finding the absurd human moments first means the beats can be built
+to set them up.
+
+BINDING RULE. Every entry reaches the script as a beat. An absurdity you found
+and did not use is a fact you threw away. If a topic yields fewer than five, it
+is a topic to be explained straight: write two or three asides and no more. A
+thin joke in a serious explainer costs more than no joke at all, and some
+subjects, like an engineering disaster investigated by careful people,
+genuinely have very little to laugh at.
+
+
+---
+
+## 4. BEAT ONE, AND THE FIRST THREE
+
+Beat one opens directly on the WRONG ASSUMPTION almost everyone believes about
+this topic. Not a scene, not an event, not a character being introduced - a
+specific, nameable misconception, stated as a claim.
+
+Banned: any bare "here's what this video explains" label. It spends the most
+valuable sentence in the whole video on a table of contents instead of a hook.
+
+    WEAK:   "This video explains how vaccines work."
+    STRONG: "Most people think this shot kills the virus that infects them.
+             It doesn't."
+    STRONG: "A rejection letter almost changed the twentieth century."
+
+    Shape:  [THE WRONG ASSUMPTION]. [WHY THAT ASSUMPTION CANNOT SURVIVE THE
+            FIRST REAL FACT].
+
+Keep the assumption specific to this exact topic.
+
+Never open with: "you wake up", "it is the year", "you are standing",
+"you are watching", "picture this". There is no character to wake up or stand
+anywhere - the hook is the fact, not a scene.
+
+A THIRD SHAPE: THE SMALL VERSION OF THE SAME MYSTERY. Instead of stating the
+misconception directly, open on a tiny everyday version of it that the viewer
+has personally noticed, then scale straight up into the real topic.
+
+    "Socks go into the machine in pairs and come out odd."
+    "Every lift has a close-door button and none of them do anything."
+
+This works because the viewer arrives already agreeing with you. It is still a
+wrong assumption - it is just one small enough to have happened to them.
+
+Two constraints on it. It must be the SAME mechanism as the topic, not a
+decorative warm-up that gets dropped: if the small version does not run on the
+thing the video explains, it is an intro, not a hook. And it never uses "you"
+or "your" - state the everyday fact flat, in the third person, the way the
+examples above do.
+
+THE TEST: if the wrong-assumption line would fit unchanged at the front of any
+other explainer in the same genre, it is a stock intro, not a hook.
+
+Beat two does not restate beat one. It moves toward naming the true mechanism.
+
+Beat three contains the spine question, said out loud, AND the true mechanism
+must be named by the end of beat three - not merely contradicted, actually
+named. If beat one only says the wrong answer is wrong, beat two or three has
+to say what the right one actually is.
+
+
+---
+
+## 5. THE SCRIPT
+
+### THE ONE DIAL
+
+A beat that moves nothing for the viewer is a still photo. Rewrite it. There is
+only one dial here, because there is no character with a personal stake in the
+mechanism:
+
+* information: the viewer now understands a rule, a cause, or a consequence
+  they did not know a beat ago.
+
+Every section must end with a turn: the answer just given creates a new
+question, or overturns what the previous answer seemed to settle. A section
+that ends on the same understanding it started with is too long.
+
+Anything the closing answer needs must be planted in the first half as a fact,
+an object shown, or a rule stated out loud. It cannot appear as a fact pulled
+from nowhere in the last few beats.
+
+### EXPLAINER STRUCTURE
+
+One mechanism, made clear to someone who knows nothing.
+
+* The cold open is that the answer everyone believes is wrong (Section 4).
+* Kill the wrong answer first: what everyone assumes, why it is wrong, what
+  actually happens. This can take more than one beat if the wrong answer is a
+  popular one.
+* Name the true mechanism within the first three beats, do not merely
+  contradict the wrong one.
+* Say the next question out loud before answering it, roughly every sixteen to
+  twenty beats. Those spoken questions are the skeleton, and they are the
+  section boundaries: label each `plan.sections` entry with the question it
+  answers, in a few words, not with a generic step name. A script with no
+  question mark in it is a list, not an explainer.
+* Every beat answers the question the beat before it raised. If two beats can
+  swap places without breaking anything, you are writing facts, not steps.
+* Every explanation beat is tied to a visible physical object or action. Pass 2
+  has to put that object in the frame, so it must be a thing with a shape, not
+  a concept. Write the narration so there is something to point a camera at.
+* Who built it, when it launched and how many users it has are company
+  history, not steps. Cut them unless one of those facts IS the mechanism.
+* No step may assume knowledge not already given.
+* ONE BEAT IN FOUR ties the mechanism to a cost, a number or a trade-off that
+  is specific to it. If a beat would survive being moved into an explainer
+  about a completely different mechanism, it is not paying for its place.
+* KEEP THE WRONG ANSWER ALIVE. Beat one opens on what everyone gets wrong,
+  and most scripts then drop that frame at beat four and turn into a neutral
+  walkthrough. Do not. Every section reopens the gap: here is what it looks
+  like, here is what is really happening, here is who made it that way. The
+  wrong assumption is the spine of the whole video, not just its first line.
+* No new facts in the last few beats. The closing answer draws only on what
+  the video already showed.
+* The final beat answers the opening question in one line, and never says
+  "so that is how it works".
+
+### TWO KINDS OF BEAT
+
+Every beat is one of two lengths, and the video alternates between them.
+
+    LONG beat    10 to 15 words   the fact, the number, the turn
+    SHORT beat    4 to 8 words    the consequence, the reaction, the image
+
+A long beat is one or two short sentences that do different jobs: state then
+explain, or set up then land. A short beat is usually a single clause. It is
+not half a thought - it is a whole one that happens to be small.
+
+    LONG:  "Every message went out as five-digit groups, keyed to a page in
+            an ordinary printed book."
+    SHORT: "Any book. That was the point."
+
+    LONG:  "The transmitter needed forty minutes on air to send one full
+            report to Moscow."
+    SHORT: "Forty minutes was long enough to find them."
+
+WHY THIS EXISTS. One image is held for the whole of its beat, so beat length
+IS how fast the video cuts. At nineteen words a beat the picture changed every
+six seconds and the result was a slideshow. At nine words on average it changes
+every three.
+
+WHAT IT IS NOT. It is not "write less". The narration total does not move -
+video length fixes it at roughly five hundred spoken words however it is cut.
+Fifty-five beats is the same script cut into smaller pieces, not half the
+content said twice as fast. If the fact needs fifteen words, it gets a long
+beat.
+
+WHAT IT IS NOT, PART TWO. It is not "make every beat short". Fifty-five short
+beats is not a faster video, it is a metronome, and a metronome was the
+problem the long beats were causing in the first place. Roughly half and half,
+never fewer than a third of either kind, at most three short in a row and at
+most two long.
+
+### THE SHORT BEAT IS WHERE SCRIPTS GO TO DIE
+
+A short beat must carry NEW information. This is the single most broken rule in
+this file, so it gets its own section.
+
+The failure is not obvious while you are writing, because a filler short beat
+reads fine on its own. It arrives when the beat quota starts to hurt, and the
+cheapest way to reach fifty-five is a run of connective tissue.
+
+These are all real, from one finished script:
+
+    "The answer begins in the sky."
+    "That solved one big problem."
+    "It worked perfectly at first."
+    "The trap was the pressure itself."
+    "The metal skin had to stretch."
+    "Then the plane landed again."
+    "They had to find the cause."
+
+Nineteen of that script's fifty-five beats were like this. Every one is
+grammatical, plain, correctly sized and completely empty. Together they cost
+the video roughly a minute of screen time and told the viewer nothing.
+
+TEST EVERY SHORT BEAT: delete it and read the two beats either side back to
+back. If nothing is lost, it was padding that happened to be brief. Do not
+rewrite it. Delete it, and spend the beat on something from `deflations`,
+`specifics` or `absurdities` that did not make the cut.
+
+A short beat is allowed to be a reaction, a consequence, or the drop half of a
+deflation (see THE DEFLATION below). It is not allowed to be a transition, a
+signpost, a restatement, or a promise that something is coming.
+
+The deflation is the highest-value job a short beat has. When you are stuck for
+what a short beat should do, check whether the long beat before it set up an
+expectation you can take away.
+
+### THE DEFLATION
+
+This is the shape that spends a `deflations` entry, and it is the best job a
+short beat can have.
+
+Build the impressive version at full height, straight, with no wink. Then let
+the next beat drop it.
+
+    LONG:  "The cabin holds survivable pressure through eleven kilometres of
+            climb and the whole descent."
+    SHORT: "It is a spring holding a flap shut."
+
+    LONG:  "Three aircraft broke apart in the air before anyone understood
+            what the corners of a window were doing."
+    SHORT: "They rounded them off. That was the entire fix."
+
+The LONG beat sets the expectation. The SHORT beat takes it away. The gap
+between them is the whole effect, and it only works if the long beat is played
+completely straight - if you signal the joke early, there is nothing left to
+land.
+
+WHY THIS WORKS. It is the same rhythm as cutting the music. The viewer braces
+for something big and gets something small, and the small thing is true. You
+cannot cut the music in this pipeline, because the score is flat by design and
+never swells. The beat lengths are the only instrument you have for it, which
+is why this shape matters here more than it would elsewhere.
+
+DO NOT EXPLAIN THE DEFLATION. The short beat states the small truth and stops.
+A third beat saying "and that is why it looks so simple" throws the whole thing
+away.
+
+    RIGHT:  "It is a spring holding a flap shut."
+    WRONG:  "It is a spring holding a flap shut, which shows that the best
+             engineering is often the simplest."
+
+Use it roughly four to six times across the video, spread out. Every twelfth
+beat is a rhythm the viewer learns and stops feeling. Two in a row is a gag.
+
+### LAND ON A PERSON, NOT A PROCESS
+
+When a beat explains why something is the way it is, the answer is a named
+human who wanted something, not an abstraction.
+
+    PROCESS: "The standard was adopted for reasons of manufacturing
+              efficiency."
+    PERSON:  "Stephenson already owned the tooling, so everyone else had to
+              match him."
+
+    PROCESS: "Cost pressures influenced the design."
+    PERSON:  "The airline wanted eight more seats, so the engineers took the
+              weight out of the floor."
+
+Money, laziness, a deadline, a grudge, ownership, habit. Those are reasons a
+viewer recognises from their own life. "Efficiency considerations" is not a
+reason, it is a category with a person hidden inside it. Find the person.
+
+This is also where `absurdities` gets spent: a person following a rule past the
+point of sense IS the explanation for a lot of mechanisms, and stating it flat
+is funnier than any line you could write about it.
+
+### THE COMPANY A THING KEEPS
+
+A second way to make a fact land without inventing a joke: name the
+unglamorous neighbours of the thing you are explaining.
+
+The same committee, the same material, the same rule, the same year usually
+produced something ridiculous alongside the serious thing. Stating both, flat
+and without comment, does the work.
+
+    "The same body that set this standard spent the following four years
+     arguing about the shape of a plug."
+
+You are not mocking anyone. You are choosing which true fact to put next to
+which. That choice is the joke, and it is the only kind of joke this format
+writes.
+
+### VOICE
+
+Write for a fluent adult ESL speaker: good English, learned as a second
+language, not a huge vocabulary. She knows plain words instantly. She cannot
+decode abstract nouns at two hundred words a minute, and she cannot rewind.
+
+Both of these are accurate. Only one is worth watching.
+
+    DEAD: "Achilles stops fighting after Agamemnon takes Briseis, a captive
+           awarded to Achilles."
+    LIVE: "Agamemnon took his war prize, so the greatest warrior in Greece
+           refused to fight and sulked in his tent."
+
+    DEAD: "Ancient texts from the region mention conflicts, suggesting warfare
+           happened there."
+    LIVE: "Hittite kings wrote letters complaining about a troublesome city in
+           exactly that spot."
+
+Concrete nouns, verbs doing the work, something specific enough to picture.
+
+Note what the LIVE versions have that the DEAD ones do not: names. This is the
+same rule as `specifics`, arriving at sentence level.
+
+### THE JOKE IS A DRY ASIDE, NOT A JOKE
+
+State the real fact flat, then land a short, unattributed line that reacts to
+it. Never invent a funny fact and never explain one. The line stays in the same
+narration voice as every other sentence and never says who or what is
+reacting - no "Nifan", no pronoun for him (Section 1). Pass 2 hangs a
+[flatly] or [deadpan] tag on it and may stage him reacting in frame at that
+exact moment; the words never point at him.
+
+    FLAT FACT: "Stalin renamed the city of Tsaritsyn after himself. Twice,
+               under two different spellings."
+    ASIDE:     "Once wasn't enough, apparently."
+
+    FLAT FACT: "Hitler's art school rejection letter said his work showed
+               too many buildings and not enough people."
+    ASIDE:     "So the problem was never the drawing."
+
+The aside never lands on suffering. It reacts to vanity, hypocrisy, bureaucracy
+and absurd detail - never to a death toll, a victim or an atrocity. If the flat
+fact is a body count, no aside follows it at all.
+
+### EMOTION TAGS
+
+Added in a pass over the finished beats, not while writing them. Front of the
+narration, in square brackets, followed by one space. They do not count toward
+the spoken word budget.
+
+Use ONLY these:
+
+    [flatly] [deadpan] [sighs] [exhales] [curious] [surprised] [gasps]
+    [whispers] [sarcastic] [hesitates] [nervous] [sad] [excited]
+    [laughs] [mischievously]
+
+One beat in three carries a tag. Nothing outside that list, ever.
+
+[flatly] and [deadpan] are the house voice; reach for those most. Tag when the
+fact is absurd, when something turns, or on the beat before a shock. Do not tag
+purely mechanical setup, and do not tag every beat.
+
+A tag persists in the voice model until the next tag replaces it, so the beat
+after [whispers], [excited] or [laughs] MUST carry its own tag.
+
+WHY THIS LIVES HERE AND NOT IN PASS 2. The dry aside is written flat and
+unattributed, because the narration is never allowed to say who is reacting.
+That means the TAG is the only thing carrying the tone, and you are the only
+one who knows which flat line was meant as an aside. On the page, "Once wasn't
+enough, apparently" and "The tank held four hundred litres" look identical.
+Hand that to a later pass and it has to guess, and it guesses wrong. Tag your
+own asides.
+
+Every drop half of a `deflations` pair takes [flatly] or [deadpan] unless you
+have a specific reason otherwise. That is what the drop sounds like.
+
+### SHORT WORDS
+
+Always the short twin:
+
+    money not economic, trade not commerce, city not settlement, food not
+    provisions, fell apart not collapsed, guess not hypothesise, because of not
+    due to, most of not the majority of, showed not demonstrated, found not
+    uncovered, about not approximately, so not consequently, but not however,
+    also not furthermore.
+
+A long word is allowed when it IS the subject and you translate it on the spot:
+"oxytocin, the bonding chemical".
+
+BANNED IN NARRATION. Literal. If a beat contains one, rewrite the sentence:
+
+    systemic, economic, psychological, opportunistic, unavoidable, devastating,
+    catastrophic, significant, substantial, fundamental, essentially,
+    effectively, ultimately, consequently, furthermore, moreover, thereby,
+    whereby, in terms of, the concept of, the notion of, the emergence of, the
+    phenomenon of, a testament to, plays a role in, serves as, utilise,
+    facilitate, comprise, constitute.
+
+Also cut when only filling space: completely, totally, absolutely, incredibly,
+extremely, massively, entirely, actually, really.
+
+PLAIN WORDS, NOT JUST A LIST. The lines above are not the whole rule, only the
+words that kept coming back. Read every word before you commit to it.
+
+TEST: would a fluent adult who learned English as a second language - not a
+native speaker with a large vocabulary, someone who reads and speaks it well
+but did not grow up with it - know this exact word on sight, with no pause to
+place it? If there is any doubt, replace it with the plain word that means the
+same thing, even when the fancier word is not on any banned list above.
+
+THE EXCEPTION, AND IT MATTERS HERE. A proper noun, an official title, a rank,
+an organisation's real name, a person's name, a place name, or a specific
+technical term the topic is actually about is NEVER simplified. A name cannot
+be swapped for a plainer word, and swapping it is how a script ends up with no
+names in it at all. Keep the name and explain what it means in plain words the
+first time it appears, the same way "oxytocin, the bonding chemical" works
+above.
+
+The plain-word rule governs the words AROUND the facts. It never governs the
+facts.
+
+### NEVER PAD TO REACH THE WORD COUNT
+
+    PADDED: "the vaccine produces a completely comprehensive immune response"
+    REAL:   "the vaccine teaches the immune system what to look for"
+
+If a beat is short, add a new short sentence carrying NEW information.
+
+### RHYTHM
+
+Short sentences, VARIED lengths. Nine words then nine words, forty times
+running, is a metronome once a voice reads it. This holds INSIDE a beat as well
+as across beats: the long/short alternation above fixes the cut rate, not the
+sentences, and a script can obey the tiers perfectly and still read flat.
+
+    METRONOME: "The needle goes in fast. A small dose of dead virus enters
+                the muscle right away."
+    ALIVE:     "The needle goes in fast. A small, dead dose slips into the
+                muscle."
+
+Read the line aloud once. If you trip, cut the clause.
+
+Also:
+
+* Numbers as words. Round them and put them next to something for scale.
+* At most one new name per beat. This is a ceiling, not a target - a script
+  that never reaches it has a different problem. See `specifics`.
+* No "it" or "they" if what it refers to is more than one sentence back.
+* No idioms that do not survive translation.
+* Nobody is quoted, but people must still talk to each other, reported by the
+  narrator, and something must happen because of it.
+* Say plainly what is uncertain.
+
+
+---
+
+## 6. ACCURACY
+
+Search the web and verify every claim. Do not rely on memory.
+
+* Prefer primary sources: peer-reviewed papers, official data, museum and
+  university pages, original reporting. Wikis and blogs are a starting point,
+  not a source.
+* If it is a popular theory or a disputed claim, say so plainly in the
+  narration: "some scientists think", "this is still debated".
+* If you cannot verify it, do not use it. There is no invented-mechanics
+  exception in an explainer - every beat's claim has to trace to a real
+  source in `facts_to_check`.
+* When sources disagree on a number, do not pick one and state it flatly. Say
+  "a few dozen", or name the source.
+* Keep traditions, studies and time periods apart when they come from
+  different places and eras.
+* Do not pin the video to a version number, a price or a release date. The
+  mechanism is the subject, and mechanisms have no version number.
+* Name whoever produced an estimate, or drop it. "Studies show" is vague
+  framing wearing a lab coat.
+* Anything unverified goes in `plan.facts_to_check` with its source.
+
+This section and `specifics` pull in the same direction, not opposite
+directions. Verification is what MAKES a specific usable. The failure mode
+this file is guarding against is not a script that got a number wrong - it is a
+script that avoided every number so there was nothing to get wrong.
+
+`plan.facts_to_check` IS NOT A DISCLAIMER LIST. It is a constraint list.
+
+Everything you put in it binds the beats. If you write down that a claim is
+disputed, no beat states it as settled. If you write down that a number is a
+rough estimate, no beat states it as exact. Writing the fact down and then
+contradicting it for thirty beats is worse than never checking, because you
+knew.
+
+Before you write beat one, read `facts_to_check` back and list, for yourself,
+which beats each entry restricts. After the beats are written, read it back
+again and check them.
+
+
+---
+
+## 7. WHAT PASS 2 NEEDS FROM YOU
+
+You are not writing image prompts, but pass 2 can only draw what you leave it.
+Three things it cannot fix afterwards:
+
+1.  A beat with nothing physical in it. "The idea spread quickly" has no
+    object, no person and no place. Pass 2 will invent something generic to
+    fill the frame. Write the beat around the thing instead: who moved, what
+    they carried, where it landed.
+
+2.  A location that is not a place. Pass 2 writes one physical description per
+    location and pastes it into every beat of that location. If your location
+    name is a concept, that description cannot be written.
+
+3.  Narration that depends on words appearing on screen. The image generator
+    cannot spell. Never write a beat whose sense requires the viewer to read a
+    headline, a label or a sign in the picture. The narration says what the
+    words are; the picture only ever shows the paper.
+
+Real names, dates and numbers in the NARRATION are fine and wanted. Those never
+reach the image generator. Pass 2 strips them from the visuals on its own.
+
+
+---
+
+## 8. CHECK BEFORE OUTPUT
+
+Go back through the beats and LOOK. Do not answer these from memory.
+
+### Naming
+
+* no `narration` contains "Nifan"
+* no `narration` contains "the reference character"
+* no `narration` uses "he", "him" or "his" to mean the illustrated character,
+  and no `narration` uses "you" for him either - every pronoun points at a
+  real person or thing the topic is about
+* every `narration` still makes complete sense with the illustrated character
+  erased from its frame
+
+### Count
+
+* beats equal BEATS exactly
+* five to six locations, none shorter than eight beats, ranges cover every
+  beat, every `location` string matches the plan character for character
+* the whole script totals 500 to 540 spoken words - count them, this sets the
+  video's length and outranks the per-beat bands
+* the whole script averages near nine spoken words a beat
+* between a third and two thirds of beats are SHORT (4 to 8 spoken words),
+  the rest LONG (10 to 15), and no beat exceeds 15
+* no more than three short beats in a row, and no more than two long
+* AT LEAST TWENTY BEATS carry a specific: a proper noun, a real number with
+  its unit, or a named person doing a named thing. Count them one by one. If
+  the number is under twenty, the script is the aircraft-window script again
+  and the fix is not rewriting sentences, it is spending `plan.specifics`
+* `plan.specifics` has ten or more entries and every `beat` field is filled in
+  with the beat number that spends it
+* `plan.absurdities` is filled in, each entry naming a person and what they
+  actually did, and every one of them reaches the script as a beat
+* `plan.deflations` is filled in and every entry reaches the script. For each
+  one, LOOK at `build_beat` and `drop_beat`: drop_beat is build_beat plus one,
+  the build beat is 10 to 15 words and states the assumption straight, and the
+  drop beat is 4 to 8 words. If the drop is the longer of the two, the pair is
+  inverted - swap them. Four to six pairs across the video, never two in a
+  row, and none followed by a beat that explains the deflation
+* every `deflations.assumed` is actually SAID by its build beat. If no beat
+  in the script states the assumption out loud, the drop lands on nothing
+* every `specifics.fact` contains a number, a date, or a named person doing a
+  named thing - no bare names
+* every `specifics.source` names a real document, archive, publication or
+  person, not a category
+* no `narration` contains a quotation mark or an em dash, and the only square
+  brackets are emotion tags from the Section 5 list
+* at least one beat in three carries a tag, every tag is from the list, and no
+  [whispers], [excited] or [laughs] is followed by an untagged beat
+* the 500 to 540 word count was taken with the tags stripped out
+* no beat contains an image prompt, a visual anchor or a music prompt
+
+### Read
+
+* EVERY SHORT BEAT survives the deletion test: remove it, read its neighbours
+  back to back, and something is genuinely lost. Do this beat by beat. A
+  transition, a signpost, a restatement or a promise is not new information
+* beat one opens directly on the wrong assumption almost everyone believes
+  about this topic, not a scene and not a character being introduced, and it
+  is specific enough that it would not fit unchanged at the front of a
+  different explainer
+* beat two does not restate beat one, and nothing in the narration ever wakes
+  up, stands anywhere, or gets introduced by name
+* the true mechanism is named by the end of beat three, not merely contradicted
+* beat three contains the spine question
+* the next question is said out loud roughly every sixteen to twenty beats,
+  giving three sections across the video, and each `plan.sections` entry is
+  labelled with the question it answers
+* every beat answers the question the beat before it raised; no two beats
+  could swap places without breaking anything
+* every pair of beats joins with BUT or THEREFORE
+* every beat that says WHY something is the way it is names a person, a
+  company or a committee and what they wanted. If a beat's reason is
+  "efficiency", "cost pressures", "practical considerations" or any other
+  category with the human removed, the person is still hiding in it
+* the wrong assumption from beat one is still doing work after beat twenty.
+  If the script has quietly become a neutral walkthrough, the deflations are
+  not spread widely enough
+* every section ends with a turn: the answer creates a new question, or
+  overturns what the previous answer seemed to settle
+* no new fact appears in the last few beats that was not already planted
+  earlier
+* the last five beats make five DIFFERENT points. If two say the same thing,
+  delete one and spend it earlier on whatever a viewer finds hardest. Never fix
+  a shortage by restating
+* the last beat answers the opening question in one line and never says "so
+  that is how it works"
+* every entry in `plan.facts_to_check` is checked against the beats, and no
+  beat states a disputed or estimated claim as flat settled fact
+* no word in any narration would make a fluent adult ESL speaker pause to
+  place it, unless it is a proper noun, title or named technical term
+  translated in plain words on its first use
+* nothing anywhere mentions the video, the viewer or the channel
+
+Then output the JSON, and nothing else.

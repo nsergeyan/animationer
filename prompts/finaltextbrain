@@ -1,0 +1,42 @@
+Write a script about (Why do so many people hate Anime?) its an explaining video. Use ONLY verified information and Use in correct places jokes, sarcasm, etc. (no cringe) here is the structure you have to fill it in:
+Use simple words, and explain everything simply so average non english native speaker can understand it.
+While writing the narration dont use any "", \,\
+AND REMEMBER YOU ARE WRITING A NARRATION THAT WILL BE USED FOR TEXT TO SPEACH AI VOICE
+
+I WANT 55 BEATS.
+{
+  "topic": "short slug-like title",
+  "format": "explainer",
+  "plan": {
+    "spine_question": "the one question the video answers, in plain words",
+    "payoff_line": "the last beat, written before the others",
+    "deflations": [
+      { "assumed": "", "actual": "", "who_decided": "", "build_beat": "", "drop_beat": "" }
+    ],
+    "specifics": [ { "fact": "", "source": "", "beat": "" } ],
+    "facts_to_check": [ { "claim": "", "source": "" } ]
+  },
+  "beats": [ { "narration": "" } ]
+}
+
+GIVE THE FINAL JSON FILE.
+
+ELEVENLABS V3 AUDIO TAGS RULE
+At least 20% of the narrations has to have performance tags.
+
+Emotional states: [excited], [nervous], [frustrated], [sorrowful], [calm], [curious], [crying], [sarcastic], [mischievously], [angry], [sad], [happy], [annoyed], [appalled], [thoughtful], [surprised]
+
+Laughter & breath: [laughs], [laughs harder], [starts laughing], [wheezing], [chuckles], [sighs], [exhales], [inhales deeply], [exhales sharply]
+
+Delivery: [whispers]
+
+Non-verbal: [clears throat], [gulps], [swallows], [snorts]
+
+Sound effects (sparingly): [gunshot], [applause], [clapping], [explosion]
+
+Experimental variants (allowed): [frustrated sigh], [happy gasp], [excitedly], [dramatically], [curiously], [nervously], [quietly],
+
+Tags can be layered: "[nervously] I... I'm not sure this works. [sighs] But let's try."
+
+PUNCTUATION FOR DELIVERY
+Comma → short pause. Period → full stop. Question mark → questioning tone. Exclamation → emphasis. Ellipsis (...) → suspense pause. CAPITALIZATION → spoken emphasis on a word.

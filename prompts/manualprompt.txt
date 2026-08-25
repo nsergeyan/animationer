@@ -1,4 +1,4 @@
-TOPIC:   <describe the what-if premise here, e.g. "What if you were an ordinary sailor on Odysseus's crew trying to get home from Troy">
+TOPIC:  what if you were a scientist in scp universe?
 FORMAT:  what-if
 BEATS:   45
 

@@ -1,0 +1,1828 @@
+SCRIPT:
+
+{
+  "topic": "moon-landing-fake",
+  "format": "explainer",
+  "plan": {
+    "spine_question": "Why do millions of people still think the Apollo 11 moon landing was a giant movie set?",
+    "payoff_line": "So, the moon landing is real, but human paranoia? That's the real infinite universe.",
+    "deflations": [
+      {
+        "assumed": "The flag blowing in the wind proves it was filmed on Earth.",
+        "actual": "It is rippling because of a metal rod and the twisting motion used to plant it, not wind.",
+        "who_decided": "People who do not understand vacuum physics.",
+        "build_beat": "[frustrated] 'Look at it! It is blowing in the wind!'",
+        "drop_beat": "[laughs] It is not wind. It is just... physics."
+      }
+    ],
+    "specifics": [
+      {
+        "fact": "Over 400,000 people worked on the Apollo project.",
+        "source": "NASA historical archives",
+        "beat": "Four hundred thousand people worked on the Apollo project."
+      }
+    ],
+    "facts_to_check": [
+      {
+        "claim": "Astronauts passing through the Van Allen belts received only a small, non-lethal dose of radiation.",
+        "source": "NASA / radiation dosimetry records from Apollo missions"
+      }
+    ]
+  },
+  "beats": [
+    {
+      "narration": "[curious] Let's travel back to 1969."
+    },
+    {
+      "narration": "The US sent humans to the moon... or so they say."
+    },
+    {
+      "narration": "[sarcastic] Because some people think the whole thing was filmed in a Hollywood basement."
+    },
+    {
+      "narration": "Yes. A basement."
+    },
+    {
+      "narration": "But WHY do people believe this?"
+    },
+    {
+      "narration": "First, let's look at the famous flag."
+    },
+    {
+      "narration": "[frustrated] 'Look at it! It is blowing in the wind!'"
+    },
+    {
+      "narration": "There is NO wind in space, genius."
+    },
+    {
+      "narration": "So it MUST be fake, right?"
+    },
+    {
+      "narration": "[sighs] Wrong."
+    },
+    {
+      "narration": "NASA knew a regular flag would just hang straight down and look sad."
+    },
+    {
+      "narration": "So they put a metal rod along the top to hold it out."
+    },
+    {
+      "narration": "But the rod got stuck."
+    },
+    {
+      "narration": "Plus, the astronauts twisted the pole to push it into the hard dirt."
+    },
+    {
+      "narration": "That twisting made the flag ripple."
+    },
+    {
+      "narration": "[laughs] It is not wind. It is just... physics."
+    },
+    {
+      "narration": "Okay, next point."
+    },
+    {
+      "narration": "Conspiracy fans say: 'Where are the stars in the photos?'"
+    },
+    {
+      "narration": "Space is full of stars, right?"
+    },
+    {
+      "narration": "True. But think about how cameras work."
+    },
+    {
+      "narration": "The sun was shining VERY brightly on the moon."
+    },
+    {
+      "narration": "The astronauts were wearing bright white suits."
+    },
+    {
+      "narration": "To take a good picture of bright things, your camera needs a quick snap."
+    },
+    {
+      "narration": "If the camera waited long enough to see the dim stars..."
+    },
+    {
+      "narration": "[loudly] The astronauts would look like giant glowing ghosts."
+    },
+    {
+      "narration": "Try taking a picture of the stars with your phone while standing under a bright street lamp."
+    },
+    {
+      "narration": "[annoyed] See? No stars."
+    },
+    {
+      "narration": "Now, let’s talk about Stanley Kubrick."
+    },
+    {
+      "narration": "Some people think the government hired this famous movie maker to direct the fake landing."
+    },
+    {
+      "narration": "Because he made a famous space movie."
+    },
+    {
+      "narration": "[laughs harder] But here is the funny part."
+    },
+    {
+      "narration": "Kubrick was known for wanting everything to be absolutely perfect."
+    },
+    {
+      "narration": "If he directed the moon landing..."
+    },
+    {
+      "narration": "He would have demanded they shoot it on real location."
+    },
+    {
+      "narration": "[snorts] On the actual moon."
+    },
+    {
+      "narration": "What about the deadly radiation?"
+    },
+    {
+      "narration": "Earth has invisible rings of radiation around it."
+    },
+    {
+      "narration": "People say flying through them would cook the astronauts like hot pockets."
+    },
+    {
+      "narration": "[calm] But NASA was not stupid."
+    },
+    {
+      "narration": "The rocket moved VERY fast."
+    },
+    {
+      "narration": "They passed through the thinnest part of the rings."
+    },
+    {
+      "narration": "Total radiation they got was about the same as a hospital X-ray."
+    },
+    {
+      "narration": "Not great, but definitely not deadly."
+    },
+    {
+      "narration": "So, the science clearly shows the landing was real."
+    },
+    {
+      "narration": "Why do the fake stories survive?"
+    },
+    {
+      "narration": "Because our brains are built to look for secrets."
+    },
+    {
+      "narration": "When something HUGE happens, a simple explanation feels boring."
+    },
+    {
+      "narration": "We want a big mystery."
+    },
+    {
+      "narration": "It makes the believer feel special. Like they know a secret we do not."
+    },
+    {
+      "narration": "[thoughtful] Plus, trusting the government is hard."
+    },
+    {
+      "narration": "But keeping a secret THIS big?"
+    },
+    {
+      "narration": "Four hundred thousand people worked on the Apollo project."
+    },
+    {
+      "narration": "You can not even get four friends to agree on a pizza topping."
+    },
+    {
+      "narration": "[chuckles] Imagine keeping 400,000 people quiet for fifty years."
+    },
+    {
+      "narration": "So, the moon landing is real, but human paranoia? That's the real infinite universe."
+    }
+  ]
+}
+
+
+
+PASS 2 OF 2 — THE VISUALS
+
+The script above is finished.
+
+You do not write narration, you do not judge it, and you do not improve it.
+
+You add everything the pipeline needs to turn it into a video:
+
+one image_prompt per beat
+one image_prompt_alt per beat
+one physical visual_anchor per location
+one setting_anchor
+emotion tags remain untouched
+one music_prompt
+
+Your output is the complete final JSON: the pass 1 object with your fields
+merged into it.
+
+The visual pass is optimized for Nano Banana.
+
+IMPORTANT LOCATION RULE:
+
+The input script may contain narration only and may contain NO locations.
+
+Do NOT assume that Pass 1 provides locations.
+
+If Pass 1 contains no locations, you MUST creatively generate the locations
+yourself from the narration before writing the visual prompts.
+
+The generated locations must be physically believable, visually interesting,
+specific to the subject being discussed, and useful for staging the
+reference character.
+
+Locations are part of the visual design.
+
+Do not merely invent generic locations such as "room", "office", "studio",
+"warehouse", "lab", "street", or "hallway" unless the narration genuinely
+requires that exact environment.
+
+Instead, infer what physical environment would make each part of the
+narration interesting to see.
+
+The location may be a literal place where the event happened OR a physical
+visual storytelling environment containing evidence, objects, diagrams,
+photographs, equipment, documents, reconstructions, or other physical
+representations of what the narration discusses.
+
+The location does not need to be historically literal when a more useful
+visual storytelling environment would communicate the narration better.
+
+For example:
+
+narration about lost NASA recordings
+→ "forgotten aerospace archive"
+
+narration about an absurd conspiracy
+→ "cramped conspiracy evidence workshop"
+
+narration about strange scientific experiments
+→ "crowded experimental workshop"
+
+narration about political decisions
+→ "government back-room briefing chamber"
+
+narration about old radio transmissions
+→ "underground radio monitoring room"
+
+narration about unexplained photographs
+→ "forensic photography archive"
+
+narration about conflicting historical evidence
+→ "overcrowded historical evidence room"
+
+The generated location should feel specific, memorable, and visually useful.
+
+Do NOT make every location comedic.
+
+When the narration is absurd, humorous, suspicious, or ridiculous, the physical
+location may contain slightly absurd but believable visual staging.
+
+The humour should come from the physical environment and situation, not from
+written jokes, captions, or text.
+
+The location must still make sense for the subject.
+
+The primary prompt uses canonical names for recognizable subjects OTHER THAN
+THE REFERENCE CHARACTER.
+
+The reference character is ALWAYS represented by the exact phrase:
+
+reference character
+
+The alternate removes canonical names for OTHER named subjects and replaces
+them with physical descriptions, while the reference character remains:
+
+reference character
+
+0. PRIORITY
+
+If two instructions collide, the earlier section wins.
+
+Work in this order:
+
+Copy topic, format, and the whole plan across unchanged EXCEPT for locations
+when locations are missing or insufficient.
+
+Determine whether Pass 1 contains usable locations.
+
+If locations are present and clearly appropriate, preserve them exactly.
+
+If locations are missing, incomplete, or unusable, generate the necessary
+locations yourself from the narration.
+
+Create the complete location system before writing image prompts.
+
+Write plan.locations[].visual_anchor for every location.
+
+Decide plan.setting_anchor.
+
+Copy every beat's location and narration across character for character when
+the location already exists in Pass 1.
+
+When a beat has no location, assign it one of the generated locations.
+
+Preserve every emotion tag exactly.
+
+Identify the reference character and every other visually relevant character
+or named subject in each beat.
+
+Write image_prompt and image_prompt_alt for beats 1 to N in order.
+
+Write music_prompt.
+
+Run Section 41 by checking every beat individually.
+
+Output one raw JSON object and nothing else.
+
+1. THE REFERENCE CHARACTER — PERSISTENT VISUAL NARRATOR
+
+This is the most important character rule.
+
+The recurring main character is called:
+
+reference character
+
+The exact lowercase phrase reference character MUST appear in every
+image_prompt.
+
+The exact lowercase phrase reference character MUST appear in every
+image_prompt_alt.
+
+The reference character is a persistent visual narrator/observer.
+
+They are allowed to appear in every beat even when the narration does not
+explicitly mention them.
+
+Their presence does NOT mean that they are one of the historical people being
+discussed.
+
+They are the visual stand-in for the viewer/narrator and can quietly react to
+the information being presented.
+
+The reference character should therefore usually be doing one of these:
+
+sitting at the desk
+leaning against the desk
+standing beside a visual prop
+looking at a diagram
+staring at a photograph
+watching another character
+sitting on the couch
+standing beside the shadow board
+examining an object
+looking skeptical
+looking bored
+looking annoyed
+looking unimpressed
+looking confused
+looking curious
+looking tired
+looking surprised
+looking toward the relevant evidence
+quietly observing the event
+
+The reference character should NOT automatically become the subject of the
+historical event.
+
+For example, if the narration discusses Apollo astronauts, do NOT turn the
+reference character into an Apollo astronaut unless the script specifically
+requires that.
+
+Instead, the reference character can observe the astronaut material from the
+edge of the frame.
+
+2. REFERENCE CHARACTER EMOTIONAL BASELINE
+
+The reference character has a recurring personality:
+
+slightly bored, skeptical, unimpressed, or mildly irritated by the absurdity
+of what is being discussed.
+
+This personality should appear subtly throughout the visuals.
+
+The reference character may look:
+
+bored
+tired
+skeptical
+mildly annoyed
+unimpressed
+deadpan
+confused
+curious
+resigned
+
+Choose the emotion that best fits the beat.
+
+Do not make the character wildly expressive in every shot.
+
+The default should be a restrained, slightly bored or unimpressed reaction.
+
+When the narration contains a particularly absurd claim, the reference
+character may visibly look more annoyed or incredulous.
+
+When the narration reveals useful evidence, the reference character may look
+curious or interested.
+
+When the narration reaches a major reveal, the reference character may look
+genuinely annoyed, disappointed, surprised, or skeptical as appropriate.
+
+When the narration reaches the final payoff, the reference character may look
+tired, resigned, or amused.
+
+IMPORTANT:
+
+Narration emotion tags such as:
+
+[sarcastic]
+[laughs]
+[annoyed]
+[thoughtful]
+
+describe the AUDIO DELIVERY.
+
+They do NOT automatically require the reference character to perform the same
+emotion physically.
+
+Use the narration's meaning and context to choose the reference character's
+visual reaction.
+
+3. THE REFERENCE CHARACTER MUST NOT HIJACK THE SCENE
+
+The reference character is persistent, but they must remain visually secondary
+when the beat describes an important historical event.
+
+The reference character can be:
+
+foreground observer
+side-positioned observer
+seated nearby
+standing at the edge
+partially turned toward the evidence
+looking at a diagram
+watching another character
+
+But do not make the reference character replace:
+
+astronauts
+NASA engineers
+Soviet operators
+historical figures
+crowds
+workers
+scientists
+other required subjects
+
+The reference character is an observer unless the narration specifically
+requires them to participate.
+
+4. REFERENCE CHARACTER IS ALWAYS PRESENT
+
+For this pipeline, the reference character is a persistent recurring visual
+element.
+
+Therefore:
+
+EVERY image_prompt MUST contain:
+
+reference character
+
+EVERY image_prompt_alt MUST contain:
+
+reference character
+
+The reference character must also be visually present in every resulting frame.
+
+If the beat contains a historical scene, place the reference character as a
+visually separate observer.
+
+If the beat contains an object, diagram, photograph, or physical demonstration,
+place the reference character beside it or observing it.
+
+If the beat discusses something happening elsewhere, the reference character
+can react to a physical representation of that subject.
+
+Examples:
+
+reference character sits beside a lunar photograph
+
+reference character stands beside a shadow diagram
+
+reference character watches two aerospace workers examine equipment
+
+reference character sits on the couch with a skeptical expression while a
+large lunar photograph rests on the nearby table
+
+Do NOT omit the reference character simply because the narration does not
+explicitly mention them.
+
+5. THE REFERENCE CHARACTER IS NOT THE ONLY CHARACTER
+
+This remains important.
+
+reference character identifies the recurring visual narrator.
+
+It does NOT mean that every person in the frame must be the reference
+character.
+
+If the script requires another person or group to be visually represented,
+show that person or group as a separate subject.
+
+Never replace them with reference character.
+
+Never merge them into reference character.
+
+The reference character may observe them.
+
+6. CHARACTER CASTING RULE
+
+For every beat, determine the complete visual cast.
+
+Internally identify:
+
+reference character
+other named characters
+other unnamed characters
+groups or crowds
+
+Then determine which subjects are visually necessary.
+
+The reference character is always required.
+
+Other characters are only required when the narration, plan, or visual event
+actually benefits from showing them.
+
+IMPORTANT:
+
+A person merely mentioned in narration does NOT automatically need to appear.
+
+For example:
+
+"Shot in a Hollywood basement by a famous movie director."
+
+does not require showing a specific movie director.
+
+The visual can instead show:
+
+reference character + film equipment + staged lunar set
+
+unless a specific director is genuinely being depicted.
+
+7. CANONICAL NAMES IN PRIMARY PROMPTS
+
+For characters OTHER THAN the reference character:
+
+If an official or canonical name exists and that character is visually present,
+the primary prompt MUST use the canonical name.
+
+Examples:
+
+Neil Armstrong
+Buzz Aldrin
+Stanley Kubrick
+Nikita Khrushchev
+
+Use the correct canonical name for the actual character.
+
+Do not invent a canonical name.
+
+Do not use a canonical name merely because the narration mentions a person if
+that person is not visually present.
+
+8. REFERENCE CHARACTER CANONICAL NAME OVERRIDE
+
+If the narration names the person represented by the reference character,
+DO NOT use that person's name in either image prompt.
+
+Always use:
+
+reference character
+
+The reference character's identity is controlled by the external reference
+image/system and must never be replaced with a canonical name.
+
+9. OTHER NAMED CHARACTERS IN ALTERNATE PROMPTS
+
+For characters OTHER THAN the reference character:
+
+PRIMARY:
+
+canonical name + physical scene
+
+ALT:
+
+physical description + physical scene
+
+The alternate must describe the same person.
+
+Do not replace a named historical person with reference character.
+
+10. MULTIPLE CHARACTERS
+
+If the script requires multiple characters, all required characters must appear
+in both primary and alternate.
+
+The reference character must also remain present.
+
+Example:
+
+PRIMARY:
+
+reference character watches Neil Armstrong and Buzz Aldrin beside the lunar
+module, Armstrong positioned on the left while Aldrin stands beside an
+equipment rack, medium three-shot, white pressure suits, red equipment
+markings, blue cable beside the landing leg
+
+ALT:
+
+reference character watches two male astronauts in bulky white pressure suits
+with clear helmet visors and rectangular life-support packs, one positioned on
+the left and the other beside an equipment rack, wider three-shot, red equipment
+markings, blue cable beside the landing leg
+
+The alternate must preserve:
+
+same number of required characters
+same character identities
+same relative relationships
+same action
+same story moment
+
+The reference character remains present in both.
+
+11. GROUPS AND CROWDS
+
+If the narration requires a group, preserve the group in both prompts.
+
+The reference character remains separate from the group unless the narration
+specifically makes them a member of it.
+
+Example:
+
+PRIMARY:
+
+reference character watches NASA engineers seated at long rows of control
+consoles, several engineers turning toward a central monitor, medium-wide shot,
+pale shirts, dark trousers, blue console panels, red indicator lamps
+
+ALT:
+
+reference character watches several aerospace workers in pale shirts, dark
+trousers, and headsets seated at long rows of consoles, wider side angle, blue
+console panels, red indicator lamps, black cables running beneath the desks
+
+12. DO NOT INVENT CHARACTERS
+
+The reference character is NOT considered an invented character.
+
+They are a mandatory persistent visual narrator.
+
+Additional characters should only appear when:
+
+the narration explicitly requires them
+the visual event logically requires them
+the plan requires them
+they are needed to depict the described interaction
+
+Do not add random:
+
+astronauts
+engineers
+soldiers
+scientists
+bystanders
+crowds
+family members
+movie directors
+
+just to make the frame more populated.
+
+The only exception is the mandatory reference character.
+
+13. SAME CAST IN PRIMARY AND ALTERNATE
+
+The primary and alternate must depict the same required cast.
+
+The reference character must appear in both.
+
+If PRIMARY contains:
+
+reference character + Neil Armstrong + Buzz Aldrin
+
+ALT must contain:
+
+reference character + physical Neil Armstrong description +
+physical Buzz Aldrin description
+
+Do not remove a required character in the alternate.
+
+Do not introduce a new required character in the alternate.
+
+Do not merge two distinct characters into one.
+
+Do not replace any required character with the reference character.
+
+14. SCRIPT IS READ-ONLY
+
+Every narration string in the output must be byte-identical to the input.
+
+This includes emotion tags.
+
+Never:
+
+reword
+resize
+split
+merge
+fix grammar
+swap words
+add clauses
+remove clauses
+reorder beats
+add beats
+drop beats
+
+If a location already exists in Pass 1, preserve it unchanged.
+
+If a beat has no location, generate one.
+
+Generated locations are the ONLY new narrative-supporting information that may
+be introduced by the visual pass.
+
+The visual prompt may interpret the narration, but it must NEVER modify the
+narration.
+
+15. LOCATION GENERATION
+
+The input may contain no locations.
+
+Before creating image prompts, inspect every beat and determine whether it has
+a usable physical location.
+
+If a usable location is present:
+
+preserve it exactly
+reuse it consistently
+create its visual_anchor
+
+If a location is absent:
+
+invent a concrete physical location based on the narration.
+
+If the existing location is too generic to support useful visualization, you
+may replace it with a more specific generated physical location ONLY when the
+location was not explicitly supplied by the original plan.
+
+Never overwrite an explicit Pass 1 location merely because you prefer another
+one.
+
+Every beat must ultimately have a physical location.
+
+A generated location should answer:
+
+"Where could I physically stage this narration so that the resulting image is
+interesting and immediately connected to the subject?"
+
+The location may be:
+
+literal
+reconstructed
+archival
+investigative
+scientific
+historical
+technical
+domestic
+institutional
+industrial
+governmental
+eccentric
+slightly absurd
+
+depending on the narration.
+
+Do not use random locations unrelated to the subject.
+
+16. LOCATION DESIGN
+
+Generated locations should be visually distinctive.
+
+Prefer:
+
+specific architecture
+unusual but believable furniture
+recognizable structural features
+strong material combinations
+two saturated accent colours
+objects related to the narration
+interesting spatial arrangements
+
+Examples:
+
+cramped aerospace archive
+forgotten radio monitoring room
+eccentric astronomy workshop
+government basement map room
+overcrowded evidence archive
+old broadcast recording room
+experimental engineering workshop
+forensic photography archive
+museum storage corridor
+conspiracy evidence workshop
+newspaper research back room
+technical restoration room
+
+Avoid relying on generic labels such as:
+
+room
+office
+studio
+lab
+warehouse
+hallway
+building
+street
+
+unless genuinely appropriate.
+
+17. LOCATION VISUAL ANCHOR
+
+Write:
+
+plan.locations[].visual_anchor
+
+for every location.
+
+Aim for 25 to 40 words.
+
+Include:
+
+wall materials
+floor materials
+window or door shapes
+two or three fixed furnishings
+two saturated colours
+visible structural details
+
+Use only visible materials, shapes, furniture, architecture, and colours.
+
+Do not use:
+
+dates
+decades
+centuries
+era names
+abstract concepts
+historical labels
+invisible information
+moods
+camera instructions
+style instructions
+
+Example:
+
+"rough cream plaster walls, worn dark timber floorboards, two tall rectangular
+windows, a heavy wooden workbench, one steel filing cabinet, red archive boxes
+and blue equipment cases, exposed electrical conduit beneath the ceiling"
+
+The anchor describes the STABLE LOCATION.
+
+Do not describe temporary actions that belong in individual beats.
+
+18. LOCATION CONTINUITY
+
+If multiple beats clearly belong to the same conceptual environment, reuse the
+same location.
+
+Do not invent a completely new room for every sentence.
+
+A location can evolve through:
+
+movable objects
+characters
+evidence
+equipment
+camera position
+temporary activity
+
+Create a new location when:
+
+the subject changes substantially
+the physical environment needs to change
+the story moves to a fundamentally different setting
+another environment provides substantially better visualization
+
+Maintain strong continuity within recurring locations.
+
+19. LOCATION NAME RULE
+
+Every beat MUST have a location.
+
+Every location must have a short concrete name.
+
+Good:
+
+"forgotten aerospace archive"
+
+"underground radio monitoring room"
+
+"cramped evidence workshop"
+
+"government map room"
+
+Bad:
+
+"the mystery"
+
+"the conspiracy"
+
+"the problem"
+
+"the evidence"
+
+"the past"
+
+A location name must describe a physical place.
+
+20. DO NOT WRITE THE LOCATION INTO THE BEAT
+
+The location anchor is appended automatically.
+
+Never repeat it.
+
+Never paraphrase it.
+
+Never summarize it.
+
+The beat prompt describes what changes from beat to beat:
+
+characters
+actions
+body positions
+reference character reaction
+important objects
+camera position
+framing
+story-specific changes
+
+21. SETTING ANCHOR
+
+Use a setting_anchor only if the entire video genuinely shares a recurring
+visual motif.
+
+Good examples:
+
+recurring red warning lamps and blue instrument panels
+identical yellow hazard markings on equipment
+repeated dark wood surfaces with red archive materials
+
+If no universal motif exists:
+
+"setting_anchor": ""
+
+Do not invent one merely to fill the field.
+
+The setting_anchor must NOT replace location anchors.
+
+The setting_anchor must NOT duplicate an entire location.
+
+It describes a recurring visual motif across multiple locations, not a place.
+
+22. PRIMARY IMAGE PROMPT
+
+Each image_prompt is one single line.
+
+Target 40 to 70 words.
+
+Never exceed 90 words.
+
+Start lowercase.
+
+Do not include the location name.
+
+The pipeline automatically appends the location anchor and setting anchor.
+
+The primary prompt must combine:
+
+reference character
+canonical names for other named characters when visually present
+physical action
+body position
+spatial relationships
+framing
+important objects
+physical details
+saturated colours
+a subtle visual reaction from the reference character
+
+The reference character does not have to be the main subject.
+
+Example:
+
+reference character sits at the edge of a desk with a bored skeptical
+expression, looking toward a large lunar photograph while one gloved astronaut
+stands beside a planted flag, medium-wide shot, brushed metal equipment case,
+white fabric suit, red flag stripes, blue binder beside the desk
+
+23. REFERENCE CHARACTER PLACEMENT
+
+Do not force the reference character into the center of every frame.
+
+Vary their placement naturally:
+
+foreground left
+foreground right
+seated in the background
+standing beside the evidence
+leaning against furniture
+partially turned toward the subject
+beside a board
+beside a photograph
+seated on the couch
+standing near the edge of the frame
+
+The reference character should feel like a recurring host silently reacting to
+the explanation.
+
+24. REFERENCE CHARACTER REACTION VARIATION
+
+Avoid repeating the exact same reaction in every beat.
+
+Vary subtle reactions according to context:
+
+bored
+skeptical
+unimpressed
+curious
+mildly annoyed
+confused
+resigned
+surprised
+thoughtful
+amused
+disappointed
+
+Default toward restrained reactions.
+
+Do not make every beat exaggerated.
+
+Do not make the character smile in every frame.
+
+Do not make the character angry in every frame.
+
+Do not make the character point at the camera in every frame.
+
+25. PHYSICAL DESCRIPTION
+
+Every non-named person must be physically described.
+
+Every group must be physically described.
+
+Every creature must be physically described.
+
+Every vehicle must be physically described.
+
+Every newly introduced major object must be physically described.
+
+The reference character does not need to be physically re-described if the
+reference system already provides their appearance.
+
+BAD:
+
+two engineers stand nearby
+
+GOOD:
+
+two engineers in pale blue shirts, dark trousers, black shoes, and headsets
+stand beside the console while reference character watches from the foreground
+
+26. RECURRING CHARACTER CONTINUITY
+
+Recurring characters must retain their core appearance.
+
+Keep consistent:
+
+approximate height
+build
+hair
+face-defining features
+clothing
+footwear
+accessories
+distinctive markings
+colour palette
+
+The reference character is always identified with:
+
+reference character
+
+Do not randomly change the reference character's appearance from beat to beat.
+
+Do not describe contradictory clothing or physical traits for the reference
+character.
+
+Other recurring characters should also remain visually consistent.
+
+27. NO DATES OR ERA NAMES IN VISUAL PROMPTS
+
+Never put dates, decades, centuries, or era names in:
+
+image_prompt
+image_prompt_alt
+visual_anchor
+setting_anchor
+
+Do not use:
+
+nineteenth century
+medieval
+Victorian
+1800s
+ancient era
+futuristic era
+1960s
+1980s
+
+Translate dates into visible physical evidence:
+
+clothing
+architecture
+equipment
+vehicles
+materials
+construction
+
+28. MATERIAL AND COLOUR REQUIREMENTS
+
+Every primary and alternate prompt should contain:
+
+at least two precise material details
+at least two saturated colours
+a clear physical action
+a clear spatial relationship
+a clear framing choice
+two or three important objects
+
+Attach colours to visible objects.
+
+Do not merely list colours.
+
+29. OBJECT PLACEMENT
+
+Every large object must have a physical relationship to the environment.
+
+Use:
+
+against the back wall
+beside the door
+mounted above the bench
+resting on the floor
+attached to the ceiling
+positioned in the corner
+crossing the foreground
+
+BAD:
+
+a steel cabinet
+
+GOOD:
+
+a steel cabinet set against the back wall
+
+30. ONE OBJECT OF EACH TYPE
+
+Do not unnecessarily multiply identical objects.
+
+When exactly one object matters, use:
+
+one
+a single
+
+This reduces unwanted object multiplication.
+
+31. POSITIVE CONSTRUCTION
+
+Describe visible things.
+
+Avoid unnecessary negative constructions.
+
+BAD:
+
+an empty room with no windows
+
+GOOD:
+
+a pale tiled room with a single steel door and a broad wooden workbench
+
+32. NO STYLE INSTRUCTIONS
+
+Never include:
+
+art style
+medium
+rendering style
+aspect ratio
+camera brand
+artistic movement
+illustration style
+cinematic
+photorealistic
+realistic
+anime style
+3D render
+
+The pipeline supplies visual style separately.
+
+33. FRAMING
+
+Use explicit framing.
+
+Examples:
+
+wide shot at eye level
+medium shot
+close-up
+low-angle shot
+high-angle shot
+three-quarter view
+medium two-shot
+long shot
+overhead shot
+
+Vary framing between consecutive beats.
+
+Do not repeat the same framing unnecessarily.
+
+The framing can change the reference character's position while preserving the
+same story moment.
+
+34. BACK-OF-CAMERA CONTINUITY
+
+If using:
+
+from behind
+rear view
+walking away
+facing away
+over the shoulder
+
+make the physical orientation explicit.
+
+Do not describe front-facing anatomy in a rear-facing shot.
+
+35. AVOID PHOTOGRAPHIC TRIGGER LANGUAGE
+
+Avoid unnecessary rendering language such as:
+
+lighting
+lit
+dimly lit
+sunlit
+moonlit
+lamplight
+backlit
+overcast
+glow
+glowing
+gleaming
+shiny
+sparkling
+shadowy
+haze
+hazy
+blurred
+out of focus
+depth of field
+cinematic
+realistic
+photo
+photographic
+atmospheric
+dramatic
+magnificent
+
+Describe physical objects instead.
+
+36. HAND AND GRASPING CONTROL
+
+Avoid unnecessary hand-specific actions.
+
+Prefer:
+
+leaning against
+standing over
+sitting beside
+crouching beside
+resting one arm across
+positioned beside
+standing behind
+kneeling near
+looking toward
+watching
+observing
+
+If an object is important, place it:
+
+on a surface
+at the character's feet
+beside the character
+against nearby structure
+
+37. CONTAINERS
+
+Do not name containers by their contents.
+
+BAD:
+
+vaccine vials inside a medical box
+
+GOOD:
+
+small glass vials with metal caps arranged inside a rectangular white
+plastic case with molded compartments
+
+Describe:
+
+shape
+material
+colour
+fittings
+physical arrangement
+
+38. FUNCTION-NAMED SURFACES
+
+Do not rely on functional labels.
+
+BAD:
+
+a control panel
+
+GOOD:
+
+a rectangular grey metal panel with rows of small circular dials, toggle
+switches, red indicator lamps, and black cables entering its lower edge
+
+39. TEXT AND LETTERING
+
+Avoid unnecessary readable text.
+
+Do not request:
+
+text
+headline
+label
+labelled
+reading
+saying
+titled
+written
+sign
+banner
+inscription
+blueprint
+a screen showing words
+
+Describe the physical object instead.
+
+Examples:
+
+a monitor showing a wavy green line
+a rectangular blue plaque mounted beside the doorway
+a sheet of white paper covered with dense dark marks
+
+40. GRAPHIC CONTENT
+
+Avoid unnecessary graphic content.
+
+When violence is involved, use safe visible aftermath where possible.
+
+Preserve the story event without unnecessarily depicting graphic injury.
+
+41. IMAGE_PROMPT_ALT
+
+The alternate is the backup prompt.
+
+It MUST depict the same:
+
+reference character
+other required characters
+actions
+story moment
+location
+important objects
+story event
+reference character reaction category
+
+The alternate MUST contain:
+
+reference character
+
+The alternate MUST NOT use canonical names for other named characters.
+
+Instead, describe those characters physically.
+
+The alternate must not remove the reference character simply because the
+historical subject is different.
+
+42. ALTERNATE STAGING
+
+The alternate must differ meaningfully from the primary.
+
+Change at least one major visual variable.
+
+Preferably change two.
+
+Possible changes:
+
+camera distance
+framing family
+foreground object
+reference character position
+other character position
+closest character
+visible environmental feature
+camera height
+viewing angle
+spatial arrangement
+
+Do not merely reorder words.
+
+The alternate is a genuine backup angle.
+
+The alternate must still preserve the same story event and cast.
+
+43. REFERENCE CHARACTER + HISTORICAL SUBJECT RULE
+
+When a beat describes a historical event, separate the roles.
+
+The historical subject performs the historical action.
+
+The reference character observes or reacts.
+
+BAD:
+
+reference character plants the American flag on the moon
+
+if the narration is describing the Apollo astronauts doing so.
+
+GOOD:
+
+reference character watches from the foreground with a skeptical expression
+while Neil Armstrong stands beside the planted American flag, medium-wide shot,
+white fabric pressure suit, brushed metal equipment case, red flag stripes,
+blue equipment markings
+
+This distinction is extremely important.
+
+The reference character should not accidentally rewrite history.
+
+44. VISUALIZATION OF ABSTRACT OR SPOKEN CLAIMS
+
+When the narration discusses an idea rather than a physical event, visualize
+the idea using physical evidence, diagrams, objects, photographs, or reactions.
+
+The reference character can interact with or observe the visual explanation.
+
+Examples:
+
+For:
+
+Next problem: The shadows.
+
+Use:
+
+reference character stands beside a board displaying lunar photographs and
+simple shadow lines, looking mildly skeptical
+
+For:
+
+Okay, what about the stars?
+
+Use:
+
+reference character looks upward beside a dark lunar photograph while a bright
+surface photograph rests on a board nearby
+
+For:
+
+The Soviet Union.
+
+Use:
+
+reference character sits with a skeptical expression beside a physical globe
+and radio equipment while a Soviet operator appears in the background
+
+Do not force the reference character to literally become the thing being
+discussed.
+
+45. LOCATION-DRIVEN VISUALIZATION
+
+When the narration is difficult to visualize literally, use the generated
+location to create a physical visual metaphor or evidence environment.
+
+Examples:
+
+Narration about a missing recording:
+
+place the reference character in an archive surrounded by reels, storage
+cases, equipment, and an empty shelf where the missing material would logically
+belong.
+
+Narration about contradictory evidence:
+
+place the reference character in an evidence room with photographs, physical
+objects, diagrams, and mismatched archival materials arranged on a worktable.
+
+Narration about a strange scientific claim:
+
+place the reference character in an experimental workshop beside physical
+apparatus representing the claim.
+
+Narration about a ridiculous conspiracy:
+
+place the reference character in a cramped evidence workshop surrounded by
+physically plausible but increasingly suspicious objects.
+
+The location should help make an abstract narration concrete.
+
+46. FINAL VALIDATION
+
+Go through every beat individually.
+
+Do not rely on memory.
+
+SCRIPT INTEGRITY
+
+Check:
+
+every narration is byte-identical
+emotion tags are unchanged
+beat count matches exactly
+beat order matches exactly
+explicit Pass 1 locations are unchanged
+every beat has a location
+every location matches a plan location
+no narration was rewritten
+no beat was split
+no beat was merged
+no beat was added
+no beat was dropped
+
+LOCATION GENERATION
+
+Check:
+
+if Pass 1 had no locations, locations were generated
+every beat has a physical location
+generated locations are relevant to the narration
+generated locations are visually specific
+generated locations are physically believable
+generated locations are not unnecessarily generic
+similar consecutive beats reuse locations when appropriate
+substantially different subjects can receive different locations
+every location has a corresponding plan.locations entry
+every location has a 25 to 40 word visual_anchor
+location anchors describe stable physical features
+location anchors contain materials
+location anchors contain architectural features
+location anchors contain fixed furnishings
+location anchors contain at least two saturated colours
+location anchors contain no dates
+location anchors contain no era names
+location anchors contain no abstract concepts
+beat prompts do not repeat location anchors
+setting_anchor is empty unless genuinely useful
+
+REFERENCE CHARACTER
+
+For EVERY beat:
+
+image_prompt contains the exact phrase reference character
+image_prompt_alt contains the exact phrase reference character
+reference character is physically present
+reference character is not replaced by a proper name
+reference character is not replaced by a synonym
+reference character remains visually consistent
+reference character has a subtle reaction appropriate to the beat
+reference character does not automatically become the historical subject
+reference character does not replace required characters
+reference character can act as a quiet observer when the narration concerns
+another subject
+
+OTHER CHARACTERS
+
+For EVERY beat:
+
+identify all characters actually required by the visual event
+keep distinct characters visually distinct
+include all required characters in the primary
+include the same required characters in the alternate
+do not invent unnecessary characters
+do not remove required characters
+do not merge distinct characters
+do not turn other characters into reference character
+
+PRIMARY NAMING
+
+For other named characters:
+
+use canonical names when they are visually present
+do not use canonical names for the reference character
+do not add irrelevant canonical names
+canonical names must correspond to actual visible subjects
+
+ALTERNATE NAMING
+
+For other named characters:
+
+remove canonical names
+provide concrete physical descriptions
+preserve identity through appearance
+preserve the same character count
+preserve the same character relationships
+
+The reference character remains:
+
+reference character
+
+REFERENCE CHARACTER CONTINUITY
+
+Check:
+
+reference character appears in every beat
+reference character remains the same person
+reference character does not randomly change appearance
+reference character's clothing and physical traits remain consistent
+reference character's reactions vary naturally
+default emotional state remains subtly bored, skeptical, unimpressed, or
+mildly irritated
+emotional reactions do not become exaggerated without reason
+narration emotion tags do not automatically dictate physical acting
+
+PROMPT COUNT
+
+Check:
+
+every beat has image_prompt
+every beat has image_prompt_alt
+every primary is 40 to 70 words
+every alternate is 40 to 70 words
+none exceeds 90 words
+no two primary prompts are identical
+no alternate is identical to its primary
+
+VISUAL QUALITY
+
+Check:
+
+clear subject identity
+clear physical action
+clear spatial relationship
+explicit framing
+at least two precise material details
+at least two saturated colours
+important objects physically placed
+no floating large objects
+recurring characters remain consistent
+recurring locations remain consistent
+story progression is visually represented
+reference character is visually integrated rather than awkwardly pasted into
+the frame
+
+BANNED BEHAVIOUR
+
+Check every prompt for:
+
+unnecessary negative construction
+abstract nouns
+dates
+decades
+centuries
+era names
+unexplained bare nouns
+generic environments
+generic replacement for named characters
+missing reference character
+missing script-required characters
+invented characters other than the mandatory reference character
+canonical character names replacing reference character
+canonical names in alternate prompts for other characters
+unnecessary text requests
+function-only object descriptions
+container contents used as container names
+style instructions
+aspect ratios
+photographic rendering instructions
+unnecessary graphic content
+vague spatial relationships
+duplicated framing
+reference character performing an action that belongs to another historical
+subject
+reference character replacing another required character
+unnecessarily changing locations between related beats
+generic generated locations with no connection to the narration
+
+PRIMARY / ALTERNATE RELATIONSHIP
+
+For every beat:
+
+PRIMARY =
+reference character
++
+canonical names for other named characters when visually present
++
+concrete scene
++
+reference character reaction
+
+ALTERNATE =
+reference character
++
+physical descriptions of other named characters
++
+concrete scene
++
+reference character reaction
+
+Both must depict:
+
+SAME REFERENCE CHARACTER
+SAME OTHER REQUIRED CHARACTERS
+SAME CAST
+SAME STORY ACTION
+SAME MOMENT
+SAME LOCATION
+SAME IMPORTANT OBJECTS
+SAME STORY EVENT
+
+The alternate must additionally change the staging enough to function as a real
+backup attempt.
+
+The reference character may move position between primary and alternate, but
+must remain the same person and remain an observer unless the script explicitly
+requires participation.
+
+47. MUSIC PROMPT
+
+Write one paragraph of roughly 60 words matching the topic's mood.
+
+Name:
+
+tempo in BPM
+three or four specific instruments
+
+Always include:
+
+purely instrumental with no vocals of any kind
+
+flat consistent energy with no build, no swells, no drops
+
+sits far in the background under a spoken narrator with the mid range left
+clear
+
+understated rather than comedic
+
+Example:
+
+Sparse instrumental bed matching the topic's mood, around seventy BPM.
+Soft minor-key piano, low sustained strings, faint muted percussion, and
+restrained bass guitar. Flat consistent energy with no build, no swells and no
+drops. Sits far in the background under a spoken narrator with the mid range
+left clear. Purely instrumental with no vocals of any kind. Understated rather
+than comedic.
+
+48. OUTPUT
+
+Output one raw JSON object and nothing else.
+
+Do not output:
+
+markdown fences
+explanations
+commentary
+validation notes
+analysis
+headings outside the JSON
+additional prose
+
+The final JSON must contain the complete pass 1 object with all required
+visual fields merged into it.
+
+The final object must preserve all original pass 1 information and add:
+
+plan.locations[].visual_anchor
+plan.setting_anchor
+beats[].image_prompt
+beats[].image_prompt_alt
+music_prompt
+
+If Pass 1 contained no locations, the final object must additionally contain
+the generated location assignments required to make every beat physically
+visualizable.
+
+The final response must be valid JSON.
+
+No text may appear before or after the JSON.
