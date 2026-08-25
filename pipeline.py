@@ -850,7 +850,7 @@ def _check_rhythm(beats: list[dict], spoken_words, report) -> None:
 
 def _warn_off_spec(beats: list[dict], fmt: str = "") -> None:
     """
-    Flag beats that drift from prompts/manualprompt.txt.
+    Flag beats that drift from the spec in prompts/pass1_narration.txt.
 
     Warnings, not errors - the script is still usable. But catching them here
     costs nothing, whereas noticing after a full Flow run costs hours.
@@ -1283,9 +1283,9 @@ def cmd_manifest(args) -> int:
         print("to build a picture-only manifest for a render test.")
         return 1
 
-    # Appended as an ordinary beat, so it crossfades in and gets subtitles like
-    # any other. The script never mentions the channel - that stays banned in
-    # manualprompt.txt - the outro is bolted on here instead.
+    # Appended as an ordinary beat, so it cuts or dissolves in and gets
+    # subtitles like any other. The script never mentions the channel - that
+    # stays banned in pass1_narration.txt - the outro is bolted on here instead.
     if config.OUTRO_ENABLED and not args.silent:
         assets = _outro_assets()
         if assets:

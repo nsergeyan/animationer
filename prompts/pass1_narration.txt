@@ -9,7 +9,6 @@ I WANT 55 BEATS.
   "format": "explainer",
   "plan": {
     "spine_question": "the one question the video answers, in plain words",
-    "payoff_line": "the last beat, written before the others",
     "deflations": [
       { "assumed": "", "actual": "", "who_decided": "", "build_beat": "", "drop_beat": "" }
     ],

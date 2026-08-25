@@ -78,7 +78,8 @@ in a loop", it's the engineering needed to make that loop actually reliable:
 ## Pipeline
 
 ```
-prompts/manualprompt.txt  --(pasted into an LLM chat by hand)-->  script.json
+prompts/pass1_narration.txt --(LLM, by hand)--> the beats
+prompts/pass2_visuals.txt   --(LLM, by hand)--> + image prompts  =  script.json
                                         |
                                         v
                           pipeline.py init / adopt
@@ -120,7 +121,7 @@ real `.mp4` files there, they're just too large to check in). Stage-by-stage:
 
 | Stage | Module | Status |
 |---|---|---|
-| Script authoring | `prompts/manualprompt.txt` (manual, pasted into an LLM) | working |
+| Script authoring | `prompts/` two-pass template (manual, pasted into an LLM) | working |
 | Images | `flow_runner/` (Playwright + Google Flow) | working, selectors are hand-inspected and will break when Google changes the DOM |
 | Narration | `modules/voice_generator.py` (ElevenLabs) | working |
 | Manifest / timing | `pipeline.py cmd_manifest` | working |
@@ -157,9 +158,9 @@ flow_runner/            Playwright automation of Google Flow's web UI
 remotion/                the render project
   src/compositions/LectureVideo.tsx   Ken Burns + cut/dissolve composition
   src/components/KenBurnsImage.tsx    pan/zoom logic
-prompts/                the script-writing templates pasted into an LLM
-  manualprompt*.txt      one template per video format (explainer, life, progression, technical)
-  finaltextbrain         the short wrapper: topic + beat count, pasted above a template
+prompts/                the two prompts pasted into an LLM to author a script
+  pass1_narration.txt    pass 1: topic and beat count in, narration beats out
+  pass2_visuals.txt      pass 2: those beats in, image and music prompts added
   examples/              a real generated script, as a reference for good output
 assets/
   reference/              hand-drawn character/environment art, locked into every image call
@@ -221,12 +222,14 @@ against a live session by hand.
 ## Usage
 
 ```bash
-# 1. Fill in a topic in prompts/manualprompt.txt and paste the whole file
-#    into an LLM chat (Claude, with web search on) to get back script JSON.
+# 1. Put your topic and beat count in prompts/pass1_narration.txt and paste it
+#    into an LLM chat (Claude, with web search on). Out comes the narration.
+# 2. Paste that result under "SCRIPT:" in prompts/pass2_visuals.txt and send
+#    that. Out comes the same JSON with image prompts and a music prompt added.
 python pipeline.py init my-video-slug
-# 2. Paste the returned JSON into output/my-video-slug/script.json.
+# 3. Save the final JSON as output/my-video-slug/script.json.
 
-# 3. Run every stage in order (a Chrome window opens for the image stage -
+# 4. Run every stage in order (a Chrome window opens for the image stage -
 #    log in once, attach the reference image, then let it drive itself):
 python pipeline.py --run my-video-slug
 
