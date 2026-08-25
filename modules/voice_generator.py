@@ -89,7 +89,10 @@ def _speed_up(path: Path, factor: float) -> None:
 def _generate_with_key(api_key: str, text: str, out_path: Path,
                        voice_id: str, lang: str) -> bool:
     """One attempt with one key. True on success."""
-    client = ElevenLabs(api_key=api_key, base_url=config.ELEVENLABS_BASE_URL)
+    client = ElevenLabs(
+        api_key=api_key,
+        base_url="https://api.us.elevenlabs.io",
+    )
     tmp_path = out_path.with_suffix(out_path.suffix + ".partial")
 
     try:
@@ -104,13 +107,18 @@ def _generate_with_key(api_key: str, text: str, out_path: Path,
             )
         else:
             stream = client.text_to_dialogue.convert(
-                inputs=[DialogueInput(text=cleaned, voice_id=voice_id)],
-                model_id=config.ELEVENLABS_MODEL_DIALOGUE,
+                inputs=[
+                    DialogueInput(
+                        text=cleaned,
+                        voice_id=voice_id,
+                    )
+                ],
+                model_id="eleven_v3",
                 settings=ModelSettingsResponseModel(
-                    stability=config.ELEVENLABS_STABILITY),
-                output_format=config.ELEVENLABS_OUTPUT_FORMAT,
+                    stability=0.5,
+                ),
+                output_format="mp3_44100_192",
             )
-
         # Write to .partial first: a half-written mp3 left at the real path
         # would be treated as done by the resume check on the next run.
         with open(tmp_path, "wb") as f:
@@ -206,12 +214,146 @@ def _spans_from_segments(segments, count: int) -> list[tuple[float, float]]:
     return [tuple(spans[i]) for i in range(count)]
 
 
+# How much shorter than its text a cut beat is allowed to be before the batch
+# is rejected. Generous on purpose: a cut includes trailing silence so it is
+# normally LONGER than the speech, and eleven_v3's pace varies with the emotion
+# tag. This is a guard against a fragment, not a tolerance check - the real
+# failures it catches come back at a tenth of their expected length.
+MIN_SPEECH_RATIO = 0.45
+
+# A hair of lead-in so a beat does not open hard on a consonant.
+GUARD = 0.025
+
+# How far from the timestamp's guess to look for real silence, in seconds.
+#
+# 0.75 was too tight. On a real 55-beat run three beats still clipped, and in
+# every case the correct silence existed but sat just beyond the window - the
+# 9/10 boundary needed 0.83s. Widening it is safe because SNAP_BACK_TOLERANCE
+# already stops a snap reaching backwards into the beat's own speech, so the
+# extra reach only ever goes forward, toward the pause that was missed.
+SNAP_WINDOW = 1.3
+
+# How far before a beat's own reported end a boundary may ever be placed.
+SNAP_BACK_TOLERANCE = 0.15
+
+# A cut whose last 80ms is within this many dB of the beat's own average volume
+# was made while the voice was still speaking. Measured, not guessed: on a real
+# 55-beat run the clean beats ended 12 to 45 dB down, and every audibly clipped
+# one ended within 3 dB of its own average or LOUDER.
+CLIPPED_TAIL_DB = 3.0
+TAIL_SECONDS = 0.08
+
+
+def _silences(path: Path, floor_db: float = -40.0,
+              min_len: float = 0.05) -> list[tuple[float, float]]:
+    """
+    Every stretch of near-silence in a file, via ffmpeg's silencedetect.
+
+    This is the ground truth the reported segment timings are checked against.
+    Returns [] on any parsing trouble, which makes the caller fall back to the
+    timings alone - the old behaviour.
+    """
+    out = subprocess.run(
+        ["ffmpeg", "-v", "info", "-i", str(path),
+         "-af", f"silencedetect=n={floor_db}dB:d={min_len}", "-f", "null", "-"],
+        capture_output=True, text=True,
+    ).stderr
+    spans, start = [], None
+    for line in out.splitlines():
+        if "silence_start:" in line:
+            try:
+                start = float(line.split("silence_start:")[1].split()[0])
+            except (IndexError, ValueError):
+                start = None
+        elif "silence_end:" in line and start is not None:
+            try:
+                spans.append((start, float(line.split("silence_end:")[1].split()[0])))
+            except (IndexError, ValueError):
+                pass
+            start = None
+    return spans
+
+
+def _snap_to_silence(guess: float, silences: list[tuple[float, float]],
+                     floor: float) -> float | None:
+    """
+    Move a boundary onto real silence, or None if there is none nearby.
+
+    Cuts at the END of the silence rather than its middle, keeping the original
+    design's intent: the pause belongs to the beat that just finished, because
+    the image holds until the next narration starts.
+    """
+    best, best_distance = None, None
+    for lo, hi in silences:
+        if hi <= floor:
+            continue
+        inside = lo <= guess <= hi
+        distance = 0.0 if inside else min(abs(lo - guess), abs(hi - guess))
+        if distance > SNAP_WINDOW:
+            continue
+        if best_distance is None or distance < best_distance:
+            cut = max(lo + 0.01, hi - GUARD)
+            if cut > floor:
+                best, best_distance = cut, distance
+    return best
+
+
+def _edge_versus_average(path: Path, head: bool = False) -> float | None:
+    """
+    How loud a file's first or last TAIL_SECONDS is against its own average.
+
+    Near zero (or positive) means the file starts or ends at full speaking
+    volume, which only happens when a cut landed inside a word. The head check
+    exists because widening SNAP_WINDOW lets a boundary reach further forward,
+    and overshooting eats the NEXT beat's opening instead of this one's tail.
+    """
+    raw = subprocess.run(
+        ["ffmpeg", "-v", "error", "-i", str(path), "-f", "s16le",
+         "-ac", "1", "-ar", "16000", "-"],
+        capture_output=True,
+    ).stdout
+    import array
+    import math
+    samples = array.array("h")
+    samples.frombytes(raw[:len(raw) // 2 * 2])
+    if not len(samples):
+        return None
+
+    def rms_db(chunk):
+        if not len(chunk):
+            return None
+        total = sum(float(v) * v for v in chunk)
+        if total <= 0:
+            return -99.0
+        return 20 * math.log10(math.sqrt(total / len(chunk)) / 32768)
+
+    overall = rms_db(samples)
+    n = int(TAIL_SECONDS * 16000)
+    edge = rms_db(samples[:n] if head else samples[-n:])
+    if overall is None or edge is None:
+        return None
+    return edge - overall
+
+
+def _minimum_plausible_seconds(text: str) -> float:
+    """Shortest run time the words could plausibly have, tags excluded."""
+    import re
+    words = len(re.sub(r"\[[^\]]*\]", " ", text).split())
+    if not words:
+        return 0.0
+    expected = words / config.WORDS_PER_MINUTE * 60 / config.NARRATION_SPEED
+    return expected * MIN_SPEECH_RATIO
+
+
 def _batch_with_key(api_key: str, narrations: list[str], indices: list[int],
                     out_dir: Path, voice_id: str) -> list[tuple[Path, float]]:
     """One batched attempt with one key. Raises on any problem."""
     import base64
 
-    client = ElevenLabs(api_key=api_key, base_url=config.ELEVENLABS_BASE_URL)
+    client = ElevenLabs(
+        api_key=api_key,
+        base_url="https://api.us.elevenlabs.io",
+    )
     cleaned = [clean_text_for_speech(t) for t in narrations]
 
     resp = client.text_to_dialogue.convert_with_timestamps(
@@ -236,36 +378,115 @@ def _batch_with_key(api_key: str, narrations: list[str], indices: list[int],
     # gives every beat its own trailing breath, which is what you want anyway
     # since the image holds until the next narration starts.
     #
-    # GUARD is a hair of lead-in so a beat does not open hard on a consonant.
-    # max() keeps it from ever eating the current beat's own last syllable.
-    GUARD = 0.025
+    # Real silence in the audio, which is what boundaries actually get placed
+    # on. The reported timings only choose WHICH silence.
+    silences = _silences(batch_path)
+    snapped = 0
+
     bounds, prev_end = [], 0.0
     for i, (start, end) in enumerate(spans):
         if i == len(spans) - 1:
             hi = total
+        elif end <= spans[i + 1][0]:
+            # There is a real gap between the two. End this beat just before
+            # the next one opens, so it keeps its own trailing breath.
+            hi = max(end, spans[i + 1][0] - GUARD)
         else:
-            # Never past the next beat's first sample: if two segments overlap,
-            # losing this beat's trailing decay is far better than lopping the
-            # opening consonant off the next one.
-            hi = min(max(end, spans[i + 1][0] - GUARD), spans[i + 1][0])
+            # The segments OVERLAP. Two sequential utterances cannot really
+            # overlap, so this is timestamp imprecision, and the disputed span
+            # has to go to one of them.
+            #
+            # This used to hand the whole overlap to the NEXT beat
+            # (hi = spans[i+1][0]), which silently truncated THIS beat by the
+            # full width of the error. That was survivable at nineteen words a
+            # beat, where the model always left a clear pause. At four to eight
+            # words it runs sentences straight together, overlaps are common,
+            # and the clipped syllable is audible.
+            #
+            # Splitting the overlap means neither beat can lose more than half
+            # the error.
+            hi = (end + spans[i + 1][0]) / 2
+
+        # Now put it on real silence. eleven_v3's reported timings are simply
+        # not reliable for short utterances - on a measured 55-beat run, ten
+        # beats were severed at full speaking volume, three of them LOUDER at
+        # the cut than their own average. No arithmetic on those numbers can
+        # fix that, so the timings are demoted to choosing WHICH silence and
+        # the audio itself decides where the cut lands.
+        if i != len(spans) - 1 and silences:
+            # Never snap back past this beat's OWN reported end. The observed
+            # failure is the NEXT beat's start coming back too early while this
+            # beat's end is roughly right, so the end is the trustworthy side
+            # of the boundary. Without this floor a large timing error can pull
+            # the cut onto a pause INSIDE the beat and lop off its last clause,
+            # which is a quieter wrong answer than a severed word, not a right
+            # one. SNAP_BACK_TOLERANCE leaves a little room for the end itself
+            # being slightly late.
+            floor = max(prev_end, end - SNAP_BACK_TOLERANCE)
+            landed = _snap_to_silence(hi, silences, floor)
+            if landed is not None:
+                if abs(landed - hi) > 0.001:
+                    snapped += 1
+                hi = landed
+
+        if hi <= prev_end:
+            # Non-monotonic spans would make ffmpeg write an empty file, and a
+            # beat with no narration in it is far worse than a slow re-run.
+            # Raising falls the whole batch back to one request per beat.
+            raise RuntimeError(
+                f"beat {i + 1} of the batch got a non-positive span "
+                f"({prev_end:.3f} -> {hi:.3f}); segment timings are unusable")
         bounds.append((prev_end, hi))
         prev_end = hi
 
     results = []
+    clipped: list[tuple[int, float, str]] = []
     try:
-        for index, (lo, hi) in zip(indices, bounds):
+        for index, (lo, hi), text in zip(indices, bounds, cleaned):
             out_path = out_dir / f"beat_{index:03}.mp3"
             tmp = out_path.with_suffix(".partial.mp3")
             _cut(batch_path, tmp, lo, hi)
             os.replace(tmp, out_path)
             _speed_up(out_path, config.NARRATION_SPEED)
-            results.append((out_path, audio_duration(out_path)))
+            got = audio_duration(out_path)
+
+            # A cut that came out far shorter than the words could possibly be
+            # spoken in means the segment timings were wrong, and the file now
+            # holds a fragment of a sentence. Catch it here rather than letting
+            # a half-spoken beat reach the render.
+            floor = _minimum_plausible_seconds(text)
+            if got < floor:
+                raise RuntimeError(
+                    f"beat {index} cut to {got:.2f}s but its text needs at "
+                    f"least {floor:.2f}s - segment timings are unusable")
+
+            # Direct measurement of the actual defect: did this file end while
+            # the voice was still going? Reported rather than raised, because
+            # rejecting the batch costs all fourteen beats their shared
+            # performance, and one bad tail is not worth that trade.
+            tail = _edge_versus_average(out_path)
+            if tail is not None and tail > -CLIPPED_TAIL_DB:
+                clipped.append((index, tail, "end"))
+            head = _edge_versus_average(out_path, head=True)
+            if head is not None and head > -CLIPPED_TAIL_DB:
+                clipped.append((index, head, "start"))
+            results.append((out_path, got))
     except Exception:
         for path, _ in results:            # don't leave half a batch behind
             path.unlink(missing_ok=True)
         raise
     finally:
         batch_path.unlink(missing_ok=True)
+
+    if snapped:
+        print(f"    [voice] {snapped}/{len(bounds) - 1} boundaries moved onto "
+              f"real silence")
+    if clipped:
+        listed = ", ".join(f"{i} {w} ({d:+.0f}dB)" for i, d, w in clipped[:8])
+        print(f"    [voice] WARNING: {len(clipped)} cut(s) landed inside a "
+              f"word: {listed}")
+        print(f"    [voice] re-run those alone: pipeline.py voice --force "
+              f"--only {','.join(str(i) for i, _, _ in sorted(set((c[0],) for c in clipped)))}")
 
     return results
 
@@ -308,9 +529,7 @@ def generate_batch(narrations: list[str], indices: list[int], out_dir: Path,
 # ===========================================================================
 
 TEST_SCRIPT = (
-    "[surprised] According to the official fanbook, the cursed fingers "
-    "apparently taste exactly like ordinary household soap. They are coated in "
-    "the waxy substance that forms on bodies sealed away for centuries."
+    "[clears throat] According to the official fanbook, the cursed fingers"
 )
 
 TEST_VOICE = None      # None = config.ELEVENLABS_DEFAULT_VOICE
