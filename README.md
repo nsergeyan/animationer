@@ -13,7 +13,7 @@ pan/zoom, cuts and dissolves, and a music bed mixed under the voice.
 <!-- Paste the video URL below, then delete these two comment lines. -->
 ## Demo
 
-[Watch an example video](https://youtu.be/VIDEO_ID)
+[Watch an example video](https://www.youtube.com/watch?v=702-w9Sanws)
 
 ## Why this exists
 
