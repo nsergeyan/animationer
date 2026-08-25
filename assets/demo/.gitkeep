@@ -1,0 +1,11 @@
+Drop the README demo clip here.
+
+A short GIF (demo.gif) is the best option: it autoplays inline on GitHub with
+no click needed. Keep it under about 10MB or GitHub will refuse to render it.
+
+Make one from a finished render with ffmpeg:
+
+  ffmpeg -i output/<slug>/final.mp4 -t 12 -vf "fps=12,scale=800:-1:flags=lanczos" \
+    assets/demo/demo.gif
+
+Then uncomment the Demo block near the top of README.md.

@@ -10,6 +10,38 @@ in. Each beat becomes one AI-generated still, one narrated audio clip timed to
 the narration, and one entry in a final Remotion render with Ken Burns
 pan/zoom, cuts and dissolves, and a music bed mixed under the voice.
 
+<!-- ==========================================================================
+     DEMO - pick ONE option below, delete this comment wrapper, done.
+
+     Option A, animated GIF. Best default: autoplays inline, no click needed.
+     Put the file at assets/demo/demo.gif (see the note in that folder for the
+     one-line ffmpeg command that makes one from a finished render).
+
+## Demo
+
+![A finished video, generated end to end from one topic](assets/demo/demo.gif)
+
+     ----------------------------------------------------------------------
+     Option B, thumbnail that links out to the full video on YouTube.
+     Swap VIDEO_ID for the real id.
+
+## Demo
+
+[![Watch a finished video](assets/demo/thumbnail.jpg)](https://www.youtube.com/watch?v=VIDEO_ID)
+
+     ----------------------------------------------------------------------
+     Option C, an mp4 that plays in a real player, hosted by GitHub itself.
+     Open this README in the GitHub web editor, drag the .mp4 into it, and
+     GitHub uploads the file and pastes back a user-attachments URL. Put that
+     URL on its own line and it renders as a video player. Do not commit the
+     mp4 to the repo, this keeps it out of git history.
+
+## Demo
+
+https://github.com/user-attachments/assets/YOUR-UPLOAD-ID
+
+========================================================================== -->
+
 ## Why this exists
 
 This is a personal side project to automate a YouTube channel without paying
