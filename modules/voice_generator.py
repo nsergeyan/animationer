@@ -1,8 +1,7 @@
 """
 Stage: one narration clip per beat, using ElevenLabs.
 
-Ported from the proven generator in Narek's shorts pipeline. Two details from
-there are load-bearing and should not be "cleaned up":
+Two details in here are load-bearing and should not be "cleaned up":
 
   1. The US regional base URL (see config.ELEVENLABS_BASE_URL). The global
      endpoint returns a flat, robotic read on this account.

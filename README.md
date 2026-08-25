@@ -1,8 +1,9 @@
 # Animationer
 
-An automated pipeline that turns a single topic into a finished, narrated, 16:9
-animated video, no manual editing. Built to run an explainer YouTube Shorts /
-TikTok channel end to end: one script in, one `.mp4` out.
+An automated pipeline that turns a single topic into a finished, narrated
+explainer video, no manual editing. Built to run a YouTube channel end to end:
+one script in, one `.mp4` out. Output is landscape 1920x1080 at 30fps, aimed at
+a roughly three minute runtime, not vertical short-form.
 
 A script of ~30-100 short beats (narration sentence + image description) goes
 in. Each beat becomes one AI-generated still, one narrated audio clip timed to
@@ -11,7 +12,7 @@ pan/zoom, cuts and dissolves, and a music bed mixed under the voice.
 
 ## Why this exists
 
-This is a personal side project to automate a Shorts channel without paying
+This is a personal side project to automate a YouTube channel without paying
 for editing time per video. The interesting part isn't "call an AI image API
 in a loop", it's the engineering needed to make that loop actually reliable:
 
