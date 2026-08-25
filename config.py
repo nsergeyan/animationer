@@ -21,9 +21,12 @@ OUTPUT_DIR = ROOT_DIR / "output"                  # one subfolder per run
 REMOTION_DIR = ROOT_DIR / "remotion"              # the React/TS render project
 
 # --- API keys (loaded from .env) -------------------------------------------
+# GEMINI_API_KEY is unused by every shipped stage - images come from Google
+# Flow through flow_runner/, which authenticates with a browser login, not a
+# key. It is read here only for the unbuilt consistency pass (CONSISTENCY_MODEL
+# below), so leaving it blank in .env costs nothing today.
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 ELEVENLABS_API_KEY = os.getenv("ELEVENLABS_API_KEY")
-ELEVENLABS_VOICE_ID = os.getenv("ELEVENLABS_VOICE_ID")
 
 # --- Visual style ----------------------------------------------------------
 # THE style. Appended verbatim to every image prompt by pipeline.py, so it is
@@ -211,10 +214,14 @@ ELEVENLABS_BATCH_CHARS = 1400
 NARRATION_SPEED = 1.0
 
 # --- Model names -----------------------------------------------------------
-# NOTE: the script is authored by hand (paste JSON into main.py), so there is
-# no script-generation model here. These are only for image work.
-IMAGE_MODEL = "gemini-2.5-flash-image"            # "Nano Banana"
-CONSISTENCY_MODEL = "gemini-2.5-flash"            # future: scores image vs reference
+# The script is authored by hand (pasted into output/<slug>/script.json), so
+# there is no script-generation model here, and images come from Google Flow
+# via flow_runner/ rather than an API, so there is no image model either.
+#
+# This is reserved for the character-consistency pass described in the README,
+# which is not built yet: score a generated image against the reference art and
+# re-roll when it drifts off-model. Needs `google-genai` installed to use.
+CONSISTENCY_MODEL = "gemini-2.5-flash"
 
 # --- Narration rate --------------------------------------------------------
 # Measured over 231 shipped beats across five finished videos: 4207 spoken

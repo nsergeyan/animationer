@@ -7,7 +7,7 @@ YouTube Shorts / TikTok channel end to end: one script in, one `.mp4` out.
 A script of ~30-100 short beats (narration sentence + image description) goes
 in. Each beat becomes one AI-generated still, one narrated audio clip timed to
 the narration, and one entry in a final Remotion render with Ken Burns
-pan/zoom, crossfades, and a music bed mixed under the voice.
+pan/zoom, cuts and dissolves, and a music bed mixed under the voice.
 
 ## Why this exists
 
@@ -32,14 +32,36 @@ in a loop", it's the engineering needed to make that loop actually reliable:
 - **Non-deterministic TTS drift.** ElevenLabs' `eleven_v3` model isn't
   deterministic and can't be told what a previous call sounded like, so
   generating each beat separately means each one is a different performance.
-  The fix: batch ~10 beats into a single dialogue request (one performance,
+  The fix: batch many beats into a single dialogue request (one performance,
   cut back into per-beat clips on the returned segment boundaries) instead of
-  one request per sentence.
+  one request per sentence. Batches are budgeted in *characters* against the
+  API's documented ceiling rather than in beats, because beat length is
+  bimodal (see pacing below) and a beat count was only ever a proxy for the
+  limit that actually applies.
+- **Not trusting the API's own timestamps.** Cutting a batch on the segment
+  boundaries `eleven_v3` reports sounds fine at ~19 words a beat and falls
+  apart at 4-8, where the model runs sentences together. Measured on one
+  55-beat run: ten beats were severed mid-word, three of them *louder* at the
+  cut than their own average volume. No arithmetic on those numbers fixes
+  them, so the reported timings were demoted to choosing *which* pause to cut
+  on, and `ffmpeg`'s `silencedetect` decides where the cut actually lands.
+  A second pass then measures each finished clip's first and last 80ms
+  against its own average loudness and flags any that still start or end at
+  full speaking volume, with the exact command to re-run just those beats.
 - **Music that doesn't fight the narration.** Each video gets its own
   ElevenLabs-composed instrumental bed (from the script's own `music_prompt`),
   measured with `ffmpeg`'s `ebur128` loudness filter and ducked a fixed dB
   *below the narration's actual measured loudness* rather than a blind gain,
   since a freshly composed track's loudness varies run to run.
+- **Pacing derived from measurement, not taste.** The words-per-minute figure
+  the length estimator uses (177) was measured over 231 shipped beats across
+  five finished videos: 4207 spoken words against 1425s of tightly-trimmed
+  narration. Beats run on a two-tier rhythm (short ~35 characters, long ~85)
+  rather than a uniform length, and boundaries follow the story: beats inside
+  one location hard cut, and a change of location dissolves. `pipeline.py`
+  estimates a script's finished runtime from its word count and warns when it
+  lands outside the target, so a badly-sized script gets caught *before* any
+  money is spent generating images or audio for it.
 - **A resumable, idempotent CLI.** `pipeline.py` runs each stage
   (script -> images -> voice -> manifest -> music -> render) as a separate,
   file-based step under `output/<run>/`. Finished work is skipped on re-run,
@@ -71,7 +93,7 @@ prompts/manualprompt.txt  --(pasted into an LLM chat by hand)-->  script.json
                                         |
                                         v
                                   cmd_render
-                    remotion/ (Ken Burns + crossfade) -> ffmpeg mix
+                 remotion/ (Ken Burns + cut/dissolve) -> ffmpeg mix
                                         |
                                         v
                                   output/<run>/final.mp4
@@ -84,9 +106,9 @@ for the current run.
 
 ## Status
 
-Two full videos have been produced end to end with this pipeline (`output/`,
-gitignored - the pipeline writes real `.mp4` files there, they're just too
-large to check in). Stage-by-stage:
+Five full videos have been produced end to end with this pipeline, 231 beats
+of finished narration in total (`output/`, gitignored - the pipeline writes
+real `.mp4` files there, they're just too large to check in). Stage-by-stage:
 
 | Stage | Module | Status |
 |---|---|---|
@@ -106,8 +128,9 @@ large to check in). Stage-by-stage:
 - **Playwright** - browser automation for image generation (`flow_runner/`)
 - **ElevenLabs API** - narration (`eleven_v3` dialogue, batched) and music generation
 - **Remotion** (React + TypeScript) - final video composition and render
-- **ffmpeg** - audio muxing, loudness measurement, speed adjustment
-- **OpenAI Whisper** - word-level audio alignment (built, not yet wired into rendering)
+- **ffmpeg** - audio muxing, silence detection, loudness measurement, speed adjustment
+- **OpenAI Whisper** - word-level audio alignment (built, optional dependency,
+  not yet wired into rendering)
 
 ## Project layout
 
@@ -115,7 +138,6 @@ large to check in). Stage-by-stage:
 pipeline.py            stage runner / CLI - the main entry point
 config.py               every tunable constant (pacing, style prompt, models, dirs)
 modules/
-  image_generator.py    (legacy path) direct Gemini image calls - unused while flow_runner/ handles images
   voice_generator.py    ElevenLabs narration, batched for voice consistency
   music_generator.py    ElevenLabs Music, per-video bed
   video_editor.py        drives the Remotion render + ffmpeg music mix
@@ -123,10 +145,14 @@ modules/
 flow_runner/            Playwright automation of Google Flow's web UI
   runner.py              the automation itself
   config.py               every DOM selector, with the failure each one fixes
+  test_runner.py         offline tests for the non-browser logic
 remotion/                the render project
-  src/compositions/LectureVideo.tsx   Ken Burns + crossfade composition
+  src/compositions/LectureVideo.tsx   Ken Burns + cut/dissolve composition
   src/components/KenBurnsImage.tsx    pan/zoom logic
-prompts/                the manual script-writing prompt + its explainer
+prompts/                the script-writing templates pasted into an LLM
+  manualprompt*.txt      one template per video format (explainer, life, progression, technical)
+  finaltextbrain         the short wrapper: topic + beat count, pasted above a template
+  examples/              a real generated script, as a reference for good output
 assets/
   reference/              hand-drawn character/environment art, locked into every image call
   music/                   fallback music bed
@@ -140,8 +166,10 @@ Prerequisites: Python 3.11+, Node.js, `ffmpeg` on your `PATH`, and a Chrome/
 Chromium install for Playwright.
 
 ```bash
-pip install -r requirements.txt --break-system-packages
-pip install -r flow_runner/requirements.txt --break-system-packages
+python3 -m venv .venv && source .venv/bin/activate
+
+pip install -r requirements.txt
+pip install -r flow_runner/requirements.txt
 playwright install chromium
 
 cd remotion && npm install && cd ..
@@ -151,7 +179,7 @@ cp .env.example .env   # fill in the values below
 
 Fill in `.env`:
 
-- `ELEVENLABS_API_KEY` - your ElevenLabs key.
+- `ELEVENLABS_API_KEY` - your ElevenLabs key. The only one actually required.
 - `ELEVENLABS_VOICES` - comma-separated `name:voice_id` pairs from your
   ElevenLabs account (e.g. `narrator:abc123,sidekick:def456`), and
   `ELEVENLABS_DEFAULT_VOICE` - which of those names to use by default.
@@ -161,6 +189,26 @@ Fill in `.env`:
 
 Put your character/environment reference art in `assets/reference/` before
 running - every generated image is locked to it.
+
+### Trying it without any API keys
+
+`python pipeline.py demo --run demo-1` fabricates a whole run locally:
+numbered placeholder images and silent audio sized per beat from its own word
+count, driven through the real manifest and Remotion render. It makes no API
+calls and needs no keys, so it exercises the timing and composition code end
+to end on a fresh clone.
+
+### Tests
+
+```bash
+cd flow_runner && python3 test_runner.py
+```
+
+Offline checks for the logic that does not need a browser: scene numbering,
+resume-after-interrupt, the pacing floors that stop the automation from being
+sped up into looking like a bot, rejection-vs-quota message classification, and
+`--only` range parsing. Everything Playwright-driven still has to be verified
+against a live session by hand.
 
 ## Usage
 
@@ -197,8 +245,14 @@ dropped after the first command of a session.
   updating.
 - No burned-in captions yet (see Status table above).
 - No automatic retry when a generated image drifts off-model from the
-  reference character.
-- No per-run cost/usage logging.
+  reference character. Over ~100 generations in one video the drift is visible
+  by the end, and catching it currently means watching the render.
+- No per-run cost/usage logging, so per-video API spend isn't visible before
+  scaling up how many videos get made.
+- Scripts are written by pasting a template into an LLM chat by hand rather
+  than through an API call. That's deliberate for now: it keeps a human
+  judging fact quality and comic timing before any money is spent generating
+  images and audio for a bad script.
 
 ## License
 

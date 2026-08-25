@@ -89,10 +89,7 @@ def _speed_up(path: Path, factor: float) -> None:
 def _generate_with_key(api_key: str, text: str, out_path: Path,
                        voice_id: str, lang: str) -> bool:
     """One attempt with one key. True on success."""
-    client = ElevenLabs(
-        api_key=api_key,
-        base_url="https://api.us.elevenlabs.io",
-    )
+    client = ElevenLabs(api_key=api_key, base_url=config.ELEVENLABS_BASE_URL)
     tmp_path = out_path.with_suffix(out_path.suffix + ".partial")
 
     try:
@@ -107,18 +104,13 @@ def _generate_with_key(api_key: str, text: str, out_path: Path,
             )
         else:
             stream = client.text_to_dialogue.convert(
-                inputs=[
-                    DialogueInput(
-                        text=cleaned,
-                        voice_id=voice_id,
-                    )
-                ],
-                model_id="eleven_v3",
+                inputs=[DialogueInput(text=cleaned, voice_id=voice_id)],
+                model_id=config.ELEVENLABS_MODEL_DIALOGUE,
                 settings=ModelSettingsResponseModel(
-                    stability=0.5,
-                ),
-                output_format="mp3_44100_192",
+                    stability=config.ELEVENLABS_STABILITY),
+                output_format=config.ELEVENLABS_OUTPUT_FORMAT,
             )
+
         # Write to .partial first: a half-written mp3 left at the real path
         # would be treated as done by the resume check on the next run.
         with open(tmp_path, "wb") as f:
@@ -350,10 +342,7 @@ def _batch_with_key(api_key: str, narrations: list[str], indices: list[int],
     """One batched attempt with one key. Raises on any problem."""
     import base64
 
-    client = ElevenLabs(
-        api_key=api_key,
-        base_url="https://api.us.elevenlabs.io",
-    )
+    client = ElevenLabs(api_key=api_key, base_url=config.ELEVENLABS_BASE_URL)
     cleaned = [clean_text_for_speech(t) for t in narrations]
 
     resp = client.text_to_dialogue.convert_with_timestamps(
@@ -528,8 +517,13 @@ def generate_batch(narrations: list[str], indices: list[int], out_dir: Path,
 # same line and pick the best. eleven_v3 is not deterministic, so takes differ.
 # ===========================================================================
 
+# A short beat followed by a long one, so a manual take exercises the two-tier
+# rhythm the pipeline actually ships rather than one uniform-length sentence.
 TEST_SCRIPT = (
-    "[clears throat] According to the official fanbook, the cursed fingers"
+    "[surprised] Nobody signed off on this. "
+    "According to the official fanbook, the cursed fingers taste exactly like "
+    "ordinary household soap, because of the waxy substance that forms on "
+    "bodies sealed away for centuries."
 )
 
 TEST_VOICE = None      # None = config.ELEVENLABS_DEFAULT_VOICE

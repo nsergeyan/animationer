@@ -1424,10 +1424,14 @@ def cmd_demo(args) -> int:
     # Silence, but sized per beat from its own word count rather than a flat
     # number. Uniform durations would hide exactly the subtitle timing problems
     # this is meant to expose.
+    #
+    # Uses the same measured words-per-minute the length estimator does, so a
+    # demo render comes out the length a real run of the same script would.
     import re
     for i, beat in enumerate(beats, start=1):
         words = len(re.sub(r"\[[^\]]*\]", " ", beat["narration"]).split())
-        seconds = round(words / 150 * 60 / config.NARRATION_SPEED, 2)
+        seconds = round(
+            words / config.WORDS_PER_MINUTE * 60 / config.NARRATION_SPEED, 2)
         _make_silence(run_dir / "audio" / f"beat_{i:03}.mp3", seconds)
 
     print(f"[demo] {count} beats -> {run_dir}")

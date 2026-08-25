@@ -1,9 +1,9 @@
 """
 Offline checks for the parts of runner.py that do not need a browser.
 
-Same idea as test_assembly.py in the parent project: catch the dumb bugs
-(numbering, resume, pacing floors) before spending a live Flow session on them.
-Everything Playwright-driven still has to be verified by hand.
+Catch the dumb bugs (numbering, resume, pacing floors) before spending a live
+Flow session on them. Everything Playwright-driven still has to be verified by
+hand, since it needs a real browser and a logged-in Google account.
 
     python test_runner.py
 """

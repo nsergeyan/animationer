@@ -1,4 +1,16 @@
-google-genai
+# Core pipeline. Everything the voice, music, manifest and render stages need.
 elevenlabs
 python-dotenv
-openai-whisper
+
+# Optional: word-level caption alignment (modules/transcriber.py).
+#
+# Left commented out on purpose. Whisper pulls in torch, which is a multi-GB
+# download, and no shipped stage needs it: the render deliberately has no
+# burned-in captions, and transcriber.py imports whisper lazily so the only
+# function the pipeline actually calls from it (strip_tags) works without it.
+# Uncomment if you want to build the caption pass.
+#
+# openai-whisper
+
+# Image generation lives in flow_runner/ (Playwright against Google Flow),
+# so it has its own requirements file - see flow_runner/requirements.txt.

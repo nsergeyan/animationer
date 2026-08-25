@@ -24,3 +24,7 @@ flow_runner/.chrome-profile/
 flow_runner/output/
 flow_runner/debug/
 flow_runner/scenes.txt
+
+# AI assistant config (kept locally, not part of the public repo)
+CLAUDE.md
+.claude/

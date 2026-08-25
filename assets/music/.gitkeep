@@ -1,0 +1,5 @@
+Optional fallback music bed.
+
+Each video normally gets its own instrumental composed by the music stage from
+the script's own music_prompt. Drop an .mp3 in this folder to have something to
+fall back on when that stage is skipped or the Music API is unavailable.
