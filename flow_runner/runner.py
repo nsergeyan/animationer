@@ -23,11 +23,13 @@ Usage:
 import argparse
 import base64
 import random
+import re
 import sys
 import time
 from pathlib import Path
 from urllib.parse import urlparse
 
+from playwright.sync_api import TimeoutError as PlaywrightTimeoutError
 from playwright.sync_api import sync_playwright
 
 import config
@@ -173,27 +175,55 @@ def diagnose(page, label: str) -> None:
     print("-" * 68 + "\n")
 
 
-def find_first(page, selectors: list[str], what: str, require_enabled: bool = False):
+def find_first(page, selectors: list[str], what: str,
+               require_enabled: bool = False, timeout: float = 0.0):
     """
     Return the first visible element matching any candidate selector.
 
     require_enabled matters for the submit button: Flow greys it out until the
     prompt box has content, and clicking a disabled button does nothing at all
     - the run would then just sit there until the generation timeout.
+
+    timeout polls instead of looking exactly once. Everything else in this file
+    polls; this did not, and it cost every scene that followed a reference
+    re-attach: the asset picker was still on screen, the submit button was not
+    reachable yet, and one immediate look failed the whole scene while the
+    scenes either side of it generated normally.
+
+    The error reports the state of each candidate rather than just the list of
+    selectors, because "no match" and "matched but disabled" have completely
+    different causes - a moved selector versus a prompt box that never got
+    filled - and the old message could not tell them apart.
     """
-    for selector in selectors:
-        try:
-            element = page.query_selector(selector)
-        except Exception:
-            continue                      # malformed selector, try the next
-        if element:
+    deadline = time.monotonic() + timeout
+    while True:
+        states = []
+        for selector in selectors:
             try:
-                if element.is_visible() and (not require_enabled or element.is_enabled()):
-                    return element
+                element = page.query_selector(selector)
             except Exception:
+                states.append(f"{selector!r}: not a usable selector")
                 continue
+            if element is None:
+                states.append(f"{selector!r}: no match")
+                continue
+            try:
+                visible, enabled = element.is_visible(), element.is_enabled()
+            except Exception:
+                states.append(f"{selector!r}: detached mid-check")
+                continue
+            if visible and (not require_enabled or enabled):
+                return element
+            states.append(f"{selector!r}: visible={visible} enabled={enabled}")
+
+        if time.monotonic() >= deadline:
+            break
+        time.sleep(0.5)
+
+    detail = "\n  ".join(states)
     raise RuntimeError(
-        f"Could not find the {what}. Tried: {selectors}\n"
+        f"Could not find the {what} after {timeout:.0f}s. Candidates:\n"
+        f"  {detail}\n"
         f"Run `python runner.py --inspect` and fix config.py."
     )
 
@@ -305,8 +335,18 @@ def _model_chip(page):
 
     The real chip is the one that also carries the aspect ratio and batch size.
     """
-    import re as _re
-    exclude = _re.compile(getattr(config, "CHIP_EXCLUDE_PATTERN", r"$^"), _re.I)
+    # By aria-label first. That survives Video mode, where the chip carries no
+    # model name and the text scan below finds nothing. It also cannot collide
+    # with the failure card, which has no such label.
+    for selector in getattr(config, "MODEL_CHIP_SELECTORS", []):
+        try:
+            element = page.query_selector(selector)
+            if element and element.is_visible():
+                return element, element.inner_text() or ""
+        except Exception:
+            continue
+
+    exclude = re.compile(getattr(config, "CHIP_EXCLUDE_PATTERN", r"$^"), re.I)
     markers = getattr(config, "MODEL_CHIP_SETTINGS_MARKERS", [])
 
     fallback = None
@@ -646,11 +686,61 @@ def find_prompt_add_button(page):
         return None
 
 
+def _find_dismiss_button(page):
+    """The first visible notice-dismiss button, or None."""
+    for selector in config.DISMISS_DIALOG_SELECTORS:
+        try:
+            button = page.query_selector(selector)
+            if button and button.is_visible():
+                return button
+        except Exception:
+            continue
+    return None
+
+
+def dismiss_startup_dialog(page) -> bool:
+    """
+    Clear any notice covering the page. True when none is left.
+
+    Deliberately does NOT gate on finding a backdrop first. The first version
+    did, and it never fired even while the banner was demonstrably eating the
+    click: .cdk-overlay-backdrop-showing was not findable from the main frame.
+    The dismiss button itself is in the DOM, so that is the signal to use.
+
+    Loops because notices stack - the cookie banner and a product notice can
+    both be up, and clearing one reveals the next.
+    """
+    for _ in range(3):
+        button = _find_dismiss_button(page)
+        if button is None:
+            return True
+        label = " ".join((button.inner_text() or "").split())[:40]
+        print(f"[dialog] dismissing a notice: {label!r}")
+        try:
+            button.click(timeout=config.CLICK_TIMEOUT_MS)
+        except PlaywrightTimeoutError:
+            print("[dialog] the notice button itself could not be clicked")
+            diagnose(page, "notice button click intercepted")
+            return False
+        page.wait_for_timeout(800)
+
+    if _find_dismiss_button(page) is None:
+        return True
+    print("[dialog] notices keep reappearing, giving up")
+    diagnose(page, "notice would not stay dismissed")
+    return False
+
+
 def _open_asset_picker(page) -> bool:
     """The picker may already be open; only click a trigger if it is not."""
     if _find_add_to_prompt(page):
         print("[ref] asset picker already open")
         return True
+
+    # A notice can also appear mid-run, not only on load.
+    if not dismiss_startup_dialog(page):
+        print("[ref] a dialog is covering the page, the click cannot land")
+        return False
 
     # Deliberately NOT "Add Media": that is the library button in the top right
     # and using it is what filed the reference somewhere the prompt could not
@@ -663,7 +753,12 @@ def _open_asset_picker(page) -> bool:
         return False
 
     print("[ref] opening reference picker via the prompt bar +")
-    trigger.click()
+    try:
+        trigger.click(timeout=config.CLICK_TIMEOUT_MS)
+    except PlaywrightTimeoutError:
+        print("[ref] the + was found but something intercepted the click")
+        diagnose(page, "prompt bar add button click intercepted")
+        return False
 
     # The picker's contents load asynchronously, so poll rather than assume a
     # fixed wait is long enough.
@@ -1031,7 +1126,14 @@ def fill_prompt(page, element, text: str) -> None:
 _IDENTIFY_JS = """
 (el) => {
   const src = el.currentSrc || el.src || '';
-  const m = src.match(/[?&]name=([^&]+)/);
+  // One id per generation, whichever host is serving it. The query string is
+  // deliberately excluded: flow-content.google URLs are signed and carry an
+  // Expires value that changes on refresh, so keying on the whole src would
+  // make one image look like a new one every time it reloads. Dedupe is what
+  // stops a single generation being saved as two different scenes.
+  const m = src.match(/[?&]name=([^&]+)/)
+         || src.match(/\\/image\\/([^/?#&=]+)/)
+         || src.match(/\\/asb\\/([^/?#&=]+)/);
   return {
     id: m ? m[1] : src,
     src: src,
@@ -1040,6 +1142,65 @@ _IDENTIFY_JS = """
   };
 }
 """
+
+
+_UNMATCHED_JS = """
+([selector, minWidth]) => {
+  const matched = new Set(document.querySelectorAll(selector));
+  return [...document.querySelectorAll('img')]
+    .filter(el => (el.naturalWidth || 0) >= minWidth && !matched.has(el))
+    .map(el => `${el.naturalWidth}x${el.naturalHeight} ` +
+               (el.currentSrc || el.src || '(no src)').slice(0, 90));
+}
+"""
+
+
+_LIMITISH_JS = """
+([pattern, maxChars]) => {
+  const re = new RegExp(pattern, 'i');
+  const out = [];
+  for (const el of document.querySelectorAll('*')) {
+    if (el.children.length > 3) continue;
+    if (!(el.offsetWidth || el.offsetHeight || el.getClientRects().length))
+      continue;
+    const t = (el.innerText || '').replace(/\\s+/g, ' ').trim();
+    if (!t || t.length > maxChars) continue;
+    if (re.test(t) && !out.includes(t)) out.push(t);
+  }
+  return out;
+}
+"""
+
+
+def _limitish_texts(page) -> list[str]:
+    """
+    Anything on screen that reads like a limit or quota notice, scanned with
+    NO scope or child restrictions.
+
+    Deliberately looser than find_rejections: when Pro hit its daily limit,
+    neither MODEL_QUOTA_PATTERN nor the broad QUOTA_PATTERN matched anything,
+    so the model ladder never fired and the scene burned the full generation
+    timeout instead of dropping a rung. Whatever Flow says now, this prints it.
+    """
+    try:
+        return page.evaluate(
+            _LIMITISH_JS,
+            [r"limit|quota|credit|out of|try again|different model|upgrade",
+             200],
+        ) or []
+    except Exception:
+        return []
+
+
+def _unmatched_images(page) -> list[str]:
+    """Large images the result selector does NOT match. See the wait loop."""
+    try:
+        return page.evaluate(
+            _UNMATCHED_JS,
+            [config.RESULT_IMAGE_SELECTOR, config.MIN_RESULT_WIDTH],
+        ) or []
+    except Exception:
+        return []
 
 
 def _all_images(page):
@@ -1086,8 +1247,10 @@ def wait_for_new_image(page, baseline_ids: set[str], baseline_rejections: int = 
     than silently saving something old.
     """
     deadline = time.monotonic() + config.GENERATION_TIMEOUT
+    started = time.monotonic()
     last_count = -1
     stable = 0
+    polls = 0
 
     while time.monotonic() < deadline:
         time.sleep(config.POLL_INTERVAL)
@@ -1100,13 +1263,39 @@ def wait_for_new_image(page, baseline_ids: set[str], baseline_rejections: int = 
         # generation looks like two and trips the batch warning below.
         seen_ids = set()
         fresh = []
+        # Counted per reason, not just skipped. A silent hang here used to say
+        # nothing at all: whether the new image was being read as pre-existing,
+        # was still loading, or was simply not in the DOM produced identical
+        # output, and those need completely different fixes.
+        skipped = {"pre-existing": 0, "duplicate": 0, "loading": 0, "small": 0}
         for element, info in _all_images(page):
-            if (info["id"] in baseline_ids or info["id"] in seen_ids
-                    or not info["ready"]
-                    or info["width"] < config.MIN_RESULT_WIDTH):
+            if info["id"] in baseline_ids:
+                skipped["pre-existing"] += 1
+                continue
+            if info["id"] in seen_ids:
+                skipped["duplicate"] += 1
+                continue
+            if not info["ready"]:
+                skipped["loading"] += 1
+                continue
+            if info["width"] < config.MIN_RESULT_WIDTH:
+                skipped["small"] += 1
                 continue
             seen_ids.add(info["id"])
             fresh.append((element, info))
+
+        polls += 1
+        if polls % 10 == 0:
+            waited = time.monotonic() - started
+            print(f"    [wait] {waited:.0f}s: {len(fresh)} new, "
+                  f"skipped {skipped}")
+            # The case none of the counters can show: a generation served from
+            # a URL RESULT_IMAGE_SELECTOR does not match is invisible above,
+            # because it never reaches _all_images at all.
+            for other in _unmatched_images(page)[:3]:
+                print(f"    [wait] large image NOT matching the selector: {other}")
+            for text in _limitish_texts(page)[:4]:
+                print(f"    [wait] limit-ish text on screen: {text!r}")
 
         # Settling guard: wait for the count to stop moving so we do not grab a
         # half-rendered result the instant it appears.
@@ -1256,8 +1445,15 @@ def _quota_hits(page) -> tuple[list, list]:
         except Exception:
             return []
 
-    return (hits_for(getattr(config, "MODEL_QUOTA_PATTERN", "")),
-            hits_for(config.QUOTA_PATTERN))
+    account_hits = hits_for(config.QUOTA_PATTERN)
+
+    # Drop Flow's pre-submit cost preview. See QUOTA_EXCLUDE_PATTERN.
+    exclude = getattr(config, "QUOTA_EXCLUDE_PATTERN", "")
+    if exclude:
+        preview = re.compile(exclude, re.I)
+        account_hits = [h for h in account_hits if not preview.search(h)]
+
+    return hits_for(getattr(config, "MODEL_QUOTA_PATTERN", "")), account_hits
 
 
 def quota_baseline(page) -> tuple[int, int]:
@@ -1294,13 +1490,22 @@ def check_for_quota(page, baseline: tuple[int, int] = (0, 0)) -> None:
     # with no new failure at all. That is how a run already down on Lite read a
     # leftover "daily limit for Nano Banana Pro" and demoted off the end of the
     # ladder. A notice only counts if it names the model we are generating with.
-    fresh = [h for h in model_hits if _wanted(h)]
-    if fresh and len(model_hits) > baseline[0]:
-        raise ModelQuotaExhausted(fresh[-1][:160])
-    if model_hits and not fresh:
-        name, _ = current_model()
-        print(f"    [limit] ignoring a stale notice that does not name "
-              f"{name}")
+    # The name guard this used to apply is gone, because Flow's notice no longer
+    # contains a model name to match: "You've reached your usage limit. Please
+    # try again later." Only the count test survives, so a notice counts only
+    # when it appeared AFTER this scene was submitted.
+    #
+    # That is weaker than before, and the known way it can misfire is a card
+    # scrolling back into view and pushing the count up with no new failure. The
+    # trade is deliberate: a spurious demote costs one rung and the run carries
+    # on, while a missed demote stalls every remaining scene for the full
+    # generation timeout, which is what killed a run at scene 11.
+    if model_hits and len(model_hits) > baseline[0]:
+        named = [h for h in model_hits if _wanted(h)]
+        raise ModelQuotaExhausted((named or model_hits)[-1][:160])
+    if model_hits:
+        print("    [limit] ignoring a notice that was already on screen "
+              "before this scene was submitted")
 
     if len(hits) > baseline[1]:
         raise QuotaExhausted(hits[-1][:160])
@@ -1505,7 +1710,7 @@ def _attempt(page, index: int, prompt: str) -> None:
     baseline_quota = quota_baseline(page)
 
     submit = find_first(page, config.SUBMIT_SELECTORS, "submit button",
-                        require_enabled=True)
+                        require_enabled=True, timeout=config.SUBMIT_WAIT)
     submit.click()
     print("    [wait] generating...")
     started = time.monotonic()
@@ -1666,6 +1871,10 @@ def main() -> int:
             input("Press Enter to close the browser... ")
             context.close()
             return 0
+
+        # Before anything else: one notice sheet hides the model chip, the
+        # prompt bar and the + alike.
+        dismiss_startup_dialog(page)
 
         ensure_agent_off(page)
         ensure_model(page)

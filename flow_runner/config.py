@@ -90,6 +90,33 @@ CLEAR_PROMPT_SELECTORS_DO_NOT_USE = [
     'button:has-text("Clear prompt")',
 ]
 
+# Google's cookie banner sits at the bottom of the page as a sheet whose only
+# dismiss is "OK, got it". It lays a CDK overlay backdrop over the WHOLE page,
+# and that backdrop swallows pointer events: the prompt bar + underneath reads
+# as visible, enabled and stable while being unclickable, so Playwright retries
+# until it times out and the run dies on an intercepted click.
+#
+# Dismissing it only before the asset picker is not enough. The same banner is
+# why ensure_model reported "selector not found" and why the prompt box looked
+# like it had not loaded, and both happen earlier in the run.
+#
+# Escape does NOT close it. The button has to be clicked.
+#
+# The label is "OK, got it", not "Got it" - an exact-match selector on the
+# latter matched nothing. :has-text is a case-insensitive SUBSTRING match, so
+# the short forms below still catch the long label; keep them substring, never
+# :text-is.
+DISMISS_DIALOG_SELECTORS = [
+    'button:has-text("OK, got it")',
+    'button:has-text("Got it")',
+    'button:has-text("Accept all")',
+]
+
+# ms. Deliberately far below Playwright's 60s default: when a backdrop is up the
+# click can never land, so the default buys a minute of retries and a traceback
+# instead of a screenshot.
+CLICK_TIMEOUT_MS = 8_000
+
 # The asset picker dialog. Uploading a file only puts it in the media library -
 # it does NOT attach it to the prompt. The asset has to be selected and then
 # handed to the prompt with this button, which is the step that actually locks
@@ -183,6 +210,17 @@ MODEL_LADDER = [
     ("Nano Banana 2 Lite", []),
 ]
 
+# The chip is found by aria-label FIRST, and only then by its text.
+#
+# Confirmed via --inspect: button[aria-label="Settings trigger"]. Matching on
+# MODEL_CHIP_MARKER alone breaks the moment the prompt bar is in Video mode,
+# where the chip reads "Video 360p 8s crop_16_9 x2" and carries no model name at
+# all. ensure_model then reported "selector not found", left the mode alone, and
+# the run queued 8-second videos instead of generating images.
+MODEL_CHIP_SELECTORS = [
+    'button[aria-label="Settings trigger"]',
+]
+
 # The chip is identified by this appearing in its text.
 MODEL_CHIP_MARKER = "Nano Banana"
 
@@ -234,15 +272,47 @@ PROMPT_SELECTORS = [
 # and this one (icon `arrow_forward`) submits the prompt. They share the class
 # button.sc-e8425ea6-0.hOBPaw, so class alone is a coin flip. Never loosen this
 # to just "Create".
+# By aria-label FIRST. Confirmed via --inspect:
+# button[aria-label="Start generation"].
+#
+# The ligature text below is kept as a fallback but must not lead: it failed
+# intermittently on the scene right after a reference re-attach, where the
+# button's inner text is briefly not "arrow_forward", and the whole scene was
+# lost to "Could not find the submit button" while the scenes either side of it
+# generated normally.
+# Seconds to wait for the submit button to become clickable. It is not instant
+# after a reference re-attach: the asset picker is still tearing down and the
+# prompt bar underneath is not reachable yet.
+SUBMIT_WAIT = 15.0
+
 SUBMIT_SELECTORS = [
+    'button[aria-label="Start generation"]',
     'button:has-text("arrow_forward")',
 ]
 
-# Flow serves every generation through this one API route, so matching on src
-# is tighter than any container scope: it cannot match the profile avatar
-# (lh3.googleusercontent.com) or the Material Symbols icon font.
+# Flow serves every generation through one route, so matching on src is tighter
+# than any container scope: it cannot match the profile avatar
+# (lh3.google.com/.../ogw/...) or the Material Symbols icon font.
 # The reported per-image wrapper, div[role="button"], is far too generic to use.
-RESULT_IMAGE_SELECTOR = 'img[src*="media.getMediaUrlRedirect"]'
+#
+# Google MOVED this route, and one generation now lives at DIFFERENT hosts at
+# different points in its life:
+#   flow-content.google/image/<uuid>?Expires=...  a fresh generation
+#   flow.google.com/asb/<token>                   the same image once persisted
+#   media.getMediaUrlRedirect?name=<uuid>         the old route, pre-2026
+# All three are listed. Matching only the persisted route is a nasty failure:
+# the baseline counts the existing images correctly, so everything looks
+# healthy, and the freshly generated image is the ONLY one that never matches. When the old selector stopped matching it
+# did not error, it just matched nothing: the pre-submit baseline read "0
+# existing image(s) on page" on a page full of them, no new image was ever
+# detected, and the run sat in "generating..." until the timeout without saving
+# anything. A baseline of 0 on a project that has images is the symptom to look
+# for. Both routes are listed so an older project still works.
+RESULT_IMAGE_SELECTOR = (
+    'img[src*="flow-content.google/image/"], '
+    'img[src*="flow.google.com/asb/"], '
+    'img[src*="media.getMediaUrlRedirect"]'
+)
 
 # Only used by the click-to-download fallback, if direct fetching fails.
 DOWNLOAD_BUTTON_SELECTORS = [
@@ -326,14 +396,36 @@ QUOTA_PATTERN = (
     r"used all your|run out of)"
 )
 
+# A cost PREVIEW, not a balance, and thrown out before QUOTA_PATTERN is
+# believed. Flow shows "Generating will use 0 credits" beside the submit arrow,
+# and in Image mode that 0 is legitimate: images cost nothing on this plan, only
+# video spends credits. QUOTA_PATTERN's "0 credits" branch was written for an
+# exhausted balance in the header and cannot tell the two apart, so it read
+# "free" as "empty" and killed a run on scene 1 with a full balance.
+QUOTA_EXCLUDE_PATTERN = r"(will use \d+ credits?)"
+
 # ONE model's daily limit, which is a different situation from the account
 # being out of credits: the other models still work. Flow words it as
 # "You've reached the daily limit for Nano Banana Pro generations. Try using a
 # different model." That sentence also matches QUOTA_PATTERN above (it contains
 # "daily limit"), so this is checked FIRST and wins, or a single model running
 # dry would abort a run that could have finished a tier lower.
+# Flow REWORDED this and dropped the model name. It used to read "You've
+# reached the daily limit for Nano Banana Pro generations. Try using a different
+# model." It now reads "You've reached your usage limit. Please try again later.
+# You have not been charged for this generation." - no model named anywhere.
+#
+# That matters beyond the wording: check_for_quota used to require the notice to
+# NAME the model in use before demoting, which is impossible against this text.
+# See the comment there for what replaced that guard.
+#
+# Treated as a per-model limit rather than an account-wide stop, so the run
+# drops a rung and retries. If every rung is spent, demote_model returns False
+# and it becomes a full stop anyway, which is the right escalation.
 MODEL_QUOTA_PATTERN = (
     r"(daily limit for[^.]{0,80}generations"
+    r"|reached your usage limit"
+    r"|usage limit"
     r"|try using a different model"
     r"|switch to a different model)"
 )
