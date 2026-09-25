@@ -1,5 +1,229 @@
 SCRIPT:
-
+{
+  "topic": "is-ai-really-dangerous",
+  "format": "explainer",
+  "plan": {
+    "spine_question": "Is artificial intelligence going to destroy humanity, or are the real dangers much more ordinary?",
+    "deflations": [
+      {
+        "assumed": "Killer robots like Terminator will take over the world and exterminate humans.",
+        "actual": "AI is predictive software that makes foolish mistakes, enables financial fraud, and amplifies human bias.",
+        "who_decided": "Sci-fi movies and sensational media headlines.",
+        "build_beat": "Hollywood movies always show killer robots marching down the street.",
+        "drop_beat": "The actual threat is much more boring... and much more EMBARRASSING."
+      }
+    ],
+    "specifics": [
+      {
+        "fact": "Air Canada was held legally liable in 2024 after its chatbot invented a fake bereavement fare policy.",
+        "source": "Civil Resolution Tribunal of British Columbia ruling 2024",
+        "beat": "Look at what happened with Air Canada in 2024."
+      },
+      {
+        "fact": "A finance worker transferred $25 million after being tricked by deepfakes of his CFO and colleagues on a video call.",
+        "source": "Hong Kong Police Force report 2024",
+        "beat": "In early 2024, a finance worker in Hong Kong joined a video call with his executive team."
+      },
+      {
+        "fact": "An AI search query uses approximately ten times as much electricity as a standard Google search.",
+        "source": "International Energy Agency Electricity 2024 Report",
+        "beat": "According to the International Energy Agency, one AI search uses ten times more electricity than a basic search."
+      }
+    ],
+    "facts_to_check": [
+      {
+        "claim": "Center for AI Safety published statement on AI extinction risk signed by top researchers.",
+        "source": "Center for AI Safety Statement on AI Risk 2023"
+      },
+      {
+        "claim": "European Union passed comprehensive AI regulatory framework.",
+        "source": "European Union AI Act 2024"
+      }
+    ]
+  },
+  "beats": [
+    {
+      "narration": "[curious] Is artificial intelligence going to DESTROY humanity, or are we worrying about the wrong thing?"
+    },
+    {
+      "narration": "Hollywood movies always show killer robots marching down the street."
+    },
+    {
+      "narration": "[dramatically] Sci-fi stories made everyone expect a giant laser-eyed machine invasion."
+    },
+    {
+      "narration": "[nervous] Even top tech experts signed open letters warning about potential human EXTINCTION."
+    },
+    {
+      "narration": "In 2023, the Center for AI Safety published a single sentence statement about global risk."
+    },
+    {
+      "narration": "[worried] So should you start building a secret underground bunker right NOW?"
+    },
+    {
+      "narration": "[hesitates] Well... not exactly."
+    },
+    {
+      "narration": "The real danger of artificial intelligence is very different from movie monsters."
+    },
+    {
+      "narration": "[flatly] It is not an evil digital mind planning to conquer Earth."
+    },
+    {
+      "narration": "[sarcastic] The actual threat is much more boring... and much more EMBARRASSING."
+    },
+    {
+      "narration": "To understand why, we need to see how these computer programs work."
+    },
+    {
+      "narration": "Modern AI tools do not think like human beings."
+    },
+    {
+      "narration": "[understated] They are basically supercharged auto-complete software."
+    },
+    {
+      "narration": "They scan billions of lines of text from across the internet."
+    },
+    {
+      "narration": "[rushed] Then they predict the very NEXT word in a sentence."
+    },
+    {
+      "narration": "The computer does not actually understand facts or truth."
+    },
+    {
+      "narration": "It only understands statistical patterns."
+    },
+    {
+      "narration": "[clears throat] When the system makes up a mistake, scientists call it hallucination."
+    },
+    {
+      "narration": "[mischievously] Hallucination is just a fancy scientific word for LYING with total confidence."
+    },
+    {
+      "narration": "And that causes hilarious, yet dangerous problems in real life."
+    },
+    {
+      "narration": "[curiously] Look at what happened with Air Canada in 2024."
+    },
+    {
+      "narration": "A customer used their official website chatbot to ask about ticket prices after a family death."
+    },
+    {
+      "narration": "[light chuckle] The polite chatbot cheerfully invented a completely FAKE discount rule."
+    },
+    {
+      "narration": "It told the passenger to buy full price tickets today and request a refund later."
+    },
+    {
+      "narration": "When the airline refused to pay, the passenger took them to court."
+    },
+    {
+      "narration": "[surprised] Air Canada argued in legal court that the chatbot was responsible for its own actions."
+    },
+    {
+      "narration": "[deadpan] Yes... they tried to blame their computer script like a separate PERSON."
+    },
+    {
+      "narration": "[laughs] The tribunal judge ruled against the airline and forced them to pay."
+    },
+    {
+      "narration": "That sounds silly, but imagine an automated bot giving wrong medical advice."
+    },
+    {
+      "narration": "[frustrated] Dumb automated mistakes are already causing REAL financial damage."
+    },
+    {
+      "narration": "Now let us look at deepfakes and digital fraud."
+    },
+    {
+      "narration": "Modern software can clone faces and voices in just a few seconds."
+    },
+    {
+      "narration": "[quietly][suspicious tone] In early 2024, a finance worker in Hong Kong joined a video call with his executive team."
+    },
+    {
+      "narration": "Every single person on that video screen looked and sounded totally real."
+    },
+    {
+      "narration": "[gasps] But every single colleague on that call was actually an AI video RECREATION."
+    },
+    {
+      "narration": "[booming] The tricked employee transferred TWENTY-FIVE million dollars to foreign scammers."
+    },
+    {
+      "narration": "[whispers] Criminals do not need killer robots when they can clone family voices."
+    },
+    {
+      "narration": "Fake photos and audio can ruin individual reputations or alter entire elections."
+    },
+    {
+      "narration": "[sad] When people can no longer trust what they see, truth DISAPPEARS."
+    },
+    {
+      "narration": "[slows down] That causes public trust in society to break down fast."
+    },
+    {
+      "narration": "Another major danger is automated prejudice."
+    },
+    {
+      "narration": "Computer algorithms learn from old historical human records."
+    },
+    {
+      "narration": "[annoyed] If old data contains human bias, the system copy-pastes that unfairness into FUTURE decisions."
+    },
+    {
+      "narration": "[upset] Studies show facial recognition tools fail much more often on non-white faces."
+    },
+    {
+      "narration": "Some automated banking tools quietly deny loan applications based on flawed historical patterns."
+    },
+    {
+      "narration": "Then we must consider jobs and employment."
+    },
+    {
+      "narration": "[drawn out] Entry-level jobs in coding, translation, and customer support are changing RAPIDLY."
+    },
+    {
+      "narration": "Software will not replace everyone, but workers using software will replace those who do not."
+    },
+    {
+      "narration": "[angry] Meanwhile, massive technology corporations are gaining immense CONTROL over information."
+    },
+    {
+      "narration": "Power is concentrating into the hands of a small group of tech executives."
+    },
+    {
+      "narration": "[loudly] Furthermore, AI relies on astronomical amounts of electrical POWER."
+    },
+    {
+      "narration": "[awe] According to the International Energy Agency, one AI search uses ten times more electricity than a basic search."
+    },
+    {
+      "narration": "Massive data centers consume huge amounts of local water and energy grids."
+    },
+    {
+      "narration": "[stammers] So... is technology going to destroy us tomorrow?"
+    },
+    {
+      "narration": "[sighs] No... human careless behaviour combined with fast software is the ACTUAL threat."
+    },
+    {
+      "narration": "[softly] The tool itself is not evil, but humans can use it foolishly."
+    },
+    {
+      "narration": "Governments are beginning to pass regulations like the European Union AI Act."
+    },
+    {
+      "narration": "[happily] We need strict safety testing, transparency, and simple accountability."
+    },
+    {
+      "narration": "[amazed] Artificial intelligence will not wipe out humanity, but it is changing our REALITY."
+    },
+    {
+      "narration": "[calm] Stay curious, double-check your sources, and keep thinking for yourself."
+    }
+  ]
+}
 
 PASS 2 OF 2: THE VISUALS
 
@@ -421,6 +645,34 @@ The alternate must describe the same person.
 
 Do not replace a named historical person with reference character.
 
+ALTERNATE LENGTH
+
+A canonical name costs two words. A description that actually identifies the
+person costs about twenty. The alternate therefore does NOT share the primary's
+budget.
+
+Base target 20 to 30 words, as in the primary.
+Add up to 20 further words for EACH named character whose name you replaced.
+
+no named characters   20 to 30 words
+one named character   up to 50 words
+two named characters  up to 70 words
+
+Spend the extra words on the characters, not on the scene or the location.
+
+Describe each named character with:
+
+build and height
+hair colour and shape
+face covering or eyewear
+one garment with its colour
+one distinguishing feature
+
+Write each character's description ONCE and reuse it WORD FOR WORD in every
+beat that character appears in. A description paraphrased between beats is a
+different instruction to the image model each time, and the character visibly
+drifts across the video.
+
 10. MULTIPLE CHARACTERS
 
 If the script requires multiple characters, all required characters must appear
@@ -433,16 +685,15 @@ Example:
 PRIMARY:
 
 reference character watches Neil Armstrong and Buzz Aldrin beside the lunar
-module, Armstrong positioned on the left while Aldrin stands beside an
-equipment rack, medium three-shot, white pressure suits, red equipment
-markings, blue cable beside the landing leg
+module, Armstrong on the left, Aldrin beside an equipment rack, medium
+three-shot
 
 ALT:
 
-reference character watches two male astronauts in bulky white pressure suits
-with clear helmet visors and rectangular life-support packs, one positioned on
-the left and the other beside an equipment rack, wider three-shot, red equipment
-markings, blue cable beside the landing leg
+reference character watches two men in bulky white pressure suits with clear
+bubble helmets and rectangular life-support packs beside the lunar module, the
+taller one on the left, the shorter one beside an equipment rack, wider
+three-shot
 
 The alternate must preserve:
 
@@ -657,18 +908,20 @@ plan.locations[].visual_anchor
 
 for every location.
 
-Aim for 25 to 40 words.
+Aim for 12 to 18 words.
 
 Include:
 
 wall materials
 floor materials
-window or door shapes
-two or three fixed furnishings
-two saturated colours
-visible structural details
+one fixed landmark feature
+the dominant colour of the space
 
-Use only visible materials, shapes, furniture, architecture, and colours.
+Never list movable objects. The anchor says what the PLACE is made of, not
+what is standing in it. This text is pasted into EVERY beat of the location,
+so each object named here is an object demanded in every frame.
+
+Use only visible materials, shapes, architecture, and colours.
 
 Do not use:
 
@@ -796,9 +1049,9 @@ It describes a recurring visual motif across multiple locations, not a place.
 
 Each image_prompt is one single line.
 
-Target 40 to 70 words.
+Target 20 to 30 words.
 
-Never exceed 90 words.
+Never exceed 35 words.
 
 Start lowercase.
 
@@ -823,10 +1076,9 @@ The reference character does not have to be the main subject.
 
 Example:
 
-reference character sits at the edge of a desk with a bored skeptical
-expression, looking toward a large lunar photograph while one gloved astronaut
-stands beside a planted flag, medium-wide shot, brushed metal equipment case,
-white fabric suit, red flag stripes, blue binder beside the desk
+reference character sits at a desk with a bored skeptical expression, looking
+toward a large lunar photograph while one gloved astronaut stands beside a
+planted flag, medium-wide shot
 
 23. REFERENCE CHARACTER PLACEMENT
 
@@ -960,12 +1212,12 @@ construction
 
 Every primary and alternate prompt should contain:
 
-at least two precise material details
-at least two saturated colours
+one precise material detail
+one saturated colour, covering a large area of the frame
 a clear physical action
 a clear spatial relationship
 a clear framing choice
-two or three important objects
+one important object
 
 Attach colours to visible objects.
 
@@ -1385,12 +1637,12 @@ generated locations are not unnecessarily generic
 similar consecutive beats reuse locations when appropriate
 substantially different subjects can receive different locations
 every location has a corresponding plan.locations entry
-every location has a 25 to 40 word visual_anchor
+every location has a 12 to 18 word visual_anchor
 location anchors describe stable physical features
 location anchors contain materials
-location anchors contain architectural features
-location anchors contain fixed furnishings
-location anchors contain at least two saturated colours
+location anchors contain one fixed landmark feature
+location anchors contain the dominant colour of the space
+location anchors contain no movable objects
 location anchors contain no dates
 location anchors contain no era names
 location anchors contain no abstract concepts
@@ -1469,9 +1721,10 @@ Check:
 
 every beat has image_prompt
 every beat has image_prompt_alt
-every primary is 40 to 70 words
-every alternate is 40 to 70 words
-none exceeds 90 words
+every primary is 20 to 30 words
+no primary exceeds 35 words
+every alternate is 20 to 30 words plus up to 20 words per replaced name
+alternate character descriptions are word for word identical across beats
 no two primary prompts are identical
 no alternate is identical to its primary
 
@@ -1483,9 +1736,9 @@ clear subject identity
 clear physical action
 clear spatial relationship
 explicit framing
-at least two precise material details
-at least two saturated colours
-important objects physically placed
+one precise material detail
+one saturated colour covering a large area of the frame
+the important object physically placed
 no floating large objects
 recurring characters remain consistent
 recurring locations remain consistent

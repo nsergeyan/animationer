@@ -29,68 +29,68 @@ GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 ELEVENLABS_API_KEY = os.getenv("ELEVENLABS_API_KEY")
 
 # --- Visual style ----------------------------------------------------------
-# THE style. Appended verbatim to every image prompt by pipeline.py, so it is
+# THE style. Pasted at the FRONT of every image prompt by pipeline.py, so it is
 # byte-identical on every scene of every video, whatever the topic.
 #
 # It lives here, not in script.json, because anything an LLM writes it will
-# eventually paraphrase - and a paraphrased style block is a different style.
+# eventually paraphrase, and a paraphrased style block is a different style.
 # Claude writes the SCENE; this writes the LOOK.
 #
-# Two rules if you edit it, both from Google's Nano Banana guidance:
-#   1. Positive framing only. "no shading" puts shading in front of the model
-#      and asks it not to draw it. Say what the surface IS instead.
+# POSITION: first, always. It used to be split in two - a one-line prefix at the
+# front and this block at the end - because a style block sitting alone at the
+# END of a ~750 character prompt meant the model read hundreds of words of
+# realistic scene description before being told the medium, and by then it had
+# committed. The failure that caused: "a stone wall covered in carved wooden
+# name plaques, hundreds of them" is a real-world photographic subject, and Nano
+# Banana grounds real subjects against real images. It returned an actual
+# photograph with the character pasted on top.
+#
+# Putting the whole block first does that job on its own, so the separate prefix
+# is gone. This only works while the block stays SHORT: 785 characters of style
+# in front of the scene would bury the subject just as badly the other way
+# round. If this ever grows back past ~500 characters, that tradeoff is back.
+#
+# Four rules if you edit it:
+#   1. Positive framing only, from Google's Nano Banana guidance. "no shading"
+#      puts shading in front of the model and asks it not to draw it. Say what
+#      the surface IS instead - which is why flat colour is specified as "every
+#      shape one uniform block with hard edges" and never as "no gradients".
 #   2. Do NOT describe the reference character here. The attached reference art
 #      already defines him, and re-describing him competes with it - excessive
 #      character detail in the prompt measurably REDUCES consistency.
-# Declared BEFORE the scene as well as after it. This matters: the style block
-# alone sits at the end of a ~750 character prompt, so the model reads hundreds
-# of words of realistic scene description before being told the medium. Naming
-# the medium in the first few words makes it commit up front.
+#   3. Phrase the medium as a DIRECTIVE, not a noun phrase. "A crude flat MS
+#      Paint doodle drawing." reads as a thing to depict, and the model duly
+#      depicted it: a scribbled "CRUDE MS PAINT ADVENTURE" title card in one
+#      scene, MS Paint's own dashed selection marquee and canvas border in
+#      another. "Drawn shakily with a mouse" cannot be read as content.
+#   4. Keep it short. See POSITION above.
 #
-# The failure this fixes: "a stone wall covered in carved wooden name plaques,
-# hundreds of them" is a real-world photographic subject, and Nano Banana 2
-# grounds real subjects against real images. It returned an actual photograph
-# with the character pasted on top.
-# Phrased as a DIRECTIVE, not a noun phrase. "A crude flat MS Paint doodle
-# drawing." reads as a thing to depict, and the model duly depicted it: a
-# scribbled "CRUDE MS PAINT ADVENTURE" title card in one scene, and MS Paint's
-# own dashed selection marquee and canvas border in another. "Drawn in X style"
-# cannot be read as content.
-STYLE_PREFIX = "Drawn crudely in flat MS Paint doodle style."
-
-
-# The two negative clauses are load-bearing, both added after real failures:
-#   - The scribble clause has to cover EVERYTHING, and it has to be separate
-#     from the do-not-invent-lettering clause. Narrowing it to "a sign or a
-#     written notice" (an attempt to stop invented title cards) quietly
+# Clause by clause, each earns its place:
+#   - The scribble clause and the do-not-invent-lettering clause do two
+#     different jobs and must stay separate. Narrowing the first to "a sign or
+#     a written notice" (an attempt to stop invented title cards) quietly
 #     excluded notebooks and TV screens, and those came back full of confident
-#     misspelled English: "THE VOID IS WATCHING", "study for for quiz". Both
-#     jobs are now stated separately: all writing is scribble, AND nothing
-#     unrequested gets added.
+#     misspelled English: "THE VOID IS WATCHING", "study for for quiz".
 #   - Naming a paint program invites the model to draw the program. Forbidding
 #     the window furniture outright is what stops the dashed marquee and the
 #     grey canvas border showing up around the picture.
-#
-# The edge-margin clause is the one rule here that is not driven by a bad
-# generation - it is driven by the render. Ken Burns crops up to 10% off the
-# frame (remotion/src/constants.ts), and the previous move was clamped down to
-# an invisible 3% precisely because full-bleed art had no margin to give. This
-# asks for the margin instead, so the camera can move. Phrased as what the
-# composition IS, per rule 1 - "leave space at the edges" reads as an
-# instruction about the canvas, not about where to put the subject.
+#   - The edge-margin clause is driven by the render, not by a bad generation.
+#     Ken Burns crops up to 10% off the frame (remotion/src/constants.ts), and
+#     the move was once clamped to an invisible 3% precisely because full-bleed
+#     art had no margin to give. This asks for the margin so the camera can move.
+#   - "A simple picture: few objects, drawn large, plain background" is the
+#     newest clause and the only one not driven by a generation failure. It is
+#     driven by a measurement: across five shipped videos every frame carried
+#     ~6 separately placed objects at ~0.5 seconds of screen time each, far
+#     more than a viewer can read before the cut. Stated positively per rule 1.
 STYLE_BLOCK = (
-    "STYLE: crude MS Paint doodle, drawn shakily with a computer mouse. "
-    "Thick wobbly black outlines of uneven weight. Flat bucket-filled colour, "
-    "every shape a single uniform block with hard edges. Flat 2D composition. "
-    "Any writing anywhere in the picture is wobbly unreadable scribble, never "
-    "real letters or words: on signs, screens, pages, notebooks, labels and "
-    "packaging alike. Never add a title, caption, watermark or any lettering "
-    "the scene did not ask for. "
-    "Never show an application window, toolbar, menu, canvas edge or dashed "
-    "selection outline - the drawing fills the whole frame edge to edge. "
-    "The main subject sits well inside the frame with clear space along all "
-    "four edges. "
-    "Childlike, amateur, deliberately badly drawn. 16:9 horizontal."
+    "Crude MS Paint doodle drawn shakily with a mouse. Thick wobbly black "
+    "outlines of uneven weight, flat bucket-filled colour, every shape one "
+    "uniform block with hard edges, flat 2D, childlike, deliberately badly "
+    "drawn. A simple picture: few objects, drawn large, plain background. "
+    "All writing is wobbly unreadable scribble, never real letters. Add no "
+    "lettering the scene did not ask for. No application window, toolbar or "
+    "canvas edge. Keep the subject clear of all four edges. 16:9 horizontal."
 )
 
 # --- Sleep prevention -------------------------------------------------------

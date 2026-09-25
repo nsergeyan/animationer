@@ -10,395 +10,470 @@ from modules import transcriber
 
 FLOW_RUNNER = config.ROOT_DIR / "flow_runner" / "runner.py"
 
-NEW_SCRIPT = {
-  "topic": "moon-landing-fake",
+NEW_SCRIPT ={
+  "topic": "is-ai-really-dangerous",
   "format": "explainer",
   "plan": {
-    "spine_question": "Why do millions of people still think the Apollo 11 moon landing was a giant movie set?",
-    "payoff_line": "So, the moon landing is real, but human paranoia? That's the real infinite universe.",
+    "spine_question": "Is artificial intelligence going to destroy humanity, or are the real dangers much more ordinary?",
     "deflations": [
       {
-        "assumed": "The flag blowing in the wind proves it was filmed on Earth.",
-        "actual": "It is rippling because of a metal rod and the twisting motion used to plant it, not wind.",
-        "who_decided": "People who do not understand vacuum physics.",
-        "build_beat": "[frustrated] 'Look at it! It is blowing in the wind!'",
-        "drop_beat": "[laughs] It is not wind. It is just... physics."
+        "assumed": "Killer robots like Terminator will take over the world and exterminate humans.",
+        "actual": "AI is predictive software that makes foolish mistakes, enables financial fraud, and amplifies human bias.",
+        "who_decided": "Sci-fi movies and sensational media headlines.",
+        "build_beat": "Hollywood movies always show killer robots marching down the street.",
+        "drop_beat": "The actual threat is much more boring... and much more EMBARRASSING."
       }
     ],
     "specifics": [
       {
-        "fact": "Over 400,000 people worked on the Apollo project.",
-        "source": "NASA historical archives",
-        "beat": "Four hundred thousand people worked on the Apollo project."
+        "fact": "Air Canada was held legally liable in 2024 after its chatbot invented a fake bereavement fare policy.",
+        "source": "Civil Resolution Tribunal of British Columbia ruling 2024",
+        "beat": "Look at what happened with Air Canada in 2024."
+      },
+      {
+        "fact": "A finance worker transferred $25 million after being tricked by deepfakes of his CFO and colleagues on a video call.",
+        "source": "Hong Kong Police Force report 2024",
+        "beat": "In early 2024, a finance worker in Hong Kong joined a video call with his executive team."
+      },
+      {
+        "fact": "An AI search query uses approximately ten times as much electricity as a standard Google search.",
+        "source": "International Energy Agency Electricity 2024 Report",
+        "beat": "According to the International Energy Agency, one AI search uses ten times more electricity than a basic search."
       }
     ],
     "facts_to_check": [
       {
-        "claim": "Astronauts passing through the Van Allen belts received only a small, non-lethal dose of radiation.",
-        "source": "NASA / radiation dosimetry records from Apollo missions"
+        "claim": "Center for AI Safety published statement on AI extinction risk signed by top researchers.",
+        "source": "Center for AI Safety Statement on AI Risk 2023"
+      },
+      {
+        "claim": "European Union passed comprehensive AI regulatory framework.",
+        "source": "European Union AI Act 2024"
       }
     ],
     "locations": [
       {
-        "name": "sun-bright lunar photograph archive",
-        "visual_anchor": "pale grey plaster walls, polished pale wood flooring, one wide arched window, a long oak reading table, a tall steel shelving unit, red archive folders and blue photograph sleeves stacked along the shelves, exposed white ceiling beams"
+        "name": "robot movie prop depot",
+        "visual_anchor": "corrugated steel walls painted deep red, stained concrete floor, one large roller shutter door, rusted steel ceiling girders"
       },
       {
-        "name": "flag rigging workshop",
-        "visual_anchor": "rough concrete walls, scuffed grey rubber flooring, one tall metal roller door, a heavy steel workbench, a rack of thin metal rods, a folded fabric flag draped across a stand, red tool cabinets and blue storage crates nearby"
+        "name": "oak-panelled university reading room",
+        "visual_anchor": "tall oak-panelled walls, green carpeted floor, one arched stained-glass window, dark green plaster ceiling with moulded cornices"
       },
       {
-        "name": "camera exposure testing chamber",
-        "visual_anchor": "matte black felt-lined walls, dark rubber flooring, one small round porthole window, a heavy tripod-mounted camera on a steel stand, a wide white photo backdrop screen, red camera equipment cases and blue calibration charts stacked nearby"
+        "name": "backyard survival bunker",
+        "visual_anchor": "curved corrugated metal walls painted olive green, packed dirt floor, one steel ladder rising to a round hatch"
       },
       {
-        "name": "film prop and set-dressing storage bay",
-        "visual_anchor": "rough plywood walls, painted concrete flooring, one large sliding freight door, a tall shelving rack of foam props, a large canvas backdrop rolled against the wall, red gaffer tape spools and blue plastic prop crates stacked in the corner"
+        "name": "cramped server basement workshop",
+        "visual_anchor": "grey concrete walls, raised white floor tiles, one built-in row of black server racks, deep blue ceiling"
       },
       {
-        "name": "radiation dosimetry monitoring room",
-        "visual_anchor": "brushed steel wall panels, dark grey tiled flooring, one thick round viewing window, a wide instrument console with dial gauges, a tall rack of cabled equipment, red warning lamps and blue indicator lights fixed along the panels"
+        "name": "airline customer service back room",
+        "visual_anchor": "cream laminate wall panels, speckled blue linoleum floor, one long built-in counter, bright red painted ceiling beams"
       },
       {
-        "name": "overflowing conspiracy theory archive",
-        "visual_anchor": "cluttered cork board walls, worn checkered tile flooring, one narrow frosted window, a long cluttered worktable, a tall filing cabinet stuffed with folders, red string connecting pinned photographs and blue evidence folders scattered across the table"
+        "name": "small tribunal hearing chamber",
+        "visual_anchor": "pale maple wall panelling, navy blue carpet, one raised wooden judge's bench along the front wall"
+      },
+      {
+        "name": "police fraud evidence room",
+        "visual_anchor": "painted cinderblock walls in teal, grey epoxy floor, one wall-length steel pegboard, exposed fluorescent tube fittings overhead"
+      },
+      {
+        "name": "high-rise finance office",
+        "visual_anchor": "floor-to-ceiling glass windows, charcoal carpet tiles, one white structural column, pale grey walls with orange accent panel"
+      },
+      {
+        "name": "newspaper fact-checking room",
+        "visual_anchor": "yellowed plaster walls, scuffed parquet floor, one tall sash window, mustard yellow painted pipes along the ceiling"
+      },
+      {
+        "name": "bank loan records archive",
+        "visual_anchor": "dark brick walls, worn brown linoleum floor, one arched brick vault doorway, fixed maroon steel shelving along walls"
+      },
+      {
+        "name": "half-vacated call-centre floor",
+        "visual_anchor": "white drywall partitions, grey loop-pile carpet, one wide exposed ventilation duct, lime green painted support pillars"
+      },
+      {
+        "name": "glass-topped executive boardroom",
+        "visual_anchor": "black marble walls, dark walnut floor, one floor-to-ceiling window wall, deep purple velvet wall panels"
+      },
+      {
+        "name": "data-centre cooling hall",
+        "visual_anchor": "white insulated metal walls, perforated steel floor grating, one massive overhead cooling duct, bright cyan painted pipework"
+      },
+      {
+        "name": "parliament committee chamber",
+        "visual_anchor": "curved blond wood walls, royal blue carpet, one semicircular tiered bench, high white acoustic ceiling panels"
       }
     ],
-    "setting_anchor": "recurring red archival accents paired with blue equipment and evidence markings appear across every location"
+    "setting_anchor": ""
   },
   "beats": [
     {
-      "narration": "[curious] Let's travel back to 1969.",
-      "location": "sun-bright lunar photograph archive",
-      "image_prompt": "reference character sits at a long oak table scattered with lunar photographs, leaning forward with a curious expression while opening a thick red folder, wide shot, pale wood table surface, one blue photograph sleeve resting open beside a stack of glossy prints",
-      "image_prompt_alt": "reference character stands beside a tall steel shelving unit stacked with photograph sleeves, tilting their head with curious interest while holding a thick red folder open in both hands, medium shot, one blue folder resting on a nearby stack of glossy prints"
+      "location": "robot movie prop depot",
+      "narration": "[curious] Is artificial intelligence going to DESTROY humanity, or are we worrying about the wrong thing?",
+      "image_prompt": "reference character leans against a tall chrome robot prop with red eye lenses, arms folded, looking skeptical toward the camera, medium shot, bright red tarpaulin draped over a nearby wooden crate",
+      "image_prompt_alt": "low-angle wide shot, a tall chrome robot prop with red eye lenses towers over reference character, who stands at frame right with a deadpan stare, bright red tarpaulin covering the floor"
     },
     {
-      "narration": "The US sent humans to the moon... or so they say.",
-      "location": "sun-bright lunar photograph archive",
-      "image_prompt": "reference character holds up a large photograph showing an astronaut in a bulky white pressure suit standing on a grey cratered surface, studying it with a flat skeptical expression, medium close-up, red folder tucked under one arm, blue photograph sleeve resting on the table",
-      "image_prompt_alt": "reference character examines a large photograph of a figure in a bulky white fabric suit with a rounded reflective helmet standing on a grey cratered surface, deadpan expression, three-quarter view, red folder tucked underarm, blue photograph sleeve resting nearby on the table"
+      "location": "robot movie prop depot",
+      "narration": "Hollywood movies always show killer robots marching down the street.",
+      "image_prompt": "reference character sits on a folding chair, bored, watching five silver robot props lined up along a miniature cardboard street set painted bright red, wide shot at eye level",
+      "image_prompt_alt": "over-the-shoulder shot from behind reference character, facing five silver robot props mid-stride across a bright red cardboard street set, one robot prop tipped over on the floor"
     },
     {
-      "narration": "[sarcastic] Because some people think the whole thing was filmed in a Hollywood basement.",
-      "location": "sun-bright lunar photograph archive",
-      "image_prompt": "reference character stands with arms crossed and one eyebrow raised in sarcastic disbelief, looking toward a crude pinned sketch of a soundstage on the wall, medium shot, red folder resting on the table nearby, blue photograph sleeve tucked beneath a stack of prints",
-      "image_prompt_alt": "reference character leans against the oak table with arms crossed and a sarcastic half-smile, glancing sideways at a crude pinned sketch of a soundstage on the wall, three-quarter shot, red folder resting nearby, blue photograph sleeve tucked beneath the stack of prints"
+      "location": "robot movie prop depot",
+      "narration": "[dramatically] Sci-fi stories made everyone expect a giant laser-eyed machine invasion.",
+      "image_prompt": "reference character stands unimpressed beside a giant fibreglass robot head with two red laser tubes protruding from its eyes, bright orange foam scenery rocks piled at its base, medium shot",
+      "image_prompt_alt": "close-up of reference character's unimpressed face in the foreground left, a giant fibreglass robot head behind with red laser tubes jutting from its eyes over bright orange foam rocks"
     },
     {
-      "narration": "Yes. A basement.",
-      "location": "sun-bright lunar photograph archive",
-      "image_prompt": "reference character gestures flatly toward a small cardboard diorama of a cluttered basement film set resting on the oak table, unimpressed expression, close-up, red folder pushed aside, blue photograph sleeve visible at the table's edge",
-      "image_prompt_alt": "reference character points with an unimpressed flat expression toward a small cardboard model of a cluttered basement film set on the table, close-up, red folder pushed aside, blue photograph sleeve visible near the table's edge"
+      "location": "oak-panelled university reading room",
+      "narration": "[nervous] Even top tech experts signed open letters warning about potential human EXTINCTION.",
+      "image_prompt": "reference character leans over a long oak table covered with cream paper sheets bearing dark signature marks, curious expression, high-angle shot, deep green leather tabletop, one brass fountain pen beside the stack",
+      "image_prompt_alt": "medium shot from table level, a tall stack of cream paper sheets with dark signature marks in the foreground, reference character seated behind it frowning curiously, deep green leather tabletop"
     },
     {
-      "narration": "But WHY do people believe this?",
-      "location": "sun-bright lunar photograph archive",
-      "image_prompt": "reference character leans back in a wooden chair with a puzzled thoughtful expression, surrounded by scattered folders and photograph sleeves across the oak table, wide shot, red folder open in the foreground, blue photograph sleeve resting beside stacked prints",
-      "image_prompt_alt": "reference character tilts their head back against the chair with a genuinely puzzled expression, surrounded by scattered folders and loose prints across the table, wider shot, red folder open in the foreground, blue photograph sleeve resting among the stacked prints"
+      "location": "oak-panelled university reading room",
+      "narration": "In 2023, the Center for AI Safety published a single sentence statement about global risk.",
+      "image_prompt": "reference character sits hunched at a reading desk squinting at one cream paper sheet holding a single short line of dark marks, bright green leather blotter beneath, medium close-up",
+      "image_prompt_alt": "overhead shot of one cream paper sheet with a single short line of dark marks on a bright green leather blotter, reference character's skeptical face leaning in from the frame edge"
     },
     {
-      "narration": "First, let's look at the famous flag.",
-      "location": "flag rigging workshop",
-      "image_prompt": "reference character stands beside a folded fabric flag draped across a metal stand, looking toward it with curious attention, medium shot, heavy steel workbench nearby, a rack of thin metal rods mounted on the wall, red tool cabinet in the background",
-      "image_prompt_alt": "reference character stands close to a folded fabric flag resting on a metal stand, curious expression, wider shot, heavy steel workbench nearby, a rack of thin metal rods mounted on the wall, red tool cabinet visible in the background"
+      "location": "backyard survival bunker",
+      "narration": "[worried] So should you start building a secret underground bunker right NOW?",
+      "image_prompt": "reference character sits on an upturned metal bucket, looking resigned, beside stacked food tins and one orange hand-crank radio, olive green sleeping bag crossing the foreground, medium-wide shot",
+      "image_prompt_alt": "high-angle shot looking down the ladder at reference character crouched among stacked food tins, one orange hand-crank radio at their feet, olive green sleeping bag unrolled across the dirt"
     },
     {
-      "narration": "[frustrated] 'Look at it! It is blowing in the wind!'",
-      "location": "flag rigging workshop",
-      "image_prompt": "reference character watches with a skeptical raised eyebrow while an unnamed frustrated bystander in a rumpled jacket points urgently at a rippling flag mounted on a metal rod, medium two-shot, heavy steel workbench beside them, blue storage crate resting on the floor",
-      "image_prompt_alt": "reference character observes with a skeptical raised eyebrow while a frustrated man in a rumpled jacket and messy hair jabs a finger toward a rippling flag on a metal rod, wider two-shot, heavy steel workbench beside them, blue storage crate resting nearby on the floor"
+      "location": "robot movie prop depot",
+      "narration": "[hesitates] Well... not exactly.",
+      "image_prompt": "reference character stands beside a toppled chrome robot prop lying on the concrete floor, one eyebrow raised, bright red tarpaulin half pulled from the fallen prop, medium shot",
+      "image_prompt_alt": "wide shot at floor level, the toppled chrome robot prop stretched across the foreground, reference character at the far end with a doubtful sideways glance, bright red tarpaulin crumpled nearby"
     },
     {
-      "narration": "There is NO wind in space, genius.",
-      "location": "flag rigging workshop",
-      "image_prompt": "reference character stands with a flat, mildly annoyed expression beside the rippling flag replica, one hand resting on the metal rod, close medium shot, heavy steel workbench in the background, red tool cabinet and blue storage crate along the wall",
-      "image_prompt_alt": "reference character rests one hand on the metal flag rod with a flat, mildly annoyed expression, close-up, heavy steel workbench visible behind them, red tool cabinet and blue storage crate along the back wall"
+      "location": "robot movie prop depot",
+      "narration": "The real danger of artificial intelligence is very different from movie monsters.",
+      "image_prompt": "reference character stands between a bright red rubber monster costume hanging on a steel rail and one beige laptop on a wooden workbench, glancing toward the laptop, medium-wide shot",
+      "image_prompt_alt": "reference character in the foreground right with a thoughtful look, a bright red rubber monster costume hanging from a steel rail behind, one beige laptop on a workbench at left, long shot"
     },
     {
-      "narration": "So it MUST be fake, right?",
-      "location": "flag rigging workshop",
-      "image_prompt": "reference character raises both eyebrows in exaggerated mock doubt, gesturing loosely toward the flag mounted on its stand, medium shot, heavy steel workbench beside them, a rack of thin metal rods mounted on the wall, blue storage crate on the floor",
-      "image_prompt_alt": "reference character shrugs with an exaggerated doubtful expression, one hand raised toward the flag on its stand, wider shot, heavy steel workbench nearby, a rack of thin metal rods mounted on the wall, blue storage crate resting on the floor"
+      "location": "robot movie prop depot",
+      "narration": "[flatly] It is not an evil digital mind planning to conquer Earth.",
+      "image_prompt": "reference character sits on a wooden crate with a flat unimpressed stare beside a large clear plastic brain model packed with bright red wires, resting on a steel trolley, medium shot",
+      "image_prompt_alt": "close-up over the clear plastic brain model filled with bright red wires on a steel trolley, reference character behind it with a flat unimpressed stare, three-quarter view"
     },
     {
-      "narration": "[sighs] Wrong.",
-      "location": "flag rigging workshop",
-      "image_prompt": "reference character shakes their head slowly with a resigned expression, standing beside the heavy steel workbench, close-up, the flag mounted on its stand behind them, red tool cabinet and blue storage crate visible along the wall",
-      "image_prompt_alt": "reference character exhales with a resigned, slightly tired expression, standing near the steel workbench, close medium shot, the flag on its stand visible behind them, red tool cabinet and blue storage crate along the back wall"
+      "location": "robot movie prop depot",
+      "narration": "[sarcastic] The actual threat is much more boring... and much more EMBARRASSING.",
+      "image_prompt": "reference character slumps on a folding chair beside a beige office printer jammed with crumpled paper, bored expression, chrome robot props standing ignored behind, bright red floor tarpaulin, wide shot",
+      "image_prompt_alt": "medium close-up of the beige printer jammed with crumpled paper on a bright red floor tarpaulin, reference character slumped beside it, bored, chrome robot props standing further back"
     },
     {
-      "narration": "NASA knew a regular flag would just hang straight down and look sad.",
-      "location": "flag rigging workshop",
-      "image_prompt": "reference character points toward a second fabric flag hanging limply straight down from a bare rod, mildly amused expression, medium shot, heavy steel workbench nearby, red tool cabinet and blue storage crate along the wall",
-      "image_prompt_alt": "reference character gestures toward a plain fabric flag drooping straight down from a bare metal rod, faint amused expression, wider shot, heavy steel workbench nearby, red tool cabinet and blue storage crate along the back wall"
+      "location": "cramped server basement workshop",
+      "narration": "To understand why, we need to see how these computer programs work.",
+      "image_prompt": "reference character stands at the open door of one black metal cabinet, peering at tangled bright blue cables and rows of small green indicator lamps, curious expression, medium shot",
+      "image_prompt_alt": "wide shot along the aisle of black metal cabinets, reference character small in the distance leaning toward one open cabinet door, bright blue cable bundles running overhead"
     },
     {
-      "narration": "So they put a metal rod along the top to hold it out.",
-      "location": "flag rigging workshop",
-      "image_prompt": "reference character watches closely as a thin metal rod is fitted along the top edge of the fabric flag on the workbench, curious expression, close-up, heavy steel workbench surface, red tool cabinet visible in the background",
-      "image_prompt_alt": "reference character leans in with curious attention as a thin metal rod is slid along the top hem of the fabric flag resting on the workbench, close-up, heavy steel workbench surface, red tool cabinet visible behind them"
+      "location": "cramped server basement workshop",
+      "narration": "Modern AI tools do not think like human beings.",
+      "image_prompt": "reference character sits at a steel desk comparing a pink rubber human brain model with one flat green circuit board resting beside it, skeptical look, close-up",
+      "image_prompt_alt": "overhead shot of a steel desk holding a pink rubber brain model and a flat green circuit board side by side, reference character's skeptical face leaning in from above"
     },
     {
-      "narration": "But the rod got stuck.",
-      "location": "flag rigging workshop",
-      "image_prompt": "reference character tilts their head with a puzzled expression at a metal rod jammed at an awkward angle within the flag's top hem, medium close-up, heavy steel workbench beneath, blue storage crate resting on the floor nearby",
-      "image_prompt_alt": "reference character squints with a puzzled expression at a metal rod caught at an awkward angle inside the flag's top hem, close-up, heavy steel workbench beneath, blue storage crate resting nearby on the floor"
+      "location": "cramped server basement workshop",
+      "narration": "[understated] They are basically supercharged auto-complete software.",
+      "image_prompt": "reference character stands deadpan beside a jumbo red phone keypad model propped on a trolley, thick orange jump cables linking it to a car battery on the floor, medium-wide shot",
+      "image_prompt_alt": "low-angle shot from floor level past a car battery and thick orange jump cables toward a jumbo red phone keypad model on a trolley, reference character deadpan behind it"
     },
     {
-      "narration": "Plus, the astronauts twisted the pole to push it into the hard dirt.",
-      "location": "flag rigging workshop",
-      "image_prompt": "reference character watches an astronaut in a bulky white pressure suit twisting a metal pole downward into a small tray of packed grey dirt on the workbench, medium shot, rack of thin metal rods mounted on the wall, red tool cabinet nearby",
-      "image_prompt_alt": "reference character observes a figure in a bulky white fabric suit with a rounded helmet twisting a metal pole into a tray of packed grey dirt on the workbench, wider shot, rack of thin metal rods mounted on the wall, red tool cabinet nearby"
+      "location": "cramped server basement workshop",
+      "narration": "They scan billions of lines of text from across the internet.",
+      "image_prompt": "reference character sits buried to the shoulders in bright yellow continuous-feed paper spilling from a black metal cabinet, dense grey marks across every sheet, tired look, high-angle shot",
+      "image_prompt_alt": "wide shot of bright yellow continuous-feed paper cascading from a black metal cabinet into a heap across the floor, reference character's tired face poking out of the pile at left"
     },
     {
-      "narration": "That twisting made the flag ripple.",
-      "location": "flag rigging workshop",
-      "image_prompt": "reference character points closely at the rippled folds of fabric along the flag mounted on its stand, focused expression, close-up, heavy steel workbench in the background, blue storage crate resting on the floor",
-      "image_prompt_alt": "reference character traces a finger near the rippled folds of the fabric flag on its stand, focused expression, extreme close-up, heavy steel workbench blurred behind, blue storage crate resting nearby on the floor"
+      "location": "cramped server basement workshop",
+      "narration": "[rushed] Then they predict the very NEXT word in a sentence.",
+      "image_prompt": "reference character leans toward a row of blank wooden blocks on a steel bench, one gap at the end and a single bright red block waiting beside it, curious, close-up",
+      "image_prompt_alt": "medium shot from the side, reference character crouched at bench height eyeing a single bright red wooden block beside a gap in a row of blank wooden blocks"
     },
     {
-      "narration": "[laughs] It is not wind. It is just... physics.",
-      "location": "flag rigging workshop",
-      "image_prompt": "reference character stands with arms crossed, laughing openly beside the rippled flag mounted on its stand, medium shot, heavy steel workbench nearby, red tool cabinet and blue storage crate along the back wall",
-      "image_prompt_alt": "reference character laughs with head tilted back, arms loosely crossed near the rippled flag on its stand, wider shot, heavy steel workbench nearby, red tool cabinet and blue storage crate along the back wall"
+      "location": "cramped server basement workshop",
+      "narration": "The computer does not actually understand facts or truth.",
+      "image_prompt": "reference character stares blankly at a black metal cabinet while an open encyclopedia and a brass magnifying glass rest untouched on top, bright blue cable loops hanging beside, medium shot",
+      "image_prompt_alt": "close-up of an open encyclopedia and brass magnifying glass on top of a black metal cabinet, reference character behind with a blank resigned stare, bright blue cables dangling"
     },
     {
-      "narration": "Okay, next point.",
-      "location": "camera exposure testing chamber",
-      "image_prompt": "reference character walks through a narrow doorway into the chamber with a neutral curious expression, one hand trailing along a steel equipment case, medium shot, heavy tripod-mounted camera visible ahead, red camera case resting on the floor",
-      "image_prompt_alt": "reference character steps forward through a narrow doorway with a neutral, mildly curious expression, glancing toward a heavy tripod-mounted camera across the room, wider shot, red camera case resting on the floor nearby"
+      "location": "cramped server basement workshop",
+      "narration": "It only understands statistical patterns.",
+      "image_prompt": "reference character stands before a large cork board in a steel frame pinned with bright orange bar charts and dot grids, head tilted, mildly interested, medium-wide shot",
+      "image_prompt_alt": "three-quarter rear view from behind reference character, facing the steel-framed cork board pinned with bright orange bar charts and dot grids, one steel stool beside them"
     },
     {
-      "narration": "Conspiracy fans say: 'Where are the stars in the photos?'",
-      "location": "camera exposure testing chamber",
-      "image_prompt": "reference character holds up a dark lunar surface photograph with no visible stars, one eyebrow raised skeptically, medium close-up, heavy tripod-mounted camera beside them, blue calibration chart resting against the wall",
-      "image_prompt_alt": "reference character studies a dark lunar surface photograph empty of stars, skeptical raised eyebrow, close-up, heavy tripod-mounted camera positioned beside them, blue calibration chart leaning against the wall"
+      "location": "cramped server basement workshop",
+      "narration": "[clears throat] When the system makes up a mistake, scientists call it hallucination.",
+      "image_prompt": "reference character stands arms crossed beside an open black metal cabinet, bright pink cotton wool puffing from its vents, skeptical expression, medium shot",
+      "image_prompt_alt": "wide shot, bright pink cotton wool drifting from the vents of an open black metal cabinet across the aisle, reference character at the frame edge eyeing it skeptically"
     },
     {
-      "narration": "Space is full of stars, right?",
-      "location": "camera exposure testing chamber",
-      "image_prompt": "reference character looks upward with a curious expression toward a small illuminated star chart mounted on the wall, medium shot, heavy tripod-mounted camera nearby, red camera case resting on the floor",
-      "image_prompt_alt": "reference character tilts their head upward, curious expression, toward a small round star chart fixed to the wall, wider shot, heavy tripod-mounted camera nearby, red camera case resting on the floor"
+      "location": "cramped server basement workshop",
+      "narration": "[mischievously] Hallucination is just a fancy scientific word for LYING with total confidence.",
+      "image_prompt": "reference character raises an eyebrow at a small grey robot figurine standing proudly on a steel desk wearing a tiny purple graduation cap, beside a toppled stack of books, close-up",
+      "image_prompt_alt": "medium shot from desk height, the small grey robot figurine in its purple graduation cap in the foreground, reference character leaning back behind it with a raised eyebrow"
     },
     {
-      "narration": "True. But think about how cameras work.",
-      "location": "camera exposure testing chamber",
-      "image_prompt": "reference character examines a heavy tripod-mounted camera closely, adjusting a dial with a thoughtful expression, close-up, blue calibration chart resting against the wall, red camera case on the floor nearby",
-      "image_prompt_alt": "reference character crouches beside the heavy tripod-mounted camera, thoughtful expression, fingers resting near a dial on its side, close medium shot, blue calibration chart against the wall, red camera case nearby on the floor"
+      "location": "cramped server basement workshop",
+      "narration": "And that causes hilarious, yet dangerous problems in real life.",
+      "image_prompt": "reference character sits beside a steel desk where a yellow rubber chicken rests next to a bright red fire extinguisher, half amused and half wary, medium-wide shot",
+      "image_prompt_alt": "close-up of a yellow rubber chicken and a bright red fire extinguisher side by side on a steel desk, reference character in the background with a wary half-smile"
     },
     {
-      "narration": "The sun was shining VERY brightly on the moon.",
-      "location": "camera exposure testing chamber",
-      "image_prompt": "reference character shields their eyes with one raised hand while facing a wide white photo backdrop screen, squinting expression, medium shot, heavy tripod-mounted camera beside them, red camera case resting on the floor",
-      "image_prompt_alt": "reference character raises one hand to shield their eyes, squinting toward a wide white backdrop screen filling the frame, wider shot, heavy tripod-mounted camera beside them, red camera case resting nearby on the floor"
+      "location": "airline customer service back room",
+      "narration": "[curiously] Look at what happened with Air Canada in 2024.",
+      "image_prompt": "reference character leans on the counter beside a white Air Canada passenger jet model with a red tail fin on a steel stand, curious glance, bright red lanyards hanging nearby, medium shot",
+      "image_prompt_alt": "low-angle close-up of a white passenger jet model with a red maple-leaf tail fin on a steel stand, reference character leaning in from behind with a curious glance"
     },
     {
-      "narration": "The astronauts were wearing bright white suits.",
-      "location": "camera exposure testing chamber",
-      "image_prompt": "reference character stands beside an astronaut in a bulky white fabric pressure suit positioned near the white backdrop screen, curious expression, medium two-shot, heavy tripod-mounted camera in the foreground, blue calibration chart nearby",
-      "image_prompt_alt": "reference character observes a figure in a bulky white fabric suit with a rounded helmet standing near the white backdrop screen, curious expression, wider two-shot, heavy tripod-mounted camera in the foreground, blue calibration chart nearby"
+      "location": "airline customer service back room",
+      "narration": "A customer used their official website chatbot to ask about ticket prices after a family death.",
+      "image_prompt": "reference character stands quietly at frame left watching a middle-aged passenger in a grey wool coat and black armband seated before a beige terminal showing a red speech bubble, medium two-shot",
+      "image_prompt_alt": "over-the-shoulder shot behind a middle-aged passenger in a grey wool coat and black armband, facing a beige terminal showing a red speech bubble, reference character watching from the side"
     },
     {
-      "narration": "To take a good picture of bright things, your camera needs a quick snap.",
-      "location": "camera exposure testing chamber",
-      "image_prompt": "reference character adjusts a small dial on the tripod-mounted camera with focused concentration, close-up, white backdrop screen visible behind, red camera case resting on the floor nearby",
-      "image_prompt_alt": "reference character turns a small dial on the tripod-mounted camera with careful focus, close-up hands and camera body, white backdrop screen behind, red camera case nearby on the floor"
+      "location": "airline customer service back room",
+      "narration": "[light chuckle] The polite chatbot cheerfully invented a completely FAKE discount rule.",
+      "image_prompt": "reference character sits on the counter, unimpressed, facing a beige monitor showing a smiling yellow robot face, a stack of bright red paper tickets fanned out beside it, close-up",
+      "image_prompt_alt": "medium shot from behind the beige monitor showing a smiling yellow robot face, reference character across the counter with an unimpressed stare, bright red paper tickets fanned out nearby"
     },
     {
-      "narration": "If the camera waited long enough to see the dim stars...",
-      "location": "camera exposure testing chamber",
-      "image_prompt": "reference character studies a slightly blurred overexposed print held in both hands, curious contemplative expression, medium close-up, heavy tripod-mounted camera resting beside them, blue calibration chart nearby",
-      "image_prompt_alt": "reference character tilts a blurred overexposed print toward the light with a contemplative expression, close-up, heavy tripod-mounted camera resting nearby, blue calibration chart against the wall"
+      "location": "airline customer service back room",
+      "narration": "It told the passenger to buy full price tickets today and request a refund later.",
+      "image_prompt": "reference character watches skeptically as a middle-aged passenger in a grey wool coat and black armband stands at the counter beside a bright red card payment terminal and one paper ticket, medium-wide shot",
+      "image_prompt_alt": "close-up of a bright red card payment terminal and one paper ticket on the counter, a middle-aged passenger in a grey wool coat and black armband behind, reference character skeptical nearby"
     },
     {
-      "narration": "[loudly] The astronauts would look like giant glowing ghosts.",
-      "location": "camera exposure testing chamber",
-      "image_prompt": "reference character reacts with wide-eyed surprise at an overexposed white print pinned to the wall showing a barely visible figure, medium shot, heavy tripod-mounted camera nearby, red camera case resting on the floor",
-      "image_prompt_alt": "reference character startles back with wide-eyed surprise, staring at an overexposed white print pinned up showing a barely visible outline, wider shot, heavy tripod-mounted camera nearby, red camera case resting on the floor"
+      "location": "small tribunal hearing chamber",
+      "narration": "When the airline refused to pay, the passenger took them to court.",
+      "image_prompt": "reference character sits on the public bench watching a middle-aged passenger in a grey wool coat and black armband stand at a lectern beside one bright blue cardboard folder, wide shot",
+      "image_prompt_alt": "low-angle shot from behind the lectern, a middle-aged passenger in a grey wool coat and black armband facing forward, one bright blue cardboard folder on the lectern, reference character attentive at the side"
     },
     {
-      "narration": "Try taking a picture of the stars with your phone while standing under a bright street lamp.",
-      "location": "camera exposure testing chamber",
-      "image_prompt": "reference character holds a small rectangular device toward a tall metal lamp post prop standing in the corner, demonstrating expression, medium shot, heavy tripod-mounted camera resting nearby, red camera case on the floor",
-      "image_prompt_alt": "reference character extends a small rectangular device toward a tall metal lamp post prop in the corner, explaining expression, wider shot, heavy tripod-mounted camera resting nearby, red camera case on the floor"
+      "location": "small tribunal hearing chamber",
+      "narration": "[surprised] Air Canada argued in legal court that the chatbot was responsible for its own actions.",
+      "image_prompt": "reference character stares in disbelief from the public bench while an airline lawyer in a charcoal suit and red tie stands beside a beige monitor resting on the witness chair, medium-wide shot",
+      "image_prompt_alt": "close-up of a beige monitor seated on the wooden witness chair, an airline lawyer in a charcoal suit and red tie beside it, reference character's disbelieving face in the foreground"
     },
     {
-      "narration": "[annoyed] See? No stars.",
-      "location": "camera exposure testing chamber",
-      "image_prompt": "reference character holds up a plain dark print with a flat, mildly annoyed expression, close-up, heavy tripod-mounted camera resting beside them, blue calibration chart against the wall",
-      "image_prompt_alt": "reference character presents a plain dark print at arm's length with a flat, mildly annoyed expression, medium close-up, heavy tripod-mounted camera resting nearby, blue calibration chart against the wall"
+      "location": "small tribunal hearing chamber",
+      "narration": "[deadpan] Yes... they tried to blame their computer script like a separate PERSON.",
+      "image_prompt": "reference character leans back, eyes closed, exasperated, as the beige monitor on the witness chair wears a red bow tie beside an airline lawyer in a charcoal suit and red tie, medium shot",
+      "image_prompt_alt": "high-angle wide shot of the beige monitor in a red bow tie on the witness chair, an airline lawyer in a charcoal suit and red tie beside it, reference character exasperated behind"
     },
     {
-      "narration": "Now, let\u2019s talk about Stanley Kubrick.",
-      "location": "film prop and set-dressing storage bay",
-      "image_prompt": "reference character stands beside an empty canvas director's chair and a wooden clapperboard resting on a shelf, mildly intrigued expression, medium shot, tall shelving rack of foam props nearby, red gaffer tape spool on the floor",
-      "image_prompt_alt": "reference character leans against an empty canvas director's chair near a wooden clapperboard, mildly intrigued expression, wider shot, tall shelving rack of foam props nearby, red gaffer tape spool resting on the floor"
+      "location": "small tribunal hearing chamber",
+      "narration": "[laughs] The tribunal judge ruled against the airline and forced them to pay.",
+      "image_prompt": "reference character gives a small satisfied smirk from the public bench as a grey-haired tribunal adjudicator in a black robe sits behind a wooden gavel on a bright red blotter, wide shot",
+      "image_prompt_alt": "close-up of a wooden gavel on a bright red blotter, a grey-haired tribunal adjudicator in a black robe behind it, reference character's small satisfied smirk at frame right"
     },
     {
-      "narration": "Some people think the government hired this famous movie maker to direct the fake landing.",
-      "location": "film prop and set-dressing storage bay",
-      "image_prompt": "reference character watches with a skeptical expression as Stanley Kubrick sits in a canvas director's chair studying a script, medium two-shot, tall shelving rack of foam props behind them, blue plastic prop crate resting on the floor",
-      "image_prompt_alt": "reference character observes with a skeptical expression as a lean middle-aged film director with a thick dark beard and round wire-frame glasses sits in a canvas director's chair studying a script, wider two-shot, tall shelving rack of foam props behind them, blue plastic prop crate on the floor"
+      "location": "small tribunal hearing chamber",
+      "narration": "That sounds silly, but imagine an automated bot giving wrong medical advice.",
+      "image_prompt": "reference character frowns at the beige monitor on the witness chair, now wearing a white paper nurse's cap, a bright red first-aid case with a white cross resting beside it, medium shot",
+      "image_prompt_alt": "low three-quarter view, a bright red first-aid case with a white cross on the floor in the foreground, the beige monitor in a white nurse's cap behind, reference character frowning nearby"
     },
     {
-      "narration": "Because he made a famous space movie.",
-      "location": "film prop and set-dressing storage bay",
-      "image_prompt": "reference character glances toward Stanley Kubrick, who stands holding a round metal film reel case beside a large canvas backdrop rolled against the wall, medium shot, red gaffer tape spool resting on the floor nearby",
-      "image_prompt_alt": "reference character glances toward a lean bearded film director in a rumpled cardigan holding a round metal film reel case beside a large canvas backdrop rolled against the wall, wider shot, red gaffer tape spool resting on the floor nearby"
+      "location": "small tribunal hearing chamber",
+      "narration": "[frustrated] Dumb automated mistakes are already causing REAL financial damage.",
+      "image_prompt": "reference character stands arms folded, mildly annoyed, beside a tall heap of bright red paper sheets on the lawyer's wooden table, a toppled beige monitor on top, medium-wide shot",
+      "image_prompt_alt": "high-angle shot looking down on a heap of bright red paper sheets and a toppled beige monitor on the lawyer's wooden table, reference character annoyed at the table edge"
     },
     {
-      "narration": "[laughs harder] But here is the funny part.",
-      "location": "film prop and set-dressing storage bay",
-      "image_prompt": "reference character laughs with head tilted back, one hand braced on the tall shelving rack of foam props, Stanley Kubrick visible nearby examining a prop, medium shot, blue plastic prop crate on the floor",
-      "image_prompt_alt": "reference character laughs openly, bracing one hand on the shelving rack of foam props, a bearded film director in a rumpled cardigan visible nearby examining a prop, wider shot, blue plastic prop crate on the floor"
+      "location": "police fraud evidence room",
+      "narration": "Now let us look at deepfakes and digital fraud.",
+      "image_prompt": "reference character stands beside a steel table lined with lifelike rubber face masks on white foam heads, clear plastic zip bags with bright teal seals beside them, skeptical frown, medium shot",
+      "image_prompt_alt": "close-up along the row of lifelike rubber face masks on white foam heads, bright teal-sealed plastic bags in front, reference character's skeptical frown at the far end of the table"
     },
     {
-      "narration": "Kubrick was known for wanting everything to be absolutely perfect.",
-      "location": "film prop and set-dressing storage bay",
-      "image_prompt": "reference character watches Stanley Kubrick inspecting a foam prop closely with a meticulous expression, medium two-shot, tall shelving rack behind them, red gaffer tape spool and blue plastic prop crate on the floor",
-      "image_prompt_alt": "reference character watches a bearded film director in round wire-frame glasses inspecting a foam prop closely with a meticulous expression, wider two-shot, tall shelving rack behind them, red gaffer tape spool and blue plastic prop crate on the floor"
+      "location": "police fraud evidence room",
+      "narration": "Modern software can clone faces and voices in just a few seconds.",
+      "image_prompt": "reference character watches warily as a webcam on a tripod faces a white foam head, a laptop beside it showing two identical faces on a bright orange background, medium-wide shot",
+      "image_prompt_alt": "over-the-shoulder shot from behind reference character facing the laptop showing two identical faces on a bright orange background, a webcam on a tripod and white foam head at left"
     },
     {
-      "narration": "If he directed the moon landing...",
-      "location": "film prop and set-dressing storage bay",
-      "image_prompt": "reference character raises an eyebrow skeptically while Stanley Kubrick points toward a small lunar module mockup resting on a shelf, medium shot, canvas backdrop rolled against the wall behind them, blue plastic prop crate nearby",
-      "image_prompt_alt": "reference character raises a skeptical eyebrow while a bearded film director points toward a small lunar module mockup resting on a shelf, wider shot, canvas backdrop rolled against the wall behind them, blue plastic prop crate nearby"
+      "location": "high-rise finance office",
+      "narration": "[quietly][suspicious tone] In early 2024, a finance worker in Hong Kong joined a video call with his executive team.",
+      "image_prompt": "reference character watches from the doorway as a slim finance worker with short black hair, thin glasses, white shirt and navy tie sits at a bright orange desk facing a monitor grid of six faces, medium-wide shot",
+      "image_prompt_alt": "over-the-shoulder shot behind a slim finance worker with short black hair, thin glasses, white shirt and navy tie, facing a monitor grid of six faces, reference character watching suspiciously at far right"
     },
     {
-      "narration": "He would have demanded they shoot it on real location.",
-      "location": "film prop and set-dressing storage bay",
-      "image_prompt": "reference character watches Stanley Kubrick gesturing firmly toward the large canvas backdrop rolled against the wall, unimpressed expression, medium shot, tall shelving rack of foam props nearby, red gaffer tape spool on the floor",
-      "image_prompt_alt": "reference character observes a bearded film director gesturing firmly toward the large canvas backdrop rolled against the wall, unimpressed expression, wider shot, tall shelving rack of foam props nearby, red gaffer tape spool on the floor"
+      "location": "high-rise finance office",
+      "narration": "Every single person on that video screen looked and sounded totally real.",
+      "image_prompt": "close-up of the monitor grid of six executives in dark suits, reference character leaning in beside a slim finance worker with short black hair, thin glasses, white shirt and navy tie, curious squint",
+      "image_prompt_alt": "medium two-shot from beside the monitor, a slim finance worker with short black hair, thin glasses, white shirt and navy tie nodding at it, reference character squinting over their shoulder, bright orange desk"
     },
     {
-      "narration": "[snorts] On the actual moon.",
-      "location": "film prop and set-dressing storage bay",
-      "image_prompt": "reference character smirks with a short amused snort, arms crossed, standing beside the rolled canvas backdrop, close-up, tall shelving rack of foam props blurred behind, blue plastic prop crate on the floor",
-      "image_prompt_alt": "reference character huffs a short amused laugh, arms crossed, standing near the rolled canvas backdrop, close medium shot, tall shelving rack of foam props behind, blue plastic prop crate resting on the floor"
+      "location": "high-rise finance office",
+      "narration": "[gasps] But every single colleague on that call was actually an AI video RECREATION.",
+      "image_prompt": "reference character, eyes wide, stands behind a slim finance worker with short black hair, thin glasses, white shirt and navy tie as the six monitor faces split into grey wireframe mesh, medium shot",
+      "image_prompt_alt": "close-up of the monitor, six executive faces half peeled into grey wireframe mesh on bright orange, reference character surprised behind a slim finance worker with short black hair, thin glasses, white shirt and navy tie"
     },
     {
-      "narration": "What about the deadly radiation?",
-      "location": "radiation dosimetry monitoring room",
-      "image_prompt": "reference character steps toward a wide instrument console with dial gauges, curious expression, medium shot, tall rack of cabled equipment beside them, red warning lamp fixed above the console",
-      "image_prompt_alt": "reference character approaches a wide instrument console covered in dial gauges, curious expression, wider shot, tall rack of cabled equipment nearby, red warning lamp fixed above the console"
+      "location": "high-rise finance office",
+      "narration": "[booming] The tricked employee transferred TWENTY-FIVE million dollars to foreign scammers.",
+      "image_prompt": "reference character stares in dismay as a trolley stacked shoulder-high with green canvas bank sacks rolls away from a slim finance worker with short black hair, thin glasses, white shirt and navy tie, wide shot",
+      "image_prompt_alt": "low-angle shot of a trolley stacked with green canvas bank sacks rolling out the door, a slim finance worker with short black hair, thin glasses, white shirt and navy tie frozen, reference character dismayed"
     },
     {
-      "narration": "Earth has invisible rings of radiation around it.",
-      "location": "radiation dosimetry monitoring room",
-      "image_prompt": "reference character studies a curved ring-shaped diagram model mounted above the instrument console, thoughtful expression, medium close-up, blue indicator light fixed nearby, tall rack of cabled equipment in the background",
-      "image_prompt_alt": "reference character leans in to study a curved ring-shaped model fixed above the instrument console, thoughtful expression, close-up, blue indicator light nearby, tall rack of cabled equipment blurred behind"
+      "location": "police fraud evidence room",
+      "narration": "[whispers] Criminals do not need killer robots when they can clone family voices.",
+      "image_prompt": "reference character sits at a steel table eyeing an old bright red landline telephone wired to a small black audio recorder, suspicious sideways glance, close-up",
+      "image_prompt_alt": "wide shot, the bright red landline telephone and black audio recorder small on the steel table in the foreground, reference character seated at the far end, suspicious"
     },
     {
-      "narration": "People say flying through them would cook the astronauts like hot pockets.",
-      "location": "radiation dosimetry monitoring room",
-      "image_prompt": "reference character raises an eyebrow with dry amusement while dial gauges on the console spike sharply, medium shot, red warning lamp fixed above, tall rack of cabled equipment beside them",
-      "image_prompt_alt": "reference character smirks with dry amusement watching the console's dial gauges spike sharply, wider shot, red warning lamp fixed above, tall rack of cabled equipment beside them"
+      "location": "newspaper fact-checking room",
+      "narration": "Fake photos and audio can ruin individual reputations or alter entire elections.",
+      "image_prompt": "reference character leans over a wide layout table comparing two nearly identical photographs of a politician at a podium, one ringed in bright red grease pencil, a white ballot box beside them, high-angle shot",
+      "image_prompt_alt": "medium shot from table level, two nearly identical politician-at-podium photographs in the foreground, one ringed in bright red grease pencil, a white ballot box behind, reference character squinting skeptically"
     },
     {
-      "narration": "[calm] But NASA was not stupid.",
-      "location": "radiation dosimetry monitoring room",
-      "image_prompt": "reference character leans calmly against the wide instrument console, arms folded, composed expression, medium shot, blue indicator light fixed nearby, tall rack of cabled equipment in the background",
-      "image_prompt_alt": "reference character rests calmly against the edge of the instrument console, arms folded, composed expression, wider shot, blue indicator light nearby, tall rack of cabled equipment behind"
+      "location": "newspaper fact-checking room",
+      "narration": "[sad] When people can no longer trust what they see, truth DISAPPEARS.",
+      "image_prompt": "reference character sits, disappointed, beside a bright yellow plastic photo tray where a photograph of a crowd is fading into blank white paper, medium close-up",
+      "image_prompt_alt": "overhead shot of a bright yellow plastic photo tray holding a crowd photograph fading into blank white paper, reference character's disappointed face at the tray's edge"
     },
     {
-      "narration": "The rocket moved VERY fast.",
-      "location": "radiation dosimetry monitoring room",
-      "image_prompt": "reference character points toward a small rocket model mounted beside the instrument rack, focused expression, medium close-up, red warning lamp fixed above, blue indicator light nearby",
-      "image_prompt_alt": "reference character gestures toward a small metallic rocket model mounted beside the instrument rack, focused expression, close-up, red warning lamp fixed above, blue indicator light nearby"
+      "location": "newspaper fact-checking room",
+      "narration": "[slows down] That causes public trust in society to break down fast.",
+      "image_prompt": "reference character stands resigned beside a tall stack of newspapers collapsing sideways off a wooden trolley onto the floor, bright yellow twine snapped, wide shot",
+      "image_prompt_alt": "low-angle close-up of newspapers sliding off a wooden trolley with snapped bright yellow twine, reference character standing resigned in the background"
     },
     {
-      "narration": "They passed through the thinnest part of the rings.",
-      "location": "radiation dosimetry monitoring room",
-      "image_prompt": "reference character traces a finger along a narrow section of the curved ring-shaped diagram model, focused expression, close-up, tall rack of cabled equipment blurred behind, red warning lamp fixed above",
-      "image_prompt_alt": "reference character points precisely at a narrow section of the curved ring-shaped model, focused expression, extreme close-up, tall rack of cabled equipment behind, red warning lamp fixed above"
+      "location": "bank loan records archive",
+      "narration": "Another major danger is automated prejudice.",
+      "image_prompt": "reference character stands beside a brass weighing scale on a steel reading table, one pan heaped with maroon folders, the other raised high, skeptical look, medium shot",
+      "image_prompt_alt": "close-up of a brass weighing scale tilted hard to one side under maroon folders on a steel reading table, reference character skeptical at frame right"
     },
     {
-      "narration": "Total radiation they got was about the same as a hospital X-ray.",
-      "location": "radiation dosimetry monitoring room",
-      "image_prompt": "reference character holds a small handheld dosimeter device, comparing its dial reading with a thoughtful expression, medium close-up, wide instrument console beside them, blue indicator light fixed nearby",
-      "image_prompt_alt": "reference character studies the dial reading on a small handheld dosimeter device with a thoughtful expression, close-up, wide instrument console beside them, blue indicator light fixed nearby"
+      "location": "bank loan records archive",
+      "narration": "Computer algorithms learn from old historical human records.",
+      "image_prompt": "reference character sits on a rolling ladder looking at yellowed ledger books stacked on a reading table, a thick black cable running from them into a small beige computer, curious, wide shot",
+      "image_prompt_alt": "close-up of yellowed ledger books with a thick black cable running into a small beige computer, reference character seated on a rolling ladder behind, curious"
     },
     {
-      "narration": "Not great, but definitely not deadly.",
-      "location": "radiation dosimetry monitoring room",
-      "image_prompt": "reference character shrugs mildly with a resigned expression, standing beside the wide instrument console, medium shot, tall rack of cabled equipment behind them, red warning lamp fixed above",
-      "image_prompt_alt": "reference character gives a small resigned shrug, leaning against the instrument console, wider shot, tall rack of cabled equipment behind them, red warning lamp fixed above"
+      "location": "bank loan records archive",
+      "narration": "[annoyed] If old data contains human bias, the system copy-pastes that unfairness into FUTURE decisions.",
+      "image_prompt": "reference character stands annoyed beside a beige photocopier spewing a long trail of identical sheets marked with bold red crosses across the floor, high-angle shot",
+      "image_prompt_alt": "floor-level shot along the trail of identical sheets marked with bold red crosses leading back to a beige photocopier, reference character annoyed beside it"
     },
     {
-      "narration": "So, the science clearly shows the landing was real.",
-      "location": "overflowing conspiracy theory archive",
-      "image_prompt": "reference character stands with arms crossed and a confident, satisfied expression amid a cluttered worktable covered with folders, medium shot, tall filing cabinet stuffed with folders behind them, red string connecting pinned photographs on the wall",
-      "image_prompt_alt": "reference character stands with arms crossed and a quietly satisfied expression beside the cluttered worktable, wider shot, tall filing cabinet stuffed with folders behind them, red string connecting pinned photographs on the wall"
+      "location": "bank loan records archive",
+      "narration": "[upset] Studies show facial recognition tools fail much more often on non-white faces.",
+      "image_prompt": "reference character frowns at a monitor on a steel stand showing six portrait photographs of different people, bright green tracking squares on some and red error squares on others, medium shot",
+      "image_prompt_alt": "close-up of a monitor showing six portrait photographs with bright green tracking squares on some and red error squares on others, reference character frowning at its side"
     },
     {
-      "narration": "Why do the fake stories survive?",
-      "location": "overflowing conspiracy theory archive",
-      "image_prompt": "reference character tilts their head with a puzzled expression, looking toward a cork board covered with pinned photographs connected by red string, medium shot, cluttered worktable in the foreground, blue evidence folder resting on top",
-      "image_prompt_alt": "reference character tilts their head, genuinely puzzled, studying a cork board of pinned photographs connected by red string, wider shot, cluttered worktable in the foreground, blue evidence folder resting on top"
+      "location": "bank loan records archive",
+      "narration": "Some automated banking tools quietly deny loan applications based on flawed historical patterns.",
+      "image_prompt": "reference character eyes a beige computer terminal on a steel desk pushing out paper slips each marked with a bold red cross into a growing pile, quietly disappointed, medium-wide shot",
+      "image_prompt_alt": "close-up of paper slips marked with bold red crosses piling beneath a beige computer terminal, reference character leaning on the steel desk behind, disappointed"
     },
     {
-      "narration": "Because our brains are built to look for secrets.",
-      "location": "overflowing conspiracy theory archive",
-      "image_prompt": "reference character examines a pinned diagram connected by red string on the cork board, curious focused expression, medium close-up, tall filing cabinet nearby, blue evidence folder resting on the worktable",
-      "image_prompt_alt": "reference character leans close to study a pinned diagram connected by red string, curious focused expression, close-up, tall filing cabinet nearby, blue evidence folder resting on the worktable"
+      "location": "half-vacated call-centre floor",
+      "narration": "Then we must consider jobs and employment.",
+      "image_prompt": "reference character wanders between rows of unoccupied grey cubicle desks with lime green dividers, one headset draped over each chair, looking thoughtful, wide shot",
+      "image_prompt_alt": "high-angle shot over rows of unoccupied grey cubicle desks with lime green dividers and headsets draped on chairs, reference character small in one aisle, thoughtful"
     },
     {
-      "narration": "When something HUGE happens, a simple explanation feels boring.",
-      "location": "overflowing conspiracy theory archive",
-      "image_prompt": "reference character flips through a thin folder with an unimpressed flat expression, medium shot, cluttered worktable covered with scattered papers, blue evidence folder resting nearby, tall filing cabinet in the background",
-      "image_prompt_alt": "reference character leafs through a thin folder with a flat, unimpressed expression, close medium shot, cluttered worktable covered with scattered papers, blue evidence folder nearby, tall filing cabinet behind"
+      "location": "half-vacated call-centre floor",
+      "narration": "[drawn out] Entry-level jobs in coding, translation, and customer support are changing RAPIDLY.",
+      "image_prompt": "reference character sits at a cubicle desk beside a bright green plastic crate piled with foreign-language dictionaries, a thick paperback manual and a telephone headset, resigned, medium shot",
+      "image_prompt_alt": "close-up of dictionaries, a thick paperback manual and a telephone headset piled in a bright green plastic crate on the desk, reference character resigned behind them"
     },
     {
-      "narration": "We want a big mystery.",
-      "location": "overflowing conspiracy theory archive",
-      "image_prompt": "reference character leans back against the tall filing cabinet with a faint amused expression, arms crossed, medium shot, cluttered worktable in the foreground, red string connecting pinned photographs on the wall behind",
-      "image_prompt_alt": "reference character rests against the tall filing cabinet with a faint amused expression, arms loosely crossed, wider shot, cluttered worktable in the foreground, red string connecting pinned photographs behind"
+      "location": "half-vacated call-centre floor",
+      "narration": "Software will not replace everyone, but workers using software will replace those who do not.",
+      "image_prompt": "reference character leans on a divider thoughtfully watching a young worker in a lime green sweater at a laptop while an older worker in a brown cardigan stands beside a cardboard box, medium-wide shot",
+      "image_prompt_alt": "over-the-shoulder shot from behind reference character, facing a young worker in a lime green sweater at a laptop and an older worker in a brown cardigan beside a cardboard box"
     },
     {
-      "narration": "It makes the believer feel special. Like they know a secret we do not.",
-      "location": "overflowing conspiracy theory archive",
-      "image_prompt": "reference character holds a small magnifying glass over a photograph on the worktable, skeptical focused expression, close-up, tall filing cabinet blurred behind, blue evidence folder resting nearby",
-      "image_prompt_alt": "reference character peers through a small magnifying glass at a photograph on the worktable, skeptical focused expression, close medium shot, tall filing cabinet behind, blue evidence folder nearby"
+      "location": "glass-topped executive boardroom",
+      "narration": "[angry] Meanwhile, massive technology corporations are gaining immense CONTROL over information.",
+      "image_prompt": "reference character stands at the far end of a long glass table, mildly irritated, as four executives in dark suits sit around a large brass globe tangled with purple cables, wide shot",
+      "image_prompt_alt": "low-angle shot from table height past the large brass globe tangled with purple cables, four executives in dark suits seated behind it, reference character irritated in the background"
     },
     {
-      "narration": "[thoughtful] Plus, trusting the government is hard.",
-      "location": "overflowing conspiracy theory archive",
-      "image_prompt": "reference character sits at the cluttered worktable resting their chin on one hand, thoughtful expression, medium shot, tall filing cabinet behind them, red string connecting pinned photographs on the wall",
-      "image_prompt_alt": "reference character sits at the worktable with chin propped on one hand, quietly thoughtful, wider shot, tall filing cabinet behind them, red string connecting pinned photographs on the wall"
+      "location": "glass-topped executive boardroom",
+      "narration": "Power is concentrating into the hands of a small group of tech executives.",
+      "image_prompt": "reference character stands unimpressed beside a single towering stack of gold coins on the glass table, tiny coins scattered around it, four executives in dark suits leaning over it, medium shot",
+      "image_prompt_alt": "close-up of a single towering stack of gold coins on the glass table with tiny coins scattered around, four executives in dark suits behind, reference character unimpressed at frame left"
     },
     {
-      "narration": "But keeping a secret THIS big?",
-      "location": "overflowing conspiracy theory archive",
-      "image_prompt": "reference character raises both eyebrows doubtfully at a tall stack of folders piled on the worktable, medium close-up, tall filing cabinet nearby, blue evidence folder resting on top of the stack",
-      "image_prompt_alt": "reference character eyes a tall stack of folders on the worktable with doubtful raised eyebrows, close-up, tall filing cabinet nearby, blue evidence folder resting on top of the stack"
+      "location": "data-centre cooling hall",
+      "narration": "[loudly] Furthermore, AI relies on astronomical amounts of electrical POWER.",
+      "image_prompt": "reference character stands dwarfed beside tall grey ribbed metal cabinets with thick bright orange power cables coiling across the floor, tired look, low-angle wide shot",
+      "image_prompt_alt": "overhead shot of thick bright orange power cables coiling across the grating toward tall grey ribbed metal cabinets, reference character standing among the coils, tired"
     },
     {
-      "narration": "Four hundred thousand people worked on the Apollo project.",
-      "location": "overflowing conspiracy theory archive",
-      "image_prompt": "reference character gestures broadly across the worktable spread with rows of small folders and identification badges, matter-of-fact expression, wide shot, tall filing cabinet stuffed with folders in the background",
-      "image_prompt_alt": "reference character sweeps an open hand across the worktable covered in rows of small folders and identification badges, matter-of-fact expression, wider shot, tall filing cabinet stuffed with folders behind"
+      "location": "data-centre cooling hall",
+      "narration": "[awe] According to the International Energy Agency, one AI search uses ten times more electricity than a basic search.",
+      "image_prompt": "reference character, eyebrows raised, stands between one light bulb on a stool and ten identical light bulbs lined along a long steel bench, all joined by bright orange cables, medium-wide shot",
+      "image_prompt_alt": "close-up at bench height along ten identical light bulbs on bright orange cables, a single light bulb on a stool at far left, reference character raising eyebrows in the background"
     },
     {
-      "narration": "You can not even get four friends to agree on a pizza topping.",
-      "location": "overflowing conspiracy theory archive",
-      "image_prompt": "reference character holds up a small handful of mismatched papers with a wry smirk, close-up, cluttered worktable in the background, blue evidence folder resting nearby",
-      "image_prompt_alt": "reference character fans out a small handful of mismatched papers with a wry smirking expression, medium close-up, cluttered worktable behind, blue evidence folder resting nearby"
+      "location": "data-centre cooling hall",
+      "narration": "Massive data centers consume huge amounts of local water and energy grids.",
+      "image_prompt": "reference character stands mildly concerned beside a massive blue plastic water tank feeding thick pipes into black metal cabinets, a wide puddle spreading across the floor, wide shot",
+      "image_prompt_alt": "low-angle close-up of a puddle beneath a massive blue plastic water tank with thick pipes running into black metal cabinets, reference character concerned behind"
     },
     {
-      "narration": "[chuckles] Imagine keeping 400,000 people quiet for fifty years.",
-      "location": "overflowing conspiracy theory archive",
-      "image_prompt": "reference character chuckles with head shaking slightly, leaning against the tall filing cabinet, medium shot, cluttered worktable in the foreground, red string connecting pinned photographs on the wall",
-      "image_prompt_alt": "reference character laughs quietly with a small headshake, resting against the tall filing cabinet, wider shot, cluttered worktable in the foreground, red string connecting pinned photographs behind"
+      "location": "robot movie prop depot",
+      "narration": "[stammers] So... is technology going to destroy us tomorrow?",
+      "image_prompt": "reference character sits on the toppled chrome robot prop, looking doubtful, a round bright red alarm clock resting on the concrete floor beside them, medium shot",
+      "image_prompt_alt": "close-up of a round bright red alarm clock on the concrete floor, the toppled chrome robot prop behind with reference character seated on it, doubtful"
     },
     {
-      "narration": "So, the moon landing is real, but human paranoia? That's the real infinite universe.",
-      "location": "overflowing conspiracy theory archive",
-      "image_prompt": "reference character closes a folder on the cluttered worktable with a resigned, faintly amused expression, sitting back in a wooden chair, medium shot, tall filing cabinet behind them, red string connecting pinned photographs on the wall",
-      "image_prompt_alt": "reference character shuts a folder on the worktable, leaning back with a resigned, faintly amused expression, wider shot, tall filing cabinet behind them, red string connecting pinned photographs on the wall"
+      "location": "robot movie prop depot",
+      "narration": "[sighs] No... human careless behaviour combined with fast software is the ACTUAL threat.",
+      "image_prompt": "reference character stands with a resigned sigh beside a bright red go-kart carrying a beige laptop soaked by a toppled coffee mug, medium-wide shot",
+      "image_prompt_alt": "low-angle shot beside the bright red go-kart, beige laptop soaked by a toppled coffee mug in the foreground, reference character standing behind with a resigned sigh"
+    },
+    {
+      "location": "robot movie prop depot",
+      "narration": "[softly] The tool itself is not evil, but humans can use it foolishly.",
+      "image_prompt": "reference character sits on a crate beside a single red-handled hammer resting on a wooden workbench, one nail bent sideways in a plank nearby, gentle thoughtful look, close-up",
+      "image_prompt_alt": "overhead shot of a red-handled hammer and a plank with one bent nail on the wooden workbench, reference character seated beside it, thoughtful"
+    },
+    {
+      "location": "parliament committee chamber",
+      "narration": "Governments are beginning to pass regulations like the European Union AI Act.",
+      "image_prompt": "reference character sits in the back row, curious, watching lawmakers in dark suits seated along the tiered bench beneath a large European Union flag on a steel pole, wide shot",
+      "image_prompt_alt": "low-angle shot from the front row toward lawmakers in dark suits on the tiered bench, a large blue flag with a ring of yellow stars behind, reference character curious at left"
+    },
+    {
+      "location": "parliament committee chamber",
+      "narration": "[happily] We need strict safety testing, transparency, and simple accountability.",
+      "image_prompt": "reference character gives a slight approving nod beside a clear glass cabinet holding a beige laptop connected to bright red test clamps and a brass pressure gauge, medium shot",
+      "image_prompt_alt": "close-up through the clear glass cabinet at a beige laptop with bright red test clamps and a brass pressure gauge, reference character nodding approvingly behind the glass"
+    },
+    {
+      "location": "robot movie prop depot",
+      "narration": "[amazed] Artificial intelligence will not wipe out humanity, but it is changing our REALITY.",
+      "image_prompt": "reference character stands between the toppled chrome robot prop and a beige laptop on a wooden crate, mildly impressed, bright red tarpaulin spread beneath both, wide shot",
+      "image_prompt_alt": "high-angle shot over the bright red tarpaulin, toppled chrome robot prop at one side and beige laptop on a crate at the other, reference character standing between, mildly impressed"
+    },
+    {
+      "location": "robot movie prop depot",
+      "narration": "[calm] Stay curious, double-check your sources, and keep thinking for yourself.",
+      "image_prompt": "reference character sits on a wooden crate with a small tired smile, a brass magnifying glass and a stack of newspapers beside them, bright red tarpaulin behind, medium close-up",
+      "image_prompt_alt": "wide shot at eye level, reference character seated on a wooden crate with a tired smile, brass magnifying glass and newspapers at their feet, bright red tarpaulin draping the robot props"
     }
   ],
-  "music_prompt": "Sparse instrumental bed matching the topic's dry, inquisitive mood, around eighty-two BPM. Plucked acoustic guitar, soft marimba, low sustained cello, and light brushed drum kit. Flat consistent energy with no build, no swells and no drops. Sits far in the background under a spoken narrator with the mid range left clear. Purely instrumental with no vocals of any kind. Understated rather than comedic."
+  "music_prompt": "Sparse, curious instrumental bed with a quietly skeptical mood, around eighty BPM. Soft pulsing analog synth, muted upright piano, light brushed snare, and warm restrained bass guitar. Flat consistent energy with no build, no swells, no drops. Sits far in the background under a spoken narrator with the mid range left clear. Purely instrumental with no vocals of any kind. Understated rather than comedic."
 }
 
 
@@ -614,7 +689,7 @@ def _anchor_map(data: dict) -> tuple[str, dict[str, str]]:
     the script was injecting drift INSIDE a single location, on top of the
     drift that already comes from the generator.
 
-    Same argument as config.STYLE_PREFIX/STYLE_BLOCK, applied one level down:
+    Same argument as config.STYLE_BLOCK, applied one level down:
     anything an LLM writes it will eventually paraphrase, so text that must not
     vary is written once and pasted in here rather than retyped per beat.
 
@@ -653,7 +728,6 @@ def cmd_prompts(args) -> int:
     collapsed = stripped = 0
     for index, beat in enumerate(beats, 1):
         # scenes.txt is strictly one prompt per line. A newline inside a prompt
-        # scenes.txt is strictly one prompt per line. A newline inside a prompt
         # would split one beat into two and shift every scene after it, so
         # whitespace is flattened here rather than trusted.
         text = " ".join(beat["image_prompt"].split())
@@ -668,9 +742,11 @@ def cmd_prompts(args) -> int:
             text = text[:cut].rstrip(" .,;") + "."
             stripped += 1
 
-        # Order matches the prompts that already worked: subject and action
-        # first, then the place, then the style. Leading with the place buries
-        # the subject a hundred words deep.
+        # Order: style, then subject and action, then the place. The style
+        # leads so the model commits to the medium before it reads a word of
+        # realistic scene description - see config.STYLE_BLOCK's POSITION note
+        # for the photo-grounding failure that rule exists to stop. The place
+        # trails because leading with it buries the subject.
         loc = " ".join((beat.get("location") or "").split()).lower()
         loc_anchor = location_anchors.get(loc, "")
         if location_anchors and not loc_anchor:
@@ -680,7 +756,7 @@ def cmd_prompts(args) -> int:
             anchored += 1
 
         lines.append(" ".join(part for part in (
-            config.STYLE_PREFIX, _fragment(text), anchor, config.STYLE_BLOCK
+            config.STYLE_BLOCK, _fragment(text), anchor
         ) if part))
 
     out_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
@@ -703,7 +779,7 @@ def cmd_prompts(args) -> int:
             anchor = " ".join(a for a in (location_anchors.get(loc, ""),
                                           setting_anchor) if a)
             alt_lines.append(" ".join(part for part in (
-                config.STYLE_PREFIX, _fragment(text), anchor, config.STYLE_BLOCK
+                config.STYLE_BLOCK, _fragment(text), anchor
             ) if part))
         alt_path.write_text("\n".join(alt_lines) + "\n", encoding="utf-8")
         print(f"[prompts] {sum(1 for a in alts if a)} fallback description(s) "
