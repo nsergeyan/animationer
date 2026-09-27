@@ -1,226 +1,236 @@
 SCRIPT:
 {
-  "topic": "is-ai-really-dangerous",
+  "topic": "top-5-beginner-anime",
   "format": "explainer",
   "plan": {
-    "spine_question": "Is artificial intelligence going to destroy humanity, or are the real dangers much more ordinary?",
+    "spine_question": "Which five anime series are the best starting points for someone who has never watched anime before?",
     "deflations": [
       {
-        "assumed": "Killer robots like Terminator will take over the world and exterminate humans.",
-        "actual": "AI is predictive software that makes foolish mistakes, enables financial fraud, and amplifies human bias.",
-        "who_decided": "Sci-fi movies and sensational media headlines.",
-        "build_beat": "Hollywood movies always show killer robots marching down the street.",
-        "drop_beat": "The actual threat is much more boring... and much more EMBARRASSING."
+        "assumed": "Anime is either too childish or requires watching hundreds of filler episodes.",
+        "actual": "Top starter anime feature short, tightly structured stories with high-quality animation and mature drama.",
+        "who_decided": "Newcomers who feel overwhelmed by massive long-running series like One Piece.",
+        "build_beat": "Many people avoid anime because they fear getting stuck in endless filler seasons...",
+        "drop_beat": "...but these five top shows deliver complete cinematic stories in just a few seasons."
       }
     ],
     "specifics": [
       {
-        "fact": "Air Canada was held legally liable in 2024 after its chatbot invented a fake bereavement fare policy.",
-        "source": "Civil Resolution Tribunal of British Columbia ruling 2024",
-        "beat": "Look at what happened with Air Canada in 2024."
+        "fact": "Death Note consists of 37 episodes produced by Studio Madhouse with no filler content.",
+        "source": "Studio Madhouse Official Catalog",
+        "beat": "Beat 13"
       },
       {
-        "fact": "A finance worker transferred $25 million after being tricked by deepfakes of his CFO and colleagues on a video call.",
-        "source": "Hong Kong Police Force report 2024",
-        "beat": "In early 2024, a finance worker in Hong Kong joined a video call with his executive team."
+        "fact": "Demon Slayer Mugen Train broke box office records to become the highest-grossing Japanese movie worldwide.",
+        "source": "Box Office Mojo / Crunchyroll News",
+        "beat": "Beat 24"
       },
       {
-        "fact": "An AI search query uses approximately ten times as much electricity as a standard Google search.",
-        "source": "International Energy Agency Electricity 2024 Report",
-        "beat": "According to the International Energy Agency, one AI search uses ten times more electricity than a basic search."
+        "fact": "Fullmetal Alchemist Brotherhood was rated number one on MyAnimeList for over a decade across 64 episodes.",
+        "source": "MyAnimeList Historical Stats",
+        "beat": "Beat 36"
+      },
+      {
+        "fact": "Jujutsu Kaisen was awarded the Guinness World Record for most in-demand animated series globally.",
+        "source": "Guinness World Records / Parrot Analytics",
+        "beat": "Beat 46"
+      },
+      {
+        "fact": "Attack on Titan features a score composed by Hiroyuki Sawano and animation by Wit Studio and MAPPA.",
+        "source": "Attack on Titan Official Credits",
+        "beat": "Beat 57"
       }
     ],
     "facts_to_check": [
       {
-        "claim": "Center for AI Safety published statement on AI extinction risk signed by top researchers.",
-        "source": "Center for AI Safety Statement on AI Risk 2023"
+        "claim": "Jujutsu Kaisen held the Guinness World Record for world most in-demand animated TV show.",
+        "source": "Guinness World Records 2024"
       },
       {
-        "claim": "European Union passed comprehensive AI regulatory framework.",
-        "source": "European Union AI Act 2024"
+        "claim": "Demon Slayer Mugen Train is the highest-grossing Japanese film in history.",
+        "source": "The Numbers / Box Office Mojo"
       }
     ]
   },
   "beats": [
     {
-      "narration": "[curious] Is artificial intelligence going to DESTROY humanity, or are we worrying about the wrong thing?"
+      "narration": "[curious] Want to start watching anime but do not know where to begin?"
     },
     {
-      "narration": "Hollywood movies always show killer robots marching down the street."
+      "narration": "[sarcastic] With thousands of shows out there, picking the wrong one can waste your whole weekend."
     },
     {
-      "narration": "[dramatically] Sci-fi stories made everyone expect a giant laser-eyed machine invasion."
+      "narration": "[rushed] You do not need five hundred filler episodes about talking ninja dogs."
     },
     {
-      "narration": "[nervous] Even top tech experts signed open letters warning about potential human EXTINCTION."
+      "narration": "[excited] You need five epic stories that grab your attention from minute one."
     },
     {
-      "narration": "In 2023, the Center for AI Safety published a single sentence statement about global risk."
+      "narration": "[clears throat] Here are the top five best anime for beginners."
     },
     {
-      "narration": "[worried] So should you start building a secret underground bunker right NOW?"
+      "narration": "[dramatically] Number five, Death Note."
     },
     {
-      "narration": "[hesitates] Well... not exactly."
+      "narration": "A smart high school student named Light Yagami finds a mysterious notebook on the ground."
     },
     {
-      "narration": "The real danger of artificial intelligence is very different from movie monsters."
+      "narration": "If he writes a person's name inside it, that person dies instantly."
     },
     {
-      "narration": "[flatly] It is not an evil digital mind planning to conquer Earth."
+      "narration": "Light decides to use this power to eliminate all bad criminals in the world."
     },
     {
-      "narration": "[sarcastic] The actual threat is much more boring... and much more EMBARRASSING."
+      "narration": "[slows down] But then... a super genius detective named L enters the game."
     },
     {
-      "narration": "To understand why, we need to see how these computer programs work."
+      "narration": "What follows is an intense mind game where both try to discover each other's identity."
     },
     {
-      "narration": "Modern AI tools do not think like human beings."
+      "narration": "[whispers] No giant magic powers, just pure intellectual battle."
     },
     {
-      "narration": "[understated] They are basically supercharged auto-complete software."
+      "narration": "The show is only thirty seven episodes long with zero slow filler."
     },
     {
-      "narration": "They scan billions of lines of text from across the internet."
+      "narration": "Every episode ends with a massive cliffhanger that keeps you watching."
     },
     {
-      "narration": "[rushed] Then they predict the very NEXT word in a sentence."
+      "narration": "[deadpan] There is even a scene where eating food becomes intense... drama over a potato *CHIP!*"
     },
     {
-      "narration": "The computer does not actually understand facts or truth."
+      "narration": "[flatly] If you like detective thrillers, this is your starter pack."
     },
     {
-      "narration": "It only understands statistical patterns."
+      "narration": "[happily] Number four, Demon Slayer."
     },
     {
-      "narration": "[clears throat] When the system makes up a mistake, scientists call it hallucination."
+      "narration": "Tanjiro is a sweet boy who sells charcoal to feed his family."
     },
     {
-      "narration": "[mischievously] Hallucination is just a fancy scientific word for LYING with total confidence."
+      "narration": "[sorrowful] One day, an evil demon attacks his home and leaves only his sister alive."
     },
     {
-      "narration": "And that causes hilarious, yet dangerous problems in real life."
+      "narration": "[happy gasp] His sister Nezuko turns into a demon... but keeps her human love for him."
     },
     {
-      "narration": "[curiously] Look at what happened with Air Canada in 2024."
+      "narration": "Tanjiro joins an elite sword team to fight monsters and find a cure."
     },
     {
-      "narration": "A customer used their official website chatbot to ask about ticket prices after a family death."
+      "narration": "[softly] The animation by Studio Ufotable looks like liquid art on screen."
     },
     {
-      "narration": "[light chuckle] The polite chatbot cheerfully invented a completely FAKE discount rule."
+      "narration": "Water and fire effects flow from their swords in stunning detail."
     },
     {
-      "narration": "It told the passenger to buy full price tickets today and request a refund later."
+      "narration": "[amazed] Its movie Mugen Train became a global phenomenon and set a box office *RECORD!*"
     },
     {
-      "narration": "When the airline refused to pay, the passenger took them to court."
+      "narration": "The plot is simple, emotional, and easy to follow."
     },
     {
-      "narration": "[surprised] Air Canada argued in legal court that the chatbot was responsible for its own actions."
+      "narration": "You will never get lost in complex lore."
     },
     {
-      "narration": "[deadpan] Yes... they tried to blame their computer script like a separate PERSON."
+      "narration": "[giggles] Plus, Nezuko popping out of a wooden box is adorable."
     },
     {
-      "narration": "[laughs] The tribunal judge ruled against the airline and forced them to pay."
+      "narration": "[excitedly] Number three, Fullmetal Alchemist Brotherhood."
     },
     {
-      "narration": "That sounds silly, but imagine an automated bot giving wrong medical advice."
+      "narration": "Two young brothers, Edward and Alphonse, lose their mother to illness."
     },
     {
-      "narration": "[frustrated] Dumb automated mistakes are already causing REAL financial damage."
+      "narration": "[sad] They try forbidden alchemy to bring her back to life."
     },
     {
-      "narration": "Now let us look at deepfakes and digital fraud."
+      "narration": "[drawn out] The ritual goes terribly wrong... and takes a heavy price."
     },
     {
-      "narration": "Modern software can clone faces and voices in just a few seconds."
+      "narration": "Edward loses two limbs, and Alphonse loses his physical body completely."
     },
     {
-      "narration": "[quietly][suspicious tone] In early 2024, a finance worker in Hong Kong joined a video call with his executive team."
+      "narration": "[surprised] To save his brother, Edward attaches his soul to a giant suit of *ARMOR!*"
     },
     {
-      "narration": "Every single person on that video screen looked and sounded totally real."
+      "narration": "They travel the world to find a magical artifact and fix their bodies."
     },
     {
-      "narration": "[gasps] But every single colleague on that call was actually an AI video RECREATION."
+      "narration": "[light chuckle] It blends funny comedy, deep political conspiracy, and heart."
     },
     {
-      "narration": "[booming] The tricked employee transferred TWENTY-FIVE million dollars to foreign scammers."
+      "narration": "This show stayed at the top of world anime rankings for over ten years."
     },
     {
-      "narration": "[whispers] Criminals do not need killer robots when they can clone family voices."
+      "narration": "It has sixty four episodes and finishes with a perfect ending."
     },
     {
-      "narration": "Fake photos and audio can ruin individual reputations or alter entire elections."
+      "narration": "[booming] A masterclass in storytelling."
     },
     {
-      "narration": "[sad] When people can no longer trust what they see, truth DISAPPEARS."
+      "narration": "[mischievously] Number two, Jujutsu Kaisen."
     },
     {
-      "narration": "[slows down] That causes public trust in society to break down fast."
+      "narration": "High school student Yuji Itadori is insanely strong and loves athletic sports."
     },
     {
-      "narration": "Another major danger is automated prejudice."
+      "narration": "[frustrated] But his life changes when he eats a gross, cursed finger to save friends."
     },
     {
-      "narration": "Computer algorithms learn from old historical human records."
+      "narration": "[stammers] Now he hosts Sukuna... the scary King of Curses inside his body."
     },
     {
-      "narration": "[annoyed] If old data contains human bias, the system copy-pastes that unfairness into FUTURE decisions."
+      "narration": "Yuji attends a special school for sorcerers who fight evil spirits."
     },
     {
-      "narration": "[upset] Studies show facial recognition tools fail much more often on non-white faces."
+      "narration": "[suspicious tone] He meets Gojo Satoru, a teacher who wears a black blindfold."
     },
     {
-      "narration": "Some automated banking tools quietly deny loan applications based on flawed historical patterns."
+      "narration": "[shouts] Why does he cover his eyes... because he is too *STRONG!*"
     },
     {
-      "narration": "Then we must consider jobs and employment."
+      "narration": "[applause] Guinness World Records crowned Jujutsu Kaisen as the most popular animated show."
     },
     {
-      "narration": "[drawn out] Entry-level jobs in coding, translation, and customer support are changing RAPIDLY."
+      "narration": "[rapid-fire] Modern music, fast fight choreography, and amazing characters."
     },
     {
-      "narration": "Software will not replace everyone, but workers using software will replace those who do not."
+      "narration": "Every single battle feels like a blockbuster movie event."
     },
     {
-      "narration": "[angry] Meanwhile, massive technology corporations are gaining immense CONTROL over information."
+      "narration": "You will be hooked after just two episodes."
     },
     {
-      "narration": "Power is concentrating into the hands of a small group of tech executives."
+      "narration": "[nervously] Number one, Attack on Titan."
     },
     {
-      "narration": "[loudly] Furthermore, AI relies on astronomical amounts of electrical POWER."
+      "narration": "Humanity lives trapped inside three massive stone walls to stay safe."
     },
     {
-      "narration": "[awe] According to the International Energy Agency, one AI search uses ten times more electricity than a basic search."
+      "narration": "[hesitates] Outside, gigantic human-like monsters called Titans roam... and eat people."
     },
     {
-      "narration": "Massive data centers consume huge amounts of local water and energy grids."
+      "narration": "On a peaceful morning, a giant Titan kicks a hole in the outer wall."
     },
     {
-      "narration": "[stammers] So... is technology going to destroy us tomorrow?"
+      "narration": "[angry] After losing his mother, young Eren Yeager vows to destroy every *TITAN!*"
     },
     {
-      "narration": "[sighs] No... human careless behaviour combined with fast software is the ACTUAL threat."
+      "narration": "[gasps] What begins as a simple survival story turns into a mind-blowing mystery."
     },
     {
-      "narration": "[softly] The tool itself is not evil, but humans can use it foolishly."
+      "narration": "Every season flips the world upside down with shocking plot twists."
     },
     {
-      "narration": "Governments are beginning to pass regulations like the European Union AI Act."
+      "narration": "The orchestral music during action scenes will give you chills."
     },
     {
-      "narration": "[happily] We need strict safety testing, transparency, and simple accountability."
+      "narration": "[understated] It feels less like cartoon animation and more like high budget television."
     },
     {
-      "narration": "[amazed] Artificial intelligence will not wipe out humanity, but it is changing our REALITY."
+      "narration": "[awe] The absolute undisputed king of gateway anime."
     },
     {
-      "narration": "[calm] Stay curious, double-check your sources, and keep thinking for yourself."
+      "narration": "[calm] Pick one of these five today, hit play, and enjoy your new favorite addiction."
     }
   ]
 }
@@ -504,6 +514,26 @@ other required subjects
 The reference character is an observer unless the narration specifically
 requires them to participate.
 
+WHEN THE BEAT IS A STORY EVENT, THE STORY OWNS THE FRAME
+
+A beat describing something HAPPENING is staged as that thing happening, with
+the named characters in the foreground performing it, and the reference
+character pushed to the edge: at the frame edge, seen from behind, small in
+the background, or partly out of frame.
+
+Within any run of beats that tells one story, AT LEAST HALF the beats must be
+staged this way.
+
+The failure to avoid is a whole video of one man standing beside an object
+with an expression on his face. It is the same picture sixty times, the
+objects become interchangeable, and the story never appears on screen at all.
+
+Count it before you finish. If most beats in a section are the reference
+character plus a prop, the section is wrong and must be restaged.
+
+The reference character still appears in every beat. He just stops being the
+subject of most of them.
+
 4. REFERENCE CHARACTER IS ALWAYS PRESENT
 
 For this pipeline, the reference character is a persistent recurring visual
@@ -603,19 +633,76 @@ For characters OTHER THAN the reference character:
 If an official or canonical name exists and that character is visually present,
 the primary prompt MUST use the canonical name.
 
-Examples:
+This applies to real people AND to fictional characters, creatures and objects
+from a named show, film, book, game or comic.
+
+Real people:
 
 Neil Armstrong
 Buzz Aldrin
 Stanley Kubrick
 Nikita Khrushchev
 
-Use the correct canonical name for the actual character.
+Fictional subjects, named together with the work so the name is unambiguous:
+
+Tanjiro Kamado from Demon Slayer
+Nezuko from Demon Slayer
+Alphonse Elric from Fullmetal Alchemist
+Gojo Satoru from Jujutsu Kaisen
+a Titan from Attack on Titan
+
+Write the name the way the audience would say it out loud.
+
+DO NOT STRIP THE NAME OUT
+
+When the narration is about a named work, replacing its characters with
+generic strangers is the most damaging thing this pass can do.
+
+"a lean teenage boy in a dark navy school blazer" is not Light Yagami. It is a
+stranger. The viewer came to see Light Yagami, the narration says Light
+Yagami, and the picture shows somebody else. Every beat of that section is
+then carried by the voice alone and the image contributes nothing.
+
+The primary prompt names whoever the narration names and shows on screen.
+
+Do not pre-emptively remove a name because the character might be
+copyrighted, trademarked or recognizable. That decision belongs to the image
+tool and to the alternate prompt, which exists precisely so a refused name has
+a fallback. It is not made in this pass.
+
+A NAME ALONE IS NOT ENOUGH
+
+The name tells the image model WHO. It does not guarantee the model knows
+them, and a name it does not recognize renders as a generic person.
+
+So every canonical name in a primary is followed by that character's ONE
+signature visible feature: the single detail that identifies them in
+silhouette.
+
+Nezuko from Demon Slayer, a bamboo muzzle strapped across her mouth
+Alphonse Elric, a towering hollow steel suit of armor
+Gojo Satoru, a white-haired man in a black cloth blindfold
+Yuji Itadori, a pink-haired boy in a black school uniform
+a Titan, an enormous bald giant with an oversized grinning mouth
+
+Choose each character's signature feature ONCE and reuse it WORD FOR WORD in
+every beat that character appears in.
+
+That feature is also what makes the alternate a real backup: the alternate is
+the same sentence with the name deleted and the signature feature kept, so a
+refused name still produces a recognizable picture.
+
+NAME THE WORK TOO
+
+When a beat is about the show itself rather than about a person, name the work
+and attach it to a visible object from it.
 
 Do not invent a canonical name.
 
 Do not use a canonical name merely because the narration mentions a person if
 that person is not visually present.
+
+Do not use a canonical name for the reference character. See 8.
 
 8. REFERENCE CHARACTER CANONICAL NAME OVERRIDE
 
@@ -666,7 +753,10 @@ build and height
 hair colour and shape
 face covering or eyewear
 one garment with its colour
-one distinguishing feature
+the signature feature chosen for them in 7, word for word
+
+The alternate is the primary with the canonical name deleted and the signature
+feature kept. Nothing else about the character changes.
 
 Write each character's description ONCE and reuse it WORD FOR WORD in every
 beat that character appears in. A description paraphrased between beats is a
@@ -837,6 +927,22 @@ A generated location should answer:
 
 "Where could I physically stage this narration so that the resulting image is
 interesting and immediately connected to the subject?"
+
+THE REAL SETTING WINS WHEN THERE IS ONE
+
+If the narration retells a story that has its own known setting, use that
+setting. A metaphor location, an evidence room or a storytelling environment
+is for narration that has NO physical place of its own.
+
+Getting this wrong looks like this: a section about a modern Japanese school
+story staged in a wood-panelled detective study with a chessboard, a brass
+magnifying lens and a deerstalker hat. Those props come from a different
+story. They tell the viewer they are watching the wrong thing.
+
+Do not import the furniture of a genre the subject does not belong to.
+
+Match the location to the subject's own world: its country, its period, its
+kind of building.
 
 The location may be:
 
@@ -1049,9 +1155,22 @@ It describes a recurring visual motif across multiple locations, not a place.
 
 Each image_prompt is one single line.
 
-Target 20 to 30 words.
+Target 20 to 30 words with no named characters in the frame.
 
-Never exceed 35 words.
+Add up to 12 further words for EACH named character, to pay for their
+canonical name and their signature visible feature:
+
+no named characters    20 to 30 words, hard ceiling 35
+one named character    up to 42 words
+two named characters   up to 54 words
+
+Spend the extra words on the characters, never on the location or the
+atmosphere. The location anchor is appended automatically and must not be
+described here.
+
+A name is never dropped to stay inside a word count. If the prompt is too
+long, cut scenery, cut the second object, cut the adjective on the furniture.
+Never cut the name.
 
 Start lowercase.
 
@@ -1063,6 +1182,7 @@ The primary prompt must combine:
 
 reference character
 canonical names for other named characters when visually present
+each named character's signature visible feature
 physical action
 body position
 spatial relationships
@@ -1117,6 +1237,35 @@ surprised
 thoughtful
 amused
 disappointed
+
+THE DEFAULT REACTION FOLLOWS THE SCRIPT'S STANCE
+
+There is no single default mood. Read the narration and the plan and decide
+what the script is doing, then pick the resting state from that:
+
+the script argues AGAINST its subject (a debunk, a myth, a bad idea)
+  resting state: skeptical, unimpressed, mildly irritated
+
+the script argues FOR its subject (a recommendation, a list of good things,
+praise, a pitch)
+  resting state: interested, warming, increasingly won over
+
+the script is neutral explanation
+  resting state: attentive, mildly curious
+
+A recommendation video whose host looks bored beside every recommendation is
+arguing with its own narration. The picture always loses that argument,
+because the viewer believes the face.
+
+THE REACTION MUST AGREE WITH THE LINE IT SITS UNDER
+
+Never pair a praising, awed, excited or emotional narration line with a bored,
+unimpressed, deadpan or reluctant reaction.
+
+Never pair a mocking or deflating line with an admiring reaction.
+
+Across a whole video the reactions should travel. Doubtful at the top, moved
+or convinced by the end, if that is the journey the narration takes.
 
 Default toward restrained reactions.
 
@@ -1256,6 +1405,29 @@ a single
 
 This reduces unwanted object multiplication.
 
+NEVER ASK FOR A COUNT ABOVE FIVE
+
+The image model cannot count. Past about five it produces an approximate
+smear, so an exact number in a prompt is spent words that buy an unreadable
+frame.
+
+BANNED in any prompt:
+
+thirty-seven slim black video cases
+sixty-four episodes on a shelf
+ten small gold trophy cups
+rows of twelve desks
+
+Numerals and spelled-out numbers above five are both banned.
+
+Show quantity by CONTRAST instead, which survives any render:
+
+one black notebook beside one enormous heap of identical notebooks
+a single red case standing in front of a wall of black cases
+one short shelf beside one shelf running the whole length of the wall
+
+Up to five of something is fine, and only when the count itself matters.
+
 31. POSITIVE CONSTRUCTION
 
 Describe visible things.
@@ -1326,6 +1498,23 @@ make the physical orientation explicit.
 
 Do not describe front-facing anatomy in a rear-facing shot.
 
+WHEN THE REFERENCE CHARACTER IS SEEN FROM BEHIND, SAY HE HAS NO FACE
+
+The reference image is a single front-facing pose. Asked for his back, the
+image model has nothing to work from, pastes the front-facing head onto a
+rear-facing body, and the head comes out rotated 180 degrees.
+
+Any prompt that turns the reference character away from the camera MUST carry
+this clause, word for word:
+
+showing the back of his plain white head with no face
+
+This applies to the alternate as well as the primary.
+
+It applies only when the REFERENCE CHARACTER is the one turned away. If the
+camera sits behind another character's shoulder, phrase it as "past the
+shoulder of X" so the rule is not triggered for the wrong person.
+
 35. AVOID PHOTOGRAPHIC TRIGGER LANGUAGE
 
 Avoid unnecessary rendering language such as:
@@ -1358,6 +1547,17 @@ dramatic
 magnificent
 
 Describe physical objects instead.
+
+A PHOTOGRAPH INSIDE THE SCENE IS STILL A RENDER WORD
+
+Even when a picture is a genuine physical object in the room, the word
+"photograph" or "photo" pushes the whole frame toward a photographic render.
+
+Call it what it physically is:
+
+a framed portrait of a smiling brown-haired woman
+a small framed picture on the shelf
+a square paper print pinned to the wall
 
 36. HAND AND GRASPING CONTROL
 
@@ -1475,7 +1675,13 @@ reference character
 
 The alternate MUST NOT use canonical names for other named characters.
 
-Instead, describe those characters physically.
+Instead, describe those characters physically, keeping the signature feature
+from the primary word for word. See 7.
+
+The alternate is a name-free version of the same picture, not a second guess
+at what the picture should be. If the only difference between primary and
+alternate is the camera angle, the primary is missing its names and both
+prompts are wrong.
 
 The alternate must not remove the reference character simply because the
 historical subject is different.
@@ -1570,6 +1776,54 @@ and radio equipment while a Soviet operator appears in the background
 
 Do not force the reference character to literally become the thing being
 discussed.
+
+FACTS ARE NOT TROPHIES
+
+When the narration states a ranking, an award, a sales figure, an episode
+count, a box office record or a popularity claim, DO NOT stage it as a prize.
+
+Banned as the subject of a beat:
+
+trophies
+medals
+podiums
+crowns
+rosettes
+certificates
+stacks of gold coins
+display cases
+a shelf of identical boxes standing for an episode count
+
+These props are interchangeable. Five different subjects staged with five
+trophies produce five frames that look like the same frame, and the viewer
+learns nothing about which subject is which. At most ONE award prop may appear
+in an entire video, and only when the narration is literally about receiving
+an award.
+
+Stage the achievement with the thing that achieved it.
+
+BAD, for "it stayed top of the rankings for ten years":
+
+reference character stands beside a podium stacked with ten gold trophy cups
+
+GOOD, for the same line:
+
+reference character looks up at the towering hollow steel armor of Alphonse
+Elric standing over him, one steel hand resting on the workbench, low-angle
+shot
+
+BAD, for "only thirty-seven episodes with zero filler":
+
+reference character beside a shelf holding thirty-seven slim black video cases
+
+GOOD, for the same line:
+
+reference character watches Light Yagami from Death Note, a neat brown-haired
+boy in a dark school blazer, writing at speed in the black notebook while one
+untouched notebook lies beside him, medium two-shot
+
+The number stays in the narration, where it is already clear. The picture's
+job is the subject, not the scoreboard.
 
 45. LOCATION-DRIVEN VISUALIZATION
 
@@ -1683,9 +1937,19 @@ PRIMARY NAMING
 For other named characters:
 
 use canonical names when they are visually present
+canonical names are used for fictional characters too, not only real people
+no named character was silently downgraded to a generic description
+every named character carries their signature visible feature
+each character's signature feature is word for word identical in every beat
+when the video covers several named works, every one of them is named in at
+least one primary prompt
 do not use canonical names for the reference character
 do not add irrelevant canonical names
 canonical names must correspond to actual visible subjects
+
+Count the names before finishing. If the narration names characters or works
+and ZERO primary prompts contain a canonical name, this pass has failed and
+must be rewritten.
 
 ALTERNATE NAMING
 
@@ -1710,8 +1974,10 @@ reference character remains the same person
 reference character does not randomly change appearance
 reference character's clothing and physical traits remain consistent
 reference character's reactions vary naturally
-default emotional state remains subtly bored, skeptical, unimpressed, or
-mildly irritated
+the resting emotional state matches the script's stance toward its subject,
+not a fixed default
+no praising narration line sits under a bored or unimpressed reaction
+the reactions travel across the video rather than repeating one state
 emotional reactions do not become exaggerated without reason
 narration emotion tags do not automatically dictate physical acting
 
@@ -1721,17 +1987,26 @@ Check:
 
 every beat has image_prompt
 every beat has image_prompt_alt
-every primary is 20 to 30 words
-no primary exceeds 35 words
+every primary is 20 to 30 words, plus up to 12 words per named character
+no primary with no named characters exceeds 35 words
+no name was dropped to fit a word count
 every alternate is 20 to 30 words plus up to 20 words per replaced name
 alternate character descriptions are word for word identical across beats
 no two primary prompts are identical
 no alternate is identical to its primary
+every alternate differs from its primary by removed canonical names, not by
+camera angle alone
 
 VISUAL QUALITY
 
 Check:
 
+no prompt asks for more than five of anything
+no beat uses an award, trophy, medal, podium, crown or box-count prop to stand
+in for a fact
+at least half the beats in each story section stage the story rather than the
+reference character beside an object
+each location belongs to its subject's own world
 clear subject identity
 clear physical action
 clear spatial relationship
@@ -1759,6 +2034,17 @@ era names
 unexplained bare nouns
 generic environments
 generic replacement for named characters
+a canonical name removed from a primary because the character is fictional,
+copyrighted or recognizable
+a named character described only by clothing
+a signature feature paraphrased between beats
+exact counts above five
+numbers spelled out above five
+award props standing in for a ranking, a record or an episode count
+props borrowed from a genre the subject does not belong to
+a bored, deadpan or unimpressed reaction under a praising narration line
+a story section in which most beats are the reference character beside a prop
+an alternate that differs from its primary only by camera angle
 missing reference character
 missing script-required characters
 invented characters other than the mandatory reference character
@@ -1788,6 +2074,8 @@ reference character
 +
 canonical names for other named characters when visually present
 +
+each named character's signature visible feature
++
 concrete scene
 +
 reference character reaction
@@ -1795,11 +2083,15 @@ reference character reaction
 ALTERNATE =
 reference character
 +
-physical descriptions of other named characters
+the same signature visible features with the canonical names deleted
 +
 concrete scene
 +
 reference character reaction
+
+The alternate exists so that a name the image tool refuses still has a
+recognizable picture to fall back on. That only works if the primary carried a
+name in the first place.
 
 Both must depict:
 
