@@ -10,470 +10,476 @@ from modules import transcriber
 
 FLOW_RUNNER = config.ROOT_DIR / "flow_runner" / "runner.py"
 
-NEW_SCRIPT ={
-  "topic": "is-ai-really-dangerous",
+NEW_SCRIPT = {
+  "topic": "top-5-beginner-anime",
   "format": "explainer",
   "plan": {
-    "spine_question": "Is artificial intelligence going to destroy humanity, or are the real dangers much more ordinary?",
+    "spine_question": "Which five anime series are the best starting points for someone who has never watched anime before?",
     "deflations": [
       {
-        "assumed": "Killer robots like Terminator will take over the world and exterminate humans.",
-        "actual": "AI is predictive software that makes foolish mistakes, enables financial fraud, and amplifies human bias.",
-        "who_decided": "Sci-fi movies and sensational media headlines.",
-        "build_beat": "Hollywood movies always show killer robots marching down the street.",
-        "drop_beat": "The actual threat is much more boring... and much more EMBARRASSING."
+        "assumed": "Anime is either too childish or requires watching hundreds of filler episodes.",
+        "actual": "Top starter anime feature short, tightly structured stories with high-quality animation and mature drama.",
+        "who_decided": "Newcomers who feel overwhelmed by massive long-running series like One Piece.",
+        "build_beat": "Many people avoid anime because they fear getting stuck in endless filler seasons...",
+        "drop_beat": "...but these five top shows deliver complete cinematic stories in just a few seasons."
       }
     ],
     "specifics": [
       {
-        "fact": "Air Canada was held legally liable in 2024 after its chatbot invented a fake bereavement fare policy.",
-        "source": "Civil Resolution Tribunal of British Columbia ruling 2024",
-        "beat": "Look at what happened with Air Canada in 2024."
+        "fact": "Death Note consists of 37 episodes produced by Studio Madhouse with no filler content.",
+        "source": "Studio Madhouse Official Catalog",
+        "beat": "Beat 13"
       },
       {
-        "fact": "A finance worker transferred $25 million after being tricked by deepfakes of his CFO and colleagues on a video call.",
-        "source": "Hong Kong Police Force report 2024",
-        "beat": "In early 2024, a finance worker in Hong Kong joined a video call with his executive team."
+        "fact": "Demon Slayer Mugen Train broke box office records to become the highest-grossing Japanese movie worldwide.",
+        "source": "Box Office Mojo / Crunchyroll News",
+        "beat": "Beat 24"
       },
       {
-        "fact": "An AI search query uses approximately ten times as much electricity as a standard Google search.",
-        "source": "International Energy Agency Electricity 2024 Report",
-        "beat": "According to the International Energy Agency, one AI search uses ten times more electricity than a basic search."
+        "fact": "Fullmetal Alchemist Brotherhood was rated number one on MyAnimeList for over a decade across 64 episodes.",
+        "source": "MyAnimeList Historical Stats",
+        "beat": "Beat 36"
+      },
+      {
+        "fact": "Jujutsu Kaisen was awarded the Guinness World Record for most in-demand animated series globally.",
+        "source": "Guinness World Records / Parrot Analytics",
+        "beat": "Beat 46"
+      },
+      {
+        "fact": "Attack on Titan features a score composed by Hiroyuki Sawano and animation by Wit Studio and MAPPA.",
+        "source": "Attack on Titan Official Credits",
+        "beat": "Beat 57"
       }
     ],
     "facts_to_check": [
       {
-        "claim": "Center for AI Safety published statement on AI extinction risk signed by top researchers.",
-        "source": "Center for AI Safety Statement on AI Risk 2023"
+        "claim": "Jujutsu Kaisen held the Guinness World Record for world most in-demand animated TV show.",
+        "source": "Guinness World Records 2024"
       },
       {
-        "claim": "European Union passed comprehensive AI regulatory framework.",
-        "source": "European Union AI Act 2024"
+        "claim": "Demon Slayer Mugen Train is the highest-grossing Japanese film in history.",
+        "source": "The Numbers / Box Office Mojo"
       }
     ],
     "locations": [
       {
-        "name": "robot movie prop depot",
-        "visual_anchor": "corrugated steel walls painted deep red, stained concrete floor, one large roller shutter door, rusted steel ceiling girders"
+        "name": "cozy apartment living room",
+        "visual_anchor": "deep teal plaster walls, worn honey oak floorboards, one broad black television mounted on the main wall"
       },
       {
-        "name": "oak-panelled university reading room",
-        "visual_anchor": "tall oak-panelled walls, green carpeted floor, one arched stained-glass window, dark green plaster ceiling with moulded cornices"
+        "name": "Japanese suburban teenage bedroom",
+        "visual_anchor": "cream papered walls, pale beige carpet floor, one tall sliding window beside a built-in pale wooden desk alcove"
       },
       {
-        "name": "backyard survival bunker",
-        "visual_anchor": "curved corrugated metal walls painted olive green, packed dirt floor, one steel ladder rising to a round hatch"
+        "name": "Japanese high school courtyard",
+        "visual_anchor": "pale grey concrete paving, cream four-storey school facade, one long green chain-link fence along the edge"
       },
       {
-        "name": "cramped server basement workshop",
-        "visual_anchor": "grey concrete walls, raised white floor tiles, one built-in row of black server racks, deep blue ceiling"
+        "name": "Tokyo high-rise investigation suite",
+        "visual_anchor": "off-white paneled walls, pale grey carpet, one floor-to-ceiling window overlooking a dense grey city skyline"
       },
       {
-        "name": "airline customer service back room",
-        "visual_anchor": "cream laminate wall panels, speckled blue linoleum floor, one long built-in counter, bright red painted ceiling beams"
+        "name": "snowy mountain charcoal hut",
+        "visual_anchor": "rough dark timber walls, packed earth floor, one square sunken hearth, thick white snow banked against the doorway"
       },
       {
-        "name": "small tribunal hearing chamber",
-        "visual_anchor": "pale maple wall panelling, navy blue carpet, one raised wooden judge's bench along the front wall"
+        "name": "dense cedar forest clearing",
+        "visual_anchor": "towering dark cedar trunks, mossy uneven ground, one weathered stone shrine lantern, deep green canopy overhead"
       },
       {
-        "name": "police fraud evidence room",
-        "visual_anchor": "painted cinderblock walls in teal, grey epoxy floor, one wall-length steel pegboard, exposed fluorescent tube fittings overhead"
+        "name": "steam train passenger carriage",
+        "visual_anchor": "polished dark wood-panelled walls, deep red upholstered bench seats, one long aisle of worn green floor matting"
       },
       {
-        "name": "high-rise finance office",
-        "visual_anchor": "floor-to-ceiling glass windows, charcoal carpet tiles, one white structural column, pale grey walls with orange accent panel"
+        "name": "Elric family basement workshop",
+        "visual_anchor": "rough grey fieldstone walls, dusty oak plank floor, one enormous white chalk circle drawn across the boards"
       },
       {
-        "name": "newspaper fact-checking room",
-        "visual_anchor": "yellowed plaster walls, scuffed parquet floor, one tall sash window, mustard yellow painted pipes along the ceiling"
+        "name": "dusty frontier railway platform",
+        "visual_anchor": "sun-bleached timber platform boards, red brick station wall, one iron clock tower above the tracks, ochre earth beyond"
       },
       {
-        "name": "bank loan records archive",
-        "visual_anchor": "dark brick walls, worn brown linoleum floor, one arched brick vault doorway, fixed maroon steel shelving along walls"
+        "name": "urban high school sports field",
+        "visual_anchor": "rust-red running track, bright green artificial turf, one tall grey concrete grandstand along the far side"
       },
       {
-        "name": "half-vacated call-centre floor",
-        "visual_anchor": "white drywall partitions, grey loop-pile carpet, one wide exposed ventilation duct, lime green painted support pillars"
+        "name": "concrete high school rooftop",
+        "visual_anchor": "pale grey concrete floor, tall green chain-link fencing, one squat stairwell hut with a steel door"
       },
       {
-        "name": "glass-topped executive boardroom",
-        "visual_anchor": "black marble walls, dark walnut floor, one floor-to-ceiling window wall, deep purple velvet wall panels"
+        "name": "Tokyo Jujutsu High temple courtyard",
+        "visual_anchor": "raked pale gravel ground, dark timber temple halls with sweeping black tiled roofs, one vermilion torii gate"
       },
       {
-        "name": "data-centre cooling hall",
-        "visual_anchor": "white insulated metal walls, perforated steel floor grating, one massive overhead cooling duct, bright cyan painted pipework"
-      },
-      {
-        "name": "parliament committee chamber",
-        "visual_anchor": "curved blond wood walls, royal blue carpet, one semicircular tiered bench, high white acoustic ceiling panels"
+        "name": "Shiganshina walled district",
+        "visual_anchor": "rough grey cobblestones, pale plaster townhouse facades with dark timber beams, one towering sandstone wall across the horizon"
       }
     ],
     "setting_anchor": ""
   },
   "beats": [
     {
-      "location": "robot movie prop depot",
-      "narration": "[curious] Is artificial intelligence going to DESTROY humanity, or are we worrying about the wrong thing?",
-      "image_prompt": "reference character leans against a tall chrome robot prop with red eye lenses, arms folded, looking skeptical toward the camera, medium shot, bright red tarpaulin draped over a nearby wooden crate",
-      "image_prompt_alt": "low-angle wide shot, a tall chrome robot prop with red eye lenses towers over reference character, who stands at frame right with a deadpan stare, bright red tarpaulin covering the floor"
+      "narration": "[curious] Want to start watching anime but do not know where to begin?",
+      "location": "cozy apartment living room",
+      "image_prompt": "reference character sits on a teal velvet couch with a curious frown, looking toward the television showing a sprawling grid of colourful tiles, a black remote resting on the cushion, medium-wide shot",
+      "image_prompt_alt": "over-the-shoulder shot from behind reference character seated on a teal velvet couch, head tilted curiously toward the television filled with a sprawling grid of colourful tiles, a black remote on the cushion"
     },
     {
-      "location": "robot movie prop depot",
-      "narration": "Hollywood movies always show killer robots marching down the street.",
-      "image_prompt": "reference character sits on a folding chair, bored, watching five silver robot props lined up along a miniature cardboard street set painted bright red, wide shot at eye level",
-      "image_prompt_alt": "over-the-shoulder shot from behind reference character, facing five silver robot props mid-stride across a bright red cardboard street set, one robot prop tipped over on the floor"
+      "narration": "[sarcastic] With thousands of shows out there, picking the wrong one can waste your whole weekend.",
+      "location": "cozy apartment living room",
+      "image_prompt": "reference character slumps sideways on the teal velvet couch with a tired skeptical look, a heap of crumpled white cardboard food boxes on a low pine table, high-angle shot",
+      "image_prompt_alt": "low side angle toward reference character half-sunk into the teal velvet couch, skeptical and tired, a low pine table piled with crumpled white cardboard food boxes in the foreground"
     },
     {
-      "location": "robot movie prop depot",
-      "narration": "[dramatically] Sci-fi stories made everyone expect a giant laser-eyed machine invasion.",
-      "image_prompt": "reference character stands unimpressed beside a giant fibreglass robot head with two red laser tubes protruding from its eyes, bright orange foam scenery rocks piled at its base, medium shot",
-      "image_prompt_alt": "close-up of reference character's unimpressed face in the foreground left, a giant fibreglass robot head behind with red laser tubes jutting from its eyes over bright orange foam rocks"
+      "narration": "[rushed] You do not need five hundred filler episodes about talking ninja dogs.",
+      "location": "cozy apartment living room",
+      "image_prompt": "close-up of reference character on the couch, arms crossed and unimpressed, while the television beside him shows a small cartoon pug in a bright blue ninja headband mid-chatter",
+      "image_prompt_alt": "wide shot from beside the television, a small cartoon pug in a bright blue ninja headband filling the screen while reference character watches from the teal velvet couch, arms crossed, unimpressed"
     },
     {
-      "location": "oak-panelled university reading room",
-      "narration": "[nervous] Even top tech experts signed open letters warning about potential human EXTINCTION.",
-      "image_prompt": "reference character leans over a long oak table covered with cream paper sheets bearing dark signature marks, curious expression, high-angle shot, deep green leather tabletop, one brass fountain pen beside the stack",
-      "image_prompt_alt": "medium shot from table level, a tall stack of cream paper sheets with dark signature marks in the foreground, reference character seated behind it frowning curiously, deep green leather tabletop"
+      "narration": "[excited] You need five epic stories that grab your attention from minute one.",
+      "location": "cozy apartment living room",
+      "image_prompt": "reference character leans forward on the teal couch, eyes widening with interest at the television split into five bright panels: black notebook, checkered cloth, steel armor, blindfold, stone wall, medium shot",
+      "image_prompt_alt": "low angle past the television edge, reference character leaning off the teal couch, intrigued, the screen divided into five bright panels: black notebook, checkered cloth, steel armor, blindfold, stone wall"
     },
     {
-      "location": "oak-panelled university reading room",
-      "narration": "In 2023, the Center for AI Safety published a single sentence statement about global risk.",
-      "image_prompt": "reference character sits hunched at a reading desk squinting at one cream paper sheet holding a single short line of dark marks, bright green leather blotter beneath, medium close-up",
-      "image_prompt_alt": "overhead shot of one cream paper sheet with a single short line of dark marks on a bright green leather blotter, reference character's skeptical face leaning in from the frame edge"
+      "narration": "[clears throat] Here are the top five best anime for beginners.",
+      "location": "cozy apartment living room",
+      "image_prompt": "reference character stands beside the mounted television with arms folded and a quietly interested half-smile, a bright orange floor cushion at his feet, the screen showing solid crimson, wide shot at eye level",
+      "image_prompt_alt": "medium shot, reference character standing side-on beside the television, arms folded, quietly interested, a solid crimson screen behind and a bright orange floor cushion resting on the oak boards"
     },
     {
-      "location": "backyard survival bunker",
-      "narration": "[worried] So should you start building a secret underground bunker right NOW?",
-      "image_prompt": "reference character sits on an upturned metal bucket, looking resigned, beside stacked food tins and one orange hand-crank radio, olive green sleeping bag crossing the foreground, medium-wide shot",
-      "image_prompt_alt": "high-angle shot looking down the ladder at reference character crouched among stacked food tins, one orange hand-crank radio at their feet, olive green sleeping bag unrolled across the dirt"
+      "narration": "[dramatically] Number five, Death Note.",
+      "location": "Japanese suburban teenage bedroom",
+      "image_prompt": "Light Yagami from Death Note, a neat brown-haired boy in a tan school blazer, sits bent over the black Death Note notebook at the desk while reference character watches from the doorway edge, intrigued, red desk lamp, medium-wide shot",
+      "image_prompt_alt": "a neat brown-haired boy in a tan school blazer, slim and tall, sharp amber eyes, a red striped tie, bent over a slim matte black notebook at the desk, reference character intrigued at the frame edge, red desk lamp, low side angle"
     },
     {
-      "location": "robot movie prop depot",
-      "narration": "[hesitates] Well... not exactly.",
-      "image_prompt": "reference character stands beside a toppled chrome robot prop lying on the concrete floor, one eyebrow raised, bright red tarpaulin half pulled from the fallen prop, medium shot",
-      "image_prompt_alt": "wide shot at floor level, the toppled chrome robot prop stretched across the foreground, reference character at the far end with a doubtful sideways glance, bright red tarpaulin crumpled nearby"
+      "narration": "A smart high school student named Light Yagami finds a mysterious notebook on the ground.",
+      "location": "Japanese high school courtyard",
+      "image_prompt": "high-angle shot of Light Yagami from Death Note, a neat brown-haired boy in a tan school blazer, stooping over the black Death Note notebook lying on the paving, reference character small in the background beside a blue bench, curious",
+      "image_prompt_alt": "a neat brown-haired boy in a tan school blazer, slim and tall, sharp amber eyes, a red striped tie, stoops toward a slim matte black notebook lying on the paving, reference character curious beside a blue bench in the foreground, eye-level wide shot"
     },
     {
-      "location": "robot movie prop depot",
-      "narration": "The real danger of artificial intelligence is very different from movie monsters.",
-      "image_prompt": "reference character stands between a bright red rubber monster costume hanging on a steel rail and one beige laptop on a wooden workbench, glancing toward the laptop, medium-wide shot",
-      "image_prompt_alt": "reference character in the foreground right with a thoughtful look, a bright red rubber monster costume hanging from a steel rail behind, one beige laptop on a workbench at left, long shot"
+      "narration": "If he writes a person's name inside it, that person dies instantly.",
+      "location": "Japanese suburban teenage bedroom",
+      "image_prompt": "over-the-shoulder close-up of Light Yagami from Death Note, a neat brown-haired boy in a tan school blazer, pen poised above an open page of the black Death Note notebook, reference character wary at the frame edge, red desk lamp",
+      "image_prompt_alt": "medium side shot of a neat brown-haired boy in a tan school blazer, slim and tall, sharp amber eyes, a red striped tie, pen poised above a slim matte black notebook, reference character wary in the foreground, red desk lamp"
     },
     {
-      "location": "robot movie prop depot",
-      "narration": "[flatly] It is not an evil digital mind planning to conquer Earth.",
-      "image_prompt": "reference character sits on a wooden crate with a flat unimpressed stare beside a large clear plastic brain model packed with bright red wires, resting on a steel trolley, medium shot",
-      "image_prompt_alt": "close-up over the clear plastic brain model filled with bright red wires on a steel trolley, reference character behind it with a flat unimpressed stare, three-quarter view"
+      "narration": "Light decides to use this power to eliminate all bad criminals in the world.",
+      "location": "Japanese suburban teenage bedroom",
+      "image_prompt": "Light Yagami from Death Note, a neat brown-haired boy in a tan school blazer, writes fast in the black Death Note notebook facing a small television of grey faces, reference character uneasy on the red bedspread behind, medium-wide shot",
+      "image_prompt_alt": "wide shot from the red bedspread where reference character sits uneasy, a neat brown-haired boy in a tan school blazer, slim and tall, sharp amber eyes, a red striped tie, writing fast in a slim matte black notebook beside a small television of grey faces"
     },
     {
-      "location": "robot movie prop depot",
-      "narration": "[sarcastic] The actual threat is much more boring... and much more EMBARRASSING.",
-      "image_prompt": "reference character slumps on a folding chair beside a beige office printer jammed with crumpled paper, bored expression, chrome robot props standing ignored behind, bright red floor tarpaulin, wide shot",
-      "image_prompt_alt": "medium close-up of the beige printer jammed with crumpled paper on a bright red floor tarpaulin, reference character slumped beside it, bored, chrome robot props standing further back"
+      "narration": "[slows down] But then... a super genius detective named L enters the game.",
+      "location": "Tokyo high-rise investigation suite",
+      "image_prompt": "L from Death Note, a pale hunched young man with messy black hair in a white long-sleeved shirt, crouches barefoot on an armchair facing a wall of blue monitors, reference character standing behind, intrigued, low-angle shot",
+      "image_prompt_alt": "side shot of a pale hunched young man with messy black hair in a white long-sleeved shirt, thin and barefoot, dark rings under wide eyes, faded blue jeans, crouched on an armchair before a wall of blue monitors, reference character intrigued by the window"
     },
     {
-      "location": "cramped server basement workshop",
-      "narration": "To understand why, we need to see how these computer programs work.",
-      "image_prompt": "reference character stands at the open door of one black metal cabinet, peering at tangled bright blue cables and rows of small green indicator lamps, curious expression, medium shot",
-      "image_prompt_alt": "wide shot along the aisle of black metal cabinets, reference character small in the distance leaning toward one open cabinet door, bright blue cable bundles running overhead"
+      "narration": "What follows is an intense mind game where both try to discover each other's identity.",
+      "location": "Tokyo high-rise investigation suite",
+      "image_prompt": "L from Death Note, a pale hunched young man with messy black hair in a white long-sleeved shirt, crouches opposite Light Yagami from Death Note, a neat brown-haired boy in a tan school blazer, across a low glass table, reference character absorbed between them, medium three-shot",
+      "image_prompt_alt": "high-angle shot, a pale hunched young man with messy black hair in a white long-sleeved shirt, thin and barefoot, dark rings under wide eyes, faded blue jeans, crouched across a low glass table from a neat brown-haired boy in a tan school blazer, slim and tall, sharp amber eyes, a red striped tie, reference character absorbed at the far end"
     },
     {
-      "location": "cramped server basement workshop",
-      "narration": "Modern AI tools do not think like human beings.",
-      "image_prompt": "reference character sits at a steel desk comparing a pink rubber human brain model with one flat green circuit board resting beside it, skeptical look, close-up",
-      "image_prompt_alt": "overhead shot of a steel desk holding a pink rubber brain model and a flat green circuit board side by side, reference character's skeptical face leaning in from above"
+      "narration": "[whispers] No giant magic powers, just pure intellectual battle.",
+      "location": "Tokyo high-rise investigation suite",
+      "image_prompt": "tight two-shot of Light Yagami from Death Note, a neat brown-haired boy in a tan school blazer, locking eyes with L from Death Note, a pale hunched young man with messy black hair in a white long-sleeved shirt, over a single white sugar cube, reference character leaning in at the edge, hushed and fascinated",
+      "image_prompt_alt": "low wide shot at table height, a neat brown-haired boy in a tan school blazer, slim and tall, sharp amber eyes, a red striped tie, staring across a single white sugar cube at a pale hunched young man with messy black hair in a white long-sleeved shirt, thin and barefoot, dark rings under wide eyes, faded blue jeans, reference character hushed by the window"
     },
     {
-      "location": "cramped server basement workshop",
-      "narration": "[understated] They are basically supercharged auto-complete software.",
-      "image_prompt": "reference character stands deadpan beside a jumbo red phone keypad model propped on a trolley, thick orange jump cables linking it to a car battery on the floor, medium-wide shot",
-      "image_prompt_alt": "low-angle shot from floor level past a car battery and thick orange jump cables toward a jumbo red phone keypad model on a trolley, reference character deadpan behind it"
+      "narration": "The show is only thirty seven episodes long with zero slow filler.",
+      "location": "Japanese suburban teenage bedroom",
+      "image_prompt": "reference character watches Light Yagami from Death Note, a neat brown-haired boy in a tan school blazer, writing at speed in the black Death Note notebook while one untouched notebook lies beside him, red desk lamp, medium two-shot",
+      "image_prompt_alt": "overhead shot of a neat brown-haired boy in a tan school blazer, slim and tall, sharp amber eyes, a red striped tie, writing at speed in a slim matte black notebook beside one untouched notebook, reference character impressed at the frame edge, red desk lamp"
     },
     {
-      "location": "cramped server basement workshop",
-      "narration": "They scan billions of lines of text from across the internet.",
-      "image_prompt": "reference character sits buried to the shoulders in bright yellow continuous-feed paper spilling from a black metal cabinet, dense grey marks across every sheet, tired look, high-angle shot",
-      "image_prompt_alt": "wide shot of bright yellow continuous-feed paper cascading from a black metal cabinet into a heap across the floor, reference character's tired face poking out of the pile at left"
+      "narration": "Every episode ends with a massive cliffhanger that keeps you watching.",
+      "location": "Japanese suburban teenage bedroom",
+      "image_prompt": "Light Yagami from Death Note, a neat brown-haired boy in a tan school blazer, freezes and glances up at a tiny black camera tucked into the ceiling corner, reference character following his gaze, hooked, low-angle shot",
+      "image_prompt_alt": "high-angle shot from the ceiling corner past a tiny black camera, a neat brown-haired boy in a tan school blazer, slim and tall, sharp amber eyes, a red striped tie, glancing upward, reference character hooked and tense below by the window"
     },
     {
-      "location": "cramped server basement workshop",
-      "narration": "[rushed] Then they predict the very NEXT word in a sentence.",
-      "image_prompt": "reference character leans toward a row of blank wooden blocks on a steel bench, one gap at the end and a single bright red block waiting beside it, curious, close-up",
-      "image_prompt_alt": "medium shot from the side, reference character crouched at bench height eyeing a single bright red wooden block beside a gap in a row of blank wooden blocks"
+      "narration": "[deadpan] There is even a scene where eating food becomes intense... drama over a potato *CHIP!*",
+      "location": "Japanese suburban teenage bedroom",
+      "image_prompt": "extreme close-up of Light Yagami from Death Note, a neat brown-haired boy in a tan school blazer, lifting a single potato chip from a torn bright yellow foil bag at the desk, reference character amused at the frame edge",
+      "image_prompt_alt": "medium side shot of a neat brown-haired boy in a tan school blazer, slim and tall, sharp amber eyes, a red striped tie, lifting a single potato chip from a torn bright yellow foil bag, a slim matte black notebook half-hidden, reference character amused behind the bed"
     },
     {
-      "location": "cramped server basement workshop",
-      "narration": "The computer does not actually understand facts or truth.",
-      "image_prompt": "reference character stares blankly at a black metal cabinet while an open encyclopedia and a brass magnifying glass rest untouched on top, bright blue cable loops hanging beside, medium shot",
-      "image_prompt_alt": "close-up of an open encyclopedia and brass magnifying glass on top of a black metal cabinet, reference character behind with a blank resigned stare, bright blue cables dangling"
+      "narration": "[flatly] If you like detective thrillers, this is your starter pack.",
+      "location": "Tokyo high-rise investigation suite",
+      "image_prompt": "reference character sits back in a grey armchair, warmly convinced, watching L from Death Note, a pale hunched young man with messy black hair in a white long-sleeved shirt, crouched over a laptop across the room, blue monitors along the wall, medium-wide shot",
+      "image_prompt_alt": "close-up of reference character, warmly convinced, turned toward a pale hunched young man with messy black hair in a white long-sleeved shirt, thin and barefoot, dark rings under wide eyes, faded blue jeans, crouched over a laptop in the background beside blue monitors"
     },
     {
-      "location": "cramped server basement workshop",
-      "narration": "It only understands statistical patterns.",
-      "image_prompt": "reference character stands before a large cork board in a steel frame pinned with bright orange bar charts and dot grids, head tilted, mildly interested, medium-wide shot",
-      "image_prompt_alt": "three-quarter rear view from behind reference character, facing the steel-framed cork board pinned with bright orange bar charts and dot grids, one steel stool beside them"
+      "narration": "[happily] Number four, Demon Slayer.",
+      "location": "dense cedar forest clearing",
+      "image_prompt": "Tanjiro Kamado from Demon Slayer, a boy in a green and black checkered haori, stands in the clearing with a black sword drawn and a tall pale wooden box strapped to his back, reference character pleased at the frame edge, wide shot",
+      "image_prompt_alt": "low-angle shot of a boy in a green and black checkered haori, sturdy build, dark red hair, a scar on his forehead, dangling white rectangular earrings, black sword drawn, a tall pale wooden box on his back, reference character pleased in the foreground"
     },
     {
-      "location": "cramped server basement workshop",
-      "narration": "[clears throat] When the system makes up a mistake, scientists call it hallucination.",
-      "image_prompt": "reference character stands arms crossed beside an open black metal cabinet, bright pink cotton wool puffing from its vents, skeptical expression, medium shot",
-      "image_prompt_alt": "wide shot, bright pink cotton wool drifting from the vents of an open black metal cabinet across the aisle, reference character at the frame edge eyeing it skeptically"
+      "narration": "Tanjiro is a sweet boy who sells charcoal to feed his family.",
+      "location": "snowy mountain charcoal hut",
+      "image_prompt": "Tanjiro Kamado from Demon Slayer, a boy in a green and black checkered haori, steps out the snowy doorway under a wooden frame of black charcoal sacks, reference character warmly watching from beside the hearth, medium shot",
+      "image_prompt_alt": "wide shot from outside in the snow, a boy in a green and black checkered haori, sturdy build, dark red hair, a scar on his forehead, dangling white rectangular earrings, stepping out under a wooden frame of black charcoal sacks, reference character warmly watching from inside"
     },
     {
-      "location": "cramped server basement workshop",
-      "narration": "[mischievously] Hallucination is just a fancy scientific word for LYING with total confidence.",
-      "image_prompt": "reference character raises an eyebrow at a small grey robot figurine standing proudly on a steel desk wearing a tiny purple graduation cap, beside a toppled stack of books, close-up",
-      "image_prompt_alt": "medium shot from desk height, the small grey robot figurine in its purple graduation cap in the foreground, reference character leaning back behind it with a raised eyebrow"
+      "narration": "[sorrowful] One day, an evil demon attacks his home and leaves only his sister alive.",
+      "location": "snowy mountain charcoal hut",
+      "image_prompt": "Tanjiro Kamado from Demon Slayer, a boy in a green and black checkered haori, kneels in the snow at the broken doorway beside Nezuko from Demon Slayer, a small girl in a pink kimono with a bamboo muzzle strapped across her mouth, splintered planks around them, reference character sorrowful behind, high-angle wide shot",
+      "image_prompt_alt": "low-angle shot from the snow, a boy in a green and black checkered haori, sturdy build, dark red hair, a scar on his forehead, dangling white rectangular earrings, kneeling beside a small girl in a pink kimono with a bamboo muzzle strapped across her mouth, slender, long black hair fading to orange at the tips, splintered planks scattered, reference character sorrowful behind"
     },
     {
-      "location": "cramped server basement workshop",
-      "narration": "And that causes hilarious, yet dangerous problems in real life.",
-      "image_prompt": "reference character sits beside a steel desk where a yellow rubber chicken rests next to a bright red fire extinguisher, half amused and half wary, medium-wide shot",
-      "image_prompt_alt": "close-up of a yellow rubber chicken and a bright red fire extinguisher side by side on a steel desk, reference character in the background with a wary half-smile"
+      "narration": "[happy gasp] His sister Nezuko turns into a demon... but keeps her human love for him.",
+      "location": "snowy mountain charcoal hut",
+      "image_prompt": "Nezuko from Demon Slayer, a small girl in a pink kimono with a bamboo muzzle strapped across her mouth, kneels protectively beside Tanjiro Kamado from Demon Slayer, a boy in a green and black checkered haori, eyes soft with recognition, reference character moved in the doorway, medium two-shot",
+      "image_prompt_alt": "close two-shot, a small girl in a pink kimono with a bamboo muzzle strapped across her mouth, slender, long black hair fading to orange at the tips, kneeling beside a boy in a green and black checkered haori, sturdy build, dark red hair, a scar on his forehead, dangling white rectangular earrings, reference character moved in the background doorway"
     },
     {
-      "location": "airline customer service back room",
-      "narration": "[curiously] Look at what happened with Air Canada in 2024.",
-      "image_prompt": "reference character leans on the counter beside a white Air Canada passenger jet model with a red tail fin on a steel stand, curious glance, bright red lanyards hanging nearby, medium shot",
-      "image_prompt_alt": "low-angle close-up of a white passenger jet model with a red maple-leaf tail fin on a steel stand, reference character leaning in from behind with a curious glance"
+      "narration": "Tanjiro joins an elite sword team to fight monsters and find a cure.",
+      "location": "dense cedar forest clearing",
+      "image_prompt": "Tanjiro Kamado from Demon Slayer, a boy in a green and black checkered haori, swings his sword at a hulking pale demon with long black claws, reference character crouched tense behind a cedar trunk, wide action shot",
+      "image_prompt_alt": "low-angle shot of a boy in a green and black checkered haori, sturdy build, dark red hair, a scar on his forehead, dangling white rectangular earrings, swinging a sword at a hulking pale demon with long black claws, reference character tense behind a cedar trunk in the foreground"
     },
     {
-      "location": "airline customer service back room",
-      "narration": "A customer used their official website chatbot to ask about ticket prices after a family death.",
-      "image_prompt": "reference character stands quietly at frame left watching a middle-aged passenger in a grey wool coat and black armband seated before a beige terminal showing a red speech bubble, medium two-shot",
-      "image_prompt_alt": "over-the-shoulder shot behind a middle-aged passenger in a grey wool coat and black armband, facing a beige terminal showing a red speech bubble, reference character watching from the side"
+      "narration": "[softly] The animation by Studio Ufotable looks like liquid art on screen.",
+      "location": "dense cedar forest clearing",
+      "image_prompt": "reference character stands mesmerized at the clearing edge while Tanjiro Kamado from Demon Slayer, a boy in a green and black checkered haori, spins mid-air, a rolling sapphire wave of water curling off his blade, medium-wide shot",
+      "image_prompt_alt": "overhead shot of a boy in a green and black checkered haori, sturdy build, dark red hair, a scar on his forehead, dangling white rectangular earrings, spinning mid-air as a rolling sapphire wave of water curls off his blade, reference character mesmerized at the clearing edge below"
     },
     {
-      "location": "airline customer service back room",
-      "narration": "[light chuckle] The polite chatbot cheerfully invented a completely FAKE discount rule.",
-      "image_prompt": "reference character sits on the counter, unimpressed, facing a beige monitor showing a smiling yellow robot face, a stack of bright red paper tickets fanned out beside it, close-up",
-      "image_prompt_alt": "medium shot from behind the beige monitor showing a smiling yellow robot face, reference character across the counter with an unimpressed stare, bright red paper tickets fanned out nearby"
+      "narration": "Water and fire effects flow from their swords in stunning detail.",
+      "location": "dense cedar forest clearing",
+      "image_prompt": "Tanjiro Kamado from Demon Slayer, a boy in a green and black checkered haori, slashes forward as a spiral of sapphire water turns into roaring orange fire along the blade, reference character leaning back, awed, low-angle shot",
+      "image_prompt_alt": "wide side shot of a boy in a green and black checkered haori, sturdy build, dark red hair, a scar on his forehead, dangling white rectangular earrings, slashing forward, sapphire water turning into roaring orange fire along the blade, reference character awed at the frame edge"
     },
     {
-      "location": "airline customer service back room",
-      "narration": "It told the passenger to buy full price tickets today and request a refund later.",
-      "image_prompt": "reference character watches skeptically as a middle-aged passenger in a grey wool coat and black armband stands at the counter beside a bright red card payment terminal and one paper ticket, medium-wide shot",
-      "image_prompt_alt": "close-up of a bright red card payment terminal and one paper ticket on the counter, a middle-aged passenger in a grey wool coat and black armband behind, reference character skeptical nearby"
+      "narration": "[amazed] Its movie Mugen Train became a global phenomenon and set a box office *RECORD!*",
+      "location": "steam train passenger carriage",
+      "image_prompt": "Kyojuro Rengoku from Demon Slayer, a blond man with red-tipped hair in a white flame-patterned cape, sits beside Tanjiro Kamado from Demon Slayer, a boy in a green and black checkered haori, on the red bench, reference character delighted opposite, medium three-shot",
+      "image_prompt_alt": "wide shot down the carriage aisle, a blond man with red-tipped hair in a white flame-patterned cape, broad-shouldered and tall, wide golden eyes, a black uniform beneath, seated beside a boy in a green and black checkered haori, sturdy build, dark red hair, a scar on his forehead, dangling white rectangular earrings, reference character delighted in the facing seat"
     },
     {
-      "location": "small tribunal hearing chamber",
-      "narration": "When the airline refused to pay, the passenger took them to court.",
-      "image_prompt": "reference character sits on the public bench watching a middle-aged passenger in a grey wool coat and black armband stand at a lectern beside one bright blue cardboard folder, wide shot",
-      "image_prompt_alt": "low-angle shot from behind the lectern, a middle-aged passenger in a grey wool coat and black armband facing forward, one bright blue cardboard folder on the lectern, reference character attentive at the side"
+      "narration": "The plot is simple, emotional, and easy to follow.",
+      "location": "dense cedar forest clearing",
+      "image_prompt": "rear tracking shot of Tanjiro Kamado from Demon Slayer, a boy in a green and black checkered haori, walking a straight mossy path with the tall pale wooden box on his back, reference character strolling behind, relaxed and content",
+      "image_prompt_alt": "front wide shot, a boy in a green and black checkered haori, sturdy build, dark red hair, a scar on his forehead, dangling white rectangular earrings, walking a straight mossy path toward camera with a tall pale wooden box on his back, reference character content a few steps behind"
     },
     {
-      "location": "small tribunal hearing chamber",
-      "narration": "[surprised] Air Canada argued in legal court that the chatbot was responsible for its own actions.",
-      "image_prompt": "reference character stares in disbelief from the public bench while an airline lawyer in a charcoal suit and red tie stands beside a beige monitor resting on the witness chair, medium-wide shot",
-      "image_prompt_alt": "close-up of a beige monitor seated on the wooden witness chair, an airline lawyer in a charcoal suit and red tie beside it, reference character's disbelieving face in the foreground"
+      "narration": "You will never get lost in complex lore.",
+      "location": "dense cedar forest clearing",
+      "image_prompt": "reference character sits at ease on a mossy stone beside the shrine lantern as Tanjiro Kamado from Demon Slayer, a boy in a green and black checkered haori, nods down one single clear path through the cedars, medium shot",
+      "image_prompt_alt": "high-angle shot, a boy in a green and black checkered haori, sturdy build, dark red hair, a scar on his forehead, dangling white rectangular earrings, standing at the head of one single clear path through the cedars, reference character at ease on a mossy stone beside him"
     },
     {
-      "location": "small tribunal hearing chamber",
-      "narration": "[deadpan] Yes... they tried to blame their computer script like a separate PERSON.",
-      "image_prompt": "reference character leans back, eyes closed, exasperated, as the beige monitor on the witness chair wears a red bow tie beside an airline lawyer in a charcoal suit and red tie, medium shot",
-      "image_prompt_alt": "high-angle wide shot of the beige monitor in a red bow tie on the witness chair, an airline lawyer in a charcoal suit and red tie beside it, reference character exasperated behind"
+      "narration": "[giggles] Plus, Nezuko popping out of a wooden box is adorable.",
+      "location": "dense cedar forest clearing",
+      "image_prompt": "close-up of Nezuko from Demon Slayer, a small girl in a pink kimono with a bamboo muzzle strapped across her mouth, popping her head out of the tall pale wooden box on the mossy ground, reference character crouched beside it, grinning",
+      "image_prompt_alt": "low eye-level two-shot, a small girl in a pink kimono with a bamboo muzzle strapped across her mouth, slender, long black hair fading to orange at the tips, peeking up from inside a tall pale wooden box on the moss, reference character grinning on the other side"
     },
     {
-      "location": "small tribunal hearing chamber",
-      "narration": "[laughs] The tribunal judge ruled against the airline and forced them to pay.",
-      "image_prompt": "reference character gives a small satisfied smirk from the public bench as a grey-haired tribunal adjudicator in a black robe sits behind a wooden gavel on a bright red blotter, wide shot",
-      "image_prompt_alt": "close-up of a wooden gavel on a bright red blotter, a grey-haired tribunal adjudicator in a black robe behind it, reference character's small satisfied smirk at frame right"
+      "narration": "[excitedly] Number three, Fullmetal Alchemist Brotherhood.",
+      "location": "dusty frontier railway platform",
+      "image_prompt": "Edward Elric from Fullmetal Alchemist, a short blond boy in a long red coat with a steel right arm, stands beside Alphonse Elric from Fullmetal Alchemist, a towering hollow steel suit of armor, reference character leaning on the brick wall, excited, wide shot at eye level",
+      "image_prompt_alt": "low-angle two-shot, a short blond boy in a long red coat with a steel right arm, slim build, a golden braid, gold eyes, black trousers, beside a towering hollow steel suit of armor, broad-shouldered, a spiked helmet with one long white tassel, a red cloth at the waist, reference character excited against the brick wall behind"
     },
     {
-      "location": "small tribunal hearing chamber",
-      "narration": "That sounds silly, but imagine an automated bot giving wrong medical advice.",
-      "image_prompt": "reference character frowns at the beige monitor on the witness chair, now wearing a white paper nurse's cap, a bright red first-aid case with a white cross resting beside it, medium shot",
-      "image_prompt_alt": "low three-quarter view, a bright red first-aid case with a white cross on the floor in the foreground, the beige monitor in a white nurse's cap behind, reference character frowning nearby"
+      "narration": "Two young brothers, Edward and Alphonse, lose their mother to illness.",
+      "location": "Elric family basement workshop",
+      "image_prompt": "young Edward Elric from Fullmetal Alchemist, a small blond boy with a short golden ponytail, sits beside young Alphonse Elric from Fullmetal Alchemist, a small boy with short dark-blond hair, on stone steps beneath a framed photograph of a smiling brown-haired woman, reference character sad in the corner, medium-wide shot",
+      "image_prompt_alt": "close two-shot, a small blond boy with a short golden ponytail, thin build, gold eyes, a plain black vest over a white shirt, huddled beside a small boy with short dark-blond hair, round gentle face, grey eyes, a green knitted sweater, below a framed photograph of a smiling brown-haired woman, reference character sad behind"
     },
     {
-      "location": "small tribunal hearing chamber",
-      "narration": "[frustrated] Dumb automated mistakes are already causing REAL financial damage.",
-      "image_prompt": "reference character stands arms folded, mildly annoyed, beside a tall heap of bright red paper sheets on the lawyer's wooden table, a toppled beige monitor on top, medium-wide shot",
-      "image_prompt_alt": "high-angle shot looking down on a heap of bright red paper sheets and a toppled beige monitor on the lawyer's wooden table, reference character annoyed at the table edge"
+      "narration": "[sad] They try forbidden alchemy to bring her back to life.",
+      "location": "Elric family basement workshop",
+      "image_prompt": "high-angle shot of young Edward Elric from Fullmetal Alchemist, a small blond boy with a short golden ponytail, and young Alphonse Elric from Fullmetal Alchemist, a small boy with short dark-blond hair, kneeling at the chalk circle's edge among open red leather books, reference character uneasy behind them",
+      "image_prompt_alt": "floor-level side shot, a small blond boy with a short golden ponytail, thin build, gold eyes, a plain black vest over a white shirt, and a small boy with short dark-blond hair, round gentle face, grey eyes, a green knitted sweater, kneeling at the circle's edge among open red leather books, reference character uneasy in the doorway"
     },
     {
-      "location": "police fraud evidence room",
-      "narration": "Now let us look at deepfakes and digital fraud.",
-      "image_prompt": "reference character stands beside a steel table lined with lifelike rubber face masks on white foam heads, clear plastic zip bags with bright teal seals beside them, skeptical frown, medium shot",
-      "image_prompt_alt": "close-up along the row of lifelike rubber face masks on white foam heads, bright teal-sealed plastic bags in front, reference character's skeptical frown at the far end of the table"
+      "narration": "[drawn out] The ritual goes terribly wrong... and takes a heavy price.",
+      "location": "Elric family basement workshop",
+      "image_prompt": "jagged blue lightning erupts from the chalk circle as young Edward Elric from Fullmetal Alchemist, a small blond boy with a short golden ponytail, is thrown backward, reference character pressed against the stone wall, alarmed, wide shot",
+      "image_prompt_alt": "low-angle shot, jagged blue lightning erupting from the circle, a small blond boy with a short golden ponytail, thin build, gold eyes, a plain black vest over a white shirt, thrown backward across the planks, reference character alarmed against the stone wall"
     },
     {
-      "location": "police fraud evidence room",
-      "narration": "Modern software can clone faces and voices in just a few seconds.",
-      "image_prompt": "reference character watches warily as a webcam on a tripod faces a white foam head, a laptop beside it showing two identical faces on a bright orange background, medium-wide shot",
-      "image_prompt_alt": "over-the-shoulder shot from behind reference character facing the laptop showing two identical faces on a bright orange background, a webcam on a tripod and white foam head at left"
+      "narration": "Edward loses two limbs, and Alphonse loses his physical body completely.",
+      "location": "Elric family basement workshop",
+      "image_prompt": "overhead shot of young Edward Elric from Fullmetal Alchemist, a small blond boy with a short golden ponytail, slumped on the boards with his right sleeve hanging empty beside a heap of empty green clothes in the circle's center, reference character kneeling nearby, stricken",
+      "image_prompt_alt": "floor-level medium shot, a small blond boy with a short golden ponytail, thin build, gold eyes, a plain black vest over a white shirt, slumped with his right sleeve hanging empty, a heap of empty green clothes in the circle's center, reference character stricken beside him"
     },
     {
-      "location": "high-rise finance office",
-      "narration": "[quietly][suspicious tone] In early 2024, a finance worker in Hong Kong joined a video call with his executive team.",
-      "image_prompt": "reference character watches from the doorway as a slim finance worker with short black hair, thin glasses, white shirt and navy tie sits at a bright orange desk facing a monitor grid of six faces, medium-wide shot",
-      "image_prompt_alt": "over-the-shoulder shot behind a slim finance worker with short black hair, thin glasses, white shirt and navy tie, facing a monitor grid of six faces, reference character watching suspiciously at far right"
+      "narration": "[surprised] To save his brother, Edward attaches his soul to a giant suit of *ARMOR!*",
+      "location": "Elric family basement workshop",
+      "image_prompt": "Alphonse Elric from Fullmetal Alchemist, a towering hollow steel suit of armor, sits up inside a small crimson circle, two red points in its helmet slits, young Edward Elric from Fullmetal Alchemist, a small blond boy with a short golden ponytail, collapsed against it, reference character stunned, low-angle shot",
+      "image_prompt_alt": "wide shot, a towering hollow steel suit of armor, broad-shouldered, a spiked helmet with one long white tassel, a red cloth at the waist, rising inside a small crimson circle, two red points in the helmet slits, a small blond boy with a short golden ponytail, thin build, gold eyes, a plain black vest over a white shirt, collapsed against it, reference character stunned by the wall"
     },
     {
-      "location": "high-rise finance office",
-      "narration": "Every single person on that video screen looked and sounded totally real.",
-      "image_prompt": "close-up of the monitor grid of six executives in dark suits, reference character leaning in beside a slim finance worker with short black hair, thin glasses, white shirt and navy tie, curious squint",
-      "image_prompt_alt": "medium two-shot from beside the monitor, a slim finance worker with short black hair, thin glasses, white shirt and navy tie nodding at it, reference character squinting over their shoulder, bright orange desk"
+      "narration": "They travel the world to find a magical artifact and fix their bodies.",
+      "location": "dusty frontier railway platform",
+      "image_prompt": "rear three-quarter shot of Edward Elric from Fullmetal Alchemist, a short blond boy in a long red coat with a steel right arm, and Alphonse Elric from Fullmetal Alchemist, a towering hollow steel suit of armor, walking toward a green steam train, reference character hopeful behind",
+      "image_prompt_alt": "front wide shot, a short blond boy in a long red coat with a steel right arm, slim build, a golden braid, gold eyes, black trousers, and a towering hollow steel suit of armor, broad-shouldered, a spiked helmet with one long white tassel, a red cloth at the waist, walking beside a green steam train with a brown leather suitcase, reference character hopeful behind"
     },
     {
-      "location": "high-rise finance office",
-      "narration": "[gasps] But every single colleague on that call was actually an AI video RECREATION.",
-      "image_prompt": "reference character, eyes wide, stands behind a slim finance worker with short black hair, thin glasses, white shirt and navy tie as the six monitor faces split into grey wireframe mesh, medium shot",
-      "image_prompt_alt": "close-up of the monitor, six executive faces half peeled into grey wireframe mesh on bright orange, reference character surprised behind a slim finance worker with short black hair, thin glasses, white shirt and navy tie"
+      "narration": "[light chuckle] It blends funny comedy, deep political conspiracy, and heart.",
+      "location": "dusty frontier railway platform",
+      "image_prompt": "Edward Elric from Fullmetal Alchemist, a short blond boy in a long red coat with a steel right arm, stamps furiously in front of Alphonse Elric from Fullmetal Alchemist, a towering hollow steel suit of armor, reference character quietly laughing on a yellow wooden bench, medium-wide shot",
+      "image_prompt_alt": "low-angle shot, a short blond boy in a long red coat with a steel right arm, slim build, a golden braid, gold eyes, black trousers, stamping furiously before a towering hollow steel suit of armor, broad-shouldered, a spiked helmet with one long white tassel, a red cloth at the waist, reference character laughing on a yellow wooden bench"
     },
     {
-      "location": "high-rise finance office",
-      "narration": "[booming] The tricked employee transferred TWENTY-FIVE million dollars to foreign scammers.",
-      "image_prompt": "reference character stares in dismay as a trolley stacked shoulder-high with green canvas bank sacks rolls away from a slim finance worker with short black hair, thin glasses, white shirt and navy tie, wide shot",
-      "image_prompt_alt": "low-angle shot of a trolley stacked with green canvas bank sacks rolling out the door, a slim finance worker with short black hair, thin glasses, white shirt and navy tie frozen, reference character dismayed"
+      "narration": "This show stayed at the top of world anime rankings for over ten years.",
+      "location": "dusty frontier railway platform",
+      "image_prompt": "reference character looks up in admiration at Alphonse Elric from Fullmetal Alchemist, a towering hollow steel suit of armor, standing over him, one steel hand resting on a wooden crate, the red brick wall behind, low-angle shot",
+      "image_prompt_alt": "wide profile shot, reference character admiring a towering hollow steel suit of armor, broad-shouldered, a spiked helmet with one long white tassel, a red cloth at the waist, standing over him with one steel hand on a wooden crate, the clock tower above"
     },
     {
-      "location": "police fraud evidence room",
-      "narration": "[whispers] Criminals do not need killer robots when they can clone family voices.",
-      "image_prompt": "reference character sits at a steel table eyeing an old bright red landline telephone wired to a small black audio recorder, suspicious sideways glance, close-up",
-      "image_prompt_alt": "wide shot, the bright red landline telephone and black audio recorder small on the steel table in the foreground, reference character seated at the far end, suspicious"
+      "narration": "It has sixty four episodes and finishes with a perfect ending.",
+      "location": "dusty frontier railway platform",
+      "image_prompt": "wide rear shot of Edward Elric from Fullmetal Alchemist, a short blond boy in a long red coat with a steel right arm, and Alphonse Elric from Fullmetal Alchemist, a towering hollow steel suit of armor, walking down the tracks toward ochre hills, reference character satisfied on the platform edge",
+      "image_prompt_alt": "high-angle shot from the clock tower, a short blond boy in a long red coat with a steel right arm, slim build, a golden braid, gold eyes, black trousers, and a towering hollow steel suit of armor, broad-shouldered, a spiked helmet with one long white tassel, a red cloth at the waist, walking away toward ochre hills, reference character satisfied below"
     },
     {
-      "location": "newspaper fact-checking room",
-      "narration": "Fake photos and audio can ruin individual reputations or alter entire elections.",
-      "image_prompt": "reference character leans over a wide layout table comparing two nearly identical photographs of a politician at a podium, one ringed in bright red grease pencil, a white ballot box beside them, high-angle shot",
-      "image_prompt_alt": "medium shot from table level, two nearly identical politician-at-podium photographs in the foreground, one ringed in bright red grease pencil, a white ballot box behind, reference character squinting skeptically"
+      "narration": "[booming] A masterclass in storytelling.",
+      "location": "dusty frontier railway platform",
+      "image_prompt": "Edward Elric from Fullmetal Alchemist, a short blond boy in a long red coat with a steel right arm, presses his palms to the boards as a jagged stone spike bursts upward, reference character stepping back, deeply impressed, medium-wide shot",
+      "image_prompt_alt": "low-angle close shot, a short blond boy in a long red coat with a steel right arm, slim build, a golden braid, gold eyes, black trousers, pressing his palms to the boards as a jagged stone spike bursts upward, reference character impressed beside the brick wall"
     },
     {
-      "location": "newspaper fact-checking room",
-      "narration": "[sad] When people can no longer trust what they see, truth DISAPPEARS.",
-      "image_prompt": "reference character sits, disappointed, beside a bright yellow plastic photo tray where a photograph of a crowd is fading into blank white paper, medium close-up",
-      "image_prompt_alt": "overhead shot of a bright yellow plastic photo tray holding a crowd photograph fading into blank white paper, reference character's disappointed face at the tray's edge"
+      "narration": "[mischievously] Number two, Jujutsu Kaisen.",
+      "location": "Tokyo Jujutsu High temple courtyard",
+      "image_prompt": "Yuji Itadori from Jujutsu Kaisen, a pink-haired boy in a black school uniform, drops into a fighting stance on the gravel before the vermilion torii gate, reference character playfully intrigued on the temple steps, wide shot",
+      "image_prompt_alt": "low-angle shot, a pink-haired boy in a black school uniform, athletic muscular build, spiky short hair with dark roots, a red hood at the collar, in a fighting stance on the gravel, reference character intrigued at the frame edge"
     },
     {
-      "location": "newspaper fact-checking room",
-      "narration": "[slows down] That causes public trust in society to break down fast.",
-      "image_prompt": "reference character stands resigned beside a tall stack of newspapers collapsing sideways off a wooden trolley onto the floor, bright yellow twine snapped, wide shot",
-      "image_prompt_alt": "low-angle close-up of newspapers sliding off a wooden trolley with snapped bright yellow twine, reference character standing resigned in the background"
+      "narration": "High school student Yuji Itadori is insanely strong and loves athletic sports.",
+      "location": "urban high school sports field",
+      "image_prompt": "Yuji Itadori from Jujutsu Kaisen, a pink-haired boy in a black school uniform, hurls a heavy iron shot put ball far across the green turf, reference character stunned beside the grandstand, wide shot",
+      "image_prompt_alt": "low side shot, a pink-haired boy in a black school uniform, athletic muscular build, spiky short hair with dark roots, a red hood at the collar, mid-throw launching a heavy iron shot put ball over the green turf, reference character stunned in the foreground"
     },
     {
-      "location": "bank loan records archive",
-      "narration": "Another major danger is automated prejudice.",
-      "image_prompt": "reference character stands beside a brass weighing scale on a steel reading table, one pan heaped with maroon folders, the other raised high, skeptical look, medium shot",
-      "image_prompt_alt": "close-up of a brass weighing scale tilted hard to one side under maroon folders on a steel reading table, reference character skeptical at frame right"
+      "narration": "[frustrated] But his life changes when he eats a gross, cursed finger to save friends.",
+      "location": "concrete high school rooftop",
+      "image_prompt": "Yuji Itadori from Jujutsu Kaisen, a pink-haired boy in a black school uniform, swallows a withered grey finger as a hulking grey spirit with a cluster of bulging eyes looms over the fence, reference character recoiling, grossed out, low-angle shot",
+      "image_prompt_alt": "wide shot, a pink-haired boy in a black school uniform, athletic muscular build, spiky short hair with dark roots, a red hood at the collar, swallowing a withered grey finger beneath a hulking grey spirit with a cluster of bulging eyes, reference character grossed out by the stairwell"
     },
     {
-      "location": "bank loan records archive",
-      "narration": "Computer algorithms learn from old historical human records.",
-      "image_prompt": "reference character sits on a rolling ladder looking at yellowed ledger books stacked on a reading table, a thick black cable running from them into a small beige computer, curious, wide shot",
-      "image_prompt_alt": "close-up of yellowed ledger books with a thick black cable running into a small beige computer, reference character seated on a rolling ladder behind, curious"
+      "narration": "[stammers] Now he hosts Sukuna... the scary King of Curses inside his body.",
+      "location": "concrete high school rooftop",
+      "image_prompt": "close-up of Yuji Itadori from Jujutsu Kaisen, a pink-haired boy in a black school uniform, possessed by Sukuna from Jujutsu Kaisen, black tattoo lines beneath a second pair of eyes, grinning coldly, reference character nervous against the steel door",
+      "image_prompt_alt": "medium shot, a pink-haired boy in a black school uniform, athletic muscular build, spiky short hair with dark roots, a red hood at the collar, black tattoo lines beneath a second pair of eyes, grinning coldly, reference character nervous at the frame edge"
     },
     {
-      "location": "bank loan records archive",
-      "narration": "[annoyed] If old data contains human bias, the system copy-pastes that unfairness into FUTURE decisions.",
-      "image_prompt": "reference character stands annoyed beside a beige photocopier spewing a long trail of identical sheets marked with bold red crosses across the floor, high-angle shot",
-      "image_prompt_alt": "floor-level shot along the trail of identical sheets marked with bold red crosses leading back to a beige photocopier, reference character annoyed beside it"
+      "narration": "Yuji attends a special school for sorcerers who fight evil spirits.",
+      "location": "Tokyo Jujutsu High temple courtyard",
+      "image_prompt": "wide rear shot of Yuji Itadori from Jujutsu Kaisen, a pink-haired boy in a black school uniform, walking through the vermilion torii gate toward the dark timber halls, reference character strolling beside him, curious",
+      "image_prompt_alt": "front medium two-shot, a pink-haired boy in a black school uniform, athletic muscular build, spiky short hair with dark roots, a red hood at the collar, stepping through the vermilion torii gate, reference character curious at his side"
     },
     {
-      "location": "bank loan records archive",
-      "narration": "[upset] Studies show facial recognition tools fail much more often on non-white faces.",
-      "image_prompt": "reference character frowns at a monitor on a steel stand showing six portrait photographs of different people, bright green tracking squares on some and red error squares on others, medium shot",
-      "image_prompt_alt": "close-up of a monitor showing six portrait photographs with bright green tracking squares on some and red error squares on others, reference character frowning at its side"
+      "narration": "[suspicious tone] He meets Gojo Satoru, a teacher who wears a black blindfold.",
+      "location": "Tokyo Jujutsu High temple courtyard",
+      "image_prompt": "Gojo Satoru from Jujutsu Kaisen, a white-haired man in a black cloth blindfold, stands on the temple steps with hands in pockets, reference character squinting at him suspiciously from the gravel, medium-wide shot",
+      "image_prompt_alt": "low-angle shot, a white-haired man in a black cloth blindfold, very tall and lean, spiky upswept hair, a high-collared dark navy jacket, on the temple steps, reference character squinting suspiciously in the foreground"
     },
     {
-      "location": "bank loan records archive",
-      "narration": "Some automated banking tools quietly deny loan applications based on flawed historical patterns.",
-      "image_prompt": "reference character eyes a beige computer terminal on a steel desk pushing out paper slips each marked with a bold red cross into a growing pile, quietly disappointed, medium-wide shot",
-      "image_prompt_alt": "close-up of paper slips marked with bold red crosses piling beneath a beige computer terminal, reference character leaning on the steel desk behind, disappointed"
+      "narration": "[shouts] Why does he cover his eyes... because he is too *STRONG!*",
+      "location": "Tokyo Jujutsu High temple courtyard",
+      "image_prompt": "extreme close-up of Gojo Satoru from Jujutsu Kaisen, a white-haired man in a black cloth blindfold, lifting it to reveal bright sky-blue eyes, reference character startled at the frame edge",
+      "image_prompt_alt": "medium two-shot, a white-haired man in a black cloth blindfold, very tall and lean, spiky upswept hair, a high-collared dark navy jacket, raising it to reveal bright sky-blue eyes, reference character startled beside him on the gravel"
     },
     {
-      "location": "half-vacated call-centre floor",
-      "narration": "Then we must consider jobs and employment.",
-      "image_prompt": "reference character wanders between rows of unoccupied grey cubicle desks with lime green dividers, one headset draped over each chair, looking thoughtful, wide shot",
-      "image_prompt_alt": "high-angle shot over rows of unoccupied grey cubicle desks with lime green dividers and headsets draped on chairs, reference character small in one aisle, thoughtful"
+      "narration": "[applause] Guinness World Records crowned Jujutsu Kaisen as the most popular animated show.",
+      "location": "Tokyo Jujutsu High temple courtyard",
+      "image_prompt": "Yuji Itadori from Jujutsu Kaisen, a pink-haired boy in a black school uniform, stands back to back with Gojo Satoru from Jujutsu Kaisen, a white-haired man in a black cloth blindfold, amid swirling crimson smoke, reference character impressed on the temple steps, wide shot",
+      "image_prompt_alt": "low-angle shot, a pink-haired boy in a black school uniform, athletic muscular build, spiky short hair with dark roots, a red hood at the collar, back to back with a white-haired man in a black cloth blindfold, very tall and lean, spiky upswept hair, a high-collared dark navy jacket, amid swirling crimson smoke, reference character impressed behind"
     },
     {
-      "location": "half-vacated call-centre floor",
-      "narration": "[drawn out] Entry-level jobs in coding, translation, and customer support are changing RAPIDLY.",
-      "image_prompt": "reference character sits at a cubicle desk beside a bright green plastic crate piled with foreign-language dictionaries, a thick paperback manual and a telephone headset, resigned, medium shot",
-      "image_prompt_alt": "close-up of dictionaries, a thick paperback manual and a telephone headset piled in a bright green plastic crate on the desk, reference character resigned behind them"
+      "narration": "[rapid-fire] Modern music, fast fight choreography, and amazing characters.",
+      "location": "Tokyo Jujutsu High temple courtyard",
+      "image_prompt": "Yuji Itadori from Jujutsu Kaisen, a pink-haired boy in a black school uniform, drives a punch into a hulking grey spirit with a cluster of bulging eyes, black lightning crackling, reference character ducking by the gate, thrilled, low-angle shot",
+      "image_prompt_alt": "wide side shot, a pink-haired boy in a black school uniform, athletic muscular build, spiky short hair with dark roots, a red hood at the collar, punching a hulking grey spirit with a cluster of bulging eyes amid crackling black lightning, reference character thrilled by the gate"
     },
     {
-      "location": "half-vacated call-centre floor",
-      "narration": "Software will not replace everyone, but workers using software will replace those who do not.",
-      "image_prompt": "reference character leans on a divider thoughtfully watching a young worker in a lime green sweater at a laptop while an older worker in a brown cardigan stands beside a cardboard box, medium-wide shot",
-      "image_prompt_alt": "over-the-shoulder shot from behind reference character, facing a young worker in a lime green sweater at a laptop and an older worker in a brown cardigan beside a cardboard box"
+      "narration": "Every single battle feels like a blockbuster movie event.",
+      "location": "Tokyo Jujutsu High temple courtyard",
+      "image_prompt": "extreme wide shot, Gojo Satoru from Jujutsu Kaisen, a white-haired man in a black cloth blindfold, faces a towering grey spirit as a swirling violet sphere forms before him, reference character amazed on the temple steps",
+      "image_prompt_alt": "low-angle medium shot, a white-haired man in a black cloth blindfold, very tall and lean, spiky upswept hair, a high-collared dark navy jacket, facing a towering grey spirit behind a swirling violet sphere, reference character amazed in the foreground"
     },
     {
-      "location": "glass-topped executive boardroom",
-      "narration": "[angry] Meanwhile, massive technology corporations are gaining immense CONTROL over information.",
-      "image_prompt": "reference character stands at the far end of a long glass table, mildly irritated, as four executives in dark suits sit around a large brass globe tangled with purple cables, wide shot",
-      "image_prompt_alt": "low-angle shot from table height past the large brass globe tangled with purple cables, four executives in dark suits seated behind it, reference character irritated in the background"
+      "narration": "You will be hooked after just two episodes.",
+      "location": "Tokyo Jujutsu High temple courtyard",
+      "image_prompt": "reference character sits on the temple steps, hooked and grinning, while Yuji Itadori from Jujutsu Kaisen, a pink-haired boy in a black school uniform, sits a few steps below eating from a red paper cup, medium shot",
+      "image_prompt_alt": "wide shot from the gravel, reference character hooked and grinning on the temple steps above a pink-haired boy in a black school uniform, athletic muscular build, spiky short hair with dark roots, a red hood at the collar, eating from a red paper cup"
     },
     {
-      "location": "glass-topped executive boardroom",
-      "narration": "Power is concentrating into the hands of a small group of tech executives.",
-      "image_prompt": "reference character stands unimpressed beside a single towering stack of gold coins on the glass table, tiny coins scattered around it, four executives in dark suits leaning over it, medium shot",
-      "image_prompt_alt": "close-up of a single towering stack of gold coins on the glass table with tiny coins scattered around, four executives in dark suits behind, reference character unimpressed at frame left"
+      "narration": "[nervously] Number one, Attack on Titan.",
+      "location": "Shiganshina walled district",
+      "image_prompt": "Eren Yeager from Attack on Titan, a dark-haired boy with fierce green eyes, stands in the cobbled street gazing up at the towering wall, reference character beside a wooden cart looking up too, apprehensive, low-angle wide shot",
+      "image_prompt_alt": "medium rear shot, a dark-haired boy with fierce green eyes, lean build, messy shoulder-length hair, a brown leather strap harness over a white shirt, facing the towering wall, reference character apprehensive beside a wooden cart"
     },
     {
-      "location": "data-centre cooling hall",
-      "narration": "[loudly] Furthermore, AI relies on astronomical amounts of electrical POWER.",
-      "image_prompt": "reference character stands dwarfed beside tall grey ribbed metal cabinets with thick bright orange power cables coiling across the floor, tired look, low-angle wide shot",
-      "image_prompt_alt": "overhead shot of thick bright orange power cables coiling across the grating toward tall grey ribbed metal cabinets, reference character standing among the coils, tired"
+      "narration": "Humanity lives trapped inside three massive stone walls to stay safe.",
+      "location": "Shiganshina walled district",
+      "image_prompt": "extreme wide overhead shot of townsfolk in plain brown linen crowding the cobbled lanes, reference character on a red-tiled rooftop edge in the foreground, uneasy, the wall ringing the district",
+      "image_prompt_alt": "wide street-level shot, townsfolk in plain brown linen filling the cobbled lanes beneath red-tiled roofs, reference character uneasy against a townhouse, the wall looming above"
     },
     {
-      "location": "data-centre cooling hall",
-      "narration": "[awe] According to the International Energy Agency, one AI search uses ten times more electricity than a basic search.",
-      "image_prompt": "reference character, eyebrows raised, stands between one light bulb on a stool and ten identical light bulbs lined along a long steel bench, all joined by bright orange cables, medium-wide shot",
-      "image_prompt_alt": "close-up at bench height along ten identical light bulbs on bright orange cables, a single light bulb on a stool at far left, reference character raising eyebrows in the background"
+      "narration": "[hesitates] Outside, gigantic human-like monsters called Titans roam... and eat people.",
+      "location": "Shiganshina walled district",
+      "image_prompt": "high-angle shot from atop the wall, a Titan from Attack on Titan, an enormous bald giant with an oversized grinning mouth, lumbers across green grassland below, reference character peering over the stone parapet, uneasy",
+      "image_prompt_alt": "low-angle shot from the grass, an enormous bald giant with an oversized grinning mouth, pale smooth skin, bulging round eyes, lumbering past the wall base, reference character tiny and uneasy on the parapet above"
     },
     {
-      "location": "data-centre cooling hall",
-      "narration": "Massive data centers consume huge amounts of local water and energy grids.",
-      "image_prompt": "reference character stands mildly concerned beside a massive blue plastic water tank feeding thick pipes into black metal cabinets, a wide puddle spreading across the floor, wide shot",
-      "image_prompt_alt": "low-angle close-up of a puddle beneath a massive blue plastic water tank with thick pipes running into black metal cabinets, reference character concerned behind"
+      "narration": "On a peaceful morning, a giant Titan kicks a hole in the outer wall.",
+      "location": "Shiganshina walled district",
+      "image_prompt": "the Colossal Titan from Attack on Titan, a skinless red giant towering over the wall, peers down as broken stone blasts inward from the gate, townsfolk in brown linen fleeing, reference character frozen in the street, wide shot",
+      "image_prompt_alt": "low-angle shot from the cobbles, a skinless red giant towering over the wall, exposed muscle, white steam pouring from its body, a lipless jaw, broken stone blasting inward, townsfolk in brown linen fleeing past reference character, frozen"
     },
     {
-      "location": "robot movie prop depot",
-      "narration": "[stammers] So... is technology going to destroy us tomorrow?",
-      "image_prompt": "reference character sits on the toppled chrome robot prop, looking doubtful, a round bright red alarm clock resting on the concrete floor beside them, medium shot",
-      "image_prompt_alt": "close-up of a round bright red alarm clock on the concrete floor, the toppled chrome robot prop behind with reference character seated on it, doubtful"
+      "narration": "[angry] After losing his mother, young Eren Yeager vows to destroy every *TITAN!*",
+      "location": "Shiganshina walled district",
+      "image_prompt": "Eren Yeager from Attack on Titan, a dark-haired boy with fierce green eyes, kneels in timber rubble with fists clenched as a Titan from Attack on Titan, an enormous bald giant with an oversized grinning mouth, walks away in the distance, reference character grieving behind, medium-wide shot",
+      "image_prompt_alt": "close low shot, a dark-haired boy with fierce green eyes, lean build, messy shoulder-length hair, a brown leather strap harness over a white shirt, fists clenched in timber rubble, an enormous bald giant with an oversized grinning mouth, pale smooth skin, bulging round eyes, receding behind, reference character grieving at the frame edge"
     },
     {
-      "location": "robot movie prop depot",
-      "narration": "[sighs] No... human careless behaviour combined with fast software is the ACTUAL threat.",
-      "image_prompt": "reference character stands with a resigned sigh beside a bright red go-kart carrying a beige laptop soaked by a toppled coffee mug, medium-wide shot",
-      "image_prompt_alt": "low-angle shot beside the bright red go-kart, beige laptop soaked by a toppled coffee mug in the foreground, reference character standing behind with a resigned sigh"
+      "narration": "[gasps] What begins as a simple survival story turns into a mind-blowing mystery.",
+      "location": "Shiganshina walled district",
+      "image_prompt": "extreme close-up of Eren Yeager from Attack on Titan, a dark-haired boy with fierce green eyes, staring at a small brass key hanging on a cord at his chest, reference character leaning in beside him, intrigued",
+      "image_prompt_alt": "medium two-shot against a townhouse, a dark-haired boy with fierce green eyes, lean build, messy shoulder-length hair, a brown leather strap harness over a white shirt, studying a small brass key on a cord, reference character intrigued beside him"
     },
     {
-      "location": "robot movie prop depot",
-      "narration": "[softly] The tool itself is not evil, but humans can use it foolishly.",
-      "image_prompt": "reference character sits on a crate beside a single red-handled hammer resting on a wooden workbench, one nail bent sideways in a plank nearby, gentle thoughtful look, close-up",
-      "image_prompt_alt": "overhead shot of a red-handled hammer and a plank with one bent nail on the wooden workbench, reference character seated beside it, thoughtful"
+      "narration": "Every season flips the world upside down with shocking plot twists.",
+      "location": "Shiganshina walled district",
+      "image_prompt": "the Attack Titan from Attack on Titan, a lean long-haired giant with bared teeth, roars mid-street among collapsing red-tiled roofs, reference character bracing against a townhouse, stunned, low-angle shot",
+      "image_prompt_alt": "high-angle wide shot, a lean long-haired giant with bared teeth, sinewy muscular body, pointed ears, green eyes, roaring among collapsing red-tiled roofs, reference character stunned against a townhouse below"
     },
     {
-      "location": "parliament committee chamber",
-      "narration": "Governments are beginning to pass regulations like the European Union AI Act.",
-      "image_prompt": "reference character sits in the back row, curious, watching lawmakers in dark suits seated along the tiered bench beneath a large European Union flag on a steel pole, wide shot",
-      "image_prompt_alt": "low-angle shot from the front row toward lawmakers in dark suits on the tiered bench, a large blue flag with a ring of yellow stars behind, reference character curious at left"
+      "narration": "The orchestral music during action scenes will give you chills.",
+      "location": "Shiganshina walled district",
+      "image_prompt": "Scout Regiment soldiers from Attack on Titan in green hooded cloaks swing between rooftops on taut steel cables, cloaks flaring, reference character on a chimney ledge watching, thrilled, wide shot",
+      "image_prompt_alt": "low-angle shot from the cobbles, soldiers in green hooded cloaks with brown leather harnesses and steel blade canisters at their hips swinging overhead on taut cables, reference character thrilled on a chimney ledge"
     },
     {
-      "location": "parliament committee chamber",
-      "narration": "[happily] We need strict safety testing, transparency, and simple accountability.",
-      "image_prompt": "reference character gives a slight approving nod beside a clear glass cabinet holding a beige laptop connected to bright red test clamps and a brass pressure gauge, medium shot",
-      "image_prompt_alt": "close-up through the clear glass cabinet at a beige laptop with bright red test clamps and a brass pressure gauge, reference character nodding approvingly behind the glass"
+      "narration": "[understated] It feels less like cartoon animation and more like high budget television.",
+      "location": "Shiganshina walled district",
+      "image_prompt": "extreme wide shot, the Colossal Titan from Attack on Titan, a skinless red giant towering over the wall, looms as Scout Regiment soldiers from Attack on Titan in green hooded cloaks fly toward it, reference character quietly impressed on the cobbles",
+      "image_prompt_alt": "medium shot over the shoulder of reference character, quietly impressed, soldiers in green hooded cloaks with brown leather harnesses and steel blade canisters at their hips flying toward a skinless red giant towering over the wall, exposed muscle, white steam pouring from its body, a lipless jaw"
     },
     {
-      "location": "robot movie prop depot",
-      "narration": "[amazed] Artificial intelligence will not wipe out humanity, but it is changing our REALITY.",
-      "image_prompt": "reference character stands between the toppled chrome robot prop and a beige laptop on a wooden crate, mildly impressed, bright red tarpaulin spread beneath both, wide shot",
-      "image_prompt_alt": "high-angle shot over the bright red tarpaulin, toppled chrome robot prop at one side and beige laptop on a crate at the other, reference character standing between, mildly impressed"
+      "narration": "[awe] The absolute undisputed king of gateway anime.",
+      "location": "Shiganshina walled district",
+      "image_prompt": "Eren Yeager from Attack on Titan, a dark-haired boy with fierce green eyes, stands atop the wall in a green hooded cloak, reference character on the cobbles far below looking up in awe, low-angle wide shot",
+      "image_prompt_alt": "high-angle shot past the shoulder of a dark-haired boy with fierce green eyes, lean build, messy shoulder-length hair, a brown leather strap harness over a white shirt, in a green hooded cloak atop the wall, reference character in awe on the cobbles below"
     },
     {
-      "location": "robot movie prop depot",
-      "narration": "[calm] Stay curious, double-check your sources, and keep thinking for yourself.",
-      "image_prompt": "reference character sits on a wooden crate with a small tired smile, a brass magnifying glass and a stack of newspapers beside them, bright red tarpaulin behind, medium close-up",
-      "image_prompt_alt": "wide shot at eye level, reference character seated on a wooden crate with a tired smile, brass magnifying glass and newspapers at their feet, bright red tarpaulin draping the robot props"
+      "narration": "[calm] Pick one of these five today, hit play, and enjoy your new favorite addiction.",
+      "location": "cozy apartment living room",
+      "image_prompt": "reference character settles into the teal velvet couch with a contented smile, a bright orange blanket over his knees, the television showing a towering stone wall under blue sky, medium-wide shot",
+      "image_prompt_alt": "over-the-shoulder shot from behind reference character wrapped in a bright orange blanket on the teal couch, shoulders relaxed, the television showing a towering stone wall under blue sky"
     }
   ],
-  "music_prompt": "Sparse, curious instrumental bed with a quietly skeptical mood, around eighty BPM. Soft pulsing analog synth, muted upright piano, light brushed snare, and warm restrained bass guitar. Flat consistent energy with no build, no swells, no drops. Sits far in the background under a spoken narrator with the mid range left clear. Purely instrumental with no vocals of any kind. Understated rather than comedic."
+  "music_prompt": "Warm, lightly adventurous instrumental bed around eighty-five BPM. Soft felt piano, gently plucked koto, low sustained strings and brushed snare. Flat consistent energy with no build, no swells, no drops. Sits far in the background under a spoken narrator with the mid range left clear. Purely instrumental with no vocals of any kind. Understated rather than comedic."
 }
 
 
