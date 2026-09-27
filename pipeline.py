@@ -122,7 +122,7 @@ NEW_SCRIPT = {
       "narration": "[curious] Want to start watching anime but do not know where to begin?",
       "location": "cozy apartment living room",
       "image_prompt": "reference character sits on a teal velvet couch with a curious frown, looking toward the television showing a sprawling grid of colourful tiles, a black remote resting on the cushion, medium-wide shot",
-      "image_prompt_alt": "over-the-shoulder shot from behind reference character seated on a teal velvet couch, head tilted curiously toward the television filled with a sprawling grid of colourful tiles, a black remote on the cushion"
+      "image_prompt_alt": "over-the-shoulder shot from behind reference character showing the back of his plain white head with no face, seated on a teal velvet couch, head tilted curiously toward the television filled with a sprawling grid of colourful tiles, a black remote on the cushion"
     },
     {
       "narration": "[sarcastic] With thousands of shows out there, picking the wrong one can waste your whole weekend.",
@@ -163,7 +163,7 @@ NEW_SCRIPT = {
     {
       "narration": "If he writes a person's name inside it, that person dies instantly.",
       "location": "Japanese suburban teenage bedroom",
-      "image_prompt": "over-the-shoulder close-up of Light Yagami from Death Note, a neat brown-haired boy in a tan school blazer, pen poised above an open page of the black Death Note notebook, reference character wary at the frame edge, red desk lamp",
+      "image_prompt": "close-up past the shoulder of Light Yagami from Death Note, a neat brown-haired boy in a tan school blazer, pen poised above an open page of the black Death Note notebook, reference character wary at the frame edge facing the desk, red desk lamp",
       "image_prompt_alt": "medium side shot of a neat brown-haired boy in a tan school blazer, slim and tall, sharp amber eyes, a red striped tie, pen poised above a slim matte black notebook, reference character wary in the foreground, red desk lamp"
     },
     {
@@ -289,8 +289,8 @@ NEW_SCRIPT = {
     {
       "narration": "Two young brothers, Edward and Alphonse, lose their mother to illness.",
       "location": "Elric family basement workshop",
-      "image_prompt": "young Edward Elric from Fullmetal Alchemist, a small blond boy with a short golden ponytail, sits beside young Alphonse Elric from Fullmetal Alchemist, a small boy with short dark-blond hair, on stone steps beneath a framed photograph of a smiling brown-haired woman, reference character sad in the corner, medium-wide shot",
-      "image_prompt_alt": "close two-shot, a small blond boy with a short golden ponytail, thin build, gold eyes, a plain black vest over a white shirt, huddled beside a small boy with short dark-blond hair, round gentle face, grey eyes, a green knitted sweater, below a framed photograph of a smiling brown-haired woman, reference character sad behind"
+      "image_prompt": "young Edward Elric from Fullmetal Alchemist, a small blond boy with a short golden ponytail, sits beside young Alphonse Elric from Fullmetal Alchemist, a small boy with short dark-blond hair, on stone steps beneath a framed portrait of a smiling brown-haired woman, reference character sad in the corner, medium-wide shot",
+      "image_prompt_alt": "close two-shot, a small blond boy with a short golden ponytail, thin build, gold eyes, a plain black vest over a white shirt, huddled beside a small boy with short dark-blond hair, round gentle face, grey eyes, a green knitted sweater, below a framed portrait of a smiling brown-haired woman, reference character sad behind"
     },
     {
       "narration": "[sad] They try forbidden alchemy to bring her back to life.",
@@ -464,7 +464,7 @@ NEW_SCRIPT = {
       "narration": "[understated] It feels less like cartoon animation and more like high budget television.",
       "location": "Shiganshina walled district",
       "image_prompt": "extreme wide shot, the Colossal Titan from Attack on Titan, a skinless red giant towering over the wall, looms as Scout Regiment soldiers from Attack on Titan in green hooded cloaks fly toward it, reference character quietly impressed on the cobbles",
-      "image_prompt_alt": "medium shot over the shoulder of reference character, quietly impressed, soldiers in green hooded cloaks with brown leather harnesses and steel blade canisters at their hips flying toward a skinless red giant towering over the wall, exposed muscle, white steam pouring from its body, a lipless jaw"
+      "image_prompt_alt": "medium shot over the shoulder of reference character showing the back of his plain white head with no face, quietly impressed, soldiers in green hooded cloaks with brown leather harnesses and steel blade canisters at their hips flying toward a skinless red giant towering over the wall, exposed muscle, white steam pouring from its body, a lipless jaw"
     },
     {
       "narration": "[awe] The absolute undisputed king of gateway anime.",
@@ -475,8 +475,8 @@ NEW_SCRIPT = {
     {
       "narration": "[calm] Pick one of these five today, hit play, and enjoy your new favorite addiction.",
       "location": "cozy apartment living room",
-      "image_prompt": "reference character settles into the teal velvet couch with a contented smile, a bright orange blanket over his knees, the television showing a towering stone wall under blue sky, medium-wide shot",
-      "image_prompt_alt": "over-the-shoulder shot from behind reference character wrapped in a bright orange blanket on the teal couch, shoulders relaxed, the television showing a towering stone wall under blue sky"
+      "image_prompt": "reference character sits back on the teal velvet couch with a contented smile, one arm along the cushions, the television showing a towering stone wall under a blue sky, medium-wide shot",
+      "image_prompt_alt": "wide shot from beside the television, reference character relaxed on the teal velvet couch with a small smile, one bright orange cushion beside him, the screen showing a towering stone wall under a blue sky"
     }
   ],
   "music_prompt": "Warm, lightly adventurous instrumental bed around eighty-five BPM. Soft felt piano, gently plucked koto, low sustained strings and brushed snare. Flat consistent energy with no build, no swells, no drops. Sits far in the background under a spoken narrator with the mid range left clear. Purely instrumental with no vocals of any kind. Understated rather than comedic."
