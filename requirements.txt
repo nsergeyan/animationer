@@ -1,5 +1,5 @@
 # Core pipeline. Everything the voice, music, manifest and render stages need.
-elevenlabs
+elevenlabs>=2.70.0
 python-dotenv
 
 # Optional: word-level caption alignment (modules/transcriber.py).

@@ -138,10 +138,12 @@ OUTRO_DIR = ASSETS_DIR / "outro"
 OUTRO_LINE = "If you want more of these, subscribe and hit like."
 
 # --- ElevenLabs ------------------------------------------------------------
-# The US regional endpoint serves the good eleven_v3 render. The global default
+# The US regional endpoint serves the good render. The global default
 # (api.elevenlabs.io) returns a flat/robotic voice on this account - it only
 # matches the website when we hit this host. Confirmed by capturing the web
-# app's own request. Do not "simplify" this back to the default base URL.
+# app's own request, back on eleven_v3; the host is kept for v4 because the
+# cause was the endpoint, not the model. Do not "simplify" this back to the
+# default base URL.
 ELEVENLABS_BASE_URL = "https://api.us.elevenlabs.io"
 
 # Loaded from .env rather than hardcoded: these are voice IDs from one
@@ -161,17 +163,31 @@ def _parse_voice_map(raw: str) -> dict[str, str]:
 ELEVENLABS_VOICES = _parse_voice_map(os.getenv("ELEVENLABS_VOICES", ""))
 ELEVENLABS_DEFAULT_VOICE = os.getenv("ELEVENLABS_DEFAULT_VOICE", next(iter(ELEVENLABS_VOICES), ""))
 
-# English goes through text_to_dialogue + eleven_v3, which is what gives the
+# English goes through text_to_dialogue + eleven_v4, which is what gives the
 # lively read and supports inline emotion tags like [surprised]. ru/es fall back
 # to multilingual_v2 via plain text_to_speech.
-ELEVENLABS_MODEL_DIALOGUE = "eleven_v3"
+ELEVENLABS_MODEL_DIALOGUE = "eleven_v4"
 ELEVENLABS_MODEL_MULTILINGUAL = "eleven_multilingual_v2"
 ELEVENLABS_OUTPUT_FORMAT = "mp3_44100_192"
+
+# Stability: 0.0 creative, 0.5 natural, 1.0 robust. High values make the model
+# less responsive to the inline [emotion] tags the narration leans on, so stay
+# at or below 0.5. Nothing auditions these takes before they ship and 0.0 can
+# hallucinate a read, so 0.5 is the floor for an unattended pipeline.
 ELEVENLABS_STABILITY = 0.5
 
-# How many beats go into ONE eleven_v3 request.
+# Similarity: how closely the read tracks the reference voice. Higher tracks it
+# closer at some cost in naturalness.
 #
-# This is the consistency fix. eleven_v3 is not deterministic and is excluded
+# This is eleven_v4 only. The dialogue endpoint answers a v3 request carrying
+# it with 400 "similarity is not supported by the 'eleven_v3' model", so the
+# model and this setting have to move together - rolling MODEL_DIALOGUE back to
+# v3 means removing this from the request too, not just changing the string.
+ELEVENLABS_SIMILARITY = 0.7
+
+# How many beats go into ONE eleven_v4 request.
+#
+# This is the consistency fix. eleven_v4 is not deterministic and is excluded
 # from ElevenLabs' request-stitching feature, so there is no way to tell one
 # request what the previous one sounded like. Beats generated separately are
 # separate performances and they drift.
@@ -196,8 +212,8 @@ ELEVENLABS_STABILITY = 0.5
 # ElevenLabs suggests for stable output.
 #
 # Bigger batches mean fewer seams, but a failed batch drops more beats onto
-# the inconsistent per-beat fallback, and long single generations are what v3
-# is least reliable at. At the new ~52 characters a beat, 1400 works out to
+# the inconsistent per-beat fallback, and long single generations are what the
+# dialogue models are least reliable at. At the new ~52 characters a beat, 1400 works out to
 # ~27 beats, so BATCH_SIZE 18 is what actually binds - roughly five requests
 # for a 90-beat script, the same request count 45-beat scripts used to need.
 #

@@ -5,7 +5,7 @@ Two details in here are load-bearing and should not be "cleaned up":
 
   1. The US regional base URL (see config.ELEVENLABS_BASE_URL). The global
      endpoint returns a flat, robotic read on this account.
-  2. English uses text_to_dialogue + eleven_v3, not text_to_speech. That is
+  2. English uses text_to_dialogue + eleven_v4, not text_to_speech. That is
      what produces the lively delivery and honours inline emotion tags such as
      [surprised] written into the narration.
 
@@ -26,7 +26,7 @@ if __package__ in (None, ""):
     sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from elevenlabs.client import ElevenLabs
-from elevenlabs.types import DialogueInput, ModelSettingsResponseModel
+from elevenlabs.types import DialogueInput, ToDialogueSettingsResponseModel
 
 import config
 
@@ -105,8 +105,9 @@ def _generate_with_key(api_key: str, text: str, out_path: Path,
             stream = client.text_to_dialogue.convert(
                 inputs=[DialogueInput(text=cleaned, voice_id=voice_id)],
                 model_id=config.ELEVENLABS_MODEL_DIALOGUE,
-                settings=ModelSettingsResponseModel(
-                    stability=config.ELEVENLABS_STABILITY),
+                settings=ToDialogueSettingsResponseModel(
+                    stability=config.ELEVENLABS_STABILITY,
+                    similarity=config.ELEVENLABS_SIMILARITY),
                 output_format=config.ELEVENLABS_OUTPUT_FORMAT,
             )
 
@@ -152,7 +153,7 @@ def generate(narration: str, index: int, out_dir: Path,
 # ===========================================================================
 # BATCHED GENERATION - the consistency fix
 #
-# eleven_v3 is non-deterministic AND is excluded from request stitching, so
+# eleven_v4 is non-deterministic AND is excluded from request stitching, so
 # there is no way to condition one request on the last one. Generating beats
 # one at a time therefore produces N separate performances that drift apart.
 #
@@ -207,7 +208,7 @@ def _spans_from_segments(segments, count: int) -> list[tuple[float, float]]:
 
 # How much shorter than its text a cut beat is allowed to be before the batch
 # is rejected. Generous on purpose: a cut includes trailing silence so it is
-# normally LONGER than the speech, and eleven_v3's pace varies with the emotion
+# normally LONGER than the speech, and eleven_v4's pace varies with the emotion
 # tag. This is a guard against a fragment, not a tolerance check - the real
 # failures it catches come back at a tenth of their expected length.
 MIN_SPEECH_RATIO = 0.45
@@ -347,8 +348,9 @@ def _batch_with_key(api_key: str, narrations: list[str], indices: list[int],
     resp = client.text_to_dialogue.convert_with_timestamps(
         inputs=[DialogueInput(text=t, voice_id=voice_id) for t in cleaned],
         model_id=config.ELEVENLABS_MODEL_DIALOGUE,
-        settings=ModelSettingsResponseModel(
-            stability=config.ELEVENLABS_STABILITY),
+        settings=ToDialogueSettingsResponseModel(
+            stability=config.ELEVENLABS_STABILITY,
+            similarity=config.ELEVENLABS_SIMILARITY),
         output_format=config.ELEVENLABS_OUTPUT_FORMAT,
     )
 
@@ -395,7 +397,7 @@ def _batch_with_key(api_key: str, narrations: list[str], indices: list[int],
             # the error.
             hi = (end + spans[i + 1][0]) / 2
 
-        # Now put it on real silence. eleven_v3's reported timings are simply
+        # Now put it on real silence. eleven_v4's reported timings are simply
         # not reliable for short utterances - on a measured 55-beat run, ten
         # beats were severed at full speaking volume, three of them LOUDER at
         # the cut than their own average. No arithmetic on those numbers can
@@ -513,7 +515,7 @@ def generate_batch(narrations: list[str], indices: list[int], out_dir: Path,
 #
 # Edit TEST_SCRIPT, pick a voice, set how many takes you want. Files land in
 # output/_voicetest/ and are numbered, so you can generate three takes of the
-# same line and pick the best. eleven_v3 is not deterministic, so takes differ.
+# same line and pick the best. eleven_v4 is not deterministic, so takes differ.
 # ===========================================================================
 
 # A short beat followed by a long one, so a manual take exercises the two-tier

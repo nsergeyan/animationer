@@ -37,7 +37,7 @@ in a loop", it's the engineering needed to make that loop actually reliable:
   pasted rather than keystroke-perfect text), detects policy rejections vs.
   quota exhaustion vs. one-model-exhausted, and falls back down a model
   ladder (Pro -> Standard -> Lite) rather than stalling the whole run.
-- **Non-deterministic TTS drift.** ElevenLabs' `eleven_v3` model isn't
+- **Non-deterministic TTS drift.** ElevenLabs' `eleven_v4` model isn't
   deterministic and can't be told what a previous call sounded like, so
   generating each beat separately means each one is a different performance.
   The fix: batch many beats into a single dialogue request (one performance,
@@ -47,7 +47,7 @@ in a loop", it's the engineering needed to make that loop actually reliable:
   bimodal (see pacing below) and a beat count was only ever a proxy for the
   limit that actually applies.
 - **Not trusting the API's own timestamps.** Cutting a batch on the segment
-  boundaries `eleven_v3` reports sounds fine at ~19 words a beat and falls
+  boundaries `eleven_v4` reports sounds fine at ~19 words a beat and falls
   apart at 4-8, where the model runs sentences together. Measured on one
   55-beat run: ten beats were severed mid-word, three of them *louder* at the
   cut than their own average volume. No arithmetic on those numbers fixes
@@ -135,7 +135,7 @@ real `.mp4` files there, they're just too large to check in). Stage-by-stage:
 
 - **Python** - pipeline orchestration, all API integrations
 - **Playwright** - browser automation for image generation (`flow_runner/`)
-- **ElevenLabs API** - narration (`eleven_v3` dialogue, batched) and music generation
+- **ElevenLabs API** - narration (`eleven_v4` dialogue, batched) and music generation
 - **Remotion** (React + TypeScript) - final video composition and render
 - **ffmpeg** - audio muxing, silence detection, loudness measurement, speed adjustment
 - **OpenAI Whisper** - word-level audio alignment (built, optional dependency,
