@@ -1,236 +1,212 @@
 SCRIPT:
 {
-  "topic": "top-5-beginner-anime",
+  "topic": "tech-university-explained",
   "format": "explainer",
   "plan": {
-    "spine_question": "Which five anime series are the best starting points for someone who has never watched anime before?",
+    "spine_question": "What is a technical university and how does it work?",
     "deflations": [
       {
-        "assumed": "Anime is either too childish or requires watching hundreds of filler episodes.",
-        "actual": "Top starter anime feature short, tightly structured stories with high-quality animation and mature drama.",
-        "who_decided": "Newcomers who feel overwhelmed by massive long-running series like One Piece.",
-        "build_beat": "Many people avoid anime because they fear getting stuck in endless filler seasons...",
-        "drop_beat": "...but these five top shows deliver complete cinematic stories in just a few seasons."
+        "assumed": "Tech universities are only for fixing laptops and writing computer code.",
+        "actual": "They cover all major engineering branches, applied physical sciences, and practical innovation.",
+        "who_decided": "Public misconception vs actual academic curriculum.",
+        "build_beat": "Most people think it is only for coding geniuses or mechanical wizards.",
+        "drop_beat": "But the truth is much more useful than that."
       }
     ],
     "specifics": [
       {
-        "fact": "Death Note consists of 37 episodes produced by Studio Madhouse with no filler content.",
-        "source": "Studio Madhouse Official Catalog",
-        "beat": "Beat 13"
-      },
-      {
-        "fact": "Demon Slayer Mugen Train broke box office records to become the highest-grossing Japanese movie worldwide.",
-        "source": "Box Office Mojo / Crunchyroll News",
-        "beat": "Beat 24"
-      },
-      {
-        "fact": "Fullmetal Alchemist Brotherhood was rated number one on MyAnimeList for over a decade across 64 episodes.",
-        "source": "MyAnimeList Historical Stats",
-        "beat": "Beat 36"
-      },
-      {
-        "fact": "Jujutsu Kaisen was awarded the Guinness World Record for most in-demand animated series globally.",
-        "source": "Guinness World Records / Parrot Analytics",
-        "beat": "Beat 46"
-      },
-      {
-        "fact": "Attack on Titan features a score composed by Hiroyuki Sawano and animation by Wit Studio and MAPPA.",
-        "source": "Attack on Titan Official Credits",
-        "beat": "Beat 57"
+        "fact": "Technical universities emphasize applied research, industrial partnerships, and laboratory training over pure theoretical lectures.",
+        "source": "European Association for International Education",
+        "beat": "Half of your time is spent in laboratories and workshops."
       }
     ],
     "facts_to_check": [
       {
-        "claim": "Jujutsu Kaisen held the Guinness World Record for world most in-demand animated TV show.",
-        "source": "Guinness World Records 2024"
-      },
-      {
-        "claim": "Demon Slayer Mugen Train is the highest-grossing Japanese film in history.",
-        "source": "The Numbers / Box Office Mojo"
+        "claim": "Technical university programs require practical internships or company-partnered thesis work.",
+        "source": "Global Accreditation Board for Engineering and Technology"
       }
     ]
   },
   "beats": [
     {
-      "narration": "[curious] Want to start watching anime but do not know where to begin?"
+      "narration": "[curious] Is a technical university just a giant room full of people fixing broken laptops?"
     },
     {
-      "narration": "[sarcastic] With thousands of shows out there, picking the wrong one can waste your whole weekend."
+      "narration": "Most people think it is only for coding geniuses or mechanical wizards."
     },
     {
-      "narration": "[rushed] You do not need five hundred filler episodes about talking ninja dogs."
+      "narration": "[surprised] But the truth is much more USEFUL than that."
     },
     {
-      "narration": "[excited] You need five epic stories that grab your attention from minute one."
+      "narration": "Let us break down what a tech university actually is."
     },
     {
-      "narration": "[clears throat] Here are the top five best anime for beginners."
+      "narration": "[deadpan] Without any complicated academic words."
     },
     {
-      "narration": "[dramatically] Number five, Death Note."
+      "narration": "A technical university focuses mainly on science, technology, engineering, and mathematics."
     },
     {
-      "narration": "A smart high school student named Light Yagami finds a mysterious notebook on the ground."
+      "narration": "[hesitates] You might hear people call them polytechnics or institutes of TECHNOLOGY..."
     },
     {
-      "narration": "If he writes a person's name inside it, that person dies instantly."
+      "narration": "They are all basically describing the same idea."
     },
     {
-      "narration": "Light decides to use this power to eliminate all bad criminals in the world."
+      "narration": "[sarcastic] A regular university loves big heavy BOOKS and history lessons."
     },
     {
-      "narration": "[slows down] But then... a super genius detective named L enters the game."
+      "narration": "They spend years asking why things happened in the past."
     },
     {
-      "narration": "What follows is an intense mind game where both try to discover each other's identity."
+      "narration": "[understated] A tech university asks how to BUILD something today."
     },
     {
-      "narration": "[whispers] No giant magic powers, just pure intellectual battle."
+      "narration": "Imagine you want to study cars."
     },
     {
-      "narration": "The show is only thirty seven episodes long with zero slow filler."
+      "narration": "[excited] A classic university teaches you the HISTORY of transport."
     },
     {
-      "narration": "Every episode ends with a massive cliffhanger that keeps you watching."
+      "narration": "You read about old carriages and write long essays."
     },
     {
-      "narration": "[deadpan] There is even a scene where eating food becomes intense... drama over a potato *CHIP!*"
+      "narration": "[slows down] A tech university gives you tools... and tells you to build an ENGINE."
     },
     {
-      "narration": "[flatly] If you like detective thrillers, this is your starter pack."
+      "narration": "That hands-on style is the core difference."
     },
     {
-      "narration": "[happily] Number four, Demon Slayer."
+      "narration": "[light chuckle] You do not just sit in huge lecture halls sleeping."
     },
     {
-      "narration": "Tanjiro is a sweet boy who sells charcoal to feed his family."
+      "narration": "Half of your time is spent in laboratories and workshops."
     },
     {
-      "narration": "[sorrowful] One day, an evil demon attacks his home and leaves only his sister alive."
+      "narration": "[suspicious tone] You will work in teams with real EQUIPMENT."
     },
     {
-      "narration": "[happy gasp] His sister Nezuko turns into a demon... but keeps her human love for him."
+      "narration": "You might design solar panels or test microchips."
     },
     {
-      "narration": "Tanjiro joins an elite sword team to fight monsters and find a cure."
+      "narration": "[annoyed] What subjects can you actually STUDY there?"
     },
     {
-      "narration": "[softly] The animation by Studio Ufotable looks like liquid art on screen."
+      "narration": "Computer science is obviously a massive department."
     },
     {
-      "narration": "Water and fire effects flow from their swords in stunning detail."
+      "narration": "[flatly] Civil engineering teaches you how bridges do not FALL."
     },
     {
-      "narration": "[amazed] Its movie Mugen Train became a global phenomenon and set a box office *RECORD!*"
+      "narration": "Mechanical engineering focuses on machines and robotics."
     },
     {
-      "narration": "The plot is simple, emotional, and easy to follow."
+      "narration": "[drawn out] Electrical engineering deals with power grids and CIRCUIT boards..."
     },
     {
-      "narration": "You will never get lost in complex lore."
+      "narration": "There are also newer fields like biotechnology and data analysis."
     },
     {
-      "narration": "[giggles] Plus, Nezuko popping out of a wooden box is adorable."
+      "narration": "[gasps] But wait... do you need to be a MATH genius?"
     },
     {
-      "narration": "[excitedly] Number three, Fullmetal Alchemist Brotherhood."
+      "narration": "You definitely need math... but it is applied math."
     },
     {
-      "narration": "Two young brothers, Edward and Alphonse, lose their mother to illness."
+      "narration": "[nervous] You learn formulas because you need them to solve REAL problems."
     },
     {
-      "narration": "[sad] They try forbidden alchemy to bring her back to life."
+      "narration": "It is not math just for fun on a blackboard."
     },
     {
-      "narration": "[drawn out] The ritual goes terribly wrong... and takes a heavy price."
+      "narration": "[sighs] Let us talk about the PROFESSORS."
     },
     {
-      "narration": "Edward loses two limbs, and Alphonse loses his physical body completely."
+      "narration": "Many professors at tech universities worked in industry for years."
     },
     {
-      "narration": "[surprised] To save his brother, Edward attaches his soul to a giant suit of *ARMOR!*"
+      "narration": "[rushed] They know what real companies actually WANT right now."
     },
     {
-      "narration": "They travel the world to find a magical artifact and fix their bodies."
+      "narration": "Big companies often give money to these universities."
     },
     {
-      "narration": "[light chuckle] It blends funny comedy, deep political conspiracy, and heart."
+      "narration": "[mischievously] They ask students to solve real INDUSTRIAL problems."
     },
     {
-      "narration": "This show stayed at the top of world anime rankings for over ten years."
+      "narration": "So your homework might be fixing a problem for a real factory."
     },
     {
-      "narration": "It has sixty four episodes and finishes with a perfect ending."
+      "narration": "[amazed] What about student LIFE on campus?"
     },
     {
-      "narration": "[booming] A masterclass in storytelling."
+      "narration": "It is famous for practical clubs and student competitions."
     },
     {
-      "narration": "[mischievously] Number two, Jujutsu Kaisen."
+      "narration": "[frustrated] Instead of just debate teams, you get ROBOTICS teams."
     },
     {
-      "narration": "High school student Yuji Itadori is insanely strong and loves athletic sports."
+      "narration": "Students build mini racing cars and compete globally."
     },
     {
-      "narration": "[frustrated] But his life changes when he eats a gross, cursed finger to save friends."
+      "narration": "[whispers] They host overnight coding events called hackathons."
     },
     {
-      "narration": "[stammers] Now he hosts Sukuna... the scary King of Curses inside his body."
+      "narration": "You spend thirty hours drinking coffee and making apps."
     },
     {
-      "narration": "Yuji attends a special school for sorcerers who fight evil spirits."
+      "narration": "[stammers] Before you graduate... you usually do an INTERNSHIP."
     },
     {
-      "narration": "[suspicious tone] He meets Gojo Satoru, a teacher who wears a black blindfold."
+      "narration": "Most programs force you to work at a real company for months."
     },
     {
-      "narration": "[shouts] Why does he cover his eyes... because he is too *STRONG!*"
+      "narration": "[awe] This means you get actual work EXPERIENCE before finishing."
     },
     {
-      "narration": "[applause] Guinness World Records crowned Jujutsu Kaisen as the most popular animated show."
+      "narration": "Your final project might even happen inside a company office."
     },
     {
-      "narration": "[rapid-fire] Modern music, fast fight choreography, and amazing characters."
+      "narration": "[loudly] That brings us to JOB prospects."
     },
     {
-      "narration": "Every single battle feels like a blockbuster movie event."
+      "narration": "Companies love hiring graduates from technical universities."
     },
     {
-      "narration": "You will be hooked after just two episodes."
+      "narration": "[happily] Because you already know how to use industry SOFTWARE."
     },
     {
-      "narration": "[nervously] Number one, Attack on Titan."
+      "narration": "You do not need six months of basic training on the job."
     },
     {
-      "narration": "Humanity lives trapped inside three massive stone walls to stay safe."
+      "narration": "[worried] Is a tech university better than a NORMAL university?"
     },
     {
-      "narration": "[hesitates] Outside, gigantic human-like monsters called Titans roam... and eat people."
+      "narration": "Not necessarily... it just depends on your personal goal."
     },
     {
-      "narration": "On a peaceful morning, a giant Titan kicks a hole in the outer wall."
+      "narration": "[quietly] If you love abstract philosophy or literature, go to a general college."
     },
     {
-      "narration": "[angry] After losing his mother, young Eren Yeager vows to destroy every *TITAN!*"
+      "narration": "If you like solving practical problems with technology, a tech school wins."
     },
     {
-      "narration": "[gasps] What begins as a simple survival story turns into a mind-blowing mystery."
+      "narration": "[rapid-fire] They teach you how to turn raw IDEAS into working machines."
     },
     {
-      "narration": "Every season flips the world upside down with shocking plot twists."
+      "narration": "It is challenging... but highly rewarding for practical thinkers."
     },
     {
-      "narration": "The orchestral music during action scenes will give you chills."
+      "narration": "[sigh of relief] So now you know what a technical university REALLY is."
     },
     {
-      "narration": "[understated] It feels less like cartoon animation and more like high budget television."
+      "narration": "[softly] It is where theoretical science meets practical engineering."
     },
     {
-      "narration": "[awe] The absolute undisputed king of gateway anime."
+      "narration": "[excitedly] A place where you learn by DOING things."
     },
     {
-      "narration": "[calm] Pick one of these five today, hit play, and enjoy your new favorite addiction."
+      "narration": "[calm] And that is Tech University explained."
     }
   ]
 }

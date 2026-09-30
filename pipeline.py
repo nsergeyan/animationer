@@ -11,475 +11,463 @@ from modules import transcriber
 FLOW_RUNNER = config.ROOT_DIR / "flow_runner" / "runner.py"
 
 NEW_SCRIPT = {
-  "topic": "top-5-beginner-anime",
+  "topic": "tech-university-explained",
   "format": "explainer",
   "plan": {
-    "spine_question": "Which five anime series are the best starting points for someone who has never watched anime before?",
+    "spine_question": "What is a technical university and how does it work?",
     "deflations": [
       {
-        "assumed": "Anime is either too childish or requires watching hundreds of filler episodes.",
-        "actual": "Top starter anime feature short, tightly structured stories with high-quality animation and mature drama.",
-        "who_decided": "Newcomers who feel overwhelmed by massive long-running series like One Piece.",
-        "build_beat": "Many people avoid anime because they fear getting stuck in endless filler seasons...",
-        "drop_beat": "...but these five top shows deliver complete cinematic stories in just a few seasons."
+        "assumed": "Tech universities are only for fixing laptops and writing computer code.",
+        "actual": "They cover all major engineering branches, applied physical sciences, and practical innovation.",
+        "who_decided": "Public misconception vs actual academic curriculum.",
+        "build_beat": "Most people think it is only for coding geniuses or mechanical wizards.",
+        "drop_beat": "But the truth is much more useful than that."
       }
     ],
     "specifics": [
       {
-        "fact": "Death Note consists of 37 episodes produced by Studio Madhouse with no filler content.",
-        "source": "Studio Madhouse Official Catalog",
-        "beat": "Beat 13"
-      },
-      {
-        "fact": "Demon Slayer Mugen Train broke box office records to become the highest-grossing Japanese movie worldwide.",
-        "source": "Box Office Mojo / Crunchyroll News",
-        "beat": "Beat 24"
-      },
-      {
-        "fact": "Fullmetal Alchemist Brotherhood was rated number one on MyAnimeList for over a decade across 64 episodes.",
-        "source": "MyAnimeList Historical Stats",
-        "beat": "Beat 36"
-      },
-      {
-        "fact": "Jujutsu Kaisen was awarded the Guinness World Record for most in-demand animated series globally.",
-        "source": "Guinness World Records / Parrot Analytics",
-        "beat": "Beat 46"
-      },
-      {
-        "fact": "Attack on Titan features a score composed by Hiroyuki Sawano and animation by Wit Studio and MAPPA.",
-        "source": "Attack on Titan Official Credits",
-        "beat": "Beat 57"
+        "fact": "Technical universities emphasize applied research, industrial partnerships, and laboratory training over pure theoretical lectures.",
+        "source": "European Association for International Education",
+        "beat": "Half of your time is spent in laboratories and workshops."
       }
     ],
     "facts_to_check": [
       {
-        "claim": "Jujutsu Kaisen held the Guinness World Record for world most in-demand animated TV show.",
-        "source": "Guinness World Records 2024"
-      },
-      {
-        "claim": "Demon Slayer Mugen Train is the highest-grossing Japanese film in history.",
-        "source": "The Numbers / Box Office Mojo"
+        "claim": "Technical university programs require practical internships or company-partnered thesis work.",
+        "source": "Global Accreditation Board for Engineering and Technology"
       }
     ],
     "locations": [
       {
-        "name": "cozy apartment living room",
-        "visual_anchor": "deep teal plaster walls, worn honey oak floorboards, one broad black television mounted on the main wall"
+        "name": "campus laptop repair counter",
+        "visual_anchor": "pale green painted cinderblock walls, speckled grey linoleum floor, one long built-in red laminate counter, dominant red"
       },
       {
-        "name": "Japanese suburban teenage bedroom",
-        "visual_anchor": "cream papered walls, pale beige carpet floor, one tall sliding window beside a built-in pale wooden desk alcove"
+        "name": "technical university glass atrium",
+        "visual_anchor": "tall glass curtain walls, polished grey concrete floor, exposed steel roof trusses, one broad orange staircase, dominant orange"
       },
       {
-        "name": "Japanese high school courtyard",
-        "visual_anchor": "pale grey concrete paving, cream four-storey school facade, one long green chain-link fence along the edge"
+        "name": "old humanities library hall",
+        "visual_anchor": "dark oak-panelled walls, deep red carpet, one carved stone fireplace, arched plaster ceiling, dominant deep red"
       },
       {
-        "name": "Tokyo high-rise investigation suite",
-        "visual_anchor": "off-white paneled walls, pale grey carpet, one floor-to-ceiling window overlooking a dense grey city skyline"
+        "name": "university engine workshop",
+        "visual_anchor": "white glazed tile walls, oil-stained grey concrete floor, one yellow overhead gantry crane beam, dominant yellow"
       },
       {
-        "name": "snowy mountain charcoal hut",
-        "visual_anchor": "rough dark timber walls, packed earth floor, one square sunken hearth, thick white snow banked against the doorway"
+        "name": "tiered lecture auditorium",
+        "visual_anchor": "pale beige walls, steep curved tiers of fixed blue folding seats, one wide timber stage, dominant blue"
       },
       {
-        "name": "dense cedar forest clearing",
-        "visual_anchor": "towering dark cedar trunks, mossy uneven ground, one weathered stone shrine lantern, deep green canopy overhead"
+        "name": "electronics and solar testing hall",
+        "visual_anchor": "white glazed brick walls, black rubber floor, one sawtooth glass roof, dominant white with green steel columns"
       },
       {
-        "name": "steam train passenger carriage",
-        "visual_anchor": "polished dark wood-panelled walls, deep red upholstered bench seats, one long aisle of worn green floor matting"
+        "name": "open engineering project hall",
+        "visual_anchor": "whitewashed brick walls, green epoxy floor, one long steel mezzanine walkway along the back, dominant green"
       },
       {
-        "name": "Elric family basement workshop",
-        "visual_anchor": "rough grey fieldstone walls, dusty oak plank floor, one enormous white chalk circle drawn across the boards"
+        "name": "applied mathematics seminar room",
+        "visual_anchor": "pale blue painted walls, grey linoleum floor, one wall-length green chalkboard, tall timber window frames, dominant pale blue"
       },
       {
-        "name": "dusty frontier railway platform",
-        "visual_anchor": "sun-bleached timber platform boards, red brick station wall, one iron clock tower above the tracks, ochre earth beyond"
+        "name": "professor's workshop office",
+        "visual_anchor": "exposed red brick walls, oak parquet floor, one tall steel-framed industrial window, dominant brick red"
       },
       {
-        "name": "urban high school sports field",
-        "visual_anchor": "rust-red running track, bright green artificial turf, one tall grey concrete grandstand along the far side"
+        "name": "partner factory production floor",
+        "visual_anchor": "corrugated blue steel walls, grey concrete floor with painted yellow lanes, one overhead conveyor gantry, dominant blue"
       },
       {
-        "name": "concrete high school rooftop",
-        "visual_anchor": "pale grey concrete floor, tall green chain-link fencing, one squat stairwell hut with a steel door"
+        "name": "student robotics club garage",
+        "visual_anchor": "purple painted breeze-block walls, grey rubber floor tiles, one roll-up steel garage door, dominant purple"
       },
       {
-        "name": "Tokyo Jujutsu High temple courtyard",
-        "visual_anchor": "raked pale gravel ground, dark timber temple halls with sweeping black tiled roofs, one vermilion torii gate"
+        "name": "overnight hackathon hall",
+        "visual_anchor": "dark navy painted walls, grey carpet tiles, one high timber gallery balcony, dominant navy blue"
       },
       {
-        "name": "Shiganshina walled district",
-        "visual_anchor": "rough grey cobblestones, pale plaster townhouse facades with dark timber beams, one towering sandstone wall across the horizon"
+        "name": "partner company design office",
+        "visual_anchor": "glass partition walls, pale oak floorboards, teal painted steel columns, one white spiral staircase, dominant teal"
+      },
+      {
+        "name": "campus career fair sports hall",
+        "visual_anchor": "tall arched windows, varnished wooden sports floor with painted court lines, yellow steel roof beams, dominant yellow"
+      },
+      {
+        "name": "campus crossroads plaza",
+        "visual_anchor": "grey cobblestone paving, a sandstone colonnade on one side, a glass-and-steel facade opposite, dominant warm sandstone"
+      },
+      {
+        "name": "graduation project exhibition hall",
+        "visual_anchor": "white gallery walls, polished grey concrete floor, one tall red steel mezzanine, dominant white and red"
       }
     ],
     "setting_anchor": ""
   },
   "beats": [
     {
-      "narration": "[curious] Want to start watching anime but do not know where to begin?",
-      "location": "cozy apartment living room",
-      "image_prompt": "reference character sits on a teal velvet couch with a curious frown, looking toward the television showing a sprawling grid of colourful tiles, a black remote resting on the cushion, medium-wide shot",
-      "image_prompt_alt": "over-the-shoulder shot from behind reference character showing the back of his plain white head with no face, seated on a teal velvet couch, head tilted curiously toward the television filled with a sprawling grid of colourful tiles, a black remote on the cushion"
+      "narration": "[curious] Is a technical university just a giant room full of people fixing broken laptops?",
+      "location": "campus laptop repair counter",
+      "image_prompt": "a student technician in a red polo shirt bends over an opened silver laptop on a red rubber mat while reference character peers curiously from the right edge, medium shot",
+      "image_prompt_alt": "high-angle shot along the counter, reference character standing at the far left end with a curious look, a student technician in a red polo shirt hunched over opened silver laptops"
     },
     {
-      "narration": "[sarcastic] With thousands of shows out there, picking the wrong one can waste your whole weekend.",
-      "location": "cozy apartment living room",
-      "image_prompt": "reference character slumps sideways on the teal velvet couch with a tired skeptical look, a heap of crumpled white cardboard food boxes on a low pine table, high-angle shot",
-      "image_prompt_alt": "low side angle toward reference character half-sunk into the teal velvet couch, skeptical and tired, a low pine table piled with crumpled white cardboard food boxes in the foreground"
+      "narration": "Most people think it is only for coding geniuses or mechanical wizards.",
+      "location": "campus laptop repair counter",
+      "image_prompt": "reference character stands between a student in a grey hoodie hunched at a black keyboard and an oil-stained student in brown overalls kneeling beside a red gearbox, skeptical, wide shot",
+      "image_prompt_alt": "low-angle shot, an oil-stained student in brown overalls kneeling beside a red gearbox in the foreground, a student in a grey hoodie at a black keyboard behind, reference character between, skeptical"
     },
     {
-      "narration": "[rushed] You do not need five hundred filler episodes about talking ninja dogs.",
-      "location": "cozy apartment living room",
-      "image_prompt": "close-up of reference character on the couch, arms crossed and unimpressed, while the television beside him shows a small cartoon pug in a bright blue ninja headband mid-chatter",
-      "image_prompt_alt": "wide shot from beside the television, a small cartoon pug in a bright blue ninja headband filling the screen while reference character watches from the teal velvet couch, arms crossed, unimpressed"
+      "narration": "[surprised] But the truth is much more USEFUL than that.",
+      "location": "campus laptop repair counter",
+      "image_prompt": "reference character turns in surprise toward an open back doorway revealing a tall orange robotic arm beside a small white wind turbine model on a steel table, medium-wide shot",
+      "image_prompt_alt": "close-up of reference character's surprised face at the foreground right, a tall orange robotic arm and a small white wind turbine model on a steel table visible beyond the doorway"
     },
     {
-      "narration": "[excited] You need five epic stories that grab your attention from minute one.",
-      "location": "cozy apartment living room",
-      "image_prompt": "reference character leans forward on the teal couch, eyes widening with interest at the television split into five bright panels: black notebook, checkered cloth, steel armor, blindfold, stone wall, medium shot",
-      "image_prompt_alt": "low angle past the television edge, reference character leaning off the teal couch, intrigued, the screen divided into five bright panels: black notebook, checkered cloth, steel armor, blindfold, stone wall"
+      "narration": "Let us break down what a tech university actually is.",
+      "location": "technical university glass atrium",
+      "image_prompt": "students in blue overalls and yellow goggles climb the steps in a steady stream while reference character stands attentive at the bottom left, wide shot at eye level",
+      "image_prompt_alt": "high-angle shot from the upper landing, students in blue overalls and yellow goggles climbing toward camera, reference character small and attentive at the foot of the steps"
     },
     {
-      "narration": "[clears throat] Here are the top five best anime for beginners.",
-      "location": "cozy apartment living room",
-      "image_prompt": "reference character stands beside the mounted television with arms folded and a quietly interested half-smile, a bright orange floor cushion at his feet, the screen showing solid crimson, wide shot at eye level",
-      "image_prompt_alt": "medium shot, reference character standing side-on beside the television, arms folded, quietly interested, a solid crimson screen behind and a bright orange floor cushion resting on the oak boards"
+      "narration": "[deadpan] Without any complicated academic words.",
+      "location": "technical university glass atrium",
+      "image_prompt": "reference character sits on a step with a deadpan expression beside one enormous closed grey textbook with a cracked leather spine lying shut on the stair, medium shot",
+      "image_prompt_alt": "overhead shot of reference character seated deadpan on the stair, one enormous closed grey textbook with a cracked leather spine lying across the step at his feet"
     },
     {
-      "narration": "[dramatically] Number five, Death Note.",
-      "location": "Japanese suburban teenage bedroom",
-      "image_prompt": "Light Yagami from Death Note, a neat brown-haired boy in a tan school blazer, sits bent over the black Death Note notebook at the desk while reference character watches from the doorway edge, intrigued, red desk lamp, medium-wide shot",
-      "image_prompt_alt": "a neat brown-haired boy in a tan school blazer, slim and tall, sharp amber eyes, a red striped tie, bent over a slim matte black notebook at the desk, reference character intrigued at the frame edge, red desk lamp, low side angle"
+      "narration": "A technical university focuses mainly on science, technology, engineering, and mathematics.",
+      "location": "technical university glass atrium",
+      "image_prompt": "reference character looks up with curiosity at large models hanging from the trusses: a green double helix, a steel bridge section, a red rocket, a white molecule, low-angle wide shot",
+      "image_prompt_alt": "wide shot from the upper landing, reference character leaning on the balcony rail beside a hanging red rocket model, a steel bridge section, green double helix and white molecule suspended beyond, curious"
     },
     {
-      "narration": "A smart high school student named Light Yagami finds a mysterious notebook on the ground.",
-      "location": "Japanese high school courtyard",
-      "image_prompt": "high-angle shot of Light Yagami from Death Note, a neat brown-haired boy in a tan school blazer, stooping over the black Death Note notebook lying on the paving, reference character small in the background beside a blue bench, curious",
-      "image_prompt_alt": "a neat brown-haired boy in a tan school blazer, slim and tall, sharp amber eyes, a red striped tie, stoops toward a slim matte black notebook lying on the paving, reference character curious beside a blue bench in the foreground, eye-level wide shot"
+      "narration": "[hesitates] You might hear people call them polytechnics or institutes of TECHNOLOGY...",
+      "location": "technical university glass atrium",
+      "image_prompt": "reference character tilts his head hesitantly before a wooden plinth holding three small campus models: a red brick tower, a glass cube, a white concrete dome, medium shot",
+      "image_prompt_alt": "close three-quarter view across three small campus models on a wooden plinth, red brick tower nearest, glass cube and white concrete dome behind, reference character hesitating at the far side"
     },
     {
-      "narration": "If he writes a person's name inside it, that person dies instantly.",
-      "location": "Japanese suburban teenage bedroom",
-      "image_prompt": "close-up past the shoulder of Light Yagami from Death Note, a neat brown-haired boy in a tan school blazer, pen poised above an open page of the black Death Note notebook, reference character wary at the frame edge facing the desk, red desk lamp",
-      "image_prompt_alt": "medium side shot of a neat brown-haired boy in a tan school blazer, slim and tall, sharp amber eyes, a red striped tie, pen poised above a slim matte black notebook, reference character wary in the foreground, red desk lamp"
+      "narration": "They are all basically describing the same idea.",
+      "location": "technical university glass atrium",
+      "image_prompt": "reference character nods slowly beside the three campus models on the wooden plinth, each topped with an identical small orange steel gear, medium close-up",
+      "image_prompt_alt": "wide shot of the wooden plinth, three campus models each crowned with an identical small orange steel gear, reference character standing back from them nodding"
     },
     {
-      "narration": "Light decides to use this power to eliminate all bad criminals in the world.",
-      "location": "Japanese suburban teenage bedroom",
-      "image_prompt": "Light Yagami from Death Note, a neat brown-haired boy in a tan school blazer, writes fast in the black Death Note notebook facing a small television of grey faces, reference character uneasy on the red bedspread behind, medium-wide shot",
-      "image_prompt_alt": "wide shot from the red bedspread where reference character sits uneasy, a neat brown-haired boy in a tan school blazer, slim and tall, sharp amber eyes, a red striped tie, writing fast in a slim matte black notebook beside a small television of grey faces"
+      "narration": "[sarcastic] A regular university loves big heavy BOOKS and history lessons.",
+      "location": "old humanities library hall",
+      "image_prompt": "a student in a green knitted sweater sits behind a towering stack of leather-bound books on an oak table while reference character watches from the far end, mildly amused, wide shot",
+      "image_prompt_alt": "close-up past a towering stack of leather-bound books on an oak table, a student in a green knitted sweater almost hidden behind it, reference character leaning in from the left, mildly amused"
     },
     {
-      "narration": "[slows down] But then... a super genius detective named L enters the game.",
-      "location": "Tokyo high-rise investigation suite",
-      "image_prompt": "L from Death Note, a pale hunched young man with messy black hair in a white long-sleeved shirt, crouches barefoot on an armchair facing a wall of blue monitors, reference character standing behind, intrigued, low-angle shot",
-      "image_prompt_alt": "side shot of a pale hunched young man with messy black hair in a white long-sleeved shirt, thin and barefoot, dark rings under wide eyes, faded blue jeans, crouched on an armchair before a wall of blue monitors, reference character intrigued by the window"
+      "narration": "They spend years asking why things happened in the past.",
+      "location": "old humanities library hall",
+      "image_prompt": "a student in a green knitted sweater leans over an open atlas of faded battle maps beside a brass desk lamp, reference character seated nearby with chin on fist, patient, medium two-shot",
+      "image_prompt_alt": "high-angle shot over the oak table, a large open atlas of faded battle maps between a student in a green knitted sweater and reference character, chin on fist, patient"
     },
     {
-      "narration": "What follows is an intense mind game where both try to discover each other's identity.",
-      "location": "Tokyo high-rise investigation suite",
-      "image_prompt": "L from Death Note, a pale hunched young man with messy black hair in a white long-sleeved shirt, crouches opposite Light Yagami from Death Note, a neat brown-haired boy in a tan school blazer, across a low glass table, reference character absorbed between them, medium three-shot",
-      "image_prompt_alt": "high-angle shot, a pale hunched young man with messy black hair in a white long-sleeved shirt, thin and barefoot, dark rings under wide eyes, faded blue jeans, crouched across a low glass table from a neat brown-haired boy in a tan school blazer, slim and tall, sharp amber eyes, a red striped tie, reference character absorbed at the far end"
+      "narration": "[understated] A tech university asks how to BUILD something today.",
+      "location": "university engine workshop",
+      "image_prompt": "students in blue overalls and yellow goggles gather around a bare steel engine block mounted on a red stand while reference character watches from the edge, interested, medium-wide shot",
+      "image_prompt_alt": "low-angle close shot of a bare steel engine block on a red stand, students in blue overalls and yellow goggles behind it, reference character at the left edge, interested"
     },
     {
-      "narration": "[whispers] No giant magic powers, just pure intellectual battle.",
-      "location": "Tokyo high-rise investigation suite",
-      "image_prompt": "tight two-shot of Light Yagami from Death Note, a neat brown-haired boy in a tan school blazer, locking eyes with L from Death Note, a pale hunched young man with messy black hair in a white long-sleeved shirt, over a single white sugar cube, reference character leaning in at the edge, hushed and fascinated",
-      "image_prompt_alt": "low wide shot at table height, a neat brown-haired boy in a tan school blazer, slim and tall, sharp amber eyes, a red striped tie, staring across a single white sugar cube at a pale hunched young man with messy black hair in a white long-sleeved shirt, thin and barefoot, dark rings under wide eyes, faded blue jeans, reference character hushed by the window"
+      "narration": "Imagine you want to study cars.",
+      "location": "university engine workshop",
+      "image_prompt": "reference character leans against the front of a stripped red car chassis on black wheels in the centre of the floor, curious, low-angle three-quarter view",
+      "image_prompt_alt": "high-angle shot looking down on a stripped red car chassis resting on black wheels, reference character standing beside its front axle, curious"
     },
     {
-      "narration": "The show is only thirty seven episodes long with zero slow filler.",
-      "location": "Japanese suburban teenage bedroom",
-      "image_prompt": "reference character watches Light Yagami from Death Note, a neat brown-haired boy in a tan school blazer, writing at speed in the black Death Note notebook while one untouched notebook lies beside him, red desk lamp, medium two-shot",
-      "image_prompt_alt": "overhead shot of a neat brown-haired boy in a tan school blazer, slim and tall, sharp amber eyes, a red striped tie, writing at speed in a slim matte black notebook beside one untouched notebook, reference character impressed at the frame edge, red desk lamp"
+      "narration": "[excited] A classic university teaches you the HISTORY of transport.",
+      "location": "old humanities library hall",
+      "image_prompt": "an elderly lecturer in a tweed waistcoat stands at a wooden lectern beside an easel holding a large painted canvas of a horse-drawn carriage, reference character in an armchair, politely attentive, medium-wide shot",
+      "image_prompt_alt": "wide shot past the shoulder of an elderly lecturer in a tweed waistcoat, a painted horse-drawn carriage canvas on an easel, reference character in an armchair facing him, politely attentive"
     },
     {
-      "narration": "Every episode ends with a massive cliffhanger that keeps you watching.",
-      "location": "Japanese suburban teenage bedroom",
-      "image_prompt": "Light Yagami from Death Note, a neat brown-haired boy in a tan school blazer, freezes and glances up at a tiny black camera tucked into the ceiling corner, reference character following his gaze, hooked, low-angle shot",
-      "image_prompt_alt": "high-angle shot from the ceiling corner past a tiny black camera, a neat brown-haired boy in a tan school blazer, slim and tall, sharp amber eyes, a red striped tie, glancing upward, reference character hooked and tense below by the window"
+      "narration": "You read about old carriages and write long essays.",
+      "location": "old humanities library hall",
+      "image_prompt": "a student in a green knitted sweater sits over one long curling sheet of paper spilling off the oak table onto the carpet, reference character beside him looking tired, medium shot",
+      "image_prompt_alt": "low floor-level shot along one long curling sheet of paper trailing across the carpet to the oak table, a student in a green knitted sweater above it, reference character slumped nearby, tired"
     },
     {
-      "narration": "[deadpan] There is even a scene where eating food becomes intense... drama over a potato *CHIP!*",
-      "location": "Japanese suburban teenage bedroom",
-      "image_prompt": "extreme close-up of Light Yagami from Death Note, a neat brown-haired boy in a tan school blazer, lifting a single potato chip from a torn bright yellow foil bag at the desk, reference character amused at the frame edge",
-      "image_prompt_alt": "medium side shot of a neat brown-haired boy in a tan school blazer, slim and tall, sharp amber eyes, a red striped tie, lifting a single potato chip from a torn bright yellow foil bag, a slim matte black notebook half-hidden, reference character amused behind the bed"
+      "narration": "[slows down] A tech university gives you tools... and tells you to build an ENGINE.",
+      "location": "university engine workshop",
+      "image_prompt": "a grey-bearded professor in a brown corduroy jacket stands beside a red steel toolbox and an engine block facing students in blue overalls and yellow goggles, reference character nearby, eyebrows raised, medium-wide shot",
+      "image_prompt_alt": "wide shot past the students in blue overalls and yellow goggles toward a grey-bearded professor in a brown corduroy jacket beside a red steel toolbox and engine block, reference character right, eyebrows raised"
     },
     {
-      "narration": "[flatly] If you like detective thrillers, this is your starter pack.",
-      "location": "Tokyo high-rise investigation suite",
-      "image_prompt": "reference character sits back in a grey armchair, warmly convinced, watching L from Death Note, a pale hunched young man with messy black hair in a white long-sleeved shirt, crouched over a laptop across the room, blue monitors along the wall, medium-wide shot",
-      "image_prompt_alt": "close-up of reference character, warmly convinced, turned toward a pale hunched young man with messy black hair in a white long-sleeved shirt, thin and barefoot, dark rings under wide eyes, faded blue jeans, crouched over a laptop in the background beside blue monitors"
+      "narration": "That hands-on style is the core difference.",
+      "location": "university engine workshop",
+      "image_prompt": "students in blue overalls and yellow goggles lower a steel piston into an engine block from a yellow chain hoist, reference character leaning close at the right, genuinely interested, close-up",
+      "image_prompt_alt": "medium shot from above the engine block, a steel piston hanging on a yellow chain hoist, students in blue overalls and yellow goggles guiding it down, reference character opposite, genuinely interested"
     },
     {
-      "narration": "[happily] Number four, Demon Slayer.",
-      "location": "dense cedar forest clearing",
-      "image_prompt": "Tanjiro Kamado from Demon Slayer, a boy in a green and black checkered haori, stands in the clearing with a black sword drawn and a tall pale wooden box strapped to his back, reference character pleased at the frame edge, wide shot",
-      "image_prompt_alt": "low-angle shot of a boy in a green and black checkered haori, sturdy build, dark red hair, a scar on his forehead, dangling white rectangular earrings, black sword drawn, a tall pale wooden box on his back, reference character pleased in the foreground"
+      "narration": "[light chuckle] You do not just sit in huge lecture halls sleeping.",
+      "location": "tiered lecture auditorium",
+      "image_prompt": "reference character sits upright and alert in a blue seat among students in grey hoodies slumped asleep on their fold-down desks, faintly amused, high-angle wide shot",
+      "image_prompt_alt": "medium side shot along one tier, students in grey hoodies asleep with heads on fold-down desks, reference character wide awake in the nearest blue seat, faintly amused"
     },
     {
-      "narration": "Tanjiro is a sweet boy who sells charcoal to feed his family.",
-      "location": "snowy mountain charcoal hut",
-      "image_prompt": "Tanjiro Kamado from Demon Slayer, a boy in a green and black checkered haori, steps out the snowy doorway under a wooden frame of black charcoal sacks, reference character warmly watching from beside the hearth, medium shot",
-      "image_prompt_alt": "wide shot from outside in the snow, a boy in a green and black checkered haori, sturdy build, dark red hair, a scar on his forehead, dangling white rectangular earrings, stepping out under a wooden frame of black charcoal sacks, reference character warmly watching from inside"
+      "narration": "Half of your time is spent in laboratories and workshops.",
+      "location": "electronics and solar testing hall",
+      "image_prompt": "students in blue overalls and yellow goggles bend over long steel workbenches of small grey instrument boxes with green wavy line displays, reference character strolling between benches, interested, wide shot at eye level",
+      "image_prompt_alt": "close-up of one small grey instrument box with a green wavy line display on a steel workbench, students in blue overalls and yellow goggles behind, reference character leaning in, interested"
     },
     {
-      "narration": "[sorrowful] One day, an evil demon attacks his home and leaves only his sister alive.",
-      "location": "snowy mountain charcoal hut",
-      "image_prompt": "Tanjiro Kamado from Demon Slayer, a boy in a green and black checkered haori, kneels in the snow at the broken doorway beside Nezuko from Demon Slayer, a small girl in a pink kimono with a bamboo muzzle strapped across her mouth, splintered planks around them, reference character sorrowful behind, high-angle wide shot",
-      "image_prompt_alt": "low-angle shot from the snow, a boy in a green and black checkered haori, sturdy build, dark red hair, a scar on his forehead, dangling white rectangular earrings, kneeling beside a small girl in a pink kimono with a bamboo muzzle strapped across her mouth, slender, long black hair fading to orange at the tips, splintered planks scattered, reference character sorrowful behind"
+      "narration": "[suspicious tone] You will work in teams with real EQUIPMENT.",
+      "location": "electronics and solar testing hall",
+      "image_prompt": "students in blue overalls and yellow goggles gather around a large orange industrial robot arm bolted to the floor, reference character peering warily around a steel cabinet, medium-wide shot",
+      "image_prompt_alt": "low-angle shot beneath the large orange industrial robot arm raised overhead, students in blue overalls and yellow goggles at its base, reference character at the frame edge, wary but curious"
     },
     {
-      "narration": "[happy gasp] His sister Nezuko turns into a demon... but keeps her human love for him.",
-      "location": "snowy mountain charcoal hut",
-      "image_prompt": "Nezuko from Demon Slayer, a small girl in a pink kimono with a bamboo muzzle strapped across her mouth, kneels protectively beside Tanjiro Kamado from Demon Slayer, a boy in a green and black checkered haori, eyes soft with recognition, reference character moved in the doorway, medium two-shot",
-      "image_prompt_alt": "close two-shot, a small girl in a pink kimono with a bamboo muzzle strapped across her mouth, slender, long black hair fading to orange at the tips, kneeling beside a boy in a green and black checkered haori, sturdy build, dark red hair, a scar on his forehead, dangling white rectangular earrings, reference character moved in the background doorway"
+      "narration": "You might design solar panels or test microchips.",
+      "location": "electronics and solar testing hall",
+      "image_prompt": "a student in blue overalls and yellow goggles stands beside a large blue solar panel angled on a steel frame, another bends over a green circuit board, reference character between them, impressed, medium three-shot",
+      "image_prompt_alt": "wide shot, one student in blue overalls and yellow goggles over a green circuit board in front, another beside a large blue solar panel on a steel frame, reference character between, impressed"
     },
     {
-      "narration": "Tanjiro joins an elite sword team to fight monsters and find a cure.",
-      "location": "dense cedar forest clearing",
-      "image_prompt": "Tanjiro Kamado from Demon Slayer, a boy in a green and black checkered haori, swings his sword at a hulking pale demon with long black claws, reference character crouched tense behind a cedar trunk, wide action shot",
-      "image_prompt_alt": "low-angle shot of a boy in a green and black checkered haori, sturdy build, dark red hair, a scar on his forehead, dangling white rectangular earrings, swinging a sword at a hulking pale demon with long black claws, reference character tense behind a cedar trunk in the foreground"
+      "narration": "[annoyed] What subjects can you actually STUDY there?",
+      "location": "open engineering project hall",
+      "image_prompt": "reference character seen from behind, showing the back of his plain white head with no face, overlooks bays holding a black server cabinet, a red model bridge, a white robot, high-angle wide shot",
+      "image_prompt_alt": "wide eye-level shot across the hall floor, bays with a black server cabinet, a red model bridge and a white robot, reference character standing in the central aisle looking between them, curious"
     },
     {
-      "narration": "[softly] The animation by Studio Ufotable looks like liquid art on screen.",
-      "location": "dense cedar forest clearing",
-      "image_prompt": "reference character stands mesmerized at the clearing edge while Tanjiro Kamado from Demon Slayer, a boy in a green and black checkered haori, spins mid-air, a rolling sapphire wave of water curling off his blade, medium-wide shot",
-      "image_prompt_alt": "overhead shot of a boy in a green and black checkered haori, sturdy build, dark red hair, a scar on his forehead, dangling white rectangular earrings, spinning mid-air as a rolling sapphire wave of water curls off his blade, reference character mesmerized at the clearing edge below"
+      "narration": "Computer science is obviously a massive department.",
+      "location": "open engineering project hall",
+      "image_prompt": "students in grey hoodies sit at a long white desk of monitors showing green wavy lines beside tall black server cabinets, reference character leaning on one cabinet, mildly impressed, medium shot",
+      "image_prompt_alt": "close three-quarter view down the long white desk, students in grey hoodies at monitors with green wavy lines, tall black server cabinets behind, reference character at the far end, mildly impressed"
     },
     {
-      "narration": "Water and fire effects flow from their swords in stunning detail.",
-      "location": "dense cedar forest clearing",
-      "image_prompt": "Tanjiro Kamado from Demon Slayer, a boy in a green and black checkered haori, slashes forward as a spiral of sapphire water turns into roaring orange fire along the blade, reference character leaning back, awed, low-angle shot",
-      "image_prompt_alt": "wide side shot of a boy in a green and black checkered haori, sturdy build, dark red hair, a scar on his forehead, dangling white rectangular earrings, slashing forward, sapphire water turning into roaring orange fire along the blade, reference character awed at the frame edge"
+      "narration": "[flatly] Civil engineering teaches you how bridges do not FALL.",
+      "location": "open engineering project hall",
+      "image_prompt": "students in blue overalls and yellow goggles stack steel weights onto a long red model bridge spanning two concrete blocks while reference character crouches beneath it, deadpan, medium-wide shot",
+      "image_prompt_alt": "low floor-level shot from under the long red model bridge spanning two concrete blocks, reference character crouched in the foreground, deadpan, students in blue overalls and yellow goggles stacking steel weights above"
     },
     {
-      "narration": "[amazed] Its movie Mugen Train became a global phenomenon and set a box office *RECORD!*",
-      "location": "steam train passenger carriage",
-      "image_prompt": "Kyojuro Rengoku from Demon Slayer, a blond man with red-tipped hair in a white flame-patterned cape, sits beside Tanjiro Kamado from Demon Slayer, a boy in a green and black checkered haori, on the red bench, reference character delighted opposite, medium three-shot",
-      "image_prompt_alt": "wide shot down the carriage aisle, a blond man with red-tipped hair in a white flame-patterned cape, broad-shouldered and tall, wide golden eyes, a black uniform beneath, seated beside a boy in a green and black checkered haori, sturdy build, dark red hair, a scar on his forehead, dangling white rectangular earrings, reference character delighted in the facing seat"
+      "narration": "Mechanical engineering focuses on machines and robotics.",
+      "location": "open engineering project hall",
+      "image_prompt": "a white four-legged walking robot steps across the floor toward reference character, who leans back with wide curious eyes, students in blue overalls and yellow goggles watching behind, low-angle shot",
+      "image_prompt_alt": "wide side view, a white four-legged walking robot mid-stride between students in blue overalls and yellow goggles on the left and reference character on the right, leaning back, curious"
     },
     {
-      "narration": "The plot is simple, emotional, and easy to follow.",
-      "location": "dense cedar forest clearing",
-      "image_prompt": "rear tracking shot of Tanjiro Kamado from Demon Slayer, a boy in a green and black checkered haori, walking a straight mossy path with the tall pale wooden box on his back, reference character strolling behind, relaxed and content",
-      "image_prompt_alt": "front wide shot, a boy in a green and black checkered haori, sturdy build, dark red hair, a scar on his forehead, dangling white rectangular earrings, walking a straight mossy path toward camera with a tall pale wooden box on his back, reference character content a few steps behind"
+      "narration": "[drawn out] Electrical engineering deals with power grids and CIRCUIT boards...",
+      "location": "open engineering project hall",
+      "image_prompt": "a tall steel model power pylon strung with orange cables stands beside a giant green circuit board laid flat on trestles, reference character walking along its edge, fascinated, overhead shot",
+      "image_prompt_alt": "eye-level medium shot, reference character standing beside a giant green circuit board on trestles, a tall steel model power pylon with orange cables rising behind him, fascinated"
     },
     {
-      "narration": "You will never get lost in complex lore.",
-      "location": "dense cedar forest clearing",
-      "image_prompt": "reference character sits at ease on a mossy stone beside the shrine lantern as Tanjiro Kamado from Demon Slayer, a boy in a green and black checkered haori, nods down one single clear path through the cedars, medium shot",
-      "image_prompt_alt": "high-angle shot, a boy in a green and black checkered haori, sturdy build, dark red hair, a scar on his forehead, dangling white rectangular earrings, standing at the head of one single clear path through the cedars, reference character at ease on a mossy stone beside him"
+      "narration": "There are also newer fields like biotechnology and data analysis.",
+      "location": "open engineering project hall",
+      "image_prompt": "a student in a white lab coat and purple gloves stands at a white steel cabinet with a round window beside a tall monitor of blue bar shapes, reference character between them, intrigued, medium shot",
+      "image_prompt_alt": "wide shot, intrigued reference character foreground left, a tall monitor of blue bar shapes behind, a student in a white lab coat and purple gloves at a round-windowed white steel cabinet"
     },
     {
-      "narration": "[giggles] Plus, Nezuko popping out of a wooden box is adorable.",
-      "location": "dense cedar forest clearing",
-      "image_prompt": "close-up of Nezuko from Demon Slayer, a small girl in a pink kimono with a bamboo muzzle strapped across her mouth, popping her head out of the tall pale wooden box on the mossy ground, reference character crouched beside it, grinning",
-      "image_prompt_alt": "low eye-level two-shot, a small girl in a pink kimono with a bamboo muzzle strapped across her mouth, slender, long black hair fading to orange at the tips, peeking up from inside a tall pale wooden box on the moss, reference character grinning on the other side"
+      "narration": "[gasps] But wait... do you need to be a MATH genius?",
+      "location": "applied mathematics seminar room",
+      "image_prompt": "reference character stands small and startled in the foreground as the chalkboard behind him swarms with dense white chalk marks from edge to edge, low-angle wide shot",
+      "image_prompt_alt": "close-up of reference character's startled face in the right foreground, dense white chalk marks crowding the green chalkboard behind him"
     },
     {
-      "narration": "[excitedly] Number three, Fullmetal Alchemist Brotherhood.",
-      "location": "dusty frontier railway platform",
-      "image_prompt": "Edward Elric from Fullmetal Alchemist, a short blond boy in a long red coat with a steel right arm, stands beside Alphonse Elric from Fullmetal Alchemist, a towering hollow steel suit of armor, reference character leaning on the brick wall, excited, wide shot at eye level",
-      "image_prompt_alt": "low-angle two-shot, a short blond boy in a long red coat with a steel right arm, slim build, a golden braid, gold eyes, black trousers, beside a towering hollow steel suit of armor, broad-shouldered, a spiked helmet with one long white tassel, a red cloth at the waist, reference character excited against the brick wall behind"
+      "narration": "You definitely need math... but it is applied math.",
+      "location": "applied mathematics seminar room",
+      "image_prompt": "a grey-bearded professor in a brown corduroy jacket stands at the chalkboard beside a chalk drawing of a bridge arch, a small wooden bridge model on the desk, reference character nodding, medium shot",
+      "image_prompt_alt": "close shot of a small wooden bridge model on the desk in the foreground, a grey-bearded professor in a brown corduroy jacket beside a chalk bridge arch behind it, reference character nodding at the side"
     },
     {
-      "narration": "Two young brothers, Edward and Alphonse, lose their mother to illness.",
-      "location": "Elric family basement workshop",
-      "image_prompt": "young Edward Elric from Fullmetal Alchemist, a small blond boy with a short golden ponytail, sits beside young Alphonse Elric from Fullmetal Alchemist, a small boy with short dark-blond hair, on stone steps beneath a framed portrait of a smiling brown-haired woman, reference character sad in the corner, medium-wide shot",
-      "image_prompt_alt": "close two-shot, a small blond boy with a short golden ponytail, thin build, gold eyes, a plain black vest over a white shirt, huddled beside a small boy with short dark-blond hair, round gentle face, grey eyes, a green knitted sweater, below a framed portrait of a smiling brown-haired woman, reference character sad behind"
+      "narration": "[nervous] You learn formulas because you need them to solve REAL problems.",
+      "location": "applied mathematics seminar room",
+      "image_prompt": "students in blue overalls and yellow goggles measure a sagging wooden beam laid across two desks, one steel tape stretched beneath it, reference character watching the bend anxiously, medium close-up",
+      "image_prompt_alt": "low-angle shot beneath a sagging wooden beam laid across two desks, students in blue overalls and yellow goggles crouched on either side, reference character behind them, anxious"
     },
     {
-      "narration": "[sad] They try forbidden alchemy to bring her back to life.",
-      "location": "Elric family basement workshop",
-      "image_prompt": "high-angle shot of young Edward Elric from Fullmetal Alchemist, a small blond boy with a short golden ponytail, and young Alphonse Elric from Fullmetal Alchemist, a small boy with short dark-blond hair, kneeling at the chalk circle's edge among open red leather books, reference character uneasy behind them",
-      "image_prompt_alt": "floor-level side shot, a small blond boy with a short golden ponytail, thin build, gold eyes, a plain black vest over a white shirt, and a small boy with short dark-blond hair, round gentle face, grey eyes, a green knitted sweater, kneeling at the circle's edge among open red leather books, reference character uneasy in the doorway"
+      "narration": "It is not math just for fun on a blackboard.",
+      "location": "applied mathematics seminar room",
+      "image_prompt": "reference character leans back against the chalkboard, relaxed and convinced, beside a wheeled cart carrying a red steel pulley rig with hanging iron weights, three-quarter view",
+      "image_prompt_alt": "wide shot, a wheeled cart with a red steel pulley rig and hanging iron weights in the foreground, reference character relaxed against the chalkboard behind it, convinced"
     },
     {
-      "narration": "[drawn out] The ritual goes terribly wrong... and takes a heavy price.",
-      "location": "Elric family basement workshop",
-      "image_prompt": "jagged blue lightning erupts from the chalk circle as young Edward Elric from Fullmetal Alchemist, a small blond boy with a short golden ponytail, is thrown backward, reference character pressed against the stone wall, alarmed, wide shot",
-      "image_prompt_alt": "low-angle shot, jagged blue lightning erupting from the circle, a small blond boy with a short golden ponytail, thin build, gold eyes, a plain black vest over a white shirt, thrown backward across the planks, reference character alarmed against the stone wall"
+      "narration": "[sighs] Let us talk about the PROFESSORS.",
+      "location": "professor's workshop office",
+      "image_prompt": "a grey-bearded professor in a brown corduroy jacket sits at a cluttered oak desk heaped with brass gears and machine parts, reference character slouched in the visitor chair opposite, mildly tired, medium two-shot",
+      "image_prompt_alt": "over-the-desk wide shot, brass gears and machine parts heaped in the foreground, a grey-bearded professor in a brown corduroy jacket behind them, reference character slouched in a chair at the side, mildly tired"
     },
     {
-      "narration": "Edward loses two limbs, and Alphonse loses his physical body completely.",
-      "location": "Elric family basement workshop",
-      "image_prompt": "overhead shot of young Edward Elric from Fullmetal Alchemist, a small blond boy with a short golden ponytail, slumped on the boards with his right sleeve hanging empty beside a heap of empty green clothes in the circle's center, reference character kneeling nearby, stricken",
-      "image_prompt_alt": "floor-level medium shot, a small blond boy with a short golden ponytail, thin build, gold eyes, a plain black vest over a white shirt, slumped with his right sleeve hanging empty, a heap of empty green clothes in the circle's center, reference character stricken beside him"
+      "narration": "Many professors at tech universities worked in industry for years.",
+      "location": "professor's workshop office",
+      "image_prompt": "a grey-bearded professor in a brown corduroy jacket stands beside a framed portrait of a younger bearded man in a white hard hat before an orange steel furnace, reference character interested, medium shot",
+      "image_prompt_alt": "close-up on a framed portrait of a younger bearded man in a white hard hat before an orange steel furnace, a grey-bearded professor in a brown corduroy jacket and reference character beside it, interested"
     },
     {
-      "narration": "[surprised] To save his brother, Edward attaches his soul to a giant suit of *ARMOR!*",
-      "location": "Elric family basement workshop",
-      "image_prompt": "Alphonse Elric from Fullmetal Alchemist, a towering hollow steel suit of armor, sits up inside a small crimson circle, two red points in its helmet slits, young Edward Elric from Fullmetal Alchemist, a small blond boy with a short golden ponytail, collapsed against it, reference character stunned, low-angle shot",
-      "image_prompt_alt": "wide shot, a towering hollow steel suit of armor, broad-shouldered, a spiked helmet with one long white tassel, a red cloth at the waist, rising inside a small crimson circle, two red points in the helmet slits, a small blond boy with a short golden ponytail, thin build, gold eyes, a plain black vest over a white shirt, collapsed against it, reference character stunned by the wall"
+      "narration": "[rushed] They know what real companies actually WANT right now.",
+      "location": "professor's workshop office",
+      "image_prompt": "a grey-bearded professor in a brown corduroy jacket talks into a black desk phone before a wall of pinned product sketches, reference character leaning forward attentively in his chair, medium-wide shot",
+      "image_prompt_alt": "close shot of a black desk phone in the foreground, a grey-bearded professor in a brown corduroy jacket talking into it, pinned product sketches behind, reference character attentive at the right"
     },
     {
-      "narration": "They travel the world to find a magical artifact and fix their bodies.",
-      "location": "dusty frontier railway platform",
-      "image_prompt": "rear three-quarter shot of Edward Elric from Fullmetal Alchemist, a short blond boy in a long red coat with a steel right arm, and Alphonse Elric from Fullmetal Alchemist, a towering hollow steel suit of armor, walking toward a green steam train, reference character hopeful behind",
-      "image_prompt_alt": "front wide shot, a short blond boy in a long red coat with a steel right arm, slim build, a golden braid, gold eyes, black trousers, and a towering hollow steel suit of armor, broad-shouldered, a spiked helmet with one long white tassel, a red cloth at the waist, walking beside a green steam train with a brown leather suitcase, reference character hopeful behind"
+      "narration": "Big companies often give money to these universities.",
+      "location": "partner factory production floor",
+      "image_prompt": "a factory engineer in an orange high-visibility vest and white hard hat stands beside a grey-bearded professor in a brown corduroy jacket and a new green milling machine, reference character approving, medium-wide shot",
+      "image_prompt_alt": "wide shot past a new green milling machine toward a factory engineer in an orange high-visibility vest and white hard hat and a grey-bearded professor in a brown corduroy jacket, reference character aside, approving"
     },
     {
-      "narration": "[light chuckle] It blends funny comedy, deep political conspiracy, and heart.",
-      "location": "dusty frontier railway platform",
-      "image_prompt": "Edward Elric from Fullmetal Alchemist, a short blond boy in a long red coat with a steel right arm, stamps furiously in front of Alphonse Elric from Fullmetal Alchemist, a towering hollow steel suit of armor, reference character quietly laughing on a yellow wooden bench, medium-wide shot",
-      "image_prompt_alt": "low-angle shot, a short blond boy in a long red coat with a steel right arm, slim build, a golden braid, gold eyes, black trousers, stamping furiously before a towering hollow steel suit of armor, broad-shouldered, a spiked helmet with one long white tassel, a red cloth at the waist, reference character laughing on a yellow wooden bench"
+      "narration": "[mischievously] They ask students to solve real INDUSTRIAL problems.",
+      "location": "partner factory production floor",
+      "image_prompt": "a factory engineer in an orange high-visibility vest and white hard hat shows students in blue overalls and yellow goggles a jammed conveyor heaped with dented tin cans, reference character behind, intrigued, wide shot",
+      "image_prompt_alt": "close-up of dented tin cans jammed on the conveyor, a factory engineer in an orange high-visibility vest and white hard hat and students in blue overalls and yellow goggles beyond, reference character intrigued"
     },
     {
-      "narration": "This show stayed at the top of world anime rankings for over ten years.",
-      "location": "dusty frontier railway platform",
-      "image_prompt": "reference character looks up in admiration at Alphonse Elric from Fullmetal Alchemist, a towering hollow steel suit of armor, standing over him, one steel hand resting on a wooden crate, the red brick wall behind, low-angle shot",
-      "image_prompt_alt": "wide profile shot, reference character admiring a towering hollow steel suit of armor, broad-shouldered, a spiked helmet with one long white tassel, a red cloth at the waist, standing over him with one steel hand on a wooden crate, the clock tower above"
+      "narration": "So your homework might be fixing a problem for a real factory.",
+      "location": "partner factory production floor",
+      "image_prompt": "students in blue overalls and yellow goggles kneel beside an opened grey motor housing as tin cans flow smoothly along the conveyor again, reference character leaning on a yellow railing, pleased, medium shot",
+      "image_prompt_alt": "high-angle wide shot of tin cans streaming along the conveyor, students in blue overalls and yellow goggles kneeling at an opened grey motor housing below, reference character pleased at a yellow railing"
     },
     {
-      "narration": "It has sixty four episodes and finishes with a perfect ending.",
-      "location": "dusty frontier railway platform",
-      "image_prompt": "wide rear shot of Edward Elric from Fullmetal Alchemist, a short blond boy in a long red coat with a steel right arm, and Alphonse Elric from Fullmetal Alchemist, a towering hollow steel suit of armor, walking down the tracks toward ochre hills, reference character satisfied on the platform edge",
-      "image_prompt_alt": "high-angle shot from the clock tower, a short blond boy in a long red coat with a steel right arm, slim build, a golden braid, gold eyes, black trousers, and a towering hollow steel suit of armor, broad-shouldered, a spiked helmet with one long white tassel, a red cloth at the waist, walking away toward ochre hills, reference character satisfied below"
+      "narration": "[amazed] What about student LIFE on campus?",
+      "location": "student robotics club garage",
+      "image_prompt": "reference character stands at the entrance, pleasantly surprised, looking into a busy space where students in blue overalls and yellow goggles work on small robots and a low red race car, wide shot",
+      "image_prompt_alt": "reverse medium shot from inside, students in blue overalls and yellow goggles at small robots and a low red race car in the foreground, reference character pleasantly surprised at the entrance behind"
     },
     {
-      "narration": "[booming] A masterclass in storytelling.",
-      "location": "dusty frontier railway platform",
-      "image_prompt": "Edward Elric from Fullmetal Alchemist, a short blond boy in a long red coat with a steel right arm, presses his palms to the boards as a jagged stone spike bursts upward, reference character stepping back, deeply impressed, medium-wide shot",
-      "image_prompt_alt": "low-angle close shot, a short blond boy in a long red coat with a steel right arm, slim build, a golden braid, gold eyes, black trousers, pressing his palms to the boards as a jagged stone spike bursts upward, reference character impressed beside the brick wall"
+      "narration": "It is famous for practical clubs and student competitions.",
+      "location": "student robotics club garage",
+      "image_prompt": "students in blue overalls and yellow goggles cheer around a square tabletop arena where two small wheeled robots shove each other, reference character leaning in from the right, grinning slightly, medium-wide shot",
+      "image_prompt_alt": "overhead shot of the square tabletop arena, two small wheeled robots locked together at its centre, students in blue overalls and yellow goggles cheering around its edges, reference character among them, grinning slightly"
     },
     {
-      "narration": "[mischievously] Number two, Jujutsu Kaisen.",
-      "location": "Tokyo Jujutsu High temple courtyard",
-      "image_prompt": "Yuji Itadori from Jujutsu Kaisen, a pink-haired boy in a black school uniform, drops into a fighting stance on the gravel before the vermilion torii gate, reference character playfully intrigued on the temple steps, wide shot",
-      "image_prompt_alt": "low-angle shot, a pink-haired boy in a black school uniform, athletic muscular build, spiky short hair with dark roots, a red hood at the collar, in a fighting stance on the gravel, reference character intrigued at the frame edge"
+      "narration": "[frustrated] Instead of just debate teams, you get ROBOTICS teams.",
+      "location": "student robotics club garage",
+      "image_prompt": "a small wooden debating lectern stands forgotten in the corner while students in blue overalls and yellow goggles surround a large yellow competition robot, reference character looking from one to the other, amused, wide shot",
+      "image_prompt_alt": "medium shot, a large yellow competition robot foreground with students in blue overalls and yellow goggles around it, reference character glancing back at a small wooden debating lectern in the far corner, amused"
     },
     {
-      "narration": "High school student Yuji Itadori is insanely strong and loves athletic sports.",
-      "location": "urban high school sports field",
-      "image_prompt": "Yuji Itadori from Jujutsu Kaisen, a pink-haired boy in a black school uniform, hurls a heavy iron shot put ball far across the green turf, reference character stunned beside the grandstand, wide shot",
-      "image_prompt_alt": "low side shot, a pink-haired boy in a black school uniform, athletic muscular build, spiky short hair with dark roots, a red hood at the collar, mid-throw launching a heavy iron shot put ball over the green turf, reference character stunned in the foreground"
+      "narration": "Students build mini racing cars and compete globally.",
+      "location": "student robotics club garage",
+      "image_prompt": "students in blue overalls and yellow goggles push a low red single-seat race car toward the open door while reference character jogs alongside, excited, low-angle three-quarter view",
+      "image_prompt_alt": "wide side shot, reference character jogging ahead of a low red single-seat race car pushed by students in blue overalls and yellow goggles toward the open door, excited"
     },
     {
-      "narration": "[frustrated] But his life changes when he eats a gross, cursed finger to save friends.",
-      "location": "concrete high school rooftop",
-      "image_prompt": "Yuji Itadori from Jujutsu Kaisen, a pink-haired boy in a black school uniform, swallows a withered grey finger as a hulking grey spirit with a cluster of bulging eyes looms over the fence, reference character recoiling, grossed out, low-angle shot",
-      "image_prompt_alt": "wide shot, a pink-haired boy in a black school uniform, athletic muscular build, spiky short hair with dark roots, a red hood at the collar, swallowing a withered grey finger beneath a hulking grey spirit with a cluster of bulging eyes, reference character grossed out by the stairwell"
+      "narration": "[whispers] They host overnight coding events called hackathons.",
+      "location": "overnight hackathon hall",
+      "image_prompt": "students in grey hoodies hunch over laptops at long tables strewn with paper cups and flat cardboard boxes, reference character tiptoeing between them, quietly curious, wide high-angle shot",
+      "image_prompt_alt": "low eye-level shot along one long table, students in grey hoodies at laptops among paper cups and flat cardboard boxes, reference character tiptoeing past in the background, quietly curious"
     },
     {
-      "narration": "[stammers] Now he hosts Sukuna... the scary King of Curses inside his body.",
-      "location": "concrete high school rooftop",
-      "image_prompt": "close-up of Yuji Itadori from Jujutsu Kaisen, a pink-haired boy in a black school uniform, possessed by Sukuna from Jujutsu Kaisen, black tattoo lines beneath a second pair of eyes, grinning coldly, reference character nervous against the steel door",
-      "image_prompt_alt": "medium shot, a pink-haired boy in a black school uniform, athletic muscular build, spiky short hair with dark roots, a red hood at the collar, black tattoo lines beneath a second pair of eyes, grinning coldly, reference character nervous at the frame edge"
+      "narration": "You spend thirty hours drinking coffee and making apps.",
+      "location": "overnight hackathon hall",
+      "image_prompt": "students in grey hoodies doze against their laptops beside a tall tower of stacked white paper cups, reference character slumped at the end of the table, tired but amused, medium shot",
+      "image_prompt_alt": "close-up of a tall tower of stacked white paper cups in the foreground, students in grey hoodies dozing on laptops behind, reference character slumped at the far end, tired but amused"
     },
     {
-      "narration": "Yuji attends a special school for sorcerers who fight evil spirits.",
-      "location": "Tokyo Jujutsu High temple courtyard",
-      "image_prompt": "wide rear shot of Yuji Itadori from Jujutsu Kaisen, a pink-haired boy in a black school uniform, walking through the vermilion torii gate toward the dark timber halls, reference character strolling beside him, curious",
-      "image_prompt_alt": "front medium two-shot, a pink-haired boy in a black school uniform, athletic muscular build, spiky short hair with dark roots, a red hood at the collar, stepping through the vermilion torii gate, reference character curious at his side"
+      "narration": "[stammers] Before you graduate... you usually do an INTERNSHIP.",
+      "location": "partner company design office",
+      "image_prompt": "a young intern in a crisp white shirt and teal lanyard walks nervously into the office past rows of desks, reference character trailing behind her, slightly nervous, medium-wide shot",
+      "image_prompt_alt": "front-facing long shot down the aisle of desks, a young intern in a crisp white shirt and teal lanyard approaching, reference character a step behind her, slightly nervous"
     },
     {
-      "narration": "[suspicious tone] He meets Gojo Satoru, a teacher who wears a black blindfold.",
-      "location": "Tokyo Jujutsu High temple courtyard",
-      "image_prompt": "Gojo Satoru from Jujutsu Kaisen, a white-haired man in a black cloth blindfold, stands on the temple steps with hands in pockets, reference character squinting at him suspiciously from the gravel, medium-wide shot",
-      "image_prompt_alt": "low-angle shot, a white-haired man in a black cloth blindfold, very tall and lean, spiky upswept hair, a high-collared dark navy jacket, on the temple steps, reference character squinting suspiciously in the foreground"
+      "narration": "Most programs force you to work at a real company for months.",
+      "location": "partner company design office",
+      "image_prompt": "a young intern in a crisp white shirt and teal lanyard sits at a monitor showing a grey turbine model among engineers in teal polo shirts, reference character perched on the next desk, attentive",
+      "image_prompt_alt": "wide high-angle shot of the desk cluster, engineers in teal polo shirts around a young intern in a crisp white shirt and teal lanyard at a grey turbine model monitor, reference character perched nearby, attentive"
     },
     {
-      "narration": "[shouts] Why does he cover his eyes... because he is too *STRONG!*",
-      "location": "Tokyo Jujutsu High temple courtyard",
-      "image_prompt": "extreme close-up of Gojo Satoru from Jujutsu Kaisen, a white-haired man in a black cloth blindfold, lifting it to reveal bright sky-blue eyes, reference character startled at the frame edge",
-      "image_prompt_alt": "medium two-shot, a white-haired man in a black cloth blindfold, very tall and lean, spiky upswept hair, a high-collared dark navy jacket, raising it to reveal bright sky-blue eyes, reference character startled beside him on the gravel"
+      "narration": "[awe] This means you get actual work EXPERIENCE before finishing.",
+      "location": "partner company design office",
+      "image_prompt": "a young intern in a crisp white shirt and teal lanyard stands beside a white wind turbine blade section on a table facing engineers in teal polo shirts, reference character at the back, impressed, wide shot",
+      "image_prompt_alt": "medium shot from behind the engineers in teal polo shirts, a young intern in a crisp white shirt and teal lanyard facing them beside a white wind turbine blade section, reference character at the side, impressed"
     },
     {
-      "narration": "[applause] Guinness World Records crowned Jujutsu Kaisen as the most popular animated show.",
-      "location": "Tokyo Jujutsu High temple courtyard",
-      "image_prompt": "Yuji Itadori from Jujutsu Kaisen, a pink-haired boy in a black school uniform, stands back to back with Gojo Satoru from Jujutsu Kaisen, a white-haired man in a black cloth blindfold, amid swirling crimson smoke, reference character impressed on the temple steps, wide shot",
-      "image_prompt_alt": "low-angle shot, a pink-haired boy in a black school uniform, athletic muscular build, spiky short hair with dark roots, a red hood at the collar, back to back with a white-haired man in a black cloth blindfold, very tall and lean, spiky upswept hair, a high-collared dark navy jacket, amid swirling crimson smoke, reference character impressed behind"
+      "narration": "Your final project might even happen inside a company office.",
+      "location": "partner company design office",
+      "image_prompt": "a young intern in a crisp white shirt and teal lanyard sits beside a finished white wind turbine model as engineers in teal polo shirts gather, reference character leaning on a filing cabinet, proud, medium-wide shot",
+      "image_prompt_alt": "close-up of a finished white wind turbine model on a desk, a young intern in a crisp white shirt and teal lanyard beside it, engineers in teal polo shirts behind, reference character proud at the edge"
     },
     {
-      "narration": "[rapid-fire] Modern music, fast fight choreography, and amazing characters.",
-      "location": "Tokyo Jujutsu High temple courtyard",
-      "image_prompt": "Yuji Itadori from Jujutsu Kaisen, a pink-haired boy in a black school uniform, drives a punch into a hulking grey spirit with a cluster of bulging eyes, black lightning crackling, reference character ducking by the gate, thrilled, low-angle shot",
-      "image_prompt_alt": "wide side shot, a pink-haired boy in a black school uniform, athletic muscular build, spiky short hair with dark roots, a red hood at the collar, punching a hulking grey spirit with a cluster of bulging eyes amid crackling black lightning, reference character thrilled by the gate"
+      "narration": "[loudly] That brings us to JOB prospects.",
+      "location": "campus career fair sports hall",
+      "image_prompt": "graduates in dark suits queue at company booths with bright yellow backdrops while reference character stands at the hall entrance, eyebrows raised, wide shot at eye level",
+      "image_prompt_alt": "high-angle shot over company booths with bright yellow backdrops and queues of graduates in dark suits, reference character small at the entrance, eyebrows raised"
     },
     {
-      "narration": "Every single battle feels like a blockbuster movie event.",
-      "location": "Tokyo Jujutsu High temple courtyard",
-      "image_prompt": "extreme wide shot, Gojo Satoru from Jujutsu Kaisen, a white-haired man in a black cloth blindfold, faces a towering grey spirit as a swirling violet sphere forms before him, reference character amazed on the temple steps",
-      "image_prompt_alt": "low-angle medium shot, a white-haired man in a black cloth blindfold, very tall and lean, spiky upswept hair, a high-collared dark navy jacket, facing a towering grey spirit behind a swirling violet sphere, reference character amazed in the foreground"
+      "narration": "Companies love hiring graduates from technical universities.",
+      "location": "campus career fair sports hall",
+      "image_prompt": "a recruiter in a navy suit leans eagerly across a yellow booth table toward one graduate in a dark suit as a second recruiter hurries over, reference character watching beside the booth, amused, medium shot",
+      "image_prompt_alt": "medium-wide side shot, one graduate in a dark suit at a yellow booth table, a recruiter in a navy suit leaning toward him, a second recruiter hurrying in, reference character amused at the booth corner"
     },
     {
-      "narration": "You will be hooked after just two episodes.",
-      "location": "Tokyo Jujutsu High temple courtyard",
-      "image_prompt": "reference character sits on the temple steps, hooked and grinning, while Yuji Itadori from Jujutsu Kaisen, a pink-haired boy in a black school uniform, sits a few steps below eating from a red paper cup, medium shot",
-      "image_prompt_alt": "wide shot from the gravel, reference character hooked and grinning on the temple steps above a pink-haired boy in a black school uniform, athletic muscular build, spiky short hair with dark roots, a red hood at the collar, eating from a red paper cup"
+      "narration": "[happily] Because you already know how to use industry SOFTWARE.",
+      "location": "campus career fair sports hall",
+      "image_prompt": "past the shoulder of a graduate in a dark suit at a booth laptop showing a spinning grey gear model, a recruiter in a navy suit impressed beside him, reference character pleased, over-the-shoulder medium shot",
+      "image_prompt_alt": "front medium shot, a graduate in a dark suit at a booth laptop with a grey gear model, a recruiter in a navy suit leaning in impressed, reference character pleased at the table edge"
     },
     {
-      "narration": "[nervously] Number one, Attack on Titan.",
-      "location": "Shiganshina walled district",
-      "image_prompt": "Eren Yeager from Attack on Titan, a dark-haired boy with fierce green eyes, stands in the cobbled street gazing up at the towering wall, reference character beside a wooden cart looking up too, apprehensive, low-angle wide shot",
-      "image_prompt_alt": "medium rear shot, a dark-haired boy with fierce green eyes, lean build, messy shoulder-length hair, a brown leather strap harness over a white shirt, facing the towering wall, reference character apprehensive beside a wooden cart"
+      "narration": "You do not need six months of basic training on the job.",
+      "location": "campus career fair sports hall",
+      "image_prompt": "a thick grey training binder lies shut at the table edge while a graduate in a dark suit works at a laptop beside a recruiter in a navy suit, reference character nodding, close shot",
+      "image_prompt_alt": "wide shot, a graduate in a dark suit already at a laptop, a recruiter in a navy suit beside him, a thick grey training binder abandoned on a chair, reference character nodding"
     },
     {
-      "narration": "Humanity lives trapped inside three massive stone walls to stay safe.",
-      "location": "Shiganshina walled district",
-      "image_prompt": "extreme wide overhead shot of townsfolk in plain brown linen crowding the cobbled lanes, reference character on a red-tiled rooftop edge in the foreground, uneasy, the wall ringing the district",
-      "image_prompt_alt": "wide street-level shot, townsfolk in plain brown linen filling the cobbled lanes beneath red-tiled roofs, reference character uneasy against a townhouse, the wall looming above"
+      "narration": "[worried] Is a tech university better than a NORMAL university?",
+      "location": "campus crossroads plaza",
+      "image_prompt": "reference character stands midway between the two buildings looking back and forth, uncertain, one red steel bench beside him, wide shot at eye level",
+      "image_prompt_alt": "high-angle shot, reference character small at the plaza centre beside one red steel bench, head turned toward one building, uncertain"
     },
     {
-      "narration": "[hesitates] Outside, gigantic human-like monsters called Titans roam... and eat people.",
-      "location": "Shiganshina walled district",
-      "image_prompt": "high-angle shot from atop the wall, a Titan from Attack on Titan, an enormous bald giant with an oversized grinning mouth, lumbers across green grassland below, reference character peering over the stone parapet, uneasy",
-      "image_prompt_alt": "low-angle shot from the grass, an enormous bald giant with an oversized grinning mouth, pale smooth skin, bulging round eyes, lumbering past the wall base, reference character tiny and uneasy on the parapet above"
+      "narration": "Not necessarily... it just depends on your personal goal.",
+      "location": "campus crossroads plaza",
+      "image_prompt": "reference character sits on the red steel bench, thoughtful, at the spot where the paved path splits in two toward each building, medium shot",
+      "image_prompt_alt": "overhead shot of the paved path splitting in two, one branch per building, reference character seated thoughtful on the red steel bench at the fork"
     },
     {
-      "narration": "On a peaceful morning, a giant Titan kicks a hole in the outer wall.",
-      "location": "Shiganshina walled district",
-      "image_prompt": "the Colossal Titan from Attack on Titan, a skinless red giant towering over the wall, peers down as broken stone blasts inward from the gate, townsfolk in brown linen fleeing, reference character frozen in the street, wide shot",
-      "image_prompt_alt": "low-angle shot from the cobbles, a skinless red giant towering over the wall, exposed muscle, white steam pouring from its body, a lipless jaw, broken stone blasting inward, townsfolk in brown linen fleeing past reference character, frozen"
+      "narration": "[quietly] If you love abstract philosophy or literature, go to a general college.",
+      "location": "campus crossroads plaza",
+      "image_prompt": "a student in a green knitted sweater sits on the sandstone steps with an open book, reference character watching from the red steel bench, calm and respectful, medium-wide shot",
+      "image_prompt_alt": "close shot past the red steel bench where reference character sits calm and respectful, a student in a green knitted sweater with an open book on sandstone steps beyond"
     },
     {
-      "narration": "[angry] After losing his mother, young Eren Yeager vows to destroy every *TITAN!*",
-      "location": "Shiganshina walled district",
-      "image_prompt": "Eren Yeager from Attack on Titan, a dark-haired boy with fierce green eyes, kneels in timber rubble with fists clenched as a Titan from Attack on Titan, an enormous bald giant with an oversized grinning mouth, walks away in the distance, reference character grieving behind, medium-wide shot",
-      "image_prompt_alt": "close low shot, a dark-haired boy with fierce green eyes, lean build, messy shoulder-length hair, a brown leather strap harness over a white shirt, fists clenched in timber rubble, an enormous bald giant with an oversized grinning mouth, pale smooth skin, bulging round eyes, receding behind, reference character grieving at the frame edge"
+      "narration": "If you like solving practical problems with technology, a tech school wins.",
+      "location": "campus crossroads plaza",
+      "image_prompt": "students in blue overalls and yellow goggles wheel a small solar-powered cart with a blue panel roof out of the glass entrance, reference character turning toward them with a warm smile, wide three-quarter view",
+      "image_prompt_alt": "low-angle shot, a small solar-powered cart with a blue panel roof rolling toward camera, students in blue overalls and yellow goggles behind it, reference character smiling warmly at the side"
     },
     {
-      "narration": "[gasps] What begins as a simple survival story turns into a mind-blowing mystery.",
-      "location": "Shiganshina walled district",
-      "image_prompt": "extreme close-up of Eren Yeager from Attack on Titan, a dark-haired boy with fierce green eyes, staring at a small brass key hanging on a cord at his chest, reference character leaning in beside him, intrigued",
-      "image_prompt_alt": "medium two-shot against a townhouse, a dark-haired boy with fierce green eyes, lean build, messy shoulder-length hair, a brown leather strap harness over a white shirt, studying a small brass key on a cord, reference character intrigued beside him"
+      "narration": "[rapid-fire] They teach you how to turn raw IDEAS into working machines.",
+      "location": "graduation project exhibition hall",
+      "image_prompt": "reference character walks past a row of plinths leading from a paper napkin sketch to a cardboard prototype to a finished orange delivery drone, delighted, wide side view",
+      "image_prompt_alt": "low close shot of the finished orange delivery drone on its plinth in the foreground, a cardboard prototype and paper napkin sketch on plinths behind, reference character approaching, delighted"
     },
     {
-      "narration": "Every season flips the world upside down with shocking plot twists.",
-      "location": "Shiganshina walled district",
-      "image_prompt": "the Attack Titan from Attack on Titan, a lean long-haired giant with bared teeth, roars mid-street among collapsing red-tiled roofs, reference character bracing against a townhouse, stunned, low-angle shot",
-      "image_prompt_alt": "high-angle wide shot, a lean long-haired giant with bared teeth, sinewy muscular body, pointed ears, green eyes, roaring among collapsing red-tiled roofs, reference character stunned against a townhouse below"
+      "narration": "It is challenging... but highly rewarding for practical thinkers.",
+      "location": "graduation project exhibition hall",
+      "image_prompt": "a student in blue overalls and yellow goggles sits tired on a wooden crate beside the finished orange delivery drone, reference character sitting next to her, both quietly satisfied, medium two-shot",
+      "image_prompt_alt": "wide shot from behind the orange delivery drone, a student in blue overalls and yellow goggles and reference character seated side by side on a wooden crate, quietly satisfied"
     },
     {
-      "narration": "The orchestral music during action scenes will give you chills.",
-      "location": "Shiganshina walled district",
-      "image_prompt": "Scout Regiment soldiers from Attack on Titan in green hooded cloaks swing between rooftops on taut steel cables, cloaks flaring, reference character on a chimney ledge watching, thrilled, wide shot",
-      "image_prompt_alt": "low-angle shot from the cobbles, soldiers in green hooded cloaks with brown leather harnesses and steel blade canisters at their hips swinging overhead on taut cables, reference character thrilled on a chimney ledge"
+      "narration": "[sigh of relief] So now you know what a technical university REALLY is.",
+      "location": "graduation project exhibition hall",
+      "image_prompt": "reference character leans back against a white plinth with relaxed shoulders, relieved, as a few visitors in bright coats wander among the student projects, high-angle wide shot",
+      "image_prompt_alt": "medium shot at plinth height, reference character relieved and relaxed against a white plinth in the foreground, a few visitors in bright coats wandering among student projects behind"
     },
     {
-      "narration": "[understated] It feels less like cartoon animation and more like high budget television.",
-      "location": "Shiganshina walled district",
-      "image_prompt": "extreme wide shot, the Colossal Titan from Attack on Titan, a skinless red giant towering over the wall, looms as Scout Regiment soldiers from Attack on Titan in green hooded cloaks fly toward it, reference character quietly impressed on the cobbles",
-      "image_prompt_alt": "medium shot over the shoulder of reference character showing the back of his plain white head with no face, quietly impressed, soldiers in green hooded cloaks with brown leather harnesses and steel blade canisters at their hips flying toward a skinless red giant towering over the wall, exposed muscle, white steam pouring from its body, a lipless jaw"
+      "narration": "[softly] It is where theoretical science meets practical engineering.",
+      "location": "graduation project exhibition hall",
+      "image_prompt": "a tall chalkboard panel of white chalk curves stands touching a working brass-and-steel steam turbine model, reference character standing between them, thoughtful, medium shot",
+      "image_prompt_alt": "wide shot, reference character to the left, thoughtful, a tall chalkboard panel of white chalk curves meeting a brass-and-steel steam turbine model at the centre of the frame"
     },
     {
-      "narration": "[awe] The absolute undisputed king of gateway anime.",
-      "location": "Shiganshina walled district",
-      "image_prompt": "Eren Yeager from Attack on Titan, a dark-haired boy with fierce green eyes, stands atop the wall in a green hooded cloak, reference character on the cobbles far below looking up in awe, low-angle wide shot",
-      "image_prompt_alt": "high-angle shot past the shoulder of a dark-haired boy with fierce green eyes, lean build, messy shoulder-length hair, a brown leather strap harness over a white shirt, in a green hooded cloak atop the wall, reference character in awe on the cobbles below"
+      "narration": "[excitedly] A place where you learn by DOING things.",
+      "location": "graduation project exhibition hall",
+      "image_prompt": "students in blue overalls and yellow goggles send the orange delivery drone hovering above the concrete floor, reference character looking up at it grinning, low-angle shot",
+      "image_prompt_alt": "high-angle shot from above the hovering orange delivery drone, students in blue overalls and yellow goggles below, reference character grinning up at it from the side"
     },
     {
-      "narration": "[calm] Pick one of these five today, hit play, and enjoy your new favorite addiction.",
-      "location": "cozy apartment living room",
-      "image_prompt": "reference character sits back on the teal velvet couch with a contented smile, one arm along the cushions, the television showing a towering stone wall under a blue sky, medium-wide shot",
-      "image_prompt_alt": "wide shot from beside the television, reference character relaxed on the teal velvet couch with a small smile, one bright orange cushion beside him, the screen showing a towering stone wall under a blue sky"
+      "narration": "[calm] And that is Tech University explained.",
+      "location": "graduation project exhibition hall",
+      "image_prompt": "reference character seen from behind, showing the back of his plain white head with no face, sits calmly on a white plinth beside the landed orange delivery drone, overlooking the hall, wide shot",
+      "image_prompt_alt": "reference character seen from behind, showing the back of his plain white head with no face, sitting calm on a white plinth, the landed orange delivery drone beside him, long shot from the balcony"
     }
   ],
-  "music_prompt": "Warm, lightly adventurous instrumental bed around eighty-five BPM. Soft felt piano, gently plucked koto, low sustained strings and brushed snare. Flat consistent energy with no build, no swells, no drops. Sits far in the background under a spoken narrator with the mid range left clear. Purely instrumental with no vocals of any kind. Understated rather than comedic."
+  "music_prompt": "Light, curious instrumental bed at around ninety BPM. Soft plucked muted electric guitar, gentle wooden marimba, warm sustained synth pads, and a quiet brushed drum kit. Flat consistent energy with no build, no swells, no drops. Sits far in the background under a spoken narrator with the mid range left clear. Purely instrumental with no vocals of any kind. Understated rather than comedic."
 }
 
 
