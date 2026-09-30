@@ -1255,8 +1255,6 @@ def wait_for_new_image(page, baseline_ids: set[str], baseline_rejections: int = 
     while time.monotonic() < deadline:
         time.sleep(config.POLL_INTERVAL)
         check_for_challenge(page)
-        check_for_quota(page, baseline_quota)
-        check_for_rejection(page, baseline_rejections)
 
         # Flow renders each result twice (grid tile + preview pane), both with
         # the same media UUID, so dedupe by id. Without this a single normal
@@ -1283,6 +1281,23 @@ def wait_for_new_image(page, baseline_ids: set[str], baseline_rejections: int = 
                 continue
             seen_ids.add(info["id"])
             fresh.append((element, info))
+
+        # Only believe a failure notice when nothing new actually arrived.
+        # One failed card matches at about four nesting levels, and the result
+        # grid is virtualised (a run can hold 24 images with only 14 of them in
+        # the DOM), so a card that was scrolled out when the baseline was taken
+        # comes back the moment a new image reflows the grid, pushing the count
+        # above its baseline with no new failure at all. That is precisely when
+        # a real image is landing, which is what makes the two separable: an
+        # image on screen means this scene worked, whatever cards are also
+        # visible. This is what stopped a run at scene 33 on the last rung of
+        # the ladder, one poll after the log had already reported "1 new".
+        #
+        # Fail-fast is not lost: a generation that really failed produces no
+        # new image, so both checks still run on every poll.
+        if not fresh:
+            check_for_quota(page, baseline_quota)
+            check_for_rejection(page, baseline_rejections)
 
         polls += 1
         if polls % 10 == 0:
@@ -1778,6 +1793,10 @@ def _attempt_on_best_model(page, index: int, text: str) -> None:
     Mixing them would spend the alternate description on a problem it cannot
     fix, leaving the scene with no fallback left when it hits a real refusal.
     """
+    # Set once for the whole scene, not per attempt: a limit read on the last
+    # rung is the only one that ends the run outright, so it gets exactly one
+    # second opinion, never one per pass round the loop.
+    verified = False
     while True:
         try:
             _attempt(page, index, text)
@@ -1785,6 +1804,15 @@ def _attempt_on_best_model(page, index: int, text: str) -> None:
         except ModelQuotaExhausted as exc:
             print(f"    [limit] {exc}")
             if not demote_model(page):
+                if not verified:
+                    # Nothing lower to drop to, so this reading ends the whole
+                    # run. Cheap insurance against a leftover card being read as
+                    # a fresh limit: a model that is genuinely spent fails again
+                    # within seconds, a miscount does not.
+                    print("    [retry] last model on the ladder - retrying "
+                          "once before calling the day over")
+                    verified = True
+                    continue
                 raise QuotaExhausted(
                     "every model on the ladder has hit its daily limit"
                 ) from exc
