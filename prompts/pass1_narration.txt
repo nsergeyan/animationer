@@ -1,4 +1,4 @@
-Write a script about (Tech University explained for beginers) it is an explaining video. Use ONLY verified information and Use in correct places jokes, sarcasm, etc. (no cringe) here is the structure you have to fill it in:
+Write a script about (every current top ufc fighter explained) it is an explaining video. Use ONLY verified information and Use in correct places jokes, sarcasm, etc. (no cringe) here is the structure you have to fill it in:
 Use simple words, and explain everything simply so average non english native speaker can understand it.
 While writing the narration do not use any "", \,\
 AND REMEMBER YOU ARE WRITING A NARRATION THAT WILL BE USED FOR TEXT TO SPEACH AI VOICE
@@ -29,11 +29,11 @@ Placement (follow the story structure):
 - Reveal / punch: one tag at the start of the sentence containing the *WORD!* marker.
 - Outro: one calming or closing tag.
 
-Emotional states: [excited], [nervous], [frustrated], [sorrowful], [calm], [curious], [crying], [sarcastic], [mischievously], [angry], [sad], [happily], [annoyed], [surprised], [worried], [upset], [awe], [amazed]
+Emotional states:  [nervous], [frustrated], [sorrowful], [calm], [curious], [crying], [sarcastic], [mischievously], [angry], [sad], [happily], [annoyed], [surprised], [worried], [upset], [awe], [amazed]
 
 Laughter & breath: [laughs], [laughs harder], [starts laughing], [wheezing], [giggles], [light chuckle], [sighs], [sigh of relief], [exhales], [gasps]
 
-Volume: [whispers], [shouts], [quietly], [softly], [loudly], [booming]
+Volume: [whispers], [shouts], [quietly], [softly], [booming]
 
 Pacing: [rushed], [slows down], [drawn out], [stammers], [hesitates], [rapid-fire]
 
