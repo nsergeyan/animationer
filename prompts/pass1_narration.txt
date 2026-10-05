@@ -1,4 +1,4 @@
-Write a script about (every current top ufc fighter explained) it is an explaining video. Use ONLY verified information and Use in correct places jokes, sarcasm, etc. (no cringe) here is the structure you have to fill it in:
+Write a script about (Formula 1 explained in 5 minute ) it is an explaining video. Use ONLY verified information and Use in correct places jokes, sarcasm, etc. (no cringe) here is the structure you have to fill it in:
 Use simple words, and explain everything simply so average non english native speaker can understand it.
 While writing the narration do not use any "", \,\
 AND REMEMBER YOU ARE WRITING A NARRATION THAT WILL BE USED FOR TEXT TO SPEACH AI VOICE
@@ -20,40 +20,31 @@ I WANT 60 BEATS.
 
 GIVE THE FINAL JSON FILE.
 
-ELEVENLABS V3 AUDIO TAGS RULE
-Atleast 50% of the beats need to have the tags.
+ELEVENLABS V4 AUDIO TAGS RULE
+The narrator is a calm, dry explainer, not an actor. Tags only nudge the
+delivery. Most beats should have NO tag. Tag roughly 1 beat in 4.
 
-Placement (follow the story structure):
-- Hook (first sentence): one energy or curiosity tag.
-- Build: one pacing tag ([slows down], [drawn out], [hesitates], [rushed]).
-- Reveal / punch: one tag at the start of the sentence containing the *WORD!* marker.
-- Outro: one calming or closing tag.
+Allowed tags (use ONLY these, never invent others):
+Calm / reflective: [calm], [curious], [thoughtful], [peaceful], [content]
+Dry tone (for jokes and sarcasm): [deadpan], [flatly], [understated], [sarcastic],
+Volume: [softly], [quietly]
+Light reactions, 10% of the script: [sighs], [light chuckle]
+Throat clear (max 1 per script, only right before correcting a myth or an awkward fact): [clears throat]
 
-Emotional states:  [nervous], [frustrated], [sorrowful], [calm], [curious], [crying], [sarcastic], [mischievously], [angry], [sad], [happily], [annoyed], [surprised], [worried], [upset], [awe], [amazed]
-
-Laughter & breath: [laughs], [laughs harder], [starts laughing], [wheezing], [giggles], [light chuckle], [sighs], [sigh of relief], [exhales], [gasps]
-
-Volume: [whispers], [shouts], [quietly], [softly], [booming]
-
-Pacing: [rushed], [slows down], [drawn out], [stammers], [hesitates], [rapid-fire]
-
-Tone: [deadpan], [flatly], [understated], [suspicious tone]
-
-Non-verbal (max 1 per script): [clears throat], [gulps], [swallows], [snorts]
-
-Compound variants (allowed): [frustrated sigh], [happy gasp], [excitedly], [dramatically], [curiously], [nervously]
-
-Sound effects (max 1 per script, only if the narration literally describes that sound): [gunshot], [explosion], [applause], [clapping]
+Placement:
+- Hook (first sentence): [curious] or [thoughtful].
+- Jokes: use [deadpan], [understated] or [sarcastic]. Let the words be funny, not the voice.
+- Outro: [calm] or [content].
 
 Rules:
-- A tag goes at the START of the sentence it applies to and stays active until the next tag.
-- Layer at most 2 tags in a row, and only compatible ones ([whispers][curious] is fine; never opposites like [whispers][shouts] or [calm][excited]).
-- Use ONLY tags from the lists above. Never invent tags. Never place tags inside *WORD!* markers.
-- Do not repeat the same tag twice in one script.
-- Use ellipses (...) for a beat before a reveal. You may CAPITALIZE at most one word per sentence for emphasis.
-
-Example of structure only (do NOT reuse its wording or tags):
-"[curious] Everyone thinks this fight ended in a draw... but the footage says otherwise. [slows down] There's one detail nobody noticed. [gasps] He was BLEEDING the whole time. [calm] Watch it again."
+- A tag goes at the START of the sentence it applies to.
+- To combine two tags, put them in one bracket with a comma: [curious, softly].
+  Never more than two.
+- A tag may repeat, but never on two beats in a row.
+- Never use loud, angry, sad, crying, shouting, gasping, laughing-hard or
+  sound-effect tags, even if the topic is dramatic.
+- Use ellipses (...) for a pause before a reveal. You may CAPITALIZE at most
+  one word per sentence for emphasis.
 
 PUNCTUATION FOR DELIVERY
 Comma → short pause. Period → full stop. Question mark → questioning tone. Exclamation → emphasis. Ellipsis (...) → suspense pause. CAPITALIZATION → spoken emphasis on a word.
