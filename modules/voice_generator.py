@@ -475,8 +475,9 @@ def _batch_with_key(api_key: str, narrations: list[str], indices: list[int],
         listed = ", ".join(f"{i} {w} ({d:+.0f}dB)" for i, d, w in clipped[:8])
         print(f"    [voice] WARNING: {len(clipped)} cut(s) landed inside a "
               f"word: {listed}")
-        print(f"    [voice] re-run those alone: pipeline.py voice --force "
-              f"--only {','.join(str(i) for i, _, _ in sorted(set((c[0],) for c in clipped)))}")
+        beats = ",".join(str(i) for i in sorted({c[0] for c in clipped}))
+        print(f"    [voice] to redo them: delete those beat_*.mp3 files "
+              f"({beats}) and re-run pipeline.py voice")
 
     return results
 
