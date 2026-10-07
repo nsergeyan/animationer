@@ -206,6 +206,9 @@ MODEL_EXCLUDE = ["Lite"]
 # matches. Set to [] to disable the ladder and use MODEL_NAME alone.
 MODEL_LADDER = [
     ("Nano Banana Pro", []),
+    # Flow renamed this to "Nano Banana 2.1" (2026-10). Kept as the "2" prefix
+    # on purpose: substring matching covers both 2 and 2.1, so a rename back or
+    # to 2.2 does not silently skip the rung.
     ("Nano Banana 2", ["Lite", "Pro"]),
     ("Nano Banana 2 Lite", []),
 ]
