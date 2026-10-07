@@ -1,9 +1,16 @@
-Write a script about (Formula 1 explained in 5 minute ) it is an explaining video. Use ONLY verified information and Use in correct places jokes, sarcasm, etc. (no cringe) here is the structure you have to fill it in:
+Write a script about (Roman empire explained in 3 minutes) it is an explaining video. Use ONLY verified information and Use in correct places jokes, sarcasm, etc. (no cringe) here is the structure you have to fill it in:
 Use simple words, and explain everything simply so average non english native speaker can understand it.
 While writing the narration do not use any "", \,\
 AND REMEMBER YOU ARE WRITING A NARRATION THAT WILL BE USED FOR TEXT TO SPEACH AI VOICE
 
-I WANT 60 BEATS.
+I WANT ABOUT 75 BEATS, 500-540 SPOKEN WORDS IN TOTAL (about 3 minutes).
+Each beat is ONE short sentence, and every beat gets its own picture.
+Mix two lengths, roughly half and half:
+  SHORT beats: 3-6 words (a reaction, a consequence, a punch).
+  LONG beats: 8-12 words (the fact, the number, the turn).
+Never more than 3 short beats in a row, never more than 2 long beats in a row.
+Never go over 12 words in one beat. Split it into two beats instead.
+Count the words at the end. The total budget matters more than the beat count.
 {
   "topic": "short slug-like title",
   "format": "explainer",

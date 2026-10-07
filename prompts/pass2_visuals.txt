@@ -1,217 +1,268 @@
 SCRIPT:
 {
-  "topic": "top-ufc-fighters-explained",
+  "topic": "roman-empire-explained",
   "format": "explainer",
   "plan": {
-    "spine_question": "How do the top UFC fighters actually beat their opponents?",
+    "spine_question": "How did a small mud village build an empire that shaped the modern world, and why did it fall?",
     "deflations": [
       {
-        "assumed": "UFC fighters win by throwing wild punches and having huge muscles.",
-        "actual": "Top fighters win using hyper-specific styles like relentless cardio, weird angles, or suffocating wrestling.",
-        "who_decided": "UFC octagon fight results",
-        "build_beat": "Casual fans often think raw strength and wild power punches decide every fight in the cage.",
-        "drop_beat": "In reality, fight intelligence, technique, and style matchups beat raw muscle every single time."
+        "assumed": "The Roman Empire fell completely in 476 AD.",
+        "actual": "Only the Western half collapsed in 476 AD, while the Eastern half survived for another thousand years as the Byzantine Empire.",
+        "who_decided": "Modern historians created the term Byzantine, but citizens always called themselves Romans.",
+        "build_beat": "Standard history books claim the Roman Empire ended right there.",
+        "drop_beat": "The Eastern half survived and lasted one thousand years!"
       }
     ],
     "specifics": [
       {
-        "fact": "Alex Pereira was a two-division kickboxing champion before winning UFC titles in two weight classes.",
-        "source": "UFC Official Fight Records",
-        "beat": "Alex Pereira knocks out elite fighters with a left hook that looks completely effortless."
+        "fact": "Rome built over 50,000 miles of paved stone roads across its territories.",
+        "source": "Oxford Classical Dictionary",
+        "beat": "To move troops fast, engineers built fifty thousand MILES of roads."
       },
       {
-        "fact": "Arman Tsarukyan earned his top contender status by defeating former champion Charles Oliveira at UFC 300.",
-        "source": "UFC Official Fight Records",
-        "beat": "Arman Tsarukyan breaks opponents with explosive freestyle wrestling and relentless ground pressure."
+        "fact": "Julius Caesar received 23 stab wounds during his assassination in 44 BC.",
+        "source": "Suetonius, Life of Julius Caesar",
+        "beat": "Twenty three separate times..."
       }
     ],
     "facts_to_check": [
       {
-        "claim": "Islam Makhachev holds a dominant winning streak across the UFC lightweight division.",
-        "source": "UFC Official Rankings"
+        "claim": "Emperor Caligula tried to appoint his horse Incitatus as a senator.",
+        "source": "Suetonius, Lives of the Twelve Caesars"
       }
     ]
   },
   "beats": [
     {
-      "narration": "[curious] Have you ever wondered how the top UFC fighters beat everyone in the world..."
+      "narration": "[curious] How did a small mud village build a massive ancient empire?"
     },
     {
-      "narration": "They do not just punch hard, they have secret weapons that break their opponents."
+      "narration": "Rome began as a tiny cluster of huts in central Italy."
     },
     {
-      "narration": "[slows down] Let us start with the baddest men on the PLANET..."
+      "narration": "[understated] Nobody expected them to dominate."
     },
     {
-      "narration": "First up is Jon Jones, the heavyweight titan."
+      "narration": "But they loved fighting."
     },
     {
-      "narration": "[sarcastic] Jon Jones has never lost a fight inside the octagon, unless you count hitting illegal elbows years ago."
+      "narration": "And they never surrendered."
     },
     {
-      "narration": "[booming] His secret weapon is his absurd *REACH!*"
+      "narration": "[deadpan] If an enemy destroyed one army, Rome simply sent another."
     },
     {
-      "narration": "He uses long kicks to stay safe and takes you down whenever he feels like it."
+      "narration": "Soon they defeated Carthage and controlled the whole Mediterranean sea."
     },
     {
-      "narration": "[drawn out] Then we have Tom Aspinall, the giant from England..."
+      "narration": "Then they kept expanding."
     },
     {
-      "narration": "Most heavyweights move like slow tanks, but Tom moves like a lightweight sprinter."
+      "narration": "Roman legions marched thousands of miles."
     },
     {
-      "narration": "[deadpan] He enters the ring, lands two fast punches, and sends people to *NAPTIME!*"
+      "narration": "[flatly] To move troops fast, engineers built fifty thousand MILES of roads."
     },
     {
-      "narration": "He finishes fights so FAST that his total octagon time is ridiculously short."
+      "narration": "These stone highways connected distant towns and made trade very simple."
     },
     {
-      "narration": "[flatly] Next is Alex Pereira, known to everyone as Poatan..."
+      "narration": "At first, Rome was a republic."
     },
     {
-      "narration": "[gasps] Poatan looks like a stone statue that learned high level kickboxing..."
+      "narration": "Citizens elected their main leaders."
     },
     {
-      "narration": "His left hook looks like a soft touch, but it carries incredible power."
+      "narration": "[sarcastic] Rich politicians hated sharing power."
     },
     {
-      "narration": "[amazed] Opponents think they are safe... until they get hit like a *TRUCK!*"
+      "narration": "Successful military generals became more popular than elected government officials."
     },
     {
-      "narration": "He moved up weight classes and kept knocking out champions like it was a hobby."
+      "narration": "General Julius Caesar marched his army into Rome and took power."
     },
     {
-      "narration": "[whispers] Now let us talk about the light heavyweight division..."
+      "narration": "Senators felt threatened by him."
     },
     {
-      "narration": "Carlos Ulberg and Jiri Prochazka bring total chaos to this weight class."
+      "narration": "[sighs] So they stabbed him."
     },
     {
-      "narration": "[hesitates] Jiri fights like a wild samurai who forgot that defense exists..."
+      "narration": "Twenty three separate times..."
     },
     {
-      "narration": "He gets hurt in every fight, but somehow comes back to win by crazy finish."
+      "narration": "Killing Caesar did not restore freedom to the broken republic."
     },
     {
-      "narration": "[light chuckle] Moving to middleweight, we find Sean Strickland..."
+      "narration": "A brutal civil war broke out across the Roman lands."
     },
     {
-      "narration": "Strickland marches forward while talking non-stop trash during the fight."
+      "narration": "[understated] Caesar's adopted son won."
     },
     {
-      "narration": "[annoyed] He jabs you a thousand times until you lose your *MIND!*"
+      "narration": "His name was Augustus."
     },
     {
-      "narration": "People laugh at his style... until he beats the champion and takes the belt."
+      "narration": "Augustus crowned himself the very first official emperor of Rome."
     },
     {
-      "narration": "[understated] Then there is Khamzat Chimaev, the terrifying wrestler..."
+      "narration": "He launched a famous two-hundred-year golden age called Pax Romana."
     },
     {
-      "narration": "When the bell rings, Khamzat runs across the ring and grabs your legs immediately."
+      "narration": "[thoughtful] Trade flourished everywhere."
     },
     {
-      "narration": "[frustrated] He smashes people in the first round before they can even *BREATHE!*"
+      "narration": "Cities expanded very quickly."
     },
     {
-      "narration": "If you survive his first round, you have a small chance, but most people do not."
+      "narration": "Life seemed quite good."
     },
     {
-      "narration": "[rushed] In the lightweight division, we have Islam Makhachev..."
+      "narration": "Massive stone arenas were constructed to entertain millions of citizens."
     },
     {
-      "narration": "Makhachev is the pound for pound king who dominates everyone on the ground."
+      "narration": "Gladiators fought wild animals and each other inside the Colosseum."
     },
     {
-      "narration": "[rapid-fire] He comes from Dagestan, where kids wrestle actual *BEARS!*"
+      "narration": "[deadpan] Free games kept people calm."
     },
     {
-      "narration": "His grappling is like a python squeezing you until you tap out."
+      "narration": "Free bread kept them full."
     },
     {
-      "narration": "[suspicious tone] But do not sleep on his striking, because his head kicks are lethal too."
+      "narration": "Giant arch bridges called aqueducts brought clean mountain water inside."
     },
     {
-      "narration": "[worried] Right behind Islam is Arman Tsarukyan, the Armenian powerhouse..."
+      "narration": "Wealthy Romans enjoyed warm public bathhouses and luxury indoor toilets."
     },
     {
-      "narration": "Arman has elite freestyle wrestling, exploding forward with dangerous double legs."
+      "narration": "[clears throat] Well... wealthy citizens did."
     },
     {
-      "narration": "[angry] He beats top fighters with non-stop ground strikes and relentless *PRESSURE!*"
+      "narration": "Millions of enslaved workers worked."
     },
     {
-      "narration": "He proved his championship skill by defeating legend Charles Oliveira at UFC 300."
+      "narration": "They had zero rights."
     },
     {
-      "narration": "[sighs] Next in lightweight is Justin Gaethje, the human highlight reel..."
+      "narration": "[flatly] Governing fifty million people created gigantic administrative and logistical challenges."
     },
     {
-      "narration": "Gaethje does not care about taking damage, he just wants to give fans pure entertainment."
+      "narration": "The border spanned from rainy Britain all the way to Egypt."
     },
     {
-      "narration": "[excited] He chops your legs with brutal kicks until the fight becomes a *WAR!*"
+      "narration": "From Atlantic Spain to Syria."
     },
     {
-      "narration": "Then we have Charles Oliveira, the supreme submission master."
+      "narration": "It was too huge."
     },
     {
-      "narration": "[awe] Oliveira holds the UFC record for most submission finishes in history."
+      "narration": "[thoughtful] Then incompetent leaders started making terrible decisions for the country."
     },
     {
-      "narration": "He turns losing fights into instant victory with one slick choke."
+      "narration": "Emperor Caligula attempted to make his personal horse a senator."
     },
     {
-      "narration": "[mischievously] Now let us drop down to featherweight..."
+      "narration": "[sarcastic] True political genius right there."
     },
     {
-      "narration": "Ilia Topuria burst onto the scene like a golden storm."
+      "narration": "Emperor Nero watched Rome burn."
     },
     {
-      "narration": "[surprised] Topuria has boxing so clean that he makes elite fighters look foolish."
+      "narration": "Greed infected the leadership."
     },
     {
-      "narration": "He promised to knock out Alexander Volkanovski, and he actually did it."
+      "narration": "Greedy army generals fought continuous battles against each other for power."
     },
     {
-      "narration": "[stammers] Speaking of Volkanovski, the Australian legend is still a *THREAT!*"
+      "narration": "In one single year, four different emperors were quickly murdered."
     },
     {
-      "narration": "Volk has endless cardio and can change his gameplan mid-fight perfectly."
+      "narration": "[light chuckle] Politics became complete chaos."
     },
     {
-      "narration": "[quietly] And do not forget Max Holloway, the king of BMF..."
+      "narration": "Unpaid soldiers demanded money."
     },
     {
-      "narration": "Max points to the floor in the final seconds and trades wild hooks."
+      "narration": "High taxes crushed farmers."
     },
     {
-      "narration": "[loudly] That last second knockout against Justin Gaethje was pure *MAGIC!*"
+      "narration": "Emperor Diocletian realized that one single man could not rule everything."
     },
     {
-      "narration": "He throws hundreds of punches every round without slowing down."
+      "narration": "[understated] So he split the entire empire into two distinct halves."
     },
     {
-      "narration": "[softly] Over in bantamweight, we have Petr Yan..."
+      "narration": "Western region and Eastern region."
     },
     {
-      "narration": "Petr Yan downloads your data in round one, then destroys you in round three."
+      "narration": "Each side got leaders."
     },
     {
-      "narration": "[nervous] But Merab Dvalishvili fights like he drinks ten energy drinks before stepping in..."
+      "narration": "Emperor Constantine relocated the main capital city to wealthy Byzantium."
     },
     {
-      "narration": "[clears throat] Merab shoots fifty takedowns and does jumping jacks between rounds."
+      "narration": "He renamed this magnificent eastern trade hub to Constantinople."
     },
     {
-      "narration": "[excitedly] Every one of these champions brings a completely unique flavor to fighting!"
+      "narration": "[curious] Constantine legalized Christianity as well."
     },
     {
-      "narration": "Some rely on terrifying power, while others break you with relentless cardio."
+      "narration": "Religion transformed European history."
     },
     {
-      "narration": "[calm] Which fighter has your favorite style... let me know in the comments."
+      "narration": "Meanwhile problems worsened west."
+    },
+    {
+      "narration": "[flatly] Migrating Germanic tribes pushed across weak borders seeking safety and land."
+    },
+    {
+      "narration": "The Western Roman government went BROKE and could not pay soldiers."
+    },
+    {
+      "narration": "Outer defenses collapsed completely."
+    },
+    {
+      "narration": "Invaders looted Rome itself."
+    },
+    {
+      "narration": "[deadpan] In four hundred seventy-six, the last western emperor resigned."
+    },
+    {
+      "narration": "Standard history books claim the Roman Empire ended right there."
+    },
+    {
+      "narration": "[sighs] But that is FALSE."
+    },
+    {
+      "narration": "The Eastern half survived."
+    },
+    {
+      "narration": "It lasted one thousand years!"
+    },
+    {
+      "narration": "Modern historians call that surviving rich region the Byzantine Empire."
+    },
+    {
+      "narration": "Yet citizens living there called themselves proud Romans the whole time."
+    },
+    {
+      "narration": "[thoughtful] Why does this matter?"
+    },
+    {
+      "narration": "Western laws mirror Roman laws."
+    },
+    {
+      "narration": "Languages like French, Spanish, and Italian directly evolved from Latin."
+    },
+    {
+      "narration": "[calm] Even modern government buildings across the globe copy ancient Roman architecture."
+    },
+    {
+      "narration": "Rome fell long ago."
+    },
+    {
+      "narration": "[content] Its world still remains."
     }
   ]
 }
@@ -226,8 +277,7 @@ You add everything the pipeline needs to turn it into a video:
 
 one image_prompt per beat
 one image_prompt_alt per beat
-one physical visual_anchor per location
-one setting_anchor
+one location NAME per beat (visual_anchor and setting_anchor are always "")
 emotion tags remain untouched
 one music_prompt
 
@@ -249,7 +299,10 @@ The generated locations must be physically believable, visually interesting,
 specific to the subject being discussed, and useful for staging the
 reference character.
 
-Locations are part of the visual design.
+Locations are NOT drawn. Every frame is a plain white page (Section 0B).
+A location is only a name that groups beats into scenes: the video dissolves
+where the location changes and hard cuts inside one. Pick locations to split
+the video into its natural chapters.
 
 Do not merely invent generic locations such as "room", "office", "studio",
 "warehouse", "lab", "street", or "hallway" unless the narration genuinely
@@ -258,10 +311,9 @@ requires that exact environment.
 Instead, infer what physical environment would make each part of the
 narration interesting to see.
 
-The location may be a literal place where the event happened OR a physical
-visual storytelling environment containing evidence, objects, diagrams,
-photographs, equipment, documents, reconstructions, or other physical
-representations of what the narration discusses.
+The location name may be a literal place where the event happened OR a
+storytelling environment, named for what that chapter of the narration is
+about. The name is never drawn.
 
 The location does not need to be historically literal when a more useful
 visual storytelling environment would communicate the narration better.
@@ -296,8 +348,8 @@ Do NOT make every location comedic.
 When the narration is absurd, humorous, suspicious, or ridiculous, the physical
 location may contain slightly absurd but believable visual staging.
 
-The humour should come from the physical environment and situation, not from
-written jokes, captions, or text.
+The humour comes from the situation, the reference character's reaction, a
+short label, or a rare photo cutout (Section 0B), never from scenery.
 
 The location must still make sense for the subject.
 
@@ -331,9 +383,9 @@ locations yourself from the narration.
 
 Create the complete location system before writing image prompts.
 
-Write plan.locations[].visual_anchor for every location.
+Set plan.locations[].visual_anchor to "" for every location.
 
-Decide plan.setting_anchor.
+Set plan.setting_anchor to "".
 
 Copy every beat's location and narration across character for character when
 the location already exists in Pass 1.
@@ -352,6 +404,64 @@ Write music_prompt.
 Run Section 41 by checking every beat individually.
 
 Output one raw JSON object and nothing else.
+
+0B. THE WHITE PAGE LOOK
+
+This section overrides every later section about rooms, scenery, materials,
+colour and text.
+
+Every frame is a plain white page. Never describe a room, floor, wall, sky,
+ground, horizon, furniture, buildings or scenery unless that one object IS the
+point of the beat.
+
+Each frame holds the reference character plus at most TWO other things.
+
+A crowd or group is at most three doodle figures.
+
+Other people, famous ones included, are simple doodle figures identified by
+one or two signature features (long braids, a scarlet red racing suit). Never
+ask for them to look realistic.
+
+Colour only one or two key objects. Name the colour on the object:
+one scarlet red racing car.
+
+Simple and big beats detailed and small. If the frame needs explaining, it has
+too much in it.
+
+LABELS
+
+At most 1 beat in 4 may carry words, and only when the words are the joke or
+the key fact. 1 to 3 words, in double quotes, attached to an object:
+
+a small sign reading "NOPE"
+a price tag reading "$15 MILLION"
+a speech bubble reading "WHY"
+
+Never more than one label per beat. Labels go in image_prompt only, never in
+narration.
+
+PHOTO CUTOUTS
+
+At most 1 beat in 6, never in two beats in a row.
+
+Use one only when the REAL object is the punchline: an absurd price, a
+ridiculous real thing, a "yes, this actually exists" moment. Never just
+because an object is mentioned.
+
+ONE object only. Never a person, a face, a body part, an animal or a place.
+
+Write it with this exact phrase:
+
+a real photo cutout of <object>, roughly pasted onto the drawing
+
+Example:
+
+reference character stares, eyes wide, at a real photo cutout of a Formula 1
+steering wheel, roughly pasted onto the drawing, medium shot
+
+The image_prompt_alt of a photo beat replaces the cutout with a doodle of the
+same object. The alt is the fallback when Flow refuses, so it must be the safe
+version.
 
 1. THE REFERENCE CHARACTER: PERSISTENT VISUAL NARRATOR
 
@@ -787,15 +897,13 @@ Example:
 
 PRIMARY:
 
-reference character watches NASA engineers seated at long rows of control
-consoles, several engineers turning toward a central monitor, medium-wide shot,
-pale shirts, dark trousers, blue console panels, red indicator lamps
+reference character watches three NASA engineers in headsets crowded around
+one blue console, all turning toward him, medium-wide shot
 
 ALT:
 
-reference character watches several aerospace workers in pale shirts, dark
-trousers, and headsets seated at long rows of consoles, wider side angle, blue
-console panels, red indicator lamps, black cables running beneath the desks
+reference character watches three doodle engineers in pale shirts and headsets
+crowded around one blue console, all turning toward him, wider side angle
 
 12. DO NOT INVENT CHARACTERS
 
@@ -889,7 +997,7 @@ If a usable location is present:
 
 preserve it exactly
 reuse it consistently
-create its visual_anchor
+set its visual_anchor to ""
 
 If a location is absent:
 
@@ -947,91 +1055,23 @@ Do not use random locations unrelated to the subject.
 
 16. LOCATION DESIGN
 
-Generated locations should be visually distinctive.
+Locations are chapter names, not pictures. Keep them short and concrete so a
+reader of the JSON can see where each chapter starts:
 
-Prefer:
+the pit lane
+the factory
+race weekend
+the money
 
-specific architecture
-unusual but believable furniture
-recognizable structural features
-strong material combinations
-two saturated accent colours
-objects related to the narration
-interesting spatial arrangements
-
-Examples:
-
-cramped aerospace archive
-forgotten radio monitoring room
-eccentric astronomy workshop
-government basement map room
-overcrowded evidence archive
-old broadcast recording room
-experimental engineering workshop
-forensic photography archive
-museum storage corridor
-conspiracy evidence workshop
-newspaper research back room
-technical restoration room
-
-Avoid relying on generic labels such as:
-
-room
-office
-studio
-lab
-warehouse
-hallway
-building
-street
-
-unless genuinely appropriate.
+Aim for 4 to 8 locations in a video. A location change is a dissolve, so do
+not change location every few beats.
 
 17. LOCATION VISUAL ANCHOR
 
-Write:
+plan.locations[].visual_anchor is ALWAYS "".
 
-plan.locations[].visual_anchor
-
-for every location.
-
-Aim for 12 to 18 words.
-
-Include:
-
-wall materials
-floor materials
-one fixed landmark feature
-the dominant colour of the space
-
-Never list movable objects. The anchor says what the PLACE is made of, not
-what is standing in it. This text is pasted into EVERY beat of the location,
-so each object named here is an object demanded in every frame.
-
-Use only visible materials, shapes, architecture, and colours.
-
-Do not use:
-
-dates
-decades
-centuries
-era names
-abstract concepts
-historical labels
-invisible information
-moods
-camera instructions
-style instructions
-
-Example:
-
-"rough cream plaster walls, worn dark timber floorboards, two tall rectangular
-windows, a heavy wooden workbench, one steel filing cabinet, red archive boxes
-and blue equipment cases, exposed electrical conduit beneath the ceiling"
-
-The anchor describes the STABLE LOCATION.
-
-Do not describe temporary actions that belong in individual beats.
+The white page is the only background. Anything written here would be pasted
+into every beat of the location and draw a room over the white page.
 
 18. LOCATION CONTINUITY
 
@@ -1090,13 +1130,8 @@ A location name must describe a physical place.
 
 20. DO NOT WRITE THE LOCATION INTO THE BEAT
 
-The location anchor is appended automatically.
-
-Never repeat it.
-
-Never paraphrase it.
-
-Never summarize it.
+The location is never drawn. Do not describe it, its walls, its floor or its
+furniture in a beat.
 
 The beat prompt describes what changes from beat to beat:
 
@@ -1111,43 +1146,23 @@ story-specific changes
 
 21. SETTING ANCHOR
 
-Use a setting_anchor only if the entire video genuinely shares a recurring
-visual motif.
-
-Good examples:
-
-recurring red warning lamps and blue instrument panels
-identical yellow hazard markings on equipment
-repeated dark wood surfaces with red archive materials
-
-If no universal motif exists:
-
-"setting_anchor": ""
-
-Do not invent one merely to fill the field.
-
-The setting_anchor must NOT replace location anchors.
-
-The setting_anchor must NOT duplicate an entire location.
-
-It describes a recurring visual motif across multiple locations, not a place.
+plan.setting_anchor is ALWAYS "". Same reason as Section 17.
 
 22. PRIMARY IMAGE PROMPT
 
 Each image_prompt is one single line.
 
-Target 20 to 30 words with no named characters in the frame.
+Target 12 to 20 words with no named characters in the frame.
 
-Add up to 12 further words for EACH named character, to pay for their
+Add up to 10 further words for EACH named character, to pay for their
 canonical name and their signature visible feature:
 
-no named characters    20 to 30 words, hard ceiling 35
-one named character    up to 42 words
-two named characters   up to 54 words
+no named characters    12 to 20 words, hard ceiling 24
+one named character    up to 30 words
+two named characters   up to 40 words
 
-Spend the extra words on the characters, never on the location or the
-atmosphere. The location anchor is appended automatically and must not be
-described here.
+Spend the extra words on the characters, never on scenery. There is no
+scenery: the frame is a white page.
 
 A name is never dropped to stay inside a word count. If the prompt is too
 long, cut scenery, cut the second object, cut the adjective on the furniture.
@@ -1157,29 +1172,23 @@ Start lowercase.
 
 Do not include the location name.
 
-The pipeline automatically appends the location anchor and setting anchor.
-
 The primary prompt must combine:
 
 reference character
 canonical names for other named characters when visually present
 each named character's signature visible feature
-physical action
-body position
-spatial relationships
+physical action or pose
+at most two important objects or figures
+the colour of one or two key objects
 framing
-important objects
-physical details
-saturated colours
-a subtle visual reaction from the reference character
+a clear, exaggerated reaction from the reference character
 
 The reference character does not have to be the main subject.
 
 Example:
 
-reference character sits at a desk with a bored skeptical expression, looking
-toward a large lunar photograph while one gloved astronaut stands beside a
-planted flag, medium-wide shot
+reference character stands with a bored skeptical expression beside one
+astronaut doodle planting a red and white flag, medium-wide shot
 
 23. REFERENCE CHARACTER PLACEMENT
 
@@ -1338,42 +1347,37 @@ vehicles
 materials
 construction
 
-28. MATERIAL AND COLOUR REQUIREMENTS
+28. COLOUR REQUIREMENTS
 
 Every primary and alternate prompt should contain:
 
-one precise material detail
-one saturated colour, covering a large area of the frame
-a clear physical action
+a clear physical action or pose
 a clear spatial relationship
 a clear framing choice
-one important object
+one important object or figure
+one named colour on that object
 
-Attach colours to visible objects.
-
-Do not merely list colours.
+Everything else stays black lines on white. Attach colours to visible objects.
+Never colour the background.
 
 29. OBJECT PLACEMENT
 
-Every large object must have a physical relationship to the environment.
+Place things relative to the reference character or the frame, never relative
+to walls, floors or ceilings, which do not exist:
 
-Use:
-
-against the back wall
-beside the door
-mounted above the bench
-resting on the floor
-attached to the ceiling
-positioned in the corner
+beside the reference character
+at frame left
+held in both hands
+towering over the reference character
 crossing the foreground
 
 BAD:
 
-a steel cabinet
+a steel cabinet set against the back wall
 
 GOOD:
 
-a steel cabinet set against the back wall
+one grey steel cabinet towering over the reference character
 
 30. ONE OBJECT OF EACH TYPE
 
@@ -1421,7 +1425,7 @@ an empty room with no windows
 
 GOOD:
 
-a pale tiled room with a single steel door and a broad wooden workbench
+one closed steel door beside the reference character
 
 32. NO STYLE INSTRUCTIONS
 
@@ -1497,6 +1501,8 @@ camera sits behind another character's shoulder, phrase it as "past the
 shoulder of X" so the rule is not triggered for the wrong person.
 
 35. AVOID PHOTOGRAPHIC TRIGGER LANGUAGE
+
+The ONLY exception is the exact photo cutout phrase from Section 0B.
 
 Avoid unnecessary rendering language such as:
 
@@ -1601,31 +1607,17 @@ switches, red indicator lamps, and black cables entering its lower edge
 
 39. TEXT AND LETTERING
 
-Avoid unnecessary readable text.
+Readable words appear ONLY as a Section 0B label: 1 to 3 words in double
+quotes, at most 1 beat in 4.
 
-Do not request:
-
-text
-headline
-label
-labelled
-reading
-saying
-titled
-written
-sign
-banner
-inscription
-blueprint
-a screen showing words
-
-Describe the physical object instead.
-
-Examples:
+Every other surface that would carry writing (screens, papers, notebooks,
+posters, scoreboards) is described by what it shows, not what it says:
 
 a monitor showing a wavy green line
-a rectangular blue plaque mounted beside the doorway
 a sheet of white paper covered with dense dark marks
+
+Never use the words headline, titled, inscription or blueprint. Never ask for
+a screen showing words.
 
 39B. DO NOT COVER THE REFERENCE CHARACTER
 
@@ -1827,35 +1819,27 @@ untouched notebook lies beside him, medium two-shot
 The number stays in the narration, where it is already clear. The picture's
 job is the subject, not the scoreboard.
 
-45. LOCATION-DRIVEN VISUALIZATION
+45. VISUAL METAPHOR ON THE WHITE PAGE
 
-When the narration is difficult to visualize literally, use the generated
-location to create a physical visual metaphor or evidence environment.
+When the narration is hard to show literally, make ONE simple visual metaphor
+out of the reference character and one or two objects. Exaggerate size and
+contrast instead of adding things.
 
-Examples:
+Narration about something enormously expensive:
 
-Narration about a missing recording:
+reference character holding one tiny coin beside one gold race car towering
+over him
 
-place the reference character in an archive surrounded by reels, storage
-cases, equipment, and an empty shelf where the missing material would logically
-belong.
+Narration about a rule nobody understands:
 
-Narration about contradictory evidence:
+reference character staring, eyes spinning, at one huge scroll unrolling past
+the frame edge
 
-place the reference character in an evidence room with photographs, physical
-objects, diagrams, and mismatched archival materials arranged on a worktable.
+Narration about a team of hundreds:
 
-Narration about a strange scientific claim:
+reference character dwarfed by three doodle engineers, a sign reading "x200"
 
-place the reference character in an experimental workshop beside physical
-apparatus representing the claim.
-
-Narration about a ridiculous conspiracy:
-
-place the reference character in a cramped evidence workshop surrounded by
-physically plausible but increasingly suspicious objects.
-
-The location should help make an abstract narration concrete.
+The metaphor carries the beat. Never build a room to explain it.
 
 46. FINAL VALIDATION
 
@@ -1887,23 +1871,24 @@ Check:
 if Pass 1 had no locations, locations were generated
 every beat has a physical location
 generated locations are relevant to the narration
-generated locations are visually specific
-generated locations are physically believable
-generated locations are not unnecessarily generic
 similar consecutive beats reuse locations when appropriate
-substantially different subjects can receive different locations
+4 to 8 locations in total
 every location has a corresponding plan.locations entry
-every location has a 12 to 18 word visual_anchor
-location anchors describe stable physical features
-location anchors contain materials
-location anchors contain one fixed landmark feature
-location anchors contain the dominant colour of the space
-location anchors contain no movable objects
-location anchors contain no dates
-location anchors contain no era names
-location anchors contain no abstract concepts
-beat prompts do not repeat location anchors
-setting_anchor is empty unless genuinely useful
+every visual_anchor is ""
+setting_anchor is ""
+no beat describes a room, wall, floor, sky or scenery
+
+WHITE PAGE (Section 0B)
+
+Check:
+
+every frame is the reference character plus at most two other things
+no group larger than three figures
+colour on one or two key objects only
+at most 1 beat in 4 carries a quoted label, 1 to 3 words
+at most 1 beat in 6 has a photo cutout, never two in a row
+every photo cutout uses the exact phrase and is one object, never a person
+every photo beat's image_prompt_alt is a doodle, with no photo cutout
 
 REFERENCE CHARACTER
 
@@ -2013,12 +1998,9 @@ clear subject identity
 clear physical action
 clear spatial relationship
 explicit framing
-one precise material detail
-one saturated colour covering a large area of the frame
-the important object physically placed
-no floating large objects
+one named colour on the key object
+the important object placed relative to the reference character
 recurring characters remain consistent
-recurring locations remain consistent
 story progression is visually represented
 reference character is visually integrated rather than awkwardly pasted into
 the frame

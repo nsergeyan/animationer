@@ -83,14 +83,26 @@ ELEVENLABS_API_KEY = os.getenv("ELEVENLABS_API_KEY")
 #     driven by a measurement: across five shipped videos every frame carried
 #     ~6 separately placed objects at ~0.5 seconds of screen time each, far
 #     more than a viewer can read before the cut. Stated positively per rule 1.
+#
+# 2026-10-07: moved to a white-page look in the spirit of Casually Explained.
+# No rooms at all: the character plus a few things on plain white, colour on
+# one or two key objects only. Two deliberate openings, each scoped to "only
+# where the scene asks" so the old defences still hold everywhere else:
+#   - Quoted labels (1-3 words) for the joke. The scribble clause stays for
+#     every other bit of writing, which is what stops invented misspelled text.
+#   - A rare photo cutout of one object as a punchline. pass2 caps it at 1 beat
+#     in 6 and pipeline.py warns past that, because photo wording is exactly
+#     what used to drag whole frames photographic.
 STYLE_BLOCK = (
-    "Crude MS Paint doodle drawn shakily with a mouse. Thick wobbly black "
-    "outlines of uneven weight, flat bucket-filled colour, every shape one "
-    "uniform block with hard edges, flat 2D, childlike, deliberately badly "
-    "drawn. A simple picture: few objects, drawn large, plain background. "
-    "All writing is wobbly unreadable scribble, never real letters. Add no "
-    "lettering the scene did not ask for. No application window, toolbar or "
-    "canvas edge. Keep the subject clear of all four edges. 16:9 horizontal."
+    "Crude MS Paint doodle drawn shakily with a mouse on a plain white page. "
+    "Thick wobbly black outlines, flat 2D, deliberately low-effort. People are "
+    "simple doodle figures with big round eyes and exaggerated faces. Mostly "
+    "black lines on white, with a flat bucket-fill colour on one or two key "
+    "objects only. A few things, drawn large, floating on empty white. Words "
+    "appear only where the scene quotes them, in wobbly hand-drawn capitals; "
+    "all other writing is unreadable scribble. A photo cutout appears only "
+    "where the scene asks for one. No application window, toolbar or canvas "
+    "edge. Keep the subject clear of all four edges. 16:9 horizontal."
 )
 
 # --- Sleep prevention -------------------------------------------------------
@@ -270,9 +282,11 @@ HEIGHT = 1080
 # predict a finished video's length without running a render. Change one, change
 # the other, or the length estimate silently drifts from reality.
 ZOOM_MIN = 1.0                    # start scale of a push in
-ZOOM_MAX = 1.10                   # end scale (was 1.06, invisible at this pace)
+# Deliberately subtle since the white-page style (2026-10-07): the look is
+# near-static frame swaps, so the move should be felt more than seen.
+ZOOM_MAX = 1.05                   # end scale (was 1.10)
 PAN_SCALE = 1.06                  # fixed scale a pan holds
-PAN_PERCENT = 2.5                 # travel, under the 2.83% ceiling for 1.06
+PAN_PERCENT = 1.5                 # travel (was 2.5), under the 2.83% ceiling
 
 # Two kinds of boundary now. Within a location beats hard cut; a change of
 # location dissolves. A dissolve's tail is consumed by the overlap so it costs

@@ -28,15 +28,18 @@ export const HEIGHT = 1080;
 //
 // config.py's STYLE_BLOCK now asks for clear space around all four edges,
 // which is what makes the larger crop safe on newly generated art.
+//
+// 2026-10-07: halved for the white-page style, which wants near-static frame
+// swaps. The move should be felt more than seen. Mirrors config.ZOOM_MAX.
 export const ZOOM_MIN = 1.0;      // where a push starts: no crop at all
-export const ZOOM_SCALE = 1.1;    // where it ends
+export const ZOOM_SCALE = 1.05;   // where it ends (was 1.1)
 
 // The pan holds a fixed scale for the whole beat, so it pays the crop the
 // entire time and is kept lower than the push.
 // Safe pan for a given scale: PAN_PERCENT <= 50 * (S - 1) / S
 //   1.03 -> 1.46% max     1.06 -> 2.83% max     1.10 -> 4.55% max
 export const PAN_SCALE = 1.06;
-export const PAN_PERCENT = 2.5;   // under the 2.83% ceiling for 1.06
+export const PAN_PERCENT = 1.5;   // was 2.5; under the 2.83% ceiling for 1.06
 
 // --- Cutting ---------------------------------------------------------------
 // A single 0.5s crossfade on every beat was 8% of a 6.2s beat and would be 25%

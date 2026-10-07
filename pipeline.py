@@ -11,463 +11,514 @@ from modules import transcriber
 FLOW_RUNNER = config.ROOT_DIR / "flow_runner" / "runner.py"
 
 NEW_SCRIPT = {
-  "topic": "tech-university-explained",
+  "topic": "roman-empire-explained",
   "format": "explainer",
   "plan": {
-    "spine_question": "What is a technical university and how does it work?",
+    "spine_question": "How did a small mud village build an empire that shaped the modern world, and why did it fall?",
     "deflations": [
       {
-        "assumed": "Tech universities are only for fixing laptops and writing computer code.",
-        "actual": "They cover all major engineering branches, applied physical sciences, and practical innovation.",
-        "who_decided": "Public misconception vs actual academic curriculum.",
-        "build_beat": "Most people think it is only for coding geniuses or mechanical wizards.",
-        "drop_beat": "But the truth is much more useful than that."
+        "assumed": "The Roman Empire fell completely in 476 AD.",
+        "actual": "Only the Western half collapsed in 476 AD, while the Eastern half survived for another thousand years as the Byzantine Empire.",
+        "who_decided": "Modern historians created the term Byzantine, but citizens always called themselves Romans.",
+        "build_beat": "Standard history books claim the Roman Empire ended right there.",
+        "drop_beat": "The Eastern half survived and lasted one thousand years!"
       }
     ],
     "specifics": [
       {
-        "fact": "Technical universities emphasize applied research, industrial partnerships, and laboratory training over pure theoretical lectures.",
-        "source": "European Association for International Education",
-        "beat": "Half of your time is spent in laboratories and workshops."
+        "fact": "Rome built over 50,000 miles of paved stone roads across its territories.",
+        "source": "Oxford Classical Dictionary",
+        "beat": "To move troops fast, engineers built fifty thousand MILES of roads."
+      },
+      {
+        "fact": "Julius Caesar received 23 stab wounds during his assassination in 44 BC.",
+        "source": "Suetonius, Life of Julius Caesar",
+        "beat": "Twenty three separate times..."
       }
     ],
     "facts_to_check": [
       {
-        "claim": "Technical university programs require practical internships or company-partnered thesis work.",
-        "source": "Global Accreditation Board for Engineering and Technology"
+        "claim": "Suetonius reports Caligula was said to plan making his horse Incitatus consul.",
+        "source": "Suetonius, Lives of the Twelve Caesars"
       }
     ],
     "locations": [
-      {
-        "name": "campus laptop repair counter",
-        "visual_anchor": "pale green painted cinderblock walls, speckled grey linoleum floor, one long built-in red laminate counter, dominant red"
-      },
-      {
-        "name": "technical university glass atrium",
-        "visual_anchor": "tall glass curtain walls, polished grey concrete floor, exposed steel roof trusses, one broad orange staircase, dominant orange"
-      },
-      {
-        "name": "old humanities library hall",
-        "visual_anchor": "dark oak-panelled walls, deep red carpet, one carved stone fireplace, arched plaster ceiling, dominant deep red"
-      },
-      {
-        "name": "university engine workshop",
-        "visual_anchor": "white glazed tile walls, oil-stained grey concrete floor, one yellow overhead gantry crane beam, dominant yellow"
-      },
-      {
-        "name": "tiered lecture auditorium",
-        "visual_anchor": "pale beige walls, steep curved tiers of fixed blue folding seats, one wide timber stage, dominant blue"
-      },
-      {
-        "name": "electronics and solar testing hall",
-        "visual_anchor": "white glazed brick walls, black rubber floor, one sawtooth glass roof, dominant white with green steel columns"
-      },
-      {
-        "name": "open engineering project hall",
-        "visual_anchor": "whitewashed brick walls, green epoxy floor, one long steel mezzanine walkway along the back, dominant green"
-      },
-      {
-        "name": "applied mathematics seminar room",
-        "visual_anchor": "pale blue painted walls, grey linoleum floor, one wall-length green chalkboard, tall timber window frames, dominant pale blue"
-      },
-      {
-        "name": "professor's workshop office",
-        "visual_anchor": "exposed red brick walls, oak parquet floor, one tall steel-framed industrial window, dominant brick red"
-      },
-      {
-        "name": "partner factory production floor",
-        "visual_anchor": "corrugated blue steel walls, grey concrete floor with painted yellow lanes, one overhead conveyor gantry, dominant blue"
-      },
-      {
-        "name": "student robotics club garage",
-        "visual_anchor": "purple painted breeze-block walls, grey rubber floor tiles, one roll-up steel garage door, dominant purple"
-      },
-      {
-        "name": "overnight hackathon hall",
-        "visual_anchor": "dark navy painted walls, grey carpet tiles, one high timber gallery balcony, dominant navy blue"
-      },
-      {
-        "name": "partner company design office",
-        "visual_anchor": "glass partition walls, pale oak floorboards, teal painted steel columns, one white spiral staircase, dominant teal"
-      },
-      {
-        "name": "campus career fair sports hall",
-        "visual_anchor": "tall arched windows, varnished wooden sports floor with painted court lines, yellow steel roof beams, dominant yellow"
-      },
-      {
-        "name": "campus crossroads plaza",
-        "visual_anchor": "grey cobblestone paving, a sandstone colonnade on one side, a glass-and-steel facade opposite, dominant warm sandstone"
-      },
-      {
-        "name": "graduation project exhibition hall",
-        "visual_anchor": "white gallery walls, polished grey concrete floor, one tall red steel mezzanine, dominant white and red"
-      }
+      {"name": "Tiber hut village", "visual_anchor": ""},
+      {"name": "legion march route", "visual_anchor": ""},
+      {"name": "Senate chamber", "visual_anchor": ""},
+      {"name": "Pax Romana city", "visual_anchor": ""},
+      {"name": "imperial throne room", "visual_anchor": ""},
+      {"name": "Constantinople", "visual_anchor": ""},
+      {"name": "sacked Rome", "visual_anchor": ""},
+      {"name": "modern capital city", "visual_anchor": ""}
     ],
     "setting_anchor": ""
   },
   "beats": [
     {
-      "narration": "[curious] Is a technical university just a giant room full of people fixing broken laptops?",
-      "location": "campus laptop repair counter",
-      "image_prompt": "a student technician in a red polo shirt bends over an opened silver laptop on a red rubber mat while reference character peers curiously from the right edge, medium shot",
-      "image_prompt_alt": "high-angle shot along the counter, reference character standing at the far left end with a curious look, a student technician in a red polo shirt hunched over opened silver laptops"
+      "location": "Tiber hut village",
+      "narration": "[curious] How did a small mud village build a massive ancient empire?",
+      "image_prompt": "reference character crouches curiously beside one tiny brown mud hut casting a long red shadow shaped like a domed city, wide shot",
+      "image_prompt_alt": "reference character stands at frame right, head tilted curiously, above one small brown thatched mud hut whose long red shadow forms a sprawling domed city, high-angle shot"
     },
     {
-      "narration": "Most people think it is only for coding geniuses or mechanical wizards.",
-      "location": "campus laptop repair counter",
-      "image_prompt": "reference character stands between a student in a grey hoodie hunched at a black keyboard and an oil-stained student in brown overalls kneeling beside a red gearbox, skeptical, wide shot",
-      "image_prompt_alt": "low-angle shot, an oil-stained student in brown overalls kneeling beside a red gearbox in the foreground, a student in a grey hoodie at a black keyboard behind, reference character between, skeptical"
+      "location": "Tiber hut village",
+      "narration": "Rome began as a tiny cluster of huts in central Italy.",
+      "image_prompt": "three doodle villagers in rough brown tunics build round huts with yellow thatch while reference character watches attentively from the edge, long shot",
+      "image_prompt_alt": "reference character leans at the far left edge, mildly interested, as three doodle villagers in rough brown tunics stack yellow thatch onto small round mud huts, medium-wide shot"
     },
     {
-      "narration": "[surprised] But the truth is much more USEFUL than that.",
-      "location": "campus laptop repair counter",
-      "image_prompt": "reference character turns in surprise toward an open back doorway revealing a tall orange robotic arm beside a small white wind turbine model on a steel table, medium-wide shot",
-      "image_prompt_alt": "close-up of reference character's surprised face at the foreground right, a tall orange robotic arm and a small white wind turbine model on a steel table visible beyond the doorway"
+      "location": "Tiber hut village",
+      "narration": "[understated] Nobody expected them to dominate.",
+      "image_prompt": "reference character shrugs, unimpressed, beside one tiny brown mud hut dwarfed by one towering grey stone fortress at frame left, medium shot",
+      "image_prompt_alt": "reference character stands between one small brown mud hut and one towering grey stone fortress, glancing down at the hut with a deadpan shrug, low-angle wide shot"
     },
     {
-      "narration": "Let us break down what a tech university actually is.",
-      "location": "technical university glass atrium",
-      "image_prompt": "students in blue overalls and yellow goggles climb the steps in a steady stream while reference character stands attentive at the bottom left, wide shot at eye level",
-      "image_prompt_alt": "high-angle shot from the upper landing, students in blue overalls and yellow goggles climbing toward camera, reference character small and attentive at the foot of the steps"
+      "location": "Tiber hut village",
+      "narration": "But they loved fighting.",
+      "image_prompt": "two doodle villagers in brown tunics clash wooden sticks behind round red shields while reference character watches from the foreground, mildly surprised, medium shot",
+      "image_prompt_alt": "reference character sits at the lower right edge, eyebrows raised, as two doodle villagers in brown tunics swing wooden sticks at each other behind round red shields, wide side angle"
     },
     {
-      "narration": "[deadpan] Without any complicated academic words.",
-      "location": "technical university glass atrium",
-      "image_prompt": "reference character sits on a step with a deadpan expression beside one enormous closed grey textbook with a cracked leather spine lying shut on the stair, medium shot",
-      "image_prompt_alt": "overhead shot of reference character seated deadpan on the stair, one enormous closed grey textbook with a cracked leather spine lying across the step at his feet"
+      "location": "Tiber hut village",
+      "narration": "And they never surrendered.",
+      "image_prompt": "one doodle villager in a dented bronze helmet stands firm behind one red shield, a speech bubble reading \"NEVER\", reference character nodding slowly, close-up",
+      "image_prompt_alt": "reference character stands at frame left, nodding slowly, beside one stubborn doodle villager in a dented bronze helmet planted firmly behind one red shield with his chin raised, low-angle medium shot"
     },
     {
-      "narration": "A technical university focuses mainly on science, technology, engineering, and mathematics.",
-      "location": "technical university glass atrium",
-      "image_prompt": "reference character looks up with curiosity at large models hanging from the trusses: a green double helix, a steel bridge section, a red rocket, a white molecule, low-angle wide shot",
-      "image_prompt_alt": "wide shot from the upper landing, reference character leaning on the balcony rail beside a hanging red rocket model, a steel bridge section, green double helix and white molecule suspended beyond, curious"
+      "location": "Tiber hut village",
+      "narration": "[deadpan] If an enemy destroyed one army, Rome simply sent another.",
+      "image_prompt": "two fresh doodle soldiers in red tunics march straight past one flattened red-tunic soldier, reference character deadpan at the edge, wide shot",
+      "image_prompt_alt": "reference character stands in the foreground right, unimpressed, as two fresh doodle soldiers in red tunics step over one flattened red-tunic soldier and keep marching, low-angle shot"
     },
     {
-      "narration": "[hesitates] You might hear people call them polytechnics or institutes of TECHNOLOGY...",
-      "location": "technical university glass atrium",
-      "image_prompt": "reference character tilts his head hesitantly before a wooden plinth holding three small campus models: a red brick tower, a glass cube, a white concrete dome, medium shot",
-      "image_prompt_alt": "close three-quarter view across three small campus models on a wooden plinth, red brick tower nearest, glass cube and white concrete dome behind, reference character hesitating at the far side"
+      "location": "legion march route",
+      "narration": "Soon they defeated Carthage and controlled the whole Mediterranean sea.",
+      "image_prompt": "one Roman warship with a red sail rams one sinking purple-sailed Carthaginian ship while reference character watches from the lower frame edge, wide shot",
+      "image_prompt_alt": "reference character stands at the left edge, eyebrows raised, as one long oared warship with a red sail splits one smaller purple-sailed ship in half, side-on long shot"
     },
     {
-      "narration": "They are all basically describing the same idea.",
-      "location": "technical university glass atrium",
-      "image_prompt": "reference character nods slowly beside the three campus models on the wooden plinth, each topped with an identical small orange steel gear, medium close-up",
-      "image_prompt_alt": "wide shot of the wooden plinth, three campus models each crowned with an identical small orange steel gear, reference character standing back from them nodding"
+      "location": "legion march route",
+      "narration": "Then they kept expanding.",
+      "image_prompt": "reference character watches, mildly concerned, as one red ink stain spreads outward across one giant outline map at his feet, overhead shot",
+      "image_prompt_alt": "reference character stands at the corner of one giant outline map, staring down with mild concern, as one red ink stain creeps steadily toward his shoes, low three-quarter view"
     },
     {
-      "narration": "[sarcastic] A regular university loves big heavy BOOKS and history lessons.",
-      "location": "old humanities library hall",
-      "image_prompt": "a student in a green knitted sweater sits behind a towering stack of leather-bound books on an oak table while reference character watches from the far end, mildly amused, wide shot",
-      "image_prompt_alt": "close-up past a towering stack of leather-bound books on an oak table, a student in a green knitted sweater almost hidden behind it, reference character leaning in from the left, mildly amused"
+      "location": "legion march route",
+      "narration": "Roman legions marched thousands of miles.",
+      "image_prompt": "three doodle legionaries in red cloaks and plumed bronze helmets march in step while reference character trudges tiredly behind them, side-on long shot",
+      "image_prompt_alt": "reference character, seen from behind showing the back of his plain white head with no face, trails three doodle legionaries in red cloaks and plumed bronze helmets marching toward frame right, rear wide shot"
     },
     {
-      "narration": "They spend years asking why things happened in the past.",
-      "location": "old humanities library hall",
-      "image_prompt": "a student in a green knitted sweater leans over an open atlas of faded battle maps beside a brass desk lamp, reference character seated nearby with chin on fist, patient, medium two-shot",
-      "image_prompt_alt": "high-angle shot over the oak table, a large open atlas of faded battle maps between a student in a green knitted sweater and reference character, chin on fist, patient"
+      "location": "legion march route",
+      "narration": "[flatly] To move troops fast, engineers built fifty thousand MILES of roads.",
+      "image_prompt": "two doodle engineers in brown tunics lay grey paving stones on one road unrolling past the frame edge, reference character looking tired, medium-wide shot",
+      "image_prompt_alt": "reference character sits wearily at frame left as two doodle engineers in brown tunics fit square grey paving stones onto one road stretching far past the frame edge, high-angle shot"
     },
     {
-      "narration": "[understated] A tech university asks how to BUILD something today.",
-      "location": "university engine workshop",
-      "image_prompt": "students in blue overalls and yellow goggles gather around a bare steel engine block mounted on a red stand while reference character watches from the edge, interested, medium-wide shot",
-      "image_prompt_alt": "low-angle close shot of a bare steel engine block on a red stand, students in blue overalls and yellow goggles behind it, reference character at the left edge, interested"
+      "location": "legion march route",
+      "narration": "These stone highways connected distant towns and made trade very simple.",
+      "image_prompt": "one doodle merchant pulls one wooden cart of red clay jars along a grey stone road while reference character nods, mildly impressed, medium shot",
+      "image_prompt_alt": "reference character stands at frame left, mildly impressed, as one doodle merchant in a brown tunic leads one wooden cart stacked with red clay jars along a straight grey stone road, three-quarter view"
     },
     {
-      "narration": "Imagine you want to study cars.",
-      "location": "university engine workshop",
-      "image_prompt": "reference character leans against the front of a stripped red car chassis on black wheels in the centre of the floor, curious, low-angle three-quarter view",
-      "image_prompt_alt": "high-angle shot looking down on a stripped red car chassis resting on black wheels, reference character standing beside its front axle, curious"
+      "location": "Senate chamber",
+      "narration": "At first, Rome was a republic.",
+      "image_prompt": "three doodle senators in white togas with red borders debate beneath a small banner reading \"SPQR\", reference character watching attentively at frame right, medium-wide shot",
+      "image_prompt_alt": "reference character sits at the lower left edge, attentive, as three doodle senators in white togas with red borders argue and gesture beneath one long red banner, low-angle shot"
     },
     {
-      "narration": "[excited] A classic university teaches you the HISTORY of transport.",
-      "location": "old humanities library hall",
-      "image_prompt": "an elderly lecturer in a tweed waistcoat stands at a wooden lectern beside an easel holding a large painted canvas of a horse-drawn carriage, reference character in an armchair, politely attentive, medium-wide shot",
-      "image_prompt_alt": "wide shot past the shoulder of an elderly lecturer in a tweed waistcoat, a painted horse-drawn carriage canvas on an easel, reference character in an armchair facing him, politely attentive"
+      "location": "Senate chamber",
+      "narration": "Citizens elected their main leaders.",
+      "image_prompt": "two doodle citizens in brown tunics drop small white pebbles into one tall red clay urn while reference character looks curious, close-up",
+      "image_prompt_alt": "reference character crouches beside one tall red clay urn, curious, as two doodle citizens in brown tunics drop small white pebbles into its narrow mouth, low side angle"
     },
     {
-      "narration": "You read about old carriages and write long essays.",
-      "location": "old humanities library hall",
-      "image_prompt": "a student in a green knitted sweater sits over one long curling sheet of paper spilling off the oak table onto the carpet, reference character beside him looking tired, medium shot",
-      "image_prompt_alt": "low floor-level shot along one long curling sheet of paper trailing across the carpet to the oak table, a student in a green knitted sweater above it, reference character slumped nearby, tired"
+      "location": "Senate chamber",
+      "narration": "[sarcastic] Rich politicians hated sharing power.",
+      "image_prompt": "one plump doodle senator in a red-bordered white toga clutches one bulging gold cloth sack away from reference character, who looks unimpressed, medium shot",
+      "image_prompt_alt": "reference character stands at frame right, arms folded, unimpressed, as one plump doodle senator in a red-bordered white toga hugs one bulging gold cloth sack and turns his back, wide shot"
     },
     {
-      "narration": "[slows down] A tech university gives you tools... and tells you to build an ENGINE.",
-      "location": "university engine workshop",
-      "image_prompt": "a grey-bearded professor in a brown corduroy jacket stands beside a red steel toolbox and an engine block facing students in blue overalls and yellow goggles, reference character nearby, eyebrows raised, medium-wide shot",
-      "image_prompt_alt": "wide shot past the students in blue overalls and yellow goggles toward a grey-bearded professor in a brown corduroy jacket beside a red steel toolbox and engine block, reference character right, eyebrows raised"
+      "location": "Senate chamber",
+      "narration": "Successful military generals became more popular than elected government officials.",
+      "image_prompt": "two cheering doodle soldiers lift one doodle general in a red cloak onto their shoulders while reference character looks skeptical at the edge, medium-wide shot",
+      "image_prompt_alt": "reference character leans at frame left with a skeptical squint as one doodle general in a red cloak rides high on the shoulders of two cheering doodle soldiers, low-angle shot"
     },
     {
-      "narration": "That hands-on style is the core difference.",
-      "location": "university engine workshop",
-      "image_prompt": "students in blue overalls and yellow goggles lower a steel piston into an engine block from a yellow chain hoist, reference character leaning close at the right, genuinely interested, close-up",
-      "image_prompt_alt": "medium shot from above the engine block, a steel piston hanging on a yellow chain hoist, students in blue overalls and yellow goggles guiding it down, reference character opposite, genuinely interested"
+      "location": "Senate chamber",
+      "narration": "General Julius Caesar marched his army into Rome and took power.",
+      "image_prompt": "Julius Caesar in a white toga with a green laurel wreath leads two red-cloaked legionaries forward while reference character steps aside warily, low-angle medium shot",
+      "image_prompt_alt": "reference character steps aside at frame left, wary, as a tall lean balding man with short grey hair, clean-shaven, in a white toga with a green laurel wreath leads two red-cloaked legionaries straight toward the viewer, frontal wide shot"
     },
     {
-      "narration": "[light chuckle] You do not just sit in huge lecture halls sleeping.",
-      "location": "tiered lecture auditorium",
-      "image_prompt": "reference character sits upright and alert in a blue seat among students in grey hoodies slumped asleep on their fold-down desks, faintly amused, high-angle wide shot",
-      "image_prompt_alt": "medium side shot along one tier, students in grey hoodies asleep with heads on fold-down desks, reference character wide awake in the nearest blue seat, faintly amused"
+      "location": "Senate chamber",
+      "narration": "Senators felt threatened by him.",
+      "image_prompt": "three doodle senators in red-bordered white togas whisper nervously behind Julius Caesar in a white toga with a green laurel wreath, reference character eavesdropping skeptically, medium shot",
+      "image_prompt_alt": "reference character leans in at the right edge, skeptical, as three doodle senators in red-bordered white togas huddle and whisper behind a tall lean balding man with short grey hair, clean-shaven, in a white toga with a green laurel wreath, wide side angle"
     },
     {
-      "narration": "Half of your time is spent in laboratories and workshops.",
-      "location": "electronics and solar testing hall",
-      "image_prompt": "students in blue overalls and yellow goggles bend over long steel workbenches of small grey instrument boxes with green wavy line displays, reference character strolling between benches, interested, wide shot at eye level",
-      "image_prompt_alt": "close-up of one small grey instrument box with a green wavy line display on a steel workbench, students in blue overalls and yellow goggles behind, reference character leaning in, interested"
+      "location": "Senate chamber",
+      "narration": "[sighs] So they stabbed him.",
+      "image_prompt": "three doodle senators in red-bordered white togas close in on Julius Caesar in a white toga with a green laurel wreath with small daggers, reference character wincing at the edge, wide shot",
+      "image_prompt_alt": "reference character covers his eyes at the far right edge as three doodle senators in red-bordered white togas close in with small daggers around a tall lean balding man with short grey hair, clean-shaven, in a white toga with a green laurel wreath, high-angle shot"
     },
     {
-      "narration": "[suspicious tone] You will work in teams with real EQUIPMENT.",
-      "location": "electronics and solar testing hall",
-      "image_prompt": "students in blue overalls and yellow goggles gather around a large orange industrial robot arm bolted to the floor, reference character peering warily around a steel cabinet, medium-wide shot",
-      "image_prompt_alt": "low-angle shot beneath the large orange industrial robot arm raised overhead, students in blue overalls and yellow goggles at its base, reference character at the frame edge, wary but curious"
+      "location": "Senate chamber",
+      "narration": "Twenty three separate times...",
+      "image_prompt": "reference character stares, weary and wincing, at one torn white toga full of small holes beside one fallen green laurel wreath, close-up",
+      "image_prompt_alt": "reference character crouches at frame left with a pained, tired expression beside one crumpled white toga riddled with small tears and one dropped green laurel wreath, overhead shot"
     },
     {
-      "narration": "You might design solar panels or test microchips.",
-      "location": "electronics and solar testing hall",
-      "image_prompt": "a student in blue overalls and yellow goggles stands beside a large blue solar panel angled on a steel frame, another bends over a green circuit board, reference character between them, impressed, medium three-shot",
-      "image_prompt_alt": "wide shot, one student in blue overalls and yellow goggles over a green circuit board in front, another beside a large blue solar panel on a steel frame, reference character between, impressed"
+      "location": "Senate chamber",
+      "narration": "Killing Caesar did not restore freedom to the broken republic.",
+      "image_prompt": "reference character sighs, disappointed, beside one white marble bench cracked clean in half with one torn red banner draped across it, medium shot",
+      "image_prompt_alt": "reference character sits slumped on the end of one white marble bench split down the middle, one torn red banner hanging beside him, low wide angle"
     },
     {
-      "narration": "[annoyed] What subjects can you actually STUDY there?",
-      "location": "open engineering project hall",
-      "image_prompt": "reference character seen from behind, showing the back of his plain white head with no face, overlooks bays holding a black server cabinet, a red model bridge, a white robot, high-angle wide shot",
-      "image_prompt_alt": "wide eye-level shot across the hall floor, bays with a black server cabinet, a red model bridge and a white robot, reference character standing in the central aisle looking between them, curious"
+      "location": "Senate chamber",
+      "narration": "A brutal civil war broke out across the Roman lands.",
+      "image_prompt": "one doodle soldier in a red cloak slams shields with one doodle soldier in a blue cloak while reference character ducks at the edge, wide shot",
+      "image_prompt_alt": "reference character crouches low at the right edge, alarmed, as one doodle soldier in a red cloak and one in a blue cloak crash round shields together, side angle medium shot"
     },
     {
-      "narration": "Computer science is obviously a massive department.",
-      "location": "open engineering project hall",
-      "image_prompt": "students in grey hoodies sit at a long white desk of monitors showing green wavy lines beside tall black server cabinets, reference character leaning on one cabinet, mildly impressed, medium shot",
-      "image_prompt_alt": "close three-quarter view down the long white desk, students in grey hoodies at monitors with green wavy lines, tall black server cabinets behind, reference character at the far end, mildly impressed"
+      "location": "Senate chamber",
+      "narration": "[understated] Caesar's adopted son won.",
+      "image_prompt": "Augustus in a white toga and a purple cloak with a gold wreath stands calmly over one dropped blue shield, reference character mildly surprised nearby, medium shot",
+      "image_prompt_alt": "reference character at frame left, eyebrows raised, watches a slim young man with short curly fair hair, clean-shaven, in a white toga and a purple cloak with a gold wreath stand calmly over one dropped blue shield, low-angle wide shot"
     },
     {
-      "narration": "[flatly] Civil engineering teaches you how bridges do not FALL.",
-      "location": "open engineering project hall",
-      "image_prompt": "students in blue overalls and yellow goggles stack steel weights onto a long red model bridge spanning two concrete blocks while reference character crouches beneath it, deadpan, medium-wide shot",
-      "image_prompt_alt": "low floor-level shot from under the long red model bridge spanning two concrete blocks, reference character crouched in the foreground, deadpan, students in blue overalls and yellow goggles stacking steel weights above"
+      "location": "Senate chamber",
+      "narration": "His name was Augustus.",
+      "image_prompt": "Augustus in a white toga and a purple cloak with a gold wreath poses proudly beside a small sign reading \"AUGUSTUS\", reference character looking curious, medium two-shot",
+      "image_prompt_alt": "reference character stands close at frame right, curious, studying a slim young man with short curly fair hair, clean-shaven, in a white toga and a purple cloak with a gold wreath who poses proudly beside one small wooden sign, close two-shot"
     },
     {
-      "narration": "Mechanical engineering focuses on machines and robotics.",
-      "location": "open engineering project hall",
-      "image_prompt": "a white four-legged walking robot steps across the floor toward reference character, who leans back with wide curious eyes, students in blue overalls and yellow goggles watching behind, low-angle shot",
-      "image_prompt_alt": "wide side view, a white four-legged walking robot mid-stride between students in blue overalls and yellow goggles on the left and reference character on the right, leaning back, curious"
+      "location": "Pax Romana city",
+      "narration": "Augustus became the very first official emperor of Rome.",
+      "image_prompt": "Augustus in a white toga and a purple cloak with a gold wreath raises one hand to a cheering doodle crowd, reference character skeptical at the edge, low-angle shot",
+      "image_prompt_alt": "reference character stands in the foreground left with arms folded, skeptical, as a slim young man with short curly fair hair, clean-shaven, in a white toga and a purple cloak with a gold wreath raises one hand to a cheering doodle crowd, medium-wide shot"
     },
     {
-      "narration": "[drawn out] Electrical engineering deals with power grids and CIRCUIT boards...",
-      "location": "open engineering project hall",
-      "image_prompt": "a tall steel model power pylon strung with orange cables stands beside a giant green circuit board laid flat on trestles, reference character walking along its edge, fascinated, overhead shot",
-      "image_prompt_alt": "eye-level medium shot, reference character standing beside a giant green circuit board on trestles, a tall steel model power pylon with orange cables rising behind him, fascinated"
+      "location": "Pax Romana city",
+      "narration": "He launched a famous two-hundred-year golden age called Pax Romana.",
+      "image_prompt": "Augustus in a white toga and a purple cloak with a gold wreath unrolls one long gold banner reading \"PAX ROMANA\" while reference character looks quietly interested, wide shot",
+      "image_prompt_alt": "reference character sits at frame right, quietly interested, as a slim young man with short curly fair hair, clean-shaven, in a white toga and a purple cloak with a gold wreath unrolls one long gold banner across the frame, high-angle shot"
     },
     {
-      "narration": "There are also newer fields like biotechnology and data analysis.",
-      "location": "open engineering project hall",
-      "image_prompt": "a student in a white lab coat and purple gloves stands at a white steel cabinet with a round window beside a tall monitor of blue bar shapes, reference character between them, intrigued, medium shot",
-      "image_prompt_alt": "wide shot, intrigued reference character foreground left, a tall monitor of blue bar shapes behind, a student in a white lab coat and purple gloves at a round-windowed white steel cabinet"
+      "location": "Pax Romana city",
+      "narration": "[thoughtful] Trade flourished everywhere.",
+      "image_prompt": "two doodle merchants in brown tunics swap one red clay jar for one bolt of purple cloth while reference character looks interested, medium two-shot",
+      "image_prompt_alt": "reference character leans in at the left edge, interested, as two doodle merchants in brown tunics hand over one red clay jar and one rolled bolt of purple cloth, close side angle"
     },
     {
-      "narration": "[gasps] But wait... do you need to be a MATH genius?",
-      "location": "applied mathematics seminar room",
-      "image_prompt": "reference character stands small and startled in the foreground as the chalkboard behind him swarms with dense white chalk marks from edge to edge, low-angle wide shot",
-      "image_prompt_alt": "close-up of reference character's startled face in the right foreground, dense white chalk marks crowding the green chalkboard behind him"
+      "location": "Pax Romana city",
+      "narration": "Cities expanded very quickly.",
+      "image_prompt": "reference character looks up, impressed, as one white marble temple and one red-roofed apartment block sprout tall around him, low-angle wide shot",
+      "image_prompt_alt": "reference character stands small between one rising white marble temple and one fast-growing red-roofed apartment block, turning his head in surprise, high-angle long shot"
     },
     {
-      "narration": "You definitely need math... but it is applied math.",
-      "location": "applied mathematics seminar room",
-      "image_prompt": "a grey-bearded professor in a brown corduroy jacket stands at the chalkboard beside a chalk drawing of a bridge arch, a small wooden bridge model on the desk, reference character nodding, medium shot",
-      "image_prompt_alt": "close shot of a small wooden bridge model on the desk in the foreground, a grey-bearded professor in a brown corduroy jacket beside a chalk bridge arch behind it, reference character nodding at the side"
+      "location": "Pax Romana city",
+      "narration": "Life seemed quite good.",
+      "image_prompt": "reference character lounges contentedly on one white marble bench while one smiling doodle Roman offers him one bowl of purple grapes, medium shot",
+      "image_prompt_alt": "reference character sits back on one white marble bench, one arm along its edge, content, beside one smiling doodle Roman in a tunic holding out one bowl of purple grapes, three-quarter view"
     },
     {
-      "narration": "[nervous] You learn formulas because you need them to solve REAL problems.",
-      "location": "applied mathematics seminar room",
-      "image_prompt": "students in blue overalls and yellow goggles measure a sagging wooden beam laid across two desks, one steel tape stretched beneath it, reference character watching the bend anxiously, medium close-up",
-      "image_prompt_alt": "low-angle shot beneath a sagging wooden beam laid across two desks, students in blue overalls and yellow goggles crouched on either side, reference character behind them, anxious"
+      "location": "Pax Romana city",
+      "narration": "Massive stone arenas were constructed to entertain millions of citizens.",
+      "image_prompt": "reference character stands tiny beside the towering curved wall of the Colosseum in pale yellow stone, looking up in awe, low-angle long shot",
+      "image_prompt_alt": "reference character stands at the lower right corner, awed, gazing up at one towering round arena of pale yellow stone ringed with stacked rows of arches, wide eye-level shot"
     },
     {
-      "narration": "It is not math just for fun on a blackboard.",
-      "location": "applied mathematics seminar room",
-      "image_prompt": "reference character leans back against the chalkboard, relaxed and convinced, beside a wheeled cart carrying a red steel pulley rig with hanging iron weights, three-quarter view",
-      "image_prompt_alt": "wide shot, a wheeled cart with a red steel pulley rig and hanging iron weights in the foreground, reference character relaxed against the chalkboard behind it, convinced"
+      "location": "Pax Romana city",
+      "narration": "Gladiators fought wild animals and each other inside the Colosseum.",
+      "image_prompt": "one doodle gladiator in a bronze helmet faces one roaring orange lion while reference character peeks from the frame edge, alarmed, medium-wide shot",
+      "image_prompt_alt": "reference character crouches in the foreground left, alarmed, as one doodle gladiator with a bronze helmet and round shield squares off against one roaring orange lion, low side angle"
     },
     {
-      "narration": "[sighs] Let us talk about the PROFESSORS.",
-      "location": "professor's workshop office",
-      "image_prompt": "a grey-bearded professor in a brown corduroy jacket sits at a cluttered oak desk heaped with brass gears and machine parts, reference character slouched in the visitor chair opposite, mildly tired, medium two-shot",
-      "image_prompt_alt": "over-the-desk wide shot, brass gears and machine parts heaped in the foreground, a grey-bearded professor in a brown corduroy jacket behind them, reference character slouched in a chair at the side, mildly tired"
+      "location": "Pax Romana city",
+      "narration": "[deadpan] Free games kept people calm.",
+      "image_prompt": "three cheerful doodle spectators in brown tunics sit beneath a small sign reading \"FREE SHOWS\", reference character seated beside them looking unimpressed, medium shot",
+      "image_prompt_alt": "reference character sits at the end of a row of three cheerful doodle spectators in brown tunics, arms folded and unimpressed, all of them facing one yellow stone arena arch, side angle"
     },
     {
-      "narration": "Many professors at tech universities worked in industry for years.",
-      "location": "professor's workshop office",
-      "image_prompt": "a grey-bearded professor in a brown corduroy jacket stands beside a framed portrait of a younger bearded man in a white hard hat before an orange steel furnace, reference character interested, medium shot",
-      "image_prompt_alt": "close-up on a framed portrait of a younger bearded man in a white hard hat before an orange steel furnace, a grey-bearded professor in a brown corduroy jacket and reference character beside it, interested"
+      "location": "Pax Romana city",
+      "narration": "Free bread kept them full.",
+      "image_prompt": "reference character stares deadpan at a real photo cutout of a round carbonized Roman bread loaf, roughly pasted onto the drawing, close-up",
+      "image_prompt_alt": "reference character stands at frame right with a deadpan look as one plump doodle citizen in a brown tunic chews happily beside one round brown bread loaf scored into wedges, medium shot"
     },
     {
-      "narration": "[rushed] They know what real companies actually WANT right now.",
-      "location": "professor's workshop office",
-      "image_prompt": "a grey-bearded professor in a brown corduroy jacket talks into a black desk phone before a wall of pinned product sketches, reference character leaning forward attentively in his chair, medium-wide shot",
-      "image_prompt_alt": "close shot of a black desk phone in the foreground, a grey-bearded professor in a brown corduroy jacket talking into it, pinned product sketches behind, reference character attentive at the right"
+      "location": "Pax Romana city",
+      "narration": "Giant arch bridges called aqueducts brought clean mountain water inside.",
+      "image_prompt": "reference character looks impressed beneath one towering stone aqueduct of stacked arches carrying one blue stream of water, low-angle long shot",
+      "image_prompt_alt": "reference character stands at frame left, impressed, beside one tall grey stone bridge of stacked arches with one blue channel of water running along its top, wide side view"
     },
     {
-      "narration": "Big companies often give money to these universities.",
-      "location": "partner factory production floor",
-      "image_prompt": "a factory engineer in an orange high-visibility vest and white hard hat stands beside a grey-bearded professor in a brown corduroy jacket and a new green milling machine, reference character approving, medium-wide shot",
-      "image_prompt_alt": "wide shot past a new green milling machine toward a factory engineer in an orange high-visibility vest and white hard hat and a grey-bearded professor in a brown corduroy jacket, reference character aside, approving"
+      "location": "Pax Romana city",
+      "narration": "Wealthy Romans enjoyed warm public bathhouses and luxury indoor toilets.",
+      "image_prompt": "reference character stares, puzzled, at a real photo cutout of a long marble Roman toilet bench with keyhole openings, roughly pasted onto the drawing, wide shot",
+      "image_prompt_alt": "reference character stands at frame left, puzzled, beside one long white marble bench with a row of keyhole-shaped openings while one plump doodle Roman relaxes in one blue steaming pool, wide side angle"
     },
     {
-      "narration": "[mischievously] They ask students to solve real INDUSTRIAL problems.",
-      "location": "partner factory production floor",
-      "image_prompt": "a factory engineer in an orange high-visibility vest and white hard hat shows students in blue overalls and yellow goggles a jammed conveyor heaped with dented tin cans, reference character behind, intrigued, wide shot",
-      "image_prompt_alt": "close-up of dented tin cans jammed on the conveyor, a factory engineer in an orange high-visibility vest and white hard hat and students in blue overalls and yellow goggles beyond, reference character intrigued"
+      "location": "Pax Romana city",
+      "narration": "[clears throat] Well... wealthy citizens did.",
+      "image_prompt": "reference character raises an eyebrow beside one plump doodle Roman in a purple-trimmed toga relaxing in one blue pool under a small sign reading \"RICH ONLY\", medium shot",
+      "image_prompt_alt": "reference character stands at the right edge with one raised eyebrow as one plump doodle Roman with a purple-trimmed toga folded beside him lounges in one blue marble pool, high-angle shot"
     },
     {
-      "narration": "So your homework might be fixing a problem for a real factory.",
-      "location": "partner factory production floor",
-      "image_prompt": "students in blue overalls and yellow goggles kneel beside an opened grey motor housing as tin cans flow smoothly along the conveyor again, reference character leaning on a yellow railing, pleased, medium shot",
-      "image_prompt_alt": "high-angle wide shot of tin cans streaming along the conveyor, students in blue overalls and yellow goggles kneeling at an opened grey motor housing below, reference character pleased at a yellow railing"
+      "location": "Pax Romana city",
+      "narration": "Millions of enslaved workers worked.",
+      "image_prompt": "three doodle enslaved workers in plain grey tunics haul one heavy white marble block on ropes while reference character watches soberly from the edge, wide shot",
+      "image_prompt_alt": "reference character stands quietly in the foreground right, somber, as three doodle workers in plain grey tunics strain to drag one heavy white marble block on thick ropes, low side angle"
     },
     {
-      "narration": "[amazed] What about student LIFE on campus?",
-      "location": "student robotics club garage",
-      "image_prompt": "reference character stands at the entrance, pleasantly surprised, looking into a busy space where students in blue overalls and yellow goggles work on small robots and a low red race car, wide shot",
-      "image_prompt_alt": "reverse medium shot from inside, students in blue overalls and yellow goggles at small robots and a low red race car in the foreground, reference character pleasantly surprised at the entrance behind"
+      "location": "Pax Romana city",
+      "narration": "They had zero rights.",
+      "image_prompt": "reference character stands soberly beside one tired doodle worker in a grey tunic sitting hunched, one iron chain loose at his feet, close-up",
+      "image_prompt_alt": "reference character crouches at frame left with a sorrowful expression near one exhausted doodle worker in a plain grey tunic hugging his knees, one heavy iron chain coiled beside him, medium shot"
     },
     {
-      "narration": "It is famous for practical clubs and student competitions.",
-      "location": "student robotics club garage",
-      "image_prompt": "students in blue overalls and yellow goggles cheer around a square tabletop arena where two small wheeled robots shove each other, reference character leaning in from the right, grinning slightly, medium-wide shot",
-      "image_prompt_alt": "overhead shot of the square tabletop arena, two small wheeled robots locked together at its centre, students in blue overalls and yellow goggles cheering around its edges, reference character among them, grinning slightly"
+      "location": "imperial throne room",
+      "narration": "[flatly] Governing fifty million people created gigantic administrative and logistical challenges.",
+      "image_prompt": "reference character looks tired beside one towering heap of paper scrolls toppling over one tiny brown wooden desk, medium shot",
+      "image_prompt_alt": "reference character sits slumped at one tiny brown wooden desk, exhausted, as one enormous leaning pile of rolled paper scrolls looms over him, low-angle shot"
     },
     {
-      "narration": "[frustrated] Instead of just debate teams, you get ROBOTICS teams.",
-      "location": "student robotics club garage",
-      "image_prompt": "a small wooden debating lectern stands forgotten in the corner while students in blue overalls and yellow goggles surround a large yellow competition robot, reference character looking from one to the other, amused, wide shot",
-      "image_prompt_alt": "medium shot, a large yellow competition robot foreground with students in blue overalls and yellow goggles around it, reference character glancing back at a small wooden debating lectern in the far corner, amused"
+      "location": "imperial throne room",
+      "narration": "The border spanned from rainy Britain all the way to Egypt.",
+      "image_prompt": "reference character stretches his arms wide across one giant outline map with one grey rain cloud at its top and one yellow pyramid at its far end, overhead shot",
+      "image_prompt_alt": "reference character lies flat across one huge outline map, arms outstretched and still falling short, one grey rain cloud at one corner and one yellow pyramid at the other, high-angle wide shot"
     },
     {
-      "narration": "Students build mini racing cars and compete globally.",
-      "location": "student robotics club garage",
-      "image_prompt": "students in blue overalls and yellow goggles push a low red single-seat race car toward the open door while reference character jogs alongside, excited, low-angle three-quarter view",
-      "image_prompt_alt": "wide side shot, reference character jogging ahead of a low red single-seat race car pushed by students in blue overalls and yellow goggles toward the open door, excited"
+      "location": "imperial throne room",
+      "narration": "From Atlantic Spain to Syria.",
+      "image_prompt": "reference character walks wearily along one long outline map stretching past both frame edges, one blue wave curling at its start, wide shot",
+      "image_prompt_alt": "reference character trudges across one endless outline map toward frame right, shoulders sagging, one small blue wave splashing at the map's left end, low side view"
     },
     {
-      "narration": "[whispers] They host overnight coding events called hackathons.",
-      "location": "overnight hackathon hall",
-      "image_prompt": "students in grey hoodies hunch over laptops at long tables strewn with paper cups and flat cardboard boxes, reference character tiptoeing between them, quietly curious, wide high-angle shot",
-      "image_prompt_alt": "low eye-level shot along one long table, students in grey hoodies at laptops among paper cups and flat cardboard boxes, reference character tiptoeing past in the background, quietly curious"
+      "location": "imperial throne room",
+      "narration": "It was too huge.",
+      "image_prompt": "reference character strains, mildly annoyed, to fold one enormous red-bordered map billowing far beyond the frame edges, low-angle shot",
+      "image_prompt_alt": "reference character stands buried to the waist in folds of one gigantic red-bordered map spilling past every frame edge, looking fed up, high-angle medium shot"
     },
     {
-      "narration": "You spend thirty hours drinking coffee and making apps.",
-      "location": "overnight hackathon hall",
-      "image_prompt": "students in grey hoodies doze against their laptops beside a tall tower of stacked white paper cups, reference character slumped at the end of the table, tired but amused, medium shot",
-      "image_prompt_alt": "close-up of a tall tower of stacked white paper cups in the foreground, students in grey hoodies dozing on laptops behind, reference character slumped at the far end, tired but amused"
+      "location": "imperial throne room",
+      "narration": "[thoughtful] Then incompetent leaders started making terrible decisions for the country.",
+      "image_prompt": "one lazy doodle emperor in a purple cloak flips one gold coin to decide while reference character watches, skeptical, medium two-shot",
+      "image_prompt_alt": "reference character stands at the right edge with a doubtful frown as one slouching doodle emperor in a purple cloak tosses one gold coin into the air, low three-quarter view"
     },
     {
-      "narration": "[stammers] Before you graduate... you usually do an INTERNSHIP.",
-      "location": "partner company design office",
-      "image_prompt": "a young intern in a crisp white shirt and teal lanyard walks nervously into the office past rows of desks, reference character trailing behind her, slightly nervous, medium-wide shot",
-      "image_prompt_alt": "front-facing long shot down the aisle of desks, a young intern in a crisp white shirt and teal lanyard approaching, reference character a step behind her, slightly nervous"
+      "location": "imperial throne room",
+      "narration": "Caligula reportedly planned to make his horse a consul.",
+      "image_prompt": "Caligula with a sneering grin and a purple cloak drapes one red-bordered white toga over one white horse while reference character stares, incredulous, medium shot",
+      "image_prompt_alt": "reference character stands at frame left, jaw dropped in disbelief, as a thin pale young man with short dark hair, clean-shaven, with a sneering grin and a purple cloak drapes one red-bordered white toga over one white horse, wide side angle"
     },
     {
-      "narration": "Most programs force you to work at a real company for months.",
-      "location": "partner company design office",
-      "image_prompt": "a young intern in a crisp white shirt and teal lanyard sits at a monitor showing a grey turbine model among engineers in teal polo shirts, reference character perched on the next desk, attentive",
-      "image_prompt_alt": "wide high-angle shot of the desk cluster, engineers in teal polo shirts around a young intern in a crisp white shirt and teal lanyard at a grey turbine model monitor, reference character perched nearby, attentive"
+      "location": "imperial throne room",
+      "narration": "[sarcastic] True political genius right there.",
+      "image_prompt": "one white horse in a red-bordered white toga sits beside reference character behind a small plaque reading \"CONSUL\", reference character deadpan, medium two-shot",
+      "image_prompt_alt": "reference character sits on one white marble bench, flatly annoyed, shoulder to shoulder with one white horse wearing a red-bordered white toga, both facing the viewer, frontal close two-shot"
     },
     {
-      "narration": "[awe] This means you get actual work EXPERIENCE before finishing.",
-      "location": "partner company design office",
-      "image_prompt": "a young intern in a crisp white shirt and teal lanyard stands beside a white wind turbine blade section on a table facing engineers in teal polo shirts, reference character at the back, impressed, wide shot",
-      "image_prompt_alt": "medium shot from behind the engineers in teal polo shirts, a young intern in a crisp white shirt and teal lanyard facing them beside a white wind turbine blade section, reference character at the side, impressed"
+      "location": "imperial throne room",
+      "narration": "Rumors said Nero sang while Rome burned.",
+      "image_prompt": "Nero, in a purple robe, plucking a small golden lyre beside one row of red-roofed houses in orange flames, reference character horrified at the edge, wide shot",
+      "image_prompt_alt": "reference character stands in the foreground right, horrified, as a stocky man with curly reddish hair and a short neck beard, in a purple robe, plucking a small golden lyre ignores one row of red-roofed houses in orange flames, low-angle shot"
     },
     {
-      "narration": "Your final project might even happen inside a company office.",
-      "location": "partner company design office",
-      "image_prompt": "a young intern in a crisp white shirt and teal lanyard sits beside a finished white wind turbine model as engineers in teal polo shirts gather, reference character leaning on a filing cabinet, proud, medium-wide shot",
-      "image_prompt_alt": "close-up of a finished white wind turbine model on a desk, a young intern in a crisp white shirt and teal lanyard beside it, engineers in teal polo shirts behind, reference character proud at the edge"
+      "location": "imperial throne room",
+      "narration": "Greed infected the leadership.",
+      "image_prompt": "one doodle emperor in a purple cloak hugs one open wooden chest heaped with gold coins while reference character looks disgusted at the edge, medium shot",
+      "image_prompt_alt": "reference character stands at frame left, lip curled in disgust, as one grinning doodle emperor in a purple cloak sprawls over one open wooden chest piled with gold coins, high-angle shot"
     },
     {
-      "narration": "[loudly] That brings us to JOB prospects.",
-      "location": "campus career fair sports hall",
-      "image_prompt": "graduates in dark suits queue at company booths with bright yellow backdrops while reference character stands at the hall entrance, eyebrows raised, wide shot at eye level",
-      "image_prompt_alt": "high-angle shot over company booths with bright yellow backdrops and queues of graduates in dark suits, reference character small at the entrance, eyebrows raised"
+      "location": "imperial throne room",
+      "narration": "Greedy army generals fought continuous battles against each other for power.",
+      "image_prompt": "two doodle generals in red and blue plumed helmets tug one gold crown between them while reference character looks exasperated nearby, medium-wide shot",
+      "image_prompt_alt": "reference character stands between two doodle generals, one in a red plumed helmet and one in a blue plumed helmet, rolling his eyes as they yank one gold crown back and forth, low-angle shot"
     },
     {
-      "narration": "Companies love hiring graduates from technical universities.",
-      "location": "campus career fair sports hall",
-      "image_prompt": "a recruiter in a navy suit leans eagerly across a yellow booth table toward one graduate in a dark suit as a second recruiter hurries over, reference character watching beside the booth, amused, medium shot",
-      "image_prompt_alt": "medium-wide side shot, one graduate in a dark suit at a yellow booth table, a recruiter in a navy suit leaning toward him, a second recruiter hurrying in, reference character amused at the booth corner"
+      "location": "imperial throne room",
+      "narration": "In one single year, Rome had four different emperors.",
+      "image_prompt": "reference character stares in disbelief at four gold crowns toppling in a row like dominoes, close-up",
+      "image_prompt_alt": "reference character crouches at frame right, wide-eyed, watching four gold crowns tip over one after another in a neat line across the frame, low side angle"
     },
     {
-      "narration": "[happily] Because you already know how to use industry SOFTWARE.",
-      "location": "campus career fair sports hall",
-      "image_prompt": "past the shoulder of a graduate in a dark suit at a booth laptop showing a spinning grey gear model, a recruiter in a navy suit impressed beside him, reference character pleased, over-the-shoulder medium shot",
-      "image_prompt_alt": "front medium shot, a graduate in a dark suit at a booth laptop with a grey gear model, a recruiter in a navy suit leaning in impressed, reference character pleased at the table edge"
+      "location": "imperial throne room",
+      "narration": "[light chuckle] Politics became complete chaos.",
+      "image_prompt": "three doodle men in purple cloaks scramble over one gold throne, pulling each other off, while reference character smirks from the side, wide shot",
+      "image_prompt_alt": "reference character sits at the lower left edge with an amused smirk as three doodle men in purple cloaks climb over and shove each other off one gold throne, high-angle medium shot"
     },
     {
-      "narration": "You do not need six months of basic training on the job.",
-      "location": "campus career fair sports hall",
-      "image_prompt": "a thick grey training binder lies shut at the table edge while a graduate in a dark suit works at a laptop beside a recruiter in a navy suit, reference character nodding, close shot",
-      "image_prompt_alt": "wide shot, a graduate in a dark suit already at a laptop, a recruiter in a navy suit beside him, a thick grey training binder abandoned on a chair, reference character nodding"
+      "location": "imperial throne room",
+      "narration": "Unpaid soldiers demanded money.",
+      "image_prompt": "two doodle legionaries in red cloaks hold out empty palms with a speech bubble reading \"PAY US\", reference character shrugging awkwardly, medium shot",
+      "image_prompt_alt": "reference character shrugs awkwardly at frame right as two frowning doodle legionaries in red cloaks lean toward him with empty open palms, low-angle close two-shot"
     },
     {
-      "narration": "[worried] Is a tech university better than a NORMAL university?",
-      "location": "campus crossroads plaza",
-      "image_prompt": "reference character stands midway between the two buildings looking back and forth, uncertain, one red steel bench beside him, wide shot at eye level",
-      "image_prompt_alt": "high-angle shot, reference character small at the plaza centre beside one red steel bench, head turned toward one building, uncertain"
+      "location": "imperial throne room",
+      "narration": "High taxes crushed farmers.",
+      "image_prompt": "one thin doodle farmer in a brown tunic bends double beneath one enormous red cloth sack, reference character wincing sympathetically beside him, medium shot",
+      "image_prompt_alt": "reference character stands at frame left, wincing, as one thin doodle farmer in a brown tunic staggers under one gigantic red cloth sack many times his size, wide side angle"
     },
     {
-      "narration": "Not necessarily... it just depends on your personal goal.",
-      "location": "campus crossroads plaza",
-      "image_prompt": "reference character sits on the red steel bench, thoughtful, at the spot where the paved path splits in two toward each building, medium shot",
-      "image_prompt_alt": "overhead shot of the paved path splitting in two, one branch per building, reference character seated thoughtful on the red steel bench at the fork"
+      "location": "imperial throne room",
+      "narration": "Emperor Diocletian realized that one single man could not rule everything.",
+      "image_prompt": "Diocletian in a stiff purple robe with a gold jeweled crown sits overwhelmed beneath one towering stack of scrolls, reference character nodding in agreement, medium shot",
+      "image_prompt_alt": "reference character stands at the right edge, nodding knowingly, as a heavy-set older man with a short grey beard and cropped hair, in a stiff purple robe with a gold jeweled crown sits buried under one towering stack of scrolls, high-angle shot"
     },
     {
-      "narration": "[quietly] If you love abstract philosophy or literature, go to a general college.",
-      "location": "campus crossroads plaza",
-      "image_prompt": "a student in a green knitted sweater sits on the sandstone steps with an open book, reference character watching from the red steel bench, calm and respectful, medium-wide shot",
-      "image_prompt_alt": "close shot past the red steel bench where reference character sits calm and respectful, a student in a green knitted sweater with an open book on sandstone steps beyond"
+      "location": "imperial throne room",
+      "narration": "[understated] So he split the entire empire into two distinct halves.",
+      "image_prompt": "Diocletian in a stiff purple robe with a gold jeweled crown tears one giant outline map cleanly in half while reference character watches, mildly surprised, wide shot",
+      "image_prompt_alt": "reference character stands in the foreground left, eyebrows raised, as a heavy-set older man with a short grey beard and cropped hair, in a stiff purple robe with a gold jeweled crown rips one huge outline map down the middle, low-angle medium shot"
     },
     {
-      "narration": "If you like solving practical problems with technology, a tech school wins.",
-      "location": "campus crossroads plaza",
-      "image_prompt": "students in blue overalls and yellow goggles wheel a small solar-powered cart with a blue panel roof out of the glass entrance, reference character turning toward them with a warm smile, wide three-quarter view",
-      "image_prompt_alt": "low-angle shot, a small solar-powered cart with a blue panel roof rolling toward camera, students in blue overalls and yellow goggles behind it, reference character smiling warmly at the side"
+      "location": "imperial throne room",
+      "narration": "Western region and Eastern region.",
+      "image_prompt": "reference character stands between two torn map halves, one painted red and one painted blue, looking from one to the other, wide shot",
+      "image_prompt_alt": "reference character sits cross-legged in the gap between one red map half at frame left and one blue map half at frame right, glancing curiously at each, overhead shot"
     },
     {
-      "narration": "[rapid-fire] They teach you how to turn raw IDEAS into working machines.",
-      "location": "graduation project exhibition hall",
-      "image_prompt": "reference character walks past a row of plinths leading from a paper napkin sketch to a cardboard prototype to a finished orange delivery drone, delighted, wide side view",
-      "image_prompt_alt": "low close shot of the finished orange delivery drone on its plinth in the foreground, a cardboard prototype and paper napkin sketch on plinths behind, reference character approaching, delighted"
+      "location": "imperial throne room",
+      "narration": "Each side got leaders.",
+      "image_prompt": "two doodle emperors in purple cloaks, one with a red sash and one with a blue sash, sit back to back beside reference character, bored, medium shot",
+      "image_prompt_alt": "reference character sits wedged between two doodle emperors in purple cloaks who face opposite directions, one wearing a red sash and the other a blue sash, looking bored, frontal wide shot"
     },
     {
-      "narration": "It is challenging... but highly rewarding for practical thinkers.",
-      "location": "graduation project exhibition hall",
-      "image_prompt": "a student in blue overalls and yellow goggles sits tired on a wooden crate beside the finished orange delivery drone, reference character sitting next to her, both quietly satisfied, medium two-shot",
-      "image_prompt_alt": "wide shot from behind the orange delivery drone, a student in blue overalls and yellow goggles and reference character seated side by side on a wooden crate, quietly satisfied"
+      "location": "Constantinople",
+      "narration": "Emperor Constantine relocated the main capital city to wealthy Byzantium.",
+      "image_prompt": "Constantine with a square jaw and a gold diadem drives one oxcart heaped with white marble columns eastward while reference character trudges behind, tired, wide side shot",
+      "image_prompt_alt": "reference character walks wearily at the front right edge as a broad muscular man with short brown hair, clean-shaven, in a red military cloak, with a square jaw and a gold diadem drives one oxcart heaped with white marble columns toward him, frontal long shot"
     },
     {
-      "narration": "[sigh of relief] So now you know what a technical university REALLY is.",
-      "location": "graduation project exhibition hall",
-      "image_prompt": "reference character leans back against a white plinth with relaxed shoulders, relieved, as a few visitors in bright coats wander among the student projects, high-angle wide shot",
-      "image_prompt_alt": "medium shot at plinth height, reference character relieved and relaxed against a white plinth in the foreground, a few visitors in bright coats wandering among student projects behind"
+      "location": "Constantinople",
+      "narration": "He renamed this magnificent eastern trade hub to Constantinople.",
+      "image_prompt": "Constantine with a square jaw and a gold diadem hangs one big sign reading \"CONSTANTINOPLE\" above one gold-domed building, reference character unimpressed, medium shot",
+      "image_prompt_alt": "reference character stands at the lower left edge, unimpressed, as a broad muscular man with short brown hair, clean-shaven, in a red military cloak, with a square jaw and a gold diadem proudly hangs one large wooden sign over one gold-domed building, low-angle wide shot"
     },
     {
-      "narration": "[softly] It is where theoretical science meets practical engineering.",
-      "location": "graduation project exhibition hall",
-      "image_prompt": "a tall chalkboard panel of white chalk curves stands touching a working brass-and-steel steam turbine model, reference character standing between them, thoughtful, medium shot",
-      "image_prompt_alt": "wide shot, reference character to the left, thoughtful, a tall chalkboard panel of white chalk curves meeting a brass-and-steel steam turbine model at the centre of the frame"
+      "location": "Constantinople",
+      "narration": "[curious] Constantine legalized Christianity as well.",
+      "image_prompt": "Constantine with a square jaw and a gold diadem raises one round shield painted with a red chi-rho symbol while reference character looks curious, low-angle medium shot",
+      "image_prompt_alt": "reference character leans in from frame right, curious, as a broad muscular man with short brown hair, clean-shaven, in a red military cloak, with a square jaw and a gold diadem lifts one round shield bearing a red chi-rho symbol, eye-level wide shot"
     },
     {
-      "narration": "[excitedly] A place where you learn by DOING things.",
-      "location": "graduation project exhibition hall",
-      "image_prompt": "students in blue overalls and yellow goggles send the orange delivery drone hovering above the concrete floor, reference character looking up at it grinning, low-angle shot",
-      "image_prompt_alt": "high-angle shot from above the hovering orange delivery drone, students in blue overalls and yellow goggles below, reference character grinning up at it from the side"
+      "location": "Constantinople",
+      "narration": "Religion transformed European history.",
+      "image_prompt": "reference character looks thoughtful beneath one towering domed church topped with one gold cross, low-angle long shot",
+      "image_prompt_alt": "reference character sits on one stone step at frame right, chin resting on his knee, thoughtful, beside one huge domed church with one gold cross at its peak, wide side view"
     },
     {
-      "narration": "[calm] And that is Tech University explained.",
-      "location": "graduation project exhibition hall",
-      "image_prompt": "reference character seen from behind, showing the back of his plain white head with no face, sits calmly on a white plinth beside the landed orange delivery drone, overlooking the hall, wide shot",
-      "image_prompt_alt": "reference character seen from behind, showing the back of his plain white head with no face, sitting calm on a white plinth, the landed orange delivery drone beside him, long shot from the balcony"
+      "location": "sacked Rome",
+      "narration": "Meanwhile problems worsened west.",
+      "image_prompt": "reference character frowns at one red map half crumbling at its edges like dry paper, close-up",
+      "image_prompt_alt": "reference character kneels beside one red map half, worried, as large flakes break off its edges and drift away, high-angle medium shot"
+    },
+    {
+      "location": "sacked Rome",
+      "narration": "[flatly] Migrating Germanic tribes pushed across weak borders seeking safety and land.",
+      "image_prompt": "three doodle travelers in brown fur cloaks step over one thin broken wooden fence while reference character watches neutrally from the edge, wide shot",
+      "image_prompt_alt": "reference character stands in the foreground left, attentive, as three doodle travelers in brown fur cloaks with bundles on their backs climb across one sagging broken wooden fence, low side angle"
+    },
+    {
+      "location": "sacked Rome",
+      "narration": "The Western Roman government went BROKE and could not pay soldiers.",
+      "image_prompt": "reference character offers a real photo cutout of a single worn silver Roman coin, roughly pasted onto the drawing, to one frowning red-cloaked legionary, close-up",
+      "image_prompt_alt": "reference character at frame right, embarrassed, holds out one tiny silver coin toward one frowning doodle legionary in a red cloak with his arms folded, medium shot"
+    },
+    {
+      "location": "sacked Rome",
+      "narration": "Outer defenses collapsed completely.",
+      "image_prompt": "one long wooden palisade topples like dominoes past reference character, who stands resigned at frame left, wide shot",
+      "image_prompt_alt": "reference character sits at the lower right corner with a resigned sigh as one long line of sharpened brown wooden stakes falls over plank by plank toward him, low-angle shot"
+    },
+    {
+      "location": "sacked Rome",
+      "narration": "Invaders looted Rome itself.",
+      "image_prompt": "two doodle raiders in brown fur cloaks carry off one gold statue while reference character stares, stunned, from the frame edge, medium-wide shot",
+      "image_prompt_alt": "reference character stands in the foreground right, frozen in shock, as two doodle raiders in brown fur cloaks haul one heavy gold statue away toward frame left, high-angle shot"
+    },
+    {
+      "location": "sacked Rome",
+      "narration": "[deadpan] In four hundred seventy-six, the last western emperor resigned.",
+      "image_prompt": "one small doodle boy emperor in an oversized purple cloak sets down one gold crown and walks away, reference character deadpan, medium shot",
+      "image_prompt_alt": "reference character stands at frame left, expressionless, beside one abandoned gold crown as one small doodle boy in a trailing oversized purple cloak shuffles off toward frame right, wide side view"
+    },
+    {
+      "location": "sacked Rome",
+      "narration": "Standard history books claim the Roman Empire ended right there.",
+      "image_prompt": "reference character looks skeptical beside one thick red book open to a page reading \"THE END\", medium close-up",
+      "image_prompt_alt": "reference character leans over one thick open red book at frame left, one eyebrow raised in doubt, low three-quarter view"
+    },
+    {
+      "location": "sacked Rome",
+      "narration": "[sighs] But that is FALSE.",
+      "image_prompt": "reference character rolls his eyes and shoves one thick red book off the frame edge, medium shot",
+      "image_prompt_alt": "reference character turns away with an exasperated sigh, pushing one thick red book aside with his foot, wide shot from slightly above"
+    },
+    {
+      "location": "Constantinople",
+      "narration": "The Eastern half survived.",
+      "image_prompt": "reference character looks surprised as one gold-domed city rises whole from one blue map half, wide shot",
+      "image_prompt_alt": "reference character steps back at frame left, eyes wide, as one intact gold-domed city stands tall on one blue map half, low-angle medium shot"
+    },
+    {
+      "location": "Constantinople",
+      "narration": "It lasted one thousand years!",
+      "image_prompt": "one gold-domed city stands unshaken beside one giant hourglass whose sand has fully run out, reference character amazed, wide shot",
+      "image_prompt_alt": "reference character looks up in amazement from the lower right corner at one towering hourglass emptied to the last grain beside one sturdy gold-domed city, low-angle long shot"
+    },
+    {
+      "location": "Constantinople",
+      "narration": "Modern historians call that surviving rich region the Byzantine Empire.",
+      "image_prompt": "two doodle professors in tweed jackets and round glasses stick a tag reading \"BYZANTINE\" onto one gold-domed city, reference character doubtful, medium-wide shot",
+      "image_prompt_alt": "reference character stands at frame left, doubtful, as two doodle professors in tweed jackets and round glasses press one large paper tag onto one gold-domed city, high-angle shot"
+    },
+    {
+      "location": "Constantinople",
+      "narration": "Yet citizens living there called themselves proud Romans the whole time.",
+      "image_prompt": "two doodle citizens in blue robes peel the paper tag off one gold-domed city, thumping their chests proudly, reference character amused, medium shot",
+      "image_prompt_alt": "reference character grins at the right edge as two doodle citizens in blue robes tear one paper tag from one gold-domed city and puff out their chests, low side angle"
+    },
+    {
+      "location": "modern capital city",
+      "narration": "[thoughtful] Why does this matter?",
+      "image_prompt": "reference character sits thoughtfully on one white marble column stump, chin on hand, medium close-up",
+      "image_prompt_alt": "reference character sits on one short white marble column stump at frame left, gazing upward in thought, wide shot from slightly below"
+    },
+    {
+      "location": "modern capital city",
+      "narration": "Western laws mirror Roman laws.",
+      "image_prompt": "one doodle judge in a black robe and one doodle magistrate in a white toga hold up matching bronze tablets, reference character interested between them, medium shot",
+      "image_prompt_alt": "reference character stands at frame right, interested, watching one doodle judge in a black robe and one doodle magistrate in a white toga compare two identical bronze tablets face to face, wide side view"
+    },
+    {
+      "location": "modern capital city",
+      "narration": "Languages like French, Spanish, and Italian directly evolved from Latin.",
+      "image_prompt": "reference character looks up, fascinated, at one big green oak tree with a trunk sign reading \"LATIN\" splitting into three thick branches, low-angle shot",
+      "image_prompt_alt": "reference character sits against the base of one big green oak tree at frame left, fascinated, as its single trunk divides into three thick spreading branches, wide eye-level shot"
+    },
+    {
+      "location": "modern capital city",
+      "narration": "[calm] Even modern government buildings across the globe copy ancient Roman architecture.",
+      "image_prompt": "reference character compares one white columned government building with a gold dome to one small marble temple of the same shape, impressed, wide shot",
+      "image_prompt_alt": "reference character stands between one small white marble temple and one large columned government building with a gold dome, glancing back and forth, impressed, low-angle long shot"
+    },
+    {
+      "location": "modern capital city",
+      "narration": "Rome fell long ago.",
+      "image_prompt": "reference character sits calmly beside one fallen white marble column with one green vine curling over it, medium shot",
+      "image_prompt_alt": "reference character rests one arm on one cracked white marble column lying on its side, one green vine winding along it, calm, high-angle wide shot"
+    },
+    {
+      "location": "modern capital city",
+      "narration": "[content] Its world still remains.",
+      "image_prompt": "reference character smiles contentedly beside one tall white marble column topped by one green laurel wreath, wide shot",
+      "image_prompt_alt": "reference character leans back against one tall standing white marble column at frame right, a contented smile on his face, one green laurel wreath resting on its top, low-angle medium shot"
     }
   ],
-  "music_prompt": "Light, curious instrumental bed at around ninety BPM. Soft plucked muted electric guitar, gentle wooden marimba, warm sustained synth pads, and a quiet brushed drum kit. Flat consistent energy with no build, no swells, no drops. Sits far in the background under a spoken narrator with the mid range left clear. Purely instrumental with no vocals of any kind. Understated rather than comedic."
+  "music_prompt": "Sparse instrumental bed with a steady, stately mood, around seventy-five BPM. Soft low brass, a gently plucked harp, warm muted frame drum, and low sustained cellos. Flat consistent energy with no build, no swells, no drops. Sits far in the background under a spoken narrator with the mid range left clear. Purely instrumental with no vocals of any kind. Understated rather than comedic."
 }
 
 
@@ -836,20 +887,21 @@ WORDS_PER_MINUTE = config.WORDS_PER_MINUTE
 # narration - it means the same words cut into smaller pieces. A 4.6 minute
 # video is ~810 spoken words whether that is 45 beats or 90.
 #
-#   SHORT beat   4-8 words   ~2.0s   a consequence, a reaction, one hard image
-#   LONG beat   10-15 words  ~4.1s   the information, the number, the turn
+#   SHORT beat   3-6 words   ~1.5s   a consequence, a reaction, one hard image
+#   LONG beat    8-12 words  ~3.4s   the information, the number, the turn
 #
-# Half and half averages ~9 words a beat, which is the ~3.0s per image this
-# channel is now cut at, down from 6.2s.
+# Half and half averages ~7 words a beat, ~2.4s per image: about 75 beats for
+# a 3 minute video. Was 4-8 / 10-15 (~9 words, ~3.0s, 60 beats) until
+# 2026-10-07, when the channel moved to one picture per short sentence.
 #
 # The MIX is the rule, not the shortness. Uniformly short beats are not a
 # faster video, they are a faster metronome - and a metronome was the original
 # complaint. So the checks below police the ratio and the runs, and only flag
 # an individual beat when it is too long to sit under one still image.
 RHYTHM_FORMATS = {"explainer"}
-SHORT_MAX_WORDS = 8       # at or under this, a beat counts as SHORT
-LONG_MAX_WORDS = 15       # over this, the image freezes while narration runs
-MIN_WORDS = 4             # under this it does not register as a beat at all
+SHORT_MAX_WORDS = 6       # at or under this, a beat counts as SHORT
+LONG_MAX_WORDS = 12       # over this, the image freezes while narration runs
+MIN_WORDS = 3             # under this it does not register as a beat at all
 SHORT_SHARE = (0.35, 0.65)  # acceptable fraction of SHORT beats
 MAX_RUN_SHORT = 3         # more than this in a row reads as machine-gun
 MAX_RUN_LONG = 2          # more than this in a row is the old slideshow
@@ -1011,7 +1063,11 @@ def _warn_off_spec(beats: list[dict], fmt: str = "") -> None:
         r"\b(overcast|lighting|lamplight|backlit|glow\w*|shadowy|haze|hazy|"
         r"blurred|out of focus|depth of field|gleaming|shimmer\w*|"
         r"realistic|detailed|photo\w*|cinematic)\b", _re.I)
-    risky = [(i, sorted(set(w.lower() for w in render_words.findall(b["image_prompt"]))))
+    # "photo cutout" is the one sanctioned photo phrase (see the photo checks
+    # below), so it is taken out before looking for stray photo words.
+    cutout = _re.compile(r"\bphoto cutout\b", _re.I)
+    risky = [(i, sorted(set(w.lower() for w in render_words.findall(
+                 cutout.sub(" ", b["image_prompt"])))))
              for i, b in enumerate(beats, 1)]
     risky = [(i, w) for i, w in risky if w]
     if risky:
@@ -1019,6 +1075,33 @@ def _warn_off_spec(beats: list[dict], fmt: str = "") -> None:
         for i, words in risky[:8]:
             print(f"       beat {i}: {', '.join(words)}")
         print("       describe WHAT is there, not how it is lit or rendered")
+
+    # The white-page style allows two gags that work only while they are rare:
+    # a photo cutout of one object, and a short quoted label. Photo wording is
+    # also what drags a whole frame photographic, so the cap is a safety limit
+    # as well as a taste one. Limits mirror section 0B of pass2_visuals.txt.
+    n = len(beats)
+    photos = [i for i, b in enumerate(beats, 1)
+              if cutout.search(b["image_prompt"])]
+    if len(photos) > n / 6:
+        print(f"[warn] {len(photos)} photo cutouts in {n} beats "
+              f"(max ~{n // 6}, 1 in 6): {','.join(map(str, photos[:12]))}")
+        print("       rare is the joke; every frame a photo is just clutter")
+    paired = [f"{a}-{b}" for a, b in zip(photos, photos[1:]) if b == a + 1]
+    if paired:
+        print(f"[warn] photo cutouts in back-to-back beats: {', '.join(paired)}")
+    alt_photos = [i for i, b in enumerate(beats, 1)
+                  if cutout.search(b.get("image_prompt_alt") or "")]
+    if alt_photos:
+        print(f"[warn] photo cutout in image_prompt_alt: "
+              f"{','.join(map(str, alt_photos[:12]))}")
+        print("       the alt is the fallback; it should be the doodle version")
+    labels = [i for i, b in enumerate(beats, 1)
+              if _re.search(r'"[^"]+"', b["image_prompt"])]
+    if len(labels) > n / 4:
+        print(f"[warn] {len(labels)} beats with quoted labels in {n} "
+              f"(max ~{n // 4}, 1 in 4)")
+        print("       labels only where the words ARE the joke")
 
     total_words = sum(spoken_words(b["narration"]) for b in beats)
     narration_s = total_words / WORDS_PER_MINUTE * 60 / config.NARRATION_SPEED
