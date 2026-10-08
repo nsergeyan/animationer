@@ -442,11 +442,14 @@ narration.
 
 PHOTO CUTOUTS
 
-At most 1 beat in 6, never in two beats in a row.
+Aim for about 1 beat in 10 (7 or 8 in a 75-beat script), spread across the
+whole video, not bunched in one section. Hard limit: 1 beat in 6, never in
+two beats in a row.
 
-Use one only when the REAL object is the punchline: an absurd price, a
-ridiculous real thing, a "yes, this actually exists" moment. Never just
-because an object is mentioned.
+Use one when seeing the REAL object makes the beat land harder than a doodle
+would: an absurd price, a ridiculous real thing, a "yes, this actually
+exists" moment, or a real surviving artefact the narration points at. Never
+just because an object is mentioned.
 
 ONE object only. Never a person, a face, a body part, an animal or a place.
 
@@ -1886,7 +1889,7 @@ every frame is the reference character plus at most two other things
 no group larger than three figures
 colour on one or two key objects only
 at most 1 beat in 4 carries a quoted label, 1 to 3 words
-at most 1 beat in 6 has a photo cutout, never two in a row
+about 1 beat in 10 has a photo cutout (hard limit 1 in 6), never two in a row
 every photo cutout uses the exact phrase and is one object, never a person
 every photo beat's image_prompt_alt is a doodle, with no photo cutout
 

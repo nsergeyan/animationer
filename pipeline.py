@@ -521,8 +521,6 @@ NEW_SCRIPT = {
   "music_prompt": "Sparse instrumental bed with a steady, stately mood, around seventy-five BPM. Soft low brass, a gently plucked harp, warm muted frame drum, and low sustained cellos. Flat consistent energy with no build, no swells, no drops. Sits far in the background under a spoken narrator with the mid range left clear. Purely instrumental with no vocals of any kind. Understated rather than comedic."
 }
 
-
-
 SCRIPT_TEMPLATE = {
     "topic": "",
     "beats": [
@@ -1087,6 +1085,9 @@ def _warn_off_spec(beats: list[dict], fmt: str = "") -> None:
         print(f"[warn] {len(photos)} photo cutouts in {n} beats "
               f"(max ~{n // 6}, 1 in 6): {','.join(map(str, photos[:12]))}")
         print("       rare is the joke; every frame a photo is just clutter")
+    elif len(photos) < n / 15:
+        print(f"[warn] only {len(photos)} photo cutouts in {n} beats "
+              f"(aim ~{n // 10}, 1 in 10)")
     paired = [f"{a}-{b}" for a, b in zip(photos, photos[1:]) if b == a + 1]
     if paired:
         print(f"[warn] photo cutouts in back-to-back beats: {', '.join(paired)}")
