@@ -11,520 +11,483 @@ from modules import transcriber
 FLOW_RUNNER = config.ROOT_DIR / "flow_runner" / "runner.py"
 
 NEW_SCRIPT = {
-  "topic": "roman-empire-explained",
+  "topic": "Formula 1",
   "format": "explainer",
   "plan": {
-    "spine_question": "How did a small mud village build an empire that shaped the modern world, and why did it fall?",
+    "spine_question": "What exactly is Formula One and how does it work in 2026?",
     "deflations": [
       {
-        "assumed": "The Roman Empire fell completely in 476 AD.",
-        "actual": "Only the Western half collapsed in 476 AD, while the Eastern half survived for another thousand years as the Byzantine Empire.",
-        "who_decided": "Modern historians created the term Byzantine, but citizens always called themselves Romans.",
-        "build_beat": "Standard history books claim the Roman Empire ended right there.",
-        "drop_beat": "The Eastern half survived and lasted one thousand years!"
+        "assumed": "Formula One is just driving ordinary cars very fast around a track.",
+        "actual": "It is a high-stakes engineering arms race using vehicles that function like upside-down fighter jets.",
+        "who_decided": "Aerodynamic engineers pushing the limits of physics.",
+        "build_beat": "A modern F1 car is basically a jet fighter.",
+        "drop_beat": "It just happens to be glued to the ground."
+      }
+    ],
+    "cast": [
+      {
+        "name": "Lando Norris",
+        "why": "The reigning 2025 World Champion representing the McLaren team."
+      },
+      {
+        "name": "Lewis Hamilton",
+        "why": "The sport's biggest legend who finally made his highly anticipated move to Ferrari."
+      },
+      {
+        "name": "Max Verstappen",
+        "why": "The relentless Red Bull driver who is always hunting for another title."
+      },
+      {
+        "name": "Kimi Antonelli",
+        "why": "The young Mercedes star who is already leading the 2026 championship."
       }
     ],
     "specifics": [
       {
-        "fact": "Rome built over 50,000 miles of paved stone roads across its territories.",
-        "source": "Oxford Classical Dictionary",
-        "beat": "To move troops fast, engineers built fifty thousand MILES of roads."
+        "fact": "The 2026 grid expanded to 11 teams with Cadillac and Audi joining.",
+        "source": "FIA 2026 Entry List",
+        "beat": "Cadillac and Audi officially joined the sport this season."
       },
       {
-        "fact": "Julius Caesar received 23 stab wounds during his assassination in 44 BC.",
-        "source": "Suetonius, Life of Julius Caesar",
-        "beat": "Twenty three separate times..."
+        "fact": "2026 cars use active aerodynamics to reduce drag on straight lines.",
+        "source": "FIA 2026 Technical Regulations",
+        "beat": "Wings shift on straight lines to reduce aerodynamic drag."
       }
     ],
     "facts_to_check": [
       {
-        "claim": "Suetonius reports Caligula was said to plan making his horse Incitatus consul.",
-        "source": "Suetonius, Lives of the Twelve Caesars"
+        "claim": "Lando Norris is the 2025 F1 World Champion.",
+        "source": "December 2025 F1 official standings and Abu Dhabi GP results"
+      },
+      {
+        "claim": "Lewis Hamilton drives for Ferrari in 2026.",
+        "source": "F1 2026 Official Grid Lineups"
+      },
+      {
+        "claim": "Cadillac and Audi entered as new teams in 2026.",
+        "source": "FIA 2026 Entry List"
+      },
+      {
+        "claim": "2026 regulations mandate 100 percent sustainable fuels and a 50-50 electric power split.",
+        "source": "F1 2026 Engine Regulations"
+      },
+      {
+        "claim": "Race winners receive 25 points.",
+        "source": "FIA Sporting Regulations"
       }
     ],
     "locations": [
-      {"name": "Tiber hut village", "visual_anchor": ""},
-      {"name": "legion march route", "visual_anchor": ""},
-      {"name": "Senate chamber", "visual_anchor": ""},
-      {"name": "Pax Romana city", "visual_anchor": ""},
-      {"name": "imperial throne room", "visual_anchor": ""},
-      {"name": "Constantinople", "visual_anchor": ""},
-      {"name": "sacked Rome", "visual_anchor": ""},
-      {"name": "modern capital city", "visual_anchor": ""}
+      { "name": "the starting grid", "visual_anchor": "" },
+      { "name": "the wind tunnel", "visual_anchor": "" },
+      { "name": "the paddock", "visual_anchor": "" },
+      { "name": "the team factory", "visual_anchor": "" },
+      { "name": "the long straight", "visual_anchor": "" },
+      { "name": "race weekend", "visual_anchor": "" },
+      { "name": "race day", "visual_anchor": "" },
+      { "name": "the pit lane", "visual_anchor": "" }
     ],
     "setting_anchor": ""
   },
   "beats": [
     {
-      "location": "Tiber hut village",
-      "narration": "[curious] How did a small mud village build a massive ancient empire?",
-      "image_prompt": "reference character crouches curiously beside one tiny brown mud hut casting a long red shadow shaped like a domed city, wide shot",
-      "image_prompt_alt": "reference character stands at frame right, head tilted curiously, above one small brown thatched mud hut whose long red shadow forms a sprawling domed city, high-angle shot"
+      "narration": "[thoughtful] Formula One is the pinnacle of motorsport.",
+      "location": "the starting grid",
+      "image_prompt": "reference character stands at frame left, mildly curious, beside one low bright blue open-wheel Formula 1 race car, wide shot at eye level",
+      "image_prompt_alt": "reference character stands at frame right with arms folded, attentive, looking down at one low bright blue open-wheel single-seat race car with a tall rear wing, medium-wide shot"
     },
     {
-      "location": "Tiber hut village",
-      "narration": "Rome began as a tiny cluster of huts in central Italy.",
-      "image_prompt": "three doodle villagers in rough brown tunics build round huts with yellow thatch while reference character watches attentively from the edge, long shot",
-      "image_prompt_alt": "reference character leans at the far left edge, mildly interested, as three doodle villagers in rough brown tunics stack yellow thatch onto small round mud huts, medium-wide shot"
+      "narration": "The entire grid features twenty two very fearless drivers.",
+      "location": "the starting grid",
+      "edits": ["three small doodle drivers in white helmets appear standing in a row behind the race car"]
     },
     {
-      "location": "Tiber hut village",
-      "narration": "[understated] Nobody expected them to dominate.",
-      "image_prompt": "reference character shrugs, unimpressed, beside one tiny brown mud hut dwarfed by one towering grey stone fortress at frame left, medium shot",
-      "image_prompt_alt": "reference character stands between one small brown mud hut and one towering grey stone fortress, glancing down at the hut with a deadpan shrug, low-angle wide shot"
+      "narration": "They drive at over two hundred miles per hour.",
+      "location": "the starting grid",
+      "edits": ["the three drivers disappear and a big tag reading \"200+ MPH\" hangs from the car's nose"]
     },
     {
-      "location": "Tiber hut village",
-      "narration": "But they loved fighting.",
-      "image_prompt": "two doodle villagers in brown tunics clash wooden sticks behind round red shields while reference character watches from the foreground, mildly surprised, medium shot",
-      "image_prompt_alt": "reference character sits at the lower right edge, eyebrows raised, as two doodle villagers in brown tunics swing wooden sticks at each other behind round red shields, wide side angle"
+      "narration": "It is extremely dangerous.",
+      "location": "the starting grid",
+      "edits": ["the tag disappears and the character leans back in alarm, eyes wide, hands raised"]
     },
     {
-      "location": "Tiber hut village",
-      "narration": "And they never surrendered.",
-      "image_prompt": "one doodle villager in a dented bronze helmet stands firm behind one red shield, a speech bubble reading \"NEVER\", reference character nodding slowly, close-up",
-      "image_prompt_alt": "reference character stands at frame left, nodding slowly, beside one stubborn doodle villager in a dented bronze helmet planted firmly behind one red shield with his chin raised, low-angle medium shot"
+      "narration": "[deadpan] Or rather, it used to be.",
+      "location": "the starting grid",
+      "edits": ["the character lowers his hands and raises one eyebrow with a deadpan stare"]
     },
     {
-      "location": "Tiber hut village",
-      "narration": "[deadpan] If an enemy destroyed one army, Rome simply sent another.",
-      "image_prompt": "two fresh doodle soldiers in red tunics march straight past one flattened red-tunic soldier, reference character deadpan at the edge, wide shot",
-      "image_prompt_alt": "reference character stands in the foreground right, unimpressed, as two fresh doodle soldiers in red tunics step over one flattened red-tunic soldier and keep marching, low-angle shot"
+      "narration": "Now the cars are incredibly safe.",
+      "location": "the starting grid",
+      "edits": ["a real photo cutout of a Formula 1 titanium halo cockpit bar, roughly pasted onto the drawing, appears big over the car's cockpit"]
     },
     {
-      "location": "legion march route",
-      "narration": "Soon they defeated Carthage and controlled the whole Mediterranean sea.",
-      "image_prompt": "one Roman warship with a red sail rams one sinking purple-sailed Carthaginian ship while reference character watches from the lower frame edge, wide shot",
-      "image_prompt_alt": "reference character stands at the left edge, eyebrows raised, as one long oared warship with a red sail splits one smaller purple-sailed ship in half, side-on long shot"
+      "narration": "But the speeds are still absolutely INSANE.",
+      "location": "the starting grid",
+      "image_prompt": "reference charadsadsadcter clutches his head, eyes wide, as one bright blue open-wheel race car streaks past him trailing long speed lines, low-angle shot",
+      "image_prompt_alt": "reference chardsadsadsadasacter leans away at frame right with his mouth hanging open as one low bright blue single-seat race car with a tall rear wing blasts past trailing long speed lines, wide shot"
     },
     {
-      "location": "legion march route",
-      "narration": "Then they kept expanding.",
-      "image_prompt": "reference character watches, mildly concerned, as one red ink stain spreads outward across one giant outline map at his feet, overhead shot",
-      "image_prompt_alt": "reference character stands at the corner of one giant outline map, staring down with mild concern, as one red ink stain creeps steadily toward his shoes, low three-quarter view"
+      "narration": "A modern F1 car is basically a jet fighter.",
+      "location": "the wind tunnel",
+      "image_prompt": "reference character stands at frame right, curious, beside one grey jet fighter plane and one bright blue open-wheel race car side by side, medium-wide shot",
+      "image_prompt_alt": "reference character stands at frame left with a curious tilt of the head, looking between one grey military jet with swept wings and one bright blue single-seat race car parked nose to nose, wide shot"
     },
     {
-      "location": "legion march route",
-      "narration": "Roman legions marched thousands of miles.",
-      "image_prompt": "three doodle legionaries in red cloaks and plumed bronze helmets march in step while reference character trudges tiredly behind them, side-on long shot",
-      "image_prompt_alt": "reference character, seen from behind showing the back of his plain white head with no face, trails three doodle legionaries in red cloaks and plumed bronze helmets marching toward frame right, rear wide shot"
+      "narration": "It just happens to be glued to the ground.",
+      "location": "the wind tunnel",
+      "edits": ["the jet fighter disappears and thick white glue blobs appear under the race car's four wheels"]
     },
     {
-      "location": "legion march route",
-      "narration": "[flatly] To move troops fast, engineers built fifty thousand MILES of roads.",
-      "image_prompt": "two doodle engineers in brown tunics lay grey paving stones on one road unrolling past the frame edge, reference character looking tired, medium-wide shot",
-      "image_prompt_alt": "reference character sits wearily at frame left as two doodle engineers in brown tunics fit square grey paving stones onto one road stretching far past the frame edge, high-angle shot"
+      "narration": "Wings push the car down into the track.",
+      "location": "the wind tunnel",
+      "edits": ["the glue blobs disappear and a real photo cutout of a Formula 1 front wing, roughly pasted onto the drawing, appears big in front of the car's nose"]
     },
     {
-      "location": "legion march route",
-      "narration": "These stone highways connected distant towns and made trade very simple.",
-      "image_prompt": "one doodle merchant pulls one wooden cart of red clay jars along a grey stone road while reference character nods, mildly impressed, medium shot",
-      "image_prompt_alt": "reference character stands at frame left, mildly impressed, as one doodle merchant in a brown tunic leads one wooden cart stacked with red clay jars along a straight grey stone road, three-quarter view"
+      "narration": "This is called downforce.",
+      "location": "the wind tunnel",
+      "edits": ["the front wing cutout disappears and a big sign reading \"DOWNFORCE\" appears above the car, one thick black arrow pointing down at it"]
     },
     {
-      "location": "Senate chamber",
-      "narration": "At first, Rome was a republic.",
-      "image_prompt": "three doodle senators in white togas with red borders debate beneath a small banner reading \"SPQR\", reference character watching attentively at frame right, medium-wide shot",
-      "image_prompt_alt": "reference character sits at the lower left edge, attentive, as three doodle senators in white togas with red borders argue and gesture beneath one long red banner, low-angle shot"
+      "narration": "More downforce means faster cornering.",
+      "location": "the wind tunnel",
+      "edits": ["the sign and arrow disappear and the race car swings into a tight curve with curved speed lines behind it"]
     },
     {
-      "location": "Senate chamber",
-      "narration": "Citizens elected their main leaders.",
-      "image_prompt": "two doodle citizens in brown tunics drop small white pebbles into one tall red clay urn while reference character looks curious, close-up",
-      "image_prompt_alt": "reference character crouches beside one tall red clay urn, curious, as two doodle citizens in brown tunics drop small white pebbles into its narrow mouth, low side angle"
+      "narration": "[understated] It also means your neck really hurts.",
+      "location": "the wind tunnel",
+      "edits": ["the character tilts his head sideways, wincing, one hand rubbing his neck"]
     },
     {
-      "location": "Senate chamber",
-      "narration": "[sarcastic] Rich politicians hated sharing power.",
-      "image_prompt": "one plump doodle senator in a red-bordered white toga clutches one bulging gold cloth sack away from reference character, who looks unimpressed, medium shot",
-      "image_prompt_alt": "reference character stands at frame right, arms folded, unimpressed, as one plump doodle senator in a red-bordered white toga hugs one bulging gold cloth sack and turns his back, wide shot"
+      "narration": "Drivers endure massive gravity forces every single turn.",
+      "location": "the wind tunnel",
+      "image_prompt": "reference character winces at frame left watching a doodle driver in a white helmet in one bright blue race car, his head shoved sideways by one big curved arrow, close medium shot",
+      "image_prompt_alt": "reference character grimaces at frame right beside one bright blue single-seat race car whose helmeted doodle driver has his head pushed sideways by one huge curved black arrow, medium-wide shot"
     },
     {
-      "location": "Senate chamber",
-      "narration": "Successful military generals became more popular than elected government officials.",
-      "image_prompt": "two cheering doodle soldiers lift one doodle general in a red cloak onto their shoulders while reference character looks skeptical at the edge, medium-wide shot",
-      "image_prompt_alt": "reference character leans at frame left with a skeptical squint as one doodle general in a red cloak rides high on the shoulders of two cheering doodle soldiers, low-angle shot"
+      "narration": "Let us look at who actually races today.",
+      "location": "the paddock",
+      "image_prompt": "reference character stands at frame left, attentive, beside one long row of small doodle race cars parked nose to tail, the nearest bright yellow, high-angle wide shot",
+      "image_prompt_alt": "reference character leans forward at frame right with interest, looking along one long line of small single-seat race cars parked nose to tail, the closest one painted bright yellow, wide shot at eye level"
     },
     {
-      "location": "Senate chamber",
-      "narration": "General Julius Caesar marched his army into Rome and took power.",
-      "image_prompt": "Julius Caesar in a white toga with a green laurel wreath leads two red-cloaked legionaries forward while reference character steps aside warily, low-angle medium shot",
-      "image_prompt_alt": "reference character steps aside at frame left, wary, as a tall lean balding man with short grey hair, clean-shaven, in a white toga with a green laurel wreath leads two red-cloaked legionaries straight toward the viewer, frontal wide shot"
+      "narration": "[calm] The current 2026 grid features exactly eleven different teams.",
+      "location": "the paddock",
+      "edits": ["a big sign reading \"11 TEAMS\" appears above the row of cars"]
     },
     {
-      "location": "Senate chamber",
-      "narration": "Senators felt threatened by him.",
-      "image_prompt": "three doodle senators in red-bordered white togas whisper nervously behind Julius Caesar in a white toga with a green laurel wreath, reference character eavesdropping skeptically, medium shot",
-      "image_prompt_alt": "reference character leans in at the right edge, skeptical, as three doodle senators in red-bordered white togas huddle and whisper behind a tall lean balding man with short grey hair, clean-shaven, in a white toga with a green laurel wreath, wide side angle"
+      "narration": "Cadillac and Audi officially joined the sport this season.",
+      "location": "the paddock",
+      "edits": ["the sign disappears and two new cars, one black-and-white and one silver, roll in at the row's front at frame right"]
     },
     {
-      "location": "Senate chamber",
-      "narration": "[sighs] So they stabbed him.",
-      "image_prompt": "three doodle senators in red-bordered white togas close in on Julius Caesar in a white toga with a green laurel wreath with small daggers, reference character wincing at the edge, wide shot",
-      "image_prompt_alt": "reference character covers his eyes at the far right edge as three doodle senators in red-bordered white togas close in with small daggers around a tall lean balding man with short grey hair, clean-shaven, in a white toga with a green laurel wreath, high-angle shot"
+      "narration": "Two drivers race for each team.",
+      "location": "the paddock",
+      "edits": ["two small doodle drivers in helmets appear standing beside the new black-and-white car"]
     },
     {
-      "location": "Senate chamber",
-      "narration": "Twenty three separate times...",
-      "image_prompt": "reference character stares, weary and wincing, at one torn white toga full of small holes beside one fallen green laurel wreath, close-up",
-      "image_prompt_alt": "reference character crouches at frame left with a pained, tired expression beside one crumpled white toga riddled with small tears and one dropped green laurel wreath, overhead shot"
+      "narration": "They all want the trophy.",
+      "location": "the paddock",
+      "edits": ["the row of cars disappears and one big gold trophy cup floats above the two drivers, who reach up toward it"]
     },
     {
-      "location": "Senate chamber",
-      "narration": "Killing Caesar did not restore freedom to the broken republic.",
-      "image_prompt": "reference character sighs, disappointed, beside one white marble bench cracked clean in half with one torn red banner draped across it, medium shot",
-      "image_prompt_alt": "reference character sits slumped on the end of one white marble bench split down the middle, one torn red banner hanging beside him, low wide angle"
+      "narration": "The reigning 2025 world champion is superstar Lando Norris.",
+      "location": "the paddock",
+      "image_prompt": "reference character looks impressed at a real photo cutout of Lando Norris in a papaya orange racing suit, roughly pasted onto the drawing, while Lewis Hamilton with long braids and a scarlet red racing suit waits at frame right, medium-wide shot",
+      "image_prompt_alt": "reference character stands at frame right looking impressed at a slim young man with short curly brown hair in a papaya orange racing suit grinning at frame left, while a lean bearded man with long braids and a scarlet red racing suit stands in the middle, wide shot"
     },
     {
-      "location": "Senate chamber",
-      "narration": "A brutal civil war broke out across the Roman lands.",
-      "image_prompt": "one doodle soldier in a red cloak slams shields with one doodle soldier in a blue cloak while reference character ducks at the edge, wide shot",
-      "image_prompt_alt": "reference character crouches low at the right edge, alarmed, as one doodle soldier in a red cloak and one in a blue cloak crash round shields together, side angle medium shot"
+      "narration": "He drives for the mighty McLaren team.",
+      "location": "the paddock",
+      "edits": ["a big tag reading \"McLAREN\" appears pinned to the chest of the man in the papaya orange suit"]
     },
     {
-      "location": "Senate chamber",
-      "narration": "[understated] Caesar's adopted son won.",
-      "image_prompt": "Augustus in a white toga and a purple cloak with a gold wreath stands calmly over one dropped blue shield, reference character mildly surprised nearby, medium shot",
-      "image_prompt_alt": "reference character at frame left, eyebrows raised, watches a slim young man with short curly fair hair, clean-shaven, in a white toga and a purple cloak with a gold wreath stand calmly over one dropped blue shield, low-angle wide shot"
+      "narration": "Then you have the legendary Lewis Hamilton.",
+      "location": "the paddock",
+      "edits": ["the tag disappears and the man with long braids steps forward with both arms spread wide"]
     },
     {
-      "location": "Senate chamber",
-      "narration": "His name was Augustus.",
-      "image_prompt": "Augustus in a white toga and a purple cloak with a gold wreath poses proudly beside a small sign reading \"AUGUSTUS\", reference character looking curious, medium two-shot",
-      "image_prompt_alt": "reference character stands close at frame right, curious, studying a slim young man with short curly fair hair, clean-shaven, in a white toga and a purple cloak with a gold wreath who poses proudly beside one small wooden sign, close two-shot"
+      "narration": "[sighs] He moved over to Ferrari last year.",
+      "location": "the paddock",
+      "edits": ["the man with long braids pulls on one big scarlet red helmet as the character smiles softly"]
     },
     {
-      "location": "Pax Romana city",
-      "narration": "Augustus became the very first official emperor of Rome.",
-      "image_prompt": "Augustus in a white toga and a purple cloak with a gold wreath raises one hand to a cheering doodle crowd, reference character skeptical at the edge, low-angle shot",
-      "image_prompt_alt": "reference character stands in the foreground left with arms folded, skeptical, as a slim young man with short curly fair hair, clean-shaven, in a white toga and a purple cloak with a gold wreath raises one hand to a cheering doodle crowd, medium-wide shot"
+      "narration": "Fans waited years to see him in red.",
+      "location": "the paddock",
+      "edits": ["the man in the papaya orange suit disappears and two small doodle fans waving scarlet red flags appear at frame left, cheering"]
     },
     {
-      "location": "Pax Romana city",
-      "narration": "He launched a famous two-hundred-year golden age called Pax Romana.",
-      "image_prompt": "Augustus in a white toga and a purple cloak with a gold wreath unrolls one long gold banner reading \"PAX ROMANA\" while reference character looks quietly interested, wide shot",
-      "image_prompt_alt": "reference character sits at frame right, quietly interested, as a slim young man with short curly fair hair, clean-shaven, in a white toga and a purple cloak with a gold wreath unrolls one long gold banner across the frame, high-angle shot"
+      "narration": "Meanwhile Max Verstappen still leads Red Bull.",
+      "location": "the paddock",
+      "image_prompt": "reference character watches, mildly wary, a real photo cutout of Max Verstappen in a dark navy blue racing suit, roughly pasted onto the drawing, beside Kimi Antonelli, a teenage-looking driver in a black and silver racing suit, medium two-shot",
+      "image_prompt_alt": "reference character stands at frame left looking mildly wary at a stocky man with short light brown hair and stubble in a dark navy blue racing suit at center, while a slim dark-haired teenage-looking driver in a black and silver racing suit stands at frame right, wide shot"
     },
     {
-      "location": "Pax Romana city",
-      "narration": "[thoughtful] Trade flourished everywhere.",
-      "image_prompt": "two doodle merchants in brown tunics swap one red clay jar for one bolt of purple cloth while reference character looks interested, medium two-shot",
-      "image_prompt_alt": "reference character leans in at the left edge, interested, as two doodle merchants in brown tunics hand over one red clay jar and one rolled bolt of purple cloth, close side angle"
+      "narration": "He wants another title.",
+      "location": "the paddock",
+      "edits": ["the man in the dark navy suit folds his arms and leans forward"]
     },
     {
-      "location": "Pax Romana city",
-      "narration": "Cities expanded very quickly.",
-      "image_prompt": "reference character looks up, impressed, as one white marble temple and one red-roofed apartment block sprout tall around him, low-angle wide shot",
-      "image_prompt_alt": "reference character stands small between one rising white marble temple and one fast-growing red-roofed apartment block, turning his head in surprise, high-angle long shot"
+      "narration": "Mercedes has a young star named Kimi Antonelli.",
+      "location": "the paddock",
+      "edits": ["the teenage-looking driver in the black and silver suit steps forward and waves"]
     },
     {
-      "location": "Pax Romana city",
-      "narration": "Life seemed quite good.",
-      "image_prompt": "reference character lounges contentedly on one white marble bench while one smiling doodle Roman offers him one bowl of purple grapes, medium shot",
-      "image_prompt_alt": "reference character sits back on one white marble bench, one arm along its edge, content, beside one smiling doodle Roman in a tunic holding out one bowl of purple grapes, three-quarter view"
+      "narration": "[light chuckle] He is one of the youngest drivers on the grid.",
+      "location": "the paddock",
+      "edits": ["the teenage-looking driver gives a big confident thumbs up as the character chuckles"]
     },
     {
-      "location": "Pax Romana city",
-      "narration": "Massive stone arenas were constructed to entertain millions of citizens.",
-      "image_prompt": "reference character stands tiny beside the towering curved wall of the Colosseum in pale yellow stone, looking up in awe, low-angle long shot",
-      "image_prompt_alt": "reference character stands at the lower right corner, awed, gazing up at one towering round arena of pale yellow stone ringed with stacked rows of arches, wide eye-level shot"
+      "narration": "Everyone wants to win.",
+      "location": "the paddock",
+      "edits": ["the character and both drivers crouch low like sprinters ready to race"]
     },
     {
-      "location": "Pax Romana city",
-      "narration": "Gladiators fought wild animals and each other inside the Colosseum.",
-      "image_prompt": "one doodle gladiator in a bronze helmet faces one roaring orange lion while reference character peeks from the frame edge, alarmed, medium-wide shot",
-      "image_prompt_alt": "reference character crouches in the foreground left, alarmed, as one doodle gladiator with a bronze helmet and round shield squares off against one roaring orange lion, low side angle"
+      "narration": "Teams build their own completely unique racing cars.",
+      "location": "the team factory",
+      "image_prompt": "reference character crouches at frame left, curious, beside one half-built bright purple open-wheel race car on a raised metal work stand, low-angle shot",
+      "image_prompt_alt": "reference character stands at frame right peering with interest at one half-assembled bright purple single-seat race car resting on a raised metal work stand with its wheels off, medium-wide shot"
     },
     {
-      "location": "Pax Romana city",
-      "narration": "[deadpan] Free games kept people calm.",
-      "image_prompt": "three cheerful doodle spectators in brown tunics sit beneath a small sign reading \"FREE SHOWS\", reference character seated beside them looking unimpressed, medium shot",
-      "image_prompt_alt": "reference character sits at the end of a row of three cheerful doodle spectators in brown tunics, arms folded and unimpressed, all of them facing one yellow stone arena arch, side angle"
+      "narration": "The richest teams usually win the most races.",
+      "location": "the team factory",
+      "edits": ["one towering stack of green banknotes appears at frame right, taller than the car"]
     },
     {
-      "location": "Pax Romana city",
-      "narration": "Free bread kept them full.",
-      "image_prompt": "reference character stares deadpan at a real photo cutout of a round carbonized Roman bread loaf, roughly pasted onto the drawing, close-up",
-      "image_prompt_alt": "reference character stands at frame right with a deadpan look as one plump doodle citizen in a brown tunic chews happily beside one round brown bread loaf scored into wedges, medium shot"
+      "narration": "[flatly] Cash DEFINITELY makes the car go so much faster.",
+      "location": "the team factory",
+      "edits": ["green banknotes pour from the car's rear like exhaust as the character stares flatly"]
     },
     {
-      "location": "Pax Romana city",
-      "narration": "Giant arch bridges called aqueducts brought clean mountain water inside.",
-      "image_prompt": "reference character looks impressed beneath one towering stone aqueduct of stacked arches carrying one blue stream of water, low-angle long shot",
-      "image_prompt_alt": "reference character stands at frame left, impressed, beside one tall grey stone bridge of stacked arches with one blue channel of water running along its top, wide side view"
+      "narration": "[curious] This brings us to the new 2026 regulations.",
+      "location": "the team factory",
+      "edits": ["the cash and banknotes disappear and one huge paper scroll unrolls from frame right to the character's feet"]
     },
     {
-      "location": "Pax Romana city",
-      "narration": "Wealthy Romans enjoyed warm public bathhouses and luxury indoor toilets.",
-      "image_prompt": "reference character stares, puzzled, at a real photo cutout of a long marble Roman toilet bench with keyhole openings, roughly pasted onto the drawing, wide shot",
-      "image_prompt_alt": "reference character stands at frame left, puzzled, beside one long white marble bench with a row of keyhole-shaped openings while one plump doodle Roman relaxes in one blue steaming pool, wide side angle"
+      "narration": "The engines have completely transformed.",
+      "location": "the team factory",
+      "edits": ["the scroll disappears and a real photo cutout of a Formula 1 hybrid power unit, roughly pasted onto the drawing, appears big beside the car"]
     },
     {
-      "location": "Pax Romana city",
-      "narration": "[clears throat] Well... wealthy citizens did.",
-      "image_prompt": "reference character raises an eyebrow beside one plump doodle Roman in a purple-trimmed toga relaxing in one blue pool under a small sign reading \"RICH ONLY\", medium shot",
-      "image_prompt_alt": "reference character stands at the right edge with one raised eyebrow as one plump doodle Roman with a purple-trimmed toga folded beside him lounges in one blue marble pool, high-angle shot"
+      "narration": "They run on one hundred percent sustainable fuels now.",
+      "location": "the team factory",
+      "edits": ["the car disappears and one big green fuel can with a white leaf painted on it appears beside the engine cutout"]
     },
     {
-      "location": "Pax Romana city",
-      "narration": "Millions of enslaved workers worked.",
-      "image_prompt": "three doodle enslaved workers in plain grey tunics haul one heavy white marble block on ropes while reference character watches soberly from the edge, wide shot",
-      "image_prompt_alt": "reference character stands quietly in the foreground right, somber, as three doodle workers in plain grey tunics strain to drag one heavy white marble block on thick ropes, low side angle"
+      "narration": "Half the power comes from electric motors.",
+      "location": "the team factory",
+      "image_prompt": "reference character stands at frame right, interested, beside one big doodle engine split down the middle, its left half a bright yellow battery with a lightning bolt, medium shot",
+      "image_prompt_alt": "reference character stands at frame left gazing with interest at one big doodle engine cut in two, one side a bright yellow battery marked with a lightning bolt and the other a grey block of pistons, wide shot"
     },
     {
-      "location": "Pax Romana city",
-      "narration": "They had zero rights.",
-      "image_prompt": "reference character stands soberly beside one tired doodle worker in a grey tunic sitting hunched, one iron chain loose at his feet, close-up",
-      "image_prompt_alt": "reference character crouches at frame left with a sorrowful expression near one exhausted doodle worker in a plain grey tunic hugging his knees, one heavy iron chain coiled beside him, medium shot"
+      "narration": "The other half is a combustion engine.",
+      "location": "the team factory",
+      "edits": ["small puffs of grey smoke rise from the right half of the engine"]
     },
     {
-      "location": "imperial throne room",
-      "narration": "[flatly] Governing fifty million people created gigantic administrative and logistical challenges.",
-      "image_prompt": "reference character looks tired beside one towering heap of paper scrolls toppling over one tiny brown wooden desk, medium shot",
-      "image_prompt_alt": "reference character sits slumped at one tiny brown wooden desk, exhausted, as one enormous leaning pile of rolled paper scrolls looms over him, low-angle shot"
+      "narration": "Together they produce around one thousand raw horsepower.",
+      "location": "the team factory",
+      "edits": ["a big sign reading \"1000 HP\" appears above the engine and the character's eyes go wide"]
     },
     {
-      "location": "imperial throne room",
-      "narration": "The border spanned from rainy Britain all the way to Egypt.",
-      "image_prompt": "reference character stretches his arms wide across one giant outline map with one grey rain cloud at its top and one yellow pyramid at its far end, overhead shot",
-      "image_prompt_alt": "reference character lies flat across one huge outline map, arms outstretched and still falling short, one grey rain cloud at one corner and one yellow pyramid at the other, high-angle wide shot"
+      "narration": "[clears throat] You still cannot buy one for your daily commute.",
+      "location": "the team factory",
+      "edits": ["the sign disappears and one small grey family hatchback appears at frame left, much smaller than the engine"]
     },
     {
-      "location": "imperial throne room",
-      "narration": "From Atlantic Spain to Syria.",
-      "image_prompt": "reference character walks wearily along one long outline map stretching past both frame edges, one blue wave curling at its start, wide shot",
-      "image_prompt_alt": "reference character trudges across one endless outline map toward frame right, shoulders sagging, one small blue wave splashing at the map's left end, low side view"
+      "narration": "The cars also feature active aerodynamics this year.",
+      "location": "the long straight",
+      "image_prompt": "reference character stands at frame left, interested, watching one bright teal open-wheel race car with a tall rear wing, seen side-on, wide shot",
+      "image_prompt_alt": "reference character leans forward at frame right with interest, studying one low bright teal single-seat race car with a big tilting rear wing and a flat front wing, seen side-on, medium-wide shot"
     },
     {
-      "location": "imperial throne room",
-      "narration": "It was too huge.",
-      "image_prompt": "reference character strains, mildly annoyed, to fold one enormous red-bordered map billowing far beyond the frame edges, low-angle shot",
-      "image_prompt_alt": "reference character stands buried to the waist in folds of one gigantic red-bordered map spilling past every frame edge, looking fed up, high-angle medium shot"
+      "narration": "Wings shift on straight lines to reduce aerodynamic drag.",
+      "location": "the long straight",
+      "edits": ["a real photo cutout of a Formula 1 rear wing with its flap open, roughly pasted onto the drawing, appears big above the car"]
     },
     {
-      "location": "imperial throne room",
-      "narration": "[thoughtful] Then incompetent leaders started making terrible decisions for the country.",
-      "image_prompt": "one lazy doodle emperor in a purple cloak flips one gold coin to decide while reference character watches, skeptical, medium two-shot",
-      "image_prompt_alt": "reference character stands at the right edge with a doubtful frown as one slouching doodle emperor in a purple cloak tosses one gold coin into the air, low three-quarter view"
+      "narration": "This makes the cars slice right through the air.",
+      "location": "the long straight",
+      "edits": ["the rear wing cutout disappears and long smooth wind lines stream over the car from front to back"]
     },
     {
-      "location": "imperial throne room",
-      "narration": "Caligula reportedly planned to make his horse a consul.",
-      "image_prompt": "Caligula with a sneering grin and a purple cloak drapes one red-bordered white toga over one white horse while reference character stares, incredulous, medium shot",
-      "image_prompt_alt": "reference character stands at frame left, jaw dropped in disbelief, as a thin pale young man with short dark hair, clean-shaven, with a sneering grin and a purple cloak drapes one red-bordered white toga over one white horse, wide side angle"
+      "narration": "It increases top speed immensely.",
+      "location": "the long straight",
+      "edits": ["the car shoots ahead to frame right trailing long speed lines as the character's jaw drops"]
     },
     {
-      "location": "imperial throne room",
-      "narration": "[sarcastic] True political genius right there.",
-      "image_prompt": "one white horse in a red-bordered white toga sits beside reference character behind a small plaque reading \"CONSUL\", reference character deadpan, medium two-shot",
-      "image_prompt_alt": "reference character sits on one white marble bench, flatly annoyed, shoulder to shoulder with one white horse wearing a red-bordered white toga, both facing the viewer, frontal close two-shot"
+      "narration": "Then they snap back for the corners.",
+      "location": "the long straight",
+      "edits": ["the car's rear wing flips upright and the car leans into a sharp curve"]
     },
     {
-      "location": "imperial throne room",
-      "narration": "Rumors said Nero sang while Rome burned.",
-      "image_prompt": "Nero, in a purple robe, plucking a small golden lyre beside one row of red-roofed houses in orange flames, reference character horrified at the edge, wide shot",
-      "image_prompt_alt": "reference character stands in the foreground right, horrified, as a stocky man with curly reddish hair and a short neck beard, in a purple robe, plucking a small golden lyre ignores one row of red-roofed houses in orange flames, low-angle shot"
+      "narration": "Every driver uses these systems to overtake fierce rivals.",
+      "location": "the long straight",
+      "edits": ["one plain doodle race car appears just ahead and the teal car swerves past it"]
     },
     {
-      "location": "imperial throne room",
-      "narration": "Greed infected the leadership.",
-      "image_prompt": "one doodle emperor in a purple cloak hugs one open wooden chest heaped with gold coins while reference character looks disgusted at the edge, medium shot",
-      "image_prompt_alt": "reference character stands at frame left, lip curled in disgust, as one grinning doodle emperor in a purple cloak sprawls over one open wooden chest piled with gold coins, high-angle shot"
+      "narration": "[thoughtful] A race weekend takes three whole days.",
+      "location": "race weekend",
+      "image_prompt": "reference character stands thoughtfully at frame left beside one huge desk calendar page with three big squares circled in red, medium shot",
+      "image_prompt_alt": "reference character tilts his head thoughtfully at frame right beside one huge flip calendar standing on its own, three of its big squares circled with thick red marker, wide shot"
     },
     {
-      "location": "imperial throne room",
-      "narration": "Greedy army generals fought continuous battles against each other for power.",
-      "image_prompt": "two doodle generals in red and blue plumed helmets tug one gold crown between them while reference character looks exasperated nearby, medium-wide shot",
-      "image_prompt_alt": "reference character stands between two doodle generals, one in a red plumed helmet and one in a blue plumed helmet, rolling his eyes as they yank one gold crown back and forth, low-angle shot"
+      "narration": "Friday is just for practice.",
+      "location": "race weekend",
+      "edits": ["a big sign reading \"FRIDAY\" appears on the first red-circled square"]
     },
     {
-      "location": "imperial throne room",
-      "narration": "In one single year, Rome had four different emperors.",
-      "image_prompt": "reference character stares in disbelief at four gold crowns toppling in a row like dominoes, close-up",
-      "image_prompt_alt": "reference character crouches at frame right, wide-eyed, watching four gold crowns tip over one after another in a neat line across the frame, low side angle"
+      "narration": "Teams test car setups.",
+      "location": "race weekend",
+      "edits": ["the calendar and sign disappear and one bright blue race car appears at frame right with a doodle mechanic bent over its wing"]
     },
     {
-      "location": "imperial throne room",
-      "narration": "[light chuckle] Politics became complete chaos.",
-      "image_prompt": "three doodle men in purple cloaks scramble over one gold throne, pulling each other off, while reference character smirks from the side, wide shot",
-      "image_prompt_alt": "reference character sits at the lower left edge with an amused smirk as three doodle men in purple cloaks climb over and shove each other off one gold throne, high-angle medium shot"
+      "narration": "Saturday is the ultimate test of pure speed.",
+      "location": "race weekend",
+      "edits": ["the mechanic disappears and one big silver stopwatch appears floating above the car"]
     },
     {
-      "location": "imperial throne room",
-      "narration": "Unpaid soldiers demanded money.",
-      "image_prompt": "two doodle legionaries in red cloaks hold out empty palms with a speech bubble reading \"PAY US\", reference character shrugging awkwardly, medium shot",
-      "image_prompt_alt": "reference character shrugs awkwardly at frame right as two frowning doodle legionaries in red cloaks lean toward him with empty open palms, low-angle close two-shot"
+      "narration": "This is the qualifying session.",
+      "location": "race weekend",
+      "edits": ["the character leans in with narrowed eyes, staring at the stopwatch"]
     },
     {
-      "location": "imperial throne room",
-      "narration": "High taxes crushed farmers.",
-      "image_prompt": "one thin doodle farmer in a brown tunic bends double beneath one enormous red cloth sack, reference character wincing sympathetically beside him, medium shot",
-      "image_prompt_alt": "reference character stands at frame left, wincing, as one thin doodle farmer in a brown tunic staggers under one gigantic red cloth sack many times his size, wide side angle"
+      "narration": "They try to set the fastest single lap.",
+      "location": "race weekend",
+      "edits": ["the car blasts off along one big looping arrow as the stopwatch hands spin"]
     },
     {
-      "location": "imperial throne room",
-      "narration": "Emperor Diocletian realized that one single man could not rule everything.",
-      "image_prompt": "Diocletian in a stiff purple robe with a gold jeweled crown sits overwhelmed beneath one towering stack of scrolls, reference character nodding in agreement, medium shot",
-      "image_prompt_alt": "reference character stands at the right edge, nodding knowingly, as a heavy-set older man with a short grey beard and cropped hair, in a stiff purple robe with a gold jeweled crown sits buried under one towering stack of scrolls, high-angle shot"
+      "narration": "The fastest driver starts first on Sunday afternoon.",
+      "location": "race weekend",
+      "image_prompt": "reference character stands at frame right, attentive, watching one bright blue race car alone in the front box of a short row of painted yellow boxes, overhead shot",
+      "image_prompt_alt": "reference character stands at frame left looking on attentively as one bright blue single-seat race car sits by itself at the head of a short line of empty yellow starting boxes, wide shot at eye level"
     },
     {
-      "location": "imperial throne room",
-      "narration": "[understated] So he split the entire empire into two distinct halves.",
-      "image_prompt": "Diocletian in a stiff purple robe with a gold jeweled crown tears one giant outline map cleanly in half while reference character watches, mildly surprised, wide shot",
-      "image_prompt_alt": "reference character stands in the foreground left, eyebrows raised, as a heavy-set older man with a short grey beard and cropped hair, in a stiff purple robe with a gold jeweled crown rips one huge outline map down the middle, low-angle medium shot"
+      "narration": "[deadpan] This is called pole position.",
+      "location": "race weekend",
+      "edits": ["a tall wooden pole appears beside the blue car, a big sign reading \"POLE\" nailed to it"]
     },
     {
-      "location": "imperial throne room",
-      "narration": "Western region and Eastern region.",
-      "image_prompt": "reference character stands between two torn map halves, one painted red and one painted blue, looking from one to the other, wide shot",
-      "image_prompt_alt": "reference character sits cross-legged in the gap between one red map half at frame left and one blue map half at frame right, glancing curiously at each, overhead shot"
+      "narration": "Sunday is the main event.",
+      "location": "race day",
+      "image_prompt": "reference character stands at frame left, eager, as three doodle race cars launch side by side beside one bright green starting light, wide shot",
+      "image_prompt_alt": "reference character leans forward eagerly at frame right as three small doodle single-seat race cars surge off side by side past one tall pole topped with a bright green light, low-angle shot"
     },
     {
-      "location": "imperial throne room",
-      "narration": "Each side got leaders.",
-      "image_prompt": "two doodle emperors in purple cloaks, one with a red sash and one with a blue sash, sit back to back beside reference character, bored, medium shot",
-      "image_prompt_alt": "reference character sits wedged between two doodle emperors in purple cloaks who face opposite directions, one wearing a red sash and the other a blue sash, looking bored, frontal wide shot"
+      "narration": "The race covers about one hundred ninety miles total.",
+      "location": "race day",
+      "edits": ["the starting light disappears and the three cars stretch into a long line racing toward frame right"]
     },
     {
-      "location": "Constantinople",
-      "narration": "Emperor Constantine relocated the main capital city to wealthy Byzantium.",
-      "image_prompt": "Constantine with a square jaw and a gold diadem drives one oxcart heaped with white marble columns eastward while reference character trudges behind, tired, wide side shot",
-      "image_prompt_alt": "reference character walks wearily at the front right edge as a broad muscular man with short brown hair, clean-shaven, in a red military cloak, with a square jaw and a gold diadem drives one oxcart heaped with white marble columns toward him, frontal long shot"
+      "narration": "First place gets a massive twenty five championship points.",
+      "location": "race day",
+      "edits": ["a big sign reading \"25\" appears above the lead car"]
     },
     {
-      "location": "Constantinople",
-      "narration": "He renamed this magnificent eastern trade hub to Constantinople.",
-      "image_prompt": "Constantine with a square jaw and a gold diadem hangs one big sign reading \"CONSTANTINOPLE\" above one gold-domed building, reference character unimpressed, medium shot",
-      "image_prompt_alt": "reference character stands at the lower left edge, unimpressed, as a broad muscular man with short brown hair, clean-shaven, in a red military cloak, with a square jaw and a gold diadem proudly hangs one large wooden sign over one gold-domed building, low-angle wide shot"
+      "narration": "Second place gets eighteen points.",
+      "location": "race day",
+      "edits": ["the sign disappears and the second car pulls alongside the lead car"]
     },
     {
-      "location": "Constantinople",
-      "narration": "[curious] Constantine legalized Christianity as well.",
-      "image_prompt": "Constantine with a square jaw and a gold diadem raises one round shield painted with a red chi-rho symbol while reference character looks curious, low-angle medium shot",
-      "image_prompt_alt": "reference character leans in from frame right, curious, as a broad muscular man with short brown hair, clean-shaven, in a red military cloak, with a square jaw and a gold diadem lifts one round shield bearing a red chi-rho symbol, eye-level wide shot"
+      "narration": "Only the top ten finishers score any points.",
+      "location": "race day",
+      "edits": ["a long line of tiny grey doodle cars appears trailing far behind the three cars"]
     },
     {
-      "location": "Constantinople",
-      "narration": "Religion transformed European history.",
-      "image_prompt": "reference character looks thoughtful beneath one towering domed church topped with one gold cross, low-angle long shot",
-      "image_prompt_alt": "reference character sits on one stone step at frame right, chin resting on his knee, thoughtful, beside one huge domed church with one gold cross at its peak, wide side view"
+      "narration": "The rest get absolutely nothing.",
+      "location": "race day",
+      "edits": ["a big tag reading \"0\" hangs from the last tiny grey car"]
     },
     {
-      "location": "sacked Rome",
-      "narration": "Meanwhile problems worsened west.",
-      "image_prompt": "reference character frowns at one red map half crumbling at its edges like dry paper, close-up",
-      "image_prompt_alt": "reference character kneels beside one red map half, worried, as large flakes break off its edges and drift away, high-angle medium shot"
+      "narration": "[sarcastic] Formula One is truly a very generous sport indeed.",
+      "location": "race day",
+      "edits": ["the tag disappears and the character gives a flat, sarcastic thumbs up"]
     },
     {
-      "location": "sacked Rome",
-      "narration": "[flatly] Migrating Germanic tribes pushed across weak borders seeking safety and land.",
-      "image_prompt": "three doodle travelers in brown fur cloaks step over one thin broken wooden fence while reference character watches neutrally from the edge, wide shot",
-      "image_prompt_alt": "reference character stands in the foreground left, attentive, as three doodle travelers in brown fur cloaks with bundles on their backs climb across one sagging broken wooden fence, low side angle"
+      "narration": "[curious] Racing is not just about driving fast.",
+      "location": "the pit lane",
+      "image_prompt": "reference character stands at frame left, curious, beside one bright blue open-wheel race car with a doodle driver in a white helmet, medium-wide shot",
+      "image_prompt_alt": "reference character stands at frame right with a curious look beside one bright blue single-seat race car, a small doodle driver in a white helmet sitting in its cockpit, wide shot at eye level"
     },
     {
-      "location": "sacked Rome",
-      "narration": "The Western Roman government went BROKE and could not pay soldiers.",
-      "image_prompt": "reference character offers a real photo cutout of a single worn silver Roman coin, roughly pasted onto the drawing, to one frowning red-cloaked legionary, close-up",
-      "image_prompt_alt": "reference character at frame right, embarrassed, holds out one tiny silver coin toward one frowning doodle legionary in a red cloak with his arms folded, medium shot"
+      "narration": "Strategy is extremely crucial.",
+      "location": "the pit lane",
+      "edits": ["the character taps his temple with one finger, eyes narrowed in thought"]
     },
     {
-      "location": "sacked Rome",
-      "narration": "Outer defenses collapsed completely.",
-      "image_prompt": "one long wooden palisade topples like dominoes past reference character, who stands resigned at frame left, wide shot",
-      "image_prompt_alt": "reference character sits at the lower right corner with a resigned sigh as one long line of sharpened brown wooden stakes falls over plank by plank toward him, low-angle shot"
+      "narration": "Tires wear out as the race goes on.",
+      "location": "the pit lane",
+      "edits": ["a real photo cutout of a worn Formula 1 racing tire, roughly pasted onto the drawing, appears big beside the car at frame right"]
     },
     {
-      "location": "sacked Rome",
-      "narration": "Invaders looted Rome itself.",
-      "image_prompt": "two doodle raiders in brown fur cloaks carry off one gold statue while reference character stares, stunned, from the frame edge, medium-wide shot",
-      "image_prompt_alt": "reference character stands in the foreground right, frozen in shock, as two doodle raiders in brown fur cloaks haul one heavy gold statue away toward frame left, high-angle shot"
+      "narration": "Drivers must stop to replace them.",
+      "location": "the pit lane",
+      "edits": ["the tire cutout disappears and one tall yellow board on a pole appears in front of the car's nose"]
     },
     {
-      "location": "sacked Rome",
-      "narration": "[deadpan] In four hundred seventy-six, the last western emperor resigned.",
-      "image_prompt": "one small doodle boy emperor in an oversized purple cloak sets down one gold crown and walks away, reference character deadpan, medium shot",
-      "image_prompt_alt": "reference character stands at frame left, expressionless, beside one abandoned gold crown as one small doodle boy in a trailing oversized purple cloak shuffles off toward frame right, wide side view"
+      "narration": "This is a pit stop.",
+      "location": "the pit lane",
+      "edits": ["a big sign reading \"PIT STOP\" appears on the yellow board"]
     },
     {
-      "location": "sacked Rome",
-      "narration": "Standard history books claim the Roman Empire ended right there.",
-      "image_prompt": "reference character looks skeptical beside one thick red book open to a page reading \"THE END\", medium close-up",
-      "image_prompt_alt": "reference character leans over one thick open red book at frame left, one eyebrow raised in doubt, low three-quarter view"
+      "narration": "About twenty mechanics surround the race car at once.",
+      "location": "the pit lane",
+      "image_prompt": "reference character watches from frame right, impressed, as three doodle mechanics in grey overalls swarm one bright blue race car, high-angle shot",
+      "image_prompt_alt": "reference character stands at frame left looking impressed while three doodle mechanics in grey overalls and helmets crowd tightly around one bright blue single-seat race car, close medium shot"
     },
     {
-      "location": "sacked Rome",
-      "narration": "[sighs] But that is FALSE.",
-      "image_prompt": "reference character rolls his eyes and shoves one thick red book off the frame edge, medium shot",
-      "image_prompt_alt": "reference character turns away with an exasperated sigh, pushing one thick red book aside with his foot, wide shot from slightly above"
+      "narration": "They swap all four tires in about two seconds.",
+      "location": "the pit lane",
+      "edits": ["all four wheels pop off the car into the air above the mechanics"]
     },
     {
-      "location": "Constantinople",
-      "narration": "The Eastern half survived.",
-      "image_prompt": "reference character looks surprised as one gold-domed city rises whole from one blue map half, wide shot",
-      "image_prompt_alt": "reference character steps back at frame left, eyes wide, as one intact gold-domed city stands tall on one blue map half, low-angle medium shot"
+      "narration": "[understated] Blink and you will LITERALLY miss the whole thing.",
+      "location": "the pit lane",
+      "edits": ["the wheels land back on the car as the character's eyes snap shut mid-blink"]
     },
     {
-      "location": "Constantinople",
-      "narration": "It lasted one thousand years!",
-      "image_prompt": "one gold-domed city stands unshaken beside one giant hourglass whose sand has fully run out, reference character amazed, wide shot",
-      "image_prompt_alt": "reference character looks up in amazement from the lower right corner at one towering hourglass emptied to the last grain beside one sturdy gold-domed city, low-angle long shot"
+      "narration": "Soft tires make the car go very fast.",
+      "location": "the pit lane",
+      "edits": ["the mechanics disappear and one big tire with a bright red stripe appears at frame left, speed lines behind it"]
     },
     {
-      "location": "Constantinople",
-      "narration": "Modern historians call that surviving rich region the Byzantine Empire.",
-      "image_prompt": "two doodle professors in tweed jackets and round glasses stick a tag reading \"BYZANTINE\" onto one gold-domed city, reference character doubtful, medium-wide shot",
-      "image_prompt_alt": "reference character stands at frame left, doubtful, as two doodle professors in tweed jackets and round glasses press one large paper tag onto one gold-domed city, high-angle shot"
+      "narration": "But they degrade incredibly quickly.",
+      "location": "the pit lane",
+      "edits": ["the red-striped tire shrinks and crumbles into small black bits"]
     },
     {
-      "location": "Constantinople",
-      "narration": "Yet citizens living there called themselves proud Romans the whole time.",
-      "image_prompt": "two doodle citizens in blue robes peel the paper tag off one gold-domed city, thumping their chests proudly, reference character amused, medium shot",
-      "image_prompt_alt": "reference character grins at the right edge as two doodle citizens in blue robes tear one paper tag from one gold-domed city and puff out their chests, low side angle"
+      "narration": "Hard tires last much longer.",
+      "location": "the pit lane",
+      "edits": ["the black bits disappear and one big sturdy tire with a thick grey stripe appears at frame left"]
     },
     {
-      "location": "modern capital city",
-      "narration": "[thoughtful] Why does this matter?",
-      "image_prompt": "reference character sits thoughtfully on one white marble column stump, chin on hand, medium close-up",
-      "image_prompt_alt": "reference character sits on one short white marble column stump at frame left, gazing upward in thought, wide shot from slightly below"
+      "narration": "But they offer less grip on the track.",
+      "location": "the pit lane",
+      "image_prompt": "reference character stands at frame left, mildly amused, as one bright blue race car slides sideways on grey-striped tires, wobbly lines under its wheels, wide shot",
+      "image_prompt_alt": "reference character watches from frame right with a small amused smile as one bright blue single-seat race car skids sideways on thick grey-striped tires leaving wobbly lines behind, low-angle shot"
     },
     {
-      "location": "modern capital city",
-      "narration": "Western laws mirror Roman laws.",
-      "image_prompt": "one doodle judge in a black robe and one doodle magistrate in a white toga hold up matching bronze tablets, reference character interested between them, medium shot",
-      "image_prompt_alt": "reference character stands at frame right, interested, watching one doodle judge in a black robe and one doodle magistrate in a white toga compare two identical bronze tablets face to face, wide side view"
+      "narration": "Choosing the right tire strategy wins the grand prix.",
+      "location": "the pit lane",
+      "edits": ["the car straightens out and a big sign reading \"STRATEGY\" appears above it"]
     },
     {
-      "location": "modern capital city",
-      "narration": "Languages like French, Spanish, and Italian directly evolved from Latin.",
-      "image_prompt": "reference character looks up, fascinated, at one big green oak tree with a trunk sign reading \"LATIN\" splitting into three thick branches, low-angle shot",
-      "image_prompt_alt": "reference character sits against the base of one big green oak tree at frame left, fascinated, as its single trunk divides into three thick spreading branches, wide eye-level shot"
+      "narration": "[content] That is Formula One in a nutshell.",
+      "location": "the pit lane",
+      "edits": ["the sign disappears and the character leans back against the car, smiling contentedly"]
     },
     {
-      "location": "modern capital city",
-      "narration": "[calm] Even modern government buildings across the globe copy ancient Roman architecture.",
-      "image_prompt": "reference character compares one white columned government building with a gold dome to one small marble temple of the same shape, impressed, wide shot",
-      "image_prompt_alt": "reference character stands between one small white marble temple and one large columned government building with a gold dome, glancing back and forth, impressed, low-angle long shot"
-    },
-    {
-      "location": "modern capital city",
-      "narration": "Rome fell long ago.",
-      "image_prompt": "reference character sits calmly beside one fallen white marble column with one green vine curling over it, medium shot",
-      "image_prompt_alt": "reference character rests one arm on one cracked white marble column lying on its side, one green vine winding along it, calm, high-angle wide shot"
-    },
-    {
-      "location": "modern capital city",
-      "narration": "[content] Its world still remains.",
-      "image_prompt": "reference character smiles contentedly beside one tall white marble column topped by one green laurel wreath, wide shot",
-      "image_prompt_alt": "reference character leans back against one tall standing white marble column at frame right, a contented smile on his face, one green laurel wreath resting on its top, low-angle medium shot"
+      "narration": "It is high speeds, massive drama, and endless engineering.",
+      "location": "the pit lane",
+      "edits": ["speed lines burst from the car's wheels and the character gives a small satisfied nod"]
     }
   ],
-  "music_prompt": "Sparse instrumental bed with a steady, stately mood, around seventy-five BPM. Soft low brass, a gently plucked harp, warm muted frame drum, and low sustained cellos. Flat consistent energy with no build, no swells, no drops. Sits far in the background under a spoken narrator with the mid range left clear. Purely instrumental with no vocals of any kind. Understated rather than comedic."
+  "music_prompt": "Light, steady instrumental bed for a motorsport explainer, around ninety-five BPM. Muted pulsing synth bass, soft electric guitar plucks, brushed electronic drums, and a gentle Rhodes piano. Flat consistent energy with no build, no swells, no drops. Sits far in the background under a spoken narrator with the mid range left clear. Purely instrumental with no vocals of any kind. Understated rather than comedic."
 }
 
 SCRIPT_TEMPLATE = {
     "topic": "",
     "beats": [
-        {"narration": "", "image_prompt": ""},
+        {"narration": "", "location": "", "image_prompt": "", "edits": []},
     ],
 }
 
@@ -662,9 +625,25 @@ def load_script(run_dir: Path) -> dict:
         raise SystemExit("script.json has no 'beats' list.")
 
     for i, beat in enumerate(beats, start=1):
-        for field in ("narration", "image_prompt"):
-            if not isinstance(beat.get(field), str) or not beat[field].strip():
-                raise SystemExit(f"Beat {i} is missing a non-empty {field!r}.")
+        if not isinstance(beat.get("narration"), str) or not beat["narration"].strip():
+            raise SystemExit(f"Beat {i} is missing a non-empty 'narration'.")
+        edits = beat.get("edits", [])
+        if not isinstance(edits, list) or not all(
+                _edit_parts(e)[0].strip() for e in edits):
+            raise SystemExit(f"Beat {i}: 'edits' must be a list of non-empty "
+                             f"lines, or of {{\"at\": ..., \"edit\": ...}} "
+                             f"objects with a non-empty edit.")
+        if not (beat.get("image_prompt") or "").strip() and not edits:
+            # A HOLD beat: no new picture, the one on screen stays up. Only
+            # inside a location, since a new place needs its own picture.
+            if i == 1 or _loc(beat) != _loc(beats[i - 2]):
+                raise SystemExit(
+                    f"Beat {i} has no picture of its own, and it opens "
+                    f"{'the video' if i == 1 else 'a new location'}, so there "
+                    f"is no picture to hold. Give it an image_prompt.")
+    # Builds the frame list once purely to fail here, on the script, rather
+    # than halfway through a Flow run.
+    build_frames(data)
     return data
 
 
@@ -682,9 +661,25 @@ def audio_name(index: int) -> str:
     return f"beat_{index:03}"
 
 
+def frame_name(index: int, k: int) -> str:
+    """
+    Frame k (1-based) of beat `index`.
+
+    Frame 1 keeps the plain scene_NNN name, so every run made before chaining
+    existed still renders, and adding edits to a beat later never renames the
+    picture it already has. Later frames sort straight after it in a listing:
+    scene_012.jpg, scene_012_f2.jpg, scene_012_f3.jpg, scene_013.jpg.
+    """
+    return image_name(index) if k == 1 else f"{image_name(index)}_f{k}"
+
+
 def find_image(run_dir: Path, index: int) -> Path | None:
     """Extension is unknown until Flow downloads it, so glob for it."""
-    return next((run_dir / "images").glob(f"{image_name(index)}.*"), None)
+    return find_frame(run_dir, image_name(index))
+
+
+def find_frame(run_dir: Path, name: str) -> Path | None:
+    return next((run_dir / "images").glob(f"{name}.*"), None)
 
 
 def find_audio(run_dir: Path, index: int) -> Path | None:
@@ -750,109 +745,249 @@ def _anchor_map(data: dict) -> tuple[str, dict[str, str]]:
     return setting, locations
 
 
+def _loc(beat: dict) -> str:
+    return " ".join((beat.get("location") or "").split()).lower()
+
+
+def _edit_parts(item) -> tuple[str, str]:
+    """
+    (change, at) for one edit.
+
+    An edit is either a plain line, or {"at": "six meters", "edit": "..."},
+    where `at` is the narration word(s) the picture should change on. A plain
+    line has no word, so its beat falls back to an even split.
+    """
+    if isinstance(item, dict):
+        edit, at = item.get("edit"), item.get("at")
+        return (edit if isinstance(edit, str) else "",
+                at.strip() if isinstance(at, str) else "")
+    return (item if isinstance(item, str) else ""), ""
+
+
+def _redraw_beats(beats: list[dict]) -> set[int]:
+    """
+    Beats (1-based) that draw a fresh picture in the middle of a location.
+
+    That is a jump - everything on the page moves at once - so the render
+    dissolves into it instead of hard cutting. Only counted when the beat
+    before ended on an edit: in an old one-picture-per-beat script every beat
+    is fresh, and those were always meant to hard cut within a location.
+    """
+    out = set()
+    for i in range(1, len(beats)):
+        beat, prev = beats[i], beats[i - 1]
+        j = i - 1
+        while j > 0 and _is_hold(beats[j]):
+            j -= 1
+        if ((beat.get("image_prompt") or "").strip()
+                and _loc(beat) == _loc(prev) and beats[j].get("edits")):
+            out.add(i + 1)
+    return out
+
+
+def _is_hold(beat: dict) -> bool:
+    """A beat with no picture of its own: the one on screen stays up."""
+    return not (beat.get("image_prompt") or "").strip() and not beat.get("edits")
+
+
+def _scene_text(text: str) -> str:
+    """
+    One line, minus any style block the model wrote out of habit.
+
+    Style is OURS, not the model's: a paraphrased copy would compete with
+    config.STYLE_BLOCK, and the whole point is that this text never varies
+    between scenes or videos. A newline would also break frames.json's
+    the frame's log line in two, so it is flattened here as well.
+    """
+    text = " ".join((text or "").split())
+    cut = text.lower().find("style:")
+    if cut != -1:
+        text = text[:cut].rstrip(" .,;") + "."
+    return text
+
+
+def build_frames(data: dict) -> list[dict]:
+    """
+    Every picture the video needs, in order, and how each one gets made.
+
+    A beat's frames are its image_prompt, if it has one, then its edits:
+
+      establish  the image_prompt. Drawn fresh against the character
+                 reference, exactly as every frame was before chaining.
+      edit       one edit line, applied to the frame straight before it. That
+                 frame is attached in Flow as the reference, so it is recorded
+                 as `parent`, and the runner redoes an edit whenever its parent
+                 changes.
+
+    Old scripts carry an image_prompt on every beat and no edits, so they come
+    out exactly as they always did: one establish frame per beat.
+
+    Exits on a chain that cannot work: an edit with nothing before it, or one
+    that would carry a picture across a location change. The render dissolves
+    there, so the new place needs its own first picture.
+    """
+    setting_anchor, location_anchors = _anchor_map(data)
+    frames: list[dict] = []
+    for index, beat in enumerate(data["beats"], 1):
+        loc = _loc(beat)
+        parts = []
+        if (beat.get("image_prompt") or "").strip():
+            parts.append(("establish", beat["image_prompt"], ""))
+        parts += [("edit", *_edit_parts(e)) for e in beat.get("edits") or []]
+
+        for k, (mode, text, at) in enumerate(parts, 1):
+            # `text` is the script's own words, kept for the runner's log line:
+            # every edit prompt opens with the same EDIT_TEMPLATE wrapper.
+            # `at` is the word it changes on, for the manifest's timing.
+            frame = {"name": frame_name(index, k), "beat": index, "frame": k,
+                     "mode": mode, "location": loc, "text": _scene_text(text),
+                     "at": at}
+
+            if mode == "establish":
+                # Order: style, then subject and action, then the place. The
+                # style leads so the model commits to the medium before it
+                # reads a word of realistic scene description - see
+                # config.STYLE_BLOCK's POSITION note for the photo-grounding
+                # failure that rule exists to stop. The place trails because
+                # leading with it buries the subject.
+                anchor = " ".join(a for a in (location_anchors.get(loc, ""),
+                                              setting_anchor) if a)
+
+                def full(t: str) -> str:
+                    return " ".join(part for part in (
+                        config.STYLE_BLOCK, _fragment(_scene_text(t)), anchor
+                    ) if part)
+
+                frame["prompt"] = full(text)
+                # Flow refuses a prompt now and then; retrying the same words
+                # gets the same answer, so a milder description of the same
+                # moment is what actually recovers it.
+                alt = (beat.get("image_prompt_alt") or "").strip()
+                frame["alt"] = full(alt) if alt else None
+                frame["parent"] = None
+            else:
+                prev = frames[-1] if frames else None
+                if prev is None:
+                    raise SystemExit(
+                        f"Beat {index} opens the video with an edit, so there "
+                        f"is no picture to edit. Give it an image_prompt.")
+                if prev["location"] != loc:
+                    raise SystemExit(
+                        f"Beat {index} starts location {beat.get('location')!r} "
+                        f"with an edit, which would edit the last picture of "
+                        f"{prev['location']!r}. Give beat {index} an image_prompt.")
+                frame["prompt"] = config.EDIT_TEMPLATE.format(
+                    edit=_fragment(_scene_text(text)))
+                frame["alt"] = None
+                frame["parent"] = prev["name"]
+            frames.append(frame)
+    return frames
+
+
+def _report_tempo(beats: list[dict], spoken_words) -> None:
+    """
+    How long each picture stays up, bucketed into the three tempos.
+
+    Estimated from word counts at the measured speaking rate: a beat's time is
+    shared by its pictures, and a hold beat adds its time to the picture
+    already up. Close enough to judge the mix before a long image run.
+    """
+    per_second = WORDS_PER_MINUTE / 60 * config.NARRATION_SPEED
+    holds: list[float] = []
+    for b in beats:
+        seconds = spoken_words(b["narration"]) / per_second
+        n = (1 if (b.get("image_prompt") or "").strip() else 0) + len(b.get("edits") or [])
+        if n == 0 and holds:
+            holds[-1] += seconds
+        else:
+            holds += [seconds / max(n, 1)] * max(n, 1)
+    if not holds:
+        return
+    fast = sum(1 for h in holds if h < config.TEMPO_FAST_MAX)
+    slow = sum(1 for h in holds if h >= config.TEMPO_MEDIUM_MAX)
+    medium = len(holds) - fast - slow
+    pct = lambda k: f"{k / len(holds):.0%}"
+    print(f"[prompts] tempo: {pct(fast)} fast / {pct(medium)} medium / "
+          f"{pct(slow)} slow, a picture every {sum(holds) / len(holds):.1f}s "
+          f"on average")
+    flash = [h for h in holds if h < 1.0]
+    stuck = [h for h in holds if h > 4.5]
+    if len(flash) > len(holds) / 10:
+        print(f"[warn] {len(flash)} pictures stay up under 1s; too fast to read")
+    if stuck:
+        print(f"[warn] {len(stuck)} pictures stay up over 4.5s; the frame "
+              f"sits still too long")
+
+
+def _long_chains(frames: list[dict]) -> list[tuple[int, int]]:
+    """(beat where the chain starts, edits in a row) for over-long chains."""
+    found, run, start = [], 0, 0
+    for f in frames + [{"mode": "establish", "beat": 0}]:
+        if f["mode"] == "edit":
+            run += 1
+            continue
+        if run > config.CHAIN_MAX_EDITS:
+            found.append((start, run))
+        run, start = 0, f["beat"]
+    return found
+
+
 def cmd_prompts(args) -> int:
     run_dir = resolve_run(args.run)
     data = load_script(run_dir)
     beats = data["beats"]
-    out_path = run_dir / "scenes.txt"
+    frames = build_frames(data)
+    out_path = run_dir / "frames.json"
 
-    lines = [
-        "# Generated by pipeline.py - do not edit by hand.",
-        "# Line order IS scene order: line 1 -> scene_001, and so on.",
-        f"# {len(beats)} beats from script.json",
-        "",
-    ]
+    out_path.write_text(json.dumps({
+        "generated_by": "pipeline.py prompts from script.json - do not edit "
+                        "by hand, edit script.json and re-run",
+        "frames": frames,
+    }, indent=2), encoding="utf-8")
+
+    establish = [f for f in frames if f["mode"] == "establish"]
+    edits = len(frames) - len(establish)
+    print(f"[prompts] {len(beats)} beats -> {len(frames)} frames -> {out_path}")
+    print(f"[prompts]   {len(establish)} drawn fresh from the reference, "
+          f"{edits} edited from the frame before")
+    print(f"[prompts] style block on all {len(establish)} fresh frames "
+          f"(identical every scene, every video)")
+    alts = sum(1 for f in establish if f["alt"])
+    if alts:
+        print(f"[prompts] {alts} fallback description(s) for refused prompts")
+
     # Location/setting anchors come from plan, not from the beat text. See
     # _anchor_map: the beats used to carry a paraphrased copy each.
     setting_anchor, location_anchors = _anchor_map(data)
-    missing_anchor: list[int] = []
-    anchored = 0
+    if location_anchors or setting_anchor:
+        missing = [f["beat"] for f in establish
+                   if location_anchors and f["location"] not in location_anchors]
+        print(f"[prompts] location anchor injected into "
+              f"{len(establish) - len(missing)}/{len(establish)} fresh frames")
+        if missing:
+            shown = ",".join(str(n) for n in missing[:12])
+            more = f" (+{len(missing) - 12})" if len(missing) > 12 else ""
+            print(f"[warn] no matching plan.locations entry: {shown}{more}")
+            print("       beat.location must match plan.locations[].name exactly; "
+                  "these beats carry no location description at all")
 
-    collapsed = stripped = 0
-    for index, beat in enumerate(beats, 1):
-        # scenes.txt is strictly one prompt per line. A newline inside a prompt
-        # would split one beat into two and shift every scene after it, so
-        # whitespace is flattened here rather than trusted.
-        text = " ".join(beat["image_prompt"].split())
-        if text != beat["image_prompt"].strip():
-            collapsed += 1
-
-        # Style is OURS, not the model's. Drop any block Claude wrote out of
-        # habit - a paraphrased copy would compete with the real one, and the
-        # whole point is that this text never varies between scenes or videos.
-        cut = text.lower().find("style:")
-        if cut != -1:
-            text = text[:cut].rstrip(" .,;") + "."
-            stripped += 1
-
-        # Order: style, then subject and action, then the place. The style
-        # leads so the model commits to the medium before it reads a word of
-        # realistic scene description - see config.STYLE_BLOCK's POSITION note
-        # for the photo-grounding failure that rule exists to stop. The place
-        # trails because leading with it buries the subject.
-        loc = " ".join((beat.get("location") or "").split()).lower()
-        loc_anchor = location_anchors.get(loc, "")
-        if location_anchors and not loc_anchor:
-            missing_anchor.append(index)
-        anchor = " ".join(a for a in (loc_anchor, setting_anchor) if a)
-        if anchor:
-            anchored += 1
-
-        lines.append(" ".join(part for part in (
-            config.STYLE_BLOCK, _fragment(text), anchor
-        ) if part))
-
-    out_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
-
-    # Fallback descriptions, line-for-line with scenes.txt. Flow refuses a
-    # prompt now and then; retrying the same words gets the same answer, so a
-    # milder description of the same moment is what actually recovers it.
-    alt_path = run_dir / "scenes_alt.txt"
-    alts = [b.get("image_prompt_alt", "").strip() for b in beats]
-    if any(alts):
-        alt_lines = list(lines[:4])
-        for beat, alt in zip(beats, alts):
-            # Fall back to the primary when a beat has no alternate, so the
-            # line numbering can never drift out of step.
-            text = " ".join((alt or beat["image_prompt"]).split())
-            cut = text.lower().find("style:")
-            if cut != -1:
-                text = text[:cut].rstrip(" .,;") + "."
-            loc = " ".join((beat.get("location") or "").split()).lower()
-            anchor = " ".join(a for a in (location_anchors.get(loc, ""),
-                                          setting_anchor) if a)
-            alt_lines.append(" ".join(part for part in (
-                config.STYLE_BLOCK, _fragment(text), anchor
-            ) if part))
-        alt_path.write_text("\n".join(alt_lines) + "\n", encoding="utf-8")
-        print(f"[prompts] {sum(1 for a in alts if a)} fallback description(s) "
-              f"-> {alt_path.name}")
-    elif alt_path.exists():
-        alt_path.unlink()
-
-    print(f"[prompts] {len(beats)} beats -> {out_path}")
-    print(f"[prompts] style block appended to all {len(beats)} "
-          f"(identical every scene, every video)")
-    if anchored:
-        print(f"[prompts] location anchor injected into {anchored}/{len(beats)} "
-              f"(byte-identical within each location)")
-    if missing_anchor:
-        shown = ",".join(str(n) for n in missing_anchor[:12])
-        more = f" (+{len(missing_anchor) - 12})" if len(missing_anchor) > 12 else ""
-        print(f"[warn] no matching plan.locations entry: {shown}{more}")
-        print("       beat.location must match plan.locations[].name exactly; "
-              "these beats carry no location description at all")
-    if collapsed:
-        print(f"[prompts] flattened whitespace in {collapsed} prompt(s)")
+    stripped = sum(1 for b in beats
+                   if "style:" in (b.get("image_prompt") or "").lower())
     if stripped:
         print(f"[prompts] replaced the model's own style block in {stripped} "
               f"prompt(s) with config.STYLE_BLOCK")
 
-    longest = max(len(line) for line in lines[4:])
+    for start, run in _long_chains(frames):
+        print(f"[warn] {run} edits in a row from beat {start} "
+              f"(limit {config.CHAIN_MAX_EDITS})")
+        print("       every edit drifts a little and it compounds; give a beat "
+              "partway through a fresh image_prompt")
+
+    longest = max(len(f["prompt"]) for f in frames)
     typing_s = longest * 55 / 1000
     print(f"[prompts] longest prompt {longest} chars (~{typing_s:.0f}s to type)")
 
-    _warn_off_spec(beats, data.get("format", ""))
+    _warn_off_spec(beats, data.get("format", ""), n_frames=len(frames))
     print(f"\nNext:  python pipeline.py images")
     return 0
 
@@ -880,29 +1015,33 @@ DEFAULT_WORD_BAND = (17, 21)
 # module importing pipeline would be a cycle.
 WORDS_PER_MINUTE = config.WORDS_PER_MINUTE
 
-# --- Two-tier rhythm (explainer) -------------------------------------------
+# --- Three-tier rhythm (explainer) -----------------------------------------
 # Video length fixes the total spoken words, so more beats does NOT mean more
-# narration - it means the same words cut into smaller pieces. A 4.6 minute
-# video is ~810 spoken words whether that is 45 beats or 90.
+# narration - it means the same words cut into smaller pieces.
 #
-#   SHORT beat   3-6 words   ~1.5s   a consequence, a reaction, one hard image
-#   LONG beat    8-12 words  ~3.4s   the information, the number, the turn
+# Since 2026-10-11 every beat is exactly ONE picture (a fresh drawing or one
+# edit of the picture before), so a beat's length IS how long its picture
+# stays up:
 #
-# Half and half averages ~7 words a beat, ~2.4s per image: about 75 beats for
-# a 3 minute video. Was 4-8 / 10-15 (~9 words, ~3.0s, 60 beats) until
-# 2026-10-07, when the channel moved to one picture per short sentence.
+#   SHORT beat    3-5 words   ~1.5s   a reaction, a consequence, a punch
+#   MEDIUM beat   6-8 words   ~2.3s   ordinary explaining
+#   LONG beat     9-12 words  ~3.5s   the big fact, the number, the turn
 #
-# The MIX is the rule, not the shortness. Uniformly short beats are not a
-# faster video, they are a faster metronome - and a metronome was the original
-# complaint. So the checks below police the ratio and the runs, and only flag
-# an individual beat when it is too long to sit under one still image.
+# About a quarter / half / quarter averages ~2.4s a picture, ~75 beats for 3
+# minutes. Replaces the two-tier 3-6 / 8-12 split (2026-10-07), which pass2
+# then cut into a picture every ~1.1s - too fast. Before that, 4-8 / 10-15.
+#
+# The MIX is the rule. Uniformly short beats are a metronome, uniformly long
+# ones a slideshow, so the checks police the shares and the runs, and only
+# flag a single beat when it is too long to sit under one still image.
 RHYTHM_FORMATS = {"explainer"}
-SHORT_MAX_WORDS = 6       # at or under this, a beat counts as SHORT
+SHORT_MAX_WORDS = 5       # at or under this, a beat counts as SHORT
+MEDIUM_MAX_WORDS = 8      # over SHORT and at or under this, MEDIUM; above, LONG
 LONG_MAX_WORDS = 12       # over this, the image freezes while narration runs
 MIN_WORDS = 3             # under this it does not register as a beat at all
-SHORT_SHARE = (0.35, 0.65)  # acceptable fraction of SHORT beats
-MAX_RUN_SHORT = 3         # more than this in a row reads as machine-gun
-MAX_RUN_LONG = 2          # more than this in a row is the old slideshow
+TIER_SHARE = {"short": (0.15, 0.35), "medium": (0.35, 0.65),
+              "long": (0.15, 0.35)}
+MAX_RUN_SAME = 3          # more of one length in a row and the rhythm goes flat
 
 # Mirrors OUTRO_FRAMES in remotion/src/constants.ts (30 frames at 30fps):
 # the hold on the last image after the final word.
@@ -911,11 +1050,8 @@ OUTRO_HOLD_SECONDS = 1.0
 
 def _check_rhythm(beats: list[dict], spoken_words, report) -> None:
     """
-    Police the two-tier rhythm for RHYTHM_FORMATS.
-
-    Deliberately does NOT warn on a beat merely for being short - short IS the
-    format now. What it polices is the shape of the whole script: the ratio of
-    short to long, and how many of either run back to back.
+    Police the three-tier rhythm for RHYTHM_FORMATS: the share of short,
+    medium and long beats, and runs of one length back to back.
     """
     counts = [spoken_words(b["narration"]) for b in beats]
     n = len(counts)
@@ -929,46 +1065,37 @@ def _check_rhythm(beats: list[dict], spoken_words, report) -> None:
            [i for i, c in enumerate(counts, 1) if c < MIN_WORDS],
            "too short to register as its own beat")
 
-    shorts = [c <= SHORT_MAX_WORDS for c in counts]
-    share = sum(shorts) / n
-    lo_s, hi_s = SHORT_SHARE
-    if share < lo_s:
-        print(f"[warn] only {share:.0%} of beats are short "
-              f"(want {lo_s:.0%}-{hi_s:.0%})")
-        print("       too few short beats - this is still slideshow pacing")
-    elif share > hi_s:
-        print(f"[warn] {share:.0%} of beats are short "
-              f"(want {lo_s:.0%}-{hi_s:.0%})")
-        print("       nearly all short is a metronome, not a faster video")
+    def tier(c: int) -> str:
+        if c <= SHORT_MAX_WORDS:
+            return "short"
+        return "medium" if c <= MEDIUM_MAX_WORDS else "long"
 
-    # Collapse the short/long sequence into runs so a stretch of six short
-    # beats is reported once, as a range, not as six separate warnings.
-    runs, start = [], 0
+    tiers = [tier(c) for c in counts]
+    for name, (lo, hi) in TIER_SHARE.items():
+        share = tiers.count(name) / n
+        if not lo <= share <= hi:
+            print(f"[warn] {share:.0%} of beats are {name} "
+                  f"(want {lo:.0%}-{hi:.0%})")
+
+    # Collapse into runs so a stretch of six short beats is reported once.
+    bad, start = [], 0
     for i in range(1, n + 1):
-        if i == n or shorts[i] != shorts[start]:
-            runs.append((shorts[start], start + 1, i))
+        if i == n or tiers[i] != tiers[start]:
+            if i - start > MAX_RUN_SAME:
+                bad.append(f"{start + 1}-{i} ({tiers[start]})")
             start = i
+    if bad:
+        print(f"[warn] {len(bad)} run(s) of more than {MAX_RUN_SAME} beats of "
+              f"one length: {', '.join(bad[:8])}")
+        print("       vary the length - one length in a row reads flat")
 
-    for is_short, limit, why in (
-        (True, MAX_RUN_SHORT,
-         "break the run with a long beat - back-to-back short beats "
-         "read as machine-gun"),
-        (False, MAX_RUN_LONG,
-         "insert a short beat - this stretch cuts at the old slow rate"),
-    ):
-        bad = [f"{a}-{b}" for s_, a, b in runs
-               if s_ is is_short and b - a + 1 > limit]
-        if bad:
-            kind = "short" if is_short else "long"
-            print(f"[warn] {len(bad)} run(s) of more than {limit} {kind} "
-                  f"beats: {', '.join(bad[:8])}")
-            print(f"       {why}")
-
-    print(f"[prompts] rhythm: {sum(shorts)} short / {n - sum(shorts)} long, "
+    print(f"[prompts] rhythm: {tiers.count('short')} short / "
+          f"{tiers.count('medium')} medium / {tiers.count('long')} long, "
           f"avg {sum(counts) / n:.1f} words a beat")
 
 
-def _warn_off_spec(beats: list[dict], fmt: str = "") -> None:
+def _warn_off_spec(beats: list[dict], fmt: str = "",
+                   n_frames: int | None = None) -> None:
     """
     Flag beats that drift from the spec in prompts/pass1_narration.txt.
 
@@ -984,8 +1111,9 @@ def _warn_off_spec(beats: list[dict], fmt: str = "") -> None:
     rhythm = key in RHYTHM_FORMATS
     lo, hi = WORD_BANDS.get(key, DEFAULT_WORD_BAND)
     if fmt and rhythm:
-        print(f"[prompts] format {fmt!r}: two-tier rhythm, "
-              f"short <={SHORT_MAX_WORDS} words / long <={LONG_MAX_WORDS}")
+        print(f"[prompts] format {fmt!r}: short <={SHORT_MAX_WORDS} / medium "
+              f"<={MEDIUM_MAX_WORDS} / long <={LONG_MAX_WORDS} words, one "
+              f"picture per beat")
     elif fmt:
         print(f"[prompts] format {fmt!r}: expecting {lo}-{hi} words per beat")
 
@@ -993,8 +1121,21 @@ def _warn_off_spec(beats: list[dict], fmt: str = "") -> None:
                                if spoken_words(b["narration"]) < lo]
     long_ = [] if rhythm else [i for i, b in enumerate(beats, 1)
                                if spoken_words(b["narration"]) > hi]
-    no_ref = [i for i, b in enumerate(beats, 1)
-              if "reference character" not in b["image_prompt"].lower()]
+    # Only beats that draw a fresh picture carry an image_prompt. An edit-only
+    # beat continues the picture before it, so the checks on how a picture is
+    # first staged (reference, alt, back view) apply to these alone, while the
+    # checks on what ends up on screen (render words, photos, labels) read the
+    # edits too.
+    def prompt(b: dict) -> str:
+        return b.get("image_prompt") or ""
+
+    def visual(b: dict) -> str:
+        return " ".join([prompt(b)] + [_edit_parts(e)[0]
+                                       for e in b.get("edits") or []])
+
+    drawn = [(i, b) for i, b in enumerate(beats, 1) if prompt(b).strip()]
+    no_ref = [i for i, b in drawn
+              if "reference character" not in prompt(b).lower()]
 
     def report(label, items, why):
         if not items:
@@ -1020,10 +1161,10 @@ def _warn_off_spec(beats: list[dict], fmt: str = "") -> None:
     def flat(t: str) -> str:
         return " ".join((t or "").split()).lower()
 
-    copies = [i for i, b in enumerate(beats, 1)
+    copies = [i for i, b in drawn
               if b.get("image_prompt_alt")
-              and flat(b["image_prompt_alt"]) == flat(b["image_prompt"])]
-    missing_alt = [i for i, b in enumerate(beats, 1)
+              and flat(b["image_prompt_alt"]) == flat(prompt(b))]
+    missing_alt = [i for i, b in drawn
                    if not (b.get("image_prompt_alt") or "").strip()]
 
     report("no image_prompt_alt", missing_alt,
@@ -1043,9 +1184,9 @@ def _warn_off_spec(beats: list[dict], fmt: str = "") -> None:
     # comes out rotated.
     no_face = _re2.compile(r"(no face|back of his (plain white )?head|"
                            r"face not visible)", _re2.I)
-    backs = [i for i, b in enumerate(beats, 1)
-             if back_view.search(b["image_prompt"])
-             and not no_face.search(b["image_prompt"])]
+    backs = [i for i, b in drawn
+             if back_view.search(prompt(b))
+             and not no_face.search(prompt(b))]
     if backs:
         print(f"[warn] back view without a 'no face' clause: "
               f"{','.join(str(n) for n in backs)}")
@@ -1065,7 +1206,7 @@ def _warn_off_spec(beats: list[dict], fmt: str = "") -> None:
     # below), so it is taken out before looking for stray photo words.
     cutout = _re.compile(r"\bphoto cutout\b", _re.I)
     risky = [(i, sorted(set(w.lower() for w in render_words.findall(
-                 cutout.sub(" ", b["image_prompt"])))))
+                 cutout.sub(" ", visual(b))))))
              for i, b in enumerate(beats, 1)]
     risky = [(i, w) for i, w in risky if w]
     if risky:
@@ -1080,7 +1221,7 @@ def _warn_off_spec(beats: list[dict], fmt: str = "") -> None:
     # as well as a taste one. Limits mirror section 0B of pass2_visuals.txt.
     n = len(beats)
     photos = [i for i, b in enumerate(beats, 1)
-              if cutout.search(b["image_prompt"])]
+              if cutout.search(visual(b))]
     if len(photos) > n / 6:
         print(f"[warn] {len(photos)} photo cutouts in {n} beats "
               f"(max ~{n // 6}, 1 in 6): {','.join(map(str, photos[:12]))}")
@@ -1098,11 +1239,48 @@ def _warn_off_spec(beats: list[dict], fmt: str = "") -> None:
               f"{','.join(map(str, alt_photos[:12]))}")
         print("       the alt is the fallback; it should be the doodle version")
     labels = [i for i, b in enumerate(beats, 1)
-              if _re.search(r'"[^"]+"', b["image_prompt"])]
+              if _re.search(r'"[^"]+"', visual(b))]
     if len(labels) > n / 4:
         print(f"[warn] {len(labels)} beats with quoted labels in {n} "
               f"(max ~{n // 4}, 1 in 4)")
         print("       labels only where the words ARE the joke")
+
+    # An edit keeps the frame's camera. Asking an edit for a new shot makes the
+    # model redraw the whole picture, which breaks the chain it exists for -
+    # a new framing needs a fresh image_prompt instead.
+    camera = _re.compile(
+        r"\b(close-?up|wide shot|medium shot|long shot|two-shot|"
+        r"zoom(s|ing)? (in|out)|"
+        r"low[- ]angle|high[- ]angle|camera)\b", _re.I)
+    reframed = [i for i, b in enumerate(beats, 1)
+                if any(camera.search(_edit_parts(e)[0])
+                       for e in b.get("edits") or [])]
+    if reframed:
+        print(f"[warn] edits asking for a new camera shot: "
+              f"{','.join(map(str, reframed[:12]))}")
+        print("       an edit keeps the framing; use a fresh image_prompt "
+              "to reframe")
+
+    # Word-timed edits: the word has to be in the beat, in order, or the
+    # manifest cannot time it and the beat falls back to an even split.
+    untimed = []
+    for i, b in enumerate(beats, 1):
+        words = [_word_key(w) for w in transcriber.strip_tags(b["narration"]).split()]
+        pos = 0
+        for e in b.get("edits") or []:
+            at = _edit_parts(e)[1]
+            if not at:
+                continue
+            found = _find_phrase(words, at, pos)
+            if found < 0:
+                untimed.append(i)
+                break
+            pos = found + 1
+    if untimed:
+        print(f"[warn] edit \"at\" words not found in order in the narration: "
+              f"{','.join(map(str, untimed[:12]))}")
+        print("       copy the word exactly from the beat; these beats split "
+              "their pictures evenly instead")
 
     total_words = sum(spoken_words(b["narration"]) for b in beats)
     narration_s = total_words / WORDS_PER_MINUTE * 60 / config.NARRATION_SPEED
@@ -1112,7 +1290,9 @@ def _warn_off_spec(beats: list[dict], fmt: str = "") -> None:
     # bolts on an outro beat afterwards. A dissolve costs nothing - its tail is
     # consumed by the overlap - so only same-location boundaries are counted.
     locations = [" ".join((b.get("location") or "").split()) for b in beats]
-    hard_cuts = sum(1 for a, b in zip(locations, locations[1:]) if a and a == b)
+    redraws = _redraw_beats(beats)
+    hard_cuts = sum(1 for i, (a, b) in enumerate(zip(locations, locations[1:]), 2)
+                    if a and a == b and i not in redraws)
     pad_s = hard_cuts * config.CUT_PAD_SECONDS
     outro_s = (OUTRO_HOLD_SECONDS + 2.1) if config.OUTRO_ENABLED else 0.0
 
@@ -1121,7 +1301,11 @@ def _warn_off_spec(beats: list[dict], fmt: str = "") -> None:
     print(f"[prompts] ~{total_words} spoken words, {narration_s:.0f}s narration "
           f"+ {pad_s:.0f}s cut pads + {outro_s:.0f}s outro")
     print(f"[prompts] estimated final video {est:.0f}s ({est / 60:.1f} min)")
-    print(f"[prompts] ~{per_beat:.1f}s per image across {len(beats)} beats")
+    print(f"[prompts] ~{per_beat:.1f}s per beat across {len(beats)} beats")
+    if n_frames:
+        print(f"[prompts] ~{narration_s / n_frames:.1f}s per image across "
+              f"{n_frames} frames")
+        _report_tempo(beats, spoken_words)
 
     # Catch a script that is the wrong LENGTH while it is still just text. The
     # alternative is finding out after a full Flow run and a full TTS run.
@@ -1142,37 +1326,27 @@ def _warn_off_spec(beats: list[dict], fmt: str = "") -> None:
 
 def cmd_images(args) -> int:
     run_dir = resolve_run(args.run)
-    scenes = run_dir / "scenes.txt"
-    if not scenes.exists():
-        raise SystemExit(f"No scenes.txt in {run_dir}. Run: python pipeline.py prompts")
+    frames = run_dir / "frames.json"
+    if not frames.exists():
+        raise SystemExit(f"No frames.json in {run_dir}. Run: python pipeline.py prompts")
 
     images_dir = run_dir / "images"
     images_dir.mkdir(parents=True, exist_ok=True)
 
-    # Don't open a browser for nothing. flow_runner launches Chrome before it
-    # works out which scenes are already done, so on a re-run of `all` this
-    # would pop a window, log in, attach the reference and then skip every
-    # scene. Checking here keeps a resumed run silent.
-    if not args.only:
-        beats = load_script(run_dir)["beats"]
-        todo = [i for i in range(1, len(beats) + 1)
-                if find_image(run_dir, i) is None]
-        if not todo:
-            print(f"[images] all {len(beats)} already present, skipping Flow")
-            return 0
-        print(f"[images] {len(todo)} of {len(beats)} still to generate")
-
+    # The runner works out what is left to do (missing frames, plus any edit
+    # whose parent changed) BEFORE it opens Chrome, and exits quietly when
+    # that is nothing, so a resumed `all` does not pop a window just to skip.
     cmd = [sys.executable, str(FLOW_RUNNER),
-           "--scenes", str(scenes.resolve()),
+           "--frames", str(frames.resolve()),
            "--output", str(images_dir.resolve())]
-    alt = run_dir / "scenes_alt.txt"
-    if alt.exists():
-        cmd += ["--alt-scenes", str(alt.resolve())]
     if args.only:
         cmd += ["--only", args.only]
 
     print(f"[images] handing off to flow_runner -> {images_dir}")
-    return subprocess.run(cmd, cwd=str(FLOW_RUNNER.parent)).returncode
+    code = subprocess.run(cmd, cwd=str(FLOW_RUNNER.parent)).returncode
+    if code == 0:
+        _report_changes(run_dir, json.loads(frames.read_text())["frames"])
+    return code
 
 
 # --- voice -----------------------------------------------------------------
@@ -1290,20 +1464,29 @@ def cmd_voice(args) -> int:
 
 def cmd_check(args) -> int:
     run_dir = resolve_run(args.run)
-    beats = load_script(run_dir)["beats"]
+    data = load_script(run_dir)
+    beats = data["beats"]
+    frames = build_frames(data)
 
-    missing_images, missing_audio = [], []
-    for index in range(1, len(beats) + 1):
-        if find_image(run_dir, index) is None:
-            missing_images.append(index)
-        if find_audio(run_dir, index) is None:
-            missing_audio.append(index)
+    # Frames are named in --only's own terms (beat.frame), so the fix line
+    # below can be pasted straight back in.
+    missing_images, stale = [], []
+    for f in frames:
+        path = find_frame(run_dir, f["name"])
+        if path is None:
+            missing_images.append(f"{f['beat']}.{f['frame']}")
+            continue
+        parent = find_frame(run_dir, f["parent"]) if f["parent"] else None
+        if parent and parent.stat().st_mtime > path.stat().st_mtime:
+            stale.append(f"{f['beat']}.{f['frame']}")
+    missing_audio = [i for i in range(1, len(beats) + 1)
+                     if find_audio(run_dir, i) is None]
 
-    have_i = len(beats) - len(missing_images)
+    have_i = len(frames) - len(missing_images)
     have_a = len(beats) - len(missing_audio)
     print(f"\nrun     : {run_dir.name}")
     print(f"beats   : {len(beats)}")
-    print(f"images  : {have_i}/{len(beats)}")
+    print(f"images  : {have_i}/{len(frames)} frames")
     print(f"audio   : {have_a}/{len(beats)}")
 
     def summarise(label, missing, fix):
@@ -1315,14 +1498,156 @@ def cmd_check(args) -> int:
         print(f"  {fix}")
         return False
 
-    ok = summarise("images", missing_images,
-                   f"python pipeline.py images --only "
-                   f"{','.join(str(n) for n in missing_images[:15])}")
+    if len(missing_images) < len(frames):
+        _report_changes(run_dir, frames)
+    ok = summarise("images", missing_images, "python pipeline.py images")
+    # An edit older than the frame it was made from shows the old version of
+    # that frame. `images` redoes these by itself; this only says why it will.
+    ok &= summarise("images (edited from a frame that has since changed)",
+                    stale, "python pipeline.py images")
     ok &= summarise("audio", missing_audio, "python pipeline.py voice")
 
     if ok:
         print("\nEverything present. Next: python pipeline.py manifest")
     return 0 if ok else 1
+
+
+# --- Frame timing ------------------------------------------------------------
+#
+# A beat's frames used to share its time evenly, so a sign could appear before
+# the narrator got to it. An edit can now name its word ({"at": "six meters"}),
+# and the picture changes as that word is spoken. Whisper finds WHEN each word
+# is said (modules/transcriber.py); the words themselves come from the script.
+
+WORD_TIMES_FILE = "word_times.json"
+
+
+def _word_key(word: str) -> str:
+    import re
+    return re.sub(r"[^a-z0-9]", "", word.lower())
+
+
+def _find_phrase(keys: list[str], phrase: str, start: int = 0) -> int:
+    """Index of `phrase` in the word keys at or after `start`, or -1."""
+    want = [_word_key(w) for w in phrase.split() if _word_key(w)]
+    if not want:
+        return -1
+    for i in range(start, len(keys) - len(want) + 1):
+        if keys[i:i + len(want)] == want:
+            return i
+    return -1
+
+
+def _word_times(narration: str, audio: Path, cache: dict) -> list[dict]:
+    """The beat's words with start/end seconds, cached per audio clip."""
+    size = audio.stat().st_size
+    hit = cache.get(audio.name)
+    if hit and hit.get("size") == size and hit.get("narration") == narration:
+        return hit["words"]
+    words = transcriber.align(narration, audio)
+    cache[audio.name] = {"size": size, "narration": narration, "words": words}
+    return words
+
+
+def _frame_starts(frames: list[dict], words: list[dict],
+                  duration: float) -> list[float] | None:
+    """
+    When each of a beat's frames starts, in seconds from the beat's start.
+
+    None means "split evenly", which is what happens when nothing is timed, a
+    word cannot be found, or two words sit so close that a frame would flash
+    by in under config.MIN_FRAME_SECONDS. The first frame always starts with
+    the beat. A frame with no word of its own shares the gap between its
+    timed neighbours.
+    """
+    if len(frames) < 2 or not words or not any(f.get("at") for f in frames[1:]):
+        return None
+    keys = [_word_key(w["w"]) for w in words]
+    starts: list[float | None] = [0.0] + [None] * (len(frames) - 1)
+    pos = 0
+    for k, f in enumerate(frames[1:], 1):
+        if f.get("at"):
+            i = _find_phrase(keys, f["at"], pos)
+            if i < 0:
+                return None
+            starts[k], pos = words[i]["s"], i + 1
+
+    starts.append(duration)                   # sentinel for the last gap
+    k = 1
+    while k < len(frames):
+        if starts[k] is None:
+            j = k
+            while starts[j] is None:
+                j += 1
+            lo, hi = starts[k - 1], starts[j]
+            for m in range(k, j):
+                starts[m] = lo + (hi - lo) * (m - k + 1) / (j - k + 1)
+            k = j
+        k += 1
+    gaps = [b - a for a, b in zip(starts, starts[1:])]
+    starts.pop()
+    if min(gaps) < config.MIN_FRAME_SECONDS:
+        return None
+    return [round(x, 3) for x in starts]
+
+
+# --- Change check --------------------------------------------------------------
+#
+# Every edit compared with the frame it was made from. Pixel arithmetic, no AI:
+# both are shrunk and blurred (so JPEG grain does not count), and a pixel counts
+# as changed when any colour channel moved by 48+ out of 255. Colour, not just
+# brightness, because a gold tag turning grey barely changes brightness.
+
+def _frame_changes(run_dir: Path, frames: list[dict]):
+    """(ignored, big): [(frame id, fraction changed)] past either threshold."""
+    from PIL import Image, ImageChops, ImageFilter
+    w, h = 192, 108
+
+    def load(name):
+        path = find_frame(run_dir, name)
+        if path is None:
+            return None
+        return (Image.open(path).convert("RGB").resize((w, h), Image.BILINEAR)
+                .filter(ImageFilter.GaussianBlur(1)))
+
+    ignored, big = [], []
+    for f in frames:
+        if f["mode"] != "edit":
+            continue
+        before, after = load(f["parent"]), load(f["name"])
+        if before is None or after is None:
+            continue
+        r, g, b = ImageChops.difference(before, after).split()
+        diff = ImageChops.lighter(ImageChops.lighter(r, g), b)
+        changed = sum(diff.histogram()[48:]) / (w * h)
+        fid = f"{f['beat']}.{f['frame']}"
+        if changed < config.CHANGE_MIN_FRACTION:
+            ignored.append((fid, changed))
+        elif changed > config.CHANGE_MAX_FRACTION:
+            big.append((fid, changed))
+    return ignored, big
+
+
+def _report_changes(run_dir: Path, frames: list[dict]) -> None:
+    ignored, big = _frame_changes(run_dir, frames)
+    if ignored:
+        ids = ",".join(i for i, _ in ignored)
+        print(f"[check] {len(ignored)} edit(s) came back nearly identical to the "
+              f"frame before - the image model ignored them: {ids}")
+        print(f"        redo: python pipeline.py images --only {ids} "
+              f"--run {run_dir.name}")
+        print("        (a redo also remakes the edits after it in that location;"
+              " if one is ignored again, reword it in script.json)")
+    if big:
+        shown = ", ".join(f"{i} ({c:.0%})" for i, c in big)
+        print(f"[check] {len(big)} edit(s) changed over "
+              f"{config.CHANGE_MAX_FRACTION:.0%} of the picture, worth a look: "
+              f"{shown}")
+        print("        fine if the edit asked for a big change; redo with --only "
+              "if everything moved")
+    if not ignored and not big:
+        print("[check] every edit changed something, and none redrew the whole "
+              "picture")
 
 
 # --- manifest --------------------------------------------------------------
@@ -1385,16 +1710,38 @@ def _outro_assets() -> tuple[Path, Path] | None:
 
 def cmd_manifest(args) -> int:
     run_dir = resolve_run(args.run)
-    beats = load_script(run_dir)["beats"]
+    data = load_script(run_dir)
+    beats = data["beats"]
     audio_dir = run_dir / "audio"
     audio_dir.mkdir(parents=True, exist_ok=True)
 
+    by_beat: dict[int, list[dict]] = {}
+    for f in build_frames(data):
+        by_beat.setdefault(f["beat"], []).append(f)
+    redraws = _redraw_beats(beats)
+
+    times_path = run_dir / WORD_TIMES_FILE
+    try:
+        word_cache = json.loads(times_path.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        word_cache = {}
+    timed = untimed = 0
+
     entries, missing = [], []
     for index, beat in enumerate(beats, start=1):
-        image = find_image(run_dir, index)
-        if image is None:
+        images = [find_frame(run_dir, f["name"]) for f in by_beat.get(index, [])]
+        if None in images:
             missing.append(index)
             continue
+        if not images:
+            # A hold beat: the last picture of the beat before stays up. The
+            # boundary is a hard cut between two identical images, so it is
+            # invisible.
+            if not entries:
+                missing.append(index)
+                continue
+            images = [run_dir / entries[-1]["frames"][-1]]
+        image = images[0]
 
         audio = find_audio(run_dir, index)
         if audio is None:
@@ -1418,6 +1765,10 @@ def cmd_manifest(args) -> int:
             "narration": spoken,
             # Paths are relative to run_dir, which Remotion gets as --public-dir.
             "image": f"images/{image.name}",
+            # Every frame of the beat, first included, hard cut between them.
+            # frame_starts (below) times them to their words; without it the
+            # render splits the beat evenly.
+            "frames": [f"images/{p.name}" for p in images],
             "audio": f"audio/{audio.name}",
             "duration": round(duration, 3),
             # Carried so the render can tell a cut WITHIN a place from a move
@@ -1425,6 +1776,19 @@ def cmd_manifest(args) -> int:
             # See remotion/src/compositions/LectureVideo.tsx.
             "location": " ".join((beat.get("location") or "").split()),
         }
+        # A fresh picture mid-location dissolves in rather than jumping.
+        if index in redraws:
+            entry["redraw"] = True
+
+        frames = by_beat.get(index, [])
+        if not args.silent and any(f.get("at") for f in frames[1:]):
+            starts = _frame_starts(
+                frames, _word_times(beat["narration"], audio, word_cache), duration)
+            if starts:
+                entry["frame_starts"] = starts
+                timed += 1
+            else:
+                untimed += 1
 
 
         entries.append(entry)
@@ -1460,6 +1824,14 @@ def cmd_manifest(args) -> int:
             entries.append(entry)
             print(f"[manifest] + outro beat ({entry['duration']:.1f}s)")
 
+    if word_cache:
+        times_path.write_text(json.dumps(word_cache, indent=1), encoding="utf-8")
+    if timed or untimed:
+        print(f"[manifest] pictures timed to their words in {timed} beat(s)"
+              + (f", {untimed} fell back to an even split (word not heard, or "
+                 f"two changes under {config.MIN_FRAME_SECONDS}s apart)"
+                 if untimed else ""))
+
     path = run_dir / "manifest.json"
     path.write_text(json.dumps(entries, indent=2), encoding="utf-8")
 
@@ -1481,7 +1853,7 @@ def cmd_manifest(args) -> int:
 # A full dry run: script, images and audio all fabricated locally so the video
 # can be watched end to end without touching Flow or ElevenLabs. Exists to test
 # the things that are easy to get wrong and expensive to discover late -
-# subtitle timing and legibility, Ken Burns framing, crossfades, and whether
+# subtitle timing and legibility, framing, cuts and dissolves, and whether
 # image N really is paired with narration N.
 
 DEMO_NARRATION = [
@@ -1532,8 +1904,8 @@ def _demo_image(path: Path, index: int, total: int, caption: str) -> None:
     draw.text((config.WIDTH / 2 - (box[2] - box[0]) / 2, config.HEIGHT - 170),
               label, fill=(20, 20, 20), font=small)
 
-    # Corner marks make the Ken Burns crop visible: if a corner drifts out of
-    # frame you can see exactly how much the zoom is eating.
+    # Corner marks make any crop visible: the frame is static now, so all
+    # four should sit fully on screen for the whole beat.
     for x, y in ((60, 60), (config.WIDTH - 160, 60),
                  (60, config.HEIGHT - 160), (config.WIDTH - 160, config.HEIGHT - 160)):
         draw.rectangle([x, y, x + 100, y + 100], outline=(255, 255, 255), width=8)
@@ -1726,6 +2098,8 @@ def cmd_all(args) -> int:
         print(f"  {name:<9} {_fmt(seconds):>9}  {share:4.0f}%")
     print(f"  {'TOTAL':<9} {_fmt(total):>9}")
     print("=" * 60)
+    print("Frames to review:")
+    _report_changes(run_dir, build_frames(load_script(run_dir)))
     return 0
 
 
@@ -1759,10 +2133,11 @@ def main() -> int:
         sp.set_defaults(func=func)
         return sp
 
-    with_run("prompts", "script.json -> scenes.txt", cmd_prompts)
+    with_run("prompts", "script.json -> frames.json", cmd_prompts)
 
     sp = with_run("images", "generate images via Flow", cmd_images)
-    sp.add_argument("--only", help="comma-separated scene numbers")
+    sp.add_argument("--only", help="beats (12) or single frames (12.2), "
+                    "comma-separated. Later edits in the same chain are redone too.")
 
     sp = with_run("voice", "narration via ElevenLabs", cmd_voice)
     sp.add_argument("--limit", type=int, help="only the first N beats")

@@ -3,8 +3,8 @@ Stage: turn the manifest into the final video.
 
 This module does NOT do the visual work itself. It hands the beats to the
 Remotion project (remotion/) as input props, runs the render, then optionally
-mixes a music bed with FFmpeg. Ken Burns pan/zoom, crossfades and subtitles
-all live in the Remotion composition.
+mixes a music bed with FFmpeg. Static frames, cuts and dissolves all live in
+the Remotion composition.
 
 The run folder is passed as Remotion's --public-dir, so the composition can
 load each beat's image/audio by filename via staticFile().

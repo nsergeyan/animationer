@@ -78,6 +78,9 @@ ELEVENLABS_API_KEY = os.getenv("ELEVENLABS_API_KEY")
 #     Ken Burns crops up to 10% off the frame (remotion/src/constants.ts), and
 #     the move was once clamped to an invisible 3% precisely because full-bleed
 #     art had no margin to give. This asks for the margin so the camera can move.
+#     Ken Burns was removed on 2026-10-11 (frames are static now), so this
+#     clause no longer has a reason to exist. Kept until its effect on
+#     framing is judged separately.
 #   - "A simple picture: few objects, drawn large, plain background" is the
 #     newest clause and the only one not driven by a generation failure. It is
 #     driven by a measurement: across five shipped videos every frame carried
@@ -93,6 +96,10 @@ ELEVENLABS_API_KEY = os.getenv("ELEVENLABS_API_KEY")
 #   - A rare photo cutout of one object as a punchline. pass2 caps it at 1 beat
 #     in 6 and pipeline.py warns past that, because photo wording is exactly
 #     what used to drag whole frames photographic.
+# 2026-10-11: "The only words on the page are the quoted ones". The first
+# chained video came back with captions nobody wrote ("CHECO?!", "WOW! LEWIS
+# HAMILTON!", "NEW CADDY"). The scribble clause above covers writing ON
+# things, not the model narrating the scene in big letters of its own.
 STYLE_BLOCK = (
     "Crude MS Paint doodle drawn shakily with a mouse on a plain white page. "
     "Thick wobbly black outlines, flat 2D, deliberately low-effort. People are "
@@ -100,10 +107,73 @@ STYLE_BLOCK = (
     "black lines on white, with a flat bucket-fill colour on one or two key "
     "objects only. A few things, drawn large, floating on empty white. Words "
     "appear only where the scene quotes them, in wobbly hand-drawn capitals; "
-    "all other writing is unreadable scribble. A photo cutout appears only "
+    "all other writing is unreadable scribble. The only words on the page are "
+    "the quoted ones: no captions, titles or exclamations of its own. A photo "
+    "cutout appears only "
     "where the scene asks for one. No application window, toolbar or canvas "
     "edge. Keep the subject clear of all four edges. 16:9 horizontal."
 )
+
+# --- Chained frames ----------------------------------------------------------
+# 2026-10-11: a beat can show several frames, and every frame after the first in
+# a location is an EDIT of the frame before it (the previous image is attached
+# in Flow as the reference, in place of the character art). That continuity is
+# what makes a run of stills read as animation rather than a slideshow.
+#
+# EDIT_TEMPLATE wraps the script's short edit line. It deliberately does NOT
+# carry STYLE_BLOCK: the attached picture already IS the style, and a full
+# scene description invites the model to redraw from scratch instead of
+# touching up what is there. "Everything not mentioned stays where it is" is
+# the clause doing the work - without it the model re-poses the whole frame.
+#
+# Two clauses added after the first full video (2026-10-11):
+#   - Pure flat white, crisp lines. Each edit redraws the whole picture from
+#     a slightly worse copy, so the page went grey and grainy deeper into a
+#     chain. Asking for it does not undo that, but stops edits adding to it.
+#   - No words unless asked. Edits invented captions ("MAX & CAR", "YAY!",
+#     "MONEY...") and, because every edit keeps everything, they stayed on
+#     screen for the rest of the chain.
+EDIT_TEMPLATE = (
+    "Edit the attached picture. Change only this: {edit} "
+    "Everything not mentioned stays exactly where and how it is: the same "
+    "crude MS Paint doodle style, line thickness and colours, the same "
+    "character design and the same framing. Keep the background pure flat "
+    "white with no grey, texture or grain, and the lines crisp. Add no words, "
+    "letters or numbers unless this change asks for them."
+)
+
+# Every edit degrades the picture a little and the errors compound, so a long
+# chain drifts off-model and the page goes grey. pipeline.py warns past this
+# many edits in a row; the fix is a fresh image_prompt on a beat partway
+# through the location. Was 8 until the first full video showed the grain
+# building up well before that.
+CHAIN_MAX_EDITS = 5
+
+# The check after the image stage compares every edit with the frame it was
+# made from. Measured on the first full video (132 edits): every edit under
+# CHANGE_MIN_FRACTION of the picture came back identical to its parent, the
+# image model had ignored it. Over CHANGE_MAX_FRACTION is usually a big change
+# that was asked for, but it is where a whole-frame re-pose shows up too, so
+# those are listed to look at rather than reported as errors.
+CHANGE_MIN_FRACTION = 0.0015
+CHANGE_MAX_FRACTION = 0.20
+
+# Tempo: how long a picture stays up. pass2 mixes three (2026-10-11), since a
+# constant picture-per-second felt like a metronome: FAST ~1.5s, MEDIUM ~2s,
+# SLOW 3-4s, about a quarter / half / quarter. `pipeline.py prompts` reports
+# the mix using these bucket edges.
+TEMPO_FAST_MAX = 1.75             # under this a picture counts as fast
+TEMPO_MEDIUM_MAX = 2.75           # from this up it counts as slow
+
+# Word-timed frames: an edit can name the narration word it belongs to, and
+# the picture changes as that word is spoken instead of on an even split of
+# the beat. No frame is held shorter than this, so two close words cannot
+# make a flicker.
+MIN_FRAME_SECONDS = 0.35
+
+# Whisper is only used to find WHEN each known word is spoken (see
+# modules/transcriber.py), so the small model is enough.
+WHISPER_MODEL = "base"
 
 # --- Sleep prevention -------------------------------------------------------
 # A full video can take over an hour of unattended generation, and a Mac that
@@ -230,7 +300,12 @@ ELEVENLABS_SIMILARITY = 0.7
 # for a 90-beat script, the same request count 45-beat scripts used to need.
 #
 # Set BATCH_SIZE to 1 to disable batching and restore one request per beat.
-ELEVENLABS_BATCH_SIZE = 18
+#
+# 2026-10-11: set to 1. With short 3-12 word beats the batch timings cut ~33
+# of 75 beats inside a word (mostly clipping a beat's first syllable), while
+# the beats that fell back to per-beat requests came out clean. Clipped words
+# are worse than slight tone variation between takes. Was 18.
+ELEVENLABS_BATCH_SIZE = 1
 ELEVENLABS_BATCH_CHARS = 1400
 
 # Post-generation speed-up via FFmpeg atempo. 1.0 disables it entirely and
@@ -276,17 +351,11 @@ FPS = 30                                           # Remotion runs at 30fps
 WIDTH = 1920                                        # 16:9
 HEIGHT = 1080
 
-# --- Ken Burns + transitions -----------------------------------------------
+# --- Transitions -------------------------------------------------------------
 # ALL of these mirror remotion/src/constants.ts and are kept in sync BY HAND.
 # Remotion is the one that actually renders; these exist so the Python side can
 # predict a finished video's length without running a render. Change one, change
 # the other, or the length estimate silently drifts from reality.
-ZOOM_MIN = 1.0                    # start scale of a push in
-# Deliberately subtle since the white-page style (2026-10-07): the look is
-# near-static frame swaps, so the move should be felt more than seen.
-ZOOM_MAX = 1.05                   # end scale (was 1.10)
-PAN_SCALE = 1.06                  # fixed scale a pan holds
-PAN_PERCENT = 1.5                 # travel (was 2.5), under the 2.83% ceiling
 
 # Two kinds of boundary now. Within a location beats hard cut; a change of
 # location dissolves. A dissolve's tail is consumed by the overlap so it costs

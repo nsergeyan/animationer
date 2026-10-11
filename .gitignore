@@ -20,7 +20,7 @@ remotion/out/
 .claude/settings.local.json
 
 # flow_runner runtime state (browser profile, generated images, debug shots)
-flow_runner/.chrome-profile/
+flow_runner/.chrome-profile*/
 flow_runner/output/
 flow_runner/debug/
 flow_runner/scenes.txt

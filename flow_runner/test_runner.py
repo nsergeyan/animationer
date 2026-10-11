@@ -10,6 +10,8 @@ hand, since it needs a real browser and a logged-in Google account.
 
 import base64
 import importlib
+import json
+import os
 import tempfile
 from pathlib import Path
 
@@ -45,10 +47,13 @@ def test_scene_parsing():
 
 def test_numbering():
     print("\noutput numbering (must be zero-padded to 3)")
+    frames = runner.frames_from_scenes([f"prompt {i}" for i in range(1, 101)])
     return all([
-        check("scene 1", runner.output_path(1).name, "scene_001.png"),
-        check("scene 30", runner.output_path(30).name, "scene_030.png"),
-        check("scene 100", runner.output_path(100).name, "scene_100.png"),
+        check("scene 1", runner.output_path(frames[0]["name"]).name, "scene_001.png"),
+        check("scene 30", runner.output_path(frames[29]["name"]).name, "scene_030.png"),
+        check("scene 100", runner.output_path(frames[99]["name"]).name, "scene_100.png"),
+        check("scenes.txt lines are all fresh frames",
+              {f["mode"] for f in frames}, {"establish"}),
     ])
 
 
@@ -71,13 +76,17 @@ def test_resume_across_extensions():
     with tempfile.TemporaryDirectory() as tmp:
         config.OUTPUT_DIR = Path(tmp)
         try:
-            results = [check("nothing saved yet", runner.existing_output(1), None)]
+            results = [check("nothing saved yet",
+                             runner.existing_output("scene_001"), None)]
             (Path(tmp) / "scene_001.jpg").write_bytes(b"x")
-            found = runner.existing_output(1)
+            found = runner.existing_output("scene_001")
             results.append(check("finds the .jpg",
                                  found.name if found else None, "scene_001.jpg"))
             results.append(check("unrelated scene still missing",
-                                 runner.existing_output(2), None))
+                                 runner.existing_output("scene_002"), None))
+            (Path(tmp) / "scene_002_f2.jpg").write_bytes(b"x")
+            results.append(check("frame 1 never matches frame 2's file",
+                                 runner.existing_output("scene_002"), None))
         finally:
             config.OUTPUT_DIR = original
     return all(results)
@@ -137,10 +146,16 @@ def test_data_uri_save():
     with tempfile.TemporaryDirectory() as tmp:
         config.OUTPUT_DIR = Path(tmp)
         try:
-            dest = runner.save_image(None, None, f"data:image/jpeg;base64,{payload}", 1)
+            # A redo that lands as .jpg must not leave the old .png beside it,
+            # or resume could read either one.
+            (Path(tmp) / "scene_001.png").write_bytes(b"old")
+            dest = runner.save_image(None, None, f"data:image/jpeg;base64,{payload}",
+                                     "scene_001")
             return all([
                 check("named by content, not assumption", dest.name, "scene_001.jpg"),
                 check("bytes written", dest.read_bytes()[:3], b"\xff\xd8\xff"),
+                check("old copy under another extension removed",
+                      sorted(p.name for p in Path(tmp).iterdir()), ["scene_001.jpg"]),
             ])
         finally:
             config.OUTPUT_DIR = original
@@ -184,12 +199,106 @@ def test_rejection_pattern():
 
 def test_retry_command_parsing():
     print("\n--only parsing round trip")
-    failures = [3, 7, 12]
-    rendered = ",".join(str(n) for n in failures)
-    parsed = {int(n) for n in rendered.split(",") if n.strip()}
+    failures = [{"beat": 3, "frame": 1}, {"beat": 7, "frame": 2}]
+    rendered = ",".join(runner.frame_id(f) for f in failures)
     return all([
-        check("renders as expected", rendered, "3,7,12"),
-        check("parses back", parsed, {3, 7, 12}),
+        check("renders as expected", rendered, "3.1,7.2"),
+        check("parses back", runner.parse_only(rendered), {"3.1", "7.2"}),
+        check("whole beats and spaces", runner.parse_only(" 12, 13.2 ,"),
+              {"12", "13.2"}),
+        check("nothing given", runner.parse_only(None), None),
+    ])
+
+
+# Beat 1: a fresh frame and two edits chained off it. Beat 2: fresh again.
+CHAIN = [
+    {"name": "scene_001", "beat": 1, "frame": 1, "mode": "establish", "parent": None},
+    {"name": "scene_001_f2", "beat": 1, "frame": 2, "mode": "edit", "parent": "scene_001"},
+    {"name": "scene_001_f3", "beat": 1, "frame": 3, "mode": "edit", "parent": "scene_001_f2"},
+    {"name": "scene_002", "beat": 2, "frame": 1, "mode": "establish", "parent": None},
+]
+
+
+def test_frames_to_make():
+    """
+    What a chained run redoes. The failure this guards against is invisible in
+    the output: an edit made from an OLD version of its parent still looks like
+    a perfectly normal frame.
+    """
+    print("\nchained frames: what gets (re)made")
+    original = config.OUTPUT_DIR
+    results = []
+
+    def names(todo):
+        return [f["name"] for f in todo]
+
+    with tempfile.TemporaryDirectory() as tmp:
+        config.OUTPUT_DIR = Path(tmp)
+        try:
+            results.append(check("empty folder: everything",
+                                 names(runner.frames_to_make(CHAIN)),
+                                 [f["name"] for f in CHAIN]))
+
+            # Saved in order, a second apart, as a real run would.
+            for t, f in enumerate(CHAIN):
+                path = Path(tmp) / f"{f['name']}.jpg"
+                path.write_bytes(b"x")
+                os.utime(path, (1000 + t, 1000 + t))
+            results.append(check("all present and in order: nothing",
+                                 names(runner.frames_to_make(CHAIN)), []))
+
+            results.append(check("--only 1.2 redoes the rest of its chain",
+                                 names(runner.frames_to_make(CHAIN, {"1.2"})),
+                                 ["scene_001_f2", "scene_001_f3"]))
+            results.append(check("--only 2 leaves beat 1 alone",
+                                 names(runner.frames_to_make(CHAIN, {"2"})),
+                                 ["scene_002"]))
+            results.append(check("--only 1 is the whole beat",
+                                 names(runner.frames_to_make(CHAIN, {"1"})),
+                                 ["scene_001", "scene_001_f2", "scene_001_f3"]))
+
+            # The parent was redone by a run that stopped before its edits.
+            os.utime(Path(tmp) / "scene_001.jpg", (2000, 2000))
+            results.append(check("parent newer than its edit: edit chain redone",
+                                 names(runner.frames_to_make(CHAIN)),
+                                 ["scene_001_f2", "scene_001_f3"]))
+
+            os.utime(Path(tmp) / "scene_001.jpg", (1000, 1000))
+            (Path(tmp) / "scene_001_f2.jpg").unlink()
+            results.append(check("missing middle frame: it and what follows",
+                                 names(runner.frames_to_make(CHAIN)),
+                                 ["scene_001_f2", "scene_001_f3"]))
+        finally:
+            config.OUTPUT_DIR = original
+    return all(results)
+
+
+def test_frames_file():
+    print("\nframes.json loading")
+    with tempfile.TemporaryDirectory() as tmp:
+        good = Path(tmp) / "good.json"
+        good.write_text(json.dumps({"frames": CHAIN}), encoding="utf-8")
+        bad = Path(tmp) / "bad.json"
+        bad.write_text(json.dumps({"frames": [CHAIN[1], CHAIN[0]]}), encoding="utf-8")
+        try:
+            runner.load_frames(bad)
+            caught = False
+        except ValueError:
+            caught = True
+        return all([
+            check("loads in order", [f["name"] for f in runner.load_frames(good)],
+                  [f["name"] for f in CHAIN]),
+            check("an edit listed before its parent is refused", caught, True),
+        ])
+
+
+def test_label_cleaning():
+    """The sort dropdown may carry an icon ligature next to its label."""
+    print("\npicker label cleaning")
+    return all([
+        check("ligature dropped", runner._clean_label("Newest arrow_drop_down"), "newest"),
+        check("two words kept", runner._clean_label("Most used"), "most used"),
+        check("plain label", runner._clean_label(" Newest "), "newest"),
     ])
 
 
@@ -204,6 +313,9 @@ if __name__ == "__main__":
         test_pacing_floor,
         test_data_uri_save,
         test_retry_command_parsing,
+        test_frames_to_make,
+        test_frames_file,
+        test_label_cleaning,
     ]
     passed = [t() for t in tests]
     print("\n" + "=" * 60)

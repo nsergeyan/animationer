@@ -1,4 +1,4 @@
-.chrome-profile/
+.chrome-profile*/
 output/
 __pycache__/
 scenes.txt

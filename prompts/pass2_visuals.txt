@@ -1,268 +1,296 @@
 SCRIPT:
 {
-  "topic": "roman-empire-explained",
+  "topic": "Formula 1",
   "format": "explainer",
   "plan": {
-    "spine_question": "How did a small mud village build an empire that shaped the modern world, and why did it fall?",
+    "spine_question": "What exactly is Formula One and how does it work in 2026?",
     "deflations": [
       {
-        "assumed": "The Roman Empire fell completely in 476 AD.",
-        "actual": "Only the Western half collapsed in 476 AD, while the Eastern half survived for another thousand years as the Byzantine Empire.",
-        "who_decided": "Modern historians created the term Byzantine, but citizens always called themselves Romans.",
-        "build_beat": "Standard history books claim the Roman Empire ended right there.",
-        "drop_beat": "The Eastern half survived and lasted one thousand years!"
+        "assumed": "Formula One is just driving ordinary cars very fast around a track.",
+        "actual": "It is a high-stakes engineering arms race using vehicles that function like upside-down fighter jets.",
+        "who_decided": "Aerodynamic engineers pushing the limits of physics.",
+        "build_beat": "A modern F1 car is basically a jet fighter.",
+        "drop_beat": "It just happens to be glued to the ground."
+      }
+    ],
+    "cast": [
+      {
+        "name": "Lando Norris",
+        "why": "The reigning 2025 World Champion representing the McLaren team."
+      },
+      {
+        "name": "Lewis Hamilton",
+        "why": "The sport's biggest legend who finally made his highly anticipated move to Ferrari."
+      },
+      {
+        "name": "Max Verstappen",
+        "why": "The relentless Red Bull driver who is always hunting for another title."
+      },
+      {
+        "name": "Kimi Antonelli",
+        "why": "The young Mercedes star who is already leading the 2026 championship."
       }
     ],
     "specifics": [
       {
-        "fact": "Rome built over 50,000 miles of paved stone roads across its territories.",
-        "source": "Oxford Classical Dictionary",
-        "beat": "To move troops fast, engineers built fifty thousand MILES of roads."
+        "fact": "The 2026 grid expanded to 11 teams with Cadillac and Audi joining.",
+        "source": "FIA 2026 Entry List",
+        "beat": "Cadillac and Audi officially joined the sport this season."
       },
       {
-        "fact": "Julius Caesar received 23 stab wounds during his assassination in 44 BC.",
-        "source": "Suetonius, Life of Julius Caesar",
-        "beat": "Twenty three separate times..."
+        "fact": "2026 cars use active aerodynamics to reduce drag on straight lines.",
+        "source": "FIA 2026 Technical Regulations",
+        "beat": "Wings shift on straight lines to reduce aerodynamic drag."
       }
     ],
     "facts_to_check": [
       {
-        "claim": "Emperor Caligula tried to appoint his horse Incitatus as a senator.",
-        "source": "Suetonius, Lives of the Twelve Caesars"
+        "claim": "Lando Norris is the 2025 F1 World Champion.",
+        "source": "December 2025 F1 official standings and Abu Dhabi GP results"
+      },
+      {
+        "claim": "Lewis Hamilton drives for Ferrari in 2026.",
+        "source": "F1 2026 Official Grid Lineups"
+      },
+      {
+        "claim": "Cadillac and Audi entered as new teams in 2026.",
+        "source": "FIA 2026 Entry List"
+      },
+      {
+        "claim": "2026 regulations mandate 100 percent sustainable fuels and a 50-50 electric power split.",
+        "source": "F1 2026 Engine Regulations"
+      },
+      {
+        "claim": "Race winners receive 25 points.",
+        "source": "FIA Sporting Regulations"
       }
     ]
   },
   "beats": [
     {
-      "narration": "[curious] How did a small mud village build a massive ancient empire?"
+      "narration": "[thoughtful] Formula One is the pinnacle of motorsport."
     },
     {
-      "narration": "Rome began as a tiny cluster of huts in central Italy."
+      "narration": "The entire grid features twenty two very fearless drivers."
     },
     {
-      "narration": "[understated] Nobody expected them to dominate."
+      "narration": "They drive at over two hundred miles per hour."
     },
     {
-      "narration": "But they loved fighting."
+      "narration": "It is extremely dangerous."
     },
     {
-      "narration": "And they never surrendered."
+      "narration": "[deadpan] Or rather, it used to be."
     },
     {
-      "narration": "[deadpan] If an enemy destroyed one army, Rome simply sent another."
+      "narration": "Now the cars are incredibly safe."
     },
     {
-      "narration": "Soon they defeated Carthage and controlled the whole Mediterranean sea."
+      "narration": "But the speeds are still absolutely INSANE."
     },
     {
-      "narration": "Then they kept expanding."
+      "narration": "A modern F1 car is basically a jet fighter."
     },
     {
-      "narration": "Roman legions marched thousands of miles."
+      "narration": "It just happens to be glued to the ground."
     },
     {
-      "narration": "[flatly] To move troops fast, engineers built fifty thousand MILES of roads."
+      "narration": "Wings push the car down into the track."
     },
     {
-      "narration": "These stone highways connected distant towns and made trade very simple."
+      "narration": "This is called downforce."
     },
     {
-      "narration": "At first, Rome was a republic."
+      "narration": "More downforce means faster cornering."
     },
     {
-      "narration": "Citizens elected their main leaders."
+      "narration": "[understated] It also means your neck really hurts."
     },
     {
-      "narration": "[sarcastic] Rich politicians hated sharing power."
+      "narration": "Drivers endure massive gravity forces every single turn."
     },
     {
-      "narration": "Successful military generals became more popular than elected government officials."
+      "narration": "Let us look at who actually races today."
     },
     {
-      "narration": "General Julius Caesar marched his army into Rome and took power."
+      "narration": "[calm] The current 2026 grid features exactly eleven different teams."
     },
     {
-      "narration": "Senators felt threatened by him."
+      "narration": "Cadillac and Audi officially joined the sport this season."
     },
     {
-      "narration": "[sighs] So they stabbed him."
+      "narration": "Two drivers race for each team."
     },
     {
-      "narration": "Twenty three separate times..."
+      "narration": "They all want the trophy."
     },
     {
-      "narration": "Killing Caesar did not restore freedom to the broken republic."
+      "narration": "The reigning 2025 world champion is superstar Lando Norris."
     },
     {
-      "narration": "A brutal civil war broke out across the Roman lands."
+      "narration": "He drives for the mighty McLaren team."
     },
     {
-      "narration": "[understated] Caesar's adopted son won."
+      "narration": "Then you have the legendary Lewis Hamilton."
     },
     {
-      "narration": "His name was Augustus."
+      "narration": "[sighs] He finally moved over to Ferrari this exact year."
     },
     {
-      "narration": "Augustus crowned himself the very first official emperor of Rome."
+      "narration": "Fans waited decades to see him in red."
     },
     {
-      "narration": "He launched a famous two-hundred-year golden age called Pax Romana."
+      "narration": "Meanwhile Max Verstappen still leads Red Bull."
     },
     {
-      "narration": "[thoughtful] Trade flourished everywhere."
+      "narration": "He wants another title."
     },
     {
-      "narration": "Cities expanded very quickly."
+      "narration": "Mercedes has a young star named Kimi Antonelli."
     },
     {
-      "narration": "Life seemed quite good."
+      "narration": "[light chuckle] He is already leading the entire championship standings."
     },
     {
-      "narration": "Massive stone arenas were constructed to entertain millions of citizens."
+      "narration": "Everyone wants to win."
     },
     {
-      "narration": "Gladiators fought wild animals and each other inside the Colosseum."
+      "narration": "Teams build their own completely unique racing cars."
     },
     {
-      "narration": "[deadpan] Free games kept people calm."
+      "narration": "The richest teams usually win the most races."
     },
     {
-      "narration": "Free bread kept them full."
+      "narration": "[flatly] Cash DEFINITELY makes the car go so much faster."
     },
     {
-      "narration": "Giant arch bridges called aqueducts brought clean mountain water inside."
+      "narration": "[curious] This brings us to the new 2026 regulations."
     },
     {
-      "narration": "Wealthy Romans enjoyed warm public bathhouses and luxury indoor toilets."
+      "narration": "The engines have completely transformed."
     },
     {
-      "narration": "[clears throat] Well... wealthy citizens did."
+      "narration": "They run on one hundred percent sustainable fuels now."
     },
     {
-      "narration": "Millions of enslaved workers worked."
+      "narration": "Half the power comes from electric motors."
     },
     {
-      "narration": "They had zero rights."
+      "narration": "The other half is a combustion engine."
     },
     {
-      "narration": "[flatly] Governing fifty million people created gigantic administrative and logistical challenges."
+      "narration": "Together they easily produce over one thousand raw horsepower."
     },
     {
-      "narration": "The border spanned from rainy Britain all the way to Egypt."
+      "narration": "[clears throat] You still cannot buy one for your daily commute."
     },
     {
-      "narration": "From Atlantic Spain to Syria."
+      "narration": "The cars also feature active aerodynamics this year."
     },
     {
-      "narration": "It was too huge."
+      "narration": "Wings shift on straight lines to reduce aerodynamic drag."
     },
     {
-      "narration": "[thoughtful] Then incompetent leaders started making terrible decisions for the country."
+      "narration": "This makes the cars slice right through the air."
     },
     {
-      "narration": "Emperor Caligula attempted to make his personal horse a senator."
+      "narration": "It increases top speed immensely."
     },
     {
-      "narration": "[sarcastic] True political genius right there."
+      "narration": "Then they snap back for the corners."
     },
     {
-      "narration": "Emperor Nero watched Rome burn."
+      "narration": "Every driver uses these systems to overtake fierce rivals."
     },
     {
-      "narration": "Greed infected the leadership."
+      "narration": "[thoughtful] A race weekend takes three whole days."
     },
     {
-      "narration": "Greedy army generals fought continuous battles against each other for power."
+      "narration": "Friday is just for practice."
     },
     {
-      "narration": "In one single year, four different emperors were quickly murdered."
+      "narration": "Teams test car setups."
     },
     {
-      "narration": "[light chuckle] Politics became complete chaos."
+      "narration": "Saturday is the ultimate test of pure speed."
     },
     {
-      "narration": "Unpaid soldiers demanded money."
+      "narration": "This is the qualifying session."
     },
     {
-      "narration": "High taxes crushed farmers."
+      "narration": "They try to set the fastest single lap."
     },
     {
-      "narration": "Emperor Diocletian realized that one single man could not rule everything."
+      "narration": "The fastest driver starts first on Sunday afternoon."
     },
     {
-      "narration": "[understated] So he split the entire empire into two distinct halves."
+      "narration": "[deadpan] This is called pole position."
     },
     {
-      "narration": "Western region and Eastern region."
+      "narration": "Sunday is the main event."
     },
     {
-      "narration": "Each side got leaders."
+      "narration": "The race covers about one hundred ninety miles total."
     },
     {
-      "narration": "Emperor Constantine relocated the main capital city to wealthy Byzantium."
+      "narration": "First place gets a massive twenty five championship points."
     },
     {
-      "narration": "He renamed this magnificent eastern trade hub to Constantinople."
+      "narration": "Second place gets eighteen points."
     },
     {
-      "narration": "[curious] Constantine legalized Christianity as well."
+      "narration": "Only the top ten finishers score any points."
     },
     {
-      "narration": "Religion transformed European history."
+      "narration": "The rest get absolutely nothing."
     },
     {
-      "narration": "Meanwhile problems worsened west."
+      "narration": "[sarcastic] Formula One is truly a very generous sport indeed."
     },
     {
-      "narration": "[flatly] Migrating Germanic tribes pushed across weak borders seeking safety and land."
+      "narration": "[curious] Racing is not just about driving fast."
     },
     {
-      "narration": "The Western Roman government went BROKE and could not pay soldiers."
+      "narration": "Strategy is extremely crucial."
     },
     {
-      "narration": "Outer defenses collapsed completely."
+      "narration": "Tires wear out as the race goes on."
     },
     {
-      "narration": "Invaders looted Rome itself."
+      "narration": "Drivers must stop to replace them."
     },
     {
-      "narration": "[deadpan] In four hundred seventy-six, the last western emperor resigned."
+      "narration": "This is a pit stop."
     },
     {
-      "narration": "Standard history books claim the Roman Empire ended right there."
+      "narration": "Exactly twenty mechanics surround the race car at once."
     },
     {
-      "narration": "[sighs] But that is FALSE."
+      "narration": "They swap all four tires in under two seconds."
     },
     {
-      "narration": "The Eastern half survived."
+      "narration": "[understated] Blink and you will LITERALLY miss the whole thing."
     },
     {
-      "narration": "It lasted one thousand years!"
+      "narration": "Soft tires make the car go very fast."
     },
     {
-      "narration": "Modern historians call that surviving rich region the Byzantine Empire."
+      "narration": "But they degrade incredibly quickly."
     },
     {
-      "narration": "Yet citizens living there called themselves proud Romans the whole time."
+      "narration": "Hard tires last much longer."
     },
     {
-      "narration": "[thoughtful] Why does this matter?"
+      "narration": "But they offer less grip on the track."
     },
     {
-      "narration": "Western laws mirror Roman laws."
+      "narration": "Choosing the right tire strategy wins the grand prix."
     },
     {
-      "narration": "Languages like French, Spanish, and Italian directly evolved from Latin."
+      "narration": "[content] That is Formula One in a nutshell."
     },
     {
-      "narration": "[calm] Even modern government buildings across the globe copy ancient Roman architecture."
-    },
-    {
-      "narration": "Rome fell long ago."
-    },
-    {
-      "narration": "[content] Its world still remains."
+      "narration": "It is high speeds, massive drama, and endless engineering."
     }
   ]
 }
@@ -275,8 +303,9 @@ You do not write narration, you do not judge it, and you do not improve it.
 
 You add everything the pipeline needs to turn it into a video:
 
-one image_prompt per beat
-one image_prompt_alt per beat
+one image_prompt and one image_prompt_alt on the first beat of each location,
+and on any beat that redraws (Section 0C)
+one edits list on every beat (Section 0C)
 one location NAME per beat (visual_anchor and setting_anchor are always "")
 emotion tags remain untouched
 one music_prompt
@@ -383,6 +412,8 @@ locations yourself from the narration.
 
 Create the complete location system before writing image prompts.
 
+Plan each location as one scene (Section 0C) before writing its prompts.
+
 Set plan.locations[].visual_anchor to "" for every location.
 
 Set plan.setting_anchor to "".
@@ -397,7 +428,8 @@ Preserve every emotion tag exactly.
 Identify the reference character and every other visually relevant character
 or named subject in each beat.
 
-Write image_prompt and image_prompt_alt for beats 1 to N in order.
+Write image_prompt and image_prompt_alt where Section 0C asks for them, and
+edits for every beat, beats 1 to N in order.
 
 Write music_prompt.
 
@@ -425,6 +457,10 @@ ask for them to look realistic.
 Colour only one or two key objects. Name the colour on the object:
 one scarlet red racing car.
 
+Name the exact kind of every vehicle and object, never only its brand or its
+owner. A brand name alone draws that brand's best-known product, which can be
+the wrong kind of thing entirely.
+
 Simple and big beats detailed and small. If the frame needs explaining, it has
 too much in it.
 
@@ -433,12 +469,15 @@ LABELS
 At most 1 beat in 4 may carry words, and only when the words are the joke or
 the key fact. 1 to 3 words, in double quotes, attached to an object:
 
-a small sign reading "NOPE"
+a big sign reading "NOPE"
 a price tag reading "$15 MILLION"
 a speech bubble reading "WHY"
 
-Never more than one label per beat. Labels go in image_prompt only, never in
-narration.
+Never more than one label per beat. Labels go in image_prompt or in an edit
+(Section 0C), never in narration.
+
+Draw every label BIG: a big sign, a big tag, a big speech bubble. A small one
+comes out too small to read in the video.
 
 PHOTO CUTOUTS
 
@@ -451,11 +490,19 @@ would: an absurd price, a ridiculous real thing, a "yes, this actually
 exists" moment, or a real surviving artefact the narration points at. Never
 just because an object is mentioned.
 
-ONE object only. Never a person, a face, a body part, an animal or a place.
+ONE thing only: one object, or one famous real person from plan.cast. Never
+a face or body part on its own, an animal, a place, or the reference
+character.
+
+A real person as a photo cutout is the collage look: the photo of that one
+person, pasted into a doodle world. Everything else in the frame stays doodle:
+the reference character, the vehicles, the props, other people. Use it where
+seeing the REAL person lands harder than a doodle would, usually the beat that
+introduces them. Section 0D still holds: only doing something true of them.
 
 Write it with this exact phrase:
 
-a real photo cutout of <object>, roughly pasted onto the drawing
+a real photo cutout of <object or person>, roughly pasted onto the drawing
 
 Example:
 
@@ -463,8 +510,188 @@ reference character stares, eyes wide, at a real photo cutout of a Formula 1
 steering wheel, roughly pasted onto the drawing, medium shot
 
 The image_prompt_alt of a photo beat replaces the cutout with a doodle of the
-same object. The alt is the fallback when Flow refuses, so it must be the safe
-version.
+same object or person, without the name. The alt is the fallback when Flow
+refuses, so it must be the safe version.
+
+A photo person stays a photo through the edits after it. Keep those edits to
+pose and gesture (folds his arms, waves); never ask an edit to change a photo
+person's face.
+
+0C. CHAINED FRAMES
+
+This section overrides every later section about how many prompts a beat
+gets, and about varying camera, placement and framing from beat to beat.
+
+The video is animated by editing. Each location opens with one drawn picture.
+Every later picture in that location is a small edit of the picture just
+before it: the image tool sees only that previous picture and your edit line,
+and changes nothing else. Small changes, cut together every 1.5 to 4 seconds,
+are what make the stills move.
+
+PLAN EACH LOCATION AS ONE SCENE
+
+Before writing any prompt for a location, decide:
+
+what its opening picture shows
+what its last picture shows
+the steps from one to the other, one per picture, in the order the narration
+gets to them
+
+Every edit belongs on that path. Edits that go nowhere make a slideshow of the
+same picture.
+
+So a beat carries:
+
+image_prompt and image_prompt_alt ONLY on the first beat of each location,
+and on a beat that redraws (see REDRAW below). Every rule in this prompt about
+image_prompt and image_prompt_alt applies to these. Wherever a later section
+says "every beat" about them, read it as every beat that has them.
+
+edits on every OTHER beat: exactly one edit line, a list holding one string.
+
+ONE PICTURE PER BEAT
+
+Every beat is exactly one picture: its image_prompt, or its one edit. Never
+both, never more than one edit. The picture appears as the beat starts and
+stays up for the whole beat, so the beat's length is how long it is on screen
+(short beats about 1.5 seconds, long ones 3 to 4). The narration already
+mixes short, medium and long beats, so the pictures get that rhythm for free.
+
+Make each beat's edit show what THAT beat says, since it appears exactly as
+the beat is spoken.
+
+WRITING AN EDIT
+
+One line of 4 to 15 words that says only what changes. Start with the thing
+that changes:
+
+the character raises his right hand to wave
+the crocodile opens its jaws wide
+a big sign reading "LATE" appears above the door
+the measuring tape disappears
+
+Change one or two things per edit, and make the change visible at a glance. A
+cut between two nearly identical pictures looks like a glitch, not motion.
+
+Good edits: a pose or expression change, a thing appearing or disappearing, a
+thing moving across the page, a label appearing, a figure turning, a thing
+changing colour or size.
+
+SAY WHERE AND HOW BIG
+
+Anything an edit adds gets a position relative to what is already in the
+picture, and a size. Without them the image tool puts it wherever there is
+room: "a car appears behind the crocodile" came back with the car sitting on
+the crocodile's back, and "a small tag" came back too small to read.
+
+one big red car appears on the ground at frame right, past the crocodile's tail
+a big white tag reading "6 M" hangs from the end of the tape
+
+REACTIONS ARE THE SAFEST MOTION
+
+When a line adds nothing new to the picture, change the character: his eyes go
+wide, he crosses his arms, he leans in, he shrugs. These are the most reliable
+edits there are. Never let two pictures in a row look the same.
+
+In edits the reference character is "the character". Never write reference
+character in an edit: an edit has no character art attached, only the
+previous picture.
+
+Refer to everything already in the picture with the words that introduced it
+("the crocodile", never "the reptile"). Refer to other people by their visible
+feature, never by name: an edit has no alternate to fall back on when a name
+is refused.
+
+Never ask an edit for a new camera: no close-up, wide shot, angle, zoom or
+camera. An edit keeps the framing. A new framing is a redraw.
+
+Never describe the drawing style, the page or the background in an edit. They
+carry over by themselves.
+
+THE PAGE STAYS SIMPLE
+
+Section 0B's limits hold for every picture in the chain, not just the first:
+the reference character plus at most two other things. Edits pile up, so an
+edit that adds a thing when two are already on the page must remove one in
+the same line:
+
+the measuring tape disappears and one big red car appears on the ground at
+frame right, past the crocodile's tail
+
+Labels stay at most 1 beat in 4, counting labels added by edits. A label stays
+on the page until an edit removes it, so the next beat's edit removes it,
+unless that beat is still about it.
+
+A photo cutout of an object is added by an edit, never by a redraw. The limits
+in PHOTO CUTOUTS still apply.
+
+REDRAW
+
+Every edit drifts a little and the drift compounds: the page turns grey and
+grainy and the lines go soft. After about 5 edits in a row, give the next
+beat a fresh image_prompt and image_prompt_alt even when
+the location has not changed, describing the scene as it now stands. Redraw
+also when a beat needs a new framing.
+
+Do not redraw more often than that. Every redraw is a visible jump.
+
+The opening image_prompt of a location sets the stage for the edits after it:
+place the reference character and the things the next beats will act on, with
+room to move. Section 23's variety of placement and framing now happens at
+redraws, not on every beat.
+
+Example, three beats in one location:
+
+{
+"narration": "The saltwater crocodile is the largest reptile alive today.",
+"location": "northern australian riverbank",
+"image_prompt": "reference character stands at frame left looking curious at one huge green saltwater crocodile lying beside him, wide shot",
+"image_prompt_alt": "reference character stands at frame left, curious, beside one huge green crocodile with a long bumpy back lying flat, wide shot"
+},
+{
+"narration": "Big males can grow longer than six meters.",
+"location": "northern australian riverbank",
+"edits": [
+"a long yellow measuring tape appears along the crocodile from nose to tail, a big white tag reading \"6 M\" at its end"
+]
+},
+{
+"narration": "That is longer than a small car.",
+"location": "northern australian riverbank",
+"edits": [
+"the tape disappears and one big red car appears on the ground at frame right, past the crocodile's tail, clearly shorter than it"
+]
+}
+
+0D. THE TOPIC'S OWN CAST
+
+This section overrides Sections 6 and 12 wherever they would leave a frame
+with a nameless stand-in.
+
+Show the famous characters from the topic's universe, or the famous real
+people of the topic. plan.cast lists them. If it is missing, choose the 3 to 8
+most iconic ones yourself and add plan.cast.
+
+When a beat talks about a role one of them fills, show that one instead of a
+nameless doodle figure.
+
+Only where it is TRUE of them, or plainly an illustration of a general rule.
+Never pin a failure, a crash, a scandal or any claim on a real person the
+narration does not name.
+
+Spread the cast across the video: each icon recurs within its chapter, with
+the same signature feature word for word every time (Section 26).
+
+Bring a cast member in through an image_prompt, never through an edit. An edit
+cannot carry a name (Section 0C), and a nameless edit draws a generic figure.
+Once they are in the picture, edits refer to them by their signature feature.
+
+Plan each location so the cast members it needs are already in its opening
+picture. A redraw only to bring someone in is a visible jump: do it only when
+the chain is due a redraw anyway.
+
+The page limit still holds: at most two things besides the reference
+character (Section 0B).
 
 1. THE REFERENCE CHARACTER: PERSISTENT VISUAL NARRATOR
 
@@ -1089,8 +1316,11 @@ movable objects
 characters
 evidence
 equipment
-camera position
 temporary activity
+
+In this video a location is one continuously animated scene: it opens with one
+picture and evolves through edits (Section 0C). The camera only changes at a
+redraw.
 
 Create a new location when:
 
@@ -1195,6 +1425,10 @@ astronaut doodle planting a red and white flag, medium-wide shot
 
 23. REFERENCE CHARACTER PLACEMENT
 
+Placement is chosen only where a picture is drawn fresh: a location's first
+beat and a redraw (Section 0C). Inside a chain he stays where he is unless an
+edit moves him.
+
 Do not force the reference character into the center of every frame.
 
 Vary their placement naturally:
@@ -1216,6 +1450,9 @@ the explanation.
 24. REFERENCE CHARACTER REACTION VARIATION
 
 Avoid repeating the exact same reaction in every beat.
+
+Inside a chain a reaction changes through an edit: "the character raises one
+eyebrow", "the character's eyes go wide".
 
 Vary subtle reactions according to context:
 
@@ -1465,9 +1702,10 @@ medium two-shot
 long shot
 overhead shot
 
-Vary framing between consecutive beats.
-
-Do not repeat the same framing unnecessarily.
+Framing is chosen only where a picture is drawn fresh: a location's first
+beat and a redraw (Section 0C). Inside a chain the framing never changes;
+edits keep it. Vary framing between locations and between redraws, never
+between edits.
 
 The framing can change the reference character's position while preserving the
 same story moment.
@@ -1888,14 +2126,27 @@ Check:
 every frame is the reference character plus at most two other things
 no group larger than three figures
 colour on one or two key objects only
-at most 1 beat in 4 carries a quoted label, 1 to 3 words
+at most 1 beat in 4 carries a quoted label, 1 to 3 words, counting edits
+every label is drawn big
+plan.cast exists and every chapter shows at least one of its icons
+no real person is shown doing something the narration does not say of them
+every cast member enters through an image_prompt, never through an edit
+every edit that adds a thing says where it goes and how big it is
+each beat's edit shows what that beat says
+every label is removed by the next beat's edit, unless that beat is still
+about it
+every vehicle and object is named by its exact kind, never by brand alone
+cast members are in the opening picture of their location wherever possible
+every location was planned as one scene, and its edits go somewhere
+no two pictures in a row look the same
 about 1 beat in 10 has a photo cutout (hard limit 1 in 6), never two in a row
-every photo cutout uses the exact phrase and is one object, never a person
+every photo cutout uses the exact phrase and is one object or one plan.cast
+person, with everything else in the frame doodle
 every photo beat's image_prompt_alt is a doodle, with no photo cutout
 
 REFERENCE CHARACTER
 
-For EVERY beat:
+For EVERY beat that has an image_prompt:
 
 image_prompt contains the exact phrase reference character
 image_prompt_alt contains the exact phrase reference character
@@ -1911,7 +2162,7 @@ another subject
 
 OTHER CHARACTERS
 
-For EVERY beat:
+For EVERY beat that has an image_prompt:
 
 identify all characters actually required by the visual event
 keep distinct characters visually distinct
@@ -1975,8 +2226,15 @@ PROMPT COUNT
 
 Check:
 
-every beat has image_prompt
-every beat has image_prompt_alt
+the first beat of every location has image_prompt and image_prompt_alt
+no other beat has them unless it redraws (Section 0C)
+a beat with an image_prompt has no edits; every other beat has exactly one
+every beat is exactly one picture: an image_prompt, or one edit
+no edit asks for a camera, a framing or a drawing style
+no edit says reference character or names a person
+no location runs more than about 5 edits without a redraw
+no picture in a chain holds more than two things besides the reference
+character
 every primary is 20 to 30 words, plus up to 12 words per named character
 no primary with no named characters exceeds 35 words
 no name was dropped to fit a word count
@@ -2045,7 +2303,7 @@ aspect ratios
 photographic rendering instructions
 unnecessary graphic content
 vague spatial relationships
-duplicated framing
+duplicated framing between locations or redraws
 reference character performing an action that belongs to another historical
 subject
 reference character replacing another required character
@@ -2054,7 +2312,7 @@ generic generated locations with no connection to the narration
 
 PRIMARY / ALTERNATE RELATIONSHIP
 
-For every beat:
+For every beat that has an image_prompt:
 
 PRIMARY =
 reference character
@@ -2148,8 +2406,9 @@ The final object must preserve all original pass 1 information and add:
 
 plan.locations[].visual_anchor
 plan.setting_anchor
-beats[].image_prompt
-beats[].image_prompt_alt
+beats[].image_prompt and beats[].image_prompt_alt where Section 0C asks for
+them
+beats[].edits: exactly one edit line on every beat without an image_prompt
 music_prompt
 
 If Pass 1 contained no locations, the final object must additionally contain

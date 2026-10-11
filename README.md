@@ -6,9 +6,25 @@ one script in, one `.mp4` out. Output is landscape 1920x1080 at 30fps, aimed at
 a roughly three minute runtime, not vertical short-form.
 
 A script of ~30-100 short beats (narration sentence + image description) goes
-in. Each beat becomes one AI-generated still, one narrated audio clip timed to
-the narration, and one entry in a final Remotion render with Ken Burns
-pan/zoom, cuts and dissolves, and a music bed mixed under the voice.
+in. Each beat becomes one narrated audio clip and one or more AI-generated
+stills sharing its time, rendered by Remotion with static frames, cuts and
+dissolves, and a music bed mixed under the voice.
+
+The stills are **chained**: each location opens with one picture drawn fresh
+against the character reference, and every later picture in it is an *edit*
+of the one before (the character raises a hand, a sign appears, an object
+moves). Cut together at about one picture a second, that reads as animation
+rather than a slideshow. In `script.json` a beat carries `image_prompt` /
+`image_prompt_alt` when it draws fresh, otherwise an `edits` list with one
+change. One picture per beat, so the narration's mix of short (3-5 words),
+medium (6-8) and long (9-12) beats sets how long each picture stays up,
+~2.4s on average. (An edit may also be `{"at": "six meters", "edit": "..."}`
+to put several pictures in one beat, each timed to its word with Whisper.) A
+fresh drawing in the middle of a location dissolves in instead of jumping, and
+after the image stage every edit is compared with the frame it was made from,
+so ignored edits (two identical frames) are listed with the command to redo
+them. Older scripts with an `image_prompt` on every beat and no edits still
+work unchanged.
 
 ## Demo
 
@@ -87,7 +103,7 @@ prompts/pass2_visuals.txt   --(LLM, by hand)--> + image prompts  =  script.json
         +-------------------+----------+----------+-------------------+
         v                   v                     v                   v
   cmd_prompts          cmd_images             cmd_voice           (script data)
-  scenes.txt      flow_runner/ (Playwright   ElevenLabs, batched
+  frames.json     flow_runner/ (Playwright   ElevenLabs, batched
                    on Google Flow) -> PNGs    -> MP3 + duration
         |                   |                     |
         +-------------------+----------+----------+
@@ -102,7 +118,7 @@ prompts/pass2_visuals.txt   --(LLM, by hand)--> + image prompts  =  script.json
                                         |
                                         v
                                   cmd_render
-                 remotion/ (Ken Burns + cut/dissolve) -> ffmpeg mix
+                 remotion/ (still + cut/dissolve) -> ffmpeg mix
                                         |
                                         v
                                   output/<run>/final.mp4
@@ -156,8 +172,8 @@ flow_runner/            Playwright automation of Google Flow's web UI
   config.py               every DOM selector, with the failure each one fixes
   test_runner.py         offline tests for the non-browser logic
 remotion/                the render project
-  src/compositions/LectureVideo.tsx   Ken Burns + cut/dissolve composition
-  src/components/KenBurnsImage.tsx    pan/zoom logic
+  src/compositions/LectureVideo.tsx   still frames + cut/dissolve composition
+  src/components/StillImage.tsx      one static frame, no camera move
 prompts/                the two prompts pasted into an LLM to author a script
   pass1_narration.txt    pass 1: topic and beat count in, narration beats out
   pass2_visuals.txt      pass 2: those beats in, image and music prompts added
@@ -233,7 +249,7 @@ python pipeline.py init my-video-slug
 python pipeline.py --run my-video-slug
 
 # Or run one stage at a time:
-python pipeline.py prompts   --run my-video-slug   # script.json -> scenes.txt
+python pipeline.py prompts   --run my-video-slug   # script.json -> frames.json
 python pipeline.py images    --run my-video-slug   # Flow -> images/
 python pipeline.py voice     --run my-video-slug   # ElevenLabs -> audio/
 python pipeline.py manifest  --run my-video-slug    # pair everything + durations

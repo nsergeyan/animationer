@@ -1,16 +1,50 @@
-Write a script about (Roman empire explained in 3 minutes) it is an explaining video. Use ONLY verified information and Use in correct places jokes, sarcasm, etc. (no cringe) here is the structure you have to fill it in:
+Write a script about (Formula 1 explained in 3 minutes) it is an explaining video. Use ONLY verified information and Use in correct places jokes, sarcasm, etc. (no cringe) here is the structure you have to fill it in:
 Use simple words, and explain everything simply so average non english native speaker can understand it.
 While writing the narration do not use any "", \,\
 AND REMEMBER YOU ARE WRITING A NARRATION THAT WILL BE USED FOR TEXT TO SPEACH AI VOICE
 
+It is 2026. Before writing, use web search to confirm every current fact: teams,
+drivers or members and who belongs where, champions, records, numbers. Never
+rely on memory for anything that changes from season to season.
+
 I WANT ABOUT 75 BEATS, 500-540 SPOKEN WORDS IN TOTAL (about 3 minutes).
-Each beat is ONE short sentence, and every beat gets its own picture.
-Mix two lengths, roughly half and half:
-  SHORT beats: 3-6 words (a reaction, a consequence, a punch).
-  LONG beats: 8-12 words (the fact, the number, the turn).
-Never more than 3 short beats in a row, never more than 2 long beats in a row.
+Each beat is ONE short sentence. You write ONLY the narration: a second pass
+adds the pictures later, exactly one picture per beat, so a beat's length is
+how long its picture stays on screen. Never write picture descriptions, image
+ideas or any field other than the ones in the structure below.
+Mix three lengths:
+  SHORT beats: 3-5 words, about a quarter of the beats (a reaction, a
+  consequence, a punch).
+  MEDIUM beats: 6-8 words, about half (ordinary explaining).
+  LONG beats: 9-12 words, about a quarter (the big fact, the number, the
+  turn). Write every big number or key fact as one LONG beat, never split
+  across two short ones.
+Never more than 3 beats of the same length in a row.
 Never go over 12 words in one beat. Split it into two beats instead.
 Count the words at the end. The total budget matters more than the beat count.
+
+WRITE IN CHAPTERS
+The video is animated: each chapter is ONE scene on screen that keeps changing
+while you talk (things appear, move, grow, get compared). A new chapter is a
+jump to a new scene.
+- Split the script into 4 to 8 chapters. Stay inside one chapter for at least
+  8 beats in a row. Never hop to another topic and come back.
+- Each chapter leads into the next for a reason the narration gives. No time
+  jumps like "meanwhile" or "years later" without a cause.
+- Prefer facts that SHOW something changing or being compared: a size next to
+  something familiar, a number going up, a thing moving from A to B, one thing
+  replacing another. Those make the best moving pictures. When a fact is
+  abstract, pair it with one concrete example.
+
+USE FAMOUS CHARACTERS AND REAL PEOPLE
+Use the famous characters from the topic's universe, or the famous real people
+of the topic, by name. Never nameless stand-ins.
+- Every chapter uses at least one of them, in a specific moment rather than a
+  general claim.
+- Pick the ones a casual viewer knows.
+- List the 3 to 8 most iconic ones in plan.cast, with why they matter.
+- Every name and number goes in plan.facts_to_check with a source.
+- Never quote what a real person or character said. Report it instead.
 {
   "topic": "short slug-like title",
   "format": "explainer",
@@ -19,6 +53,7 @@ Count the words at the end. The total budget matters more than the beat count.
     "deflations": [
       { "assumed": "", "actual": "", "who_decided": "", "build_beat": "", "drop_beat": "" }
     ],
+    "cast": [ { "name": "", "why": "" } ],
     "specifics": [ { "fact": "", "source": "", "beat": "" } ],
     "facts_to_check": [ { "claim": "", "source": "" } ]
   },

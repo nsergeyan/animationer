@@ -21,9 +21,17 @@ from dotenv import load_dotenv
 ROOT_DIR = Path(__file__).parent
 OUTPUT_DIR = ROOT_DIR / "output"                  # scene_001.png, scene_002.png, ...
 SCENES_FILE = ROOT_DIR / "scenes.txt"
-USER_DATA_DIR = ROOT_DIR / ".chrome-profile"      # keeps you logged in between runs
-
 load_dotenv(ROOT_DIR.parent / ".env")
+
+# The Chrome profile keeps you logged in between runs, one Google account per
+# profile. FLOW_PROFILE in .env picks another one (e.g. FLOW_PROFILE=account2
+# -> .chrome-profile-account2), so a second Flow account can take over when the
+# first runs out, and switching back is just changing the line. Unset is the
+# original profile. Pair it with that account's GOOGLE_FLOW_PROJECT_URL: a
+# project belongs to one account.
+_PROFILE = os.getenv("FLOW_PROFILE", "").strip()
+USER_DATA_DIR = ROOT_DIR / (f".chrome-profile-{_PROFILE}" if _PROFILE
+                            else ".chrome-profile")
 
 # --- Target ----------------------------------------------------------------
 # Point this at the PROJECT, not the tool landing page. The landing page has no
@@ -141,13 +149,21 @@ ATTACHED_CHIP_TEXTS = [
 
 # How the reference shows up in Flow's library. Note this is the DISPLAY name,
 # which is not the filename: TiredGuy_2K_202608151256.jpeg lists as "TiredGuy".
-REFERENCE_ASSET_NAME = "TiredGuy"
+# Per account: the same art can be listed under another name in a second
+# account's library (2026-10-11), so .env can override it with
+# FLOW_REFERENCE_NAME. Unset is the original account's name.
+REFERENCE_ASSET_NAME = os.getenv("FLOW_REFERENCE_NAME", "").strip() or "TiredGuy"
 
 # Used to find an already-uploaded copy so each run does not add a duplicate.
 ASSET_SEARCH_SELECTORS = [
     'input[placeholder*="Search assets" i]',
     'input[placeholder*="search" i]',
 ]
+
+# The picker's own upload button, used when there is no <input type="file">
+# on the page to fill (a fresh account's empty library). Matched as a
+# case-insensitive substring: its text reads "upload Upload media", icon first.
+UPLOAD_BUTTON_TEXT = "Upload media"
 
 # Seconds to let Flow finish ingesting a freshly uploaded reference.
 REFERENCE_SETTLE = 10.0
@@ -156,6 +172,31 @@ REFERENCE_SETTLE = 10.0
 # rather than slept through.
 PICKER_WAIT = 15.0
 ASSET_WAIT = 15.0
+
+# --- Chained frames (asset picker) ------------------------------------------
+# An EDIT frame is generated from the frame before it, attached as the only
+# reference. What the picker looked like on 2026-10-11 (from a screenshot, NOT
+# yet confirmed with --inspect): a search box, a sort dropdown to its right
+# (Recent / Most used / Newest / Oldest / Favourites), then a list of rows,
+# each a thumbnail, a title Flow writes itself from the prompt ("Modify image
+# with croc...") and the kind ("Image"). Every generated image lands in that
+# list on its own, uploads too.
+#
+# The parent is picked as the FIRST row under Newest, by position, because the
+# titles are Flow's and cannot be predicted. The sort is set explicitly on
+# every pick rather than trusted: under Recent (recently USED) the character
+# art sits on top, and every edit would quietly be made from it instead.
+ASSET_SORT_OPTIONS = ["Recent", "Most used", "Newest", "Oldest", "Favourites"]
+ASSET_SORT_NEWEST = "Newest"
+
+# The second line of a row. Rows are not buttons and carry no attribute known
+# to be stable, so they are found by shape: title line, then this.
+ASSET_ROW_KIND = "Image"
+
+# How far (px, vertically) from the Agent toggle a chip's remove-X may sit and
+# still count as ON the prompt. "cancel" is a generic icon name, so detaching
+# only clicks the ones by the prompt bar, never one elsewhere on the page.
+CHIP_REACH_PX = 220
 
 # --- Agent mode ------------------------------------------------------------
 # Agent mode must stay OFF: it paraphrases the prompt in its own words, which

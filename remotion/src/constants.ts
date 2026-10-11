@@ -3,44 +3,6 @@ export const FPS = 30;
 export const WIDTH = 1920;
 export const HEIGHT = 1080;
 
-// --- Motion ----------------------------------------------------------------
-// These were rebuilt when the channel moved from 45 beats to 90. The old
-// values were 1.00 -> 1.03 spread over a 6.2s beat, which is 0.5% of scale a
-// second: about 2.8 pixels of edge movement a second at 1080p, well under what
-// reads as movement at all. The result was a slideshow with a fade, and the
-// motion was doing nothing to earn its complexity.
-//
-// A beat is now ~3.0s, so a move has half the time to register and has to be
-// several times faster to be seen. A push runs the full 10% across the beat,
-// about 3.3% a second, which reads clearly without becoming a zoom effect.
-//
-// COST OF ZOOM, both real:
-//   - Every percent above 1.0 crops a percent of the drawing away. A push
-//     starts at zero crop and only reaches 10% at the very end of the beat;
-//     a pull is the same trade run backwards. What the old comment complained
-//     about was 1.06 held CONSTANT for a whole beat, which is a different and
-//     worse deal - so the pan, which is the one move that does hold a fixed
-//     scale, is pinned lower at PAN_SCALE.
-//   - Source art is 1376x768 upscaled to 1920x1080, so it is already at 1.4x
-//     before any zoom. Flat bucket-filled colour upscales cleanly and only the
-//     outlines soften, which is why this is affordable here and would not be
-//     on photographic art.
-//
-// config.py's STYLE_BLOCK now asks for clear space around all four edges,
-// which is what makes the larger crop safe on newly generated art.
-//
-// 2026-10-07: halved for the white-page style, which wants near-static frame
-// swaps. The move should be felt more than seen. Mirrors config.ZOOM_MAX.
-export const ZOOM_MIN = 1.0;      // where a push starts: no crop at all
-export const ZOOM_SCALE = 1.05;   // where it ends (was 1.1)
-
-// The pan holds a fixed scale for the whole beat, so it pays the crop the
-// entire time and is kept lower than the push.
-// Safe pan for a given scale: PAN_PERCENT <= 50 * (S - 1) / S
-//   1.03 -> 1.46% max     1.06 -> 2.83% max     1.10 -> 4.55% max
-export const PAN_SCALE = 1.06;
-export const PAN_PERCENT = 1.5;   // was 2.5; under the 2.83% ceiling for 1.06
-
 // --- Cutting ---------------------------------------------------------------
 // A single 0.5s crossfade on every beat was 8% of a 6.2s beat and would be 25%
 // of a 2.0s one - the image would never be cleanly on screen, and 90 identical
@@ -68,6 +30,9 @@ export type Beat = {
   index: number;
   narration: string;
   image: string;    // filename, resolved via staticFile + --public-dir
+  frames?: string[]; // every frame of the beat, image first; older manifests have none
+  frame_starts?: number[]; // seconds from the beat's start, one per frame; else an even split
+  redraw?: boolean;  // a fresh picture mid-location: dissolve in rather than jump
   audio: string;    // filename, resolved via staticFile + --public-dir
   duration: number; // seconds
   location?: string; // optional: older manifests predate it, see LectureVideo
@@ -94,8 +59,11 @@ export const sameLocation = (a: Beat, b: Beat): boolean =>
   !!a.location && !!b.location && a.location === b.location;
 
 // True when the boundary AFTER beat i is a dissolve rather than a hard cut.
+// A redraw inside a location dissolves too: the whole page changes at once
+// there, and a hard cut makes that read as a glitch rather than a new shot.
 export const dissolvesAfter = (beats: Beat[], i: number): boolean =>
-  i < beats.length - 1 && !sameLocation(beats[i], beats[i + 1]);
+  i < beats.length - 1 &&
+  (!sameLocation(beats[i], beats[i + 1]) || !!beats[i + 1].redraw);
 
 // One beat's own length on the timeline, tail included.
 export const beatFrames = (beats: Beat[], i: number): number => {

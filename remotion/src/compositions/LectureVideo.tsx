@@ -1,17 +1,49 @@
-import { AbsoluteFill, Audio, staticFile } from "remotion";
+import { AbsoluteFill, Audio, Sequence, staticFile } from "remotion";
 import { TransitionSeries, linearTiming } from "@remotion/transitions";
 import { fade } from "@remotion/transitions/fade";
-import { KenBurnsImage } from "../components/KenBurnsImage";
-import { DISSOLVE_FRAMES, Beat, beatFrames, dissolvesAfter } from "../constants";
+import { StillImage } from "../components/StillImage";
+import { DISSOLVE_FRAMES, FPS, Beat, beatFrames, dissolvesAfter } from "../constants";
 
-// One beat: image (Ken Burns) + its narration audio. No captions - the art
-// carries the frame and the narration carries the meaning.
-const BeatScene: React.FC<{ beat: Beat; index: number }> = ({ beat, index }) => (
-  <AbsoluteFill>
-    <KenBurnsImage src={beat.image} index={index} />
-    <Audio src={staticFile(beat.audio)} />
-  </AbsoluteFill>
-);
+// One beat: its frames + its narration audio. No captions - the art carries
+// the frame and the narration carries the meaning.
+//
+// A beat's frames are chained edits of one another (pipeline.py build_frames),
+// so they hard cut: the change between them IS the animation. Each starts at
+// its word when the manifest carries frame_starts (pipeline.py
+// _frame_starts), and otherwise the frames share the spoken length evenly.
+// The last one also holds through the beat's tail (cut pad, dissolve or outro
+// hold), so the picture never runs out before the Sequence does.
+const BeatScene: React.FC<{ beat: Beat; durationInFrames: number }> = ({
+  beat,
+  durationInFrames,
+}) => {
+  const images = beat.frames?.length ? beat.frames : [beat.image];
+  const spoken = Math.min(durationInFrames, Math.max(1, Math.round(beat.duration * FPS)));
+  const even = images.map((_, k) => Math.round((k * spoken) / images.length));
+  const timed = beat.frame_starts?.length === images.length
+    ? beat.frame_starts.map((s) => Math.min(spoken - 1, Math.max(0, Math.round(s * FPS))))
+    : null;
+  // Python already checks the order; this only guards a hand-edited manifest.
+  const starts =
+    timed && timed[0] === 0 && timed.every((v, k) => k === 0 || v > timed[k - 1])
+      ? timed
+      : even;
+
+  return (
+    <AbsoluteFill>
+      {images.map((src, k) => {
+        const from = starts[k];
+        const until = k === images.length - 1 ? durationInFrames : starts[k + 1];
+        return (
+          <Sequence key={src} from={from} durationInFrames={Math.max(1, until - from)}>
+            <StillImage src={src} />
+          </Sequence>
+        );
+      })}
+      <Audio src={staticFile(beat.audio)} />
+    </AbsoluteFill>
+  );
+};
 
 export const LectureVideo: React.FC<{ beats: Beat[] }> = ({ beats }) => {
   return (
@@ -35,7 +67,7 @@ export const LectureVideo: React.FC<{ beats: Beat[] }> = ({ beats }) => {
 
         const seq = (
           <TransitionSeries.Sequence key={`seq-${i}`} durationInFrames={durationInFrames}>
-            <BeatScene beat={beat} index={i} />
+            <BeatScene beat={beat} durationInFrames={durationInFrames} />
           </TransitionSeries.Sequence>
         );
 

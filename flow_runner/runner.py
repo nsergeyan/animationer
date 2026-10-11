@@ -14,14 +14,25 @@ paraphrases prompts, which wrecks style consistency. With Agent OFF and a
 reference attached by hand, the reference sticks for the whole session, so the
 script only ever has to type text and click a button.
 
+Chained frames change that for EDIT frames (pipeline.py writes them into
+frames.json). An edit is made from the frame before it, not from the
+character, so the runner swaps the reference first: chips off, then the parent
+frame on - picked as the newest asset in Flow's library when it was generated
+a moment ago, uploaded from disk otherwise - and types only the change. The
+next fresh frame puts the character back.
+
 Usage:
     python runner.py --inspect        # dump the DOM so you can fix config.py
     python runner.py                  # run every scene in scenes.txt
     python runner.py --only 3,7,12    # re-run just those scenes
+    python runner.py --frames F --output DIR --only 12,13.2
+                                      # chained run (what pipeline.py images
+                                      # does): beat 12, and frame 2 of 13
 """
 
 import argparse
 import base64
+import json
 import random
 import re
 import sys
@@ -55,17 +66,86 @@ def load_scenes(path: Path) -> list[str]:
     return scenes
 
 
-def output_path(index: int, ext: str = ".png") -> Path:
-    return config.OUTPUT_DIR / f"scene_{index:03}{ext}"
+def frames_from_scenes(scenes: list[str], alts: list[str] | None = None) -> list[dict]:
+    """A plain scenes.txt as frames: every line drawn fresh, named by line."""
+    return [{"name": f"scene_{i:03}", "beat": i, "frame": 1,
+             "mode": "establish", "text": prompt, "prompt": prompt,
+             "alt": alts[i - 1] if alts else None, "parent": None}
+            for i, prompt in enumerate(scenes, start=1)]
 
 
-def existing_output(index: int) -> Path | None:
+def load_frames(path: Path) -> list[dict]:
+    """frames.json, written by `pipeline.py prompts`. See its build_frames."""
+    if not path.exists():
+        raise FileNotFoundError(f"No frames file at {path}")
+    frames = json.loads(path.read_text(encoding="utf-8"))["frames"]
+    seen = set()
+    for frame in frames:
+        # The loop generates strictly in file order, so a parent listed later
+        # would be edited from before it exists.
+        if frame["mode"] == "edit" and frame.get("parent") not in seen:
+            raise ValueError(f"{frame['name']} edits {frame.get('parent')!r}, "
+                             f"which does not come before it in {path.name}")
+        seen.add(frame["name"])
+    return frames
+
+
+def output_path(name: str, ext: str = ".png") -> Path:
+    return config.OUTPUT_DIR / f"{name}{ext}"
+
+
+def existing_output(name: str) -> Path | None:
     """
     What resume checks. Globs the extension because we only learn the real
     format from the downloaded bytes, so scene 7 may be .jpg while scene 8
-    is .png.
+    is .png. "scene_012.*" cannot match "scene_012_f2.jpg": the dot has to
+    follow the name directly.
     """
-    return next(config.OUTPUT_DIR.glob(f"scene_{index:03}.*"), None)
+    return next(config.OUTPUT_DIR.glob(f"{name}.*"), None)
+
+
+def frame_id(frame: dict) -> str:
+    """How --only names one frame: the second frame of beat 12 is 12.2."""
+    return f"{frame['beat']}.{frame['frame']}"
+
+
+def parse_only(text: str | None) -> set[str] | None:
+    """--only 12,13.2 -> {"12", "13.2"}: a whole beat, or one frame of one."""
+    if not text:
+        return None
+    return {token.strip() for token in text.split(",") if token.strip()}
+
+
+def frames_to_make(frames: list[dict], wanted: set[str] | None = None) -> list[dict]:
+    """
+    The frames this run has to generate, in order.
+
+    Without --only, every missing frame. With --only, exactly the beats or
+    frames it names, present or not, so a bad one can be redone.
+
+    Either way an edit is redone when its parent is, and also when its parent's
+    file is NEWER than its own: an earlier run regenerated the parent and
+    stopped before reaching this one. An edit shows its parent as it WAS, so
+    keeping it would cut from the new picture to an edit of the old one.
+    """
+    todo, redone = [], set()
+    for frame in frames:
+        parent = frame.get("parent")
+        mine = existing_output(frame["name"])
+        if parent and parent in redone:
+            make = True
+        elif wanted is not None:
+            make = str(frame["beat"]) in wanted or frame_id(frame) in wanted
+        elif mine is None:
+            make = True
+        else:
+            theirs = existing_output(parent) if parent else None
+            make = (theirs is not None
+                    and theirs.stat().st_mtime > mine.stat().st_mtime)
+        if make:
+            todo.append(frame)
+            redone.add(frame["name"])
+    return todo
 
 
 # --- Element lookup --------------------------------------------------------
@@ -421,6 +501,57 @@ def _wanted(text: str) -> bool:
     return not any(x.lower() in text.lower() for x in exclude)
 
 
+def _images_per_prompt(page) -> int | None:
+    """The batch size on the model chip ("x2" -> 2), or None if not shown."""
+    _, text = _model_chip(page)
+    found = re.search(r"\bx(\d+)\b", " ".join((text or "").split()))
+    return int(found.group(1)) if found else None
+
+
+def ensure_single_output(page) -> bool:
+    """
+    Make Flow generate one image per prompt. True once the chip reads x1.
+
+    The count sits in the same settings panel the model chip opens. A second
+    account came up on x2 (2026-10-11) where the first had always been x1, and
+    it is a per-account setting, so it is set here rather than trusted.
+    """
+    count = _images_per_prompt(page)
+    if count is None or count == 1:
+        return True
+    print(f"[output] Flow makes {count} images per prompt, switching to 1")
+    chip, _ = _model_chip(page)
+    try:
+        chip.click()
+        page.wait_for_timeout(1000)
+    except Exception as exc:
+        print(f"[output] could not open the settings ({type(exc).__name__})")
+        return False
+    option = None
+    for label in ("x1", "1x"):
+        option = find_clickable_with_text(page, label)
+        if option is not None:
+            break
+    if option is None:
+        print("[output] no x1 option in the settings panel")
+        diagnose(page, "x1 option not found")
+        page.keyboard.press("Escape")
+        return False
+    try:
+        option.click(timeout=config.CLICK_TIMEOUT_MS)
+    except PlaywrightTimeoutError:
+        print("[output] the x1 option could not be clicked")
+        return False
+    page.wait_for_timeout(800)
+    page.keyboard.press("Escape")
+    page.wait_for_timeout(800)
+    if _images_per_prompt(page) in (None, 1):
+        print("[output] now one image per prompt")
+        return True
+    print("[output] the chip still shows more than one image per prompt")
+    return False
+
+
 def ensure_model(page) -> bool:
     """
     Switch Flow to the run's current model if it is not already selected.
@@ -557,13 +688,53 @@ def attach_reference(page) -> bool:
             return True
     else:
         print(f"[ref] {config.REFERENCE_ASSET_NAME!r} not in the library, uploading")
+        # The failed search can leave the picker closed, which is what made
+        # the first upload on a second account find nothing to click.
+        if not _open_asset_picker(page):
+            print("[ref] could not reopen the asset picker to upload into")
+            return False
         if not _upload_reference(page, reference):
             return False
-        if not _select_existing_asset(page):
+        if not (_select_existing_asset(page)
+                or _select_newest_upload(page, reference)):
             print("[ref] uploaded, but the asset never appeared in the picker")
             return False
 
     return _click_add_to_prompt(page)
+
+
+def _select_newest_upload(page, reference: Path) -> bool:
+    """
+    Pick the just-uploaded reference as the newest row of the picker.
+
+    For a library that lists the file under a name we did not expect. The top
+    row under Newest must still start with the file's own stem before the first
+    underscore ("TiredGuy_2K_...jpeg" -> "tiredguy"), or it is not our upload.
+    That name is then remembered for the rest of the run, so later fresh
+    frames find it by name instead of uploading it again.
+    """
+    search = _picker_search_box(page)
+    if search is None:
+        return False
+    search.click()
+    page.keyboard.press("ControlOrMeta+a")
+    page.keyboard.press("Backspace")
+    page.wait_for_timeout(1000)
+    if not sort_assets_newest(page, search):
+        return False
+    rows = _asset_rows(page, search)
+    stem = reference.stem.split("_")[0].lower()
+    if not rows or not rows[0]["title"].lower().startswith(stem):
+        print(f"[ref] the newest asset is "
+              f"{(rows[0]['title'] if rows else 'nothing')!r}, not the upload")
+        return False
+    title = rows[0]["title"]
+    rows[0]["el"].click(timeout=config.CLICK_TIMEOUT_MS)
+    page.wait_for_timeout(1000)
+    if "\u2026" not in title and "..." not in title:
+        config.REFERENCE_ASSET_NAME = title
+    print(f"[ref] picked the upload as the newest asset: {title!r}")
+    return True
 
 
 # Scans EVERY element, not just <button>, because Flow's picker footer may well
@@ -745,7 +916,15 @@ def _open_asset_picker(page) -> bool:
     # Deliberately NOT "Add Media": that is the library button in the top right
     # and using it is what filed the reference somewhere the prompt could not
     # see it. We want the + in the prompt bar, found by proximity to Agent.
-    trigger = find_prompt_add_button(page)
+    # Polled, not checked once: right after login, or when the project is
+    # opened by hand while the run starts, Flow can still be on its "Loading..."
+    # screen, and a single look found no + at all (2026-10-11, new account).
+    trigger = None
+    deadline = time.monotonic() + config.PICKER_WAIT
+    while trigger is None and time.monotonic() < deadline:
+        trigger = find_prompt_add_button(page)
+        if trigger is None:
+            time.sleep(1.0)
     if trigger is None:
         print("[ref] could not find the + button in the prompt bar")
         print("[ref] (looked for an add-style control next to the Agent toggle)")
@@ -827,14 +1006,33 @@ def _select_existing_asset(page) -> bool:
 
 
 def _upload_reference(page, reference: Path) -> bool:
-    file_input = _find_file_input(page)
-    if file_input is None:
-        print('[ref] no <input type="file"> found to upload into')
-        return False
-
     print(f"[ref] uploading {reference.name} "
           f"({reference.stat().st_size // 1024} KB)")
-    file_input.set_input_files(str(reference))
+    file_input = _find_file_input(page)
+    if file_input is not None:
+        file_input.set_input_files(str(reference))
+    else:
+        # No hidden file input to fill. Seen on a fresh account with an empty
+        # library (2026-10-11): the input only appears once the picker's own
+        # upload button is clicked. Clicking it and answering the file dialog
+        # it opens works however Flow builds that input.
+        button = first_button_with_text(page, config.UPLOAD_BUTTON_TEXT)
+        if button is None:
+            print(f'[ref] no <input type="file"> and no '
+                  f'"{config.UPLOAD_BUTTON_TEXT}" button to upload with')
+            diagnose(page, "no way to upload")
+            return False
+        print(f'[ref] no file input on the page, using the '
+              f'"{config.UPLOAD_BUTTON_TEXT}" button')
+        try:
+            with page.expect_file_chooser(timeout=10_000) as chooser:
+                button.click(timeout=config.CLICK_TIMEOUT_MS)
+            chooser.value.set_files(str(reference))
+        except PlaywrightTimeoutError:
+            print(f'[ref] "{config.UPLOAD_BUTTON_TEXT}" did not open a file '
+                  f'dialog')
+            diagnose(page, "upload button opened no file dialog")
+            return False
     print(f"[ref] waiting {config.REFERENCE_SETTLE:.0f}s for Flow to ingest it")
     page.wait_for_timeout(int(config.REFERENCE_SETTLE * 1000))
     return True
@@ -880,6 +1078,405 @@ def _find_file_input(page):
         if element:
             return element
     return None
+
+
+# --- Chained frames --------------------------------------------------------
+#
+# An edit frame is made from the frame before it, so before its text is typed
+# the prompt's reference is swapped: every chip off, the parent frame on.
+#
+# Flow files every generated image in the asset library by itself, so the frame
+# made a moment ago is the NEWEST asset there. Picking by position avoids
+# matching on titles, which Flow writes from the prompt ("Modify image with
+# croc...") and we can neither choose nor predict.
+#
+# Newest is only trustworthy for the frame generated straight before, in this
+# session. Anything else - a resumed run, --only partway down a chain - is
+# uploaded from disk first, which makes IT the newest, and then picked the same
+# way. Slower, but it only happens at the start of a resumed chain.
+#
+# Everything here is written from a screenshot of the picker, not from an
+# --inspect dump, so each step checks its own result and stops loudly. An edit
+# made from the wrong picture still looks like a normal frame, which is the
+# worst kind of failure to find later.
+
+# The remove-X buttons of the chips on the prompt. Anchored on the Agent toggle
+# like the prompt-bar +, because "cancel" is a generic icon name and clicking
+# one anywhere else on the page could cancel something we never meant to touch.
+_CHIP_REMOVERS_JS = """
+([agentText, removeText, reach]) => {
+  const clickable = [...document.querySelectorAll('button, [role="button"]')];
+  const agent = clickable.find(b => (b.innerText || '').trim() === agentText);
+  if (!agent) return [];
+  const a = agent.getBoundingClientRect();
+  const ay = a.top + a.height / 2;
+  return clickable.filter(b => {
+    if ((b.innerText || '').trim() !== removeText) return false;
+    const r = b.getBoundingClientRect();
+    if (!r.width || !r.height) return false;
+    return Math.abs(r.top + r.height / 2 - ay) <= reach;
+  });
+}
+"""
+
+
+def _chip_removers(page) -> list:
+    try:
+        handle = page.evaluate_handle(
+            _CHIP_REMOVERS_JS,
+            ["Agent", config.ATTACHED_CHIP_TEXTS[0], config.CHIP_REACH_PX])
+        return [h.as_element() for h in handle.get_properties().values()
+                if h.as_element() is not None]
+    except Exception:
+        return []
+
+
+def detach_references(page) -> bool:
+    """Take every reference chip off the prompt. True when none is left."""
+    for _ in range(6):
+        chips = _chip_removers(page)
+        if not chips:
+            return True
+        try:
+            chips[0].click(timeout=config.CLICK_TIMEOUT_MS)
+        except PlaywrightTimeoutError:
+            print("[chain] a chip's remove-X could not be clicked")
+            diagnose(page, "reference chip remove-X click intercepted")
+            return False
+        page.wait_for_timeout(700)
+    print("[chain] reference chips keep coming back, giving up")
+    diagnose(page, "reference chips would not detach")
+    return False
+
+
+# Strips Material Symbols ligatures ("arrow_drop_down", "expand_more") so a
+# control reads as its label. Pasted into each script below rather than passed
+# in and eval'd: Google pages commonly forbid eval in their security policy.
+_CLEAN_LABEL_JS = (
+    "const label = (t) => (t || '').replace(/\\b[a-z]+(_[a-z0-9]+)+\\b/g, ' ')"
+    ".replace(/\\s+/g, ' ').trim().toLowerCase();"
+)
+
+
+def _clean_label(text: str) -> str:
+    text = re.sub(r"\b[a-z]+(_[a-z0-9]+)+\b", " ", text or "")
+    return " ".join(text.split()).lower()
+
+
+def _picker_search_box(page):
+    for selector in config.ASSET_SEARCH_SELECTORS:
+        try:
+            box = page.query_selector(selector)
+            if box and box.is_visible():
+                return box
+        except Exception:
+            continue
+    return None
+
+
+# The sort dropdown: on the search box's row, to its right, reading one of the
+# sort options. The date dropdown on the same row sits to the LEFT, which is
+# what keeps it out.
+#
+# The SMALLEST matching element wins. First run (2026-10-11): taking the first
+# match in document order returned a wrapper that also holds the open menu, so
+# every option sat "inside the control" and was refused. The innermost label
+# cannot contain the menu, and a click on it still reaches the button.
+_FIND_SORT_JS = """
+([search, options]) => {
+  %s
+  const s = search.getBoundingClientRect();
+  const sy = s.top + s.height / 2;
+  const want = options.map(o => o.toLowerCase());
+  let best = null, area = Infinity;
+  for (const el of document.querySelectorAll(
+           'button, [role="button"], [role="combobox"], [aria-haspopup], div, span')) {
+    if (el.children.length > 4) continue;
+    const r = el.getBoundingClientRect();
+    if (!r.width || !r.height) continue;
+    if (Math.abs(r.top + r.height / 2 - sy) > 30) continue;
+    if (r.left < s.right - 5) continue;
+    if (!want.includes(label(el.innerText))) continue;
+    if (r.width * r.height < area) { best = el; area = r.width * r.height; }
+  }
+  return best;
+}
+""" % _CLEAN_LABEL_JS
+
+# An option in the open sort menu: the wanted label, BELOW the control.
+_FIND_SORT_OPTION_JS = """
+([control, wanted]) => {
+  %s
+  const c = control.getBoundingClientRect();
+  for (const el of document.querySelectorAll(
+           '[role="menuitem"], [role="option"], li, button, div, span')) {
+    if (el === control) continue;
+    if (el.children.length > 3) continue;
+    const r = el.getBoundingClientRect();
+    if (!r.width || !r.height || r.top < c.bottom - 2) continue;
+    if (label(el.innerText) === wanted.toLowerCase()) return el;
+  }
+  return null;
+}
+""" % _CLEAN_LABEL_JS
+
+
+def sort_assets_newest(page, search) -> bool:
+    """Set the picker's sort to Newest. True once it reads Newest."""
+    wanted = config.ASSET_SORT_NEWEST
+
+    def control():
+        handle = page.evaluate_handle(
+            _FIND_SORT_JS, [search, config.ASSET_SORT_OPTIONS])
+        return handle.as_element()
+
+    try:
+        sort = control()
+        if sort is None:
+            print("[chain] could not find the picker's sort dropdown")
+            diagnose(page, "asset sort control not found")
+            return False
+        if _clean_label(sort.inner_text()) == wanted.lower():
+            return True
+
+        print(f"[chain] picker sorted by {sort.inner_text().strip()!r}, "
+              f"switching to {wanted}")
+        sort.click(timeout=config.CLICK_TIMEOUT_MS)
+        page.wait_for_timeout(700)
+        option = page.evaluate_handle(
+            _FIND_SORT_OPTION_JS, [sort, wanted]).as_element()
+        if option is None:
+            print(f"[chain] the sort menu opened but has no {wanted!r} option")
+            diagnose(page, "newest sort option not found")
+            return False
+        option.click(timeout=config.CLICK_TIMEOUT_MS)
+        page.wait_for_timeout(1200)
+
+        sort = control()
+        if sort is not None and _clean_label(sort.inner_text()) == wanted.lower():
+            return True
+    except Exception as exc:
+        print(f"[chain] setting the sort failed ({type(exc).__name__}: {exc})")
+
+    print(f"[chain] the picker did not end up sorted by {wanted}")
+    diagnose(page, "asset sort did not stick")
+    return False
+
+
+# The rows of the asset list, top to bottom. --inspect on 2026-10-11 showed
+# each row is a <button> reading "<title> Image". A row whose thumbnail has not
+# loaded shows an icon instead ("image Untitled Image"); skipping it would make
+# the row BELOW the newest look newest, so it counts as a row too.
+#
+# Text is read as the row's separate text pieces, not split from innerText.
+# First live run: splitting innerText on newlines found no rows at all,
+# because whether title and kind come out on separate lines depends on CSS
+# layout. Text nodes do not.
+#
+# Rows are kept below the search box and in its column (which keeps out the
+# category nav on its left), and the media id is read off each thumbnail the
+# same way _IDENTIFY_JS reads results.
+_ROW_PARTS_JS = """
+  const parts = (el) => {
+    const out = [];
+    const walk = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+    while (walk.nextNode()) {
+      const t = walk.currentNode.textContent.trim();
+      if (t) out.push(t);
+    }
+    return out;
+  };
+"""
+
+_ASSET_ROWS_JS = """
+([search, kind]) => {
+  %s
+  const s = search.getBoundingClientRect();
+  const want = kind.toLowerCase();
+  const rows = [];
+  for (const el of document.querySelectorAll(
+           'button, [role="button"], [role="option"], li')) {
+    const r = el.getBoundingClientRect();
+    if (!r.width || !r.height || r.height > 200) continue;
+    // Centre, not top edge: a top row tucked tight under the search box
+    // must not be lost, or the second row would pass as the newest.
+    if (r.top + r.height / 2 < s.bottom) continue;
+    if (r.left < s.left - 40 || r.left > s.right) continue;
+    const bits = parts(el);
+    if (bits.length < 2 || bits.length > 4) continue;
+    if (bits[bits.length - 1].toLowerCase() !== want) continue;
+    const img = el.querySelector('img');
+    const src = img ? (img.currentSrc || img.src || '') : '';
+    const m = src.match(/[?&]name=([^&]+)/)
+           || src.match(/\\/image\\/([^/?#&=]+)/)
+           || src.match(/\\/asb\\/([^/?#&=]+)/);
+    rows.push({el, top: r.top, left: r.left,
+               title: bits.slice(0, -1).join(' '), id: m ? m[1] : ''});
+  }
+  rows.sort((a, b) => (a.top - b.top) || (a.left - b.left));
+  return rows;
+}
+""" % _ROW_PARTS_JS
+
+# When no row matches: what the buttons mentioning the kind actually look like,
+# so the next fix is read off real data instead of guessed.
+_ROW_CANDIDATES_JS = """
+([search, kind]) => {
+  %s
+  const s = search.getBoundingClientRect();
+  const out = [`search box: top ${s.top|0} bottom ${s.bottom|0} ` +
+               `left ${s.left|0} right ${s.right|0}`];
+  for (const el of document.querySelectorAll('button, [role="button"], li')) {
+    if (!(el.innerText || '').includes(kind)) continue;
+    const r = el.getBoundingClientRect();
+    out.push(`${el.tagName.toLowerCase()} top ${r.top|0} left ${r.left|0} ` +
+             `h ${r.height|0} parts ${JSON.stringify(parts(el))}`);
+    if (out.length > 6) break;
+  }
+  return out;
+}
+""" % _ROW_PARTS_JS
+
+
+# Flow's media id of every frame generated, by frame name. Lets an edit pick
+# its parent's row by identity instead of by position, when the picker's
+# thumbnails carry the same id. Kept on disk beside the images, so a resumed
+# run can find a parent from an earlier session without uploading it again.
+MEDIA_IDS_FILE = "media_ids.json"
+
+
+def _media_ids() -> dict[str, str]:
+    path = config.OUTPUT_DIR / MEDIA_IDS_FILE
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return {}
+
+
+def remember_media_id(name: str, media_id: str) -> None:
+    ids = _media_ids()
+    ids[name] = media_id
+    (config.OUTPUT_DIR / MEDIA_IDS_FILE).write_text(
+        json.dumps(ids, indent=2), encoding="utf-8")
+
+
+def _asset_rows(page, search) -> list[dict]:
+    handle = page.evaluate_handle(_ASSET_ROWS_JS, [search, config.ASSET_ROW_KIND])
+    rows = []
+    for item in handle.get_properties().values():
+        props = item.get_properties()
+        rows.append({"el": props["el"].as_element(),
+                     "title": props["title"].json_value(),
+                     "id": props["id"].json_value()})
+    return rows
+
+
+def close_picker(page) -> None:
+    """Leave no menu or picker open for the next frame to trip over."""
+    for _ in range(2):
+        try:
+            page.keyboard.press("Escape")
+            page.wait_for_timeout(400)
+        except Exception:
+            return
+
+
+def attach_frame(page, parent: str, made_just_now: bool) -> bool:
+    """
+    Make frame `parent` the prompt's only reference, so the next generation
+    edits it. True only once a chip is confirmed on the prompt.
+
+    How the parent's row is found, best first:
+      1. by media id, when the picker's thumbnails carry the id we recorded
+      2. as the top row under Newest, when it was generated just now
+      3. uploaded from disk, then the top row under Newest
+    """
+    if not detach_references(page):
+        return False
+    if not _open_asset_picker(page):
+        print("[chain] could not open the asset picker")
+        return False
+
+    search = _picker_search_box(page)
+    if search is None:
+        print("[chain] could not find the picker's search box")
+        diagnose(page, "asset search box not found")
+        return False
+    # attach_reference types the character's name in here, and a filter left
+    # behind would make the newest MATCHING asset the character art.
+    search.click()
+    page.keyboard.press("ControlOrMeta+a")
+    page.keyboard.press("Backspace")
+    page.wait_for_timeout(1000)
+
+    if not sort_assets_newest(page, search):
+        return False
+    rows = _asset_rows(page, search)
+
+    known = _media_ids().get(parent)
+    by_id = [r for r in rows if known and r["id"] == known]
+    if by_id:
+        row = by_id[0]
+        print(f"[chain] found {parent} by media id")
+    else:
+        if known and any(r["id"] for r in rows):
+            print(f"[chain] {parent}'s media id is not on any loaded row")
+        elif known:
+            print("[chain] picker thumbnails carry no media id")
+        if not made_just_now:
+            path = existing_output(parent)
+            if path is None:
+                print(f"[chain] {parent} is not on disk, so there is nothing to edit")
+                return False
+            print(f"[chain] {parent} was not generated this session, uploading it")
+            if not _upload_reference(page, path):
+                return False
+            if not sort_assets_newest(page, search):
+                return False
+            rows = _asset_rows(page, search)
+            # Flow names an upload after its file, cut at the first
+            # underscore ("TiredGuy_2K_2026...jpeg" lists as "TiredGuy"), so
+            # our own upload on top reads "scene...". Anything else on top
+            # means the upload is not where Newest says it is.
+            stem = parent.split("_")[0].lower()
+            if rows and not rows[0]["title"].lower().startswith(stem):
+                print(f"[chain] after uploading {parent} the top row is "
+                      f"{rows[0]['title'][:50]!r}, not the upload")
+                diagnose(page, "uploaded parent not on top under Newest")
+                return False
+        if not rows:
+            print("[chain] no asset rows found under the search box. "
+                  "What the candidates look like:")
+            try:
+                for line in page.evaluate(
+                        _ROW_CANDIDATES_JS, [search, config.ASSET_ROW_KIND]):
+                    print(f"    {line}")
+            except Exception:
+                pass
+            diagnose(page, "asset rows not found")
+            return False
+        row = rows[0]
+        print("[chain] trusting Newest: taking the top row")
+
+    print(f"[chain] attaching asset: {row['title'][:70]!r}")
+    row["el"].click(timeout=config.CLICK_TIMEOUT_MS)
+    page.wait_for_timeout(1000)
+
+    if not _click_add_to_prompt(page):
+        return False
+    chips = len(_chip_removers(page))
+    if chips == 0:
+        print(f"[chain] no chip on the prompt after adding {parent}")
+        diagnose(page, "parent frame not attached")
+        return False
+    if chips > 1:
+        # Two pictures on the prompt and the model picks which to edit. Not
+        # worth guessing which chip is which, so stop rather than generate.
+        print(f"[chain] {chips} chips on the prompt, expected just {parent}")
+        diagnose(page, "more than one reference attached")
+        return False
+    print(f"[chain] {parent} is on the prompt")
+    return True
 
 
 # --- Inspect mode (task 1) -------------------------------------------------
@@ -1336,7 +1933,7 @@ def wait_for_new_image(page, baseline_ids: set[str], baseline_rejections: int = 
     )
 
 
-def dump_diagnostics(page, index: int) -> None:
+def dump_diagnostics(page, name: str) -> None:
     """
     On a timeout, capture what was on screen.
 
@@ -1347,7 +1944,7 @@ def dump_diagnostics(page, index: int) -> None:
     """
     debug_dir = config.ROOT_DIR / "debug"
     debug_dir.mkdir(parents=True, exist_ok=True)
-    shot = debug_dir / f"scene_{index:03}_timeout.png"
+    shot = debug_dir / f"{name}_timeout.png"
     try:
         page.screenshot(path=str(shot))
         print(f"    [debug] screenshot -> {shot.relative_to(config.ROOT_DIR)}")
@@ -1579,7 +2176,7 @@ def sniff_extension(data: bytes) -> str:
     return ".png"
 
 
-def save_image(page, element, src: str, index: int) -> Path:
+def save_image(page, element, src: str, name: str) -> Path:
     """
     Get the bytes to disk and return the path actually written.
 
@@ -1612,17 +2209,32 @@ def save_image(page, element, src: str, index: int) -> Path:
             print(f"    [save] direct fetch failed ({type(exc).__name__})")
 
     if data is not None:
-        dest = config.OUTPUT_DIR / f"scene_{index:03}{sniff_extension(data)}"
+        dest = output_path(name, sniff_extension(data))
+        _drop_other_copies(dest)
         dest.write_bytes(data)
         return dest
 
-    dest = config.OUTPUT_DIR / f"scene_{index:03}.png"
+    dest = output_path(name)
+    _drop_other_copies(dest)
     if _save_via_download_button(page, element, dest):
         return dest
 
     print("    [save] falling back to element screenshot")
     element.screenshot(path=str(dest))
     return dest
+
+
+def _drop_other_copies(dest: Path) -> None:
+    """
+    Remove an earlier save of this frame under a different extension.
+
+    Redoing a frame can land as .jpg where the old one was .png. Resume and the
+    stale-edit check both glob name.*, and either could then read the OLD file
+    and treat a fresh frame as missing, or an old one as current.
+    """
+    for old in config.OUTPUT_DIR.glob(f"{dest.stem}.*"):
+        if old != dest:
+            old.unlink()
 
 
 def _save_via_download_button(page, element, dest: Path) -> bool:
@@ -1692,20 +2304,29 @@ def check_for_challenge(page) -> None:
 
 # --- Per-scene driver ------------------------------------------------------
 
-def _attempt(page, index: int, prompt: str) -> None:
+def _ensure_character(page) -> bool:
+    if reference_attached(page):
+        return True
+    print("    [ref] reference not on the prompt, re-attaching")
+    return attach_reference(page)
+
+
+def _attempt(page, name: str, prompt: str, ensure=None) -> None:
     check_for_challenge(page)
 
     # Self-healing: whatever knocks the reference off - clearing, a stray
     # click, Flow resetting the bar - put it back before typing. Generating
     # without it produces off-model images that look fine until you compare
     # them, which is the worst kind of failure to find later.
-    if not reference_attached(page):
-        print("    [ref] reference not on the prompt, re-attaching")
-        if not attach_reference(page):
-            raise RuntimeError(
-                "Reference is detached and could not be re-attached. Refusing "
-                "to generate off-model."
-            )
+    #
+    # Which reference is the caller's call: the character for a fresh frame,
+    # the parent frame for an edit. Healing an edit with the character would
+    # quietly redraw the scene instead of editing it.
+    if not (ensure or (lambda: _ensure_character(page)))():
+        raise RuntimeError(
+            "Reference is detached and could not be re-attached. Refusing "
+            "to generate off-model."
+        )
 
     # No rejection check here on purpose: before submitting, anything on screen
     # belongs to the previous scene, and treating it as this scene's failure
@@ -1734,7 +2355,7 @@ def _attempt(page, index: int, prompt: str) -> None:
         element, src, media_id = wait_for_new_image(
             page, baseline_ids, baseline_rejections, baseline_quota)
     except TimeoutError:
-        dump_diagnostics(page, index)
+        dump_diagnostics(page, name)
         raise
 
     # Belt and braces. wait_for_new_image already guarantees this, but saving
@@ -1743,7 +2364,8 @@ def _attempt(page, index: int, prompt: str) -> None:
     if media_id in baseline_ids:
         raise RuntimeError(f"Refusing to save pre-existing image {media_id}")
 
-    dest = save_image(page, element, src, index)
+    dest = save_image(page, element, src, name)
+    remember_media_id(name, media_id)
     # Timed so a model change (Lite vs full) can be compared with real numbers
     # rather than guessed at. Typing dominates wall clock; this is the part a
     # model swap actually changes.
@@ -1751,7 +2373,7 @@ def _attempt(page, index: int, prompt: str) -> None:
           f"{time.monotonic() - started:.0f}s to generate)")
 
 
-def run_scene(page, index: int, prompt: str, alt: str | None = None) -> None:
+def run_scene(page, frame: dict, ensure=None) -> None:
     """
     Generate one scene, falling back to an alternate description if Flow
     refuses the first.
@@ -1762,28 +2384,34 @@ def run_scene(page, index: int, prompt: str, alt: str | None = None) -> None:
     refused the run stops: a missing scene means an incomplete video, and
     pushing on just spends credits on a batch you cannot use anyway.
     """
-    print(f"\n[scene {index:03}] {prompt[:64]}{'...' if len(prompt) > 64 else ''}")
+    name, prompt, alt = frame["name"], frame["prompt"], frame.get("alt")
+    # Log the script's own words, not the full prompt: for an edit the first
+    # 64 characters of the prompt are the same wrapper every time.
+    text = frame.get("text") or prompt
+    how = (f"edit of {frame['parent']}" if frame["mode"] == "edit"
+           else "fresh")
+    print(f"\n[{name}] ({how}) {text[:64]}{'...' if len(text) > 64 else ''}")
     try:
-        _attempt_on_best_model(page, index, prompt)
+        _attempt_on_best_model(page, name, prompt, ensure)
         return
     except PromptRejected as exc:
         print(f"    [REJECTED] {exc}")
         if not alt:
             raise SceneUnrecoverable(
-                f"scene {index} was refused and has no fallback description"
+                f"{name} was refused and has no fallback description"
             ) from exc
 
     print("    [retry] trying the fallback description")
-    print(f"    [scene {index:03}] {alt[:64]}{'...' if len(alt) > 64 else ''}")
+    print(f"    [{name}] {alt[:64]}{'...' if len(alt) > 64 else ''}")
     try:
-        _attempt_on_best_model(page, index, alt)
+        _attempt_on_best_model(page, name, alt, ensure)
     except PromptRejected as exc:
         raise SceneUnrecoverable(
-            f"scene {index}: both descriptions were refused - {exc}"
+            f"{name}: both descriptions were refused - {exc}"
         ) from exc
 
 
-def _attempt_on_best_model(page, index: int, text: str) -> None:
+def _attempt_on_best_model(page, name: str, text: str, ensure=None) -> None:
     """
     Generate one scene, stepping down config.MODEL_LADDER as models run dry.
 
@@ -1799,7 +2427,7 @@ def _attempt_on_best_model(page, index: int, text: str) -> None:
     verified = False
     while True:
         try:
-            _attempt(page, index, text)
+            _attempt(page, name, text, ensure)
             return
         except ModelQuotaExhausted as exc:
             print(f"    [limit] {exc}")
@@ -1827,7 +2455,11 @@ def main() -> int:
     parser.add_argument("--inspect", action="store_true",
                         help="dump the DOM to help you fix config.py, then exit")
     parser.add_argument("--only",
-                        help="comma-separated scene numbers to run, e.g. 3,7,12")
+                        help="beats or frames to (re)do, e.g. 3,7,12.2. Later "
+                             "edits in the same chain are redone with them.")
+    parser.add_argument("--frames", type=Path,
+                        help="frames.json from `pipeline.py prompts`. Replaces "
+                             "--scenes/--alt-scenes and enables chained edits.")
     parser.add_argument("--scenes", type=Path, default=config.SCENES_FILE)
     parser.add_argument("--alt-scenes", type=Path,
                         help="fallback descriptions, one per line, matching "
@@ -1844,29 +2476,45 @@ def main() -> int:
     if args.output:
         config.OUTPUT_DIR = args.output
 
-    scenes = [] if args.inspect else load_scenes(args.scenes)
-
-    # Fallback descriptions, line-for-line with scenes.txt. Used only when Flow
-    # refuses a primary prompt. A length mismatch is treated as fatal to the
-    # fallback feature rather than tolerated: pairing scene 7 with scene 8's
-    # alternate would silently generate the wrong picture.
-    alts = []
-    if not args.inspect and args.alt_scenes and args.alt_scenes.exists():
-        alts = load_scenes(args.alt_scenes)
-        if len(alts) != len(scenes):
-            print(f"[alt] {args.alt_scenes.name} has {len(alts)} lines but "
-                  f"scenes.txt has {len(scenes)} - ignoring it, a mismatch "
-                  f"would pair scenes with the wrong fallback")
-            alts = []
-        else:
-            print(f"[alt] {len(alts)} fallback description(s) loaded")
-
-    wanted = None
-    if args.only:
-        wanted = {int(n) for n in args.only.split(",") if n.strip()}
+    frames = []
+    if args.inspect:
+        pass
+    elif args.frames:
+        frames = load_frames(args.frames)
+    else:
+        scenes = load_scenes(args.scenes)
+        # Fallback descriptions, line-for-line with scenes.txt. Used only when
+        # Flow refuses a primary prompt. A length mismatch is treated as fatal
+        # to the fallback feature rather than tolerated: pairing scene 7 with
+        # scene 8's alternate would silently generate the wrong picture.
+        alts = []
+        if args.alt_scenes and args.alt_scenes.exists():
+            alts = load_scenes(args.alt_scenes)
+            if len(alts) != len(scenes):
+                print(f"[alt] {args.alt_scenes.name} has {len(alts)} lines but "
+                      f"scenes.txt has {len(scenes)} - ignoring it, a mismatch "
+                      f"would pair scenes with the wrong fallback")
+                alts = []
+            else:
+                print(f"[alt] {len(alts)} fallback description(s) loaded")
+        frames = frames_from_scenes(scenes, alts)
 
     config.OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     config.USER_DATA_DIR.mkdir(parents=True, exist_ok=True)
+
+    # Decided before Chrome opens, so a resumed run with nothing left to do
+    # exits quietly instead of popping a window, logging in and skipping
+    # everything.
+    todo = []
+    if not args.inspect:
+        todo = frames_to_make(frames, parse_only(args.only))
+        if not todo:
+            print(f"[frames] all {len(frames)} present and up to date, "
+                  f"nothing to generate")
+            return 0
+        redo = sum(1 for f in todo if existing_output(f["name"]))
+        print(f"[frames] {len(todo)} of {len(frames)} to generate"
+              + (f", {redo} of them redone" if redo else ""))
 
     with sync_playwright() as pw:
         # A persistent profile keeps you logged in across runs, so a restart
@@ -1907,8 +2555,27 @@ def main() -> int:
         ensure_agent_off(page)
         ensure_model(page)
 
-        # The reference is attached once per session. With Agent off it then
-        # persists across every generation, so scenes only need text + a click.
+        # Flow can be set to make several images per prompt ("x2" on the
+        # chip): double the credits, and with two new images the one an edit
+        # picks as "newest" is a coin toss. Switch it to one; if that cannot
+        # be done, stop rather than run on it.
+        if not ensure_single_output(page):
+            print("\nStopping: Flow makes more than one image per prompt and "
+                  "the switch to x1 did not take.")
+            print("Open the model menu in the prompt bar, set it to x1, then "
+                  "re-run.")
+            context.close()
+            return 2
+
+        # A chip left on the prompt from a previous session (or attached by
+        # hand) would sit next to ours, and two references make the model
+        # pick one. Start from an empty prompt.
+        detach_references(page)
+
+        # The character is attached once up front. With Agent off it then
+        # persists across every fresh frame, so those only need text + a click.
+        # Edit frames swap it for their parent below and the next fresh frame
+        # swaps it back.
         if not attach_reference(page):
             print("\nStopping: without the reference every image would come out")
             print("off-model, which is worse than generating nothing. Run")
@@ -1917,56 +2584,98 @@ def main() -> int:
             context.close()
             return 2
 
-        failures = []
-        rejected = []
-        skipped = 0
-        for number, prompt in enumerate(scenes, start=1):
-            if wanted and number not in wanted:
-                continue
-            # Naming scenes explicitly overrides the resume skip, so --only can
-            # redo a scene whose output exists but came out wrong.
-            if not wanted and existing_output(number):
-                skipped += 1
-                continue                  # resume: already have this one
+        # What is on the prompt right now: "character", a frame's name, or
+        # None when unknown (an attach failed halfway).
+        attached = "character"
+        last_made = None           # the frame Flow generated most recently
+        failures, rejected, blocked = [], [], []
+        broken = set()             # frames that failed or were blocked
 
-            try:
-                run_scene(page, number, prompt,
-                          alts[number - 1] if alts else None)
-            except KeyboardInterrupt:
-                print("\nStopped. Re-run to resume where you left off.")
-                context.close()
-                return 130
-            except QuotaExhausted as exc:
-                done = number - 1
-                print(f"\n[QUOTA] {exc}")
-                print(f"\nOut of daily credits after {done} scene(s). Stopping "
-                      f"rather than timing out on each remaining one.")
-                print(f"Finished images are kept - re-run tomorrow and it "
-                      f"resumes at scene {number}.")
-                context.close()
-                return 3
-            except ChallengeUnsolved as exc:
-                print(f"\n[STOPPED] {exc}")
-                print(f"Scenes 1-{number - 1} are saved. Re-run to resume "
-                      f"at scene {number}.")
-                context.close()
-                return 5
-            except SceneUnrecoverable as exc:
-                print(f"\n[FATAL] {exc}")
-                print(f"\nStopping. Scenes 1-{number - 1} are saved and will be "
-                      f"skipped on the next run.")
-                print(f"Reword beat {number} in script.json, then re-run.")
-                context.close()
-                return 4
-            except PromptRejected as exc:
-                # Worth separating from a crash: the code worked fine, Flow
-                # just would not take this wording. Retrying it verbatim is
-                # pointless, the prompt itself needs editing.
-                print(f"    [REJECTED] {exc}")
-                rejected.append(number)
-            except Exception as exc:
-                print(f"    [FAIL] {type(exc).__name__}: {exc}")
-                failures.append(number)
+        for frame in todo:
+            name, parent = frame["name"], frame.get("parent")
+
+            # An edit is only as good as the frame under it. Generating from a
+            # missing or failed parent would edit whatever is on the prompt.
+            if parent and (parent in broken or existing_output(parent) is None):
+                print(f"\n[{name}] skipped: the frame it edits ({parent}) "
+                      f"did not make it")
+                blocked.append(frame_id(frame))
+                broken.add(name)
+                continue
+
+            for attempt in (1, 2):
+                try:
+                    if frame["mode"] == "edit":
+                        fresh = parent == last_made
+                        if attached != parent:
+                            attached = None
+                            if not attach_frame(page, parent, made_just_now=fresh):
+                                close_picker(page)
+                                raise RuntimeError(
+                                    f"could not put {parent} on the prompt to edit")
+                            attached = parent
+
+                        def ensure(p=parent, f=fresh):
+                            return bool(_chip_removers(page)) or attach_frame(page, p, f)
+                    else:
+                        if attached != "character":
+                            attached = None
+                            if not (detach_references(page) and attach_reference(page)):
+                                close_picker(page)
+                                raise RuntimeError(
+                                    "could not put the character back on the prompt")
+                            attached = "character"
+                        ensure = None
+
+                    run_scene(page, frame, ensure)
+                    last_made = name
+                    break
+                except KeyboardInterrupt:
+                    print("\nStopped. Re-run to resume where you left off.")
+                    context.close()
+                    return 130
+                except QuotaExhausted as exc:
+                    print(f"\n[QUOTA] {exc}")
+                    print(f"\nOut of daily credits at {name}. Stopping rather than "
+                          f"timing out on each remaining frame.")
+                    print("Finished images are kept - re-run tomorrow and it "
+                          "resumes where it stopped.")
+                    context.close()
+                    return 3
+                except ChallengeUnsolved as exc:
+                    print(f"\n[STOPPED] {exc}")
+                    print(f"Stopped at {name}. Finished frames are saved; re-run "
+                          f"to resume.")
+                    context.close()
+                    return 5
+                except SceneUnrecoverable as exc:
+                    print(f"\n[FATAL] {exc}")
+                    print(f"\nStopping. Finished frames are saved and will be "
+                          f"skipped on the next run.")
+                    print(f"Reword beat {frame['beat']} in script.json, then re-run.")
+                    context.close()
+                    return 4
+                except Exception as exc:
+                    print(f"    [FAIL] {type(exc).__name__}: {exc}")
+                    if attempt == 1:
+                        # One retry, because Flow sometimes just times out once.
+                        # Whatever reference was on the prompt is now unknown, so
+                        # forget it and let the retry attach the right one again.
+                        close_picker(page)
+                        attached = None
+                        pause = DELAY_BETWEEN + random.uniform(0, DELAY_JITTER)
+                        print(f"    [retry] trying {name} once more in {pause:.0f}s")
+                        time.sleep(pause)
+                        continue
+                    # A second failure stops the run. Every later frame in a chain
+                    # is an edit of the one before it, so carrying on past a
+                    # missing frame only makes pictures with nothing true to edit
+                    # from. Finished frames are kept and a rerun starts right here.
+                    print(f"\nStopped at {name} (--only {frame_id(frame)}) after "
+                          f"two tries. Finished frames are saved; re-run to "
+                          f"resume here.")
+                    context.close()
+                    return 1
 
             pause = DELAY_BETWEEN + random.uniform(0, DELAY_JITTER)
             print(f"    [pace] sleeping {pause:.1f}s")
@@ -1974,23 +2683,29 @@ def main() -> int:
 
         print("\n" + "=" * 72)
         print(f"Saved to {config.OUTPUT_DIR}")
+        skipped = len(frames) - len(todo)
         if skipped:
-            print(f"Skipped {skipped} scene(s) that already had an output file.")
+            print(f"Skipped {skipped} frame(s) that were already done.")
         if rejected:
-            ids = ",".join(str(n) for n in rejected)
-            print(f"\n{len(rejected)} scene(s) REJECTED by Flow's policy filter: {ids}")
-            print("Reword these in scenes.txt first - re-running them as-is will")
-            print(f"just be rejected again:\n    python runner.py --only {ids}")
+            ids = ",".join(rejected)
+            print(f"\n{len(rejected)} frame(s) REJECTED by Flow's policy filter: {ids}")
+            print("Reword these in script.json first - re-running them as-is will")
+            print(f"just be rejected again:\n    --only {ids}")
         if failures:
-            retry = ",".join(str(n) for n in failures)
-            print(f"\n{len(failures)} scene(s) failed: {retry}")
-            print(f"Retry them with:\n    python runner.py --only {retry}")
-        if not failures and not rejected:
+            retry = ",".join(failures)
+            print(f"\n{len(failures)} frame(s) failed: {retry}")
+            print(f"Retry them with --only {retry}  "
+                  f"(python pipeline.py images --only {retry})")
+        if blocked:
+            print(f"\n{len(blocked)} edit(s) skipped because the frame they "
+                  f"edit failed: {','.join(blocked)}")
+            print("They are made automatically once that frame exists.")
+        if not failures and not rejected and not blocked:
             print("No failures.")
         print("=" * 72)
 
         context.close()
-        return 1 if (failures or rejected) else 0
+        return 1 if (failures or rejected or blocked) else 0
 
 
 if __name__ == "__main__":
