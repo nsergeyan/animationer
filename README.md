@@ -28,7 +28,7 @@ work unchanged.
 
 ## Demo
 
-[FORMULA 1 EXPLAINED IN 3 MINUTES]([https://www.youtube.com/watch?v=702-w9Sanws](https://www.youtube.com/watch?v=F0FqhHIv47I))
+[FORMULA 1 EXPLAINED IN 3 MINUTES](https://youtu.be/F0FqhHIv47I?si=Fp-PyimVVTTh87Xz)
 
 A finished video: written as beats, then generated, narrated and rendered end to
 end by this pipeline.
