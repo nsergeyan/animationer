@@ -1,296 +1,293 @@
 SCRIPT:
 {
-  "topic": "Formula 1",
+  "topic": "American Football Explained",
   "format": "explainer",
   "plan": {
-    "spine_question": "What exactly is Formula One and how does it work in 2026?",
+    "spine_question": "How does American football actually work and how do you win?",
     "deflations": [
       {
-        "assumed": "Formula One is just driving ordinary cars very fast around a track.",
-        "actual": "It is a high-stakes engineering arms race using vehicles that function like upside-down fighter jets.",
-        "who_decided": "Aerodynamic engineers pushing the limits of physics.",
-        "build_beat": "A modern F1 car is basically a jet fighter.",
-        "drop_beat": "It just happens to be glued to the ground."
+        "assumed": "They use their feet to kick the ball constantly.",
+        "actual": "They rarely kick and mostly throw or run.",
+        "who_decided": "The evolution of the sport's rules.",
+        "build_beat": "[curious] Welcome to the sport of American football.",
+        "drop_beat": "They rarely kick the ball."
       }
     ],
     "cast": [
       {
-        "name": "Lando Norris",
-        "why": "The reigning 2025 World Champion representing the McLaren team."
+        "name": "Patrick Mahomes",
+        "why": "Famous modern quarterback illustrating the passing game."
       },
       {
-        "name": "Lewis Hamilton",
-        "why": "The sport's biggest legend who finally made his highly anticipated move to Ferrari."
+        "name": "Travis Kelce",
+        "why": "Famous tight end illustrating catching passes."
       },
       {
-        "name": "Max Verstappen",
-        "why": "The relentless Red Bull driver who is always hunting for another title."
+        "name": "Sam Darnold",
+        "why": "The quarterback who led the Seattle Seahawks to win Super Bowl LX in 2026."
       },
       {
-        "name": "Kimi Antonelli",
-        "why": "The young Mercedes star who is already leading the 2026 championship."
+        "name": "Kenneth Walker III",
+        "why": "The running back who won MVP in Super Bowl LX."
       }
     ],
     "specifics": [
       {
-        "fact": "The 2026 grid expanded to 11 teams with Cadillac and Audi joining.",
-        "source": "FIA 2026 Entry List",
-        "beat": "Cadillac and Audi officially joined the sport this season."
+        "fact": "The field is 100 yards long.",
+        "source": "NFL Rulebook",
+        "beat": "The playing field is exactly one hundred yards long."
       },
       {
-        "fact": "2026 cars use active aerodynamics to reduce drag on straight lines.",
-        "source": "FIA 2026 Technical Regulations",
-        "beat": "Wings shift on straight lines to reduce aerodynamic drag."
+        "fact": "A touchdown is 6 points.",
+        "source": "NFL Rulebook",
+        "beat": "A touchdown rewards your team with a massive six points."
+      },
+      {
+        "fact": "The Seattle Seahawks won Super Bowl LX.",
+        "source": "Super Bowl 2026 news records",
+        "beat": "The Seattle Seahawks defeated the New England Patriots in February."
       }
     ],
     "facts_to_check": [
       {
-        "claim": "Lando Norris is the 2025 F1 World Champion.",
-        "source": "December 2025 F1 official standings and Abu Dhabi GP results"
+        "claim": "Seattle Seahawks won Super Bowl LX against New England Patriots in February 2026.",
+        "source": "Wikipedia Super Bowl LX / 2026 NFL Season records"
       },
       {
-        "claim": "Lewis Hamilton drives for Ferrari in 2026.",
-        "source": "F1 2026 Official Grid Lineups"
+        "claim": "Sam Darnold was the QB for the Seahawks in Super Bowl LX.",
+        "source": "Colin Cowherd NFL Reaction / Sports Media records for Super Bowl LX"
       },
       {
-        "claim": "Cadillac and Audi entered as new teams in 2026.",
-        "source": "FIA 2026 Entry List"
-      },
-      {
-        "claim": "2026 regulations mandate 100 percent sustainable fuels and a 50-50 electric power split.",
-        "source": "F1 2026 Engine Regulations"
-      },
-      {
-        "claim": "Race winners receive 25 points.",
-        "source": "FIA Sporting Regulations"
+        "claim": "Kenneth Walker III won MVP in Super Bowl LX.",
+        "source": "CBS Sports and Wikipedia records for Super Bowl LX"
       }
     ]
   },
   "beats": [
     {
-      "narration": "[thoughtful] Formula One is the pinnacle of motorsport."
+      "narration": "[curious] Welcome to the sport of American football."
     },
     {
-      "narration": "The entire grid features twenty two very fearless drivers."
+      "narration": "They rarely kick the ball."
     },
     {
-      "narration": "They drive at over two hundred miles per hour."
+      "narration": "They mostly throw and run with it."
     },
     {
-      "narration": "It is extremely dangerous."
+      "narration": "The playing field is exactly one hundred yards long."
     },
     {
-      "narration": "[deadpan] Or rather, it used to be."
+      "narration": "Imagine a massive green lawn painted with white stripes."
     },
     {
-      "narration": "Now the cars are incredibly safe."
+      "narration": "[understated] It resembles a giant barcode."
     },
     {
-      "narration": "But the speeds are still absolutely INSANE."
+      "narration": "The ultimate goal is quite simple."
     },
     {
-      "narration": "A modern F1 car is basically a jet fighter."
+      "narration": "You must advance the ball."
     },
     {
-      "narration": "It just happens to be glued to the ground."
+      "narration": "You have to reach the painted end zone to score."
     },
     {
-      "narration": "Wings push the car down into the track."
+      "narration": "But the opposing team defends it."
     },
     {
-      "narration": "This is called downforce."
+      "narration": "They stop you by tackling you hard to the ground."
     },
     {
-      "narration": "More downforce means faster cornering."
+      "narration": "[deadpan] It is organized chaos."
     },
     {
-      "narration": "[understated] It also means your neck really hurts."
+      "narration": "Thirty two teams play in this league."
     },
     {
-      "narration": "Drivers endure massive gravity forces every single turn."
+      "narration": "The game revolves around ONE strict rule."
     },
     {
-      "narration": "Let us look at who actually races today."
+      "narration": "[flatly] You get four attempts."
     },
     {
-      "narration": "[calm] The current 2026 grid features exactly eleven different teams."
+      "narration": "They call these attempts the four downs."
     },
     {
-      "narration": "Cadillac and Audi officially joined the sport this season."
+      "narration": "You must move the ball forward at least ten yards."
     },
     {
-      "narration": "Two drivers race for each team."
+      "narration": "If you succeed you earn four brand new attempts."
     },
     {
-      "narration": "They all want the trophy."
+      "narration": "[calm] The cycle starts over again."
     },
     {
-      "narration": "The reigning 2025 world champion is superstar Lando Norris."
+      "narration": "If you fail you LOSE the ball."
     },
     {
-      "narration": "He drives for the mighty McLaren team."
+      "narration": "The other team gets their turn to attack the field."
     },
     {
-      "narration": "Then you have the legendary Lewis Hamilton."
+      "narration": "[thoughtful] Watch the games on television."
     },
     {
-      "narration": "[sighs] He finally moved over to Ferrari this exact year."
+      "narration": "You will see a magic... yellow line."
     },
     {
-      "narration": "Fans waited decades to see him in red."
+      "narration": "Computer graphics draw it perfectly across the green grass."
     },
     {
-      "narration": "Meanwhile Max Verstappen still leads Red Bull."
+      "narration": "That line shows the ten yard target."
     },
     {
-      "narration": "He wants another title."
+      "narration": "[peaceful] It makes watching very easy."
     },
     {
-      "narration": "Mercedes has a young star named Kimi Antonelli."
+      "narration": "It shows exactly what they need."
     },
     {
-      "narration": "[light chuckle] He is already leading the entire championship standings."
+      "narration": "The players fight for every single inch."
     },
     {
-      "narration": "Everyone wants to win."
+      "narration": "Because missing the mark means giving the ball away ENTIRELY."
     },
     {
-      "narration": "Teams build their own completely unique racing cars."
+      "narration": "[understated, flatly] The math is truly ruthless."
     },
     {
-      "narration": "The richest teams usually win the most races."
+      "narration": "You either deliver or leave."
     },
     {
-      "narration": "[flatly] Cash DEFINITELY makes the car go so much faster."
+      "narration": "Each team has eleven players on the field."
     },
     {
-      "narration": "[curious] This brings us to the new 2026 regulations."
+      "narration": "But the MOST important player is the quarterback."
     },
     {
-      "narration": "The engines have completely transformed."
+      "narration": "He starts every single play and decides where to attack."
     },
     {
-      "narration": "They run on one hundred percent sustainable fuels now."
+      "narration": "[calm] Think of Patrick Mahomes."
     },
     {
-      "narration": "Half the power comes from electric motors."
+      "narration": "He plays for the Kansas City Chiefs."
     },
     {
-      "narration": "The other half is a combustion engine."
+      "narration": "Mahomes throws the ball to his receivers with incredible speed."
     },
     {
-      "narration": "Together they easily produce over one thousand raw horsepower."
+      "narration": "One of his favorite targets is Travis Kelce."
     },
     {
-      "narration": "[clears throat] You still cannot buy one for your daily commute."
+      "narration": "[softly] Kelce catches the passes."
     },
     {
-      "narration": "The cars also feature active aerodynamics this year."
+      "narration": "Other players just run with the ball."
     },
     {
-      "narration": "Wings shift on straight lines to reduce aerodynamic drag."
+      "narration": "Kenneth Walker is a running back for Seattle."
     },
     {
-      "narration": "This makes the cars slice right through the air."
+      "narration": "He simply takes the ball and sprints through heavy traffic."
     },
     {
-      "narration": "It increases top speed immensely."
+      "narration": "[flatly] The defense wants to crush him."
     },
     {
-      "narration": "Then they snap back for the corners."
+      "narration": "They are the very large angry men on the field."
     },
     {
-      "narration": "Every driver uses these systems to overtake fierce rivals."
+      "narration": "There are two main ways to score."
     },
     {
-      "narration": "[thoughtful] A race weekend takes three whole days."
+      "narration": "The best is... the touchdown."
     },
     {
-      "narration": "Friday is just for practice."
+      "narration": "You carry or catch the ball inside the painted end zone."
     },
     {
-      "narration": "Teams test car setups."
+      "narration": "A touchdown rewards your team with a massive six points."
     },
     {
-      "narration": "Saturday is the ultimate test of pure speed."
+      "narration": "It requires crossing the final line."
     },
     {
-      "narration": "This is the qualifying session."
+      "narration": "After that you kick the ball."
     },
     {
-      "narration": "They try to set the fastest single lap."
+      "narration": "Kicking it through the yellow goalposts adds one extra point."
     },
     {
-      "narration": "The fastest driver starts first on Sunday afternoon."
+      "narration": "[light chuckle] Sometimes you are stopped."
     },
     {
-      "narration": "[deadpan] This is called pole position."
+      "narration": "But you might be very close."
     },
     {
-      "narration": "Sunday is the main event."
+      "narration": "Your team can try a field goal."
     },
     {
-      "narration": "The race covers about one hundred ninety miles total."
+      "narration": "You kick the ball through the posts for three points."
     },
     {
-      "narration": "First place gets a massive twenty five championship points."
+      "narration": "[calm] Kicking field goals is actually quite common."
     },
     {
-      "narration": "Second place gets eighteen points."
+      "narration": "It wins many very close games."
     },
     {
-      "narration": "Only the top ten finishers score any points."
+      "narration": "You want MORE points than the opponent when time expires."
     },
     {
-      "narration": "The rest get absolutely nothing."
+      "narration": "[deadpan] The clock dictates absolutely everything."
     },
     {
-      "narration": "[sarcastic] Formula One is truly a very generous sport indeed."
+      "narration": "The season ends with the Super Bowl."
     },
     {
-      "narration": "[curious] Racing is not just about driving fast."
+      "narration": "It is a massive television event."
     },
     {
-      "narration": "Strategy is extremely crucial."
+      "narration": "Over a hundred million people watch the final championship game."
     },
     {
-      "narration": "Tires wear out as the race goes on."
+      "narration": "[curious, softly] Who are the current... kings?"
     },
     {
-      "narration": "Drivers must stop to replace them."
+      "narration": "The Seattle Seahawks defeated the New England Patriots in February."
     },
     {
-      "narration": "This is a pit stop."
+      "narration": "They won Super Bowl sixty to become the champions."
     },
     {
-      "narration": "Exactly twenty mechanics surround the race car at once."
+      "narration": "[peaceful] They lifted the silver trophy."
     },
     {
-      "narration": "They swap all four tires in under two seconds."
+      "narration": "Quarterback Sam Darnold led his team perfectly."
     },
     {
-      "narration": "[understated] Blink and you will LITERALLY miss the whole thing."
+      "narration": "He finally won his big ultimate ring."
     },
     {
-      "narration": "Soft tires make the car go very fast."
+      "narration": "And Kenneth Walker took home the most valuable player award."
     },
     {
-      "narration": "But they degrade incredibly quickly."
+      "narration": "It proves ANY team can find glory."
     },
     {
-      "narration": "Hard tires last much longer."
+      "narration": "Now you understand the basics."
     },
     {
-      "narration": "But they offer less grip on the track."
+      "narration": "You know the distance required and how to score points."
     },
     {
-      "narration": "Choosing the right tire strategy wins the grand prix."
+      "narration": "You even know the current reigning champions."
     },
     {
-      "narration": "[content] That is Formula One in a nutshell."
+      "narration": "Watch the next game."
     },
     {
-      "narration": "It is high speeds, massive drama, and endless engineering."
+      "narration": "[content] Grab some snacks and enjoy."
     }
   ]
 }

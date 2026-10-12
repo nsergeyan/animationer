@@ -1,9 +1,9 @@
 """
-Central config for the AI Lecture Pipeline.
+Central config for the Animationer pipeline.
 
-Every tunable constant lives here (pacing, zoom range, crossfade length,
-model names, directories) so modules never hardcode them. Change behavior
-here, not inside the stage modules.
+Every tunable constant lives here (pacing, cut and dissolve timing, the visual
+style prompt, model names, directories) so modules never hardcode them. Change
+behavior here, not inside the stage modules.
 """
 
 import os
@@ -74,13 +74,10 @@ ELEVENLABS_API_KEY = os.getenv("ELEVENLABS_API_KEY")
 #   - Naming a paint program invites the model to draw the program. Forbidding
 #     the window furniture outright is what stops the dashed marquee and the
 #     grey canvas border showing up around the picture.
-#   - The edge-margin clause is driven by the render, not by a bad generation.
-#     Ken Burns crops up to 10% off the frame (remotion/src/constants.ts), and
-#     the move was once clamped to an invisible 3% precisely because full-bleed
-#     art had no margin to give. This asks for the margin so the camera can move.
-#     Ken Burns was removed on 2026-10-11 (frames are static now), so this
-#     clause no longer has a reason to exist. Kept until its effect on
-#     framing is judged separately.
+#   - The edge-margin clause ("clear of all four edges") was added for the old
+#     Ken Burns camera move, which cropped up to 10% off the frame. Frames have
+#     been static since 2026-10-11, so it no longer has a reason to exist. It
+#     stays until its effect on framing is judged separately.
 #   - "A simple picture: few objects, drawn large, plain background" is the
 #     newest clause and the only one not driven by a generation failure. It is
 #     driven by a measurement: across five shipped videos every frame carried
@@ -186,10 +183,10 @@ WHISPER_MODEL = "base"
 PREVENT_SLEEP = True
 
 # --- Music ------------------------------------------------------------------
-# A single bed track reused by every video, mixed under the narration after
-# Remotion renders. Drop one file in assets/music/ - the first audio file found
-# is used. Generate it with the prompt in the session notes: flat energy, no
-# swells, purely instrumental, mid range left clear for the voice.
+# A music bed mixed under the narration after Remotion renders. Normally
+# composed per video (MUSIC_PER_VIDEO below); assets/music/ holds an optional
+# shared fallback for scripts with no music_prompt, and the first audio file
+# found there is used.
 MUSIC_ENABLED = True
 MUSIC_DIR = ASSETS_DIR / "music"      # fallback bed, used if a run has no music
 
@@ -210,7 +207,7 @@ MUSIC_FADE_SECONDS = 2.0     # fade out over the outro so it does not stop dead
 
 # --- Outro ------------------------------------------------------------------
 # The subscribe/like card, appended as a final BEAT rather than a special
-# component, so it inherits the crossfade, subtitles and timing for free.
+# component, so it inherits the dissolve and timing for free.
 #
 # Both files are generated ONCE and cached here, then reused by every video:
 # same wording, same voice, same image, so the channel ends consistently and it
@@ -267,7 +264,8 @@ ELEVENLABS_STABILITY = 0.5
 # v3 means removing this from the request too, not just changing the string.
 ELEVENLABS_SIMILARITY = 0.7
 
-# How many beats go into ONE eleven_v4 request.
+# How many beats go into ONE eleven_v4 request. Currently 1, so batching is
+# off: see the 2026-10-11 note at the end of this comment.
 #
 # This is the consistency fix. eleven_v4 is not deterministic and is excluded
 # from ElevenLabs' request-stitching feature, so there is no way to tell one
@@ -358,10 +356,10 @@ HEIGHT = 1080
 # the other, or the length estimate silently drifts from reality.
 
 # Two kinds of boundary now. Within a location beats hard cut; a change of
-# location dissolves. A dissolve's tail is consumed by the overlap so it costs
+# location (or a fresh drawing mid-location) dissolves. A dissolve's tail is consumed by the overlap so it costs
 # no timeline, but a hard cut's pad is real added length - which is why the
 # estimate below has to count them.
-DISSOLVE_SECONDS = 8 / 30         # 0.27s, only where the location changes
+DISSOLVE_SECONDS = 8 / 30         # 0.27s, on a location change or a redraw
 CUT_PAD_SECONDS = 4 / 30          # 0.13s breath between beats on a hard cut
 
 

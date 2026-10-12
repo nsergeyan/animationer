@@ -109,7 +109,7 @@ def mix_music(video_path: Path, run_dir: Path | None = None) -> bool:
     """
     Lay the music bed under the narration, in place.
 
-    Notes on the filter, because two of these are easy to get wrong:
+    Notes on the filter, because each of these is easy to get wrong:
       - normalize=0 on amix. Without it amix divides every input by the number
         of inputs, so the narration would come out at half volume purely for
         having music alongside it.

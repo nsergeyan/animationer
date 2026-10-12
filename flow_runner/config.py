@@ -6,10 +6,11 @@ submit, wait for a new image, save it" but nothing about Flow's actual markup.
 So when Google reshuffles the DOM (and they will), this is the only file you
 touch.
 
-SELECTOR STATUS: every selector below is a GUESS. Nobody has seen Flow's real
-DOM yet. Run `python runner.py --inspect`, log in by hand, then replace the
-lists here with the exact selectors it prints. Each setting is a LIST and is
-tried in order, so you can leave a fallback guess after the real one.
+SELECTOR STATUS: the selectors below were read off Flow's live DOM with
+`python runner.py --inspect` (the ones marked "Confirmed via --inspect") and
+have driven full videos. When Google changes the UI, run --inspect again, log
+in by hand, and update the lists here with what it prints. Each setting is a
+LIST tried in order, so a fallback can sit after the real one.
 """
 
 import os
@@ -220,8 +221,8 @@ AGENT_WAIT = 20.0
 
 # --- Model selection --------------------------------------------------------
 # Flow's prompt bar carries a model chip that reads something like
-# "🍌 Nano Banana 2 Lite / crop_16_9 / x1". The runner reads that chip and
-# switches models if it is not already on the one you want.
+# "Nano Banana 2 Lite / crop_16_9 / x1" after a banana icon. The runner reads
+# that chip and switches models if it is not already on the one you want.
 #
 # MODEL_NAME is matched as a SUBSTRING, so "Nano Banana 2" also matches
 # "Nano Banana 2 Lite". MODEL_EXCLUDE is what disambiguates them: an option must
@@ -294,7 +295,7 @@ MODEL_MENU_WAIT = 8.0
 # on by itself. No keypress needed.
 READY_TIMEOUT = 240.0
 
-# --- Selectors (ALL UNVERIFIED - replace using --inspect) -------------------
+# --- Selectors (from --inspect; re-run it when Flow's UI changes) ----------
 # The prompt textarea. Flow is React, so this is probably a contenteditable div
 # or a textarea inside a wrapper, not a bare <input>.
 # Confirmed via --inspect: a contenteditable div, which is why it carries

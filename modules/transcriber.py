@@ -1,9 +1,10 @@
 """
-Stage: word-level timings, so subtitles highlight the word actually being said.
+Stage: word-level timings, so a picture changes on the word that names it.
 
-Without this the Remotion subtitle guesses each word's moment by splitting the
-beat up by character count. That is fine for a five second beat and visibly
-drifts on a fifteen second one.
+An edit in script.json can carry "at": "six meters". cmd_manifest asks this
+module when those words are spoken and starts the edit's picture there, instead
+of splitting the beat's time evenly between its pictures, which lets a sign
+appear before the narrator gets to it.
 
 Two things worth knowing:
 
@@ -14,8 +15,8 @@ Two things worth knowing:
 
   - Whisper's transcript is therefore not trusted for TEXT. Its words are
     aligned against the script's own words and the script always wins, so a
-    misheard word can shift a timing but can never put the wrong word on
-    screen.
+    misheard word can shift a timing but can never change which word is
+    being timed.
 """
 
 import difflib
@@ -70,7 +71,7 @@ def align(narration: str, audio_path: Path, language: str = "en") -> list[dict]:
     Returns [{"w": str, "s": float, "e": float}, ...] using the SCRIPT's words
     with Whisper's timings. Words Whisper missed get interpolated from their
     neighbours rather than dropped, so the list always matches the narration
-    one-for-one and the subtitle can never fall out of step with the text.
+    one-for-one and a lookup by word never falls out of step with the text.
     """
     script_words = strip_tags(narration).split()
     if not script_words:

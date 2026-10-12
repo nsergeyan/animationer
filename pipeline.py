@@ -1,8 +1,30 @@
+"""
+Animationer pipeline: one script.json in, one narrated 16:9 video out.
+
+Every stage reads and writes files under output/<slug>/, so any stage can be
+re-run on its own and finished work is skipped on the next run.
+
+    prompts    script.json -> frames.json (every picture, and how it is made)
+    images     frames.json -> images/ via flow_runner (Google Flow)
+    voice      script.json -> audio/ via ElevenLabs
+    manifest   pairs pictures with narration, measures durations, times
+               picture changes to their words, adds the outro beat
+    music      composes this video's bed from the script's music_prompt
+    render     manifest.json -> final.mp4 via Remotion, then the music mix
+
+With no subcommand every stage runs in order (`all`). `check` reports what is
+present and what is missing without doing anything.
+"""
+
 import argparse
+import colorsys
 import json
 import os
+import re
+import shutil
 import subprocess
 import sys
+import time
 from pathlib import Path
 
 import config
@@ -10,478 +32,607 @@ from modules import transcriber
 
 FLOW_RUNNER = config.ROOT_DIR / "flow_runner" / "runner.py"
 
+# Paste a finished script here (the JSON text, or the same thing as a dict
+# literal) and run `python pipeline.py` with no arguments: cmd_all turns it into
+# a run folder under output/ (see adopt_pasted_script) and makes the whole
+# video. Set it to {} to work on the most recent run instead.
 NEW_SCRIPT = {
-  "topic": "Formula 1",
+  "topic": "American Football Explained",
   "format": "explainer",
   "plan": {
-    "spine_question": "What exactly is Formula One and how does it work in 2026?",
+    "spine_question": "How does American football actually work and how do you win?",
     "deflations": [
       {
-        "assumed": "Formula One is just driving ordinary cars very fast around a track.",
-        "actual": "It is a high-stakes engineering arms race using vehicles that function like upside-down fighter jets.",
-        "who_decided": "Aerodynamic engineers pushing the limits of physics.",
-        "build_beat": "A modern F1 car is basically a jet fighter.",
-        "drop_beat": "It just happens to be glued to the ground."
+        "assumed": "They use their feet to kick the ball constantly.",
+        "actual": "They rarely kick and mostly throw or run.",
+        "who_decided": "The evolution of the sport's rules.",
+        "build_beat": "[curious] Welcome to the sport of American football.",
+        "drop_beat": "They rarely kick the ball."
       }
     ],
     "cast": [
       {
-        "name": "Lando Norris",
-        "why": "The reigning 2025 World Champion representing the McLaren team."
+        "name": "Patrick Mahomes",
+        "why": "Famous modern quarterback illustrating the passing game."
       },
       {
-        "name": "Lewis Hamilton",
-        "why": "The sport's biggest legend who finally made his highly anticipated move to Ferrari."
+        "name": "Travis Kelce",
+        "why": "Famous tight end illustrating catching passes."
       },
       {
-        "name": "Max Verstappen",
-        "why": "The relentless Red Bull driver who is always hunting for another title."
+        "name": "Sam Darnold",
+        "why": "The quarterback who led the Seattle Seahawks to win Super Bowl LX in 2026."
       },
       {
-        "name": "Kimi Antonelli",
-        "why": "The young Mercedes star who is already leading the 2026 championship."
+        "name": "Kenneth Walker III",
+        "why": "Super Bowl LX MVP who then signed with the Kansas City Chiefs in March 2026."
       }
     ],
     "specifics": [
       {
-        "fact": "The 2026 grid expanded to 11 teams with Cadillac and Audi joining.",
-        "source": "FIA 2026 Entry List",
-        "beat": "Cadillac and Audi officially joined the sport this season."
+        "fact": "The field is 100 yards long.",
+        "source": "NFL Rulebook",
+        "beat": "The playing field is exactly one hundred yards long."
       },
       {
-        "fact": "2026 cars use active aerodynamics to reduce drag on straight lines.",
-        "source": "FIA 2026 Technical Regulations",
-        "beat": "Wings shift on straight lines to reduce aerodynamic drag."
+        "fact": "A touchdown is 6 points.",
+        "source": "NFL Rulebook",
+        "beat": "A touchdown rewards your team with a massive six points."
+      },
+      {
+        "fact": "The Seattle Seahawks won Super Bowl LX.",
+        "source": "Super Bowl 2026 news records",
+        "beat": "The Seattle Seahawks defeated the New England Patriots in February."
       }
     ],
     "facts_to_check": [
       {
-        "claim": "Lando Norris is the 2025 F1 World Champion.",
-        "source": "December 2025 F1 official standings and Abu Dhabi GP results"
+        "claim": "Seattle Seahawks won Super Bowl LX against New England Patriots in February 2026.",
+        "source": "Wikipedia Super Bowl LX / 2026 NFL Season records"
       },
       {
-        "claim": "Lewis Hamilton drives for Ferrari in 2026.",
-        "source": "F1 2026 Official Grid Lineups"
+        "claim": "Sam Darnold was the QB for the Seahawks in Super Bowl LX.",
+        "source": "Colin Cowherd NFL Reaction / Sports Media records for Super Bowl LX"
       },
       {
-        "claim": "Cadillac and Audi entered as new teams in 2026.",
-        "source": "FIA 2026 Entry List"
+        "claim": "Kenneth Walker III won MVP in Super Bowl LX.",
+        "source": "CBS Sports and Wikipedia records for Super Bowl LX"
       },
       {
-        "claim": "2026 regulations mandate 100 percent sustainable fuels and a 50-50 electric power split.",
-        "source": "F1 2026 Engine Regulations"
-      },
-      {
-        "claim": "Race winners receive 25 points.",
-        "source": "FIA Sporting Regulations"
+        "claim": "Kenneth Walker III signed with the Kansas City Chiefs in March 2026.",
+        "source": "Fox Sports / KIRO7 free agency reports, March 2026"
       }
     ],
     "locations": [
-      { "name": "the starting grid", "visual_anchor": "" },
-      { "name": "the wind tunnel", "visual_anchor": "" },
-      { "name": "the paddock", "visual_anchor": "" },
-      { "name": "the team factory", "visual_anchor": "" },
-      { "name": "the long straight", "visual_anchor": "" },
-      { "name": "race weekend", "visual_anchor": "" },
-      { "name": "race day", "visual_anchor": "" },
-      { "name": "the pit lane", "visual_anchor": "" }
+      {
+        "name": "the gridiron field",
+        "visual_anchor": ""
+      },
+      {
+        "name": "the line of scrimmage",
+        "visual_anchor": ""
+      },
+      {
+        "name": "the team sideline",
+        "visual_anchor": ""
+      },
+      {
+        "name": "the end zone",
+        "visual_anchor": ""
+      },
+      {
+        "name": "the super bowl stadium",
+        "visual_anchor": ""
+      },
+      {
+        "name": "the living room couch",
+        "visual_anchor": ""
+      }
     ],
     "setting_anchor": ""
   },
   "beats": [
     {
-      "narration": "[thoughtful] Formula One is the pinnacle of motorsport.",
-      "location": "the starting grid",
-      "image_prompt": "reference character stands at frame left, mildly curious, beside one low bright blue open-wheel Formula 1 race car, wide shot at eye level",
-      "image_prompt_alt": "reference character stands at frame right with arms folded, attentive, looking down at one low bright blue open-wheel single-seat race car with a tall rear wing, medium-wide shot"
+      "narration": "[curious] Welcome to the sport of American football.",
+      "location": "the gridiron field",
+      "image_prompt": "reference character stands at frame left looking curious, watching Patrick Mahomes, a curly-haired quarterback in a bright red jersey, holding one brown football high, wide shot",
+      "image_prompt_alt": "reference character stands at frame right looking curious, watching a lean athletic man with short curly hair and a wide grin, a curly-haired quarterback in a bright red jersey, holding one brown football high, medium-wide shot"
     },
     {
-      "narration": "The entire grid features twenty two very fearless drivers.",
-      "location": "the starting grid",
-      "edits": ["three small doodle drivers in white helmets appear standing in a row behind the race car"]
+      "narration": "They rarely kick the ball.",
+      "location": "the gridiron field",
+      "edits": [
+        "a big sign reading \"KICK?\" appears above the character's head, as wide as his shoulders"
+      ]
     },
     {
-      "narration": "They drive at over two hundred miles per hour.",
-      "location": "the starting grid",
-      "edits": ["the three drivers disappear and a big tag reading \"200+ MPH\" hangs from the car's nose"]
+      "narration": "They mostly throw and run with it.",
+      "location": "the gridiron field",
+      "edits": [
+        "the sign disappears and a real photo cutout of a brown leather American football, roughly pasted onto the drawing, flies from the quarterback's hand"
+      ]
     },
     {
-      "narration": "It is extremely dangerous.",
-      "location": "the starting grid",
-      "edits": ["the tag disappears and the character leans back in alarm, eyes wide, hands raised"]
+      "narration": "The field is one hundred yards long, about ninety one meters.",
+      "location": "the gridiron field",
+      "edits": [
+        "the quarterback and football disappear and one long green field strip with white stripes appears beneath the character"
+      ]
     },
     {
-      "narration": "[deadpan] Or rather, it used to be.",
-      "location": "the starting grid",
-      "edits": ["the character lowers his hands and raises one eyebrow with a deadpan stare"]
+      "narration": "Imagine a massive green lawn painted with white stripes.",
+      "location": "the gridiron field",
+      "edits": [
+        "the green field strip widens to twice its size, spreading under the character's feet"
+      ]
     },
     {
-      "narration": "Now the cars are incredibly safe.",
-      "location": "the starting grid",
-      "edits": ["a real photo cutout of a Formula 1 titanium halo cockpit bar, roughly pasted onto the drawing, appears big over the car's cockpit"]
+      "narration": "A white line crosses it every five yards.",
+      "location": "the gridiron field",
+      "edits": [
+        "the character squints down at the evenly spaced white stripes across the green strip"
+      ]
     },
     {
-      "narration": "But the speeds are still absolutely INSANE.",
-      "location": "the starting grid",
-      "image_prompt": "reference charadsadsadcter clutches his head, eyes wide, as one bright blue open-wheel race car streaks past him trailing long speed lines, low-angle shot",
-      "image_prompt_alt": "reference chardsadsadsadasacter leans away at frame right with his mouth hanging open as one low bright blue single-seat race car with a tall rear wing blasts past trailing long speed lines, wide shot"
+      "narration": "The ultimate goal is quite simple.",
+      "location": "the gridiron field",
+      "image_prompt": "reference character stands calmly at frame left beside one doodle runner in an orange jersey, one red end zone strip at frame right, wide shot",
+      "image_prompt_alt": "reference character watches from frame right, calm and attentive, as one doodle runner in an orange jersey faces one red end zone strip at frame left, high-angle wide shot"
     },
     {
-      "narration": "A modern F1 car is basically a jet fighter.",
-      "location": "the wind tunnel",
-      "image_prompt": "reference character stands at frame right, curious, beside one grey jet fighter plane and one bright blue open-wheel race car side by side, medium-wide shot",
-      "image_prompt_alt": "reference character stands at frame left with a curious tilt of the head, looking between one grey military jet with swept wings and one bright blue single-seat race car parked nose to nose, wide shot"
+      "narration": "You must advance the ball.",
+      "location": "the gridiron field",
+      "edits": [
+        "the runner moves halfway toward the red end zone, a brown football tucked under his arm"
+      ]
     },
     {
-      "narration": "It just happens to be glued to the ground.",
-      "location": "the wind tunnel",
-      "edits": ["the jet fighter disappears and thick white glue blobs appear under the race car's four wheels"]
+      "narration": "You have to reach the painted end zone to score.",
+      "location": "the gridiron field",
+      "edits": [
+        "the runner reaches the edge of the red end zone, one foot raised to step in"
+      ]
     },
     {
-      "narration": "Wings push the car down into the track.",
-      "location": "the wind tunnel",
-      "edits": ["the glue blobs disappear and a real photo cutout of a Formula 1 front wing, roughly pasted onto the drawing, appears big in front of the car's nose"]
+      "narration": "But the opposing team defends it.",
+      "location": "the gridiron field",
+      "edits": [
+        "the red end zone disappears and one big doodle defender in a purple jersey blocks the runner's path"
+      ]
     },
     {
-      "narration": "This is called downforce.",
-      "location": "the wind tunnel",
-      "edits": ["the front wing cutout disappears and a big sign reading \"DOWNFORCE\" appears above the car, one thick black arrow pointing down at it"]
+      "narration": "They stop you by tackling you hard to the ground.",
+      "location": "the gridiron field",
+      "edits": [
+        "the purple defender tackles the runner flat to the ground"
+      ]
     },
     {
-      "narration": "More downforce means faster cornering.",
-      "location": "the wind tunnel",
-      "edits": ["the sign and arrow disappear and the race car swings into a tight curve with curved speed lines behind it"]
+      "narration": "That is why players wear helmets and thick pads.",
+      "location": "the gridiron field",
+      "edits": [
+        "a white football helmet appears on the runner's head as the two players tangle in a heap, and the character winces"
+      ]
     },
     {
-      "narration": "[understated] It also means your neck really hurts.",
-      "location": "the wind tunnel",
-      "edits": ["the character tilts his head sideways, wincing, one hand rubbing his neck"]
+      "narration": "The NFL has thirty two teams.",
+      "location": "the line of scrimmage",
+      "image_prompt": "reference character stands at frame left, curious, beside one enormous heap of identical white football helmets with one red helmet on top, wide shot",
+      "image_prompt_alt": "reference character sits at the foot of one towering pile of identical white football helmets topped by a single red helmet, looking up curiously, low-angle shot"
     },
     {
-      "narration": "Drivers endure massive gravity forces every single turn.",
-      "location": "the wind tunnel",
-      "image_prompt": "reference character winces at frame left watching a doodle driver in a white helmet in one bright blue race car, his head shoved sideways by one big curved arrow, close medium shot",
-      "image_prompt_alt": "reference character grimaces at frame right beside one bright blue single-seat race car whose helmeted doodle driver has his head pushed sideways by one huge curved black arrow, medium-wide shot"
+      "narration": "The game revolves around ONE strict rule.",
+      "location": "the line of scrimmage",
+      "edits": [
+        "the heap disappears and a big sign reading \"ONE RULE\" appears beside the character, as tall as him"
+      ]
     },
     {
-      "narration": "Let us look at who actually races today.",
-      "location": "the paddock",
-      "image_prompt": "reference character stands at frame left, attentive, beside one long row of small doodle race cars parked nose to tail, the nearest bright yellow, high-angle wide shot",
-      "image_prompt_alt": "reference character leans forward at frame right with interest, looking along one long line of small single-seat race cars parked nose to tail, the closest one painted bright yellow, wide shot at eye level"
+      "narration": "[flatly] You get four attempts.",
+      "location": "the line of scrimmage",
+      "edits": [
+        "the sign disappears and four big brown footballs appear in a row beside the character"
+      ]
     },
     {
-      "narration": "[calm] The current 2026 grid features exactly eleven different teams.",
-      "location": "the paddock",
-      "edits": ["a big sign reading \"11 TEAMS\" appears above the row of cars"]
+      "narration": "They call these attempts the four downs.",
+      "location": "the line of scrimmage",
+      "edits": [
+        "the character stares flatly at the four footballs, one eyebrow raised"
+      ]
     },
     {
-      "narration": "Cadillac and Audi officially joined the sport this season.",
-      "location": "the paddock",
-      "edits": ["the sign disappears and two new cars, one black-and-white and one silver, roll in at the row's front at frame right"]
+      "narration": "Each down is one short play.",
+      "location": "the line of scrimmage",
+      "image_prompt": "reference character stands at frame left beside one doodle runner in an orange jersey crouched behind one long white line across the green field, one brown football in his hands, wide shot"
     },
     {
-      "narration": "Two drivers race for each team.",
-      "location": "the paddock",
-      "edits": ["two small doodle drivers in helmets appear standing beside the new black-and-white car"]
+      "narration": "It ends when the runner is tackled or a pass hits the ground.",
+      "location": "the line of scrimmage",
+      "edits": [
+        "one doodle defender in a purple jersey tackles the runner to the ground a few steps past the white line"
+      ]
     },
     {
-      "narration": "They all want the trophy.",
-      "location": "the paddock",
-      "edits": ["the row of cars disappears and one big gold trophy cup floats above the two drivers, who reach up toward it"]
+      "narration": "Then everyone lines up again, right where the ball stopped.",
+      "location": "the line of scrimmage",
+      "edits": [
+        "the white line moves forward to where the runner fell, and the runner and defender crouch facing each other across it"
+      ]
     },
     {
-      "narration": "The reigning 2025 world champion is superstar Lando Norris.",
-      "location": "the paddock",
-      "image_prompt": "reference character looks impressed at a real photo cutout of Lando Norris in a papaya orange racing suit, roughly pasted onto the drawing, while Lewis Hamilton with long braids and a scarlet red racing suit waits at frame right, medium-wide shot",
-      "image_prompt_alt": "reference character stands at frame right looking impressed at a slim young man with short curly brown hair in a papaya orange racing suit grinning at frame left, while a lean bearded man with long braids and a scarlet red racing suit stands in the middle, wide shot"
+      "narration": "You must move the ball forward at least ten yards.",
+      "location": "the line of scrimmage",
+      "edits": [
+        "one long yellow arrow appears on the ground starting at the white line, pointing far ahead of the players"
+      ]
     },
     {
-      "narration": "He drives for the mighty McLaren team.",
-      "location": "the paddock",
-      "edits": ["a big tag reading \"McLAREN\" appears pinned to the chest of the man in the papaya orange suit"]
+      "narration": "If you succeed you earn four brand new attempts.",
+      "location": "the line of scrimmage",
+      "edits": [
+        "four big brown footballs appear in a row at the tip of the yellow arrow"
+      ]
     },
     {
-      "narration": "Then you have the legendary Lewis Hamilton.",
-      "location": "the paddock",
-      "edits": ["the tag disappears and the man with long braids steps forward with both arms spread wide"]
+      "narration": "[calm] The cycle starts over again.",
+      "location": "the line of scrimmage",
+      "image_prompt": "reference character sits calmly at frame right watching one doodle runner in an orange jersey jogging forward with one brown football, medium-wide shot",
+      "image_prompt_alt": "reference character sits cross-legged at frame left, calm, as one doodle runner in an orange jersey jogs toward him carrying one brown football, low-angle wide shot"
     },
     {
-      "narration": "[sighs] He moved over to Ferrari last year.",
-      "location": "the paddock",
-      "edits": ["the man with long braids pulls on one big scarlet red helmet as the character smiles softly"]
+      "narration": "If you fail you LOSE the ball.",
+      "location": "the line of scrimmage",
+      "edits": [
+        "one big doodle defender in a purple jersey appears beside the runner and snatches the brown football"
+      ]
     },
     {
-      "narration": "Fans waited years to see him in red.",
-      "location": "the paddock",
-      "edits": ["the man in the papaya orange suit disappears and two small doodle fans waving scarlet red flags appear at frame left, cheering"]
+      "narration": "That is why on the fourth try, most teams kick it away.",
+      "location": "the line of scrimmage",
+      "edits": [
+        "the purple defender disappears and the runner kicks one brown football high and far toward frame right"
+      ]
     },
     {
-      "narration": "Meanwhile Max Verstappen still leads Red Bull.",
-      "location": "the paddock",
-      "image_prompt": "reference character watches, mildly wary, a real photo cutout of Max Verstappen in a dark navy blue racing suit, roughly pasted onto the drawing, beside Kimi Antonelli, a teenage-looking driver in a black and silver racing suit, medium two-shot",
-      "image_prompt_alt": "reference character stands at frame left looking mildly wary at a stocky man with short light brown hair and stubble in a dark navy blue racing suit at center, while a slim dark-haired teenage-looking driver in a black and silver racing suit stands at frame right, wide shot"
+      "narration": "[thoughtful] Watch the games on television.",
+      "location": "the living room couch",
+      "image_prompt": "reference character sits on one plain blue couch at frame left, thoughtful, facing one boxy black television showing a green striped field, medium shot"
     },
     {
-      "narration": "He wants another title.",
-      "location": "the paddock",
-      "edits": ["the man in the dark navy suit folds his arms and leans forward"]
+      "narration": "You will see a magic... yellow line.",
+      "location": "the living room couch",
+      "edits": [
+        "one bright yellow line appears across the green field on the television screen"
+      ]
     },
     {
-      "narration": "Mercedes has a young star named Kimi Antonelli.",
-      "location": "the paddock",
-      "edits": ["the teenage-looking driver in the black and silver suit steps forward and waves"]
+      "narration": "Computer graphics draw it perfectly across the green grass.",
+      "location": "the living room couch",
+      "edits": [
+        "the character leans in close to the screen, eyes wide at the yellow line"
+      ]
     },
     {
-      "narration": "[light chuckle] He is one of the youngest drivers on the grid.",
-      "location": "the paddock",
-      "edits": ["the teenage-looking driver gives a big confident thumbs up as the character chuckles"]
+      "narration": "That line shows the ten yard target.",
+      "location": "the living room couch",
+      "edits": [
+        "a big white tag reading \"10 YARDS\" appears beside the television, its string touching the yellow line"
+      ]
     },
     {
-      "narration": "Everyone wants to win.",
-      "location": "the paddock",
-      "edits": ["the character and both drivers crouch low like sprinters ready to race"]
+      "narration": "A game has sixty minutes on the clock.",
+      "location": "the living room couch",
+      "edits": [
+        "the tag disappears and one huge round stopwatch with a black hand appears beside the television"
+      ]
     },
     {
-      "narration": "Teams build their own completely unique racing cars.",
-      "location": "the team factory",
-      "image_prompt": "reference character crouches at frame left, curious, beside one half-built bright purple open-wheel race car on a raised metal work stand, low-angle shot",
-      "image_prompt_alt": "reference character stands at frame right peering with interest at one half-assembled bright purple single-seat race car resting on a raised metal work stand with its wheels off, medium-wide shot"
+      "narration": "But it lasts over three hours on TV.",
+      "location": "the living room couch",
+      "edits": [
+        "a big sign reading \"3 HOURS\" appears above the television and the character's eyebrows rise"
+      ]
     },
     {
-      "narration": "The richest teams usually win the most races.",
-      "location": "the team factory",
-      "edits": ["one towering stack of green banknotes appears at frame right, taller than the car"]
+      "narration": "The ball is actually moving for about eleven minutes.",
+      "location": "the living room couch",
+      "edits": [
+        "the sign disappears and a big white tag reading \"11 MIN\" hangs from the stopwatch, the character staring flatly"
+      ]
     },
     {
-      "narration": "[flatly] Cash DEFINITELY makes the car go so much faster.",
-      "location": "the team factory",
-      "edits": ["green banknotes pour from the car's rear like exhaust as the character stares flatly"]
+      "narration": "[understated] The rest is huddles, replays and adverts.",
+      "location": "the living room couch",
+      "edits": [
+        "the stopwatch and tag disappear, the screen switches to a plain fizzy soda bottle advert and the character slumps back"
+      ]
     },
     {
-      "narration": "[curious] This brings us to the new 2026 regulations.",
-      "location": "the team factory",
-      "edits": ["the cash and banknotes disappear and one huge paper scroll unrolls from frame right to the character's feet"]
+      "narration": "Each team has eleven players on the field.",
+      "location": "the team sideline",
+      "image_prompt": "reference character stands at frame left, attentive, beside three doodle players in plain red jerseys lined up shoulder to shoulder, wide shot",
+      "image_prompt_alt": "reference character stands at frame right, attentive, as three doodle players in plain red jerseys line up shoulder to shoulder facing him, high-angle wide shot"
     },
     {
-      "narration": "The engines have completely transformed.",
-      "location": "the team factory",
-      "edits": ["the scroll disappears and a real photo cutout of a Formula 1 hybrid power unit, roughly pasted onto the drawing, appears big beside the car"]
+      "narration": "But each team has fifty three players in total.",
+      "location": "the team sideline",
+      "edits": [
+        "two rows of many more small doodle players in plain red jerseys appear behind the three players"
+      ]
     },
     {
-      "narration": "They run on one hundred percent sustainable fuels now.",
-      "location": "the team factory",
-      "edits": ["the car disappears and one big green fuel can with a white leaf painted on it appears beside the engine cutout"]
+      "narration": "The MOST important player is the quarterback.",
+      "location": "the team sideline",
+      "edits": [
+        "the rows of small players disappear and the middle red player steps forward holding one brown football"
+      ]
     },
     {
-      "narration": "Half the power comes from electric motors.",
-      "location": "the team factory",
-      "image_prompt": "reference character stands at frame right, interested, beside one big doodle engine split down the middle, its left half a bright yellow battery with a lightning bolt, medium shot",
-      "image_prompt_alt": "reference character stands at frame left gazing with interest at one big doodle engine cut in two, one side a bright yellow battery marked with a lightning bolt and the other a grey block of pistons, wide shot"
+      "narration": "He gets the ball first on almost every play and decides where to attack.",
+      "location": "the team sideline",
+      "edits": [
+        "the middle player points ahead and the other two players turn to follow"
+      ]
     },
     {
-      "narration": "The other half is a combustion engine.",
-      "location": "the team factory",
-      "edits": ["small puffs of grey smoke rise from the right half of the engine"]
+      "narration": "[calm] Think of Patrick Mahomes.",
+      "location": "the team sideline",
+      "image_prompt": "reference character stands at frame right, interested, beside a real photo cutout of Patrick Mahomes, a curly-haired quarterback in a bright red jersey, roughly pasted onto the drawing, medium shot",
+      "image_prompt_alt": "reference character stands at frame left, interested, beside a doodle of a lean athletic man with short curly hair and a wide grin, a curly-haired quarterback in a bright red jersey, medium-wide shot"
     },
     {
-      "narration": "Together they produce around one thousand raw horsepower.",
-      "location": "the team factory",
-      "edits": ["a big sign reading \"1000 HP\" appears above the engine and the character's eyes go wide"]
+      "narration": "He plays for the Kansas City Chiefs.",
+      "location": "the team sideline",
+      "edits": [
+        "a big sign reading \"CHIEFS\" appears above the quarterback's head"
+      ]
     },
     {
-      "narration": "[clears throat] You still cannot buy one for your daily commute.",
-      "location": "the team factory",
-      "edits": ["the sign disappears and one small grey family hatchback appears at frame left, much smaller than the engine"]
+      "narration": "Mahomes throws the ball to his receivers with incredible speed.",
+      "location": "the team sideline",
+      "edits": [
+        "the sign disappears as the quarterback raises his throwing arm and one brown football zips away"
+      ]
     },
     {
-      "narration": "The cars also feature active aerodynamics this year.",
-      "location": "the long straight",
-      "image_prompt": "reference character stands at frame left, interested, watching one bright teal open-wheel race car with a tall rear wing, seen side-on, wide shot",
-      "image_prompt_alt": "reference character leans forward at frame right with interest, studying one low bright teal single-seat race car with a big tilting rear wing and a flat front wing, seen side-on, medium-wide shot"
+      "narration": "One of his favorite targets is Travis Kelce.",
+      "location": "the team sideline",
+      "image_prompt": "reference character stands at frame left, interested, watching Patrick Mahomes, a curly-haired quarterback in a bright red jersey, throw one brown football to Travis Kelce, a tall bearded receiver in a bright red jersey, medium-wide shot",
+      "image_prompt_alt": "reference character stands small at bottom center, interested, as a lean athletic man with short curly hair and a wide grin, a curly-haired quarterback in a bright red jersey, throws one brown football to a very tall broad man with a short beard and swept-back hair, a tall bearded receiver in a bright red jersey, wide shot"
     },
     {
-      "narration": "Wings shift on straight lines to reduce aerodynamic drag.",
-      "location": "the long straight",
-      "edits": ["a real photo cutout of a Formula 1 rear wing with its flap open, roughly pasted onto the drawing, appears big above the car"]
+      "narration": "[softly] Kelce catches the passes.",
+      "location": "the team sideline",
+      "edits": [
+        "the tall bearded receiver catches the brown football against his chest"
+      ]
     },
     {
-      "narration": "This makes the cars slice right through the air.",
-      "location": "the long straight",
-      "edits": ["the rear wing cutout disappears and long smooth wind lines stream over the car from front to back"]
+      "narration": "Other players just run with the ball.",
+      "location": "the team sideline",
+      "edits": [
+        "both red-jersey players walk out of the picture and the character turns to look the other way"
+      ]
     },
     {
-      "narration": "It increases top speed immensely.",
-      "location": "the long straight",
-      "edits": ["the car shoots ahead to frame right trailing long speed lines as the character's jaw drops"]
+      "narration": "Kenneth Walker played running back for Seattle.",
+      "location": "the team sideline",
+      "image_prompt": "reference character stands at frame left, impressed, beside a real photo cutout of Kenneth Walker III, a stocky running back in a navy blue jersey, roughly pasted onto the drawing, medium shot",
+      "image_prompt_alt": "reference character stands at frame right, impressed, beside a doodle of a compact muscular man with short dark locks, a stocky running back in a navy blue jersey, cradling one brown football, medium-wide shot"
     },
     {
-      "narration": "Then they snap back for the corners.",
-      "location": "the long straight",
-      "edits": ["the car's rear wing flips upright and the car leans into a sharp curve"]
+      "narration": "He simply takes the ball and sprints through heavy traffic.",
+      "location": "the team sideline",
+      "edits": [
+        "the running back leans into a sprint, a brown football tucked tight under one arm"
+      ]
     },
     {
-      "narration": "Every driver uses these systems to overtake fierce rivals.",
-      "location": "the long straight",
-      "edits": ["one plain doodle race car appears just ahead and the teal car swerves past it"]
+      "narration": "[flatly] The defense wants to crush him.",
+      "location": "the team sideline",
+      "edits": [
+        "one huge doodle defender in a purple jersey appears directly in front of the running back, arms spread wide"
+      ]
     },
     {
-      "narration": "[thoughtful] A race weekend takes three whole days.",
-      "location": "race weekend",
-      "image_prompt": "reference character stands thoughtfully at frame left beside one huge desk calendar page with three big squares circled in red, medium shot",
-      "image_prompt_alt": "reference character tilts his head thoughtfully at frame right beside one huge flip calendar standing on its own, three of its big squares circled with thick red marker, wide shot"
+      "narration": "Some of them weigh over one hundred fifty kilos.",
+      "location": "the team sideline",
+      "edits": [
+        "the purple defender grows twice as tall, scowling, and the character steps back"
+      ]
     },
     {
-      "narration": "Friday is just for practice.",
-      "location": "race weekend",
-      "edits": ["a big sign reading \"FRIDAY\" appears on the first red-circled square"]
+      "narration": "There are two main ways to score.",
+      "location": "the end zone",
+      "image_prompt": "reference character stands at frame left, curious, watching Travis Kelce, a tall bearded receiver in a bright red jersey, beside one bright red end zone strip, wide shot",
+      "image_prompt_alt": "reference character sits at frame right, curious, as a very tall broad man with a short beard and swept-back hair, a tall bearded receiver in a bright red jersey, stands at the edge of one bright red end zone strip, wide side view"
     },
     {
-      "narration": "Teams test car setups.",
-      "location": "race weekend",
-      "edits": ["the calendar and sign disappear and one bright blue race car appears at frame right with a doodle mechanic bent over its wing"]
+      "narration": "The best is... the touchdown.",
+      "location": "the end zone",
+      "edits": [
+        "a big sign reading \"TOUCHDOWN\" appears above the red end zone strip"
+      ]
     },
     {
-      "narration": "Saturday is the ultimate test of pure speed.",
-      "location": "race weekend",
-      "edits": ["the mechanic disappears and one big silver stopwatch appears floating above the car"]
+      "narration": "You carry or catch the ball inside the painted end zone.",
+      "location": "the end zone",
+      "edits": [
+        "the sign disappears and the tall bearded receiver leaps into the red end zone, catching one brown football"
+      ]
     },
     {
-      "narration": "This is the qualifying session.",
-      "location": "race weekend",
-      "edits": ["the character leans in with narrowed eyes, staring at the stopwatch"]
+      "narration": "A touchdown rewards your team with a massive six points.",
+      "location": "the end zone",
+      "edits": [
+        "a big white tag reading \"+6\" appears above the receiver's head"
+      ]
     },
     {
-      "narration": "They try to set the fastest single lap.",
-      "location": "race weekend",
-      "edits": ["the car blasts off along one big looping arrow as the stopwatch hands spin"]
+      "narration": "It requires crossing the final line.",
+      "location": "the end zone",
+      "edits": [
+        "the tag disappears and the character nods slowly, eyebrows raised, impressed"
+      ]
     },
     {
-      "narration": "The fastest driver starts first on Sunday afternoon.",
-      "location": "race weekend",
-      "image_prompt": "reference character stands at frame right, attentive, watching one bright blue race car alone in the front box of a short row of painted yellow boxes, overhead shot",
-      "image_prompt_alt": "reference character stands at frame left looking on attentively as one bright blue single-seat race car sits by itself at the head of a short line of empty yellow starting boxes, wide shot at eye level"
+      "narration": "After that you kick the ball.",
+      "location": "the end zone",
+      "edits": [
+        "the receiver disappears and one doodle kicker in a plain red jersey appears beside the end zone, swinging one leg"
+      ]
     },
     {
-      "narration": "[deadpan] This is called pole position.",
-      "location": "race weekend",
-      "edits": ["a tall wooden pole appears beside the blue car, a big sign reading \"POLE\" nailed to it"]
+      "narration": "Kicking it through the yellow goalposts adds one extra point.",
+      "location": "the end zone",
+      "image_prompt": "reference character watches attentively from frame right as one doodle kicker sends one brown football through one tall yellow goalpost, medium-wide shot",
+      "image_prompt_alt": "reference character stands beneath one tall yellow goalpost, looking up attentively, as one doodle kicker in a red jersey sends one brown football sailing between its uprights, low-angle shot"
     },
     {
-      "narration": "Sunday is the main event.",
-      "location": "race day",
-      "image_prompt": "reference character stands at frame left, eager, as three doodle race cars launch side by side beside one bright green starting light, wide shot",
-      "image_prompt_alt": "reference character leans forward eagerly at frame right as three small doodle single-seat race cars surge off side by side past one tall pole topped with a bright green light, low-angle shot"
+      "narration": "But sometimes your attack gets stopped early.",
+      "location": "the end zone",
+      "edits": [
+        "the kicker disappears and one doodle defender in a purple jersey blocks one doodle runner in an orange jersey far from the goalpost, the character wincing"
+      ]
     },
     {
-      "narration": "The race covers about one hundred ninety miles total.",
-      "location": "race day",
-      "edits": ["the starting light disappears and the three cars stretch into a long line racing toward frame right"]
+      "narration": "But you might be close to the posts.",
+      "location": "the end zone",
+      "edits": [
+        "the yellow goalpost slides much closer to the runner, almost within reach"
+      ]
     },
     {
-      "narration": "First place gets a massive twenty five championship points.",
-      "location": "race day",
-      "edits": ["a big sign reading \"25\" appears above the lead car"]
+      "narration": "Your team can try a field goal.",
+      "location": "the end zone",
+      "edits": [
+        "the defender and runner disappear and one doodle kicker in a plain red jersey sends one brown football flying up toward the yellow goalpost"
+      ]
     },
     {
-      "narration": "Second place gets eighteen points.",
-      "location": "race day",
-      "edits": ["the sign disappears and the second car pulls alongside the lead car"]
+      "narration": "You kick the ball through the posts for three points.",
+      "location": "the end zone",
+      "edits": [
+        "the football vanishes between the uprights and a big white tag reading \"+3\" hangs from the yellow goalpost"
+      ]
     },
     {
-      "narration": "Only the top ten finishers score any points.",
-      "location": "race day",
-      "edits": ["a long line of tiny grey doodle cars appears trailing far behind the three cars"]
+      "narration": "[calm] Kicking field goals is actually quite common.",
+      "location": "the end zone",
+      "edits": [
+        "the tag vanishes and the goalpost becomes a real photo cutout of a yellow football goalpost, roughly pasted onto the drawing"
+      ]
     },
     {
-      "narration": "The rest get absolutely nothing.",
-      "location": "race day",
-      "edits": ["a big tag reading \"0\" hangs from the last tiny grey car"]
+      "narration": "It wins many very close games.",
+      "location": "the end zone",
+      "image_prompt": "reference character leans forward at frame left, tense, beside one red bar and one purple bar of almost equal height, wide shot",
+      "image_prompt_alt": "reference character sits at frame right, tense, chin in hand, staring at one red bar standing beside one purple bar of almost equal height, three-quarter medium shot"
     },
     {
-      "narration": "[sarcastic] Formula One is truly a very generous sport indeed.",
-      "location": "race day",
-      "edits": ["the tag disappears and the character gives a flat, sarcastic thumbs up"]
+      "narration": "You want MORE points than the opponent when time expires.",
+      "location": "the end zone",
+      "edits": [
+        "the red bar grows clearly taller than the purple bar"
+      ]
     },
     {
-      "narration": "[curious] Racing is not just about driving fast.",
-      "location": "the pit lane",
-      "image_prompt": "reference character stands at frame left, curious, beside one bright blue open-wheel race car with a doodle driver in a white helmet, medium-wide shot",
-      "image_prompt_alt": "reference character stands at frame right with a curious look beside one bright blue single-seat race car, a small doodle driver in a white helmet sitting in its cockpit, wide shot at eye level"
+      "narration": "The season ends with the Super Bowl.",
+      "location": "the super bowl stadium",
+      "image_prompt": "reference character stands at frame left, eyes widening, beside one enormous football stadium shaped like a bowl with a bright gold rim, wide shot",
+      "image_prompt_alt": "reference character stands small in the foreground at frame right, eyes widening, looking up at one enormous bowl-shaped football stadium with a bright gold rim, low-angle wide shot"
     },
     {
-      "narration": "Strategy is extremely crucial.",
-      "location": "the pit lane",
-      "edits": ["the character taps his temple with one finger, eyes narrowed in thought"]
+      "narration": "About one hundred twenty five million people watched the last one.",
+      "location": "the super bowl stadium",
+      "edits": [
+        "the stadium disappears and one giant boxy black television appears, as tall as the character, with a big sign reading \"125 MILLION\" above it"
+      ]
     },
     {
-      "narration": "Tires wear out as the race goes on.",
-      "location": "the pit lane",
-      "edits": ["a real photo cutout of a worn Formula 1 racing tire, roughly pasted onto the drawing, appears big beside the car at frame right"]
+      "narration": "A thirty second advert costs about eight million dollars.",
+      "location": "the super bowl stadium",
+      "edits": [
+        "the sign disappears and a big white tag reading \"$8 MILLION\" hangs from the television, the character's jaw dropping"
+      ]
     },
     {
-      "narration": "Drivers must stop to replace them.",
-      "location": "the pit lane",
-      "edits": ["the tire cutout disappears and one tall yellow board on a pole appears in front of the car's nose"]
+      "narration": "The Seattle Seahawks beat the New England Patriots twenty nine to thirteen.",
+      "location": "the super bowl stadium",
+      "image_prompt": "reference character watches eagerly from frame left as Sam Darnold, a dark-haired quarterback in a navy blue jersey, throws past one doodle Patriots player in a silver helmet, medium-wide shot",
+      "image_prompt_alt": "reference character stands at frame right, eager, as a tall lean man with short dark hair and light stubble, a dark-haired quarterback in a navy blue jersey, throws past one doodle player in a silver helmet, wide shot"
     },
     {
-      "narration": "This is a pit stop.",
-      "location": "the pit lane",
-      "edits": ["a big sign reading \"PIT STOP\" appears on the yellow board"]
+      "narration": "They won Super Bowl sixty to become the champions.",
+      "location": "the super bowl stadium",
+      "edits": [
+        "a big sign reading \"SUPER BOWL LX\" appears above the quarterback"
+      ]
     },
     {
-      "narration": "About twenty mechanics surround the race car at once.",
-      "location": "the pit lane",
-      "image_prompt": "reference character watches from frame right, impressed, as three doodle mechanics in grey overalls swarm one bright blue race car, high-angle shot",
-      "image_prompt_alt": "reference character stands at frame left looking impressed while three doodle mechanics in grey overalls and helmets crowd tightly around one bright blue single-seat race car, close medium shot"
+      "narration": "[peaceful] They lifted the silver trophy.",
+      "location": "the super bowl stadium",
+      "edits": [
+        "the sign and silver-helmet player vanish; a real photo cutout of a silver football trophy, roughly pasted onto the drawing, rises above the quarterback's head"
+      ]
     },
     {
-      "narration": "They swap all four tires in about two seconds.",
-      "location": "the pit lane",
-      "edits": ["all four wheels pop off the car into the air above the mechanics"]
+      "narration": "Quarterback Sam Darnold won his first championship ring.",
+      "location": "the super bowl stadium",
+      "edits": [
+        "the character claps, visibly pleased, beside the beaming quarterback"
+      ]
     },
     {
-      "narration": "[understated] Blink and you will LITERALLY miss the whole thing.",
-      "location": "the pit lane",
-      "edits": ["the wheels land back on the car as the character's eyes snap shut mid-blink"]
+      "narration": "And Kenneth Walker took home the most valuable player award.",
+      "location": "the super bowl stadium",
+      "image_prompt": "reference character stands at frame right, impressed, watching Kenneth Walker III, a stocky running back in a navy blue jersey, bursting past one doodle player in a silver helmet, low-angle shot",
+      "image_prompt_alt": "reference character stands at frame left, impressed, as a compact muscular man with short dark locks, a stocky running back in a navy blue jersey, bursts past one doodle player in a silver helmet carrying one brown football, wide side view"
     },
     {
-      "narration": "Soft tires make the car go very fast.",
-      "location": "the pit lane",
-      "edits": ["the mechanics disappear and one big tire with a bright red stripe appears at frame left, speed lines behind it"]
+      "narration": "A month later, he signed with Kansas City.",
+      "location": "the super bowl stadium",
+      "edits": [
+        "the running back's navy blue jersey turns bright red and the character's jaw drops"
+      ]
     },
     {
-      "narration": "But they degrade incredibly quickly.",
-      "location": "the pit lane",
-      "edits": ["the red-striped tire shrinks and crumbles into small black bits"]
+      "narration": "Now you understand the basics.",
+      "location": "the living room couch",
+      "image_prompt": "reference character sits back on one plain blue couch at frame left, content, facing one boxy black television showing Sam Darnold, a dark-haired quarterback in a navy blue jersey, medium shot",
+      "image_prompt_alt": "reference character slouches on one plain blue couch at frame right, one arm along the cushions, content, facing one boxy black television showing a tall lean man with short dark hair and light stubble, a dark-haired quarterback in a navy blue jersey, three-quarter view"
     },
     {
-      "narration": "Hard tires last much longer.",
-      "location": "the pit lane",
-      "edits": ["the black bits disappear and one big sturdy tire with a thick grey stripe appears at frame left"]
+      "narration": "You know the distance required and how to score points.",
+      "location": "the living room couch",
+      "edits": [
+        "the television screen switches to a green striped field with one bright yellow line"
+      ]
     },
     {
-      "narration": "But they offer less grip on the track.",
-      "location": "the pit lane",
-      "image_prompt": "reference character stands at frame left, mildly amused, as one bright blue race car slides sideways on grey-striped tires, wobbly lines under its wheels, wide shot",
-      "image_prompt_alt": "reference character watches from frame right with a small amused smile as one bright blue single-seat race car skids sideways on thick grey-striped tires leaving wobbly lines behind, low-angle shot"
+      "narration": "You even know the current reigning champions.",
+      "location": "the living room couch",
+      "edits": [
+        "the screen switches back to the navy-jerseyed quarterback raising both arms"
+      ]
     },
     {
-      "narration": "Choosing the right tire strategy wins the grand prix.",
-      "location": "the pit lane",
-      "edits": ["the car straightens out and a big sign reading \"STRATEGY\" appears above it"]
+      "narration": "Watch the next game.",
+      "location": "the living room couch",
+      "edits": [
+        "the character sits forward and points at the television, eyebrows raised"
+      ]
     },
     {
-      "narration": "[content] That is Formula One in a nutshell.",
-      "location": "the pit lane",
-      "edits": ["the sign disappears and the character leans back against the car, smiling contentedly"]
-    },
-    {
-      "narration": "It is high speeds, massive drama, and endless engineering.",
-      "location": "the pit lane",
-      "edits": ["speed lines burst from the car's wheels and the character gives a small satisfied nod"]
+      "narration": "[content] Grab some snacks and enjoy.",
+      "location": "the living room couch",
+      "edits": [
+        "the television vanishes and a real photo cutout of an open bag of potato chips, roughly pasted onto the drawing, appears big beside the character"
+      ]
     }
   ],
-  "music_prompt": "Light, steady instrumental bed for a motorsport explainer, around ninety-five BPM. Muted pulsing synth bass, soft electric guitar plucks, brushed electronic drums, and a gentle Rhodes piano. Flat consistent energy with no build, no swells, no drops. Sits far in the background under a spoken narrator with the mid range left clear. Purely instrumental with no vocals of any kind. Understated rather than comedic."
+  "music_prompt": "Light, easygoing instrumental bed for a friendly sports explainer, around ninety BPM. Muted clean electric guitar, soft brushed snare, warm upright bass, and a gentle marimba pattern. Flat consistent energy with no build, no swells, no drops. Sits far in the background under a spoken narrator with the mid range left clear. Purely instrumental with no vocals of any kind. Understated rather than comedic."
 }
 
 SCRIPT_TEMPLATE = {
@@ -518,7 +669,6 @@ def prevent_sleep() -> subprocess.Popen | None:
 # --- Pasted script ---------------------------------------------------------
 
 def _slugify(text: str) -> str:
-    import re
     slug = re.sub(r"[^a-z0-9]+", "_", (text or "").lower()).strip("_")
     return (slug or "video")[:40]
 
@@ -689,6 +839,7 @@ def find_audio(run_dir: Path, index: int) -> Path | None:
 # --- init ------------------------------------------------------------------
 
 def cmd_init(args) -> int:
+    """Create output/<slug>/ with an empty script.json to paste into."""
     run_dir = config.OUTPUT_DIR / args.slug
     script_path = run_dir / "script.json"
     if script_path.exists():
@@ -796,8 +947,8 @@ def _scene_text(text: str) -> str:
 
     Style is OURS, not the model's: a paraphrased copy would compete with
     config.STYLE_BLOCK, and the whole point is that this text never varies
-    between scenes or videos. A newline would also break frames.json's
-    the frame's log line in two, so it is flattened here as well.
+    between scenes or videos. A newline would also split the frame's log
+    line in two, so it is flattened here as well.
     """
     text = " ".join((text or "").split())
     cut = text.lower().find("style:")
@@ -933,6 +1084,7 @@ def _long_chains(frames: list[dict]) -> list[tuple[int, int]]:
 
 
 def cmd_prompts(args) -> int:
+    """Turn script.json into frames.json and warn about anything off-spec."""
     run_dir = resolve_run(args.run)
     data = load_script(run_dir)
     beats = data["beats"]
@@ -1104,7 +1256,6 @@ def _warn_off_spec(beats: list[dict], fmt: str = "",
     """
     # Emotion tags like [surprised] are spoken as delivery, not words.
     def spoken_words(text: str) -> int:
-        import re
         return len(re.sub(r"\[[^\]]*\]", " ", text).split())
 
     key = fmt.strip().lower()
@@ -1175,15 +1326,14 @@ def _warn_off_spec(beats: list[dict], fmt: str = "",
     # The reference art is a single front-facing pose. Ask for his back and the
     # model has nothing to work from, so it puts his face on a back-facing body
     # and the head comes out rotated 180 degrees.
-    import re as _re2
-    back_view = _re2.compile(
+    back_view = re.compile(
         r"(from behind|over[- ]the[- ]shoulder|over his shoulder|"
-        r"back to the camera|seen from behind|from the back)", _re2.I)
+        r"back to the camera|seen from behind|from the back)", re.I)
     # A back view is fine as long as the prompt says there is no face on that
     # side. Without it the reference's front-facing head gets pasted on and
     # comes out rotated.
-    no_face = _re2.compile(r"(no face|back of his (plain white )?head|"
-                           r"face not visible)", _re2.I)
+    no_face = re.compile(r"(no face|back of his (plain white )?head|"
+                           r"face not visible)", re.I)
     backs = [i for i, b in drawn
              if back_view.search(prompt(b))
              and not no_face.search(prompt(b))]
@@ -1197,14 +1347,13 @@ def _warn_off_spec(beats: list[dict], fmt: str = "",
     # description's clothes. "grey overcast light" tells the model how to
     # RENDER, and it renders photographically. Combined with a real-world
     # subject it produced an actual photograph with the character pasted on.
-    import re as _re
-    render_words = _re.compile(
+    render_words = re.compile(
         r"\b(overcast|lighting|lamplight|backlit|glow\w*|shadowy|haze|hazy|"
         r"blurred|out of focus|depth of field|gleaming|shimmer\w*|"
-        r"realistic|detailed|photo\w*|cinematic)\b", _re.I)
+        r"realistic|detailed|photo\w*|cinematic)\b", re.I)
     # "photo cutout" is the one sanctioned photo phrase (see the photo checks
     # below), so it is taken out before looking for stray photo words.
-    cutout = _re.compile(r"\bphoto cutout\b", _re.I)
+    cutout = re.compile(r"\bphoto cutout\b", re.I)
     risky = [(i, sorted(set(w.lower() for w in render_words.findall(
                  cutout.sub(" ", visual(b))))))
              for i, b in enumerate(beats, 1)]
@@ -1239,7 +1388,7 @@ def _warn_off_spec(beats: list[dict], fmt: str = "",
               f"{','.join(map(str, alt_photos[:12]))}")
         print("       the alt is the fallback; it should be the doodle version")
     labels = [i for i, b in enumerate(beats, 1)
-              if _re.search(r'"[^"]+"', visual(b))]
+              if re.search(r'"[^"]+"', visual(b))]
     if len(labels) > n / 4:
         print(f"[warn] {len(labels)} beats with quoted labels in {n} "
               f"(max ~{n // 4}, 1 in 4)")
@@ -1248,10 +1397,10 @@ def _warn_off_spec(beats: list[dict], fmt: str = "",
     # An edit keeps the frame's camera. Asking an edit for a new shot makes the
     # model redraw the whole picture, which breaks the chain it exists for -
     # a new framing needs a fresh image_prompt instead.
-    camera = _re.compile(
+    camera = re.compile(
         r"\b(close-?up|wide shot|medium shot|long shot|two-shot|"
         r"zoom(s|ing)? (in|out)|"
-        r"low[- ]angle|high[- ]angle|camera)\b", _re.I)
+        r"low[- ]angle|high[- ]angle|camera)\b", re.I)
     reframed = [i for i, b in enumerate(beats, 1)
                 if any(camera.search(_edit_parts(e)[0])
                        for e in b.get("edits") or [])]
@@ -1325,6 +1474,7 @@ def _warn_off_spec(beats: list[dict], fmt: str = "",
 # --- images ----------------------------------------------------------------
 
 def cmd_images(args) -> int:
+    """Hand frames.json to flow_runner, then check every edit took effect."""
     run_dir = resolve_run(args.run)
     frames = run_dir / "frames.json"
     if not frames.exists():
@@ -1353,8 +1503,10 @@ def cmd_images(args) -> int:
 
 def cmd_voice(args) -> int:
     """
-    NOT YET VALIDATED against the live ElevenLabs SDK. Run one beat first
-    (--limit 1) before spending credits on a full script.
+    Narrate every beat that has no audio yet, via ElevenLabs.
+
+    --limit N does only the first N beats (a cheap check before a full
+    script), and --force redoes clips that already exist.
     """
     from modules import voice_generator
 
@@ -1463,6 +1615,7 @@ def cmd_voice(args) -> int:
 # --- check -----------------------------------------------------------------
 
 def cmd_check(args) -> int:
+    """Report missing or stale images and missing audio. Changes nothing."""
     run_dir = resolve_run(args.run)
     data = load_script(run_dir)
     beats = data["beats"]
@@ -1523,7 +1676,6 @@ WORD_TIMES_FILE = "word_times.json"
 
 
 def _word_key(word: str) -> str:
-    import re
     return re.sub(r"[^a-z0-9]", "", word.lower())
 
 
@@ -1708,7 +1860,32 @@ def _outro_assets() -> tuple[Path, Path] | None:
     return image, audio
 
 
+def _video_seconds(entries: list[dict]) -> float:
+    """
+    The finished video's length, from the manifest. Mirrors totalFrames in
+    remotion/src/constants.ts.
+
+    A dissolve does NOT shorten the video: its beat carries a dissolve-length
+    tail that the overlap consumes, so the two cancel. A hard cut's pad has no
+    overlap to absorb it, so every hard cut adds CUT_PAD_SECONDS. Leaving the
+    pads out reported a 75-beat video ~8s shorter than it rendered.
+    """
+    def hard_cut(a: dict, b: dict) -> bool:
+        same = bool(a.get("location")) and a.get("location") == b.get("location")
+        return same and not b.get("redraw")
+
+    cuts = sum(1 for a, b in zip(entries, entries[1:]) if hard_cut(a, b))
+    return (sum(e["duration"] for e in entries)
+            + cuts * config.CUT_PAD_SECONDS + OUTRO_HOLD_SECONDS)
+
+
 def cmd_manifest(args) -> int:
+    """
+    Pair every beat's pictures with its narration clip into manifest.json.
+
+    Measures each clip's real duration, times picture changes to their "at"
+    words, and appends the outro beat. Remotion renders from this file alone.
+    """
     run_dir = resolve_run(args.run)
     data = load_script(run_dir)
     beats = data["beats"]
@@ -1801,14 +1978,13 @@ def cmd_manifest(args) -> int:
         print("to build a picture-only manifest for a render test.")
         return 1
 
-    # Appended as an ordinary beat, so it cuts or dissolves in and gets
-    # subtitles like any other. The script never mentions the channel - that
-    # stays banned in pass1_narration.txt - the outro is bolted on here instead.
+    # Appended as an ordinary beat, so it cuts or dissolves in like any other.
+    # The script never mentions the channel (pass1_narration.txt bans it), so
+    # the outro is added here instead.
     if config.OUTRO_ENABLED and not args.silent:
         assets = _outro_assets()
         if assets:
             image_src, audio_src = assets
-            import shutil
             out_image = run_dir / "images" / f"outro{image_src.suffix.lower()}"
             out_audio = run_dir / "audio" / "outro.mp3"
             shutil.copy(image_src, out_image)
@@ -1835,11 +2011,7 @@ def cmd_manifest(args) -> int:
     path = run_dir / "manifest.json"
     path.write_text(json.dumps(entries, indent=2), encoding="utf-8")
 
-    # Crossfades do NOT shorten the video: each beat carries a crossfade-length
-    # tail that its transition consumes, so the two cancel. The real length is
-    # the sum of the audio plus the outro hold. This used to subtract the
-    # overlap and reported a video ~8s shorter than it actually was.
-    total = sum(e["duration"] for e in entries) + OUTRO_HOLD_SECONDS
+    total = _video_seconds(entries)
     print(f"[manifest] {len(entries)} beats -> {path}")
     print(f"[manifest] final video {total:.1f}s ({total / 60:.1f} min)")
     if args.silent:
@@ -1853,8 +2025,8 @@ def cmd_manifest(args) -> int:
 # A full dry run: script, images and audio all fabricated locally so the video
 # can be watched end to end without touching Flow or ElevenLabs. Exists to test
 # the things that are easy to get wrong and expensive to discover late -
-# subtitle timing and legibility, framing, cuts and dissolves, and whether
-# image N really is paired with narration N.
+# frame timing, framing, cuts and dissolves, and whether image N really is
+# paired with narration N.
 
 DEMO_NARRATION = [
     "He had heard the stories about humanity's strongest soldier, but nobody mentioned how short the man was.",
@@ -1875,7 +2047,6 @@ def _demo_image(path: Path, index: int, total: int, caption: str) -> None:
 
     # Distinct hue per beat: if two adjacent beats swap, the colour change makes
     # it obvious on screen even before you read the number.
-    import colorsys
     r, g, b = colorsys.hsv_to_rgb((index / max(1, total)) % 1.0, 0.55, 0.75)
     bg = (int(r * 255), int(g * 255), int(b * 255))
 
@@ -1938,7 +2109,6 @@ def cmd_demo(args) -> int:
             raise SystemExit(f"No images found in {src}")
         print(f"[demo] using {len(supplied)} image(s) from {src}")
 
-    import shutil
     for i, beat in enumerate(beats, start=1):
         if supplied:
             src = supplied[(i - 1) % len(supplied)]
@@ -1948,12 +2118,11 @@ def cmd_demo(args) -> int:
                         beat["narration"])
 
     # Silence, but sized per beat from its own word count rather than a flat
-    # number. Uniform durations would hide exactly the subtitle timing problems
-    # this is meant to expose.
+    # number. Uniform durations would hide exactly the timing problems this is
+    # meant to expose.
     #
     # Uses the same measured words-per-minute the length estimator does, so a
     # demo render comes out the length a real run of the same script would.
-    import re
     for i, beat in enumerate(beats, start=1):
         words = len(re.sub(r"\[[^\]]*\]", " ", beat["narration"]).split())
         seconds = round(
@@ -1998,7 +2167,7 @@ def cmd_music(args) -> int:
         raise SystemExit("Run `python pipeline.py manifest` first - music needs "
                          "the finished video length.")
     entries = json.loads(manifest.read_text())
-    seconds = sum(e["duration"] for e in entries) + OUTRO_HOLD_SECONDS
+    seconds = _video_seconds(entries)
 
     from modules import music_generator
     print(f"[music] composing {seconds:.0f}s for: {prompt[:60]}...")
@@ -2015,6 +2184,7 @@ def cmd_music(args) -> int:
 # --- render ----------------------------------------------------------------
 
 def cmd_render(args) -> int:
+    """Render manifest.json to final.mp4 with Remotion, then mix in music."""
     from modules import video_editor
 
     run_dir = resolve_run(args.run)
@@ -2075,21 +2245,20 @@ def cmd_all(args) -> int:
         ("render", cmd_render),
     ]
 
-    import time as _time
-    started = _time.monotonic()
+    started = time.monotonic()
     timings = []
 
     for i, (name, func) in enumerate(stages, start=1):
         print(f"\n{'=' * 60}\n[{i}/{len(stages)}] {name}\n{'=' * 60}")
-        stage_started = _time.monotonic()
+        stage_started = time.monotonic()
         code = func(args)
-        timings.append((name, _time.monotonic() - stage_started))
+        timings.append((name, time.monotonic() - stage_started))
         if code:
             print(f"\nStopped at '{name}'. Fix the above, then run again - "
                   f"finished work is kept and will be skipped.")
             return code
 
-    total = _time.monotonic() - started
+    total = time.monotonic() - started
     print(f"\n{'=' * 60}")
     print(f"DONE -> {run_dir / 'final.mp4'}")
     print(f"{'=' * 60}")
@@ -2145,7 +2314,7 @@ def main() -> int:
     sp.add_argument("--voice", default=config.ELEVENLABS_DEFAULT_VOICE,
                     choices=sorted(config.ELEVENLABS_VOICES))
     sp.add_argument("--lang", default="en",
-                    help="ru/es route through multilingual_v2 instead of v3")
+                    help="ru/es route through multilingual_v2 instead of v4")
 
     with_run("check", "report what is present and what is missing", cmd_check)
 

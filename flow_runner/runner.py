@@ -17,9 +17,10 @@ script only ever has to type text and click a button.
 Chained frames change that for EDIT frames (pipeline.py writes them into
 frames.json). An edit is made from the frame before it, not from the
 character, so the runner swaps the reference first: chips off, then the parent
-frame on - picked as the newest asset in Flow's library when it was generated
-a moment ago, uploaded from disk otherwise - and types only the change. The
-next fresh frame puts the character back.
+frame on (found in Flow's asset picker by its recorded media id, else as the
+newest asset, else uploaded from disk first), and types only the change. The
+next fresh frame puts the character back. A frame that fails is retried once,
+then the run stops, since every later edit in the chain depends on it.
 
 Usage:
     python runner.py --inspect        # dump the DOM so you can fix config.py
@@ -1479,7 +1480,7 @@ def attach_frame(page, parent: str, made_just_now: bool) -> bool:
     return True
 
 
-# --- Inspect mode (task 1) -------------------------------------------------
+# --- Inspect mode ----------------------------------------------------------
 
 # Builds a reasonably stable CSS selector for one element, preferring the
 # attributes that survive a redeploy (testid, aria-label, id) over class names,
@@ -1633,7 +1634,7 @@ def inspect_page(page):
     print("=" * 72 + "\n")
 
 
-# --- Typing (task 2) -------------------------------------------------------
+# --- Typing ----------------------------------------------------------------
 
 _READ_BACK_JS = "(el) => el.value !== undefined ? el.value : el.innerText"
 
@@ -1710,7 +1711,7 @@ def fill_prompt(page, element, text: str) -> None:
     )
 
 
-# --- Completion detection (task 3) -----------------------------------------
+# --- Completion detection --------------------------------------------------
 
 # Flow's own media UUID, from the `name` query param on the result URL.
 #
@@ -2140,7 +2141,7 @@ def check_for_rejection(page, baseline: int = 0) -> None:
         raise PromptRejected(current[-1][:160])
 
 
-# --- Saving (task 4) -------------------------------------------------------
+# --- Saving ----------------------------------------------------------------
 
 _BLOB_TO_B64_JS = """
 async (url) => {

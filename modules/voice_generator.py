@@ -519,8 +519,8 @@ def generate_batch(narrations: list[str], indices: list[int], out_dir: Path,
 # same line and pick the best. eleven_v4 is not deterministic, so takes differ.
 # ===========================================================================
 
-# A short beat followed by a long one, so a manual take exercises the two-tier
-# rhythm the pipeline actually ships rather than one uniform-length sentence.
+# A short beat followed by a long one, so a manual take exercises the mixed
+# beat lengths the pipeline actually ships rather than one uniform sentence.
 TEST_SCRIPT = (
     "[surprised] Nobody signed off on this. "
     "According to the official fanbook, the cursed fingers taste exactly like "

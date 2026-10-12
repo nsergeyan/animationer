@@ -13,7 +13,7 @@ export const HEIGHT = 1080;
 // change, and a dissolve between two near-identical frames just reads as mush.
 // A change of location dissolves, which is what makes the change legible as a
 // change.
-export const DISSOLVE_FRAMES = 8;   // 0.27s, only when the location changes
+export const DISSOLVE_FRAMES = 8;   // 0.27s, on a location change or a redraw
 
 // Beats are padded by this on a hard cut. The narration mp3s are trimmed tight
 // (no detectable silence at -30dB), so with no pad at all one sentence starts

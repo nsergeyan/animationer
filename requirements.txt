@@ -1,14 +1,15 @@
 # Core pipeline. Everything the voice, music, manifest and render stages need.
 elevenlabs>=2.70.0
 python-dotenv
+# Pixel diff between each chained edit and its parent (pipeline.py's edit check).
+pillow
 
-# Optional: word-level caption alignment (modules/transcriber.py).
+# Optional: word-level alignment (modules/transcriber.py).
 #
-# Left commented out on purpose. Whisper pulls in torch, which is a multi-GB
-# download, and no shipped stage needs it: the render deliberately has no
-# burned-in captions, and transcriber.py imports whisper lazily so the only
-# function the pipeline actually calls from it (strip_tags) works without it.
-# Uncomment if you want to build the caption pass.
+# Only needed when a script's edits name an "at" word: cmd_manifest then times
+# the picture change to the moment that word is spoken. Left commented out on
+# purpose because Whisper pulls in torch, a multi-GB download, and scripts
+# without "at" edits never import it (transcriber.py imports whisper lazily).
 #
 # openai-whisper
 

@@ -19,9 +19,11 @@ rather than a slideshow. In `script.json` a beat carries `image_prompt` /
 change. One picture per beat, so the narration's mix of short (3-5 words),
 medium (6-8) and long (9-12) beats sets how long each picture stays up,
 ~2.4s on average. (An edit may also be `{"at": "six meters", "edit": "..."}`
-to put several pictures in one beat, each timed to its word with Whisper.) A
-fresh drawing in the middle of a location dissolves in instead of jumping, and
-after the image stage every edit is compared with the frame it was made from,
+to put several pictures in one beat, each timed to its word with Whisper.)
+Each edit is made in Flow from its parent picture, so a failed frame is
+retried once and then the whole run stops, since every later edit in the
+chain would have nothing to edit. A fresh drawing in the middle of a location
+dissolves in instead of jumping, and after the image stage every edit is compared with the frame it was made from,
 so ignored edits (two identical frames) are listed with the command to redo
 them. Older scripts with an `image_prompt` on every beat and no edits still
 work unchanged.
@@ -52,7 +54,7 @@ in a loop", it's the engineering needed to make that loop actually reliable:
   results back off the DOM. It paces itself like a human (randomized delays,
   pasted rather than keystroke-perfect text), detects policy rejections vs.
   quota exhaustion vs. one-model-exhausted, and falls back down a model
-  ladder (Pro -> Standard -> Lite) rather than stalling the whole run.
+  ladder (Nano Banana Pro -> 2.1 -> 2 Lite) rather than stalling the whole run.
 - **Non-deterministic TTS drift.** ElevenLabs' `eleven_v4` model isn't
   deterministic and can't be told what a previous call sounded like, so
   generating each beat separately means each one is a different performance.
@@ -143,7 +145,9 @@ real `.mp4` files there, they're just too large to check in). Stage-by-stage:
 | Manifest / timing | `pipeline.py cmd_manifest` | working |
 | Music | `modules/music_generator.py` (ElevenLabs Music) | working |
 | Render | `modules/video_editor.py` + `remotion/` | working |
-| Captions | `modules/transcriber.py` (Whisper word-alignment) | **not wired in** - the current composition deliberately ships with no burned-in captions ("the art carries the frame, the narration carries the meaning"); the word-timing code exists for a future karaoke-style caption pass |
+| Frame timing | `modules/transcriber.py` (Whisper word-alignment) | working - an edit with an `at` word changes picture as that word is spoken, cached per run in `word_times.json` |
+| Edit check | `pipeline.py _report_changes` | working - after images, lists edits the model ignored (frame identical to its parent) with the command to redo them |
+| Captions | - | not built, on purpose: no burned-in captions ("the art carries the frame, the narration carries the meaning"). The word timings above could feed a karaoke-style pass later |
 | Character-consistency scoring | - | not built - no automatic re-roll of an off-model image yet |
 | Cost tracking | - | not built - no per-run API call/cost logging yet |
 
@@ -154,8 +158,9 @@ real `.mp4` files there, they're just too large to check in). Stage-by-stage:
 - **ElevenLabs API** - narration (`eleven_v4` dialogue, batched) and music generation
 - **Remotion** (React + TypeScript) - final video composition and render
 - **ffmpeg** - audio muxing, silence detection, loudness measurement, speed adjustment
-- **OpenAI Whisper** - word-level audio alignment (built, optional dependency,
-  not yet wired into rendering)
+- **OpenAI Whisper** - word-level alignment, used to time a picture change to
+  the word it names
+- **Pillow** - pixel diff between each edit and its parent (the edit check)
 
 ## Project layout
 
@@ -166,7 +171,7 @@ modules/
   voice_generator.py    ElevenLabs narration, batched for voice consistency
   music_generator.py    ElevenLabs Music, per-video bed
   video_editor.py        drives the Remotion render + ffmpeg music mix
-  transcriber.py         Whisper word-alignment (not yet wired into render)
+  transcriber.py         Whisper word-alignment, times picture changes to words
 flow_runner/            Playwright automation of Google Flow's web UI
   runner.py              the automation itself
   config.py               every DOM selector, with the failure each one fixes
@@ -179,7 +184,7 @@ prompts/                the two prompts pasted into an LLM to author a script
   pass2_visuals.txt      pass 2: those beats in, image and music prompts added
 assets/
   reference/              hand-drawn character/environment art, locked into every image call
-  music/                   fallback music bed
+  music/                   fallback bed for scripts with no music_prompt (empty by default)
   outro/                   cached subscribe/like outro clip (generated once, reused)
 output/                  one folder per video run (gitignored, generated)
 ```
@@ -195,6 +200,7 @@ python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 pip install -r flow_runner/requirements.txt
 playwright install chromium
+pip install openai-whisper pillow   # see below
 
 cd remotion && npm install && cd ..
 
@@ -210,6 +216,11 @@ Fill in `.env`:
 - `GOOGLE_FLOW_PROJECT_URL` - the URL of your own project on
   [labs.google/fx/tools/flow](https://labs.google/fx/tools/flow) (create one,
   then copy the URL from the address bar).
+
+`openai-whisper` is only needed when a script's edits name an `at` word (it
+times the picture change), and it pulls in torch, a multi-GB download, so it
+stays commented out in `requirements.txt`. Pillow is used by the edit check
+after the image stage.
 
 Put your character/environment reference art in `assets/reference/` before
 running - every generated image is locked to it.
@@ -229,8 +240,9 @@ cd flow_runner && python3 test_runner.py
 ```
 
 Offline checks for the logic that does not need a browser: scene numbering,
-resume-after-interrupt, the pacing floors that stop the automation from being
-sped up into looking like a bot, rejection-vs-quota message classification, and
+resume-after-interrupt, which chained frames need redoing (`frames_to_make`),
+the pacing floors that stop the automation from being sped up into looking
+like a bot, rejection-vs-quota message classification, and
 `--only` range parsing. Everything Playwright-driven still has to be verified
 against a live session by hand.
 
@@ -243,6 +255,8 @@ against a live session by hand.
 #    that. Out comes the same JSON with image prompts and a music prompt added.
 python pipeline.py init my-video-slug
 # 3. Save the final JSON as output/my-video-slug/script.json.
+#    (Or paste it into NEW_SCRIPT at the top of pipeline.py and run
+#    `python pipeline.py` with no arguments: it makes the run folder itself.)
 
 # 4. Run every stage in order (a Chrome window opens for the image stage -
 #    log in once, attach the reference image, then let it drive itself):
@@ -251,12 +265,15 @@ python pipeline.py --run my-video-slug
 # Or run one stage at a time:
 python pipeline.py prompts   --run my-video-slug   # script.json -> frames.json
 python pipeline.py images    --run my-video-slug   # Flow -> images/
+python pipeline.py images    --run my-video-slug --only 12,14.2
+                                     # redo beat 12 and frame 2 of beat 14
+                                     # (later edits in the same chain too)
 python pipeline.py voice     --run my-video-slug   # ElevenLabs -> audio/
 python pipeline.py manifest  --run my-video-slug    # pair everything + durations
 python pipeline.py music     --run my-video-slug    # compose this video's bed
 python pipeline.py render    --run my-video-slug    # Remotion -> final.mp4
 
-python pipeline.py check     --run my-video-slug    # what's done, what's missing
+python pipeline.py check     --run my-video-slug    # what's done, what's missing, ignored edits
 python pipeline.py demo      --run my-video-slug    # fake a full run, no API calls
 ```
 
