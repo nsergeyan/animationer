@@ -1,295 +1,309 @@
 SCRIPT:
 {
-  "topic": "American Football Explained",
-  "format": "explainer",
-  "plan": {
-    "spine_question": "How does American football actually work and how do you win?",
-    "deflations": [
-      {
-        "assumed": "They use their feet to kick the ball constantly.",
-        "actual": "They rarely kick and mostly throw or run.",
-        "who_decided": "The evolution of the sport's rules.",
-        "build_beat": "[curious] Welcome to the sport of American football.",
-        "drop_beat": "They rarely kick the ball."
-      }
-    ],
-    "cast": [
-      {
-        "name": "Patrick Mahomes",
-        "why": "Famous modern quarterback illustrating the passing game."
-      },
-      {
-        "name": "Travis Kelce",
-        "why": "Famous tight end illustrating catching passes."
-      },
-      {
-        "name": "Sam Darnold",
-        "why": "The quarterback who led the Seattle Seahawks to win Super Bowl LX in 2026."
-      },
-      {
-        "name": "Kenneth Walker III",
-        "why": "The running back who won MVP in Super Bowl LX."
-      }
-    ],
-    "specifics": [
-      {
-        "fact": "The field is 100 yards long.",
-        "source": "NFL Rulebook",
-        "beat": "The playing field is exactly one hundred yards long."
-      },
-      {
-        "fact": "A touchdown is 6 points.",
-        "source": "NFL Rulebook",
-        "beat": "A touchdown rewards your team with a massive six points."
-      },
-      {
-        "fact": "The Seattle Seahawks won Super Bowl LX.",
-        "source": "Super Bowl 2026 news records",
-        "beat": "The Seattle Seahawks defeated the New England Patriots in February."
-      }
-    ],
-    "facts_to_check": [
-      {
-        "claim": "Seattle Seahawks won Super Bowl LX against New England Patriots in February 2026.",
-        "source": "Wikipedia Super Bowl LX / 2026 NFL Season records"
-      },
-      {
-        "claim": "Sam Darnold was the QB for the Seahawks in Super Bowl LX.",
-        "source": "Colin Cowherd NFL Reaction / Sports Media records for Super Bowl LX"
-      },
-      {
-        "claim": "Kenneth Walker III won MVP in Super Bowl LX.",
-        "source": "CBS Sports and Wikipedia records for Super Bowl LX"
-      }
-    ]
-  },
-  "beats": [
-    {
-      "narration": "[curious] Welcome to the sport of American football."
-    },
-    {
-      "narration": "They rarely kick the ball."
-    },
-    {
-      "narration": "They mostly throw and run with it."
-    },
-    {
-      "narration": "The playing field is exactly one hundred yards long."
-    },
-    {
-      "narration": "Imagine a massive green lawn painted with white stripes."
-    },
-    {
-      "narration": "[understated] It resembles a giant barcode."
-    },
-    {
-      "narration": "The ultimate goal is quite simple."
-    },
-    {
-      "narration": "You must advance the ball."
-    },
-    {
-      "narration": "You have to reach the painted end zone to score."
-    },
-    {
-      "narration": "But the opposing team defends it."
-    },
-    {
-      "narration": "They stop you by tackling you hard to the ground."
-    },
-    {
-      "narration": "[deadpan] It is organized chaos."
-    },
-    {
-      "narration": "Thirty two teams play in this league."
-    },
-    {
-      "narration": "The game revolves around ONE strict rule."
-    },
-    {
-      "narration": "[flatly] You get four attempts."
-    },
-    {
-      "narration": "They call these attempts the four downs."
-    },
-    {
-      "narration": "You must move the ball forward at least ten yards."
-    },
-    {
-      "narration": "If you succeed you earn four brand new attempts."
-    },
-    {
-      "narration": "[calm] The cycle starts over again."
-    },
-    {
-      "narration": "If you fail you LOSE the ball."
-    },
-    {
-      "narration": "The other team gets their turn to attack the field."
-    },
-    {
-      "narration": "[thoughtful] Watch the games on television."
-    },
-    {
-      "narration": "You will see a magic... yellow line."
-    },
-    {
-      "narration": "Computer graphics draw it perfectly across the green grass."
-    },
-    {
-      "narration": "That line shows the ten yard target."
-    },
-    {
-      "narration": "[peaceful] It makes watching very easy."
-    },
-    {
-      "narration": "It shows exactly what they need."
-    },
-    {
-      "narration": "The players fight for every single inch."
-    },
-    {
-      "narration": "Because missing the mark means giving the ball away ENTIRELY."
-    },
-    {
-      "narration": "[understated, flatly] The math is truly ruthless."
-    },
-    {
-      "narration": "You either deliver or leave."
-    },
-    {
-      "narration": "Each team has eleven players on the field."
-    },
-    {
-      "narration": "But the MOST important player is the quarterback."
-    },
-    {
-      "narration": "He starts every single play and decides where to attack."
-    },
-    {
-      "narration": "[calm] Think of Patrick Mahomes."
-    },
-    {
-      "narration": "He plays for the Kansas City Chiefs."
-    },
-    {
-      "narration": "Mahomes throws the ball to his receivers with incredible speed."
-    },
-    {
-      "narration": "One of his favorite targets is Travis Kelce."
-    },
-    {
-      "narration": "[softly] Kelce catches the passes."
-    },
-    {
-      "narration": "Other players just run with the ball."
-    },
-    {
-      "narration": "Kenneth Walker is a running back for Seattle."
-    },
-    {
-      "narration": "He simply takes the ball and sprints through heavy traffic."
-    },
-    {
-      "narration": "[flatly] The defense wants to crush him."
-    },
-    {
-      "narration": "They are the very large angry men on the field."
-    },
-    {
-      "narration": "There are two main ways to score."
-    },
-    {
-      "narration": "The best is... the touchdown."
-    },
-    {
-      "narration": "You carry or catch the ball inside the painted end zone."
-    },
-    {
-      "narration": "A touchdown rewards your team with a massive six points."
-    },
-    {
-      "narration": "It requires crossing the final line."
-    },
-    {
-      "narration": "After that you kick the ball."
-    },
-    {
-      "narration": "Kicking it through the yellow goalposts adds one extra point."
-    },
-    {
-      "narration": "[light chuckle] Sometimes you are stopped."
-    },
-    {
-      "narration": "But you might be very close."
-    },
-    {
-      "narration": "Your team can try a field goal."
-    },
-    {
-      "narration": "You kick the ball through the posts for three points."
-    },
-    {
-      "narration": "[calm] Kicking field goals is actually quite common."
-    },
-    {
-      "narration": "It wins many very close games."
-    },
-    {
-      "narration": "You want MORE points than the opponent when time expires."
-    },
-    {
-      "narration": "[deadpan] The clock dictates absolutely everything."
-    },
-    {
-      "narration": "The season ends with the Super Bowl."
-    },
-    {
-      "narration": "It is a massive television event."
-    },
-    {
-      "narration": "Over a hundred million people watch the final championship game."
-    },
-    {
-      "narration": "[curious, softly] Who are the current... kings?"
-    },
-    {
-      "narration": "The Seattle Seahawks defeated the New England Patriots in February."
-    },
-    {
-      "narration": "They won Super Bowl sixty to become the champions."
-    },
-    {
-      "narration": "[peaceful] They lifted the silver trophy."
-    },
-    {
-      "narration": "Quarterback Sam Darnold led his team perfectly."
-    },
-    {
-      "narration": "He finally won his big ultimate ring."
-    },
-    {
-      "narration": "And Kenneth Walker took home the most valuable player award."
-    },
-    {
-      "narration": "It proves ANY team can find glory."
-    },
-    {
-      "narration": "Now you understand the basics."
-    },
-    {
-      "narration": "You know the distance required and how to score points."
-    },
-    {
-      "narration": "You even know the current reigning champions."
-    },
-    {
-      "narration": "Watch the next game."
-    },
-    {
-      "narration": "[content] Grab some snacks and enjoy."
-    }
-  ]
+"topic": "Chess Internet Boom",
+"format": "explainer",
+"plan": {
+"spine_question": "How did the quiet game of chess become a dramatic internet spectacle?",
+"deflations": [
+{
+"assumed": "Chess is a quiet and boring game played by old men.",
+"actual": "It is a fast paced esport filled with drama and streaming personalities.",
+"who_decided": "Online creators and young grandmasters",
+"build_beat": "The quiet gentleman game is totally GONE forever.",
+"drop_beat": "It is loud and fast."
+}
+],
+"cast": [
+{
+"name": "Levy Rozman",
+"why": "Known as GothamChess he is the biggest chess YouTuber who drove the online boom."
+},
+{
+"name": "Magnus Carlsen",
+"why": "The final boss of chess who gave up his title because he got bored."
+},
+{
+"name": "Gukesh D",
+"why": "The teenager who won the World Championship in 2024."
+},
+{
+"name": "Hans Niemann",
+"why": "The American player involved in the wildest cheating scandal in chess history."
+},
+{
+"name": "Hikaru Nakamura",
+"why": "The streaming giant who turned elite chess into an interactive esport."
+}
+],
+"specifics": [
+{
+"fact": "Levy Rozman has 8.2 million YouTube subscribers.",
+"source": "Social Blade October 2026",
+"beat": "His channel skyrocketed to eight million YouTube subscribers today."
+},
+{
+"fact": "Magnus Carlsen's rating is 2823.",
+"source": "FIDE October 2026 list",
+"beat": "As of 2026 his rating is still a staggering 2823."
+},
+{
+"fact": "Gukesh D defeated Ding Liren in 2024 to become youngest champion.",
+"source": "2024 World Chess Championship Results",
+"beat": "In 2024 he defeated Ding in a highly tense match."
+},
+{
+"fact": "Hans Niemann sued for millions over a cheating accusation involving vibrating devices.",
+"source": "2022-2023 Hans Niemann defamation lawsuit",
+"beat": "Wild conspiracy theories about vibrating devices went completely viral everywhere."
+},
+{
+"fact": "Hikaru Nakamura is ranked third globally.",
+"source": "FIDE October 2026 list",
+"beat": "He is ranked third globally."
+}
+],
+"facts_to_check": [
+{
+"claim": "GothamChess has eight million subscribers",
+"source": "YouTube channel page October 2026"
+},
+{
+"claim": "Magnus Carlsen rating is 2823",
+"source": "FIDE live ratings October 2026"
+},
+{
+"claim": "Magnus Carlsen gave up his title voluntarily",
+"source": "Magnus Carlsen 2022 announcement"
+},
+{
+"claim": "Gukesh D is the youngest undisputed champion",
+"source": "FIDE records 2024"
+},
+{
+"claim": "Hans Niemann is ranked twenty first globally",
+"source": "FIDE live ratings August/October 2026"
+},
+{
+"claim": "Hikaru Nakamura is ranked third globally",
+"source": "FIDE live ratings October 2026"
+}
+]
+},
+"beats": [
+{
+"narration": "[curious] Chess used to be incredibly quiet."
+},
+{
+"narration": "Just two people staring forever."
+},
+{
+"narration": "Now it is an internet spectacle."
+},
+{
+"narration": "How did that actually happen?"
+},
+{
+"narration": "[calm] The ancient board game recently invaded your social media feeds."
+},
+{
+"narration": "Creators transformed boring theory into viral content."
+},
+{
+"narration": "Enter a guy named Levy."
+},
+{
+"narration": "Levy Rozman is the famous creator known as GothamChess."
+},
+{
+"narration": "[understated] His channel skyrocketed to eight million YouTube subscribers today."
+},
+{
+"narration": "That makes him the biggest chess teacher ever."
+},
+{
+"narration": "He makes chess FUN."
+},
+{
+"narration": "His shouting face drives millions to play online."
+},
+{
+"narration": "[thoughtful] But those massive crowds found something completely unexpected inside."
+},
+{
+"narration": "The pro scene is absolute chaos."
+},
+{
+"narration": "At the very top sits Magnus Carlsen."
+},
+{
+"narration": "[flatly] He is the final boss."
+},
+{
+"narration": "Magnus has been world number one since 2011."
+},
+{
+"narration": "As of 2026 his rating is still a staggering 2823."
+},
+{
+"narration": "Nobody can actually catch him."
+},
+{
+"narration": "[deadpan] He got so bored he quit the championship."
+},
+{
+"narration": "Magnus voluntarily handed away his official world title completely."
+},
+{
+"narration": "He simply refused to defend it again."
+},
+{
+"narration": "The grind was too exhausting."
+},
+{
+"narration": "[sarcastic] Beating the best players apparently felt like doing chores."
+},
+{
+"narration": "He prefers crushing people in fast online games."
+},
+{
+"narration": "But someone had to rule."
+},
+{
+"narration": "His exit created a massive empty throne."
+},
+{
+"narration": "[thoughtful] The chess world needed a brand new champion right away."
+},
+{
+"narration": "That throne was filled by a literal teenager."
+},
+{
+"narration": "[calm] Indian grandmaster Gukesh D stepped up to the plate."
+},
+{
+"narration": "He seized the ULTIMATE crown."
+},
+{
+"narration": "Gukesh played Ding Liren for the world title."
+},
+{
+"narration": "In 2024 he defeated Ding in a highly tense match."
+},
+{
+"narration": "Gukesh was just eighteen then."
+},
+{
+"narration": "[understated] He became the youngest undisputed classical world champion in history."
+},
+{
+"narration": "Most teens worry about high school."
+},
+{
+"narration": "He memorized endless board variations."
+},
+{
+"narration": "He now faces challenger Javokhir Sindarov next."
+},
+{
+"narration": "Their 2026 match is the youngest title clash ever seen."
+},
+{
+"narration": "The pressure is absolutely immense."
+},
+{
+"narration": "[thoughtful] But classical matches are only half the story."
+},
+{
+"narration": "The real entertainment happens outside the traditional tournament halls."
+},
+{
+"narration": "Professional chess has incredibly wild cheating scandals."
+},
+{
+"narration": "It sounds like reality television."
+},
+{
+"narration": "[clears throat] American player Hans Niemann famously defeated Magnus Carlsen once."
+},
+{
+"narration": "Magnus then accused Hans of cheating."
+},
+{
+"narration": "The internet lost its MIND."
+},
+{
+"narration": "[flatly] Wild conspiracy theories about vibrating devices went completely viral everywhere."
+},
+{
+"narration": "Nobody could actually prove the insane rumors."
+},
+{
+"narration": "Hans sued for millions instead."
+},
+{
+"narration": "The lawsuit eventually settled and Hans kept playing professional tournaments."
+},
+{
+"narration": "[light chuckle] He is currently ranked twenty first globally."
+},
+{
+"narration": "The drama brought millions watching."
+},
+{
+"narration": "Chess thrives on this spicy personal conflict."
+},
+{
+"narration": "Viewers stay for the personalities as much as the moves."
+},
+{
+"narration": "Another major character is American grandmaster Hikaru Nakamura."
+},
+{
+"narration": "Hikaru is a streaming giant."
+},
+{
+"narration": "[calm] He plays multiple fast games while reading his Twitch chat."
+},
+{
+"narration": "He makes grandmaster moves look incredibly effortless."
+},
+{
+"narration": "He is ranked third globally."
+},
+{
+"narration": "Players like Hikaru turned traditional chess into a frantic esport."
+},
+{
+"narration": "[curious] Tournaments now have massive prize pools."
+},
+{
+"narration": "You watch live heart rates."
+},
+{
+"narration": "The players sweat during intense time scrambles."
+},
+{
+"narration": "Every single blunder is instantly broadcast to thousands of fans."
+},
+{
+"narration": "The quiet gentleman game is totally GONE forever."
+},
+{
+"narration": "It is loud and fast."
+},
+{
+"narration": "[content] The next time you see a chessboard remember the chaos."
+},
+{
+"narration": "It is packed with young brilliant superstars."
+},
+{
+"narration": "And quite a few egos."
+},
+{
+"narration": "Chess has finally become the ultimate modern online battleground."
+}
+]
 }
 
 PASS 2 OF 2: THE VISUALS

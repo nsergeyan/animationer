@@ -36,7 +36,593 @@ FLOW_RUNNER = config.ROOT_DIR / "flow_runner" / "runner.py"
 # literal) and run `python pipeline.py` with no arguments: cmd_all turns it into
 # a run folder under output/ (see adopt_pasted_script) and makes the whole
 # video. Set it to {} to work on the most recent run instead.
-NEW_SCRIPT =
+NEW_SCRIPT = {
+"topic": "Chess Internet Boom",
+"format": "explainer",
+"plan": {
+"spine_question": "How did the quiet game of chess become a dramatic internet spectacle?",
+"deflations": [
+{
+"assumed": "Chess is a quiet and boring game played by old men.",
+"actual": "It is a fast paced esport filled with drama and streaming personalities.",
+"who_decided": "Online creators and young grandmasters",
+"build_beat": "The quiet gentleman game is totally GONE forever.",
+"drop_beat": "It is loud and fast."
+}
+],
+"cast": [
+{
+"name": "Levy Rozman",
+"why": "Known as GothamChess he is the biggest chess YouTuber who drove the online boom."
+},
+{
+"name": "Magnus Carlsen",
+"why": "The final boss of chess who gave up his title because he got bored."
+},
+{
+"name": "Gukesh D",
+"why": "The teenager who won the World Championship in 2024."
+},
+{
+"name": "Hans Niemann",
+"why": "The American player involved in the wildest cheating scandal in chess history."
+},
+{
+"name": "Hikaru Nakamura",
+"why": "The streaming giant who turned elite chess into an interactive esport."
+}
+],
+"specifics": [
+{
+"fact": "Levy Rozman has 8.2 million YouTube subscribers.",
+"source": "Social Blade October 2026",
+"beat": "His channel skyrocketed to eight million YouTube subscribers today."
+},
+{
+"fact": "Magnus Carlsen's rating is 2823.",
+"source": "FIDE October 2026 list",
+"beat": "As of 2026 his rating is still a staggering 2823."
+},
+{
+"fact": "Gukesh D defeated Ding Liren in 2024 to become youngest champion.",
+"source": "2024 World Chess Championship Results",
+"beat": "In 2024 he defeated Ding in a highly tense match."
+},
+{
+"fact": "Hans Niemann sued for millions over a cheating accusation involving vibrating devices.",
+"source": "2022-2023 Hans Niemann defamation lawsuit",
+"beat": "Wild conspiracy theories about vibrating devices went completely viral everywhere."
+},
+{
+"fact": "Hikaru Nakamura is ranked second globally.",
+"source": "FIDE October 2026 list",
+"beat": "He is ranked second globally."
+}
+],
+"facts_to_check": [
+{
+"claim": "GothamChess has eight million subscribers",
+"source": "YouTube channel page October 2026"
+},
+{
+"claim": "Magnus Carlsen rating is 2823",
+"source": "FIDE live ratings October 2026"
+},
+{
+"claim": "Magnus Carlsen gave up his title voluntarily",
+"source": "Magnus Carlsen 2022 announcement"
+},
+{
+"claim": "Gukesh D is the youngest undisputed champion",
+"source": "FIDE records 2024"
+},
+{
+"claim": "Hans Niemann is ranked twenty second globally",
+"source": "FIDE live ratings August/October 2026"
+},
+{
+"claim": "Hikaru Nakamura is ranked second globally",
+"source": "FIDE live ratings October 2026"
+}
+],
+"locations": [
+{"name": "the silent chess club", "visual_anchor": "", "music": "calm"},
+{"name": "the youtube streaming desk", "visual_anchor": "", "music": "playful"},
+{"name": "the elite tournament summit", "visual_anchor": "", "music": "playful"},
+{"name": "the world championship stage", "visual_anchor": "", "music": "building"},
+{"name": "the cheating scandal newsroom", "visual_anchor": "", "music": "playful"},
+{"name": "the twitch streaming room", "visual_anchor": "", "music": "playful"},
+{"name": "the esports arena", "visual_anchor": "", "music": "playful"},
+{"name": "the park chess table", "visual_anchor": "", "music": "calm"}
+],
+"setting_anchor": ""
+},
+"beats": [
+{
+"narration": "[curious] Chess used to be incredibly quiet.",
+"location": "the silent chess club",
+"image_prompt": "reference character sits slouched and bored at frame right beside two doodle old men in brown cardigans staring at one green chessboard, wide shot",
+"image_prompt_alt": "reference character leans on one elbow, bored, at frame left while two hunched doodle old men in brown cardigans stare silently at one green chessboard between them, medium-wide shot"
+},
+{
+"narration": "Just two people staring forever.",
+"location": "the silent chess club",
+"edits": [
+"long grey cobwebs appear connecting the old men to the chessboard"
+]
+},
+{
+"narration": "Now it is an internet spectacle.",
+"location": "the silent chess club",
+"edits": [
+"the old men vanish and one giant black smartphone springs up behind the chessboard"
+]
+},
+{
+"narration": "How did that actually happen?",
+"location": "the silent chess club",
+"edits": [
+"a big speech bubble reading \"HOW?\" appears above the character's head"
+]
+},
+{
+"narration": "[calm] The ancient board game recently invaded your social media feeds.",
+"location": "the silent chess club",
+"edits": [
+"the speech bubble vanishes and the chess pieces march up into the smartphone screen"
+]
+},
+{
+"narration": "Creators transformed boring theory into viral content.",
+"location": "the silent chess club",
+"edits": [
+"the chessboard becomes one big grey book spewing red hearts into the phone"
+]
+},
+{
+"narration": "Enter a guy named Levy.",
+"location": "the youtube streaming desk",
+"image_prompt": "reference character, arms folded and curious, stands beside a real photo cutout of Levy Rozman, the chess YouTuber GothamChess, a man with short brown hair, black-rimmed glasses and a short beard in a grey hoodie, roughly pasted onto the drawing, medium shot",
+"image_prompt_alt": "reference character, arms folded and curious, stands at frame right beside a doodle of a man with short brown hair, black-rimmed glasses and a short beard in a grey hoodie, broad-shouldered with short neat hair, grinning into one red microphone, medium-wide shot"
+},
+{
+"narration": "Levy Rozman is the famous creator known as GothamChess.",
+"location": "the youtube streaming desk",
+"edits": [
+"a big banner reading \"GOTHAMCHESS\" appears above the bearded man's head"
+]
+},
+{
+"narration": "[understated] His channel skyrocketed to eight million YouTube subscribers today.",
+"location": "the youtube streaming desk",
+"edits": [
+"the banner vanishes and a tall stack of red video screens rises at frame right"
+]
+},
+{
+"narration": "That makes him the biggest chess teacher ever.",
+"location": "the youtube streaming desk",
+"edits": [
+"the screens become one big green chalkboard with a chess diagram, behind the bearded man"
+]
+},
+{
+"narration": "He makes chess FUN.",
+"location": "the youtube streaming desk",
+"edits": [
+"the bearded man throws both arms up, red shout lines bursting from him"
+]
+},
+{
+"narration": "His shouting face drives millions to play online.",
+"location": "the youtube streaming desk",
+"edits": [
+"the chalkboard vanishes and three tiny doodle players sprint in from frame right"
+]
+},
+{
+"narration": "[thoughtful] But those massive crowds found something completely unexpected inside.",
+"location": "the elite tournament summit",
+"image_prompt": "reference character peeks wide-eyed from frame left toward Magnus Carlsen, a tall man with short tousled blond hair in a navy blazer, seated behind one blue chessboard, low-angle wide shot",
+"image_prompt_alt": "reference character crouches at frame right, wide-eyed, watching a tall man with short tousled blond hair in a navy blazer, lean build, clean-shaven, open white shirt collar, sitting calmly behind one blue chessboard, medium-wide shot"
+},
+{
+"narration": "The pro scene is absolute chaos.",
+"location": "the elite tournament summit",
+"edits": [
+"the chess pieces fly up into the air above the blue chessboard, spinning"
+]
+},
+{
+"narration": "At the very top sits Magnus Carlsen.",
+"location": "the elite tournament summit",
+"edits": [
+"the pieces vanish and a tall stack of chessboards lifts the blond man skyward"
+]
+},
+{
+"narration": "[flatly] He is the final boss.",
+"location": "the elite tournament summit",
+"edits": [
+"the blond man's eyes turn bright red like a video game boss"
+]
+},
+{
+"narration": "Magnus has been world number one since 2011.",
+"location": "the elite tournament summit",
+"edits": [
+"the blond man's eyes return to normal and he folds his arms, smirking"
+]
+},
+{
+"narration": "As of 2026 his rating is still a staggering 2823.",
+"location": "the elite tournament summit",
+"edits": [
+"a big white tag reading \"2823\" hangs from the top chessboard of the stack"
+]
+},
+{
+"narration": "Nobody can actually catch him.",
+"location": "the elite tournament summit",
+"image_prompt": "reference character watches from frame left as three players in grey suits chase Magnus Carlsen, a tall man with short tousled blond hair in a navy blazer, long shot",
+"image_prompt_alt": "reference character sits at frame right, eyebrows raised, while three players in grey suits run after a tall man with short tousled blond hair in a navy blazer, lean build, clean-shaven, open white shirt collar, who walks calmly ahead, wide shot"
+},
+{
+"narration": "[deadpan] He got so bored he quit the championship.",
+"location": "the elite tournament summit",
+"edits": [
+"the three players vanish and the blond man stops mid-step with a huge yawn"
+]
+},
+{
+"narration": "Magnus voluntarily handed away his official world title completely.",
+"location": "the elite tournament summit",
+"edits": [
+"a big white sign reading \"WORLD TITLE\" lands at frame left behind the blond man"
+]
+},
+{
+"narration": "He simply refused to defend it again.",
+"location": "the elite tournament summit",
+"edits": [
+"the blond man turns away from the sign and walks toward frame right"
+]
+},
+{
+"narration": "The grind was too exhausting.",
+"location": "the elite tournament summit",
+"edits": [
+"the sign vanishes and the blond man slumps, sweat drops flying off him"
+]
+},
+{
+"narration": "[sarcastic] Beating the best players apparently felt like doing chores.",
+"location": "the elite tournament summit",
+"edits": [
+"one big blue mop appears beside the blond man and the character smirks"
+]
+},
+{
+"narration": "He prefers crushing people in fast online games.",
+"location": "the elite tournament summit",
+"image_prompt": "reference character leans in, impressed, beside a real photo cutout of Magnus Carlsen, a tall man with short tousled blond hair in a navy blazer, roughly pasted onto the drawing, at one blue laptop, medium two-shot",
+"image_prompt_alt": "reference character leans in from frame right, impressed, watching a doodle of a tall man with short tousled blond hair in a navy blazer, lean build, clean-shaven, open white shirt collar, grinning at one blue laptop, medium shot"
+},
+{
+"narration": "But someone had to rule.",
+"location": "the world championship stage",
+"image_prompt": "reference character at frame right studies one tall empty gold throne while Gukesh D, a slim teenage boy with thick dark wavy hair in a white shirt, waits far left, high-angle wide shot",
+"image_prompt_alt": "reference character sits at frame left, thoughtful, looking up at one tall empty gold throne while a slim teenage boy with thick dark wavy hair in a white shirt, short and narrow-shouldered with a calm serious face, stands quietly at far right, medium-wide shot"
+},
+{
+"narration": "His exit created a massive empty throne.",
+"location": "the world championship stage",
+"edits": [
+"the gold throne grows twice as tall, towering over the character"
+]
+},
+{
+"narration": "[thoughtful] China's Ding Liren claimed it first, in 2023.",
+"location": "the world championship stage",
+"edits": [
+"a slim man with neat short black hair in a grey suit jacket walks in and sits on the throne"
+]
+},
+{
+"narration": "But a literal teenager was coming for it.",
+"location": "the world championship stage",
+"edits": [
+"the wavy-haired boy steps up to the foot of the throne, staring up at the seated man"
+]
+},
+{
+"narration": "[calm] Indian grandmaster Gukesh D stepped up to the plate.",
+"location": "the world championship stage",
+"edits": [
+"the wavy-haired boy rolls up his sleeves, chest puffed out"
+]
+},
+{
+"narration": "He seized the ULTIMATE crown.",
+"location": "the world championship stage",
+"edits": [
+"the grey-suited man slides off the throne as one big gold crown drops onto the boy's head"
+]
+},
+{
+"narration": "Gukesh played Ding Liren for the world title.",
+"location": "the world championship stage",
+"image_prompt": "reference character watches as Gukesh D, a slim teenage boy with thick dark wavy hair in a white shirt, faces Ding Liren, a slim man with neat short black hair in a grey suit jacket, across one green chessboard, medium three-shot",
+"image_prompt_alt": "reference character sits at frame left, leaning forward, as a slim teenage boy with thick dark wavy hair in a white shirt, short and narrow-shouldered with a calm serious face, faces a slim man with neat short black hair in a grey suit jacket, medium height, round calm face, across one green chessboard, wide three-shot"
+},
+{
+"narration": "In 2024 he defeated Ding in a highly tense match.",
+"location": "the world championship stage",
+"edits": [
+"the grey-suited man slumps over the board as the wavy-haired boy raises both fists"
+]
+},
+{
+"narration": "Gukesh was just eighteen then.",
+"location": "the world championship stage",
+"edits": [
+"a big white tag reading \"AGE 18\" appears above the wavy-haired boy"
+]
+},
+{
+"narration": "[understated] He became the youngest undisputed classical world champion in history.",
+"location": "the world championship stage",
+"edits": [
+"the tag vanishes and the character's eyes go wide, mouth open in awe"
+]
+},
+{
+"narration": "Most teens worry about high school.",
+"location": "the world championship stage",
+"edits": [
+"the chessboard and grey-suited man vanish, replaced by a frowning teenager with a red backpack"
+]
+},
+{
+"narration": "He memorized endless board variations.",
+"location": "the world championship stage",
+"edits": [
+"a real photo cutout of a huge chess opening book, roughly pasted onto the drawing, replaces the teenager"
+]
+},
+{
+"narration": "He now faces challenger Javokhir Sindarov next.",
+"location": "the world championship stage",
+"image_prompt": "reference character watches from frame left, curious, as Gukesh D, a slim teenage boy with thick dark wavy hair in a white shirt, stares down Javokhir Sindarov, a tall young man with short dark hair in a light blue suit, low-angle shot",
+"image_prompt_alt": "reference character crouches at frame right, curious, while a slim teenage boy with thick dark wavy hair in a white shirt, short and narrow-shouldered with a calm serious face, stares down a tall young man with short dark hair in a light blue suit, lanky build, clean-shaven, face to face, medium two-shot"
+},
+{
+"narration": "Their 2026 match is the youngest title clash ever seen.",
+"location": "the world championship stage",
+"edits": [
+"a big red lightning bolt crackles between the two young men"
+]
+},
+{
+"narration": "The pressure is absolutely immense.",
+"location": "the world championship stage",
+"edits": [
+"the bolt vanishes, sweat pours off both young men, the character tugs his collar"
+]
+},
+{
+"narration": "[thoughtful] But classical matches are only half the story.",
+"location": "the cheating scandal newsroom",
+"image_prompt": "reference character stands at frame left, thoughtful, beside one big blue chessboard sawn cleanly in half, medium close-up",
+"image_prompt_alt": "reference character sits at frame right, chin on fist, looking down at one big blue chessboard split in two halves with a jagged gap between them, high-angle shot"
+},
+{
+"narration": "The real entertainment happens outside the traditional tournament halls.",
+"location": "the cheating scandal newsroom",
+"edits": [
+"the chessboard vanishes and a big red door swings open at frame right"
+]
+},
+{
+"narration": "Professional chess has incredibly wild cheating scandals.",
+"location": "the cheating scandal newsroom",
+"edits": [
+"a big speech bubble reading \"CHEATING?!\" pops out of the red door"
+]
+},
+{
+"narration": "It sounds like reality television.",
+"location": "the cheating scandal newsroom",
+"edits": [
+"the bubble vanishes and a real photo cutout of an old wooden tube television, roughly pasted onto the drawing, sits beside the door"
+]
+},
+{
+"narration": "[clears throat] American player Hans Niemann famously defeated Magnus Carlsen once.",
+"location": "the cheating scandal newsroom",
+"image_prompt": "reference character gapes at frame right as Hans Niemann, a lanky young man with messy dark hair in a black hoodie, raises his arms across one red chessboard from Magnus Carlsen, a tall man with short tousled blond hair in a navy blazer, three-quarter view",
+"image_prompt_alt": "reference character leans back in shock at frame left while a lanky young man with messy dark hair in a black hoodie, tall and thin, clean-shaven, serious stare, raises his arms across one red chessboard from a tall man with short tousled blond hair in a navy blazer, lean build, clean-shaven, open white shirt collar, medium-wide shot"
+},
+{
+"narration": "Magnus then accused Hans of cheating.",
+"location": "the cheating scandal newsroom",
+"edits": [
+"the blond man stands and points an accusing finger at the lanky young man"
+]
+},
+{
+"narration": "The internet lost its MIND.",
+"location": "the cheating scandal newsroom",
+"edits": [
+"the blond man becomes three small smartphones flashing big red exclamation marks"
+]
+},
+{
+"narration": "[flatly] Wild conspiracy theories about vibrating devices went completely viral everywhere.",
+"location": "the cheating scandal newsroom",
+"edits": [
+"the smartphones rattle with big zigzag shake lines and the character's eyes spin"
+]
+},
+{
+"narration": "Nobody could actually prove the insane rumors.",
+"location": "the cheating scandal newsroom",
+"edits": [
+"the smartphones vanish and the character shrugs with a flat unimpressed look"
+]
+},
+{
+"narration": "Hans sued for millions instead.",
+"location": "the cheating scandal newsroom",
+"edits": [
+"a big tag reading \"$100 MILLION\" appears beside the lanky young man"
+]
+},
+{
+"narration": "The lawsuit eventually settled and Hans kept playing professional tournaments.",
+"location": "the cheating scandal newsroom",
+"image_prompt": "reference character watches from frame left, arms folded, as Hans Niemann, a lanky young man with messy dark hair in a black hoodie, calmly plays at one red chessboard, medium-wide shot",
+"image_prompt_alt": "reference character leans beside one red chessboard at frame right while a lanky young man with messy dark hair in a black hoodie, tall and thin, clean-shaven, serious stare, calmly moves a piece across it, medium shot"
+},
+{
+"narration": "[light chuckle] He is currently ranked twenty second globally.",
+"location": "the cheating scandal newsroom",
+"edits": [
+"the character raises one eyebrow with a small amused smirk"
+]
+},
+{
+"narration": "The drama brought millions watching.",
+"location": "the cheating scandal newsroom",
+"edits": [
+"a real photo cutout of a red-striped popcorn bucket, roughly pasted onto the drawing, appears big at frame right"
+]
+},
+{
+"narration": "Chess thrives on this spicy personal conflict.",
+"location": "the cheating scandal newsroom",
+"edits": [
+"the popcorn bucket vanishes and one big red chili pepper lands on the chessboard"
+]
+},
+{
+"narration": "Viewers stay for the personalities as much as the moves.",
+"location": "the cheating scandal newsroom",
+"edits": [
+"the chili pepper vanishes and the lanky young man turns to grin at the character"
+]
+},
+{
+"narration": "Another major character is American grandmaster Hikaru Nakamura.",
+"location": "the twitch streaming room",
+"image_prompt": "reference character leans in, curious, beside a real photo cutout of Hikaru Nakamura, a dark-haired man in rectangular glasses and a black gaming headset, roughly pasted onto the drawing, at one purple laptop, medium close-up",
+"image_prompt_alt": "reference character leans in from frame right, curious, toward a dark-haired man in rectangular glasses and a black gaming headset, medium build, short neat hair, dark grey t-shirt, typing at one purple laptop, medium shot"
+},
+{
+"narration": "Hikaru is a streaming giant.",
+"location": "the twitch streaming room",
+"edits": [
+"the purple laptop grows huge, towering behind the headset-wearing man"
+]
+},
+{
+"narration": "[calm] He plays multiple fast games while reading his Twitch chat.",
+"location": "the twitch streaming room",
+"edits": [
+"two small purple laptops pop up beside the big one, each showing a chessboard"
+]
+},
+{
+"narration": "He makes grandmaster moves look incredibly effortless.",
+"location": "the twitch streaming room",
+"edits": [
+"the headset-wearing man leans back, arms folded, and the character's jaw drops"
+]
+},
+{
+"narration": "He is ranked second globally.",
+"location": "the twitch streaming room",
+"edits": [
+"a big white tag reading \"#2\" appears above the headset-wearing man"
+]
+},
+{
+"narration": "Players like Hikaru turned traditional chess into a frantic esport.",
+"location": "the twitch streaming room",
+"edits": [
+"the tag and laptops vanish; one big black gaming controller appears at frame right"
+]
+},
+{
+"narration": "[curious] Tournaments now have massive prize pools.",
+"location": "the esports arena",
+"image_prompt": "reference character gapes at frame left as one player in a red esports jersey sits beside one enormous green heap of banknotes, high-angle shot",
+"image_prompt_alt": "reference character stands at frame right, eyes wide, looking up at one enormous green heap of banknotes towering over one seated player in a red esports jersey at frame left, low-angle wide shot"
+},
+{
+"narration": "You watch live heart rates.",
+"location": "the esports arena",
+"edits": [
+"the banknotes vanish; a big red heart with a jagged line floats above the player"
+]
+},
+{
+"narration": "The players sweat during intense time scrambles.",
+"location": "the esports arena",
+"edits": [
+"the heart vanishes; a real photo cutout of a digital chess clock, roughly pasted onto the drawing, appears big beside the sweating player"
+]
+},
+{
+"narration": "Every single blunder is instantly broadcast to thousands of fans.",
+"location": "the esports arena",
+"edits": [
+"the clock vanishes and three tiny doodle fans holding phones appear at frame right"
+]
+},
+{
+"narration": "The quiet gentleman game is totally GONE forever.",
+"location": "the esports arena",
+"edits": [
+"the fans vanish; a big sign reading \"QUIET PLEASE\" cracks in half at frame right"
+]
+},
+{
+"narration": "It is loud and fast.",
+"location": "the esports arena",
+"edits": [
+"the sign vanishes, yellow sound lines burst from the player, the character covers his ears"
+]
+},
+{
+"narration": "[content] The next time you see a chessboard remember the chaos.",
+"location": "the park chess table",
+"image_prompt": "reference character sits slouched beside one big wooden chessboard with small orange flames at its corners, looking at it thoughtfully, medium-long shot",
+"image_prompt_alt": "reference character leans back with one arm resting on the edge of one big wooden chessboard, small orange flames flickering at its corners, eyes half closed, wide shot"
+},
+{
+"narration": "It is packed with young brilliant superstars.",
+"location": "the park chess table",
+"edits": [
+"three tiny doodle young players in hoodies pop up behind the chessboard, grinning"
+]
+},
+{
+"narration": "And quite a few egos.",
+"location": "the park chess table",
+"edits": [
+"the three players' heads swell to giant balloon size, noses in the air"
+]
+},
+{
+"narration": "Chess has finally become the ultimate modern online battleground.",
+"location": "the park chess table",
+"edits": [
+"the players vanish; a big gold laptop rises behind the chessboard; the character smiles wearily"
+]
+}
+]
+}
 
 SCRIPT_TEMPLATE = {
     "topic": "",
