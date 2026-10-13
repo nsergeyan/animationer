@@ -12,13 +12,22 @@ load each beat's image/audio by filename via staticFile().
 
 import json
 import subprocess
+import zlib
 from pathlib import Path
 
 import config
 
 
-def render(manifest_path: Path, run_dir: Path, music_prompt: str | None = None) -> Path:
-    """Render the video from the manifest and return the final .mp4 path."""
+def render(manifest_path: Path, run_dir: Path,
+           moods: dict[str, str] | None = None) -> Path:
+    """
+    Render the video from the manifest and return the final .mp4 path.
+
+    `moods` maps location name -> mood. When given, the bed is built from the
+    mood library and changes with the scenes (mix_moods); otherwise the single
+    bed from find_music (an older run's own music.mp3) is laid under the
+    whole video (mix_music).
+    """
     out_path = run_dir / "final.mp4"
 
     beats = json.loads(manifest_path.read_text())
@@ -36,7 +45,10 @@ def render(manifest_path: Path, run_dir: Path, music_prompt: str | None = None) 
     subprocess.run(cmd, cwd=str(config.REMOTION_DIR), check=True)
 
     if config.MUSIC_ENABLED:
-        mix_music(out_path, run_dir)
+        if moods:
+            mix_moods(out_path, run_dir, beats, moods)
+        else:
+            mix_music(out_path, run_dir)
 
     return out_path
 
@@ -154,4 +166,182 @@ def mix_music(video_path: Path, run_dir: Path | None = None) -> bool:
     mixed.replace(video_path)
     print(f"  [music] done, faded out over the last "
           f"{config.MUSIC_FADE_SECONDS:.0f}s")
+    return True
+
+
+# --- Mood music -------------------------------------------------------------
+#
+# The bed changes with the story: each location names a mood, each mood is a
+# folder of pieces, and the music crossfades where the location changes. Built
+# on the same idea as mix_music, but one input per section instead of one bed.
+
+def mood_library() -> dict[str, list[Path]]:
+    """Every mood folder under MUSIC_MOODS_DIR, with its audio files."""
+    if not config.MUSIC_MOODS_DIR.exists():
+        return {}
+    return {
+        d.name: sorted(p for p in d.iterdir() if p.suffix.lower() in AUDIO_SUFFIXES)
+        for d in sorted(config.MUSIC_MOODS_DIR.iterdir())
+        if d.is_dir() and not d.name.startswith((".", "_"))
+    }
+
+
+# OUTRO_FRAMES in constants.ts: held on the last picture after the final word.
+OUTRO_HOLD_SECONDS = 1.0
+
+
+def _beat_starts(beats: list[dict]) -> tuple[list[float], float]:
+    """
+    Each beat's start on the video timeline, and the total length, in seconds.
+
+    Mirrors beatFrames/totalFrames in remotion/src/constants.ts, in frames so
+    rounding matches: a beat lasts its audio, plus a cut pad on a hard cut. A
+    dissolve's tail is eaten by its overlap, so it adds nothing. mix_moods
+    checks the total against the rendered file, so drift gets reported.
+    """
+    pad = round(config.CUT_PAD_SECONDS * config.FPS)
+    outro = round(OUTRO_HOLD_SECONDS * config.FPS)
+    starts, frame = [], 0
+    for i, beat in enumerate(beats):
+        starts.append(frame / config.FPS)
+        frame += max(1, round(beat["duration"] * config.FPS))
+        if i + 1 < len(beats):
+            nxt = beats[i + 1]
+            same = bool(beat.get("location")) and beat.get("location") == nxt.get("location")
+            if same and not nxt.get("redraw"):
+                frame += pad
+    return starts, (frame + outro) / config.FPS
+
+
+
+def mood_plan(beats: list[dict], moods: dict[str, str], seed: str) -> list[dict]:
+    """
+    The bed as sections: [{"start", "end", "mood", "piece", "locations"}].
+
+    Neighbouring locations with the same mood are one section, so the piece
+    keeps playing instead of restarting. A beat with no location (the outro)
+    stays in the section before it. Each mood gets ONE piece per video, so a
+    location revisited later brings its music back with it.
+    """
+    library = mood_library()
+    starts, total = _beat_starts(beats)
+    sections: list[dict] = []
+    for beat, start in zip(beats, starts):
+        mood = moods.get(beat.get("location") or "")
+        if not mood or (sections and sections[-1]["mood"] == mood):
+            if sections and beat.get("location") and beat["location"] not in sections[-1]["locations"]:
+                sections[-1]["locations"].append(beat["location"])
+            continue
+        files = library[mood]
+        # crc32 rather than hash(): Python salts str hashes per process, so
+        # hash() would pick a different piece on every render.
+        piece = files[zlib.crc32(f"{seed}:{mood}".encode()) % len(files)]
+        sections.append({"start": 0.0 if not sections else start, "mood": mood,
+                         "piece": piece, "locations": [beat["location"]]})
+    for k, sec in enumerate(sections):
+        sec["end"] = sections[k + 1]["start"] if k + 1 < len(sections) else total
+    return sections
+
+
+def _levelled(piece: Path, cache_dir: Path) -> Path:
+    """
+    The piece evened out and set to MUSIC_MOOD_LEVEL_LUFS, cached per run.
+
+    dynaudnorm lifts quiet passages and tames loud ones. Classical recordings
+    swing from near-silence to full orchestra, and without this a solo piano
+    vanished under the voice while an orchestra at the same average level
+    still came through.
+    """
+    out = cache_dir / f"{piece.parent.name}_{piece.stem}.flac"
+    if out.exists() and out.stat().st_mtime >= piece.stat().st_mtime:
+        return out
+    cache_dir.mkdir(parents=True, exist_ok=True)
+    subprocess.run(
+        ["ffmpeg", "-v", "error", "-y", "-i", str(piece),
+         "-af", f"dynaudnorm=f=500:g=31,loudnorm=I={config.MUSIC_MOOD_LEVEL_LUFS}:LRA=7",
+         "-ar", "44100", str(out)],
+        check=True,
+    )
+    return out
+
+
+def mix_moods(video_path: Path, run_dir: Path, beats: list[dict],
+              moods: dict[str, str]) -> bool:
+    """
+    Lay a bed that follows the scenes under the narration, in place.
+
+    Each section is its own ffmpeg input, trimmed to length and delayed to its
+    start. Neighbours overlap by MUSIC_CROSSFADE_SECONDS centred on the
+    location change, fading out and in across it. Same filter notes as
+    mix_music apply (normalize=0, duration=first, -c:v copy). -stream_loop -1
+    on every input lets a piece shorter than its section loop instead of
+    ending early.
+    """
+    sections = mood_plan(beats, moods, run_dir.name)
+    if not sections:
+        return False
+
+    length = video_duration(video_path)
+    _, predicted = _beat_starts(beats)
+    if abs(predicted - length) > 0.2:
+        print(f"  [music] WARNING: timeline says {predicted:.2f}s, video is "
+              f"{length:.2f}s - music switches may miss the scene changes. "
+              f"Check _beat_starts against remotion/src/constants.ts.")
+    sections[-1]["end"] = length
+
+    speech = integrated_loudness(video_path)
+    if speech is None:
+        print("  [music] could not measure the narration, leaving audio as is")
+        return False
+
+    half = config.MUSIC_CROSSFADE_SECONDS / 2
+    inputs, chains = [], []
+    for k, sec in enumerate(sections):
+        piece = _levelled(sec["piece"], run_dir / "music_levelled")
+        level = integrated_loudness(piece)
+        gain = (speech - config.MUSIC_MOOD_UNDER_DB) - (level if level is not None
+                                                         else config.MUSIC_MOOD_LEVEL_LUFS)
+        lead = half if k > 0 else 0.0
+        tail = half if k + 1 < len(sections) else 0.0
+        span = (sec["end"] - sec["start"]) + lead + tail
+        fade_in = config.MUSIC_CROSSFADE_SECONDS if lead else 0.3
+        fade_out = config.MUSIC_CROSSFADE_SECONDS if tail else config.MUSIC_FADE_SECONDS
+        offset = 0.0
+        if sec["mood"] in config.MUSIC_END_ALIGNED_MOODS:
+            offset = max(0.0, video_duration(piece) - span)
+        delay = int((sec["start"] - lead) * 1000)
+        inputs += ["-stream_loop", "-1", "-i", str(piece)]
+        chains.append(
+            f"[{k + 1}:a]atrim=start={offset:.2f}:duration={span:.2f},"
+            f"asetpts=PTS-STARTPTS,volume={gain:.2f}dB,"
+            f"afade=t=in:d={fade_in},"
+            f"afade=t=out:st={max(0.0, span - fade_out):.2f}:d={fade_out},"
+            f"adelay={delay}|{delay}[m{k}]"
+        )
+        print(f"  [music] {sec['start']:6.1f}s  {sec['mood']:9} {sec['piece'].name} "
+              f"({', '.join(sec['locations'])})")
+
+    labels = "".join(f"[m{k}]" for k in range(len(sections)))
+    filters = ";".join(chains) + (
+        f";{labels}amix=inputs={len(sections)}:normalize=0[bed]"
+        f";[0:a][bed]amix=inputs=2:duration=first:normalize=0[out]"
+    )
+    mixed = video_path.with_suffix(".mixed.mp4")
+    cmd = [
+        "ffmpeg", "-y", "-i", str(video_path), *inputs,
+        "-filter_complex", filters,
+        "-map", "0:v", "-map", "[out]",
+        "-c:v", "copy", "-c:a", "aac", "-b:a", "192k",
+        str(mixed),
+    ]
+    result = subprocess.run(cmd, capture_output=True, text=True)
+    if result.returncode != 0:
+        print("  [music] ffmpeg failed, keeping the unmixed video:")
+        print("   ", result.stderr.strip().splitlines()[-1][:160])
+        mixed.unlink(missing_ok=True)
+        return False
+
+    mixed.replace(video_path)
+    print(f"  [music] done, {len(sections)} section(s), "
+          f"{config.MUSIC_MOOD_UNDER_DB:.0f} dB under the narration")
     return True

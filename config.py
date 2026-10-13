@@ -183,19 +183,13 @@ WHISPER_MODEL = "base"
 PREVENT_SLEEP = True
 
 # --- Music ------------------------------------------------------------------
-# A music bed mixed under the narration after Remotion renders. Normally
-# composed per video (MUSIC_PER_VIDEO below); assets/music/ holds an optional
-# shared fallback for scripts with no music_prompt, and the first audio file
-# found there is used.
+# A music bed mixed under the narration after Remotion renders. New scripts
+# use mood music (below). Older runs, from before moods, carry their own
+# ElevenLabs-composed music.mp3 and render over that; assets/music/ holds an
+# optional shared fallback, the first audio file found there is used.
 MUSIC_ENABLED = True
 MUSIC_DIR = ASSETS_DIR / "music"      # fallback bed, used if a run has no music
 
-# Composed per video from the script's own "music_prompt", so a bleak what-if
-# and a silly skit get different beds. Falls back to MUSIC_DIR when a script
-# carries no music_prompt.
-MUSIC_PER_VIDEO = True
-MUSIC_MIN_SECONDS = 10.0
-MUSIC_MAX_SECONDS = 300.0            # API ceiling; longer videos loop the bed
 # How far BELOW the narration the bed sits, in dB. This is measured, not a
 # fixed multiplier: the music is composed fresh per video so its loudness
 # varies run to run, and a blind gain would land anywhere from "fighting the
@@ -204,6 +198,31 @@ MUSIC_MAX_SECONDS = 300.0            # API ceiling; longer videos loop the bed
 MUSIC_DUCK_DB = 18.0
 MUSIC_VOLUME = 0.10          # fallback gain, only if loudness cannot be read
 MUSIC_FADE_SECONDS = 2.0     # fade out over the outro so it does not stop dead
+
+# --- Mood music ---------------------------------------------------------------
+# The bed: every location in the script names a mood
+# (plan.locations[].music) and the music changes with the scene, crossfading
+# on the dissolve. One folder per mood under MUSIC_MOODS_DIR; the folder names
+# ARE the allowed moods. A script with no moods falls back to mix_music.
+#
+# Numbers below were tuned by ear on american_football_explained (2026-10-13)
+# and judged "perfect". The 18 dB MUSIC_DUCK_DB above left sparse classical
+# (solo piano) inaudible while a full orchestra still came through, so each
+# piece is levelled first and then sits much closer to the voice.
+MUSIC_MOODS_DIR = MUSIC_DIR / "moods"
+# Every piece is evened out (quiet passages up, loud ones down) and set to this
+# loudness before the gain, so a solo piano and an orchestra sit level.
+MUSIC_MOOD_LEVEL_LUFS = -23.0
+# How far below the narration the levelled bed sits. No sidechain ducking: the
+# narration has only CUT_PAD_SECONDS between sentences, so a ducker held the
+# music down the whole time and it sat ~18 dB under again.
+MUSIC_MOOD_UNDER_DB = 11.0
+MUSIC_CROSSFADE_SECONDS = 1.5   # centred on the location change
+# Moods whose piece is trimmed so it ENDS with its section, landing the
+# piece's climax on the end of the scene instead of starting from the top.
+MUSIC_END_ALIGNED_MOODS = ("building",)
+# More switches than this gets jumpy. A warning, not an error.
+MUSIC_MAX_SWITCHES = 4
 
 # --- Outro ------------------------------------------------------------------
 # The subscribe/like card, appended as a final BEAT rather than a special

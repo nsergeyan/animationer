@@ -305,7 +305,7 @@ and on any beat that redraws (Section 0C)
 one edits list on every beat (Section 0C)
 one location NAME per beat (visual_anchor and setting_anchor are always "")
 emotion tags remain untouched
-one music_prompt
+one music mood on every location (Section 47)
 
 Your output is the complete final JSON: the pass 1 object with your fields
 merged into it.
@@ -428,7 +428,7 @@ or named subject in each beat.
 Write image_prompt and image_prompt_alt where Section 0C asks for them, and
 edits for every beat, beats 1 to N in order.
 
-Write music_prompt.
+Give every location a music mood (Section 47).
 
 Run Section 41 by checking every beat individually.
 
@@ -2108,6 +2108,8 @@ Check:
 
 if Pass 1 had no locations, locations were generated
 every beat has a physical location
+every plan location has "music": calm, playful or building
+2 or 3 different moods, building at most once
 generated locations are relevant to the narration
 similar consecutive beats reuse locations when appropriate
 4 to 8 locations in total
@@ -2353,34 +2355,37 @@ The reference character may move position between primary and alternate, but
 must remain the same person and remain an observer unless the script explicitly
 requires participation.
 
-47. MUSIC PROMPT
+47. MUSIC MOOD
 
-Write one paragraph of roughly 60 words matching the topic's mood.
+The background music changes with the scenes. Give every entry in
+plan.locations a "music" field with exactly one of these moods:
 
-Name:
+calm      explaining, everyday life, setup, aftermath, wrapping up
+playful   light and upbeat: openings, fun facts, things going well
+building  rising stakes toward one big moment: competition, chaos, a
+          climax. Its peak lands at the END of the location, so give it
+          to the location where the story peaks.
 
-tempo in BPM
-three or four specific instruments
+Use only these three words. Any other word stops the pipeline.
 
-Always include:
+Use 2 or 3 different moods per video.
 
-purely instrumental with no vocals of any kind
+Use building at most once, or on consecutive locations that lead to the
+same peak.
 
-flat consistent energy with no build, no swells, no drops
+A location revisited later keeps its mood, so its music comes back with it.
 
-sits far in the background under a spoken narrator with the mid range left
-clear
-
-understated rather than comedic
+Match the mood to what happens in the location, not to the topic as a whole.
 
 Example:
 
-Sparse instrumental bed matching the topic's mood, around seventy BPM.
-Soft minor-key piano, low sustained strings, faint muted percussion, and
-restrained bass guitar. Flat consistent energy with no build, no swells and no
-drops. Sits far in the background under a spoken narrator with the mid range
-left clear. Purely instrumental with no vocals of any kind. Understated rather
-than comedic.
+"locations": [
+  {"name": "the gridiron field", "visual_anchor": "", "music": "playful"},
+  {"name": "the living room couch", "visual_anchor": "", "music": "calm"},
+  {"name": "the super bowl stadium", "visual_anchor": "", "music": "building"}
+]
+
+Do not write a music_prompt.
 
 48. OUTPUT
 
@@ -2402,11 +2407,11 @@ visual fields merged into it.
 The final object must preserve all original pass 1 information and add:
 
 plan.locations[].visual_anchor
+plan.locations[].music
 plan.setting_anchor
 beats[].image_prompt and beats[].image_prompt_alt where Section 0C asks for
 them
 beats[].edits: exactly one edit line on every beat without an image_prompt
-music_prompt
 
 If Pass 1 contained no locations, the final object must additionally contain
 the generated location assignments required to make every beat physically

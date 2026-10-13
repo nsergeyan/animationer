@@ -10,6 +10,14 @@ venv/
 # Pipeline output (generated per run)
 output/
 
+# Mood music library: public domain, but ~20 MB of audio does not belong in
+# the repo. CREDITS.txt (tracked) lists where to download every file.
+assets/music/moods/**/*.mp3
+assets/music/moods/**/*.wav
+assets/music/moods/**/*.m4a
+assets/music/moods/**/*.flac
+assets/music/moods/**/*.ogg
+
 # Node / Remotion
 remotion/node_modules/
 remotion/out/

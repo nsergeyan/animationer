@@ -1,0 +1,64 @@
+Music library for mood-based beds. One folder per mood; the folder names are
+the moods a script may use (plan.locations[].music). Only public domain / CC0
+recordings, so videos can be monetized without Content ID claims. Add a line
+here for every file you add, with its source and license.
+
+calm/gymnopedie.mp3
+  Erik Satie, Gymnopedie No. 1. License: CC0.
+  https://commons.wikimedia.org/wiki/File:Gymnopedie_No._1..ogg
+
+calm/romanze.mp3
+  W. A. Mozart, Serenade No. 13 in G major, K. 525, II. Romanze. License: public domain.
+  https://commons.wikimedia.org/wiki/File:Mozart_-_Serenade_No._13_for_strings_in_G_major,_K._525_-_Romanze.ogg
+
+playful/rondo.mp3
+  W. A. Mozart, Serenade K. 525, IV. Rondo. License: public domain.
+  https://commons.wikimedia.org/wiki/File:Mozart_K525_Serenade_in_G_Major_4_-_Rondo.ogg
+
+building/mountain_king.mp3
+  Edvard Grieg, Peer Gynt Suite No. 1, In the Hall of the Mountain King,
+  Musopen recording. License: public domain.
+  https://commons.wikimedia.org/wiki/File:Musopen_-_In_the_Hall_Of_The_Mountain_King.ogg
+
+calm/morning_mood.mp3
+  Edvard Grieg, Peer Gynt Suite No. 1, Op. 46, I. Morning Mood, Musopen
+  Symphony. License: public domain.
+  https://commons.wikimedia.org/wiki/File:Grieg_-_Peer_Gynt_Suite_No._1,_Op._46_-_I._Morning_Mood_(Musopen_Symphony).flac
+
+calm/cello_prelude.mp3
+  J. S. Bach, Cello Suite No. 1 in G major, BWV 1007, I. Prelude. License: public domain.
+  https://commons.wikimedia.org/wiki/File:Bach_-_Cello_Suite_no._1_in_G_major,_BWV_1007_-_I._Pr%C3%A9lude.ogg
+
+playful/entertainer.mp3
+  Scott Joplin, The Entertainer (1902). License: public domain.
+  https://commons.wikimedia.org/wiki/File:Scott_Joplin_-_The_Entertainer_(1902).ogg
+
+playful/maple_leaf_rag.mp3
+  Scott Joplin, Maple Leaf Rag (1899). License: public domain.
+  https://commons.wikimedia.org/wiki/File:Scott_Joplin_-_Maple_Leaf_Rag_(1899).ogg
+
+building/mars.mp3
+  Gustav Holst, The Planets, I. Mars, the Bringer of War, United States Air Force
+  Band. License: public domain (US government work).
+  https://commons.wikimedia.org/wiki/File:Holst-_mars.ogg
+
+building/overture_1812.mp3
+  P. I. Tchaikovsky, 1812 Overture, United States Marine Band. License: public
+  domain (US government work). Trimmed to end at 12:11 with a 2s fade, cutting
+  the quiet tail after the finale so the end-aligned climax is the real end.
+  https://commons.wikimedia.org/wiki/File:1812_Overture_-_United_States_Marine_Band.opus
+
+playful/nachtmusik.mp3
+  W. A. Mozart, Serenade K. 525 "Eine kleine Nachtmusik", I. Allegro.
+  License: public domain.
+  https://commons.wikimedia.org/wiki/File:Mozart_K525_Serenade_in_G_Major_1_-_Allegro.ogg
+
+playful/rondo_alla_turca.mp3
+  W. A. Mozart, Piano Sonata No. 11, K. 331, III. Rondo alla Turca.
+  License: public domain.
+  https://commons.wikimedia.org/wiki/File:Rondo_Alla_Turka.ogg
+
+playful/surprise_finale.mp3
+  Joseph Haydn, Symphony No. 94 "Surprise", IV. Finale, Boston Symphony
+  Orchestra, Serge Koussevitzky (historic recording). License: public domain.
+  https://commons.wikimedia.org/wiki/File:Haydn;_Symphony_No._94_%22Surprise%22,_4._Finale_(Allegro_molto).ogg

@@ -9,8 +9,8 @@ re-run on its own and finished work is skipped on the next run.
     voice      script.json -> audio/ via ElevenLabs
     manifest   pairs pictures with narration, measures durations, times
                picture changes to their words, adds the outro beat
-    music      composes this video's bed from the script's music_prompt
     render     manifest.json -> final.mp4 via Remotion, then the music mix
+               (one classical piece per run of locations with the same mood)
 
 With no subcommand every stage runs in order (`all`). `check` reports what is
 present and what is missing without doing anything.
@@ -36,604 +36,7 @@ FLOW_RUNNER = config.ROOT_DIR / "flow_runner" / "runner.py"
 # literal) and run `python pipeline.py` with no arguments: cmd_all turns it into
 # a run folder under output/ (see adopt_pasted_script) and makes the whole
 # video. Set it to {} to work on the most recent run instead.
-NEW_SCRIPT = {
-  "topic": "American Football Explained",
-  "format": "explainer",
-  "plan": {
-    "spine_question": "How does American football actually work and how do you win?",
-    "deflations": [
-      {
-        "assumed": "They use their feet to kick the ball constantly.",
-        "actual": "They rarely kick and mostly throw or run.",
-        "who_decided": "The evolution of the sport's rules.",
-        "build_beat": "[curious] Welcome to the sport of American football.",
-        "drop_beat": "They rarely kick the ball."
-      }
-    ],
-    "cast": [
-      {
-        "name": "Patrick Mahomes",
-        "why": "Famous modern quarterback illustrating the passing game."
-      },
-      {
-        "name": "Travis Kelce",
-        "why": "Famous tight end illustrating catching passes."
-      },
-      {
-        "name": "Sam Darnold",
-        "why": "The quarterback who led the Seattle Seahawks to win Super Bowl LX in 2026."
-      },
-      {
-        "name": "Kenneth Walker III",
-        "why": "Super Bowl LX MVP who then signed with the Kansas City Chiefs in March 2026."
-      }
-    ],
-    "specifics": [
-      {
-        "fact": "The field is 100 yards long.",
-        "source": "NFL Rulebook",
-        "beat": "The playing field is exactly one hundred yards long."
-      },
-      {
-        "fact": "A touchdown is 6 points.",
-        "source": "NFL Rulebook",
-        "beat": "A touchdown rewards your team with a massive six points."
-      },
-      {
-        "fact": "The Seattle Seahawks won Super Bowl LX.",
-        "source": "Super Bowl 2026 news records",
-        "beat": "The Seattle Seahawks defeated the New England Patriots in February."
-      }
-    ],
-    "facts_to_check": [
-      {
-        "claim": "Seattle Seahawks won Super Bowl LX against New England Patriots in February 2026.",
-        "source": "Wikipedia Super Bowl LX / 2026 NFL Season records"
-      },
-      {
-        "claim": "Sam Darnold was the QB for the Seahawks in Super Bowl LX.",
-        "source": "Colin Cowherd NFL Reaction / Sports Media records for Super Bowl LX"
-      },
-      {
-        "claim": "Kenneth Walker III won MVP in Super Bowl LX.",
-        "source": "CBS Sports and Wikipedia records for Super Bowl LX"
-      },
-      {
-        "claim": "Kenneth Walker III signed with the Kansas City Chiefs in March 2026.",
-        "source": "Fox Sports / KIRO7 free agency reports, March 2026"
-      }
-    ],
-    "locations": [
-      {
-        "name": "the gridiron field",
-        "visual_anchor": ""
-      },
-      {
-        "name": "the line of scrimmage",
-        "visual_anchor": ""
-      },
-      {
-        "name": "the team sideline",
-        "visual_anchor": ""
-      },
-      {
-        "name": "the end zone",
-        "visual_anchor": ""
-      },
-      {
-        "name": "the super bowl stadium",
-        "visual_anchor": ""
-      },
-      {
-        "name": "the living room couch",
-        "visual_anchor": ""
-      }
-    ],
-    "setting_anchor": ""
-  },
-  "beats": [
-    {
-      "narration": "[curious] Welcome to the sport of American football.",
-      "location": "the gridiron field",
-      "image_prompt": "reference character stands at frame left looking curious, watching Patrick Mahomes, a curly-haired quarterback in a bright red jersey, holding one brown football high, wide shot",
-      "image_prompt_alt": "reference character stands at frame right looking curious, watching a lean athletic man with short curly hair and a wide grin, a curly-haired quarterback in a bright red jersey, holding one brown football high, medium-wide shot"
-    },
-    {
-      "narration": "They rarely kick the ball.",
-      "location": "the gridiron field",
-      "edits": [
-        "a big sign reading \"KICK?\" appears above the character's head, as wide as his shoulders"
-      ]
-    },
-    {
-      "narration": "They mostly throw and run with it.",
-      "location": "the gridiron field",
-      "edits": [
-        "the sign disappears and a real photo cutout of a brown leather American football, roughly pasted onto the drawing, flies from the quarterback's hand"
-      ]
-    },
-    {
-      "narration": "The field is one hundred yards long, about ninety one meters.",
-      "location": "the gridiron field",
-      "edits": [
-        "the quarterback and football disappear and one long green field strip with white stripes appears beneath the character"
-      ]
-    },
-    {
-      "narration": "Imagine a massive green lawn painted with white stripes.",
-      "location": "the gridiron field",
-      "edits": [
-        "the green field strip widens to twice its size, spreading under the character's feet"
-      ]
-    },
-    {
-      "narration": "A white line crosses it every five yards.",
-      "location": "the gridiron field",
-      "edits": [
-        "the character squints down at the evenly spaced white stripes across the green strip"
-      ]
-    },
-    {
-      "narration": "The ultimate goal is quite simple.",
-      "location": "the gridiron field",
-      "image_prompt": "reference character stands calmly at frame left beside one doodle runner in an orange jersey, one red end zone strip at frame right, wide shot",
-      "image_prompt_alt": "reference character watches from frame right, calm and attentive, as one doodle runner in an orange jersey faces one red end zone strip at frame left, high-angle wide shot"
-    },
-    {
-      "narration": "You must advance the ball.",
-      "location": "the gridiron field",
-      "edits": [
-        "the runner moves halfway toward the red end zone, a brown football tucked under his arm"
-      ]
-    },
-    {
-      "narration": "You have to reach the painted end zone to score.",
-      "location": "the gridiron field",
-      "edits": [
-        "the runner reaches the edge of the red end zone, one foot raised to step in"
-      ]
-    },
-    {
-      "narration": "But the opposing team defends it.",
-      "location": "the gridiron field",
-      "edits": [
-        "the red end zone disappears and one big doodle defender in a purple jersey blocks the runner's path"
-      ]
-    },
-    {
-      "narration": "They stop you by tackling you hard to the ground.",
-      "location": "the gridiron field",
-      "edits": [
-        "the purple defender tackles the runner flat to the ground"
-      ]
-    },
-    {
-      "narration": "That is why players wear helmets and thick pads.",
-      "location": "the gridiron field",
-      "edits": [
-        "a white football helmet appears on the runner's head as the two players tangle in a heap, and the character winces"
-      ]
-    },
-    {
-      "narration": "The NFL has thirty two teams.",
-      "location": "the line of scrimmage",
-      "image_prompt": "reference character stands at frame left, curious, beside one enormous heap of identical white football helmets with one red helmet on top, wide shot",
-      "image_prompt_alt": "reference character sits at the foot of one towering pile of identical white football helmets topped by a single red helmet, looking up curiously, low-angle shot"
-    },
-    {
-      "narration": "The game revolves around ONE strict rule.",
-      "location": "the line of scrimmage",
-      "edits": [
-        "the heap disappears and a big sign reading \"ONE RULE\" appears beside the character, as tall as him"
-      ]
-    },
-    {
-      "narration": "[flatly] You get four attempts.",
-      "location": "the line of scrimmage",
-      "edits": [
-        "the sign disappears and four big brown footballs appear in a row beside the character"
-      ]
-    },
-    {
-      "narration": "They call these attempts the four downs.",
-      "location": "the line of scrimmage",
-      "edits": [
-        "the character stares flatly at the four footballs, one eyebrow raised"
-      ]
-    },
-    {
-      "narration": "Each down is one short play.",
-      "location": "the line of scrimmage",
-      "image_prompt": "reference character stands at frame left beside one doodle runner in an orange jersey crouched behind one long white line across the green field, one brown football in his hands, wide shot"
-    },
-    {
-      "narration": "It ends when the runner is tackled or a pass hits the ground.",
-      "location": "the line of scrimmage",
-      "edits": [
-        "one doodle defender in a purple jersey tackles the runner to the ground a few steps past the white line"
-      ]
-    },
-    {
-      "narration": "Then everyone lines up again, right where the ball stopped.",
-      "location": "the line of scrimmage",
-      "edits": [
-        "the white line moves forward to where the runner fell, and the runner and defender crouch facing each other across it"
-      ]
-    },
-    {
-      "narration": "You must move the ball forward at least ten yards.",
-      "location": "the line of scrimmage",
-      "edits": [
-        "one long yellow arrow appears on the ground starting at the white line, pointing far ahead of the players"
-      ]
-    },
-    {
-      "narration": "If you succeed you earn four brand new attempts.",
-      "location": "the line of scrimmage",
-      "edits": [
-        "four big brown footballs appear in a row at the tip of the yellow arrow"
-      ]
-    },
-    {
-      "narration": "[calm] The cycle starts over again.",
-      "location": "the line of scrimmage",
-      "image_prompt": "reference character sits calmly at frame right watching one doodle runner in an orange jersey jogging forward with one brown football, medium-wide shot",
-      "image_prompt_alt": "reference character sits cross-legged at frame left, calm, as one doodle runner in an orange jersey jogs toward him carrying one brown football, low-angle wide shot"
-    },
-    {
-      "narration": "If you fail you LOSE the ball.",
-      "location": "the line of scrimmage",
-      "edits": [
-        "one big doodle defender in a purple jersey appears beside the runner and snatches the brown football"
-      ]
-    },
-    {
-      "narration": "That is why on the fourth try, most teams kick it away.",
-      "location": "the line of scrimmage",
-      "edits": [
-        "the purple defender disappears and the runner kicks one brown football high and far toward frame right"
-      ]
-    },
-    {
-      "narration": "[thoughtful] Watch the games on television.",
-      "location": "the living room couch",
-      "image_prompt": "reference character sits on one plain blue couch at frame left, thoughtful, facing one boxy black television showing a green striped field, medium shot"
-    },
-    {
-      "narration": "You will see a magic... yellow line.",
-      "location": "the living room couch",
-      "edits": [
-        "one bright yellow line appears across the green field on the television screen"
-      ]
-    },
-    {
-      "narration": "Computer graphics draw it perfectly across the green grass.",
-      "location": "the living room couch",
-      "edits": [
-        "the character leans in close to the screen, eyes wide at the yellow line"
-      ]
-    },
-    {
-      "narration": "That line shows the ten yard target.",
-      "location": "the living room couch",
-      "edits": [
-        "a big white tag reading \"10 YARDS\" appears beside the television, its string touching the yellow line"
-      ]
-    },
-    {
-      "narration": "A game has sixty minutes on the clock.",
-      "location": "the living room couch",
-      "edits": [
-        "the tag disappears and one huge round stopwatch with a black hand appears beside the television"
-      ]
-    },
-    {
-      "narration": "But it lasts over three hours on TV.",
-      "location": "the living room couch",
-      "edits": [
-        "a big sign reading \"3 HOURS\" appears above the television and the character's eyebrows rise"
-      ]
-    },
-    {
-      "narration": "The ball is actually moving for about eleven minutes.",
-      "location": "the living room couch",
-      "edits": [
-        "the sign disappears and a big white tag reading \"11 MIN\" hangs from the stopwatch, the character staring flatly"
-      ]
-    },
-    {
-      "narration": "[understated] The rest is huddles, replays and adverts.",
-      "location": "the living room couch",
-      "edits": [
-        "the stopwatch and tag disappear, the screen switches to a plain fizzy soda bottle advert and the character slumps back"
-      ]
-    },
-    {
-      "narration": "Each team has eleven players on the field.",
-      "location": "the team sideline",
-      "image_prompt": "reference character stands at frame left, attentive, beside three doodle players in plain red jerseys lined up shoulder to shoulder, wide shot",
-      "image_prompt_alt": "reference character stands at frame right, attentive, as three doodle players in plain red jerseys line up shoulder to shoulder facing him, high-angle wide shot"
-    },
-    {
-      "narration": "But each team has fifty three players in total.",
-      "location": "the team sideline",
-      "edits": [
-        "two rows of many more small doodle players in plain red jerseys appear behind the three players"
-      ]
-    },
-    {
-      "narration": "The MOST important player is the quarterback.",
-      "location": "the team sideline",
-      "edits": [
-        "the rows of small players disappear and the middle red player steps forward holding one brown football"
-      ]
-    },
-    {
-      "narration": "He gets the ball first on almost every play and decides where to attack.",
-      "location": "the team sideline",
-      "edits": [
-        "the middle player points ahead and the other two players turn to follow"
-      ]
-    },
-    {
-      "narration": "[calm] Think of Patrick Mahomes.",
-      "location": "the team sideline",
-      "image_prompt": "reference character stands at frame right, interested, beside a real photo cutout of Patrick Mahomes, a curly-haired quarterback in a bright red jersey, roughly pasted onto the drawing, medium shot",
-      "image_prompt_alt": "reference character stands at frame left, interested, beside a doodle of a lean athletic man with short curly hair and a wide grin, a curly-haired quarterback in a bright red jersey, medium-wide shot"
-    },
-    {
-      "narration": "He plays for the Kansas City Chiefs.",
-      "location": "the team sideline",
-      "edits": [
-        "a big sign reading \"CHIEFS\" appears above the quarterback's head"
-      ]
-    },
-    {
-      "narration": "Mahomes throws the ball to his receivers with incredible speed.",
-      "location": "the team sideline",
-      "edits": [
-        "the sign disappears as the quarterback raises his throwing arm and one brown football zips away"
-      ]
-    },
-    {
-      "narration": "One of his favorite targets is Travis Kelce.",
-      "location": "the team sideline",
-      "image_prompt": "reference character stands at frame left, interested, watching Patrick Mahomes, a curly-haired quarterback in a bright red jersey, throw one brown football to Travis Kelce, a tall bearded receiver in a bright red jersey, medium-wide shot",
-      "image_prompt_alt": "reference character stands small at bottom center, interested, as a lean athletic man with short curly hair and a wide grin, a curly-haired quarterback in a bright red jersey, throws one brown football to a very tall broad man with a short beard and swept-back hair, a tall bearded receiver in a bright red jersey, wide shot"
-    },
-    {
-      "narration": "[softly] Kelce catches the passes.",
-      "location": "the team sideline",
-      "edits": [
-        "the tall bearded receiver catches the brown football against his chest"
-      ]
-    },
-    {
-      "narration": "Other players just run with the ball.",
-      "location": "the team sideline",
-      "edits": [
-        "both red-jersey players walk out of the picture and the character turns to look the other way"
-      ]
-    },
-    {
-      "narration": "Kenneth Walker played running back for Seattle.",
-      "location": "the team sideline",
-      "image_prompt": "reference character stands at frame left, impressed, beside a real photo cutout of Kenneth Walker III, a stocky running back in a navy blue jersey, roughly pasted onto the drawing, medium shot",
-      "image_prompt_alt": "reference character stands at frame right, impressed, beside a doodle of a compact muscular man with short dark locks, a stocky running back in a navy blue jersey, cradling one brown football, medium-wide shot"
-    },
-    {
-      "narration": "He simply takes the ball and sprints through heavy traffic.",
-      "location": "the team sideline",
-      "edits": [
-        "the running back leans into a sprint, a brown football tucked tight under one arm"
-      ]
-    },
-    {
-      "narration": "[flatly] The defense wants to crush him.",
-      "location": "the team sideline",
-      "edits": [
-        "one huge doodle defender in a purple jersey appears directly in front of the running back, arms spread wide"
-      ]
-    },
-    {
-      "narration": "Some of them weigh over one hundred fifty kilos.",
-      "location": "the team sideline",
-      "edits": [
-        "the purple defender grows twice as tall, scowling, and the character steps back"
-      ]
-    },
-    {
-      "narration": "There are two main ways to score.",
-      "location": "the end zone",
-      "image_prompt": "reference character stands at frame left, curious, watching Travis Kelce, a tall bearded receiver in a bright red jersey, beside one bright red end zone strip, wide shot",
-      "image_prompt_alt": "reference character sits at frame right, curious, as a very tall broad man with a short beard and swept-back hair, a tall bearded receiver in a bright red jersey, stands at the edge of one bright red end zone strip, wide side view"
-    },
-    {
-      "narration": "The best is... the touchdown.",
-      "location": "the end zone",
-      "edits": [
-        "a big sign reading \"TOUCHDOWN\" appears above the red end zone strip"
-      ]
-    },
-    {
-      "narration": "You carry or catch the ball inside the painted end zone.",
-      "location": "the end zone",
-      "edits": [
-        "the sign disappears and the tall bearded receiver leaps into the red end zone, catching one brown football"
-      ]
-    },
-    {
-      "narration": "A touchdown rewards your team with a massive six points.",
-      "location": "the end zone",
-      "edits": [
-        "a big white tag reading \"+6\" appears above the receiver's head"
-      ]
-    },
-    {
-      "narration": "It requires crossing the final line.",
-      "location": "the end zone",
-      "edits": [
-        "the tag disappears and the character nods slowly, eyebrows raised, impressed"
-      ]
-    },
-    {
-      "narration": "After that you kick the ball.",
-      "location": "the end zone",
-      "edits": [
-        "the receiver disappears and one doodle kicker in a plain red jersey appears beside the end zone, swinging one leg"
-      ]
-    },
-    {
-      "narration": "Kicking it through the yellow goalposts adds one extra point.",
-      "location": "the end zone",
-      "image_prompt": "reference character watches attentively from frame right as one doodle kicker sends one brown football through one tall yellow goalpost, medium-wide shot",
-      "image_prompt_alt": "reference character stands beneath one tall yellow goalpost, looking up attentively, as one doodle kicker in a red jersey sends one brown football sailing between its uprights, low-angle shot"
-    },
-    {
-      "narration": "But sometimes your attack gets stopped early.",
-      "location": "the end zone",
-      "edits": [
-        "the kicker disappears and one doodle defender in a purple jersey blocks one doodle runner in an orange jersey far from the goalpost, the character wincing"
-      ]
-    },
-    {
-      "narration": "But you might be close to the posts.",
-      "location": "the end zone",
-      "edits": [
-        "the yellow goalpost slides much closer to the runner, almost within reach"
-      ]
-    },
-    {
-      "narration": "Your team can try a field goal.",
-      "location": "the end zone",
-      "edits": [
-        "the defender and runner disappear and one doodle kicker in a plain red jersey sends one brown football flying up toward the yellow goalpost"
-      ]
-    },
-    {
-      "narration": "You kick the ball through the posts for three points.",
-      "location": "the end zone",
-      "edits": [
-        "the football vanishes between the uprights and a big white tag reading \"+3\" hangs from the yellow goalpost"
-      ]
-    },
-    {
-      "narration": "[calm] Kicking field goals is actually quite common.",
-      "location": "the end zone",
-      "edits": [
-        "the tag vanishes and the goalpost becomes a real photo cutout of a yellow football goalpost, roughly pasted onto the drawing"
-      ]
-    },
-    {
-      "narration": "It wins many very close games.",
-      "location": "the end zone",
-      "image_prompt": "reference character leans forward at frame left, tense, beside one red bar and one purple bar of almost equal height, wide shot",
-      "image_prompt_alt": "reference character sits at frame right, tense, chin in hand, staring at one red bar standing beside one purple bar of almost equal height, three-quarter medium shot"
-    },
-    {
-      "narration": "You want MORE points than the opponent when time expires.",
-      "location": "the end zone",
-      "edits": [
-        "the red bar grows clearly taller than the purple bar"
-      ]
-    },
-    {
-      "narration": "The season ends with the Super Bowl.",
-      "location": "the super bowl stadium",
-      "image_prompt": "reference character stands at frame left, eyes widening, beside one enormous football stadium shaped like a bowl with a bright gold rim, wide shot",
-      "image_prompt_alt": "reference character stands small in the foreground at frame right, eyes widening, looking up at one enormous bowl-shaped football stadium with a bright gold rim, low-angle wide shot"
-    },
-    {
-      "narration": "About one hundred twenty five million people watched the last one.",
-      "location": "the super bowl stadium",
-      "edits": [
-        "the stadium disappears and one giant boxy black television appears, as tall as the character, with a big sign reading \"125 MILLION\" above it"
-      ]
-    },
-    {
-      "narration": "A thirty second advert costs about eight million dollars.",
-      "location": "the super bowl stadium",
-      "edits": [
-        "the sign disappears and a big white tag reading \"$8 MILLION\" hangs from the television, the character's jaw dropping"
-      ]
-    },
-    {
-      "narration": "The Seattle Seahawks beat the New England Patriots twenty nine to thirteen.",
-      "location": "the super bowl stadium",
-      "image_prompt": "reference character watches eagerly from frame left as Sam Darnold, a dark-haired quarterback in a navy blue jersey, throws past one doodle Patriots player in a silver helmet, medium-wide shot",
-      "image_prompt_alt": "reference character stands at frame right, eager, as a tall lean man with short dark hair and light stubble, a dark-haired quarterback in a navy blue jersey, throws past one doodle player in a silver helmet, wide shot"
-    },
-    {
-      "narration": "They won Super Bowl sixty to become the champions.",
-      "location": "the super bowl stadium",
-      "edits": [
-        "a big sign reading \"SUPER BOWL LX\" appears above the quarterback"
-      ]
-    },
-    {
-      "narration": "[peaceful] They lifted the silver trophy.",
-      "location": "the super bowl stadium",
-      "edits": [
-        "the sign and silver-helmet player vanish; a real photo cutout of a silver football trophy, roughly pasted onto the drawing, rises above the quarterback's head"
-      ]
-    },
-    {
-      "narration": "Quarterback Sam Darnold won his first championship ring.",
-      "location": "the super bowl stadium",
-      "edits": [
-        "the character claps, visibly pleased, beside the beaming quarterback"
-      ]
-    },
-    {
-      "narration": "And Kenneth Walker took home the most valuable player award.",
-      "location": "the super bowl stadium",
-      "image_prompt": "reference character stands at frame right, impressed, watching Kenneth Walker III, a stocky running back in a navy blue jersey, bursting past one doodle player in a silver helmet, low-angle shot",
-      "image_prompt_alt": "reference character stands at frame left, impressed, as a compact muscular man with short dark locks, a stocky running back in a navy blue jersey, bursts past one doodle player in a silver helmet carrying one brown football, wide side view"
-    },
-    {
-      "narration": "A month later, he signed with Kansas City.",
-      "location": "the super bowl stadium",
-      "edits": [
-        "the running back's navy blue jersey turns bright red and the character's jaw drops"
-      ]
-    },
-    {
-      "narration": "Now you understand the basics.",
-      "location": "the living room couch",
-      "image_prompt": "reference character sits back on one plain blue couch at frame left, content, facing one boxy black television showing Sam Darnold, a dark-haired quarterback in a navy blue jersey, medium shot",
-      "image_prompt_alt": "reference character slouches on one plain blue couch at frame right, one arm along the cushions, content, facing one boxy black television showing a tall lean man with short dark hair and light stubble, a dark-haired quarterback in a navy blue jersey, three-quarter view"
-    },
-    {
-      "narration": "You know the distance required and how to score points.",
-      "location": "the living room couch",
-      "edits": [
-        "the television screen switches to a green striped field with one bright yellow line"
-      ]
-    },
-    {
-      "narration": "You even know the current reigning champions.",
-      "location": "the living room couch",
-      "edits": [
-        "the screen switches back to the navy-jerseyed quarterback raising both arms"
-      ]
-    },
-    {
-      "narration": "Watch the next game.",
-      "location": "the living room couch",
-      "edits": [
-        "the character sits forward and points at the television, eyebrows raised"
-      ]
-    },
-    {
-      "narration": "[content] Grab some snacks and enjoy.",
-      "location": "the living room couch",
-      "edits": [
-        "the television vanishes and a real photo cutout of an open bag of potato chips, roughly pasted onto the drawing, appears big beside the character"
-      ]
-    }
-  ],
-  "music_prompt": "Light, easygoing instrumental bed for a friendly sports explainer, around ninety BPM. Muted clean electric guitar, soft brushed snare, warm upright bass, and a gentle marimba pattern. Flat consistent energy with no build, no swells, no drops. Sits far in the background under a spoken narrator with the mid range left clear. Purely instrumental with no vocals of any kind. Understated rather than comedic."
-}
+NEW_SCRIPT =
 
 SCRIPT_TEMPLATE = {
     "topic": "",
@@ -1083,10 +486,46 @@ def _long_chains(frames: list[dict]) -> list[tuple[int, int]]:
     return found
 
 
+def music_moods(data: dict) -> dict[str, str]:
+    """
+    {location: mood} from plan.locations[].music, or {} when the script has
+    no moods (it then renders over its own music.mp3, if it has one).
+
+    Stops on a missing or unknown mood rather than guessing. This runs in the
+    first stage on purpose: a typo here would otherwise only surface at render
+    time, after an hour of image generation.
+    """
+    locations = (data.get("plan") or {}).get("locations") or []
+    moods = {loc.get("name"): str(loc.get("music") or "").strip()
+             for loc in locations if isinstance(loc, dict)}
+    if not any(moods.values()):
+        return {}
+
+    from modules import video_editor
+    library = video_editor.mood_library()
+    used = sorted({b["location"] for b in data["beats"] if b.get("location")})
+    problems = []
+    for loc in used:
+        mood = moods.get(loc)
+        if not mood:
+            problems.append(f"location '{loc}' has no music mood")
+        elif mood not in library:
+            problems.append(f"location '{loc}': unknown mood '{mood}'")
+        elif not library[mood]:
+            problems.append(f"mood '{mood}' has no audio files in "
+                            f"{config.MUSIC_MOODS_DIR / mood}")
+    if problems:
+        raise SystemExit("[music] " + "\n[music] ".join(problems) +
+                         f"\n[music] moods available: {', '.join(library) or 'none'}"
+                         f" (folders in {config.MUSIC_MOODS_DIR})")
+    return {loc: moods[loc] for loc in used}
+
+
 def cmd_prompts(args) -> int:
     """Turn script.json into frames.json and warn about anything off-spec."""
     run_dir = resolve_run(args.run)
     data = load_script(run_dir)
+    music_moods(data)   # stops here on a bad mood, before any images are made
     beats = data["beats"]
     frames = build_frames(data)
     out_path = run_dir / "frames.json"
@@ -1641,6 +1080,7 @@ def cmd_check(args) -> int:
     print(f"beats   : {len(beats)}")
     print(f"images  : {have_i}/{len(frames)} frames")
     print(f"audio   : {have_a}/{len(beats)}")
+    _report_music(run_dir, data)
 
     def summarise(label, missing, fix):
         if not missing:
@@ -1663,6 +1103,26 @@ def cmd_check(args) -> int:
     if ok:
         print("\nEverything present. Next: python pipeline.py manifest")
     return 0 if ok else 1
+
+
+def _report_music(run_dir: Path, data: dict) -> None:
+    """Print the mood music plan: when each piece starts, once timings exist."""
+    moods = music_moods(data)
+    if not moods:
+        return
+    from modules import video_editor
+    manifest = run_dir / "manifest.json"
+    if not manifest.exists():
+        print("music   : " + ", ".join(f"{loc} = {m}" for loc, m in moods.items()))
+        return
+    plan = video_editor.mood_plan(json.loads(manifest.read_text()), moods, run_dir.name)
+    print(f"music   : {len(plan)} section(s)")
+    for sec in plan:
+        print(f"  {_fmt(sec['start']):>7}  {sec['mood']:9} {sec['piece'].name:22} "
+              f"{', '.join(sec['locations'])}")
+    if len(plan) - 1 > config.MUSIC_MAX_SWITCHES:
+        print(f"  WARNING: {len(plan) - 1} music switches, more than "
+              f"{config.MUSIC_MAX_SWITCHES} tends to feel jumpy")
 
 
 # --- Frame timing ------------------------------------------------------------
@@ -2016,7 +1476,7 @@ def cmd_manifest(args) -> int:
     print(f"[manifest] final video {total:.1f}s ({total / 60:.1f} min)")
     if args.silent:
         print(f"[manifest] SILENT placeholder audio at {args.silent}s per beat")
-    print(f"\nNext:  python pipeline.py music")
+    print(f"\nNext:  python pipeline.py render")
     return 0
 
 
@@ -2137,50 +1597,6 @@ def cmd_demo(args) -> int:
     return 0
 
 
-# --- music -----------------------------------------------------------------
-
-def cmd_music(args) -> int:
-    """
-    Compose this video's bed from the script's own music_prompt.
-
-    Runs after manifest because it needs the finished length. Skipped silently
-    when the script carries no music_prompt - the shared bed in assets/music/
-    then covers it, and a missing bed is never fatal.
-    """
-    run_dir = resolve_run(args.run)
-    data = load_script(run_dir)
-    prompt = (data.get("music_prompt") or "").strip()
-    out_path = run_dir / "music.mp3"
-
-    if not config.MUSIC_ENABLED or not config.MUSIC_PER_VIDEO:
-        print("[music] per-video music is off")
-        return 0
-    if not prompt:
-        print("[music] script has no 'music_prompt', using assets/music/ if present")
-        return 0
-    if out_path.exists() and not args.force:
-        print(f"[music] {out_path.name} already exists (--force to redo)")
-        return 0
-
-    manifest = run_dir / "manifest.json"
-    if not manifest.exists():
-        raise SystemExit("Run `python pipeline.py manifest` first - music needs "
-                         "the finished video length.")
-    entries = json.loads(manifest.read_text())
-    seconds = _video_seconds(entries)
-
-    from modules import music_generator
-    print(f"[music] composing {seconds:.0f}s for: {prompt[:60]}...")
-    try:
-        path = music_generator.generate(prompt, seconds, out_path)
-    except Exception as exc:
-        print(f"[music] failed ({type(exc).__name__}: {exc})")
-        print("[music] continuing without a per-video bed")
-        return 0
-    print(f"[music] {path.name} ({path.stat().st_size // 1024} KB)")
-    return 0
-
-
 # --- render ----------------------------------------------------------------
 
 def cmd_render(args) -> int:
@@ -2192,18 +1608,8 @@ def cmd_render(args) -> int:
     if not manifest.exists():
         raise SystemExit(f"No manifest.json in {run_dir}. Run: pipeline.py manifest")
 
-    # A missing bed is not fatal, so this warns rather than stops. But it is
-    # worth shouting about: the music stage sits between manifest and render,
-    # so driving the stages by hand skips it easily, and the result is a
-    # finished video with no music that looks like a completely normal success.
-    if ((load_script(run_dir).get("music_prompt") or "").strip()
-            and not (run_dir / "music.mp3").exists()):
-        print("[render] WARNING: this script has a music_prompt but there is "
-              "no music.mp3 in the run folder.")
-        print("[render] Run `python pipeline.py music` first, or the narration "
-              "renders with no bed under it.")
-
-    final = video_editor.render(manifest, run_dir)
+    moods = music_moods(load_script(run_dir))
+    final = video_editor.render(manifest, run_dir, moods=moods)
     print(f"[render] done -> {final}")
     return 0
 
@@ -2241,7 +1647,6 @@ def cmd_all(args) -> int:
         ("images", cmd_images),
         ("voice", cmd_voice),
         ("manifest", cmd_manifest),
-        ("music", cmd_music),
         ("render", cmd_render),
     ]
 
@@ -2328,10 +1733,6 @@ def main() -> int:
     sp.add_argument("--beats", type=int, default=10)
     sp.add_argument("--images", metavar="DIR",
                     help="use your own photos instead of numbered cards")
-
-    sp = with_run("music", "compose this video's bed from its music_prompt",
-                  cmd_music)
-    sp.add_argument("--force", action="store_true", help="recompose the bed")
 
     sp = with_run("all", "every stage in order (same as no subcommand)", cmd_all)
     sp.set_defaults(only=None, limit=None, force=False, lang="en", silent=None, voice=config.ELEVENLABS_DEFAULT_VOICE)

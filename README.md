@@ -74,11 +74,14 @@ in a loop", it's the engineering needed to make that loop actually reliable:
   A second pass then measures each finished clip's first and last 80ms
   against its own average loudness and flags any that still start or end at
   full speaking volume, with the exact command to re-run just those beats.
-- **Music that doesn't fight the narration.** Each video gets its own
-  ElevenLabs-composed instrumental bed (from the script's own `music_prompt`),
-  measured with `ffmpeg`'s `ebur128` loudness filter and ducked a fixed dB
-  *below the narration's actual measured loudness* rather than a blind gain,
-  since a freshly composed track's loudness varies run to run.
+- **Music that follows the story.** Every location in the script names a mood
+  (`calm`, `playful`, `building`), and the bed switches between public-domain
+  classical pieces as the scenes change, crossfading on the dissolve. Each
+  piece is levelled first (`dynaudnorm` + `loudnorm`), then set a fixed dB
+  *below the narration's actual measured loudness* (`ebur128`), so a solo
+  piano and a full orchestra sit at the same place under the voice. A
+  `building` piece is trimmed to end with its scene, so its climax lands on
+  the story's peak.
 - **Pacing derived from measurement, not taste.** The words-per-minute figure
   the length estimator uses (177) was measured over 231 shipped beats across
   five finished videos: 4207 spoken words against 1425s of tightly-trimmed
@@ -89,7 +92,7 @@ in a loop", it's the engineering needed to make that loop actually reliable:
   lands outside the target, so a badly-sized script gets caught *before* any
   money is spent generating images or audio for it.
 - **A resumable, idempotent CLI.** `pipeline.py` runs each stage
-  (script -> images -> voice -> manifest -> music -> render) as a separate,
+  (script -> images -> voice -> manifest -> render) as a separate,
   file-based step under `output/<run>/`. Finished work is skipped on re-run,
   so a run interrupted an hour in resumes instead of restarting.
 
@@ -113,10 +116,6 @@ prompts/pass2_visuals.txt   --(LLM, by hand)--> + image prompts  =  script.json
                                  cmd_manifest
                           pairs image+audio, measures
                           durations, adds outro card
-                                        |
-                                        v
-                                  cmd_music
-                    ElevenLabs Music, per-video, LUFS-ducked
                                         |
                                         v
                                   cmd_render
@@ -143,7 +142,7 @@ real `.mp4` files there, they're just too large to check in). Stage-by-stage:
 | Images | `flow_runner/` (Playwright + Google Flow) | working, selectors are hand-inspected and will break when Google changes the DOM |
 | Narration | `modules/voice_generator.py` (ElevenLabs) | working |
 | Manifest / timing | `pipeline.py cmd_manifest` | working |
-| Music | `modules/music_generator.py` (ElevenLabs Music) | working |
+| Music | `modules/video_editor.py` `mix_moods` (classical library by mood) | working |
 | Render | `modules/video_editor.py` + `remotion/` | working |
 | Frame timing | `modules/transcriber.py` (Whisper word-alignment) | working - an edit with an `at` word changes picture as that word is spoken, cached per run in `word_times.json` |
 | Edit check | `pipeline.py _report_changes` | working - after images, lists edits the model ignored (frame identical to its parent) with the command to redo them |
@@ -155,7 +154,7 @@ real `.mp4` files there, they're just too large to check in). Stage-by-stage:
 
 - **Python** - pipeline orchestration, all API integrations
 - **Playwright** - browser automation for image generation (`flow_runner/`)
-- **ElevenLabs API** - narration (`eleven_v4` dialogue, batched) and music generation
+- **ElevenLabs API** - narration (`eleven_v4` dialogue, batched)
 - **Remotion** (React + TypeScript) - final video composition and render
 - **ffmpeg** - audio muxing, silence detection, loudness measurement, speed adjustment
 - **OpenAI Whisper** - word-level alignment, used to time a picture change to
@@ -169,8 +168,7 @@ pipeline.py            stage runner / CLI - the main entry point
 config.py               every tunable constant (pacing, style prompt, models, dirs)
 modules/
   voice_generator.py    ElevenLabs narration, batched for voice consistency
-  music_generator.py    ElevenLabs Music, per-video bed
-  video_editor.py        drives the Remotion render + ffmpeg music mix
+  video_editor.py        drives the Remotion render + ffmpeg mood music mix
   transcriber.py         Whisper word-alignment, times picture changes to words
 flow_runner/            Playwright automation of Google Flow's web UI
   runner.py              the automation itself
@@ -181,10 +179,12 @@ remotion/                the render project
   src/components/StillImage.tsx      one static frame, no camera move
 prompts/                the two prompts pasted into an LLM to author a script
   pass1_narration.txt    pass 1: topic and beat count in, narration beats out
-  pass2_visuals.txt      pass 2: those beats in, image and music prompts added
+  pass2_visuals.txt      pass 2: those beats in, image prompts and music moods added
 assets/
   reference/              hand-drawn character/environment art, locked into every image call
-  music/                   fallback bed for scripts with no music_prompt (empty by default)
+  music/                   fallback bed for runs with no moods (empty by default)
+    moods/                 calm/ playful/ building/: the mood library (audio gitignored,
+                           CREDITS.txt lists where to download every file)
   outro/                   cached subscribe/like outro clip (generated once, reused)
 output/                  one folder per video run (gitignored, generated)
 ```
@@ -252,7 +252,7 @@ against a live session by hand.
 # 1. Put your topic and beat count in prompts/pass1_narration.txt and paste it
 #    into an LLM chat (Claude, with web search on). Out comes the narration.
 # 2. Paste that result under "SCRIPT:" in prompts/pass2_visuals.txt and send
-#    that. Out comes the same JSON with image prompts and a music prompt added.
+#    that. Out comes the same JSON with image prompts and music moods added.
 python pipeline.py init my-video-slug
 # 3. Save the final JSON as output/my-video-slug/script.json.
 #    (Or paste it into NEW_SCRIPT at the top of pipeline.py and run
@@ -270,7 +270,6 @@ python pipeline.py images    --run my-video-slug --only 12,14.2
                                      # (later edits in the same chain too)
 python pipeline.py voice     --run my-video-slug   # ElevenLabs -> audio/
 python pipeline.py manifest  --run my-video-slug    # pair everything + durations
-python pipeline.py music     --run my-video-slug    # compose this video's bed
 python pipeline.py render    --run my-video-slug    # Remotion -> final.mp4
 
 python pipeline.py check     --run my-video-slug    # what's done, what's missing, ignored edits
