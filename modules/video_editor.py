@@ -299,8 +299,9 @@ def mix_moods(video_path: Path, run_dir: Path, beats: list[dict],
     for k, sec in enumerate(sections):
         piece = _levelled(sec["piece"], run_dir / "music_levelled")
         level = integrated_loudness(piece)
-        gain = (speech - config.MUSIC_MOOD_UNDER_DB) - (level if level is not None
-                                                         else config.MUSIC_MOOD_LEVEL_LUFS)
+        under = config.MUSIC_MOOD_UNDER_DB + config.MUSIC_MOOD_EXTRA_DB.get(sec["mood"], 0.0)
+        gain = (speech - under) - (level if level is not None
+                                   else config.MUSIC_MOOD_LEVEL_LUFS)
         lead = half if k > 0 else 0.0
         tail = half if k + 1 < len(sections) else 0.0
         span = (sec["end"] - sec["start"]) + lead + tail
@@ -319,7 +320,7 @@ def mix_moods(video_path: Path, run_dir: Path, beats: list[dict],
             f"adelay={delay}|{delay}[m{k}]"
         )
         print(f"  [music] {sec['start']:6.1f}s  {sec['mood']:9} {sec['piece'].name} "
-              f"({', '.join(sec['locations'])})")
+              f"{under:.0f} dB under ({', '.join(sec['locations'])})")
 
     labels = "".join(f"[m{k}]" for k in range(len(sections)))
     filters = ";".join(chains) + (

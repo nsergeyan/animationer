@@ -217,6 +217,11 @@ MUSIC_MOOD_LEVEL_LUFS = -23.0
 # narration has only CUT_PAD_SECONDS between sentences, so a ducker held the
 # music down the whole time and it sat ~18 dB under again.
 MUSIC_MOOD_UNDER_DB = 11.0
+# Extra cut per mood, on top of MUSIC_MOOD_UNDER_DB. Levelling makes every
+# piece equally loud, but busy orchestral pieces fill the speech range with no
+# gaps, so they read as louder under the voice. "building" at 11 dB was judged
+# a little too much on american_football_explained (2026-10-14).
+MUSIC_MOOD_EXTRA_DB = {"building": 2.0}
 MUSIC_CROSSFADE_SECONDS = 1.5   # centred on the location change
 # Moods whose piece is trimmed so it ENDS with its section, landing the
 # piece's climax on the end of the scene instead of starting from the top.
