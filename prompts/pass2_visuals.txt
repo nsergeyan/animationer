@@ -1,309 +1,320 @@
 SCRIPT:
 {
-"topic": "Chess Internet Boom",
-"format": "explainer",
-"plan": {
-"spine_question": "How did the quiet game of chess become a dramatic internet spectacle?",
-"deflations": [
-{
-"assumed": "Chess is a quiet and boring game played by old men.",
-"actual": "It is a fast paced esport filled with drama and streaming personalities.",
-"who_decided": "Online creators and young grandmasters",
-"build_beat": "The quiet gentleman game is totally GONE forever.",
-"drop_beat": "It is loud and fast."
-}
-],
-"cast": [
-{
-"name": "Levy Rozman",
-"why": "Known as GothamChess he is the biggest chess YouTuber who drove the online boom."
-},
-{
-"name": "Magnus Carlsen",
-"why": "The final boss of chess who gave up his title because he got bored."
-},
-{
-"name": "Gukesh D",
-"why": "The teenager who won the World Championship in 2024."
-},
-{
-"name": "Hans Niemann",
-"why": "The American player involved in the wildest cheating scandal in chess history."
-},
-{
-"name": "Hikaru Nakamura",
-"why": "The streaming giant who turned elite chess into an interactive esport."
-}
-],
-"specifics": [
-{
-"fact": "Levy Rozman has 8.2 million YouTube subscribers.",
-"source": "Social Blade October 2026",
-"beat": "His channel skyrocketed to eight million YouTube subscribers today."
-},
-{
-"fact": "Magnus Carlsen's rating is 2823.",
-"source": "FIDE October 2026 list",
-"beat": "As of 2026 his rating is still a staggering 2823."
-},
-{
-"fact": "Gukesh D defeated Ding Liren in 2024 to become youngest champion.",
-"source": "2024 World Chess Championship Results",
-"beat": "In 2024 he defeated Ding in a highly tense match."
-},
-{
-"fact": "Hans Niemann sued for millions over a cheating accusation involving vibrating devices.",
-"source": "2022-2023 Hans Niemann defamation lawsuit",
-"beat": "Wild conspiracy theories about vibrating devices went completely viral everywhere."
-},
-{
-"fact": "Hikaru Nakamura is ranked third globally.",
-"source": "FIDE October 2026 list",
-"beat": "He is ranked third globally."
-}
-],
-"facts_to_check": [
-{
-"claim": "GothamChess has eight million subscribers",
-"source": "YouTube channel page October 2026"
-},
-{
-"claim": "Magnus Carlsen rating is 2823",
-"source": "FIDE live ratings October 2026"
-},
-{
-"claim": "Magnus Carlsen gave up his title voluntarily",
-"source": "Magnus Carlsen 2022 announcement"
-},
-{
-"claim": "Gukesh D is the youngest undisputed champion",
-"source": "FIDE records 2024"
-},
-{
-"claim": "Hans Niemann is ranked twenty first globally",
-"source": "FIDE live ratings August/October 2026"
-},
-{
-"claim": "Hikaru Nakamura is ranked third globally",
-"source": "FIDE live ratings October 2026"
-}
-]
-},
-"beats": [
-{
-"narration": "[curious] Chess used to be incredibly quiet."
-},
-{
-"narration": "Just two people staring forever."
-},
-{
-"narration": "Now it is an internet spectacle."
-},
-{
-"narration": "How did that actually happen?"
-},
-{
-"narration": "[calm] The ancient board game recently invaded your social media feeds."
-},
-{
-"narration": "Creators transformed boring theory into viral content."
-},
-{
-"narration": "Enter a guy named Levy."
-},
-{
-"narration": "Levy Rozman is the famous creator known as GothamChess."
-},
-{
-"narration": "[understated] His channel skyrocketed to eight million YouTube subscribers today."
-},
-{
-"narration": "That makes him the biggest chess teacher ever."
-},
-{
-"narration": "He makes chess FUN."
-},
-{
-"narration": "His shouting face drives millions to play online."
-},
-{
-"narration": "[thoughtful] But those massive crowds found something completely unexpected inside."
-},
-{
-"narration": "The pro scene is absolute chaos."
-},
-{
-"narration": "At the very top sits Magnus Carlsen."
-},
-{
-"narration": "[flatly] He is the final boss."
-},
-{
-"narration": "Magnus has been world number one since 2011."
-},
-{
-"narration": "As of 2026 his rating is still a staggering 2823."
-},
-{
-"narration": "Nobody can actually catch him."
-},
-{
-"narration": "[deadpan] He got so bored he quit the championship."
-},
-{
-"narration": "Magnus voluntarily handed away his official world title completely."
-},
-{
-"narration": "He simply refused to defend it again."
-},
-{
-"narration": "The grind was too exhausting."
-},
-{
-"narration": "[sarcastic] Beating the best players apparently felt like doing chores."
-},
-{
-"narration": "He prefers crushing people in fast online games."
-},
-{
-"narration": "But someone had to rule."
-},
-{
-"narration": "His exit created a massive empty throne."
-},
-{
-"narration": "[thoughtful] The chess world needed a brand new champion right away."
-},
-{
-"narration": "That throne was filled by a literal teenager."
-},
-{
-"narration": "[calm] Indian grandmaster Gukesh D stepped up to the plate."
-},
-{
-"narration": "He seized the ULTIMATE crown."
-},
-{
-"narration": "Gukesh played Ding Liren for the world title."
-},
-{
-"narration": "In 2024 he defeated Ding in a highly tense match."
-},
-{
-"narration": "Gukesh was just eighteen then."
-},
-{
-"narration": "[understated] He became the youngest undisputed classical world champion in history."
-},
-{
-"narration": "Most teens worry about high school."
-},
-{
-"narration": "He memorized endless board variations."
-},
-{
-"narration": "He now faces challenger Javokhir Sindarov next."
-},
-{
-"narration": "Their 2026 match is the youngest title clash ever seen."
-},
-{
-"narration": "The pressure is absolutely immense."
-},
-{
-"narration": "[thoughtful] But classical matches are only half the story."
-},
-{
-"narration": "The real entertainment happens outside the traditional tournament halls."
-},
-{
-"narration": "Professional chess has incredibly wild cheating scandals."
-},
-{
-"narration": "It sounds like reality television."
-},
-{
-"narration": "[clears throat] American player Hans Niemann famously defeated Magnus Carlsen once."
-},
-{
-"narration": "Magnus then accused Hans of cheating."
-},
-{
-"narration": "The internet lost its MIND."
-},
-{
-"narration": "[flatly] Wild conspiracy theories about vibrating devices went completely viral everywhere."
-},
-{
-"narration": "Nobody could actually prove the insane rumors."
-},
-{
-"narration": "Hans sued for millions instead."
-},
-{
-"narration": "The lawsuit eventually settled and Hans kept playing professional tournaments."
-},
-{
-"narration": "[light chuckle] He is currently ranked twenty first globally."
-},
-{
-"narration": "The drama brought millions watching."
-},
-{
-"narration": "Chess thrives on this spicy personal conflict."
-},
-{
-"narration": "Viewers stay for the personalities as much as the moves."
-},
-{
-"narration": "Another major character is American grandmaster Hikaru Nakamura."
-},
-{
-"narration": "Hikaru is a streaming giant."
-},
-{
-"narration": "[calm] He plays multiple fast games while reading his Twitch chat."
-},
-{
-"narration": "He makes grandmaster moves look incredibly effortless."
-},
-{
-"narration": "He is ranked third globally."
-},
-{
-"narration": "Players like Hikaru turned traditional chess into a frantic esport."
-},
-{
-"narration": "[curious] Tournaments now have massive prize pools."
-},
-{
-"narration": "You watch live heart rates."
-},
-{
-"narration": "The players sweat during intense time scrambles."
-},
-{
-"narration": "Every single blunder is instantly broadcast to thousands of fans."
-},
-{
-"narration": "The quiet gentleman game is totally GONE forever."
-},
-{
-"narration": "It is loud and fast."
-},
-{
-"narration": "[content] The next time you see a chessboard remember the chaos."
-},
-{
-"narration": "It is packed with young brilliant superstars."
-},
-{
-"narration": "And quite a few egos."
-},
-{
-"narration": "Chess has finally become the ultimate modern online battleground."
-}
-]
+  "topic": "cricket-explained",
+  "format": "explainer",
+  "plan": {
+    "spine_question": "How can a game last five days and end in a draw, and how does cricket actually work?",
+    "deflations": [
+      {
+        "assumed": "Cricket is just a confusing British version of baseball.",
+        "actual": "Cricket is a massive global sport with completely unique rules and three distinct formats.",
+        "who_decided": "The evolution of the sport over centuries and its massive adoption in South Asia.",
+        "build_beat": "From far away, cricket looks like baseball.",
+        "drop_beat": "[flatly] After that, almost nothing is the same."
+      }
+    ],
+    "cast": [
+      {
+        "name": "Jasprit Bumrah",
+        "why": "Star fast bowler for India who dominated the 2026 T20 World Cup."
+      },
+      {
+        "name": "Virat Kohli",
+        "why": "India's biggest star, now plays only One Day cricket after quitting Tests and T20s."
+      },
+      {
+        "name": "Aiden Markram",
+        "why": "South African batter who scored a historic 136 in the 2025 WTC Final."
+      },
+      {
+        "name": "Pat Cummins",
+        "why": "Australian captain who led his team to the 2023 World Cup victory."
+      }
+    ],
+    "specifics": [
+      {
+        "fact": "India beat New Zealand by 96 runs in the 2026 T20 World Cup final in Ahmedabad, the biggest margin in a T20 World Cup final.",
+        "source": "newsonair.gov.in, 8 March 2026",
+        "beat": "They beat New Zealand by ninety six runs in the final."
+      },
+      {
+        "fact": "Bumrah took 14 wickets, most of the tournament, 4/15 in the final.",
+        "source": "T20 World Cup 2026 statistics",
+        "beat": "He got fourteen batters out, more than anyone."
+      },
+      {
+        "fact": "South Africa beat Australia in the 2025 WTC final at Lord's, Markram 136.",
+        "source": "ICC WTC 2025 final",
+        "beat": "Aiden Markram scored one hundred thirty six runs."
+      },
+      {
+        "fact": "Australia beat India in the 2023 ODI World Cup final in Ahmedabad, Cummins captain, their sixth title.",
+        "source": "ICC 2023 Cricket World Cup",
+        "beat": "Australia has won this World Cup six times."
+      }
+    ],
+    "facts_to_check": [
+      {
+        "claim": "India won 2026 T20 WC by 96 runs, biggest final margin; Bumrah 14 wickets, 4 in final",
+        "source": "newsonair.gov.in, ratopati, navbharatlive"
+      },
+      {
+        "claim": "South Africa won 2025 WTC final vs Australia at Lord's, Markram 136",
+        "source": "ICC"
+      },
+      {
+        "claim": "Australia six ODI World Cups, 2023 final vs India in Ahmedabad",
+        "source": "ICC"
+      },
+      {
+        "claim": "Narendra Modi Stadium, Ahmedabad: world's largest cricket stadium, about 132,000 capacity",
+        "source": "Wikipedia / GCA"
+      },
+      {
+        "claim": "Twenty20 started in England in 2003",
+        "source": "ECB / Wikipedia"
+      },
+      {
+        "claim": "Ten ways of being out in the Laws of Cricket",
+        "source": "MCC Laws of Cricket"
+      },
+      {
+        "claim": "Kohli quit T20Is 2024 and Tests May 2025, ODI only, aged 37, aims for 2027 World Cup",
+        "source": "crictracker, cricket.com"
+      },
+      {
+        "claim": "Kohli is the most followed cricketer on Instagram",
+        "source": "Instagram"
+      }
+    ]
+  },
+  "beats": [
+    {
+      "narration": "[curious] A cricket match can last five days."
+    },
+    {
+      "narration": "They stop for lunch."
+    },
+    {
+      "narration": "They stop again for tea."
+    },
+    {
+      "narration": "[deadpan] And then it can end in a draw."
+    },
+    {
+      "narration": "From far away, cricket looks like baseball."
+    },
+    {
+      "narration": "One player throws a ball."
+    },
+    {
+      "narration": "Another player hits it."
+    },
+    {
+      "narration": "[flatly] After that, almost nothing is the same."
+    },
+    {
+      "narration": "Two teams of eleven players share one big field."
+    },
+    {
+      "narration": "The batter holds a wide, flat wooden bat."
+    },
+    {
+      "narration": "Behind him stand three wooden sticks called stumps."
+    },
+    {
+      "narration": "Two tiny pieces called bails sit on top."
+    },
+    {
+      "narration": "Together they make the wicket."
+    },
+    {
+      "narration": "The bowler runs in and delivers a hard leather ball."
+    },
+    {
+      "narration": "His arm must stay straight."
+    },
+    {
+      "narration": "[deadpan] Throwing it is illegal."
+    },
+    {
+      "narration": "Usually the ball bounces once before it reaches the batter."
+    },
+    {
+      "narration": "The bounce can send it anywhere."
+    },
+    {
+      "narration": "The batting team wants runs."
+    },
+    {
+      "narration": "After a hit, the two batters can run between the wickets."
+    },
+    {
+      "narration": "Each trip is one run."
+    },
+    {
+      "narration": "[calm] But hitting it far is better."
+    },
+    {
+      "narration": "If the ball reaches the rope, that is four runs."
+    },
+    {
+      "narration": "If it flies over the rope, that is six."
+    },
+    {
+      "narration": "The fielding team wants the batters out."
+    },
+    {
+      "narration": "[understated] There are ten ways to do it."
+    },
+    {
+      "narration": "The ball can knock the bails off."
+    },
+    {
+      "narration": "Or a fielder catches the ball before it lands."
+    },
+    {
+      "narration": "An out batter walks off and the next one comes in."
+    },
+    {
+      "narration": "Ten outs end the team's innings."
+    },
+    {
+      "narration": "[thoughtful] Why not eleven?"
+    },
+    {
+      "narration": "The last batter has no partner to run with."
+    },
+    {
+      "narration": "Then the two teams swap roles."
+    },
+    {
+      "narration": "Cricket comes in three formats."
+    },
+    {
+      "narration": "Test cricket is the oldest."
+    },
+    {
+      "narration": "[peaceful] The players wear all white."
+    },
+    {
+      "narration": "This is the five day format from the start."
+    },
+    {
+      "narration": "South Africa won the World Test Championship in twenty twenty five."
+    },
+    {
+      "narration": "They beat Australia in the final at Lord's in London."
+    },
+    {
+      "narration": "Aiden Markram scored one hundred thirty six runs."
+    },
+    {
+      "narration": "A good batter can stay in all day."
+    },
+    {
+      "narration": "[curious] Quick question before we go on."
+    },
+    {
+      "narration": "Which sport is next?"
+    },
+    {
+      "narration": "Write it in the comments."
+    },
+    {
+      "narration": "[deadpan] Not everyone has five days free."
+    },
+    {
+      "narration": "So England invented Twenty Twenty cricket in two thousand three."
+    },
+    {
+      "narration": "Each team gets just one hundred twenty balls."
+    },
+    {
+      "narration": "A match takes three hours."
+    },
+    {
+      "narration": "Players wear bright team colors."
+    },
+    {
+      "narration": "Batters swing at almost everything."
+    },
+    {
+      "narration": "India won this format's World Cup in March twenty twenty six."
+    },
+    {
+      "narration": "They beat New Zealand by ninety six runs in the final."
+    },
+    {
+      "narration": "[understated] No final had ever been that one sided."
+    },
+    {
+      "narration": "Their star is fast bowler Jasprit Bumrah."
+    },
+    {
+      "narration": "He got fourteen batters out, the most of anyone."
+    },
+    {
+      "narration": "The third format sits in the middle."
+    },
+    {
+      "narration": "[calm] One Day games give each team three hundred balls."
+    },
+    {
+      "narration": "A match lasts about eight hours."
+    },
+    {
+      "narration": "Australia has won this World Cup six times."
+    },
+    {
+      "narration": "The latest was in twenty twenty three."
+    },
+    {
+      "narration": "Pat Cummins was captain."
+    },
+    {
+      "narration": "They beat India in the final, in Ahmedabad."
+    },
+    {
+      "narration": "[softly] The home crowd went quiet."
+    },
+    {
+      "narration": "That stadium is the biggest cricket ground in the world."
+    },
+    {
+      "narration": "It holds about one hundred thirty thousand people."
+    },
+    {
+      "narration": "[thoughtful] In India, cricket is close to a religion."
+    },
+    {
+      "narration": "Its king is Virat Kohli."
+    },
+    {
+      "narration": "He has quit Test and Twenty Twenty cricket."
+    },
+    {
+      "narration": "Now he only plays One Day games."
+    },
+    {
+      "narration": "At thirty seven, he still wants the next World Cup."
+    },
+    {
+      "narration": "[light chuckle] No cricketer has more Instagram followers."
+    },
+    {
+      "narration": "Five days, eight hours, or three hours."
+    },
+    {
+      "narration": "It is all one fight."
+    },
+    {
+      "narration": "The bowler tries to hit three wooden sticks."
+    },
+    {
+      "narration": "[content] The batter guards them with a flat piece of wood."
+    }
+  ]
 }
 
 PASS 2 OF 2: THE VISUALS
@@ -539,6 +550,21 @@ before it: the image tool sees only that previous picture and your edit line,
 and changes nothing else. Small changes, cut together every 1.5 to 4 seconds,
 are what make the stills move.
 
+THE COMMENT BREAK
+
+Near the middle, Pass 1 has 2 or 3 short beats that ask the viewer a question
+to answer in the comments. Give them their own location named
+"the comment break". It opens with an image_prompt: the reference character
+alone on the white page, facing the viewer, holding up a big blank sign with
+one large question mark on it. Edits on the next beats: he points down toward
+the bottom edge of the frame, then gives a small nod. Never draw a comment
+box, phone, app screen, buttons or any other interface, and no words on the
+sign.
+
+Its plan.locations entry copies the music mood of the location just before
+it, so the music keeps playing through the break. It does not count toward
+the 4 to 8 locations.
+
 PLAN EACH LOCATION AS ONE SCENE
 
 Before writing any prompt for a location, decide:
@@ -576,7 +602,7 @@ WRITING AN EDIT
 One line of 4 to 15 words that says only what changes. Start with the thing
 that changes:
 
-the character raises his right hand to wave
+the character's eyes go wide
 the crocodile opens its jaws wide
 a big sign reading "LATE" appears above the door
 the measuring tape disappears
@@ -598,11 +624,51 @@ the crocodile's back, and "a small tag" came back too small to read.
 one big red car appears on the ground at frame right, past the crocodile's tail
 a big white tag reading "6 M" hangs from the end of the tape
 
+USE THE WHOLE PAGE
+
+The page has five spots: frame left, frame centre, frame right, top of the
+frame, and the bottom foreground. Left alone, every new thing lands in the
+same spot as the last one, so a whole location looks like one picture with
+its right side swapped out.
+
+- Every edit that adds something names its spot. No position is not allowed.
+- A new thing never goes in the spot the previous added thing used, unless
+  it replaces it on purpose.
+- Within one location, use at least three different spots.
+- Labels and tags go at the top of the frame or right next to what they
+  label, not always above the same thing.
+- The reference character does not have to stay in one place: on a redraw
+  or a new location, put him at frame centre or frame right sometimes.
+- Vary size too: one thing big in the foreground, the next small and far.
+
 REACTIONS ARE THE SAFEST MOTION
 
-When a line adds nothing new to the picture, change the character: his eyes go
-wide, he crosses his arms, he leans in, he shrugs. These are the most reliable
-edits there are. Never let two pictures in a row look the same.
+When a line adds nothing new to the picture, change the character's FACE or
+HEAD: his eyes go wide, his eyebrows rise, his eyelids droop, his mouth drops
+open, he tilts his head, he leans in, a sweat drop appears. These are the most
+reliable edits there are. Never let two pictures in a row look the same.
+
+TWO ARMS, TWO HANDS
+
+An edit that changes an arm pose often ADDS an arm instead of moving the old
+one: "the character checking his wrist", while one hand held a bat up, came
+back with three arms. "The character holding up one finger" was given to a
+batter gripping his bat with both hands, who grew a third hand. So:
+
+Keep track of what each figure's hands are doing through the chain, from the
+opening picture on.
+
+Never give the character an arm or hand action while either hand is
+holding something. No pointing, waving, wrist checks, crossed arms, shrugs,
+head scratches, clapping or holding up fingers. Use a face or head reaction
+instead, or make the change around him (a sign, a tag, an object appearing).
+
+When both hands are free, at most ONE arm action every 4 edits, and say which
+arm and where it ends up: "the character's right arm points at the sign".
+Never an arm action and a new held object in the same edit.
+
+The same goes for every other figure in the picture: once a figure holds
+something, its arms stay as they are.
 
 In edits the reference character is "the character". Never write reference
 character in an edit: an edit has no character art attached, only the
@@ -2126,7 +2192,8 @@ every plan location has "music": calm, playful or building
 2 or 3 different moods, building at most once
 generated locations are relevant to the narration
 similar consecutive beats reuse locations when appropriate
-4 to 8 locations in total
+4 to 8 locations in total, plus "the comment break"
+"the comment break" has the same music mood as the location before it
 every location has a corresponding plan.locations entry
 every visual_anchor is ""
 setting_anchor is ""
@@ -2245,6 +2312,9 @@ a beat with an image_prompt has no edits; every other beat has exactly one
 every beat is exactly one picture: an image_prompt, or one edit
 no edit asks for a camera, a framing or a drawing style
 no edit says reference character or names a person
+no edit gives an arm or hand action to a figure whose hand holds something,
+and arm actions are at most one every 4 edits
+every adding edit names a spot, and no location uses fewer than three spots
 no location runs more than about 5 edits without a redraw
 no picture in a chain holds more than two things besides the reference
 character

@@ -37,591 +37,617 @@ FLOW_RUNNER = config.ROOT_DIR / "flow_runner" / "runner.py"
 # a run folder under output/ (see adopt_pasted_script) and makes the whole
 # video. Set it to {} to work on the most recent run instead.
 NEW_SCRIPT = {
-"topic": "Chess Internet Boom",
-"format": "explainer",
-"plan": {
-"spine_question": "How did the quiet game of chess become a dramatic internet spectacle?",
-"deflations": [
-{
-"assumed": "Chess is a quiet and boring game played by old men.",
-"actual": "It is a fast paced esport filled with drama and streaming personalities.",
-"who_decided": "Online creators and young grandmasters",
-"build_beat": "The quiet gentleman game is totally GONE forever.",
-"drop_beat": "It is loud and fast."
-}
-],
-"cast": [
-{
-"name": "Levy Rozman",
-"why": "Known as GothamChess he is the biggest chess YouTuber who drove the online boom."
-},
-{
-"name": "Magnus Carlsen",
-"why": "The final boss of chess who gave up his title because he got bored."
-},
-{
-"name": "Gukesh D",
-"why": "The teenager who won the World Championship in 2024."
-},
-{
-"name": "Hans Niemann",
-"why": "The American player involved in the wildest cheating scandal in chess history."
-},
-{
-"name": "Hikaru Nakamura",
-"why": "The streaming giant who turned elite chess into an interactive esport."
-}
-],
-"specifics": [
-{
-"fact": "Levy Rozman has 8.2 million YouTube subscribers.",
-"source": "Social Blade October 2026",
-"beat": "His channel skyrocketed to eight million YouTube subscribers today."
-},
-{
-"fact": "Magnus Carlsen's rating is 2823.",
-"source": "FIDE October 2026 list",
-"beat": "As of 2026 his rating is still a staggering 2823."
-},
-{
-"fact": "Gukesh D defeated Ding Liren in 2024 to become youngest champion.",
-"source": "2024 World Chess Championship Results",
-"beat": "In 2024 he defeated Ding in a highly tense match."
-},
-{
-"fact": "Hans Niemann sued for millions over a cheating accusation involving vibrating devices.",
-"source": "2022-2023 Hans Niemann defamation lawsuit",
-"beat": "Wild conspiracy theories about vibrating devices went completely viral everywhere."
-},
-{
-"fact": "Hikaru Nakamura is ranked second globally.",
-"source": "FIDE October 2026 list",
-"beat": "He is ranked second globally."
-}
-],
-"facts_to_check": [
-{
-"claim": "GothamChess has eight million subscribers",
-"source": "YouTube channel page October 2026"
-},
-{
-"claim": "Magnus Carlsen rating is 2823",
-"source": "FIDE live ratings October 2026"
-},
-{
-"claim": "Magnus Carlsen gave up his title voluntarily",
-"source": "Magnus Carlsen 2022 announcement"
-},
-{
-"claim": "Gukesh D is the youngest undisputed champion",
-"source": "FIDE records 2024"
-},
-{
-"claim": "Hans Niemann is ranked twenty second globally",
-"source": "FIDE live ratings August/October 2026"
-},
-{
-"claim": "Hikaru Nakamura is ranked second globally",
-"source": "FIDE live ratings October 2026"
-}
-],
-"locations": [
-{"name": "the silent chess club", "visual_anchor": "", "music": "calm"},
-{"name": "the youtube streaming desk", "visual_anchor": "", "music": "playful"},
-{"name": "the elite tournament summit", "visual_anchor": "", "music": "playful"},
-{"name": "the world championship stage", "visual_anchor": "", "music": "building"},
-{"name": "the cheating scandal newsroom", "visual_anchor": "", "music": "playful"},
-{"name": "the twitch streaming room", "visual_anchor": "", "music": "playful"},
-{"name": "the esports arena", "visual_anchor": "", "music": "playful"},
-{"name": "the park chess table", "visual_anchor": "", "music": "calm"}
-],
-"setting_anchor": ""
-},
-"beats": [
-{
-"narration": "[curious] Chess used to be incredibly quiet.",
-"location": "the silent chess club",
-"image_prompt": "reference character sits slouched and bored at frame right beside two doodle old men in brown cardigans staring at one green chessboard, wide shot",
-"image_prompt_alt": "reference character leans on one elbow, bored, at frame left while two hunched doodle old men in brown cardigans stare silently at one green chessboard between them, medium-wide shot"
-},
-{
-"narration": "Just two people staring forever.",
-"location": "the silent chess club",
-"edits": [
-"long grey cobwebs appear connecting the old men to the chessboard"
-]
-},
-{
-"narration": "Now it is an internet spectacle.",
-"location": "the silent chess club",
-"edits": [
-"the old men vanish and one giant black smartphone springs up behind the chessboard"
-]
-},
-{
-"narration": "How did that actually happen?",
-"location": "the silent chess club",
-"edits": [
-"a big speech bubble reading \"HOW?\" appears above the character's head"
-]
-},
-{
-"narration": "[calm] The ancient board game recently invaded your social media feeds.",
-"location": "the silent chess club",
-"edits": [
-"the speech bubble vanishes and the chess pieces march up into the smartphone screen"
-]
-},
-{
-"narration": "Creators transformed boring theory into viral content.",
-"location": "the silent chess club",
-"edits": [
-"the chessboard becomes one big grey book spewing red hearts into the phone"
-]
-},
-{
-"narration": "Enter a guy named Levy.",
-"location": "the youtube streaming desk",
-"image_prompt": "reference character, arms folded and curious, stands beside a real photo cutout of Levy Rozman, the chess YouTuber GothamChess, a man with short brown hair, black-rimmed glasses and a short beard in a grey hoodie, roughly pasted onto the drawing, medium shot",
-"image_prompt_alt": "reference character, arms folded and curious, stands at frame right beside a doodle of a man with short brown hair, black-rimmed glasses and a short beard in a grey hoodie, broad-shouldered with short neat hair, grinning into one red microphone, medium-wide shot"
-},
-{
-"narration": "Levy Rozman is the famous creator known as GothamChess.",
-"location": "the youtube streaming desk",
-"edits": [
-"a big banner reading \"GOTHAMCHESS\" appears above the bearded man's head"
-]
-},
-{
-"narration": "[understated] His channel skyrocketed to eight million YouTube subscribers today.",
-"location": "the youtube streaming desk",
-"edits": [
-"the banner vanishes and a tall stack of red video screens rises at frame right"
-]
-},
-{
-"narration": "That makes him the biggest chess teacher ever.",
-"location": "the youtube streaming desk",
-"edits": [
-"the screens become one big green chalkboard with a chess diagram, behind the bearded man"
-]
-},
-{
-"narration": "He makes chess FUN.",
-"location": "the youtube streaming desk",
-"edits": [
-"the bearded man throws both arms up, red shout lines bursting from him"
-]
-},
-{
-"narration": "His shouting face drives millions to play online.",
-"location": "the youtube streaming desk",
-"edits": [
-"the chalkboard vanishes and three tiny doodle players sprint in from frame right"
-]
-},
-{
-"narration": "[thoughtful] But those massive crowds found something completely unexpected inside.",
-"location": "the elite tournament summit",
-"image_prompt": "reference character peeks wide-eyed from frame left toward Magnus Carlsen, a tall man with short tousled blond hair in a navy blazer, seated behind one blue chessboard, low-angle wide shot",
-"image_prompt_alt": "reference character crouches at frame right, wide-eyed, watching a tall man with short tousled blond hair in a navy blazer, lean build, clean-shaven, open white shirt collar, sitting calmly behind one blue chessboard, medium-wide shot"
-},
-{
-"narration": "The pro scene is absolute chaos.",
-"location": "the elite tournament summit",
-"edits": [
-"the chess pieces fly up into the air above the blue chessboard, spinning"
-]
-},
-{
-"narration": "At the very top sits Magnus Carlsen.",
-"location": "the elite tournament summit",
-"edits": [
-"the pieces vanish and a tall stack of chessboards lifts the blond man skyward"
-]
-},
-{
-"narration": "[flatly] He is the final boss.",
-"location": "the elite tournament summit",
-"edits": [
-"the blond man's eyes turn bright red like a video game boss"
-]
-},
-{
-"narration": "Magnus has been world number one since 2011.",
-"location": "the elite tournament summit",
-"edits": [
-"the blond man's eyes return to normal and he folds his arms, smirking"
-]
-},
-{
-"narration": "As of 2026 his rating is still a staggering 2823.",
-"location": "the elite tournament summit",
-"edits": [
-"a big white tag reading \"2823\" hangs from the top chessboard of the stack"
-]
-},
-{
-"narration": "Nobody can actually catch him.",
-"location": "the elite tournament summit",
-"image_prompt": "reference character watches from frame left as three players in grey suits chase Magnus Carlsen, a tall man with short tousled blond hair in a navy blazer, long shot",
-"image_prompt_alt": "reference character sits at frame right, eyebrows raised, while three players in grey suits run after a tall man with short tousled blond hair in a navy blazer, lean build, clean-shaven, open white shirt collar, who walks calmly ahead, wide shot"
-},
-{
-"narration": "[deadpan] He got so bored he quit the championship.",
-"location": "the elite tournament summit",
-"edits": [
-"the three players vanish and the blond man stops mid-step with a huge yawn"
-]
-},
-{
-"narration": "Magnus voluntarily handed away his official world title completely.",
-"location": "the elite tournament summit",
-"edits": [
-"a big white sign reading \"WORLD TITLE\" lands at frame left behind the blond man"
-]
-},
-{
-"narration": "He simply refused to defend it again.",
-"location": "the elite tournament summit",
-"edits": [
-"the blond man turns away from the sign and walks toward frame right"
-]
-},
-{
-"narration": "The grind was too exhausting.",
-"location": "the elite tournament summit",
-"edits": [
-"the sign vanishes and the blond man slumps, sweat drops flying off him"
-]
-},
-{
-"narration": "[sarcastic] Beating the best players apparently felt like doing chores.",
-"location": "the elite tournament summit",
-"edits": [
-"one big blue mop appears beside the blond man and the character smirks"
-]
-},
-{
-"narration": "He prefers crushing people in fast online games.",
-"location": "the elite tournament summit",
-"image_prompt": "reference character leans in, impressed, beside a real photo cutout of Magnus Carlsen, a tall man with short tousled blond hair in a navy blazer, roughly pasted onto the drawing, at one blue laptop, medium two-shot",
-"image_prompt_alt": "reference character leans in from frame right, impressed, watching a doodle of a tall man with short tousled blond hair in a navy blazer, lean build, clean-shaven, open white shirt collar, grinning at one blue laptop, medium shot"
-},
-{
-"narration": "But someone had to rule.",
-"location": "the world championship stage",
-"image_prompt": "reference character at frame right studies one tall empty gold throne while Gukesh D, a slim teenage boy with thick dark wavy hair in a white shirt, waits far left, high-angle wide shot",
-"image_prompt_alt": "reference character sits at frame left, thoughtful, looking up at one tall empty gold throne while a slim teenage boy with thick dark wavy hair in a white shirt, short and narrow-shouldered with a calm serious face, stands quietly at far right, medium-wide shot"
-},
-{
-"narration": "His exit created a massive empty throne.",
-"location": "the world championship stage",
-"edits": [
-"the gold throne grows twice as tall, towering over the character"
-]
-},
-{
-"narration": "[thoughtful] China's Ding Liren claimed it first, in 2023.",
-"location": "the world championship stage",
-"edits": [
-"a slim man with neat short black hair in a grey suit jacket walks in and sits on the throne"
-]
-},
-{
-"narration": "But a literal teenager was coming for it.",
-"location": "the world championship stage",
-"edits": [
-"the wavy-haired boy steps up to the foot of the throne, staring up at the seated man"
-]
-},
-{
-"narration": "[calm] Indian grandmaster Gukesh D stepped up to the plate.",
-"location": "the world championship stage",
-"edits": [
-"the wavy-haired boy rolls up his sleeves, chest puffed out"
-]
-},
-{
-"narration": "He seized the ULTIMATE crown.",
-"location": "the world championship stage",
-"edits": [
-"the grey-suited man slides off the throne as one big gold crown drops onto the boy's head"
-]
-},
-{
-"narration": "Gukesh played Ding Liren for the world title.",
-"location": "the world championship stage",
-"image_prompt": "reference character watches as Gukesh D, a slim teenage boy with thick dark wavy hair in a white shirt, faces Ding Liren, a slim man with neat short black hair in a grey suit jacket, across one green chessboard, medium three-shot",
-"image_prompt_alt": "reference character sits at frame left, leaning forward, as a slim teenage boy with thick dark wavy hair in a white shirt, short and narrow-shouldered with a calm serious face, faces a slim man with neat short black hair in a grey suit jacket, medium height, round calm face, across one green chessboard, wide three-shot"
-},
-{
-"narration": "In 2024 he defeated Ding in a highly tense match.",
-"location": "the world championship stage",
-"edits": [
-"the grey-suited man slumps over the board as the wavy-haired boy raises both fists"
-]
-},
-{
-"narration": "Gukesh was just eighteen then.",
-"location": "the world championship stage",
-"edits": [
-"a big white tag reading \"AGE 18\" appears above the wavy-haired boy"
-]
-},
-{
-"narration": "[understated] He became the youngest undisputed classical world champion in history.",
-"location": "the world championship stage",
-"edits": [
-"the tag vanishes and the character's eyes go wide, mouth open in awe"
-]
-},
-{
-"narration": "Most teens worry about high school.",
-"location": "the world championship stage",
-"edits": [
-"the chessboard and grey-suited man vanish, replaced by a frowning teenager with a red backpack"
-]
-},
-{
-"narration": "He memorized endless board variations.",
-"location": "the world championship stage",
-"edits": [
-"a real photo cutout of a huge chess opening book, roughly pasted onto the drawing, replaces the teenager"
-]
-},
-{
-"narration": "He now faces challenger Javokhir Sindarov next.",
-"location": "the world championship stage",
-"image_prompt": "reference character watches from frame left, curious, as Gukesh D, a slim teenage boy with thick dark wavy hair in a white shirt, stares down Javokhir Sindarov, a tall young man with short dark hair in a light blue suit, low-angle shot",
-"image_prompt_alt": "reference character crouches at frame right, curious, while a slim teenage boy with thick dark wavy hair in a white shirt, short and narrow-shouldered with a calm serious face, stares down a tall young man with short dark hair in a light blue suit, lanky build, clean-shaven, face to face, medium two-shot"
-},
-{
-"narration": "Their 2026 match is the youngest title clash ever seen.",
-"location": "the world championship stage",
-"edits": [
-"a big red lightning bolt crackles between the two young men"
-]
-},
-{
-"narration": "The pressure is absolutely immense.",
-"location": "the world championship stage",
-"edits": [
-"the bolt vanishes, sweat pours off both young men, the character tugs his collar"
-]
-},
-{
-"narration": "[thoughtful] But classical matches are only half the story.",
-"location": "the cheating scandal newsroom",
-"image_prompt": "reference character stands at frame left, thoughtful, beside one big blue chessboard sawn cleanly in half, medium close-up",
-"image_prompt_alt": "reference character sits at frame right, chin on fist, looking down at one big blue chessboard split in two halves with a jagged gap between them, high-angle shot"
-},
-{
-"narration": "The real entertainment happens outside the traditional tournament halls.",
-"location": "the cheating scandal newsroom",
-"edits": [
-"the chessboard vanishes and a big red door swings open at frame right"
-]
-},
-{
-"narration": "Professional chess has incredibly wild cheating scandals.",
-"location": "the cheating scandal newsroom",
-"edits": [
-"a big speech bubble reading \"CHEATING?!\" pops out of the red door"
-]
-},
-{
-"narration": "It sounds like reality television.",
-"location": "the cheating scandal newsroom",
-"edits": [
-"the bubble vanishes and a real photo cutout of an old wooden tube television, roughly pasted onto the drawing, sits beside the door"
-]
-},
-{
-"narration": "[clears throat] American player Hans Niemann famously defeated Magnus Carlsen once.",
-"location": "the cheating scandal newsroom",
-"image_prompt": "reference character gapes at frame right as Hans Niemann, a lanky young man with messy dark hair in a black hoodie, raises his arms across one red chessboard from Magnus Carlsen, a tall man with short tousled blond hair in a navy blazer, three-quarter view",
-"image_prompt_alt": "reference character leans back in shock at frame left while a lanky young man with messy dark hair in a black hoodie, tall and thin, clean-shaven, serious stare, raises his arms across one red chessboard from a tall man with short tousled blond hair in a navy blazer, lean build, clean-shaven, open white shirt collar, medium-wide shot"
-},
-{
-"narration": "Magnus then accused Hans of cheating.",
-"location": "the cheating scandal newsroom",
-"edits": [
-"the blond man stands and points an accusing finger at the lanky young man"
-]
-},
-{
-"narration": "The internet lost its MIND.",
-"location": "the cheating scandal newsroom",
-"edits": [
-"the blond man becomes three small smartphones flashing big red exclamation marks"
-]
-},
-{
-"narration": "[flatly] Wild conspiracy theories about vibrating devices went completely viral everywhere.",
-"location": "the cheating scandal newsroom",
-"edits": [
-"the smartphones rattle with big zigzag shake lines and the character's eyes spin"
-]
-},
-{
-"narration": "Nobody could actually prove the insane rumors.",
-"location": "the cheating scandal newsroom",
-"edits": [
-"the smartphones vanish and the character shrugs with a flat unimpressed look"
-]
-},
-{
-"narration": "Hans sued for millions instead.",
-"location": "the cheating scandal newsroom",
-"edits": [
-"a big tag reading \"$100 MILLION\" appears beside the lanky young man"
-]
-},
-{
-"narration": "The lawsuit eventually settled and Hans kept playing professional tournaments.",
-"location": "the cheating scandal newsroom",
-"image_prompt": "reference character watches from frame left, arms folded, as Hans Niemann, a lanky young man with messy dark hair in a black hoodie, calmly plays at one red chessboard, medium-wide shot",
-"image_prompt_alt": "reference character leans beside one red chessboard at frame right while a lanky young man with messy dark hair in a black hoodie, tall and thin, clean-shaven, serious stare, calmly moves a piece across it, medium shot"
-},
-{
-"narration": "[light chuckle] He is currently ranked twenty second globally.",
-"location": "the cheating scandal newsroom",
-"edits": [
-"the character raises one eyebrow with a small amused smirk"
-]
-},
-{
-"narration": "The drama brought millions watching.",
-"location": "the cheating scandal newsroom",
-"edits": [
-"a real photo cutout of a red-striped popcorn bucket, roughly pasted onto the drawing, appears big at frame right"
-]
-},
-{
-"narration": "Chess thrives on this spicy personal conflict.",
-"location": "the cheating scandal newsroom",
-"edits": [
-"the popcorn bucket vanishes and one big red chili pepper lands on the chessboard"
-]
-},
-{
-"narration": "Viewers stay for the personalities as much as the moves.",
-"location": "the cheating scandal newsroom",
-"edits": [
-"the chili pepper vanishes and the lanky young man turns to grin at the character"
-]
-},
-{
-"narration": "Another major character is American grandmaster Hikaru Nakamura.",
-"location": "the twitch streaming room",
-"image_prompt": "reference character leans in, curious, beside a real photo cutout of Hikaru Nakamura, a dark-haired man in rectangular glasses and a black gaming headset, roughly pasted onto the drawing, at one purple laptop, medium close-up",
-"image_prompt_alt": "reference character leans in from frame right, curious, toward a dark-haired man in rectangular glasses and a black gaming headset, medium build, short neat hair, dark grey t-shirt, typing at one purple laptop, medium shot"
-},
-{
-"narration": "Hikaru is a streaming giant.",
-"location": "the twitch streaming room",
-"edits": [
-"the purple laptop grows huge, towering behind the headset-wearing man"
-]
-},
-{
-"narration": "[calm] He plays multiple fast games while reading his Twitch chat.",
-"location": "the twitch streaming room",
-"edits": [
-"two small purple laptops pop up beside the big one, each showing a chessboard"
-]
-},
-{
-"narration": "He makes grandmaster moves look incredibly effortless.",
-"location": "the twitch streaming room",
-"edits": [
-"the headset-wearing man leans back, arms folded, and the character's jaw drops"
-]
-},
-{
-"narration": "He is ranked second globally.",
-"location": "the twitch streaming room",
-"edits": [
-"a big white tag reading \"#2\" appears above the headset-wearing man"
-]
-},
-{
-"narration": "Players like Hikaru turned traditional chess into a frantic esport.",
-"location": "the twitch streaming room",
-"edits": [
-"the tag and laptops vanish; one big black gaming controller appears at frame right"
-]
-},
-{
-"narration": "[curious] Tournaments now have massive prize pools.",
-"location": "the esports arena",
-"image_prompt": "reference character gapes at frame left as one player in a red esports jersey sits beside one enormous green heap of banknotes, high-angle shot",
-"image_prompt_alt": "reference character stands at frame right, eyes wide, looking up at one enormous green heap of banknotes towering over one seated player in a red esports jersey at frame left, low-angle wide shot"
-},
-{
-"narration": "You watch live heart rates.",
-"location": "the esports arena",
-"edits": [
-"the banknotes vanish; a big red heart with a jagged line floats above the player"
-]
-},
-{
-"narration": "The players sweat during intense time scrambles.",
-"location": "the esports arena",
-"edits": [
-"the heart vanishes; a real photo cutout of a digital chess clock, roughly pasted onto the drawing, appears big beside the sweating player"
-]
-},
-{
-"narration": "Every single blunder is instantly broadcast to thousands of fans.",
-"location": "the esports arena",
-"edits": [
-"the clock vanishes and three tiny doodle fans holding phones appear at frame right"
-]
-},
-{
-"narration": "The quiet gentleman game is totally GONE forever.",
-"location": "the esports arena",
-"edits": [
-"the fans vanish; a big sign reading \"QUIET PLEASE\" cracks in half at frame right"
-]
-},
-{
-"narration": "It is loud and fast.",
-"location": "the esports arena",
-"edits": [
-"the sign vanishes, yellow sound lines burst from the player, the character covers his ears"
-]
-},
-{
-"narration": "[content] The next time you see a chessboard remember the chaos.",
-"location": "the park chess table",
-"image_prompt": "reference character sits slouched beside one big wooden chessboard with small orange flames at its corners, looking at it thoughtfully, medium-long shot",
-"image_prompt_alt": "reference character leans back with one arm resting on the edge of one big wooden chessboard, small orange flames flickering at its corners, eyes half closed, wide shot"
-},
-{
-"narration": "It is packed with young brilliant superstars.",
-"location": "the park chess table",
-"edits": [
-"three tiny doodle young players in hoodies pop up behind the chessboard, grinning"
-]
-},
-{
-"narration": "And quite a few egos.",
-"location": "the park chess table",
-"edits": [
-"the three players' heads swell to giant balloon size, noses in the air"
-]
-},
-{
-"narration": "Chess has finally become the ultimate modern online battleground.",
-"location": "the park chess table",
-"edits": [
-"the players vanish; a big gold laptop rises behind the chessboard; the character smiles wearily"
-]
-}
-]
+  "topic": "cricket-explained",
+  "format": "explainer",
+  "plan": {
+    "spine_question": "How can a game last five days and end in a draw, and how does cricket actually work?",
+    "deflations": [
+      {
+        "assumed": "Cricket is just a confusing British version of baseball.",
+        "actual": "Cricket is a massive global sport with completely unique rules and three distinct formats.",
+        "who_decided": "The evolution of the sport over centuries and its massive adoption in South Asia.",
+        "build_beat": "From far away, cricket looks like baseball.",
+        "drop_beat": "[flatly] After that, almost nothing is the same."
+      }
+    ],
+    "cast": [
+      {
+        "name": "Jasprit Bumrah",
+        "why": "Star fast bowler for India who dominated the 2026 T20 World Cup."
+      },
+      {
+        "name": "Virat Kohli",
+        "why": "India's biggest star, now plays only One Day cricket after quitting Tests and T20s."
+      },
+      {
+        "name": "Aiden Markram",
+        "why": "South African batter who scored a historic 136 in the 2025 WTC Final."
+      },
+      {
+        "name": "Pat Cummins",
+        "why": "Australian captain who led his team to the 2023 World Cup victory."
+      }
+    ],
+    "specifics": [
+      {
+        "fact": "India beat New Zealand by 96 runs in the 2026 T20 World Cup final in Ahmedabad, the biggest margin in a T20 World Cup final.",
+        "source": "newsonair.gov.in, 8 March 2026",
+        "beat": "They beat New Zealand by ninety six runs in the final."
+      },
+      {
+        "fact": "Bumrah took 14 wickets, most of the tournament, 4/15 in the final.",
+        "source": "T20 World Cup 2026 statistics",
+        "beat": "He got fourteen batters out, more than anyone."
+      },
+      {
+        "fact": "South Africa beat Australia in the 2025 WTC final at Lord's, Markram 136.",
+        "source": "ICC WTC 2025 final",
+        "beat": "Aiden Markram scored one hundred thirty six runs."
+      },
+      {
+        "fact": "Australia beat India in the 2023 ODI World Cup final in Ahmedabad, Cummins captain, their sixth title.",
+        "source": "ICC 2023 Cricket World Cup",
+        "beat": "Australia has won this World Cup six times."
+      }
+    ],
+    "facts_to_check": [
+      {
+        "claim": "India won 2026 T20 WC by 96 runs, biggest final margin; Bumrah 14 wickets, 4 in final",
+        "source": "newsonair.gov.in, ratopati, navbharatlive"
+      },
+      {
+        "claim": "South Africa won 2025 WTC final vs Australia at Lord's, Markram 136",
+        "source": "ICC"
+      },
+      {
+        "claim": "Australia six ODI World Cups, 2023 final vs India in Ahmedabad",
+        "source": "ICC"
+      },
+      {
+        "claim": "Narendra Modi Stadium, Ahmedabad: world's largest cricket stadium, about 132,000 capacity",
+        "source": "Wikipedia / GCA"
+      },
+      {
+        "claim": "Twenty20 started in England in 2003",
+        "source": "ECB / Wikipedia"
+      },
+      {
+        "claim": "Ten ways of being out in the Laws of Cricket",
+        "source": "MCC Laws of Cricket"
+      },
+      {
+        "claim": "Kohli quit T20Is 2024 and Tests May 2025, ODI only, aged 37, aims for 2027 World Cup",
+        "source": "crictracker, cricket.com"
+      },
+      {
+        "claim": "Kohli is the most followed cricketer on Instagram",
+        "source": "Instagram"
+      }
+    ],
+    "locations": [
+      {"name": "the five day test match", "visual_anchor": "", "music": "playful"},
+      {"name": "the batting crease", "visual_anchor": "", "music": "calm"},
+      {"name": "the run scoring outfield", "visual_anchor": "", "music": "playful"},
+      {"name": "lord's in london", "visual_anchor": "", "music": "calm"},
+      {"name": "the comment break", "visual_anchor": "", "music": "calm"},
+      {"name": "the twenty twenty final", "visual_anchor": "", "music": "building"},
+      {"name": "the ahmedabad stadium", "visual_anchor": "", "music": "calm"},
+      {"name": "the indian fan lane", "visual_anchor": "", "music": "playful"},
+      {"name": "the centre pitch", "visual_anchor": "", "music": "calm"}
+    ],
+    "setting_anchor": ""
+  },
+  "beats": [
+    {
+      "narration": "[curious] A cricket match can last five days.",
+      "location": "the five day test match",
+      "image_prompt": "reference character sits at frame left, curious, watching Virat Kohli, a brown-skinned batter with a thick dark beard in a white shirt with the number 18, standing at three tan wooden stumps, wide shot",
+      "image_prompt_alt": "reference character sits cross-legged in the foreground, curious, as a fit medium-height brown-skinned man with short spiky dark hair, a batter with a thick dark beard in a white shirt with the number 18, waits at three tan wooden stumps, medium-wide shot"
+    },
+    {
+      "narration": "They stop for lunch.",
+      "location": "the five day test match",
+      "edits": [
+        "one big white plate holding one red apple appears at frame right, the batter turning toward it"
+      ]
+    },
+    {
+      "narration": "They stop again for tea.",
+      "location": "the five day test match",
+      "edits": [
+        "the plate disappears and one big blue teacup appears at frame right in its place"
+      ]
+    },
+    {
+      "narration": "[deadpan] And then it can end in a draw.",
+      "location": "the five day test match",
+      "edits": [
+        "the teacup disappears and a big sign reading \"DRAW\" appears above the stumps, the character's jaw dropping"
+      ]
+    },
+    {
+      "narration": "From far away, cricket looks like baseball.",
+      "location": "the five day test match",
+      "image_prompt": "reference character stands at frame right squinting, skeptical, at one doodle baseball player in a red cap beside one doodle cricket batter in white, long shot",
+      "image_prompt_alt": "reference character leans in from the foreground left, skeptical, eyeing one doodle baseball player in a red cap and one doodle cricket batter in white side by side, medium shot"
+    },
+    {
+      "narration": "One player throws a ball.",
+      "location": "the five day test match",
+      "edits": [
+        "the baseball player throws one small white ball across to the cricket batter beside him"
+      ]
+    },
+    {
+      "narration": "Another player hits it.",
+      "location": "the five day test match",
+      "edits": [
+        "the cricket batter swings his flat bat and the white ball flies off upward"
+      ]
+    },
+    {
+      "narration": "[flatly] After that, almost nothing is the same.",
+      "location": "the five day test match",
+      "edits": [
+        "the baseball player disappears and the character folds his arms, flat-faced"
+      ]
+    },
+    {
+      "narration": "Two teams of eleven players share one big field.",
+      "location": "the batting crease",
+      "image_prompt": "reference character stands at frame center, attentive, between three doodle players in blue shirts at frame left and three doodle players in yellow shirts at frame right, wide shot",
+      "image_prompt_alt": "reference character stands in the foreground, mildly curious, as three doodle players in blue shirts face three doodle players in yellow shirts across the page behind him, high-angle shot"
+    },
+    {
+      "narration": "The batter holds a wide, flat wooden bat.",
+      "location": "the batting crease",
+      "edits": [
+        "both groups disappear and a real photo cutout of a cricket bat, roughly pasted onto the drawing, stands big beside the character"
+      ]
+    },
+    {
+      "narration": "Behind him stand three wooden sticks called stumps.",
+      "location": "the batting crease",
+      "edits": [
+        "three tall wooden stumps appear at frame right of the bat, as tall as the character's chest"
+      ]
+    },
+    {
+      "narration": "Two tiny pieces called bails sit on top.",
+      "location": "the batting crease",
+      "edits": [
+        "two tiny red bails appear lying across the tops of the three stumps"
+      ]
+    },
+    {
+      "narration": "Together they make the wicket.",
+      "location": "the batting crease",
+      "edits": [
+        "a big sign reading \"WICKET\" appears above the stumps, the character pointing at it"
+      ]
+    },
+    {
+      "narration": "The bowler runs in and delivers a hard leather ball.",
+      "location": "the batting crease",
+      "image_prompt": "reference character stands beside three wooden stumps at frame right, attentive, as Jasprit Bumrah, a brown-skinned slim fast bowler with a short black beard in a blue shirt with the number 93, runs in with one red ball, wide shot",
+      "image_prompt_alt": "reference character crouches beside three wooden stumps in the foreground, attentive, watching a slim medium-height brown-skinned man with short black hair, a slim fast bowler with a short black beard in a blue shirt with the number 93, sprint in with one red leather ball, low-angle shot"
+    },
+    {
+      "narration": "His arm must stay straight.",
+      "location": "the batting crease",
+      "edits": [
+        "the bowler's right arm swings straight up above his head, stiff as a stick"
+      ]
+    },
+    {
+      "narration": "[deadpan] Throwing it is illegal.",
+      "location": "the batting crease",
+      "edits": [
+        "a big sign reading \"NO THROWING\" appears above the bowler's straight arm, the character nodding"
+      ]
+    },
+    {
+      "narration": "Usually the ball bounces once before it reaches the batter.",
+      "location": "the batting crease",
+      "edits": [
+        "the sign disappears and the red ball bounces once halfway to the stumps, a dotted line tracing its path"
+      ]
+    },
+    {
+      "narration": "The bounce can send it anywhere.",
+      "location": "the batting crease",
+      "edits": [
+        "the dotted line zigzags wildly off toward the top of the frame and the character's eyes go wide"
+      ]
+    },
+    {
+      "narration": "The batting team wants runs.",
+      "location": "the run scoring outfield",
+      "image_prompt": "reference character stands at frame left, curious, watching Virat Kohli, a brown-skinned batter with a thick dark beard in a white shirt with the number 18, beside one doodle partner batter in white, both holding red-handled bats, medium-wide shot",
+      "image_prompt_alt": "reference character peeks in from frame right, curious, at a fit medium-height brown-skinned man with short spiky dark hair, a batter with a thick dark beard in a white shirt with the number 18, beside one doodle partner batter in white, both holding red-handled bats, wide shot"
+    },
+    {
+      "narration": "After a hit, the two batters can run between the wickets.",
+      "location": "the run scoring outfield",
+      "edits": [
+        "both batters sprint past each other across the page, bats stretched out in front"
+      ]
+    },
+    {
+      "narration": "Each trip is one run.",
+      "location": "the run scoring outfield",
+      "edits": [
+        "a big tag reading \"1 RUN\" appears above the two batters, the character holding up one finger"
+      ]
+    },
+    {
+      "narration": "[calm] But hitting it far is better.",
+      "location": "the run scoring outfield",
+      "edits": [
+        "the tag and the partner batter disappear and the bearded batter swings his bat in a huge arc"
+      ]
+    },
+    {
+      "narration": "If the ball reaches the rope, that is four runs.",
+      "location": "the run scoring outfield",
+      "image_prompt": "reference character crouches at frame left, interested, beside one long white rope across the page, one red leather ball rolling up against it, low wide shot",
+      "image_prompt_alt": "reference character kneels at frame right, interested, watching one red leather ball roll to a stop against one long white rope stretched across the page, medium shot"
+    },
+    {
+      "narration": "If it flies over the rope, that is six.",
+      "location": "the run scoring outfield",
+      "edits": [
+        "the red ball becomes a real photo cutout of a cricket ball, roughly pasted onto the drawing, flying high over the rope"
+      ]
+    },
+    {
+      "narration": "The fielding team wants the batters out.",
+      "location": "the run scoring outfield",
+      "edits": [
+        "the rope disappears and one doodle fielder in a navy shirt sprints in from frame right, arms open, toward the ball"
+      ]
+    },
+    {
+      "narration": "[understated] There are ten ways to do it.",
+      "location": "the run scoring outfield",
+      "edits": [
+        "the ball disappears and a big sign reading \"10 WAYS\" appears above the fielder"
+      ]
+    },
+    {
+      "narration": "The ball can knock the bails off.",
+      "location": "the run scoring outfield",
+      "edits": [
+        "the sign and the fielder disappear and three wooden stumps appear at frame right, their two red bails flying off"
+      ]
+    },
+    {
+      "narration": "Or a fielder catches the ball before it lands.",
+      "location": "the run scoring outfield",
+      "image_prompt": "reference character stands at frame right, eyes wide, as one diving doodle fielder in a navy shirt catches one red leather ball just above the page, medium shot",
+      "image_prompt_alt": "reference character watches from the foreground left, eyes wide, while one doodle fielder in a navy shirt dives full length to grab one red leather ball, wide shot"
+    },
+    {
+      "narration": "An out batter walks off and the next one comes in.",
+      "location": "the run scoring outfield",
+      "edits": [
+        "the fielder and the ball disappear and one doodle batter in white walks off toward frame left, head down"
+      ]
+    },
+    {
+      "narration": "Ten outs end the team's innings.",
+      "location": "the run scoring outfield",
+      "edits": [
+        "a big tag reading \"10 OUT\" appears above the walking batter"
+      ]
+    },
+    {
+      "narration": "[thoughtful] Why not eleven?",
+      "location": "the run scoring outfield",
+      "edits": [
+        "the tag disappears and the character scratches his head, one eyebrow raised"
+      ]
+    },
+    {
+      "narration": "The last batter has no partner to run with.",
+      "location": "the run scoring outfield",
+      "edits": [
+        "the walking batter turns around and stands alone at frame left, shrugging"
+      ]
+    },
+    {
+      "narration": "Then the two teams swap roles.",
+      "location": "the run scoring outfield",
+      "edits": [
+        "one doodle fielder in a navy shirt appears beside the lone batter, who hands him his bat"
+      ]
+    },
+    {
+      "narration": "Cricket comes in three formats.",
+      "location": "lord's in london",
+      "image_prompt": "reference character stands at frame left, attentive, before a row of red alarm clocks, one huge, one medium, one tiny, wide shot",
+      "image_prompt_alt": "reference character sits on the page at frame right, attentive, looking at a row of red alarm clocks shrinking from huge to medium to tiny, high-angle shot"
+    },
+    {
+      "narration": "Test cricket is the oldest.",
+      "location": "lord's in london",
+      "edits": [
+        "the medium and tiny clocks disappear and the huge red clock grows a long white beard"
+      ]
+    },
+    {
+      "narration": "[peaceful] The players wear all white.",
+      "location": "lord's in london",
+      "edits": [
+        "one doodle player in all-white cricket clothes appears at frame right beside the huge clock"
+      ]
+    },
+    {
+      "narration": "This is the five day format from the start.",
+      "location": "lord's in london",
+      "edits": [
+        "a big tag reading \"5 DAYS\" hangs from the huge clock, the character's eyebrows rising"
+      ]
+    },
+    {
+      "narration": "South Africa won the World Test Championship in twenty twenty five.",
+      "location": "lord's in london",
+      "image_prompt": "reference character stands at frame right, warmly interested, watching a real photo cutout of Aiden Markram, roughly pasted onto the drawing, a tall batter with a short brown beard in white and a green cap, raising his bat, medium shot",
+      "image_prompt_alt": "reference character stands in the foreground left, warmly interested, as a tall light-skinned man with short brown hair, a tall batter with a short brown beard in white and a green cap, raises his bat high, low-angle shot"
+    },
+    {
+      "narration": "They beat Australia in the final at Lord's in London.",
+      "location": "lord's in london",
+      "edits": [
+        "one doodle bowler in white with a yellow helmet appears at frame left, sitting slumped"
+      ]
+    },
+    {
+      "narration": "Aiden Markram scored one hundred thirty six runs.",
+      "location": "lord's in london",
+      "edits": [
+        "the slumped bowler disappears and a big tag reading \"136\" appears above the raised bat"
+      ]
+    },
+    {
+      "narration": "A good batter can stay in all day.",
+      "location": "lord's in london",
+      "edits": [
+        "the tag disappears and one big yellow sun appears at top right, the character's eyelids drooping sleepily"
+      ]
+    },
+    {
+      "narration": "[curious] Quick question before we go on.",
+      "location": "the comment break",
+      "image_prompt": "reference character stands alone at frame center facing the viewer, holding up one big blank white sign with one large black question mark, medium shot",
+      "image_prompt_alt": "reference character faces the viewer at frame center, lifting one big blank white sign showing one large black question mark above his head, medium-wide shot"
+    },
+    {
+      "narration": "Which sport is next?",
+      "location": "the comment break",
+      "edits": [
+        "the character points down toward the bottom edge of the frame"
+      ]
+    },
+    {
+      "narration": "Write it in the comments.",
+      "location": "the comment break",
+      "edits": [
+        "the character gives a small nod, still pointing down"
+      ]
+    },
+    {
+      "narration": "[deadpan] Not everyone has five days free.",
+      "location": "the twenty twenty final",
+      "image_prompt": "reference character slumps at frame left, tired, staring at one huge red alarm clock ringing beside him, medium shot",
+      "image_prompt_alt": "reference character sits slouched in the foreground right, tired, as one huge red alarm clock rings wildly at frame left, wide shot"
+    },
+    {
+      "narration": "So England invented Twenty Twenty cricket in two thousand three.",
+      "location": "the twenty twenty final",
+      "edits": [
+        "the clock shrinks to half size and a big sign reading \"T20\" appears at frame right"
+      ]
+    },
+    {
+      "narration": "Each team gets just one hundred twenty balls.",
+      "location": "the twenty twenty final",
+      "edits": [
+        "the sign disappears and a real photo cutout of a white cricket ball, roughly pasted onto the drawing, sits big at the character's feet"
+      ]
+    },
+    {
+      "narration": "A match takes three hours.",
+      "location": "the twenty twenty final",
+      "edits": [
+        "the clock's hands spin round fast and the character's eyes go wide"
+      ]
+    },
+    {
+      "narration": "Players wear bright team colors.",
+      "location": "the twenty twenty final",
+      "edits": [
+        "the ball disappears and one doodle batter in a bright blue shirt appears at frame right"
+      ]
+    },
+    {
+      "narration": "Batters swing at almost everything.",
+      "location": "the twenty twenty final",
+      "edits": [
+        "the blue batter swings his bat wildly in a full circle, motion lines around him"
+      ]
+    },
+    {
+      "narration": "India won this format's World Cup in March twenty twenty six.",
+      "location": "the twenty twenty final",
+      "image_prompt": "reference character stands at frame left, impressed, watching a real photo cutout of Jasprit Bumrah, roughly pasted onto the drawing, a slim fast bowler with a short black beard in a blue shirt, leaping with both arms up, medium-wide shot",
+      "image_prompt_alt": "reference character stands at frame right, impressed, as a slim medium-height brown-skinned man with short black hair, a slim fast bowler with a short black beard in a blue shirt with the number 93, leaps with both arms up, low-angle shot"
+    },
+    {
+      "narration": "They beat New Zealand by ninety six runs in the final.",
+      "location": "the twenty twenty final",
+      "edits": [
+        "one doodle batter in an all-black shirt appears at frame right, slumped and walking away"
+      ]
+    },
+    {
+      "narration": "[understated] No final had ever been that one sided.",
+      "location": "the twenty twenty final",
+      "edits": [
+        "a big tag reading \"96 RUNS\" appears above the black-shirted batter, the character's jaw dropping"
+      ]
+    },
+    {
+      "narration": "Their star is fast bowler Jasprit Bumrah.",
+      "location": "the twenty twenty final",
+      "edits": [
+        "the tag and the black-shirted batter disappear and a big yellow star appears above the photo cutout bowler"
+      ]
+    },
+    {
+      "narration": "He got fourteen batters out, the most of anyone.",
+      "location": "the twenty twenty final",
+      "edits": [
+        "a big tag reading \"14 OUT\" appears beside the bowler and the character's eyes go wide"
+      ]
+    },
+    {
+      "narration": "The third format sits in the middle.",
+      "location": "the ahmedabad stadium",
+      "image_prompt": "reference character sits on the page at frame left, curious, one huge red alarm clock towering at frame right beside one tiny red alarm clock, low-angle shot",
+      "image_prompt_alt": "reference character stands at frame right, curious, glancing between one tiny red alarm clock at his feet and one huge red alarm clock at frame left, wide shot"
+    },
+    {
+      "narration": "[calm] One Day games give each team three hundred balls.",
+      "location": "the ahmedabad stadium",
+      "edits": [
+        "both clocks disappear and one medium red alarm clock appears beside the character, a big tag reading \"300 BALLS\" on it"
+      ]
+    },
+    {
+      "narration": "A match lasts about eight hours.",
+      "location": "the ahmedabad stadium",
+      "edits": [
+        "the tag disappears and the medium clock's hands creep round as the character yawns"
+      ]
+    },
+    {
+      "narration": "Australia has won this World Cup six times.",
+      "location": "the ahmedabad stadium",
+      "edits": [
+        "one doodle player in a bright yellow shirt appears at frame right, both arms raised"
+      ]
+    },
+    {
+      "narration": "The latest was in twenty twenty three.",
+      "location": "the ahmedabad stadium",
+      "edits": [
+        "the yellow player jumps high in celebration and the character gives a small nod"
+      ]
+    },
+    {
+      "narration": "Pat Cummins was captain.",
+      "location": "the ahmedabad stadium",
+      "image_prompt": "reference character stands at frame right, attentive, watching a real photo cutout of Pat Cummins, roughly pasted onto the drawing, a tall dark-haired fast bowler in a yellow shirt, arms folded, medium shot",
+      "image_prompt_alt": "reference character stands in the foreground left, attentive, beside a tall lean light-skinned man with short wavy dark hair, a tall dark-haired fast bowler in a yellow shirt with the number 30, arms folded, wide shot"
+    },
+    {
+      "narration": "They beat India in the final, in Ahmedabad.",
+      "location": "the ahmedabad stadium",
+      "edits": [
+        "three doodle fans in blue shirts appear at frame left, slumping with heads down"
+      ]
+    },
+    {
+      "narration": "[softly] The home crowd went quiet.",
+      "location": "the ahmedabad stadium",
+      "edits": [
+        "the three blue fans sit down silently and the character looks down softly"
+      ]
+    },
+    {
+      "narration": "That stadium is the biggest cricket ground in the world.",
+      "location": "the ahmedabad stadium",
+      "edits": [
+        "the photo cutout man disappears and one huge grey round stadium outline rises behind the fans, towering over the character"
+      ]
+    },
+    {
+      "narration": "It holds about one hundred thirty thousand people.",
+      "location": "the ahmedabad stadium",
+      "edits": [
+        "a big tag reading \"130,000\" hangs from the stadium rim, the character's eyes going wide"
+      ]
+    },
+    {
+      "narration": "[thoughtful] In India, cricket is close to a religion.",
+      "location": "the indian fan lane",
+      "image_prompt": "reference character stands at frame right, amused, as three doodle fans in blue shirts bow toward a real photo cutout of Virat Kohli, roughly pasted onto the drawing, a batter with a thick dark beard in a white shirt, medium shot",
+      "image_prompt_alt": "reference character stands at frame left, amused, as three doodle fans in blue shirts bow toward a fit medium-height brown-skinned man with short spiky dark hair, a batter with a thick dark beard in a white shirt with the number 18, wide shot"
+    },
+    {
+      "narration": "Its king is Virat Kohli.",
+      "location": "the indian fan lane",
+      "edits": [
+        "a big sign reading \"KING\" appears above the photo cutout man"
+      ]
+    },
+    {
+      "narration": "He has quit Test and Twenty Twenty cricket.",
+      "location": "the indian fan lane",
+      "edits": [
+        "the sign disappears and the character waves goodbye toward the photo cutout man"
+      ]
+    },
+    {
+      "narration": "Now he only plays One Day games.",
+      "location": "the indian fan lane",
+      "edits": [
+        "a big tag reading \"ODI ONLY\" appears beside the photo cutout man, the character nodding"
+      ]
+    },
+    {
+      "narration": "At thirty seven, he still wants the next World Cup.",
+      "location": "the indian fan lane",
+      "edits": [
+        "the tag disappears and a big tag reading \"37\" and a small golden trophy appear above the photo cutout man"
+      ]
+    },
+    {
+      "narration": "[light chuckle] No cricketer has more Instagram followers.",
+      "location": "the indian fan lane",
+      "edits": [
+        "one big red heart appears above the photo cutout man and the character chuckles"
+      ]
+    },
+    {
+      "narration": "Five days, eight hours, or three hours.",
+      "location": "the centre pitch",
+      "image_prompt": "reference character stands at frame center, thoughtful, one huge red alarm clock at frame left and one tiny red alarm clock at frame right, wide shot at eye level",
+      "image_prompt_alt": "reference character sits in the foreground, thoughtful, looking up at one huge red alarm clock and one tiny red alarm clock side by side, high-angle shot"
+    },
+    {
+      "narration": "It is all one fight.",
+      "location": "the centre pitch",
+      "edits": [
+        "both clocks disappear and one doodle bowler in white faces one doodle batter in white, both glaring"
+      ]
+    },
+    {
+      "narration": "The bowler tries to hit three wooden sticks.",
+      "location": "the centre pitch",
+      "edits": [
+        "the batter disappears and a real photo cutout of three cricket stumps, roughly pasted onto the drawing, stands big at frame right as the bowler aims"
+      ]
+    },
+    {
+      "narration": "[content] The batter guards them with a flat piece of wood.",
+      "location": "the centre pitch",
+      "edits": [
+        "the bowler disappears and one doodle batter in white stands guarding the stumps, flat bat raised, the character smiling"
+      ]
+    }
+  ]
 }
 
 SCRIPT_TEMPLATE = {

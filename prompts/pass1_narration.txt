@@ -1,4 +1,4 @@
-Write a script about ( Chess world explained in 3 minutes -> about dramas pro players youtubers liek gotham chess etc.) it is an explaining video. Use ONLY verified information and Use in correct places jokes, sarcasm, etc. (no cringe) here is the structure you have to fill it in:
+Write a script about ( Cricket explained in 3 minutes) it is an explaining video. Use ONLY verified information and Use in correct places jokes, sarcasm, etc. (no cringe) here is the structure you have to fill it in:
 Use simple words, and explain everything simply so average non english native speaker can understand it.
 While writing the narration do not use any "", \,\
 AND REMEMBER YOU ARE WRITING A NARRATION THAT WILL BE USED FOR TEXT TO SPEACH AI VOICE
@@ -35,6 +35,23 @@ jump to a new scene.
   something familiar, a number going up, a thing moving from A to B, one thing
   replacing another. Those make the best moving pictures. When a fact is
   abstract, pair it with one concrete example.
+
+COMMENT BREAK
+Once, near the middle of the video (between 40% and 60% of the beats), end a
+chapter and add a tiny chapter of 2 or 3 SHORT beats that asks the viewer one
+question to answer in the comments. Then the next chapter carries on as normal.
+- The question must be answerable in one or two words. If the video is about a
+  sport, ask which sport to explain next. Otherwise ask the closest choice
+  for the topic (which game, player, country or story to cover next).
+- Say plainly where to answer, for example: Write it in the comments.
+- No begging, no "like and subscribe" here, no guilt. One calm question.
+- Put it between two chapters, never inside one.
+- This chapter is the only one allowed under 8 beats and it does not count
+  toward the 4 to 8 chapters. Its words DO count toward the word budget.
+Example:
+  Quick question before we go on.
+  Which sport should we explain next?
+  Write it in the comments.
 
 USE FAMOUS CHARACTERS AND REAL PEOPLE
 Use the famous characters from the topic's universe, or the famous real people
