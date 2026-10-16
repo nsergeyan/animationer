@@ -29,10 +29,6 @@ calm/cello_prelude.mp3
   J. S. Bach, Cello Suite No. 1 in G major, BWV 1007, I. Prelude. License: public domain.
   https://commons.wikimedia.org/wiki/File:Bach_-_Cello_Suite_no._1_in_G_major,_BWV_1007_-_I._Pr%C3%A9lude.ogg
 
-playful/entertainer.mp3
-  Scott Joplin, The Entertainer (1902). License: public domain.
-  https://commons.wikimedia.org/wiki/File:Scott_Joplin_-_The_Entertainer_(1902).ogg
-
 playful/maple_leaf_rag.mp3
   Scott Joplin, Maple Leaf Rag (1899). License: public domain.
   https://commons.wikimedia.org/wiki/File:Scott_Joplin_-_Maple_Leaf_Rag_(1899).ogg
@@ -62,3 +58,53 @@ playful/surprise_finale.mp3
   Joseph Haydn, Symphony No. 94 "Surprise", IV. Finale, Boston Symphony
   Orchestra, Serge Koussevitzky (historic recording). License: public domain.
   https://commons.wikimedia.org/wiki/File:Haydn;_Symphony_No._94_%22Surprise%22,_4._Finale_(Allegro_molto).ogg
+
+calm/air_on_g_string.mp3
+  J. S. Bach, Orchestral Suite No. 3, BWV 1068, II. Air ("Air on the G String"),
+  Air Force Strings, United States Air Force Band. License: public domain (US
+  government work). Leading and trailing silence trimmed.
+  https://commons.wikimedia.org/wiki/File:Air_-_Air_Force_Strings_-_United_States_Air_Force_Band.mp3
+
+playful/radetzky_march.mp3
+  Johann Strauss I, Radetzky March, "The President's Own" United States Marine
+  Band (1992). License: public domain (US government work). Trailing silence
+  trimmed.
+  https://commons.wikimedia.org/wiki/File:STRAUSS_Radetzky_March_-_%22The_President%27s_Own%22_U.S._Marine_Band.opus
+
+building/william_tell.mp3
+  Gioachino Rossini, William Tell Overture, military band transcription by
+  Wenzel Sedlak, United States Marine Band (2000). License: public domain (US
+  government work). Trimmed to end at 10:56.6, cutting the trailing silence so
+  the end-aligned finale is the real end.
+  https://commons.wikimedia.org/wiki/File:Gioachino_Rossini,_William_Tell_Overture_(military_band_version,_2000).ogg
+
+calm/canon.mp3
+  Johann Pachelbel, Canon in D, arranged by Frank Hudson, Strolling Strings,
+  United States Air Force Band (2004). License: public domain (US government
+  work). Leading and trailing silence trimmed.
+  https://commons.wikimedia.org/wiki/File:Canon_(2004)_-_Strolling_Strings_-_United_States_Air_Force_Band.mp3
+
+playful/alla_hornpipe.mp3
+  G. F. Handel, Water Music, Alla Hornpipe, Chamber Orchestra, United States
+  Marine Band (2017). License: public domain (US government work). Leading and
+  trailing silence trimmed.
+  https://commons.wikimedia.org/wiki/File:Handel%27s_Water_Music_-_12._Alla_hornpipe_-_Chamber_Orchestra_-_United_States_Marine_Band.opus
+
+playful/dance_of_the_comedians.mp3
+  Bedrich Smetana, The Bartered Bride, Dance of the Comedians, transcription by
+  the United States Marine Band. License: public domain (US government work).
+  Leading and trailing silence trimmed.
+  https://commons.wikimedia.org/wiki/File:Three_Dances_from_the_Bartered_Bride_-_III._Dance_of_the_Comedians_-_U.S._Marine_Band.ogg
+
+playful/sunflower_slow_drag.mp3
+  Scott Joplin and Scott Hayden, Sunflower Slow Drag, United States Marine Band
+  (1994). License: public domain (US government work). Leading and trailing
+  silence trimmed.
+  https://commons.wikimedia.org/wiki/File:Scott_Joplin%27s_%22Sunflower_Slow_Drag%22_performed_by_the_United_States_Marine_Band.oga
+
+building/danse_bacchanale.mp3
+  Camille Saint-Saens, Samson et Dalila, Op. 47, "Danse Bacchanale", Concert
+  Band, United States Air Force Band (2000). License: public domain (US
+  government work). Leading and trailing silence trimmed so the end-aligned
+  climax is the real end.
+  https://commons.wikimedia.org/wiki/File:Danse_Bacchanale_-_Concert_Band_-_United_States_Air_Force_Band.mp3
