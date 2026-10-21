@@ -57,22 +57,36 @@ jump to a new scene.
   replacing another. Those make the best moving pictures. When a fact is
   abstract, pair it with one concrete example.
 
-COMMENT BREAK
-Once, near the middle of the video (between 40% and 60% of the beats), end a
-chapter and add a tiny chapter of 2 or 3 SHORT beats that asks the viewer one
-question to answer in the comments. Then the next chapter carries on as normal.
-- The question must be answerable in one or two words. If the video is about a
-  sport, ask which sport to explain next. Otherwise ask the closest choice
-  for the topic (which game, player, country or story to cover next).
-- Say plainly where to answer, for example: Write it in the comments.
-- No begging, no "like and subscribe" here, no guilt. One calm question.
-- Put it between two chapters, never inside one.
-- This chapter is the only one allowed under 8 beats and it does not count
-  toward the 3 to 5 chapters. Its words DO count toward the word budget.
+COMMENT QUESTION
+Once, between 30% and 50% of the beats, ask the viewer to guess something
+the video answers later, and to write the guess in the comments. Wanting to
+know if they were right keeps them watching, so it must never feel like a
+break in the video.
+- Ask it inside a chapter, in 2 SHORT beats: the question, then where to
+  answer. It stays in that chapter's location.
+- Never announce it ("Quick question before we go on"). Never ask about the
+  channel or what video to make next.
+- Give the answer at least 8 beats later, ideally in the last chapter. Say it
+  plainly in one beat. Do not invent what viewers guessed.
+- A good question:
+  - Most people will guess wrong. The real answer is much bigger, smaller or
+    stranger than common sense says.
+  - Anyone can guess it with zero knowledge: a number, one of two famous
+    names, or one or two words.
+  - Its answer is one of the most surprising facts in the video.
+- Good kinds: a number far off from intuition (a record, a count, how long
+  something lasted), what a strange rule leads to (what happens to a
+  champion who can never be demoted?), which of two famous names did more.
+- Bad kinds: yes/no questions, opinions with no right answer (who is the
+  best?), anything the narration already told them, anything nobody could
+  even guess at.
+- The answer goes in plan.facts_to_check like every other fact.
+- These beats count toward their chapter and the word budget.
 Example:
-  Quick question before we go on.
-  Which sport should we explain next?
-  Write it in the comments.
+  Hakuho won more top division titles than anyone. Guess how many.
+  Write your number in the comments.
+  ... (8 or more beats later)
+  He won the top division forty five times.
 
 USE FAMOUS CHARACTERS AND REAL PEOPLE
 Use the famous characters from the topic's universe, or the famous real people

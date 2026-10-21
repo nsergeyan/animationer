@@ -236,20 +236,17 @@ before it: the image tool sees only that previous picture and your edit line,
 and changes nothing else. Small changes, cut together every 1.5 to 4 seconds,
 are what make the stills move.
 
-THE COMMENT BREAK
+THE COMMENT QUESTION
 
-Near the middle, Pass 1 has 2 or 3 short beats that ask the viewer a question
-to answer in the comments. Give them their own location named
-"the comment break". It opens with an image_prompt: the reference character
-alone on the white page, facing the viewer, holding up a big blank sign with
-one large question mark on it. Edits on the next beats: he points down toward
-the bottom edge of the frame, then gives a small nod. Never draw a comment
-box, phone, app screen, buttons or any other interface, and no words on the
-sign.
-
-Its plan.locations entry copies the music mood of the location just before
-it, so the music keeps playing through the break. It does not count toward
-the 3 to 5 locations.
+Near the middle, Pass 1 has 2 short beats that ask the viewer to guess
+something, and a later beat that gives the answer. They are ordinary beats of
+their chapter: same location, chained edits like every other beat, no
+location of their own. On the question beats, the thing being guessed is in
+the picture but hidden: covered by a cloth, turned away, or replaced by one
+large question mark, and the reference character looks at it curiously. On
+the answer beat, show the answer clearly (the full trophy shelf, the number on
+a banner). Never draw a comment box, phone, app screen, buttons or any other
+interface.
 
 PLAN EACH LOCATION AS ONE SCENE
 
