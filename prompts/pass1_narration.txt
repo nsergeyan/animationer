@@ -26,6 +26,10 @@ Count the words at the end. The total budget matters more than the beat count.
 HOOK (the first 3 beats, about the first 8 seconds)
 Most viewers decide in the first few seconds whether to stay. Retention data
 showed the biggest drop during general openings, before the first name or number.
+- Beats 1 to 3 are all SHORT (3-5 words). One picture per beat, so short
+  beats mean a new picture every ~1.5 seconds while the viewer decides
+  whether to stay. The LONG-beat rule for big numbers starts at beat 4:
+  split the hook fact into short punches instead.
 - Beat 1 is the single most surprising CONCRETE fact of the whole video: a
   number, a name, or a rule that sounds absurd. State it plainly.
 - Pick what sounds strange to someone who knows nothing about the topic, not
@@ -36,8 +40,8 @@ showed the biggest drop during general openings, before the first name or number
   "X used to be", or a question. Background and "how did this happen" come
   after beat 3.
 - The hook is a fact, not a joke. It is funny because it is true.
-Good: A cricket match can last five days. They stop for lunch. They stop
-again for tea. And then it can end in a draw.
+Good: Cricket matches last five days. They stop for lunch. Then for tea.
+And then it can end in a draw.
 Bad: Chess used to be incredibly quiet. Just two people staring forever.
 
 WRITE IN CHAPTERS

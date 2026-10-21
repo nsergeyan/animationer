@@ -1107,8 +1107,9 @@ WORDS_PER_MINUTE = config.WORDS_PER_MINUTE
 #   MEDIUM beat   6-8 words   ~2.3s   ordinary explaining
 #   LONG beat     9-12 words  ~3.5s   the big fact, the number, the turn
 #
-# About a quarter / half / quarter averages ~2.4s a picture, ~75 beats for 3
-# minutes. Replaces the two-tier 3-6 / 8-12 split (2026-10-07), which pass2
+# About a quarter / half / quarter averages ~2.4s a picture, ~45 beats for 2
+# minutes (config.TARGET_VIDEO_SECONDS; it was ~75 beats for 3 minutes until
+# 2026-10-20). Replaces the two-tier 3-6 / 8-12 split (2026-10-07), which pass2
 # then cut into a picture every ~1.1s - too fast. Before that, 4-8 / 10-15.
 #
 # The MIX is the rule. Uniformly short beats are a metronome, uniformly long
