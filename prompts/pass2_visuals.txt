@@ -1053,7 +1053,7 @@ the factory
 race weekend
 the money
 
-Aim for 3 to 5 locations in a video. A location change is a dissolve, so do
+Aim for 4 to 8 locations in a video. A location change is a dissolve, so do
 not change location every few beats.
 
 17. LOCATION VISUAL ANCHOR
@@ -1876,7 +1876,7 @@ the first location is none, no other location is none
 2 or 3 different moods, building at most once
 generated locations are relevant to the narration
 similar consecutive beats reuse locations when appropriate
-3 to 5 locations in total, plus "the comment break"
+4 to 8 locations in total, plus "the comment break"
 "the comment break" has the same music mood as the location before it
 every location has a corresponding plan.locations entry
 every visual_anchor is ""

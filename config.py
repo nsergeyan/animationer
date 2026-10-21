@@ -434,7 +434,7 @@ WORDS_PER_MINUTE = 177
 # It is a target, not a constraint - nothing truncates a video to fit. Change
 # it here AND change the total word budget in the prompt template, or the two
 # will disagree and the warning will fire on every run.
-TARGET_VIDEO_SECONDS = 120.0
+TARGET_VIDEO_SECONDS = 180.0
 TARGET_VIDEO_TOLERANCE = 0.15      # warn outside +/-15%
 
 FPS = 30                                           # Remotion runs at 30fps

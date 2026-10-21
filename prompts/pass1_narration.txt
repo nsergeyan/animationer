@@ -7,7 +7,7 @@ It is 2026. Before writing, use web search to confirm every current fact: teams,
 drivers or members and who belongs where, champions, records, numbers. Never
 rely on memory for anything that changes from season to season.
 
-I WANT ABOUT 45 BEATS, 310-340 SPOKEN WORDS IN TOTAL (about 2 minutes).
+I WANT ABOUT 75 BEATS, 500-540 SPOKEN WORDS IN TOTAL (about 3 minutes).
 Each beat is ONE short sentence. You write ONLY the narration: a second pass
 adds the pictures later, exactly one picture per beat, so a beat's length is
 how long its picture stays on screen. Never write picture descriptions, image
@@ -48,7 +48,7 @@ WRITE IN CHAPTERS
 The video is animated: each chapter is ONE scene on screen that keeps changing
 while you talk (things appear, move, grow, get compared). A new chapter is a
 jump to a new scene.
-- Split the script into 3 to 5 chapters. Stay inside one chapter for at least
+- Split the script into 4 to 8 chapters. Stay inside one chapter for at least
   8 beats in a row. Never hop to another topic and come back.
 - Each chapter leads into the next for a reason the narration gives. No time
   jumps like "meanwhile" or "years later" without a cause.
