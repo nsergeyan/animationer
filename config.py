@@ -222,12 +222,80 @@ MUSIC_MOOD_UNDER_DB = 11.0
 # gaps, so they read as louder under the voice. "building" at 11 dB was judged
 # a little too much on american_football_explained (2026-10-14).
 MUSIC_MOOD_EXTRA_DB = {"building": 2.0}
+# A location with this mood plays narration only. The opening location gets
+# it, so the hook is voice alone and the music enters on the first location
+# change, fading in over MUSIC_CROSSFADE_SECONDS.
+MUSIC_SILENT_MOOD = "none"
 MUSIC_CROSSFADE_SECONDS = 1.5   # centred on the location change
 # Moods whose piece is trimmed so it ENDS with its section, landing the
 # piece's climax on the end of the scene instead of starting from the top.
 MUSIC_END_ALIGNED_MOODS = ("building",)
 # More switches than this gets jumpy. A warning, not an error.
 MUSIC_MAX_SWITCHES = 4
+
+# --- Sound effects ------------------------------------------------------------
+# One folder per tag under SFX_DIR; the folder names ARE the allowed tags, and
+# the file inside a folder is picked by the code, never by the script. Sorted
+# by ear 2026-10-21 from Narek's own pack (meme/cartoon punctuation: he
+# rejected every subtle foley and instrument sound offered before that).
+#
+# Two kinds, and the KIND fixes the timing, so the LLM only ever names a tag:
+#   picture  plays when the beat's picture appears (the beat's start), under
+#            the voice. Sounds that belong to a thing on screen.
+#   after    plays after the line, in a pause added for it, so it never covers
+#            a word. Reactions to what was just said.
+# A beat names one with "sfx": "<tag>". Mixed after the music by
+# modules/video_editor.py mix_sfx.
+#
+# Files are played exactly as they are, so they must be TRIMMED: no silence
+# before the sound (it plays late) or after it (it stretches the pause).
+# Downloaded ones usually carry some: 41 of the first 45 did, up to 2.5s. The
+# library was trimmed once by hand on 2026-10-21 (start at -50 dB, end at
+# -60 dB so decays like a bell's ring survive); untrimmed copies are in
+# SFX_DIR/_originals/, which the code ignores. Trim any file you add the same way.
+SFX_ENABLED = True
+SFX_DIR = ASSETS_DIR / "sfx"
+SFX_PICTURE_TAGS = ("pop", "hit", "boom", "suspense", "fight", "money",
+                    "correct", "wrong", "celebrate", "join", "leave")
+SFX_AFTER_TAGS = ("shock", "sad", "dumb", "awkward", "sus", "meme")
+# Placed by the code, never tagged: a location change gets a transition sound
+# in a short pause before the dissolve, the outro gets its sound after the line.
+SFX_TRANSITION_TAG = "transition"
+SFX_OUTRO_TAG = "outro"
+
+# Limits, so the sounds stay punctuation and do not turn into a laugh track.
+# Over SFX_MAX_AFTER or SFX_MAX_RARE stops the pipeline; the share and the
+# spacing only warn.
+SFX_MAX_AFTER = 6                  # "after" reactions per video
+SFX_RARE_TAGS = ("meme", "sus")    # work because they are rare
+SFX_MAX_RARE = 2
+SFX_PICTURE_SHARE = 1 / 3          # of all beats, at most, carry a picture sound
+SFX_MIN_AFTER_GAP_BEATS = 8        # ~20s at ~2.4s a beat, between two reactions
+
+# Timing, in seconds.
+SFX_AFTER_GAP = 0.15               # silence between the last word and a reaction
+SFX_TRANSITION_PAUSE = 0.35        # held on the last picture before a location change
+SFX_MAX_SECONDS = 2.5              # longer sounds are cut, with a fade (Angel is 18s)
+SFX_TRANSITION_MAX_SECONDS = 1.2
+SFX_FADE_SECONDS = 0.3
+
+# Sounds with a human voice in them. They always play after the line, in a
+# pause, whatever their tag: a voice on top of the narrator is mush. "Nope"
+# under "Throwing the ball ahead is strictly illegal." was the case that showed
+# it (zz_sfx_test, 2026-10-21); a bonk or a ding under the voice was fine.
+SFX_VOICE_FILES = ("Nope sound effect.mp3", "YEET - Sound Effect HD.mp3")
+
+# The music dips by this much while an effect plays, ramping over
+# SFX_DUCK_RAMP_SECONDS each side, so the bed never buries the effect. The
+# bed's level everywhere else is untouched (MUSIC_MOOD_UNDER_DB).
+SFX_MUSIC_DUCK_DB = 8.0
+SFX_DUCK_RAMP_SECONDS = 0.15
+
+# How far below the narration each kind sits, in dB, measured against the
+# sound's loudest moment (ebur128 momentary max) so a 0.3s click and a 2s
+# crowd land comparably. First guess, NOT yet tuned by ear: raise a number to
+# push that kind back, lower it to bring it forward.
+SFX_UNDER_DB = {"picture": 6.0, "after": 1.0, "transition": 9.0, "outro": 4.0}
 
 # --- Outro ------------------------------------------------------------------
 # The subscribe/like card, appended as a final BEAT rather than a special
@@ -366,7 +434,7 @@ WORDS_PER_MINUTE = 177
 # It is a target, not a constraint - nothing truncates a video to fit. Change
 # it here AND change the total word budget in the prompt template, or the two
 # will disagree and the warning will fire on every run.
-TARGET_VIDEO_SECONDS = 180.0
+TARGET_VIDEO_SECONDS = 120.0
 TARGET_VIDEO_TOLERANCE = 0.15      # warn outside +/-15%
 
 FPS = 30                                           # Remotion runs at 30fps

@@ -1,321 +1,4 @@
 SCRIPT:
-{
-  "topic": "cricket-explained",
-  "format": "explainer",
-  "plan": {
-    "spine_question": "How can a game last five days and end in a draw, and how does cricket actually work?",
-    "deflations": [
-      {
-        "assumed": "Cricket is just a confusing British version of baseball.",
-        "actual": "Cricket is a massive global sport with completely unique rules and three distinct formats.",
-        "who_decided": "The evolution of the sport over centuries and its massive adoption in South Asia.",
-        "build_beat": "From far away, cricket looks like baseball.",
-        "drop_beat": "[flatly] After that, almost nothing is the same."
-      }
-    ],
-    "cast": [
-      {
-        "name": "Jasprit Bumrah",
-        "why": "Star fast bowler for India who dominated the 2026 T20 World Cup."
-      },
-      {
-        "name": "Virat Kohli",
-        "why": "India's biggest star, now plays only One Day cricket after quitting Tests and T20s."
-      },
-      {
-        "name": "Aiden Markram",
-        "why": "South African batter who scored a historic 136 in the 2025 WTC Final."
-      },
-      {
-        "name": "Pat Cummins",
-        "why": "Australian captain who led his team to the 2023 World Cup victory."
-      }
-    ],
-    "specifics": [
-      {
-        "fact": "India beat New Zealand by 96 runs in the 2026 T20 World Cup final in Ahmedabad, the biggest margin in a T20 World Cup final.",
-        "source": "newsonair.gov.in, 8 March 2026",
-        "beat": "They beat New Zealand by ninety six runs in the final."
-      },
-      {
-        "fact": "Bumrah took 14 wickets, most of the tournament, 4/15 in the final.",
-        "source": "T20 World Cup 2026 statistics",
-        "beat": "He got fourteen batters out, more than anyone."
-      },
-      {
-        "fact": "South Africa beat Australia in the 2025 WTC final at Lord's, Markram 136.",
-        "source": "ICC WTC 2025 final",
-        "beat": "Aiden Markram scored one hundred thirty six runs."
-      },
-      {
-        "fact": "Australia beat India in the 2023 ODI World Cup final in Ahmedabad, Cummins captain, their sixth title.",
-        "source": "ICC 2023 Cricket World Cup",
-        "beat": "Australia has won this World Cup six times."
-      }
-    ],
-    "facts_to_check": [
-      {
-        "claim": "India won 2026 T20 WC by 96 runs, biggest final margin; Bumrah 14 wickets, 4 in final",
-        "source": "newsonair.gov.in, ratopati, navbharatlive"
-      },
-      {
-        "claim": "South Africa won 2025 WTC final vs Australia at Lord's, Markram 136",
-        "source": "ICC"
-      },
-      {
-        "claim": "Australia six ODI World Cups, 2023 final vs India in Ahmedabad",
-        "source": "ICC"
-      },
-      {
-        "claim": "Narendra Modi Stadium, Ahmedabad: world's largest cricket stadium, about 132,000 capacity",
-        "source": "Wikipedia / GCA"
-      },
-      {
-        "claim": "Twenty20 started in England in 2003",
-        "source": "ECB / Wikipedia"
-      },
-      {
-        "claim": "Ten ways of being out in the Laws of Cricket",
-        "source": "MCC Laws of Cricket"
-      },
-      {
-        "claim": "Kohli quit T20Is 2024 and Tests May 2025, ODI only, aged 37, aims for 2027 World Cup",
-        "source": "crictracker, cricket.com"
-      },
-      {
-        "claim": "Kohli is the most followed cricketer on Instagram",
-        "source": "Instagram"
-      }
-    ]
-  },
-  "beats": [
-    {
-      "narration": "[curious] A cricket match can last five days."
-    },
-    {
-      "narration": "They stop for lunch."
-    },
-    {
-      "narration": "They stop again for tea."
-    },
-    {
-      "narration": "[deadpan] And then it can end in a draw."
-    },
-    {
-      "narration": "From far away, cricket looks like baseball."
-    },
-    {
-      "narration": "One player throws a ball."
-    },
-    {
-      "narration": "Another player hits it."
-    },
-    {
-      "narration": "[flatly] After that, almost nothing is the same."
-    },
-    {
-      "narration": "Two teams of eleven players share one big field."
-    },
-    {
-      "narration": "The batter holds a wide, flat wooden bat."
-    },
-    {
-      "narration": "Behind him stand three wooden sticks called stumps."
-    },
-    {
-      "narration": "Two tiny pieces called bails sit on top."
-    },
-    {
-      "narration": "Together they make the wicket."
-    },
-    {
-      "narration": "The bowler runs in and delivers a hard leather ball."
-    },
-    {
-      "narration": "His arm must stay straight."
-    },
-    {
-      "narration": "[deadpan] Throwing it is illegal."
-    },
-    {
-      "narration": "Usually the ball bounces once before it reaches the batter."
-    },
-    {
-      "narration": "The bounce can send it anywhere."
-    },
-    {
-      "narration": "The batting team wants runs."
-    },
-    {
-      "narration": "After a hit, the two batters can run between the wickets."
-    },
-    {
-      "narration": "Each trip is one run."
-    },
-    {
-      "narration": "[calm] But hitting it far is better."
-    },
-    {
-      "narration": "If the ball reaches the rope, that is four runs."
-    },
-    {
-      "narration": "If it flies over the rope, that is six."
-    },
-    {
-      "narration": "The fielding team wants the batters out."
-    },
-    {
-      "narration": "[understated] There are ten ways to do it."
-    },
-    {
-      "narration": "The ball can knock the bails off."
-    },
-    {
-      "narration": "Or a fielder catches the ball before it lands."
-    },
-    {
-      "narration": "An out batter walks off and the next one comes in."
-    },
-    {
-      "narration": "Ten outs end the team's innings."
-    },
-    {
-      "narration": "[thoughtful] Why not eleven?"
-    },
-    {
-      "narration": "The last batter has no partner to run with."
-    },
-    {
-      "narration": "Then the two teams swap roles."
-    },
-    {
-      "narration": "Cricket comes in three formats."
-    },
-    {
-      "narration": "Test cricket is the oldest."
-    },
-    {
-      "narration": "[peaceful] The players wear all white."
-    },
-    {
-      "narration": "This is the five day format from the start."
-    },
-    {
-      "narration": "South Africa won the World Test Championship in twenty twenty five."
-    },
-    {
-      "narration": "They beat Australia in the final at Lord's in London."
-    },
-    {
-      "narration": "Aiden Markram scored one hundred thirty six runs."
-    },
-    {
-      "narration": "A good batter can stay in all day."
-    },
-    {
-      "narration": "[curious] Quick question before we go on."
-    },
-    {
-      "narration": "Which sport is next?"
-    },
-    {
-      "narration": "Write it in the comments."
-    },
-    {
-      "narration": "[deadpan] Not everyone has five days free."
-    },
-    {
-      "narration": "So England invented Twenty Twenty cricket in two thousand three."
-    },
-    {
-      "narration": "Each team gets just one hundred twenty balls."
-    },
-    {
-      "narration": "A match takes three hours."
-    },
-    {
-      "narration": "Players wear bright team colors."
-    },
-    {
-      "narration": "Batters swing at almost everything."
-    },
-    {
-      "narration": "India won this format's World Cup in March twenty twenty six."
-    },
-    {
-      "narration": "They beat New Zealand by ninety six runs in the final."
-    },
-    {
-      "narration": "[understated] No final had ever been that one sided."
-    },
-    {
-      "narration": "Their star is fast bowler Jasprit Bumrah."
-    },
-    {
-      "narration": "He got fourteen batters out, the most of anyone."
-    },
-    {
-      "narration": "The third format sits in the middle."
-    },
-    {
-      "narration": "[calm] One Day games give each team three hundred balls."
-    },
-    {
-      "narration": "A match lasts about eight hours."
-    },
-    {
-      "narration": "Australia has won this World Cup six times."
-    },
-    {
-      "narration": "The latest was in twenty twenty three."
-    },
-    {
-      "narration": "Pat Cummins was captain."
-    },
-    {
-      "narration": "They beat India in the final, in Ahmedabad."
-    },
-    {
-      "narration": "[softly] The home crowd went quiet."
-    },
-    {
-      "narration": "That stadium is the biggest cricket ground in the world."
-    },
-    {
-      "narration": "It holds about one hundred thirty thousand people."
-    },
-    {
-      "narration": "[thoughtful] In India, cricket is close to a religion."
-    },
-    {
-      "narration": "Its king is Virat Kohli."
-    },
-    {
-      "narration": "He has quit Test and Twenty Twenty cricket."
-    },
-    {
-      "narration": "Now he only plays One Day games."
-    },
-    {
-      "narration": "At thirty seven, he still wants the next World Cup."
-    },
-    {
-      "narration": "[light chuckle] No cricketer has more Instagram followers."
-    },
-    {
-      "narration": "Five days, eight hours, or three hours."
-    },
-    {
-      "narration": "It is all one fight."
-    },
-    {
-      "narration": "The bowler tries to hit three wooden sticks."
-    },
-    {
-      "narration": "[content] The batter guards them with a flat piece of wood."
-    }
-  ]
-}
 
 PASS 2 OF 2: THE VISUALS
 
@@ -331,6 +14,7 @@ one edits list on every beat (Section 0C)
 one location NAME per beat (visual_anchor and setting_anchor are always "")
 emotion tags remain untouched
 one music mood on every location (Section 47)
+one "sfx" tag on the few beats that earn a sound effect (Section 48)
 
 Your output is the complete final JSON: the pass 1 object with your fields
 merged into it.
@@ -455,6 +139,8 @@ edits for every beat, beats 1 to N in order.
 
 Give every location a music mood (Section 47).
 
+Tag the few beats that earn a sound effect (Section 48).
+
 Run Section 41 by checking every beat individually.
 
 Output one raw JSON object and nothing else.
@@ -563,7 +249,7 @@ sign.
 
 Its plan.locations entry copies the music mood of the location just before
 it, so the music keeps playing through the break. It does not count toward
-the 4 to 8 locations.
+the 3 to 5 locations.
 
 PLAN EACH LOCATION AS ONE SCENE
 
@@ -1370,7 +1056,7 @@ the factory
 race weekend
 the money
 
-Aim for 4 to 8 locations in a video. A location change is a dissolve, so do
+Aim for 3 to 5 locations in a video. A location change is a dissolve, so do
 not change location every few beats.
 
 17. LOCATION VISUAL ANCHOR
@@ -2188,16 +1874,31 @@ Check:
 
 if Pass 1 had no locations, locations were generated
 every beat has a physical location
-every plan location has "music": calm, playful or building
+every plan location has "music": calm, playful, building or none
+the first location is none, no other location is none
 2 or 3 different moods, building at most once
 generated locations are relevant to the narration
 similar consecutive beats reuse locations when appropriate
-4 to 8 locations in total, plus "the comment break"
+3 to 5 locations in total, plus "the comment break"
 "the comment break" has the same music mood as the location before it
 every location has a corresponding plan.locations entry
 every visual_anchor is ""
 setting_anchor is ""
 no beat describes a room, wall, floor, sky or scenery
+
+SOUND EFFECTS (Section 48)
+
+Check:
+
+every "sfx" value is one of the tags in Section 48, spelled exactly
+no beat is tagged transition or outro
+at most 1 beat in 3 has a picture sound
+at most 6 reaction sounds in the whole video
+at most 2 of them are meme or sus
+reaction sounds are about 8 beats apart or more
+no sound in the first 3 beats except a picture sound that fits the hook
+every tag matches what that beat's line literally says
+awkward only where someone is embarrassed in that moment, never on irony
 
 WHITE PAGE (Section 0B)
 
@@ -2449,10 +2150,13 @@ playful   light and upbeat: openings, fun facts, things going well
 building  rising stakes toward one big moment: competition, chaos, a
           climax. Its peak lands at the END of the location, so give it
           to the location where the story peaks.
+none      no music, narration only. Give it to the FIRST location and
+          nowhere else: the hook plays on the voice alone and the music
+          enters when the story moves to the second location.
 
-Use only these three words. Any other word stops the pipeline.
+Use only these four words. Any other word stops the pipeline.
 
-Use 2 or 3 different moods per video.
+Use 2 or 3 different moods per video, not counting none.
 
 Use building at most once, or on consecutive locations that lead to the
 same peak.
@@ -2464,14 +2168,80 @@ Match the mood to what happens in the location, not to the topic as a whole.
 Example:
 
 "locations": [
-  {"name": "the gridiron field", "visual_anchor": "", "music": "playful"},
+  {"name": "the gridiron field", "visual_anchor": "", "music": "none"},
   {"name": "the living room couch", "visual_anchor": "", "music": "calm"},
   {"name": "the super bowl stadium", "visual_anchor": "", "music": "building"}
 ]
 
 Do not write a music_prompt.
 
-48. OUTPUT
+48. SOUND EFFECTS
+
+A few beats get a short sound effect. Give such a beat an "sfx" field with
+exactly one tag. The code picks the sound file and the timing from the tag:
+you only choose the tag.
+
+Picture sounds play the moment the beat's picture appears, under the voice.
+Give them to a beat whose picture shows the thing the sound belongs to:
+
+pop        something appears: a sign, a label, an object
+hit        a collision, a tackle, a punch, a throw
+boom       a big reveal, the biggest number
+suspense   tension, time running out, something about to happen
+fight      a fight, a match or a round starts
+money      money, prices, salaries, prize money
+correct    the right answer, a good idea, a rule that works
+wrong      illegal, a mistake, a rule broken, "no"
+celebrate  a title, a trophy, a win
+join       someone arrives or joins: a signing, a new player
+leave      someone leaves: a retirement, a departure, a sending off
+
+Reaction sounds play AFTER the line, in a short pause the code adds, so they
+never cover a word. Give them to a line the viewer should react to:
+
+shock      an unbelievable fact
+sad        a painful, heartbreaking outcome: a lost final, an injury
+dumb       a stupid or silly outcome: an own goal, a pointless rule
+awkward    someone is embarrassed, caught out or humiliated in that moment:
+           a promise broken in public, a boast that backfires. NOT irony
+           or a fall from greatness ("a tiny kingdom for a man used to
+           conquering countries" is not awkward: leave it untagged)
+sus        something suspicious, a scandal, a conspiracy
+meme       one big comic moment
+
+Limits (the pipeline stops on the first two):
+
+at most 6 reaction sounds in the whole video
+at most 2 of them are meme or sus
+at most 1 beat in 3 has a picture sound
+reaction sounds about 8 beats apart or more
+
+Do not tag transition or outro. Location changes and the outro get their
+sounds automatically.
+
+Most beats have no sound. A sound is punctuation: it lands because the
+beats around it are quiet. When unsure, leave it out.
+
+The sound reacts to the fact, it is not the joke. Tag what the line
+literally says (a tackle gets hit, a lost final gets sad). Never tag a
+plain setup line just to make it funnier.
+
+Keep the first 3 beats quiet: the hook plays on the voice alone. A picture
+sound on the hook picture is fine when it fits.
+
+Example:
+
+{"narration": "Throwing the ball ahead is strictly illegal.",
+ "location": "the backward pass pitch",
+ "edits": ["a big red sign reading \"NO FORWARD\" appears at the top of the frame"],
+ "sfx": "wrong"}
+
+{"narration": "They beat New Zealand by one single point.",
+ "location": "the world cup final",
+ "edits": ["the tag disappears and the player in black sinks to his knees"],
+ "sfx": "sad"}
+
+49. OUTPUT
 
 Output one raw JSON object and nothing else.
 
@@ -2496,6 +2266,7 @@ plan.setting_anchor
 beats[].image_prompt and beats[].image_prompt_alt where Section 0C asks for
 them
 beats[].edits: exactly one edit line on every beat without an image_prompt
+beats[].sfx: one tag, only on the beats Section 48 gives a sound
 
 If Pass 1 contained no locations, the final object must additionally contain
 the generated location assignments required to make every beat physically

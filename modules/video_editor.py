@@ -31,7 +31,10 @@ def render(manifest_path: Path, run_dir: Path,
     out_path = run_dir / "final.mp4"
 
     beats = json.loads(manifest_path.read_text())
-    props = json.dumps({"beats": beats})
+    # Remotion only sees what LectureVideo needs; the sound effects are mixed
+    # in afterwards by mix_sfx.
+    props = json.dumps({"beats": [{k: v for k, v in b.items() if k != "sfx"}
+                                  for b in beats]})
 
     cmd = [
         "npx", "remotion", "render",
@@ -44,11 +47,18 @@ def render(manifest_path: Path, run_dir: Path,
     print(f"  [video] rendering with Remotion -> {out_path.name}")
     subprocess.run(cmd, cwd=str(config.REMOTION_DIR), check=True)
 
+    # Measured now, on narration alone: after the music is in, the level would
+    # include the bed, and the effects would sit against the wrong number.
+    speech = integrated_loudness(out_path) if any(b.get("sfx") for b in beats) else None
+
     if config.MUSIC_ENABLED:
         if moods:
             mix_moods(out_path, run_dir, beats, moods)
         else:
             mix_music(out_path, run_dir)
+
+    if config.SFX_ENABLED and speech is not None:
+        mix_sfx(out_path, beats, speech)
 
     return out_path
 
@@ -232,10 +242,12 @@ def mood_plan(beats: list[dict], moods: dict[str, str], seed: str) -> list[dict]
             if sections and beat.get("location") and beat["location"] not in sections[-1]["locations"]:
                 sections[-1]["locations"].append(beat["location"])
             continue
-        files = library[mood]
-        # crc32 rather than hash(): Python salts str hashes per process, so
-        # hash() would pick a different piece on every render.
-        piece = files[zlib.crc32(f"{seed}:{mood}".encode()) % len(files)]
+        piece = None
+        if mood != config.MUSIC_SILENT_MOOD:
+            files = library[mood]
+            # crc32 rather than hash(): Python salts str hashes per process, so
+            # hash() would pick a different piece on every render.
+            piece = files[zlib.crc32(f"{seed}:{mood}".encode()) % len(files)]
         sections.append({"start": 0.0 if not sections else start, "mood": mood,
                          "piece": piece, "locations": [beat["location"]]})
     for k, sec in enumerate(sections):
@@ -297,6 +309,10 @@ def mix_moods(video_path: Path, run_dir: Path, beats: list[dict],
     half = config.MUSIC_CROSSFADE_SECONDS / 2
     inputs, chains = [], []
     for k, sec in enumerate(sections):
+        if sec["piece"] is None:
+            print(f"  [music] {sec['start']:6.1f}s  silent    "
+                  f"({', '.join(sec['locations'])})")
+            continue
         piece = _levelled(sec["piece"], run_dir / "music_levelled")
         level = integrated_loudness(piece)
         under = config.MUSIC_MOOD_UNDER_DB + config.MUSIC_MOOD_EXTRA_DB.get(sec["mood"], 0.0)
@@ -311,22 +327,33 @@ def mix_moods(video_path: Path, run_dir: Path, beats: list[dict],
         if sec["mood"] in config.MUSIC_END_ALIGNED_MOODS:
             offset = max(0.0, video_duration(piece) - span)
         delay = int((sec["start"] - lead) * 1000)
+        n = len(chains)
         inputs += ["-stream_loop", "-1", "-i", str(piece)]
         chains.append(
-            f"[{k + 1}:a]atrim=start={offset:.2f}:duration={span:.2f},"
+            f"[{n + 1}:a]atrim=start={offset:.2f}:duration={span:.2f},"
             f"asetpts=PTS-STARTPTS,volume={gain:.2f}dB,"
             f"afade=t=in:d={fade_in},"
             f"afade=t=out:st={max(0.0, span - fade_out):.2f}:d={fade_out},"
-            f"adelay={delay}|{delay}[m{k}]"
+            f"adelay={delay}|{delay}[m{n}]"
         )
         print(f"  [music] {sec['start']:6.1f}s  {sec['mood']:9} {sec['piece'].name} "
               f"{under:.0f} dB under ({', '.join(sec['locations'])})")
 
-    labels = "".join(f"[m{k}]" for k in range(len(sections)))
+    if not chains:
+        return False
+    labels = "".join(f"[m{k}]" for k in range(len(chains)))
+    # The bed dips under every sound effect mix_sfx is about to lay in, so
+    # music never buries one. Quoted because the expression is full of commas,
+    # which would otherwise end the filter's argument.
+    windows = sfx_windows(beats) if config.SFX_ENABLED else []
+    duck = f",volume='{_duck_expr(windows)}':eval=frame" if windows else ""
     filters = ";".join(chains) + (
-        f";{labels}amix=inputs={len(sections)}:normalize=0[bed]"
+        f";{labels}amix=inputs={len(chains)}:normalize=0{duck}[bed]"
         f";[0:a][bed]amix=inputs=2:duration=first:normalize=0[out]"
     )
+    if windows:
+        print(f"  [music] dips {config.SFX_MUSIC_DUCK_DB:.0f} dB under "
+              f"{len(windows)} sound effect(s)")
     mixed = video_path.with_suffix(".mixed.mp4")
     cmd = [
         "ffmpeg", "-y", "-i", str(video_path), *inputs,
@@ -345,4 +372,153 @@ def mix_moods(video_path: Path, run_dir: Path, beats: list[dict],
     mixed.replace(video_path)
     print(f"  [music] done, {len(sections)} section(s), "
           f"{config.MUSIC_MOOD_UNDER_DB:.0f} dB under the narration")
+    return True
+
+
+# --- Sound effects ----------------------------------------------------------
+#
+# Placed by pipeline.py cmd_manifest: every manifest entry may carry
+# "sfx": [{"tag", "kind", "file", "at"}], `at` in seconds from the beat's
+# start, `file` relative to config.SFX_DIR. The pauses the "after" and
+# "transition" kinds need are already inside the beat's duration, so the
+# picture timeline (Remotion) and _beat_starts agree on them for free.
+
+def sfx_library() -> dict[str, list[Path]]:
+    """Every tag folder under SFX_DIR, with its audio files."""
+    if not config.SFX_DIR.exists():
+        return {}
+    return {
+        d.name: sorted(p for p in d.iterdir() if p.suffix.lower() in AUDIO_SUFFIXES)
+        for d in sorted(config.SFX_DIR.iterdir())
+        if d.is_dir() and not d.name.startswith((".", "_"))
+    }
+
+
+def pick_sfx(files: list[Path], seed: str, tag: str, occurrence: int) -> Path:
+    """
+    The file for the Nth use of a tag in one video.
+
+    Starts at a per-video offset and then rotates, so the same tag twice in a
+    row never plays the same file (while the folder has more than one), and
+    every render of the same run picks the same files. crc32, not hash(), for
+    the reason given in mood_plan.
+    """
+    return files[(zlib.crc32(f"{seed}:{tag}".encode()) + occurrence) % len(files)]
+
+
+def peak_loudness(path: Path) -> float | None:
+    """
+    The loudest 400ms of a sound (ebur128 momentary max), in LUFS.
+
+    Integrated loudness is meaningless for a 0.3s click (it needs seconds of
+    audio and mostly measures the silence around it), so effects are matched
+    on their loudest moment instead, the part that actually gets heard.
+    """
+    result = subprocess.run(
+        ["ffmpeg", "-i", str(path), "-af", "apad=pad_dur=0.5,ebur128",
+         "-f", "null", "-"],
+        capture_output=True, text=True,
+    )
+    loudest = None
+    for line in result.stderr.splitlines():
+        if " M:" in line:
+            try:
+                m = float(line.split(" M:")[1].split()[0])
+            except (ValueError, IndexError):
+                continue
+            loudest = m if loudest is None else max(loudest, m)
+    return loudest
+
+
+def sfx_windows(beats: list[dict]) -> list[tuple[float, float, dict]]:
+    """
+    (start, end, effect) on the video timeline for every manifest effect,
+    end = start + the length it will actually play (cut to its kind's max).
+    Shared by mix_sfx, which plays them, and mix_moods, which dips the music
+    under them, so the two always agree on where they are.
+    """
+    out = []
+    for start, beat in zip(_beat_starts(beats)[0], beats):
+        for s in beat.get("sfx") or []:
+            path = config.SFX_DIR / s["file"]
+            if not path.exists():
+                continue
+            cap = (config.SFX_TRANSITION_MAX_SECONDS if s["kind"] == "transition"
+                   else config.SFX_MAX_SECONDS)
+            when = start + s["at"]
+            out.append((when, when + min(cap, video_duration(path)), s))
+    return out
+
+
+def _duck_expr(windows: list[tuple[float, float, dict]]) -> str:
+    """
+    A volume expression (for ffmpeg's volume filter, eval=frame) that dips by
+    SFX_MUSIC_DUCK_DB inside every window, with a linear ramp either side so
+    the bed slides down and back instead of clicking.
+    """
+    r = config.SFX_DUCK_RAMP_SECONDS
+    parts = [f"clip((t-{a - r:.3f})/{r},0,1)*clip(({b + r:.3f}-t)/{r},0,1)"
+             for a, b, _ in windows]
+    depth = config.SFX_MUSIC_DUCK_DB / 20
+    return f"pow(10,-{depth:.3f}*min(1,{'+'.join(parts)}))"
+
+
+def mix_sfx(video_path: Path, beats: list[dict], speech: float) -> bool:
+    """
+    Lay every manifest sound effect into the video, in place.
+
+    `speech` is the narration's integrated loudness, measured before the
+    music went in. Each effect is cut to its kind's maximum length (with a
+    fade), set config.SFX_UNDER_DB[kind] below the narration by its loudest
+    moment, and delayed to its spot. Same filter notes as mix_music.
+    """
+    placed = sfx_windows(beats)
+    if not placed:
+        return False
+
+    inputs, chains = [], []
+    for when, end, s in placed:
+        path = config.SFX_DIR / s["file"]
+        level = peak_loudness(path) if path.exists() else None
+        if level is None:
+            print(f"  [sfx] missing or unreadable {s['file']}, skipped")
+            continue
+        gain = (speech - config.SFX_UNDER_DB[s["kind"]]) - level
+        length = end - when
+        fade = min(config.SFX_FADE_SECONDS, length / 2)
+        delay = max(0, int(when * 1000))
+        n = len(chains)
+        inputs += ["-i", str(path)]
+        chains.append(
+            f"[{n + 1}:a]aformat=sample_rates=44100:channel_layouts=stereo,"
+            f"atrim=duration={length:.2f},asetpts=PTS-STARTPTS,"
+            f"volume={gain:.2f}dB,"
+            f"afade=t=out:st={length - fade:.2f}:d={fade:.2f},"
+            f"adelay=delays={delay}:all=1[s{n}]"
+        )
+        print(f"  [sfx] {when:6.1f}s  {s['kind']:10} {s['tag']:10} {path.name}")
+
+    if not chains:
+        return False
+    labels = "".join(f"[s{k}]" for k in range(len(chains)))
+    filters = ";".join(chains) + (
+        f";[0:a]{labels}amix=inputs={len(chains) + 1}:duration=first:normalize=0[out]"
+    )
+    mixed = video_path.with_suffix(".sfx.mp4")
+    cmd = [
+        "ffmpeg", "-y", "-i", str(video_path), *inputs,
+        "-filter_complex", filters,
+        "-map", "0:v", "-map", "[out]",
+        "-c:v", "copy", "-c:a", "aac", "-b:a", "192k",
+        str(mixed),
+    ]
+    result = subprocess.run(cmd, capture_output=True, text=True)
+    if result.returncode != 0:
+        print("  [sfx] ffmpeg failed, keeping the video without effects:")
+        print("   ", result.stderr.strip().splitlines()[-1][:160])
+        mixed.unlink(missing_ok=True)
+        return False
+
+    mixed.replace(video_path)
+    print(f"  [sfx] done, {len(chains)} effect(s)")
     return True

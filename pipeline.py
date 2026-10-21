@@ -37,614 +37,362 @@ FLOW_RUNNER = config.ROOT_DIR / "flow_runner" / "runner.py"
 # a run folder under output/ (see adopt_pasted_script) and makes the whole
 # video. Set it to {} to work on the most recent run instead.
 NEW_SCRIPT = {
-  "topic": "cricket-explained",
+  "topic": "rugby explained",
   "format": "explainer",
   "plan": {
-    "spine_question": "How can a game last five days and end in a draw, and how does cricket actually work?",
+    "spine_question": "How does rugby work and what makes it unique?",
+    "hook": {
+      "fact": "Players must pass the ball backward to advance down the field.",
+      "why_strange_to_a_newcomer": "In most sports, you throw or pass forward to reach the goal.",
+      "source": "Basic laws of Rugby Union"
+    },
     "deflations": [
       {
-        "assumed": "Cricket is just a confusing British version of baseball.",
-        "actual": "Cricket is a massive global sport with completely unique rules and three distinct formats.",
-        "who_decided": "The evolution of the sport over centuries and its massive adoption in South Asia.",
-        "build_beat": "From far away, cricket looks like baseball.",
-        "drop_beat": "[flatly] After that, almost nothing is the same."
+        "assumed": "You can only advance by running since forward passes are illegal.",
+        "actual": "You can kick the ball forward at any time to gain ground.",
+        "who_decided": "Early rugby school lawmakers",
+        "build_beat": "[thoughtful] Kicking is another option.",
+        "drop_beat": "Players can kick the ball forward at any time."
       }
     ],
     "cast": [
       {
-        "name": "Jasprit Bumrah",
-        "why": "Star fast bowler for India who dominated the 2026 T20 World Cup."
+        "name": "Dan Carter",
+        "why": "Top points scorer in international test history."
       },
       {
-        "name": "Virat Kohli",
-        "why": "India's biggest star, now plays only One Day cricket after quitting Tests and T20s."
+        "name": "Siya Kolisi",
+        "why": "Captain who led South Africa to back-to-back World Cup victories."
       },
       {
-        "name": "Aiden Markram",
-        "why": "South African batter who scored a historic 136 in the 2025 WTC Final."
-      },
-      {
-        "name": "Pat Cummins",
-        "why": "Australian captain who led his team to the 2023 World Cup victory."
+        "name": "Antoine Dupont",
+        "why": "French superstar who led his team to Olympic gold in sevens."
       }
     ],
     "specifics": [
       {
-        "fact": "India beat New Zealand by 96 runs in the 2026 T20 World Cup final in Ahmedabad, the biggest margin in a T20 World Cup final.",
-        "source": "newsonair.gov.in, 8 March 2026",
-        "beat": "They beat New Zealand by ninety six runs in the final."
+        "fact": "Dan Carter scored 1598 test points.",
+        "source": "World Rugby all-time records",
+        "beat": "21"
       },
       {
-        "fact": "Bumrah took 14 wickets, most of the tournament, 4/15 in the final.",
-        "source": "T20 World Cup 2026 statistics",
-        "beat": "He got fourteen batters out, more than anyone."
+        "fact": "South Africa won the 2023 World Cup beating NZ by one point.",
+        "source": "2023 Rugby World Cup results",
+        "beat": "27"
       },
       {
-        "fact": "South Africa beat Australia in the 2025 WTC final at Lord's, Markram 136.",
-        "source": "ICC WTC 2025 final",
-        "beat": "Aiden Markram scored one hundred thirty six runs."
-      },
-      {
-        "fact": "Australia beat India in the 2023 ODI World Cup final in Ahmedabad, Cummins captain, their sixth title.",
-        "source": "ICC 2023 Cricket World Cup",
-        "beat": "Australia has won this World Cup six times."
+        "fact": "Rugby sevens games take only 14 minutes.",
+        "source": "World Rugby Sevens rules",
+        "beat": "35"
       }
     ],
     "facts_to_check": [
       {
-        "claim": "India won 2026 T20 WC by 96 runs, biggest final margin; Bumrah 14 wickets, 4 in final",
-        "source": "newsonair.gov.in, ratopati, navbharatlive"
+        "claim": "Dan Carter scored 1598 international points.",
+        "source": "World Rugby records"
       },
       {
-        "claim": "South Africa won 2025 WTC final vs Australia at Lord's, Markram 136",
-        "source": "ICC"
+        "claim": "South Africa won their fourth title in 2023.",
+        "source": "2023 Rugby World Cup results"
       },
       {
-        "claim": "Australia six ODI World Cups, 2023 final vs India in Ahmedabad",
-        "source": "ICC"
-      },
-      {
-        "claim": "Narendra Modi Stadium, Ahmedabad: world's largest cricket stadium, about 132,000 capacity",
-        "source": "Wikipedia / GCA"
-      },
-      {
-        "claim": "Twenty20 started in England in 2003",
-        "source": "ECB / Wikipedia"
-      },
-      {
-        "claim": "Ten ways of being out in the Laws of Cricket",
-        "source": "MCC Laws of Cricket"
-      },
-      {
-        "claim": "Kohli quit T20Is 2024 and Tests May 2025, ODI only, aged 37, aims for 2027 World Cup",
-        "source": "crictracker, cricket.com"
-      },
-      {
-        "claim": "Kohli is the most followed cricketer on Instagram",
-        "source": "Instagram"
+        "claim": "Antoine Dupont won gold in the Paris Olympics.",
+        "source": "Paris 2024 Olympic sevens results"
       }
     ],
     "locations": [
-      {"name": "the five day test match", "visual_anchor": "", "music": "playful"},
-      {"name": "the batting crease", "visual_anchor": "", "music": "calm"},
-      {"name": "the run scoring outfield", "visual_anchor": "", "music": "playful"},
-      {"name": "lord's in london", "visual_anchor": "", "music": "calm"},
-      {"name": "the comment break", "visual_anchor": "", "music": "calm"},
-      {"name": "the twenty twenty final", "visual_anchor": "", "music": "building"},
-      {"name": "the ahmedabad stadium", "visual_anchor": "", "music": "calm"},
-      {"name": "the indian fan lane", "visual_anchor": "", "music": "playful"},
-      {"name": "the centre pitch", "visual_anchor": "", "music": "calm"}
+      {"name": "the backward pass pitch", "visual_anchor": "", "music": "none"},
+      {"name": "the set piece battleground", "visual_anchor": "", "music": "calm"},
+      {"name": "the goal kicking range", "visual_anchor": "", "music": "playful"},
+      {"name": "the comment break", "visual_anchor": "", "music": "playful"},
+      {"name": "the world cup final", "visual_anchor": "", "music": "building"},
+      {"name": "the paris sevens field", "visual_anchor": "", "music": "playful"}
     ],
     "setting_anchor": ""
   },
   "beats": [
     {
-      "narration": "[curious] A cricket match can last five days.",
-      "location": "the five day test match",
-      "image_prompt": "reference character sits at frame left, curious, watching Virat Kohli, a brown-skinned batter with a thick dark beard in a white shirt with the number 18, standing at three tan wooden stumps, wide shot",
-      "image_prompt_alt": "reference character sits cross-legged in the foreground, curious, as a fit medium-height brown-skinned man with short spiky dark hair, a batter with a thick dark beard in a white shirt with the number 18, waits at three tan wooden stumps, medium-wide shot"
+      "narration": "[curious] In rugby you must pass BACKWARD to move forward.",
+      "location": "the backward pass pitch",
+      "image_prompt": "reference character at frame right, curious, watches two doodle players in red jerseys, the front one tossing one white oval ball backward, wide shot",
+      "image_prompt_alt": "reference character at frame left, curious, beside two doodle players in red jerseys running toward frame right, the leading one flicking one white oval ball back behind him, medium-wide shot"
     },
     {
-      "narration": "They stop for lunch.",
-      "location": "the five day test match",
+      "narration": "Throwing the ball ahead is strictly illegal.",
+      "location": "the backward pass pitch",
       "edits": [
-        "one big white plate holding one red apple appears at frame right, the batter turning toward it"
+        "a big red sign reading \"NO FORWARD\" appears at the top of the frame"
       ]
     },
     {
-      "narration": "They stop again for tea.",
-      "location": "the five day test match",
+      "narration": "[deadpan] This makes scoring INCREDIBLY painful.",
+      "location": "the backward pass pitch",
       "edits": [
-        "the plate disappears and one big blue teacup appears at frame right in its place"
+        "the sign disappears and the character winces, a sweat drop on his forehead"
       ]
     },
     {
-      "narration": "[deadpan] And then it can end in a draw.",
-      "location": "the five day test match",
+      "narration": "Players advance by running into solid human brick walls.",
+      "location": "the backward pass pitch",
       "edits": [
-        "the teacup disappears and a big sign reading \"DRAW\" appears above the stumps, the character's jaw dropping"
+        "the red players crash into three blue-jerseyed defenders standing shoulder to shoulder at frame centre"
       ]
     },
     {
-      "narration": "From far away, cricket looks like baseball.",
-      "location": "the five day test match",
-      "image_prompt": "reference character stands at frame right squinting, skeptical, at one doodle baseball player in a red cap beside one doodle cricket batter in white, long shot",
-      "image_prompt_alt": "reference character leans in from the foreground left, skeptical, eyeing one doodle baseball player in a red cap and one doodle cricket batter in white side by side, medium shot"
-    },
-    {
-      "narration": "One player throws a ball.",
-      "location": "the five day test match",
+      "narration": "Two teams of fifteen people fight for an oval ball.",
+      "location": "the backward pass pitch",
       "edits": [
-        "the baseball player throws one small white ball across to the cricket batter beside him"
+        "a big white tag reading \"15 v 15\" appears at the top of the frame"
       ]
     },
     {
-      "narration": "Another player hits it.",
-      "location": "the five day test match",
+      "narration": "Only the ball carrier gets tackled.",
+      "location": "the backward pass pitch",
+      "image_prompt": "reference character at frame left, wincing, watches one blue-jerseyed defender tackle one red-jerseyed player clutching a white oval ball at frame centre, medium shot",
+      "image_prompt_alt": "reference character stands at frame right, eyes squeezed, as one doodle defender in a blue jersey wraps both arms around the waist of one red-jerseyed player carrying a white oval ball, close medium shot"
+    },
+    {
+      "narration": "Others remain standing.",
+      "location": "the backward pass pitch",
       "edits": [
-        "the cricket batter swings his flat bat and the white ball flies off upward"
+        "one small red-jerseyed teammate appears standing upright at frame right, behind the tackle"
       ]
     },
     {
-      "narration": "[flatly] After that, almost nothing is the same.",
-      "location": "the five day test match",
+      "narration": "You score by pressing the ball INTO the grass.",
+      "location": "the backward pass pitch",
       "edits": [
-        "the baseball player disappears and the character folds his arms, flat-faced"
+        "the tackle vanishes; the teammate dives at frame centre, pressing a white ball onto green grass"
       ]
     },
     {
-      "narration": "Two teams of eleven players share one big field.",
-      "location": "the batting crease",
-      "image_prompt": "reference character stands at frame center, attentive, between three doodle players in blue shirts at frame left and three doodle players in yellow shirts at frame right, wide shot",
-      "image_prompt_alt": "reference character stands in the foreground, mildly curious, as three doodle players in blue shirts face three doodle players in yellow shirts across the page behind him, high-angle shot"
-    },
-    {
-      "narration": "The batter holds a wide, flat wooden bat.",
-      "location": "the batting crease",
+      "narration": "This try earns your team five points.",
+      "location": "the backward pass pitch",
       "edits": [
-        "both groups disappear and a real photo cutout of a cricket bat, roughly pasted onto the drawing, stands big beside the character"
+        "a big yellow sign reading \"TRY = 5\" appears at the top of the frame"
       ]
     },
     {
-      "narration": "Behind him stand three wooden sticks called stumps.",
-      "location": "the batting crease",
+      "narration": "Kicking it between the posts adds two more.",
+      "location": "the backward pass pitch",
       "edits": [
-        "three tall wooden stumps appear at frame right of the bat, as tall as the character's chest"
+        "the sign disappears and tall white H-shaped goal posts appear big at frame right"
       ]
     },
     {
-      "narration": "Two tiny pieces called bails sit on top.",
-      "location": "the batting crease",
+      "narration": "[curious] One small foul starts a MASSIVE battle.",
+      "location": "the set piece battleground",
+      "image_prompt": "reference character at frame right, eyebrows raised, watches one referee in a black shirt blow a whistle over a dropped white ball, wide shot",
+      "image_prompt_alt": "reference character stands at frame left, eyebrows raised, as one doodle referee in a black shirt and black shorts blows a whistle beside one white oval ball lying at his feet, medium shot"
+    },
+    {
+      "narration": "Eight players from each team bind together tightly.",
+      "location": "the set piece battleground",
       "edits": [
-        "two tiny red bails appear lying across the tops of the three stumps"
+        "the referee disappears; three red-jerseyed forwards crouch bound shoulder to shoulder at frame left"
       ]
     },
     {
-      "narration": "Together they make the wicket.",
-      "location": "the batting crease",
+      "narration": "They push against each other in a GIANT scrum.",
+      "location": "the set piece battleground",
       "edits": [
-        "a big sign reading \"WICKET\" appears above the stumps, the character pointing at it"
+        "the ball disappears; three blue-jerseyed forwards lock heads with the red forwards at frame centre"
       ]
     },
     {
-      "narration": "The bowler runs in and delivers a hard leather ball.",
-      "location": "the batting crease",
-      "image_prompt": "reference character stands beside three wooden stumps at frame right, attentive, as Jasprit Bumrah, a brown-skinned slim fast bowler with a short black beard in a blue shirt with the number 93, runs in with one red ball, wide shot",
-      "image_prompt_alt": "reference character crouches beside three wooden stumps in the foreground, attentive, watching a slim medium-height brown-skinned man with short black hair, a slim fast bowler with a short black beard in a blue shirt with the number 93, sprint in with one red leather ball, low-angle shot"
-    },
-    {
-      "narration": "His arm must stay straight.",
-      "location": "the batting crease",
+      "narration": "[deadpan] They hook the ball out backward.",
+      "location": "the set piece battleground",
       "edits": [
-        "the bowler's right arm swings straight up above his head, stiff as a stick"
+        "the character's eyelids droop; a white ball pops out at the bottom foreground"
       ]
     },
     {
-      "narration": "[deadpan] Throwing it is illegal.",
-      "location": "the batting crease",
+      "narration": "When the ball leaves the field play stops completely.",
+      "location": "the set piece battleground",
       "edits": [
-        "a big sign reading \"NO THROWING\" appears above the bowler's straight arm, the character nodding"
+        "the forwards disappear; the white ball rolls across a thick green line at frame right"
       ]
     },
     {
-      "narration": "Usually the ball bounces once before it reaches the batter.",
-      "location": "the batting crease",
+      "narration": "Players lift tall teammates high into the air.",
+      "location": "the set piece battleground",
+      "image_prompt": "reference character at frame left, mouth open, watches two red-jerseyed players lift one tall red-jerseyed teammate high, his arms reaching up, low-angle shot",
+      "image_prompt_alt": "reference character stands at frame right, jaw dropped, as two doodle players in red jerseys hoist one tall red-jerseyed teammate overhead by his legs, his arms stretched up, wide shot"
+    },
+    {
+      "narration": "This acrobatic move is called a lineout.",
+      "location": "the set piece battleground",
       "edits": [
-        "the sign disappears and the red ball bounces once halfway to the stumps, a dotted line tracing its path"
+        "a big white sign reading \"LINEOUT\" appears at the top of the frame"
       ]
     },
     {
-      "narration": "The bounce can send it anywhere.",
-      "location": "the batting crease",
+      "narration": "[thoughtful] Kicking is another option.",
+      "location": "the goal kicking range",
+      "image_prompt": "reference character at frame right, thoughtful, beside a real photo cutout of Dan Carter, a lean man in an all-black rugby jersey, roughly pasted onto the drawing, kicking one white ball, medium shot",
+      "image_prompt_alt": "reference character stands at frame left, thoughtful, watching a lean man with short dark hair and a clean-shaven face in an all-black rugby jersey swing his right boot into one white oval ball, wide shot"
+    },
+    {
+      "narration": "Players can kick the ball forward at any time.",
+      "location": "the goal kicking range",
       "edits": [
-        "the dotted line zigzags wildly off toward the top of the frame and the character's eyes go wide"
+        "a long green arrow appears at the top of the frame, curving forward from the ball"
       ]
     },
     {
-      "narration": "The batting team wants runs.",
-      "location": "the run scoring outfield",
-      "image_prompt": "reference character stands at frame left, curious, watching Virat Kohli, a brown-skinned batter with a thick dark beard in a white shirt with the number 18, beside one doodle partner batter in white, both holding red-handled bats, medium-wide shot",
-      "image_prompt_alt": "reference character peeks in from frame right, curious, at a fit medium-height brown-skinned man with short spiky dark hair, a batter with a thick dark beard in a white shirt with the number 18, beside one doodle partner batter in white, both holding red-handled bats, wide shot"
-    },
-    {
-      "narration": "After a hit, the two batters can run between the wickets.",
-      "location": "the run scoring outfield",
+      "narration": "New Zealand legend Dan Carter mastered this skill.",
+      "location": "the goal kicking range",
       "edits": [
-        "both batters sprint past each other across the page, bats stretched out in front"
+        "the character leans in, eyes widening, toward the man in the all-black jersey"
       ]
     },
     {
-      "narration": "Each trip is one run.",
-      "location": "the run scoring outfield",
+      "narration": "He scored one thousand five hundred ninety eight points for New Zealand.",
+      "location": "the goal kicking range",
       "edits": [
-        "a big tag reading \"1 RUN\" appears above the two batters, the character holding up one finger"
+        "the arrow disappears and a big white tag reading \"1598 POINTS\" appears at frame left"
       ]
     },
     {
-      "narration": "[calm] But hitting it far is better.",
-      "location": "the run scoring outfield",
-      "edits": [
-        "the tag and the partner batter disappear and the bearded batter swings his bat in a huge arc"
-      ]
-    },
-    {
-      "narration": "If the ball reaches the rope, that is four runs.",
-      "location": "the run scoring outfield",
-      "image_prompt": "reference character crouches at frame left, interested, beside one long white rope across the page, one red leather ball rolling up against it, low wide shot",
-      "image_prompt_alt": "reference character kneels at frame right, interested, watching one red leather ball roll to a stop against one long white rope stretched across the page, medium shot"
-    },
-    {
-      "narration": "If it flies over the rope, that is six.",
-      "location": "the run scoring outfield",
-      "edits": [
-        "the red ball becomes a real photo cutout of a cricket ball, roughly pasted onto the drawing, flying high over the rope"
-      ]
-    },
-    {
-      "narration": "The fielding team wants the batters out.",
-      "location": "the run scoring outfield",
-      "edits": [
-        "the rope disappears and one doodle fielder in a navy shirt sprints in from frame right, arms open, toward the ball"
-      ]
-    },
-    {
-      "narration": "[understated] There are ten ways to do it.",
-      "location": "the run scoring outfield",
-      "edits": [
-        "the ball disappears and a big sign reading \"10 WAYS\" appears above the fielder"
-      ]
-    },
-    {
-      "narration": "The ball can knock the bails off.",
-      "location": "the run scoring outfield",
-      "edits": [
-        "the sign and the fielder disappear and three wooden stumps appear at frame right, their two red bails flying off"
-      ]
-    },
-    {
-      "narration": "Or a fielder catches the ball before it lands.",
-      "location": "the run scoring outfield",
-      "image_prompt": "reference character stands at frame right, eyes wide, as one diving doodle fielder in a navy shirt catches one red leather ball just above the page, medium shot",
-      "image_prompt_alt": "reference character watches from the foreground left, eyes wide, while one doodle fielder in a navy shirt dives full length to grab one red leather ball, wide shot"
-    },
-    {
-      "narration": "An out batter walks off and the next one comes in.",
-      "location": "the run scoring outfield",
-      "edits": [
-        "the fielder and the ball disappear and one doodle batter in white walks off toward frame left, head down"
-      ]
-    },
-    {
-      "narration": "Ten outs end the team's innings.",
-      "location": "the run scoring outfield",
-      "edits": [
-        "a big tag reading \"10 OUT\" appears above the walking batter"
-      ]
-    },
-    {
-      "narration": "[thoughtful] Why not eleven?",
-      "location": "the run scoring outfield",
-      "edits": [
-        "the tag disappears and the character scratches his head, one eyebrow raised"
-      ]
-    },
-    {
-      "narration": "The last batter has no partner to run with.",
-      "location": "the run scoring outfield",
-      "edits": [
-        "the walking batter turns around and stands alone at frame left, shrugging"
-      ]
-    },
-    {
-      "narration": "Then the two teams swap roles.",
-      "location": "the run scoring outfield",
-      "edits": [
-        "one doodle fielder in a navy shirt appears beside the lone batter, who hands him his bat"
-      ]
-    },
-    {
-      "narration": "Cricket comes in three formats.",
-      "location": "lord's in london",
-      "image_prompt": "reference character stands at frame left, attentive, before a row of red alarm clocks, one huge, one medium, one tiny, wide shot",
-      "image_prompt_alt": "reference character sits on the page at frame right, attentive, looking at a row of red alarm clocks shrinking from huge to medium to tiny, high-angle shot"
-    },
-    {
-      "narration": "Test cricket is the oldest.",
-      "location": "lord's in london",
-      "edits": [
-        "the medium and tiny clocks disappear and the huge red clock grows a long white beard"
-      ]
-    },
-    {
-      "narration": "[peaceful] The players wear all white.",
-      "location": "lord's in london",
-      "edits": [
-        "one doodle player in all-white cricket clothes appears at frame right beside the huge clock"
-      ]
-    },
-    {
-      "narration": "This is the five day format from the start.",
-      "location": "lord's in london",
-      "edits": [
-        "a big tag reading \"5 DAYS\" hangs from the huge clock, the character's eyebrows rising"
-      ]
-    },
-    {
-      "narration": "South Africa won the World Test Championship in twenty twenty five.",
-      "location": "lord's in london",
-      "image_prompt": "reference character stands at frame right, warmly interested, watching a real photo cutout of Aiden Markram, roughly pasted onto the drawing, a tall batter with a short brown beard in white and a green cap, raising his bat, medium shot",
-      "image_prompt_alt": "reference character stands in the foreground left, warmly interested, as a tall light-skinned man with short brown hair, a tall batter with a short brown beard in white and a green cap, raises his bat high, low-angle shot"
-    },
-    {
-      "narration": "They beat Australia in the final at Lord's in London.",
-      "location": "lord's in london",
-      "edits": [
-        "one doodle bowler in white with a yellow helmet appears at frame left, sitting slumped"
-      ]
-    },
-    {
-      "narration": "Aiden Markram scored one hundred thirty six runs.",
-      "location": "lord's in london",
-      "edits": [
-        "the slumped bowler disappears and a big tag reading \"136\" appears above the raised bat"
-      ]
-    },
-    {
-      "narration": "A good batter can stay in all day.",
-      "location": "lord's in london",
-      "edits": [
-        "the tag disappears and one big yellow sun appears at top right, the character's eyelids drooping sleepily"
-      ]
-    },
-    {
-      "narration": "[curious] Quick question before we go on.",
+      "narration": "[calm] Quick question before we continue.",
       "location": "the comment break",
-      "image_prompt": "reference character stands alone at frame center facing the viewer, holding up one big blank white sign with one large black question mark, medium shot",
-      "image_prompt_alt": "reference character faces the viewer at frame center, lifting one big blank white sign showing one large black question mark above his head, medium-wide shot"
+      "image_prompt": "reference character faces the viewer at frame centre, left hand holding up one big blank yellow sign with one large question mark, medium shot",
+      "image_prompt_alt": "reference character stands alone facing the viewer, slightly left of centre, his left hand raising one big plain yellow sign bearing one large question mark, wide shot"
     },
     {
-      "narration": "Which sport is next?",
+      "narration": "Which sport should we explain next?",
       "location": "the comment break",
       "edits": [
-        "the character points down toward the bottom edge of the frame"
+        "the character's right arm points down toward the bottom edge of the frame"
       ]
     },
     {
       "narration": "Write it in the comments.",
       "location": "the comment break",
       "edits": [
-        "the character gives a small nod, still pointing down"
+        "the character gives a small nod, his head tipped forward"
       ]
     },
     {
-      "narration": "[deadpan] Not everyone has five days free.",
-      "location": "the twenty twenty final",
-      "image_prompt": "reference character slumps at frame left, tired, staring at one huge red alarm clock ringing beside him, medium shot",
-      "image_prompt_alt": "reference character sits slouched in the foreground right, tired, as one huge red alarm clock rings wildly at frame left, wide shot"
+      "narration": "[thoughtful] The biggest prize is the Rugby World Cup.",
+      "location": "the world cup final",
+      "image_prompt": "reference character at frame left, gazing up thoughtful at the Webb Ellis Cup, one big golden two-handled trophy, towering at frame right, low-angle shot",
+      "image_prompt_alt": "reference character stands at frame centre, looking up thoughtfully at one big golden trophy with two curved handles and a round lid towering beside him at frame left, wide shot"
     },
     {
-      "narration": "So England invented Twenty Twenty cricket in two thousand three.",
-      "location": "the twenty twenty final",
+      "narration": "Nations battle for it every four years.",
+      "location": "the world cup final",
       "edits": [
-        "the clock shrinks to half size and a big sign reading \"T20\" appears at frame right"
+        "two doodle players appear tussling at frame centre, one in dark green, one in black"
       ]
     },
     {
-      "narration": "Each team gets just one hundred twenty balls.",
-      "location": "the twenty twenty final",
+      "narration": "South Africa won their FOURTH title in twenty twenty three.",
+      "location": "the world cup final",
       "edits": [
-        "the sign disappears and a real photo cutout of a white cricket ball, roughly pasted onto the drawing, sits big at the character's feet"
+        "a big white tag reading \"4TH TITLE\" hangs from the trophy's left handle"
       ]
     },
     {
-      "narration": "A match takes three hours.",
-      "location": "the twenty twenty final",
+      "narration": "They beat New Zealand by one single point.",
+      "location": "the world cup final",
       "edits": [
-        "the clock's hands spin round fast and the character's eyes go wide"
+        "the tag disappears and the player in black sinks to his knees"
       ]
     },
     {
-      "narration": "Players wear bright team colors.",
-      "location": "the twenty twenty final",
+      "narration": "Captain Siya Kolisi lifted the trophy again.",
+      "location": "the world cup final",
+      "image_prompt": "reference character at frame left, smiling, watches a real photo cutout of Siya Kolisi, a broad-shouldered man in a dark green rugby jersey, roughly pasted onto the drawing, at frame centre lifting the Webb Ellis Cup, one big golden two-handled trophy, medium shot",
+      "image_prompt_alt": "reference character stands at frame right, smiling, watching a broad-shouldered man with a short dark beard and close-cropped dark hair in a dark green rugby jersey hoisting one big golden trophy with two curved handles and a round lid overhead, wide shot"
+    },
+    {
+      "narration": "He became the second captain to win back to back.",
+      "location": "the world cup final",
       "edits": [
-        "the ball disappears and one doodle batter in a bright blue shirt appears at frame right"
+        "a big gold tag reading \"BACK TO BACK\" appears at the top of the frame"
       ]
     },
     {
-      "narration": "Batters swing at almost everything.",
-      "location": "the twenty twenty final",
+      "narration": "His team survived three consecutive one point victories.",
+      "location": "the world cup final",
       "edits": [
-        "the blue batter swings his bat wildly in a full circle, motion lines around him"
+        "the tag disappears and the character's eyes go wide, a sweat drop appearing"
       ]
     },
     {
-      "narration": "India won this format's World Cup in March twenty twenty six.",
-      "location": "the twenty twenty final",
-      "image_prompt": "reference character stands at frame left, impressed, watching a real photo cutout of Jasprit Bumrah, roughly pasted onto the drawing, a slim fast bowler with a short black beard in a blue shirt, leaping with both arms up, medium-wide shot",
-      "image_prompt_alt": "reference character stands at frame right, impressed, as a slim medium-height brown-skinned man with short black hair, a slim fast bowler with a short black beard in a blue shirt with the number 93, leaps with both arms up, low-angle shot"
-    },
-    {
-      "narration": "They beat New Zealand by ninety six runs in the final.",
-      "location": "the twenty twenty final",
+      "narration": "[understated] Their defense held on every time.",
+      "location": "the world cup final",
       "edits": [
-        "one doodle batter in an all-black shirt appears at frame right, slumped and walking away"
+        "three doodle defenders in dark green jerseys appear arm in arm at frame right"
       ]
     },
     {
-      "narration": "[understated] No final had ever been that one sided.",
-      "location": "the twenty twenty final",
+      "narration": "They made huge tackles until the final whistle.",
+      "location": "the world cup final",
       "edits": [
-        "a big tag reading \"96 RUNS\" appears above the black-shirted batter, the character's jaw dropping"
+        "the green defenders crouch low, shoulders driving forward, and the character's mouth drops open"
       ]
     },
     {
-      "narration": "Their star is fast bowler Jasprit Bumrah.",
-      "location": "the twenty twenty final",
+      "narration": "[curious] A normal rugby match lasts eighty exhausting minutes.",
+      "location": "the paris sevens field",
+      "image_prompt": "reference character at frame right, wincing, watches three exhausted players in muddy red jerseys hunched beneath one big round blue clock, wide shot",
+      "image_prompt_alt": "reference character stands at frame left, wincing, beside three doodle players in muddy red jerseys bent double with hands on knees, one big round blue clock hanging above them, medium-wide shot"
+    },
+    {
+      "narration": "But a faster version takes just fourteen minutes.",
+      "location": "the paris sevens field",
       "edits": [
-        "the tag and the black-shirted batter disappear and a big yellow star appears above the photo cutout bowler"
+        "the clock's hands spin fast and the clock shrinks to half its size"
       ]
     },
     {
-      "narration": "He got fourteen batters out, the most of anyone.",
-      "location": "the twenty twenty final",
+      "narration": "It is called rugby sevens.",
+      "location": "the paris sevens field",
       "edits": [
-        "a big tag reading \"14 OUT\" appears beside the bowler and the character's eyes go wide"
+        "the tired players are replaced by three navy-jerseyed players sprinting in at frame left"
       ]
     },
     {
-      "narration": "The third format sits in the middle.",
-      "location": "the ahmedabad stadium",
-      "image_prompt": "reference character sits on the page at frame left, curious, one huge red alarm clock towering at frame right beside one tiny red alarm clock, low-angle shot",
-      "image_prompt_alt": "reference character stands at frame right, curious, glancing between one tiny red alarm clock at his feet and one huge red alarm clock at frame left, wide shot"
-    },
-    {
-      "narration": "[calm] One Day games give each team three hundred balls.",
-      "location": "the ahmedabad stadium",
+      "narration": "Seven players cover the exact same massive field.",
+      "location": "the paris sevens field",
       "edits": [
-        "both clocks disappear and one medium red alarm clock appears beside the character, a big tag reading \"300 BALLS\" on it"
+        "the clock vanishes; a vast green strip fills the bottom foreground, players tiny on it"
       ]
     },
     {
-      "narration": "A match lasts about eight hours.",
-      "location": "the ahmedabad stadium",
+      "narration": "[light chuckle] There is NO place to hide.",
+      "location": "the paris sevens field",
       "edits": [
-        "the tag disappears and the medium clock's hands creep round as the character yawns"
+        "the character breaks into a small grin, one eyebrow raised"
       ]
     },
     {
-      "narration": "Australia has won this World Cup six times.",
-      "location": "the ahmedabad stadium",
+      "narration": "Antoine Dupont helped France win GOLD in Paris.",
+      "location": "the paris sevens field",
+      "image_prompt": "reference character at frame left, grinning, watches a real photo cutout of Antoine Dupont, a compact man in a navy blue rugby jersey, roughly pasted onto the drawing, sprinting with one white ball at frame centre, medium shot",
+      "image_prompt_alt": "reference character stands at frame right, grinning, watching a compact muscular man with short dark hair and a trimmed dark beard in a navy blue rugby jersey sprinting with one white oval ball tucked under his arm, wide shot"
+    },
+    {
+      "narration": "He scored twice in the final.",
+      "location": "the paris sevens field",
       "edits": [
-        "one doodle player in a bright yellow shirt appears at frame right, both arms raised"
+        "a big gold sign reading \"OLYMPIC GOLD\" appears at the top of the frame"
       ]
     },
     {
-      "narration": "The latest was in twenty twenty three.",
-      "location": "the ahmedabad stadium",
+      "narration": "[content] France beat Fiji twenty eight to seven.",
+      "location": "the paris sevens field",
       "edits": [
-        "the yellow player jumps high in celebration and the character gives a small nod"
+        "the sign disappears and a big white scoreboard reading \"28 - 7\" appears at frame right"
       ]
     },
     {
-      "narration": "Pat Cummins was captain.",
-      "location": "the ahmedabad stadium",
-      "image_prompt": "reference character stands at frame right, attentive, watching a real photo cutout of Pat Cummins, roughly pasted onto the drawing, a tall dark-haired fast bowler in a yellow shirt, arms folded, medium shot",
-      "image_prompt_alt": "reference character stands in the foreground left, attentive, beside a tall lean light-skinned man with short wavy dark hair, a tall dark-haired fast bowler in a yellow shirt with the number 30, arms folded, wide shot"
-    },
-    {
-      "narration": "They beat India in the final, in Ahmedabad.",
-      "location": "the ahmedabad stadium",
+      "narration": "Fiji had never lost an Olympic sevens game before.",
+      "location": "the paris sevens field",
       "edits": [
-        "three doodle fans in blue shirts appear at frame left, slumping with heads down"
-      ]
-    },
-    {
-      "narration": "[softly] The home crowd went quiet.",
-      "location": "the ahmedabad stadium",
-      "edits": [
-        "the three blue fans sit down silently and the character looks down softly"
-      ]
-    },
-    {
-      "narration": "That stadium is the biggest cricket ground in the world.",
-      "location": "the ahmedabad stadium",
-      "edits": [
-        "the photo cutout man disappears and one huge grey round stadium outline rises behind the fans, towering over the character"
-      ]
-    },
-    {
-      "narration": "It holds about one hundred thirty thousand people.",
-      "location": "the ahmedabad stadium",
-      "edits": [
-        "a big tag reading \"130,000\" hangs from the stadium rim, the character's eyes going wide"
-      ]
-    },
-    {
-      "narration": "[thoughtful] In India, cricket is close to a religion.",
-      "location": "the indian fan lane",
-      "image_prompt": "reference character stands at frame right, amused, as three doodle fans in blue shirts bow toward a real photo cutout of Virat Kohli, roughly pasted onto the drawing, a batter with a thick dark beard in a white shirt, medium shot",
-      "image_prompt_alt": "reference character stands at frame left, amused, as three doodle fans in blue shirts bow toward a fit medium-height brown-skinned man with short spiky dark hair, a batter with a thick dark beard in a white shirt with the number 18, wide shot"
-    },
-    {
-      "narration": "Its king is Virat Kohli.",
-      "location": "the indian fan lane",
-      "edits": [
-        "a big sign reading \"KING\" appears above the photo cutout man"
-      ]
-    },
-    {
-      "narration": "He has quit Test and Twenty Twenty cricket.",
-      "location": "the indian fan lane",
-      "edits": [
-        "the sign disappears and the character waves goodbye toward the photo cutout man"
-      ]
-    },
-    {
-      "narration": "Now he only plays One Day games.",
-      "location": "the indian fan lane",
-      "edits": [
-        "a big tag reading \"ODI ONLY\" appears beside the photo cutout man, the character nodding"
-      ]
-    },
-    {
-      "narration": "At thirty seven, he still wants the next World Cup.",
-      "location": "the indian fan lane",
-      "edits": [
-        "the tag disappears and a big tag reading \"37\" and a small golden trophy appear above the photo cutout man"
-      ]
-    },
-    {
-      "narration": "[light chuckle] No cricketer has more Instagram followers.",
-      "location": "the indian fan lane",
-      "edits": [
-        "one big red heart appears above the photo cutout man and the character chuckles"
-      ]
-    },
-    {
-      "narration": "Five days, eight hours, or three hours.",
-      "location": "the centre pitch",
-      "image_prompt": "reference character stands at frame center, thoughtful, one huge red alarm clock at frame left and one tiny red alarm clock at frame right, wide shot at eye level",
-      "image_prompt_alt": "reference character sits in the foreground, thoughtful, looking up at one huge red alarm clock and one tiny red alarm clock side by side, high-angle shot"
-    },
-    {
-      "narration": "It is all one fight.",
-      "location": "the centre pitch",
-      "edits": [
-        "both clocks disappear and one doodle bowler in white faces one doodle batter in white, both glaring"
-      ]
-    },
-    {
-      "narration": "The bowler tries to hit three wooden sticks.",
-      "location": "the centre pitch",
-      "edits": [
-        "the batter disappears and a real photo cutout of three cricket stumps, roughly pasted onto the drawing, stands big at frame right as the bowler aims"
-      ]
-    },
-    {
-      "narration": "[content] The batter guards them with a flat piece of wood.",
-      "location": "the centre pitch",
-      "edits": [
-        "the bowler disappears and one doodle batter in white stands guarding the stumps, flat bat raised, the character smiling"
+        "the character's jaw drops open, eyebrows high"
       ]
     }
   ]
@@ -1121,6 +869,8 @@ def music_moods(data: dict) -> dict[str, str]:
         mood = moods.get(loc)
         if not mood:
             problems.append(f"location '{loc}' has no music mood")
+        elif mood == config.MUSIC_SILENT_MOOD:
+            continue
         elif mood not in library:
             problems.append(f"location '{loc}': unknown mood '{mood}'")
         elif not library[mood]:
@@ -1133,11 +883,138 @@ def music_moods(data: dict) -> dict[str, str]:
     return {loc: moods[loc] for loc in used}
 
 
+def sfx_plan(data: dict, warn: bool = False) -> dict[int, str]:
+    """
+    {beat index (1-based): tag} from beats[].sfx, or {} when sounds are off.
+
+    Stops on an unknown tag, a tag with no files, or more reactions than the
+    limits allow, for the same reason music_moods stops early: a typo should
+    surface before an hour of images, not at render time. The softer limits
+    (share of beats, spacing) only warn, and only when `warn` is set, so the
+    warning prints once per command.
+    """
+    if not config.SFX_ENABLED:
+        return {}
+    tags = {i: str(b.get("sfx") or "").strip().lower()
+            for i, b in enumerate(data["beats"], 1)}
+    tags = {i: t for i, t in tags.items() if t}
+    allowed = config.SFX_PICTURE_TAGS + config.SFX_AFTER_TAGS
+
+    from modules import video_editor
+    library = video_editor.sfx_library()
+    problems = []
+    for i, tag in tags.items():
+        if tag in (config.SFX_TRANSITION_TAG, config.SFX_OUTRO_TAG):
+            problems.append(f"beat {i}: '{tag}' is placed by the code, "
+                            f"do not tag it")
+        elif tag not in allowed:
+            problems.append(f"beat {i}: unknown sound tag '{tag}'")
+        elif not library.get(tag):
+            problems.append(f"beat {i}: no audio files in {config.SFX_DIR / tag}")
+    after = [i for i, t in tags.items() if t in config.SFX_AFTER_TAGS]
+    rare = [i for i, t in tags.items() if t in config.SFX_RARE_TAGS]
+    if len(after) > config.SFX_MAX_AFTER:
+        problems.append(f"{len(after)} reaction sounds (beats "
+                        f"{', '.join(map(str, after))}), the limit is "
+                        f"{config.SFX_MAX_AFTER}: remove some")
+    if len(rare) > config.SFX_MAX_RARE:
+        problems.append(f"{len(rare)} {'/'.join(config.SFX_RARE_TAGS)} sounds "
+                        f"(beats {', '.join(map(str, rare))}), the limit is "
+                        f"{config.SFX_MAX_RARE}: remove some")
+    if problems:
+        raise SystemExit(
+            "[sfx] " + "\n[sfx] ".join(problems) +
+            f"\n[sfx] tags: {', '.join(allowed)} (folders in {config.SFX_DIR})")
+
+    if warn:
+        picture = len(tags) - len(after)
+        if picture > len(data["beats"]) * config.SFX_PICTURE_SHARE:
+            print(f"[warn] {picture} picture sounds on {len(data['beats'])} beats, "
+                  f"more than 1 in {round(1 / config.SFX_PICTURE_SHARE)}: they "
+                  f"stop meaning anything")
+        close = [(a, b) for a, b in zip(after, after[1:])
+                 if b - a < config.SFX_MIN_AFTER_GAP_BEATS]
+        for a, b in close:
+            print(f"[warn] reaction sounds on beats {a} and {b} are only "
+                  f"{b - a} beats apart (aim for {config.SFX_MIN_AFTER_GAP_BEATS}+)")
+    return tags
+
+
+def _place_sfx(entries: list[dict], beats: list[dict], tags: dict[int, str],
+               seed: str) -> int:
+    """
+    Add "sfx" to manifest entries and stretch durations for their pauses.
+
+    Kinds and where each one lands, in seconds from the beat's start:
+      picture     0, as the beat's picture appears
+      after       after the last word, in a pause added to the beat
+      transition  after everything else in the beat, in a short pause added
+                  before a location change (the dissolve follows it)
+      outro       after the outro line
+    The pause is part of `duration`, so Remotion, the music timeline and the
+    length report all see it without knowing anything about sound.
+    Returns how many effects were placed.
+    """
+    from modules import video_editor
+    library = video_editor.sfx_library()
+    used: dict[str, int] = {}
+
+    def take(tag: str) -> tuple[str, float] | None:
+        files = library.get(tag)
+        if not files:
+            return None
+        path = video_editor.pick_sfx(files, seed, tag, used.get(tag, 0))
+        used[tag] = used.get(tag, 0) + 1
+        return path.relative_to(config.SFX_DIR).as_posix(), _audio_duration(path)
+
+    def after_line(entry: dict, tag: str, kind: str, got=None) -> None:
+        got = got or take(tag)
+        if got:
+            name, length = got
+            at = entry["duration"] + config.SFX_AFTER_GAP
+            entry.setdefault("sfx", []).append(
+                {"tag": tag, "kind": kind, "file": name, "at": round(at, 3)})
+            entry["duration"] = round(at + min(length, config.SFX_MAX_SECONDS), 3)
+
+    for k, entry in enumerate(entries):
+        # The outro is appended after the last beat, so its index is past them.
+        beat = beats[entry["index"] - 1] if entry["index"] <= len(beats) else None
+        tag = tags.get(entry["index"]) if beat is not None else None
+        if tag in config.SFX_PICTURE_TAGS:
+            got = take(tag)
+            if got and Path(got[0]).name in config.SFX_VOICE_FILES:
+                # A voice would talk over the narrator: wait for the line to
+                # end, at the level of a picture sound.
+                after_line(entry, tag, "picture", got)
+            elif got:
+                entry.setdefault("sfx", []).append(
+                    {"tag": tag, "kind": "picture", "file": got[0], "at": 0.0})
+        elif tag in config.SFX_AFTER_TAGS:
+            after_line(entry, tag, "after")
+
+        nxt = entries[k + 1] if k + 1 < len(entries) else None
+        # A real location change only: into the outro (no location) the outro
+        # sound is enough, and a script without locations has no changes.
+        if (beat is not None and nxt is not None and entry.get("location")
+                and nxt.get("location") and nxt["location"] != entry["location"]):
+            got = take(config.SFX_TRANSITION_TAG)
+            if got:
+                entry.setdefault("sfx", []).append(
+                    {"tag": config.SFX_TRANSITION_TAG, "kind": "transition",
+                     "file": got[0], "at": entry["duration"]})
+                entry["duration"] = round(entry["duration"]
+                                          + config.SFX_TRANSITION_PAUSE, 3)
+        if beat is None and nxt is None:
+            after_line(entry, config.SFX_OUTRO_TAG, "outro")
+    return sum(len(e.get("sfx", [])) for e in entries)
+
+
 def cmd_prompts(args) -> int:
     """Turn script.json into frames.json and warn about anything off-spec."""
     run_dir = resolve_run(args.run)
     data = load_script(run_dir)
     music_moods(data)   # stops here on a bad mood, before any images are made
+    sfx_plan(data, warn=True)   # and here on a bad sound tag
     beats = data["beats"]
     frames = build_frames(data)
     out_path = run_dir / "frames.json"
@@ -1693,6 +1570,7 @@ def cmd_check(args) -> int:
     print(f"images  : {have_i}/{len(frames)} frames")
     print(f"audio   : {have_a}/{len(beats)}")
     _report_music(run_dir, data)
+    _report_sfx(run_dir, data)
 
     def summarise(label, missing, fix):
         if not missing:
@@ -1730,11 +1608,41 @@ def _report_music(run_dir: Path, data: dict) -> None:
     plan = video_editor.mood_plan(json.loads(manifest.read_text()), moods, run_dir.name)
     print(f"music   : {len(plan)} section(s)")
     for sec in plan:
-        print(f"  {_fmt(sec['start']):>7}  {sec['mood']:9} {sec['piece'].name:22} "
+        name = sec["piece"].name if sec["piece"] else "-"
+        print(f"  {_fmt(sec['start']):>7}  {sec['mood']:9} {name:22} "
               f"{', '.join(sec['locations'])}")
     if len(plan) - 1 > config.MUSIC_MAX_SWITCHES:
         print(f"  WARNING: {len(plan) - 1} music switches, more than "
               f"{config.MUSIC_MAX_SWITCHES} tends to feel jumpy")
+
+
+def _report_sfx(run_dir: Path, data: dict) -> None:
+    """
+    Print every tagged sentence, so the tags can be approved or struck by
+    hand before rendering. Once a manifest exists, also when each sound plays
+    and which file it got.
+    """
+    tags = sfx_plan(data, warn=True)
+    if not tags:
+        return
+    print(f"sfx     : {len(tags)} tagged beat(s)")
+    for i, tag in tags.items():
+        kind = "after" if tag in config.SFX_AFTER_TAGS else "picture"
+        line = transcriber.strip_tags(data["beats"][i - 1]["narration"])
+        print(f"  {i:3}  {tag:9} {kind:7}  {line[:70]}")
+
+    manifest = run_dir / "manifest.json"
+    if not manifest.exists():
+        return
+    from modules import video_editor
+    entries = json.loads(manifest.read_text())
+    starts, _ = video_editor._beat_starts(entries)
+    placed = [(start + s["at"], s) for start, e in zip(starts, entries)
+              for s in e.get("sfx") or []]
+    if placed:
+        print(f"  in manifest.json, {len(placed)} sound(s) incl. transitions/outro:")
+        for when, s in placed:
+            print(f"  {_fmt(when):>7}  {s['tag']:10} {s['file']}")
 
 
 # --- Frame timing ------------------------------------------------------------
@@ -2071,6 +1979,12 @@ def cmd_manifest(args) -> int:
             }
             entries.append(entry)
             print(f"[manifest] + outro beat ({entry['duration']:.1f}s)")
+
+    if not args.silent:
+        placed = _place_sfx(entries, beats, sfx_plan(data), run_dir.name)
+        if placed:
+            print(f"[manifest] {placed} sound effect(s) placed "
+                  f"(see `python pipeline.py check`)")
 
     if word_cache:
         times_path.write_text(json.dumps(word_cache, indent=1), encoding="utf-8")

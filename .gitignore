@@ -18,6 +18,13 @@ assets/music/moods/**/*.m4a
 assets/music/moods/**/*.flac
 assets/music/moods/**/*.ogg
 
+# Sound effects: third-party files, licenses unverified, never publish them.
+assets/sfx/**/*.mp3
+assets/sfx/**/*.wav
+assets/sfx/**/*.m4a
+assets/sfx/**/*.MP3
+assets/sfx/**/*_kept.txt
+
 # Node / Remotion
 remotion/node_modules/
 remotion/out/
