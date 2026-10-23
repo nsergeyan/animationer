@@ -1,0 +1,129 @@
+Write a script about (FORMULA 1) it is a short video of the most interesting facts about it. Use ONLY verified information and Use in correct places JOKES, SARCASM, etc. (no cringe) here is the structure you have to fill it in:
+Use simple words, and explain everything simply so average non english native speaker can understand it.
+While writing the narration do not use any "", \,\
+AND REMEMBER YOU ARE WRITING A NARRATION THAT WILL BE USED FOR TEXT TO SPEACH AI VOICE
+
+It is 2026. Before writing, use web search to confirm every current fact: teams,
+drivers or members and who belongs where, champions, records, numbers. Never
+rely on memory for anything that changes from season to season.
+
+I WANT ABOUT 20 BEATS, 125-145 SPOKEN WORDS IN TOTAL (about 50 seconds).
+Each beat is ONE short sentence. You write ONLY the narration: a second pass
+adds the pictures later, exactly one picture per beat, so a beat's length is
+how long its picture stays on screen. Never write picture descriptions, image
+ideas or any field other than the ones in the structure below.
+Mix three lengths:
+  SHORT beats: 3-5 words, about a quarter of the beats (a reaction, a
+  consequence, a punch).
+  MEDIUM beats: 6-8 words, about half (ordinary explaining).
+  LONG beats: 9-12 words, about a quarter (the big fact, the number, the
+  turn). Write every big number or key fact as one LONG beat, never split
+  across two short ones.
+Never more than 3 beats of the same length in a row.
+Never go over 12 words in one beat. Split it into two beats instead.
+Count the words at the end. The total budget matters more than the beat count.
+
+HOOK (the first 3 beats, about the first 8 seconds)
+Most viewers decide in the first few seconds whether to stay. Retention data
+showed the biggest drop during general openings, before the first name or number.
+- Beats 1 to 3 are all SHORT (3-5 words). One picture per beat, so short
+  beats mean a new picture every ~1.5 seconds while the viewer decides
+  whether to stay. The LONG-beat rule for big numbers starts at beat 4:
+  split the hook fact into short punches instead.
+- Beat 1 is the single most surprising CONCRETE fact of the whole video: a
+  number, a name, or a rule that sounds absurd. State it plainly.
+- Pick what sounds strange to someone who knows nothing about the topic, not
+  what impresses a fan.
+- Beats 2 and 3 make it land: a short consequence or a sharper detail. Not
+  background.
+- Never open with a greeting, a definition, "welcome to", "X is the peak of",
+  "X used to be", or a question. Background and "how did this happen" come
+  after beat 3.
+- The hook is a fact, not a joke. It is funny because it is true.
+Good: Cricket matches last five days. They stop for lunch. Then for tea.
+And then it can end in a draw.
+Bad: Chess used to be incredibly quiet. Just two people staring forever.
+
+FOUR FACTS, ONE SCENE EACH
+The video is animated: each fact is ONE scene on screen that keeps changing
+while you talk (things appear, move, grow, get compared). A new fact is a
+jump to a new scene.
+- Pick the 4 facts about the topic that sound strangest to someone who knows
+  nothing about it. Each fact gets 4 to 6 beats. Never come back to a fact.
+- Fact 1 is the strongest of the four, and it IS the hook (the HOOK rules
+  above apply to its first 3 beats). The last fact is the second strongest,
+  so the video does not fade out.
+- Inside each fact: state it plainly, give one concrete comparison (a size
+  next to something familiar, a number next to something everyday), then one
+  dry consequence.
+- Never number the facts ("fact number two", "next up"). Never open a fact
+  with "also" or "another thing". Each fact opens with its own concrete
+  statement, like the hook does.
+- Prefer facts that SHOW something changing or being compared: a size next to
+  something familiar, a number going up, a thing moving from A to B. Those
+  make the best moving pictures.
+
+ENDING
+The last beat is the punch of the last fact, and the video ends there. No
+summary, no "so that is", no "follow for more", no question to the viewer.
+A video that stops on its strongest line loops straight back into the hook.
+
+NO COMMENT QUESTION
+Do not ask the viewer anything in the narration. A guess question goes in the
+Instagram caption instead, written by hand.
+
+USE FAMOUS CHARACTERS AND REAL PEOPLE
+Use the famous characters from the topic's universe, or the famous real people
+of the topic, by name. Never nameless stand-ins.
+- Use them where a fact has one, in a specific moment rather than a general
+  claim. Not every fact needs a person.
+- Pick the ones a casual viewer knows.
+- List the 1 to 4 most iconic ones in plan.cast, with why they matter.
+- Every name and number goes in plan.facts_to_check with a source.
+- Never quote what a real person or character said. Report it instead.
+{
+  "topic": "short slug-like title",
+  "format": "facts_short",
+  "plan": {
+    "spine_question": "the one question the video answers, in plain words",
+    "hook": { "fact": "", "why_strange_to_a_newcomer": "", "source": "" },
+    "deflations": [
+      { "assumed": "", "actual": "", "who_decided": "", "build_beat": "", "drop_beat": "" }
+    ],
+    "cast": [ { "name": "", "why": "" } ],
+    "specifics": [ { "fact": "", "source": "", "beat": "" } ],
+    "facts_to_check": [ { "claim": "", "source": "" } ]
+  },
+  "beats": [ { "narration": "" } ]
+}
+
+GIVE THE FINAL JSON FILE.
+
+ELEVENLABS V4 AUDIO TAGS RULE
+The narrator is a calm, dry explainer, not an actor. Tags only nudge the
+delivery. Most beats should have NO tag. Tag roughly 1 beat in 4.
+
+Allowed tags (use ONLY these, never invent others):
+Calm / reflective: [calm], [curious], [thoughtful], [peaceful], [content]
+Dry tone (for jokes and sarcasm): [deadpan], [flatly], [understated], [sarcastic],
+Volume: [softly], [quietly]
+Light reactions, 10% of the script: [sighs], [light chuckle]
+Throat clear (max 1 per script, only right before correcting a myth or an awkward fact): [clears throat]
+
+Placement:
+- Hook (first sentence): [curious] or [thoughtful].
+- Jokes: use [deadpan], [understated] or [sarcastic]. Let the words be funny, not the voice.
+- Last beat: [deadpan] or no tag.
+
+Rules:
+- A tag goes at the START of the sentence it applies to.
+- To combine two tags, put them in one bracket with a comma: [curious, softly].
+  Never more than two.
+- A tag may repeat, but never on two beats in a row.
+- Never use loud, angry, sad, crying, shouting, gasping, laughing-hard or
+  sound-effect tags, even if the topic is dramatic.
+- Use ellipses (...) for a pause before a reveal. You may CAPITALIZE at most
+  one word per sentence for emphasis.
+
+PUNCTUATION FOR DELIVERY
+Comma → short pause. Period → full stop. Question mark → questioning tone. Exclamation → emphasis. Ellipsis (...) → suspense pause. CAPITALIZATION → spoken emphasis on a word.

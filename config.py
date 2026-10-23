@@ -305,6 +305,9 @@ SFX_UNDER_DB = {"picture": 6.0, "after": 1.0, "transition": 9.0, "outro": 4.0}
 # same wording, same voice, same image, so the channel ends consistently and it
 # costs no API calls after the first run.
 OUTRO_ENABLED = True
+# Formats that end on their last fact with no outro: in a 50s reel the 3s
+# subscribe card is 6% of the video, and ending cold lets it loop.
+NO_OUTRO_FORMATS = {"facts_short"}
 OUTRO_DIR = ASSETS_DIR / "outro"
 OUTRO_LINE = "If you want more of these, subscribe and hit like."
 
@@ -436,6 +439,11 @@ WORDS_PER_MINUTE = 177
 # will disagree and the warning will fire on every run.
 TARGET_VIDEO_SECONDS = 180.0
 TARGET_VIDEO_TOLERANCE = 0.15      # warn outside +/-15%
+
+# Formats with their own length, keyed by the script's "format". Anything not
+# listed uses TARGET_VIDEO_SECONDS. facts_short is the 45-55s "interesting
+# facts about X" reel, first tested 2026-10-23 (prompts/pass1_facts_short.txt).
+TARGET_SECONDS_BY_FORMAT = {"facts_short": 50.0}
 
 FPS = 30                                           # Remotion runs at 30fps
 WIDTH = 1920                                        # 16:9

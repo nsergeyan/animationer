@@ -37,362 +37,225 @@ FLOW_RUNNER = config.ROOT_DIR / "flow_runner" / "runner.py"
 # a run folder under output/ (see adopt_pasted_script) and makes the whole
 # video. Set it to {} to work on the most recent run instead.
 NEW_SCRIPT = {
-  "topic": "rugby explained",
-  "format": "explainer",
+  "topic": "Crazy F1 Facts",
+  "format": "facts_short",
   "plan": {
-    "spine_question": "How does rugby work and what makes it unique?",
+    "spine_question": "What are the craziest hidden facts about Formula One racing?",
     "hook": {
-      "fact": "Players must pass the ball backward to advance down the field.",
-      "why_strange_to_a_newcomer": "In most sports, you throw or pass forward to reach the goal.",
-      "source": "Basic laws of Rugby Union"
+      "fact": "F1 drivers lose up to four kilos of body weight in a single race.",
+      "why_strange_to_a_newcomer": "People assume driving a race car is like driving a normal car, not an intense physical workout that causes massive weight loss.",
+      "source": "Insane F1 Demands! (YouTube 2026 / First Call Medical)"
     },
     "deflations": [
       {
-        "assumed": "You can only advance by running since forward passes are illegal.",
-        "actual": "You can kick the ball forward at any time to gain ground.",
-        "who_decided": "Early rugby school lawmakers",
-        "build_beat": "[thoughtful] Kicking is another option.",
-        "drop_beat": "Players can kick the ball forward at any time."
+        "assumed": "Drivers just sit and steer normally.",
+        "actual": "They lose massive body weight while enduring extreme heat and G-forces.",
+        "who_decided": "The intense physics and engineering of Formula One.",
+        "build_beat": "They literally sweat it out.",
+        "drop_beat": "Cockpits hit sixty degrees Celsius while they pull HEAVY Gs."
       }
     ],
     "cast": [
       {
-        "name": "Dan Carter",
-        "why": "Top points scorer in international test history."
+        "name": "Max Verstappen",
+        "why": "Current dominant driver, shows the physical exhaustion of winning."
       },
       {
-        "name": "Siya Kolisi",
-        "why": "Captain who led South Africa to back-to-back World Cup victories."
+        "name": "Lewis Hamilton",
+        "why": "Famous veteran who perfectly navigates the hyper-complex steering wheel."
       },
       {
-        "name": "Antoine Dupont",
-        "why": "French superstar who led his team to Olympic gold in sevens."
+        "name": "Lando Norris",
+        "why": "2025 World Champion, known for carrying extreme speed through corners."
+      },
+      {
+        "name": "Charles Leclerc",
+        "why": "Famous Ferrari driver who survived huge crashes thanks to the halo."
       }
     ],
     "specifics": [
       {
-        "fact": "Dan Carter scored 1598 test points.",
-        "source": "World Rugby all-time records",
-        "beat": "21"
+        "fact": "A steering wheel costs 100,000 dollars.",
+        "source": "RTR Sports Marketing 2024 / 2026 Guide",
+        "beat": "7"
       },
       {
-        "fact": "South Africa won the 2023 World Cup beating NZ by one point.",
-        "source": "2023 Rugby World Cup results",
-        "beat": "27"
+        "fact": "Lifting off the throttle generates more braking force than a road car's brakes.",
+        "source": "Formula 1 aerodynamic data",
+        "beat": "12"
       },
       {
-        "fact": "Rugby sevens games take only 14 minutes.",
-        "source": "World Rugby Sevens rules",
-        "beat": "35"
+        "fact": "The halo can hold a double decker bus.",
+        "source": "Mercedes FIA briefing 2018",
+        "beat": "17"
       }
     ],
     "facts_to_check": [
       {
-        "claim": "Dan Carter scored 1598 international points.",
-        "source": "World Rugby records"
+        "claim": "Drivers lose 4 kilos in a race.",
+        "source": "First Call Medical / F1 Driver Weight Loss during race"
       },
       {
-        "claim": "South Africa won their fourth title in 2023.",
-        "source": "2023 Rugby World Cup results"
+        "claim": "Steering wheel costs 100,000 dollars.",
+        "source": "RTR Sports Marketing"
       },
       {
-        "claim": "Antoine Dupont won gold in the Paris Olympics.",
-        "source": "Paris 2024 Olympic sevens results"
+        "claim": "Halo holds 12 tons (a double decker bus).",
+        "source": "Mercedes F1 technical briefing"
+      },
+      {
+        "claim": "Lando Norris is the 2025 World Champion.",
+        "source": "2025 F1 World Championship results"
       }
     ],
     "locations": [
-      {"name": "the backward pass pitch", "visual_anchor": "", "music": "none"},
-      {"name": "the set piece battleground", "visual_anchor": "", "music": "calm"},
-      {"name": "the goal kicking range", "visual_anchor": "", "music": "playful"},
-      {"name": "the comment break", "visual_anchor": "", "music": "playful"},
-      {"name": "the world cup final", "visual_anchor": "", "music": "building"},
-      {"name": "the paris sevens field", "visual_anchor": "", "music": "playful"}
+      {"name": "the sweltering cockpit", "visual_anchor": "", "music": "none"},
+      {"name": "the steering wheel workbench", "visual_anchor": "", "music": "playful"},
+      {"name": "the high speed braking zone", "visual_anchor": "", "music": "calm"},
+      {"name": "the halo crash test rig", "visual_anchor": "", "music": "building"}
     ],
     "setting_anchor": ""
   },
   "beats": [
     {
-      "narration": "[curious] In rugby you must pass BACKWARD to move forward.",
-      "location": "the backward pass pitch",
-      "image_prompt": "reference character at frame right, curious, watches two doodle players in red jerseys, the front one tossing one white oval ball backward, wide shot",
-      "image_prompt_alt": "reference character at frame left, curious, beside two doodle players in red jerseys running toward frame right, the leading one flicking one white oval ball back behind him, medium-wide shot"
+      "narration": "[thoughtful] Drivers can lose four kilos.",
+      "location": "the sweltering cockpit",
+      "image_prompt": "reference character stands at frame left, eyes wide, watching Max Verstappen, a dark navy racing suit, sweating in one dark navy Formula 1 car at frame right, a big sign reading \"-4 KG\" above, medium-wide shot",
+      "image_prompt_alt": "reference character stands at frame centre, eyes wide, beside a stocky young man with short brown hair, helmet visor raised, a dark navy racing suit, sweating in one dark navy Formula 1 car at frame left, a big sign reading \"-4 KG\" above, wide shot at eye level"
     },
     {
-      "narration": "Throwing the ball ahead is strictly illegal.",
-      "location": "the backward pass pitch",
+      "narration": "In a single race.",
+      "location": "the sweltering cockpit",
       "edits": [
-        "a big red sign reading \"NO FORWARD\" appears at the top of the frame"
+        "the sign disappears and one big round white clock appears at the top of the frame"
       ]
     },
     {
-      "narration": "[deadpan] This makes scoring INCREDIBLY painful.",
-      "location": "the backward pass pitch",
+      "narration": "Most of it is sweat.",
+      "location": "the sweltering cockpit",
       "edits": [
-        "the sign disappears and the character winces, a sweat drop on his forehead"
+        "the clock disappears and a big puddle of sweat spreads under the car in the bottom foreground"
       ]
     },
     {
-      "narration": "Players advance by running into solid human brick walls.",
-      "location": "the backward pass pitch",
+      "narration": "In Singapore the cockpit gets close to sixty degrees Celsius.",
+      "location": "the sweltering cockpit",
       "edits": [
-        "the red players crash into three blue-jerseyed defenders standing shoulder to shoulder at frame centre"
+        "the puddle disappears and one big red thermometer reading \"60°C\" appears at frame centre between the character and the car"
+      ],
+      "sfx": "shock"
+    },
+    {
+      "narration": "[deadpan] No wonder Max Verstappen looks tired.",
+      "location": "the sweltering cockpit",
+      "edits": [
+        "the thermometer disappears and the driver in the navy suit slumps forward, tongue out, exhausted"
       ]
     },
     {
-      "narration": "Two teams of fifteen people fight for an oval ball.",
-      "location": "the backward pass pitch",
+      "narration": "Look at their tiny steering wheel.",
+      "location": "the steering wheel workbench",
+      "image_prompt": "reference character at frame centre leans in curiously over one small black Formula 1 steering wheel in the bottom foreground, Lewis Hamilton, long dark braids, standing at frame right, medium shot",
+      "image_prompt_alt": "reference character at frame left leans in curiously over one small black Formula 1 steering wheel at frame centre, a lean medium-height man with long dark braids, a short beard and a scarlet red racing suit standing at frame right, high-angle shot"
+    },
+    {
+      "narration": "It can cost up to... ONE hundred thousand dollars.",
+      "location": "the steering wheel workbench",
       "edits": [
-        "a big white tag reading \"15 v 15\" appears at the top of the frame"
+        "a big white price tag reading \"$100,000\" appears hanging from the wheel's edge"
+      ],
+      "sfx": "money"
+    },
+    {
+      "narration": "It has about twenty five buttons and dials.",
+      "location": "the steering wheel workbench",
+      "edits": [
+        "the tag disappears, the wheel becomes a real photo cutout of a Formula 1 steering wheel, roughly pasted onto the drawing"
       ]
     },
     {
-      "narration": "Only the ball carrier gets tackled.",
-      "location": "the backward pass pitch",
-      "image_prompt": "reference character at frame left, wincing, watches one blue-jerseyed defender tackle one red-jerseyed player clutching a white oval ball at frame centre, medium shot",
-      "image_prompt_alt": "reference character stands at frame right, eyes squeezed, as one doodle defender in a blue jersey wraps both arms around the waist of one red-jerseyed player carrying a white oval ball, close medium shot"
-    },
-    {
-      "narration": "Others remain standing.",
-      "location": "the backward pass pitch",
+      "narration": "Drivers change settings many times every lap.",
+      "location": "the steering wheel workbench",
       "edits": [
-        "one small red-jerseyed teammate appears standing upright at frame right, behind the tackle"
+        "one big curvy black race track line appears at the top of the frame, the character's eyes go wide"
       ]
     },
     {
-      "narration": "You score by pressing the ball INTO the grass.",
-      "location": "the backward pass pitch",
+      "narration": "[understated] Without looking down.",
+      "location": "the steering wheel workbench",
       "edits": [
-        "the tackle vanishes; the teammate dives at frame centre, pressing a white ball onto green grass"
+        "the driver with long dark braids lifts his head and stares straight ahead, the character's eyebrows rise"
       ]
     },
     {
-      "narration": "This try earns your team five points.",
-      "location": "the backward pass pitch",
+      "narration": "Lifting off the gas works like a brake.",
+      "location": "the high speed braking zone",
+      "image_prompt": "reference character stands at frame right, head tilted, watching Lando Norris, a papaya orange racing suit, in one papaya orange Formula 1 car slowing hard at frame left, wide shot",
+      "image_prompt_alt": "reference character stands small in the bottom foreground, head tilted, watching a young medium-build man with tousled brown hair and light stubble, a papaya orange racing suit, in one papaya orange Formula 1 car slowing hard at frame centre, low-angle shot"
+    },
+    {
+      "narration": "At top speed, that matches YOUR car's emergency stop.",
+      "location": "the high speed braking zone",
       "edits": [
-        "a big yellow sign reading \"TRY = 5\" appears at the top of the frame"
+        "one small grey family hatchback appears at the top of the frame, skidding with smoking brakes"
+      ],
+      "sfx": "shock"
+    },
+    {
+      "narration": "[flatly] The drag is that big.",
+      "location": "the high speed braking zone",
+      "edits": [
+        "the hatchback disappears and big curved wind lines pile up against the orange car's nose"
       ]
     },
     {
-      "narration": "Kicking it between the posts adds two more.",
-      "location": "the backward pass pitch",
+      "narration": "The air hits them like a wall.",
+      "location": "the high speed braking zone",
       "edits": [
-        "the sign disappears and tall white H-shaped goal posts appear big at frame right"
+        "the wind lines become one big grey brick wall at frame centre, pressing on the orange car's nose"
       ]
     },
     {
-      "narration": "[curious] One small foul starts a MASSIVE battle.",
-      "location": "the set piece battleground",
-      "image_prompt": "reference character at frame right, eyebrows raised, watches one referee in a black shirt blow a whistle over a dropped white ball, wide shot",
-      "image_prompt_alt": "reference character stands at frame left, eyebrows raised, as one doodle referee in a black shirt and black shorts blows a whistle beside one white oval ball lying at his feet, medium shot"
-    },
-    {
-      "narration": "Eight players from each team bind together tightly.",
-      "location": "the set piece battleground",
+      "narration": "That same air pushes Lando Norris's car down through the corners.",
+      "location": "the high speed braking zone",
       "edits": [
-        "the referee disappears; three red-jerseyed forwards crouch bound shoulder to shoulder at frame left"
+        "the wall disappears, big downward arrows press the orange car onto a tight curved track in the bottom foreground"
       ]
     },
     {
-      "narration": "They push against each other in a GIANT scrum.",
-      "location": "the set piece battleground",
+      "narration": "Above the driver sits a titanium ring.",
+      "location": "the halo crash test rig",
+      "image_prompt": "reference character at frame left looks up, impressed, at Charles Leclerc, a slim dark-haired man in a scarlet red racing suit, sitting in one scarlet red Formula 1 car with a thin grey titanium halo ring over the cockpit, medium-wide shot",
+      "image_prompt_alt": "reference character at frame right looks up, impressed, at a slim dark-haired man in a scarlet red racing suit, tall, with short wavy hair and a clean-shaven face, sitting in one scarlet red Formula 1 car with a thin grey titanium halo ring over the cockpit, low-angle three-quarter view"
+    },
+    {
+      "narration": "This halo can hold a London double decker bus.",
+      "location": "the halo crash test rig",
       "edits": [
-        "the ball disappears; three blue-jerseyed forwards lock heads with the red forwards at frame centre"
+        "a real photo cutout of a red London double decker bus, roughly pasted onto the drawing, appears resting on top of the halo"
+      ],
+      "sfx": "boom"
+    },
+    {
+      "narration": "That is about twelve tonnes.",
+      "location": "the halo crash test rig",
+      "edits": [
+        "a big white tag reading \"12 TONS\" hangs from the bus's front corner"
       ]
     },
     {
-      "narration": "[deadpan] They hook the ball out backward.",
-      "location": "the set piece battleground",
+      "narration": "In twenty eighteen, a flying McLaren landed on Charles Leclerc's halo.",
+      "location": "the halo crash test rig",
       "edits": [
-        "the character's eyelids droop; a white ball pops out at the bottom foreground"
-      ]
+        "the bus and tag disappear and one orange Formula 1 car flies low over the halo from frame right, its tyre touching the halo"
+      ],
+      "sfx": "hit"
     },
     {
-      "narration": "When the ball leaves the field play stops completely.",
-      "location": "the set piece battleground",
+      "narration": "[deadpan] He walked away unhurt.",
+      "location": "the halo crash test rig",
       "edits": [
-        "the forwards disappear; the white ball rolls across a thick green line at frame right"
-      ]
-    },
-    {
-      "narration": "Players lift tall teammates high into the air.",
-      "location": "the set piece battleground",
-      "image_prompt": "reference character at frame left, mouth open, watches two red-jerseyed players lift one tall red-jerseyed teammate high, his arms reaching up, low-angle shot",
-      "image_prompt_alt": "reference character stands at frame right, jaw dropped, as two doodle players in red jerseys hoist one tall red-jerseyed teammate overhead by his legs, his arms stretched up, wide shot"
-    },
-    {
-      "narration": "This acrobatic move is called a lineout.",
-      "location": "the set piece battleground",
-      "edits": [
-        "a big white sign reading \"LINEOUT\" appears at the top of the frame"
-      ]
-    },
-    {
-      "narration": "[thoughtful] Kicking is another option.",
-      "location": "the goal kicking range",
-      "image_prompt": "reference character at frame right, thoughtful, beside a real photo cutout of Dan Carter, a lean man in an all-black rugby jersey, roughly pasted onto the drawing, kicking one white ball, medium shot",
-      "image_prompt_alt": "reference character stands at frame left, thoughtful, watching a lean man with short dark hair and a clean-shaven face in an all-black rugby jersey swing his right boot into one white oval ball, wide shot"
-    },
-    {
-      "narration": "Players can kick the ball forward at any time.",
-      "location": "the goal kicking range",
-      "edits": [
-        "a long green arrow appears at the top of the frame, curving forward from the ball"
-      ]
-    },
-    {
-      "narration": "New Zealand legend Dan Carter mastered this skill.",
-      "location": "the goal kicking range",
-      "edits": [
-        "the character leans in, eyes widening, toward the man in the all-black jersey"
-      ]
-    },
-    {
-      "narration": "He scored one thousand five hundred ninety eight points for New Zealand.",
-      "location": "the goal kicking range",
-      "edits": [
-        "the arrow disappears and a big white tag reading \"1598 POINTS\" appears at frame left"
-      ]
-    },
-    {
-      "narration": "[calm] Quick question before we continue.",
-      "location": "the comment break",
-      "image_prompt": "reference character faces the viewer at frame centre, left hand holding up one big blank yellow sign with one large question mark, medium shot",
-      "image_prompt_alt": "reference character stands alone facing the viewer, slightly left of centre, his left hand raising one big plain yellow sign bearing one large question mark, wide shot"
-    },
-    {
-      "narration": "Which sport should we explain next?",
-      "location": "the comment break",
-      "edits": [
-        "the character's right arm points down toward the bottom edge of the frame"
-      ]
-    },
-    {
-      "narration": "Write it in the comments.",
-      "location": "the comment break",
-      "edits": [
-        "the character gives a small nod, his head tipped forward"
-      ]
-    },
-    {
-      "narration": "[thoughtful] The biggest prize is the Rugby World Cup.",
-      "location": "the world cup final",
-      "image_prompt": "reference character at frame left, gazing up thoughtful at the Webb Ellis Cup, one big golden two-handled trophy, towering at frame right, low-angle shot",
-      "image_prompt_alt": "reference character stands at frame centre, looking up thoughtfully at one big golden trophy with two curved handles and a round lid towering beside him at frame left, wide shot"
-    },
-    {
-      "narration": "Nations battle for it every four years.",
-      "location": "the world cup final",
-      "edits": [
-        "two doodle players appear tussling at frame centre, one in dark green, one in black"
-      ]
-    },
-    {
-      "narration": "South Africa won their FOURTH title in twenty twenty three.",
-      "location": "the world cup final",
-      "edits": [
-        "a big white tag reading \"4TH TITLE\" hangs from the trophy's left handle"
-      ]
-    },
-    {
-      "narration": "They beat New Zealand by one single point.",
-      "location": "the world cup final",
-      "edits": [
-        "the tag disappears and the player in black sinks to his knees"
-      ]
-    },
-    {
-      "narration": "Captain Siya Kolisi lifted the trophy again.",
-      "location": "the world cup final",
-      "image_prompt": "reference character at frame left, smiling, watches a real photo cutout of Siya Kolisi, a broad-shouldered man in a dark green rugby jersey, roughly pasted onto the drawing, at frame centre lifting the Webb Ellis Cup, one big golden two-handled trophy, medium shot",
-      "image_prompt_alt": "reference character stands at frame right, smiling, watching a broad-shouldered man with a short dark beard and close-cropped dark hair in a dark green rugby jersey hoisting one big golden trophy with two curved handles and a round lid overhead, wide shot"
-    },
-    {
-      "narration": "He became the second captain to win back to back.",
-      "location": "the world cup final",
-      "edits": [
-        "a big gold tag reading \"BACK TO BACK\" appears at the top of the frame"
-      ]
-    },
-    {
-      "narration": "His team survived three consecutive one point victories.",
-      "location": "the world cup final",
-      "edits": [
-        "the tag disappears and the character's eyes go wide, a sweat drop appearing"
-      ]
-    },
-    {
-      "narration": "[understated] Their defense held on every time.",
-      "location": "the world cup final",
-      "edits": [
-        "three doodle defenders in dark green jerseys appear arm in arm at frame right"
-      ]
-    },
-    {
-      "narration": "They made huge tackles until the final whistle.",
-      "location": "the world cup final",
-      "edits": [
-        "the green defenders crouch low, shoulders driving forward, and the character's mouth drops open"
-      ]
-    },
-    {
-      "narration": "[curious] A normal rugby match lasts eighty exhausting minutes.",
-      "location": "the paris sevens field",
-      "image_prompt": "reference character at frame right, wincing, watches three exhausted players in muddy red jerseys hunched beneath one big round blue clock, wide shot",
-      "image_prompt_alt": "reference character stands at frame left, wincing, beside three doodle players in muddy red jerseys bent double with hands on knees, one big round blue clock hanging above them, medium-wide shot"
-    },
-    {
-      "narration": "But a faster version takes just fourteen minutes.",
-      "location": "the paris sevens field",
-      "edits": [
-        "the clock's hands spin fast and the clock shrinks to half its size"
-      ]
-    },
-    {
-      "narration": "It is called rugby sevens.",
-      "location": "the paris sevens field",
-      "edits": [
-        "the tired players are replaced by three navy-jerseyed players sprinting in at frame left"
-      ]
-    },
-    {
-      "narration": "Seven players cover the exact same massive field.",
-      "location": "the paris sevens field",
-      "edits": [
-        "the clock vanishes; a vast green strip fills the bottom foreground, players tiny on it"
-      ]
-    },
-    {
-      "narration": "[light chuckle] There is NO place to hide.",
-      "location": "the paris sevens field",
-      "edits": [
-        "the character breaks into a small grin, one eyebrow raised"
-      ]
-    },
-    {
-      "narration": "Antoine Dupont helped France win GOLD in Paris.",
-      "location": "the paris sevens field",
-      "image_prompt": "reference character at frame left, grinning, watches a real photo cutout of Antoine Dupont, a compact man in a navy blue rugby jersey, roughly pasted onto the drawing, sprinting with one white ball at frame centre, medium shot",
-      "image_prompt_alt": "reference character stands at frame right, grinning, watching a compact muscular man with short dark hair and a trimmed dark beard in a navy blue rugby jersey sprinting with one white oval ball tucked under his arm, wide shot"
-    },
-    {
-      "narration": "He scored twice in the final.",
-      "location": "the paris sevens field",
-      "edits": [
-        "a big gold sign reading \"OLYMPIC GOLD\" appears at the top of the frame"
-      ]
-    },
-    {
-      "narration": "[content] France beat Fiji twenty eight to seven.",
-      "location": "the paris sevens field",
-      "edits": [
-        "the sign disappears and a big white scoreboard reading \"28 - 7\" appears at frame right"
-      ]
-    },
-    {
-      "narration": "Fiji had never lost an Olympic sevens game before.",
-      "location": "the paris sevens field",
-      "edits": [
-        "the character's jaw drops open, eyebrows high"
+        "the tyre disappears, the man in the scarlet red suit stands beside the car smiling, the character's eyebrows rise"
       ]
     }
   ]
@@ -1115,7 +978,7 @@ WORDS_PER_MINUTE = config.WORDS_PER_MINUTE
 # The MIX is the rule. Uniformly short beats are a metronome, uniformly long
 # ones a slideshow, so the checks police the shares and the runs, and only
 # flag a single beat when it is too long to sit under one still image.
-RHYTHM_FORMATS = {"explainer"}
+RHYTHM_FORMATS = {"explainer", "facts_short"}
 SHORT_MAX_WORDS = 5       # at or under this, a beat counts as SHORT
 MEDIUM_MAX_WORDS = 8      # over SHORT and at or under this, MEDIUM; above, LONG
 LONG_MAX_WORDS = 12       # over this, the image freezes while narration runs
@@ -1372,7 +1235,8 @@ def _warn_off_spec(beats: list[dict], fmt: str = "",
     hard_cuts = sum(1 for i, (a, b) in enumerate(zip(locations, locations[1:]), 2)
                     if a and a == b and i not in redraws)
     pad_s = hard_cuts * config.CUT_PAD_SECONDS
-    outro_s = (OUTRO_HOLD_SECONDS + 2.1) if config.OUTRO_ENABLED else 0.0
+    outro = config.OUTRO_ENABLED and key not in config.NO_OUTRO_FORMATS
+    outro_s = (OUTRO_HOLD_SECONDS + 2.1) if outro else 0.0
 
     est = narration_s + pad_s + outro_s
     per_beat = narration_s / len(beats) if beats else 0
@@ -1387,7 +1251,8 @@ def _warn_off_spec(beats: list[dict], fmt: str = "",
 
     # Catch a script that is the wrong LENGTH while it is still just text. The
     # alternative is finding out after a full Flow run and a full TTS run.
-    target = getattr(config, "TARGET_VIDEO_SECONDS", 0.0)
+    target = config.TARGET_SECONDS_BY_FORMAT.get(
+        key, getattr(config, "TARGET_VIDEO_SECONDS", 0.0))
     tol = getattr(config, "TARGET_VIDEO_TOLERANCE", 0.15)
     if target and beats:
         drift = (est - target) / target
@@ -1962,7 +1827,9 @@ def cmd_manifest(args) -> int:
     # Appended as an ordinary beat, so it cuts or dissolves in like any other.
     # The script never mentions the channel (pass1_narration.txt bans it), so
     # the outro is added here instead.
-    if config.OUTRO_ENABLED and not args.silent:
+    fmt = data.get("format", "").strip().lower()
+    if (config.OUTRO_ENABLED and fmt not in config.NO_OUTRO_FORMATS
+            and not args.silent):
         assets = _outro_assets()
         if assets:
             image_src, audio_src = assets

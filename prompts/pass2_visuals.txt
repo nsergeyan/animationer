@@ -1055,6 +1055,8 @@ the money
 
 Aim for 4 to 8 locations in a video. A location change is a dissolve, so do
 not change location every few beats.
+If the script says "format": "facts_short" (a ~50 second facts reel), use one
+location per fact instead: 3 to 5 in total, and no "the comment break".
 
 17. LOCATION VISUAL ANCHOR
 
@@ -1877,6 +1879,7 @@ the first location is none, no other location is none
 generated locations are relevant to the narration
 similar consecutive beats reuse locations when appropriate
 4 to 8 locations in total, plus "the comment break"
+(facts_short: one location per fact, 3 to 5 in total, no "the comment break")
 "the comment break" has the same music mood as the location before it
 every location has a corresponding plan.locations entry
 every visual_anchor is ""
