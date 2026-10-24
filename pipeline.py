@@ -655,7 +655,12 @@ def build_frames(data: dict) -> list[dict]:
                         f"{prev['location']!r}. Give beat {index} an image_prompt.")
                 frame["prompt"] = config.EDIT_TEMPLATE.format(
                     edit=_fragment(_scene_text(text)))
-                frame["alt"] = None
+                # edit_alt backs up the beat's one edit. A beat with several
+                # edits has no single edit it stands for, so it gets none.
+                alt = (beat.get("edit_alt") or "").strip()
+                frame["alt"] = (config.EDIT_TEMPLATE.format(
+                    edit=_fragment(_scene_text(alt)))
+                    if alt and len(beat.get("edits") or []) == 1 else None)
                 frame["parent"] = prev["name"]
             frames.append(frame)
     return frames
@@ -896,8 +901,10 @@ def cmd_prompts(args) -> int:
     print(f"[prompts] style block on all {len(establish)} fresh frames "
           f"(identical every scene, every video)")
     alts = sum(1 for f in establish if f["alt"])
-    if alts:
-        print(f"[prompts] {alts} fallback description(s) for refused prompts")
+    edit_alts = sum(1 for f in frames if f["mode"] == "edit" and f["alt"])
+    if alts or edit_alts:
+        print(f"[prompts] fallbacks for refused prompts: "
+              f"{alts}/{len(establish)} fresh, {edit_alts}/{edits} edits")
 
     # Location/setting anchors come from plan, not from the beat text. See
     # _anchor_map: the beats used to carry a paraphrased copy each.
@@ -1115,6 +1122,15 @@ def _warn_off_spec(beats: list[dict], fmt: str = "",
     report("image_prompt_alt identical to image_prompt", copies,
            "an identical retry gets refused identically - reword or restage it")
 
+    edited = [(i, b) for i, b in enumerate(beats, 1) if b.get("edits")]
+    report("no edit_alt",
+           [i for i, b in edited if not (b.get("edit_alt") or "").strip()],
+           "a refused edit has no second attempt and stops the run")
+    report("edit_alt identical to its edit",
+           [i for i, b in edited if len(b["edits"]) == 1 and b.get("edit_alt")
+            and flat(b["edit_alt"]) == flat(_edit_parts(b["edits"][0])[0])],
+           "an identical retry gets refused identically - show it differently")
+
     # The reference art is a single front-facing pose. Ask for his back and the
     # model has nothing to work from, so it puts his face on a back-facing body
     # and the head comes out rotated 180 degrees.
@@ -1238,10 +1254,22 @@ def _warn_off_spec(beats: list[dict], fmt: str = "",
     outro = config.OUTRO_ENABLED and key not in config.NO_OUTRO_FORMATS
     outro_s = (OUTRO_HOLD_SECONDS + 2.1) if outro else 0.0
 
-    est = narration_s + pad_s + outro_s
+    # Sounds tagged "after" get their own pause (~1.5s measured on
+    # crazy_f1_facts), and a location change holds SFX_TRANSITION_PAUSE
+    # before its dissolve. The last picture holds OUTRO_HOLD_SECONDS even
+    # when the format has no outro. Missing these made crazy_f1_facts
+    # estimate 49s and render 62s.
+    after_n = sum(1 for b in beats if b.get("sfx") in config.SFX_AFTER_TAGS)
+    changes = sum(1 for a, b in zip(locations, locations[1:]) if a != b)
+    sfx_s = (after_n * 1.5 + changes * config.SFX_TRANSITION_PAUSE
+             if config.SFX_ENABLED else 0.0)
+    hold_s = 0.0 if outro else OUTRO_HOLD_SECONDS
+
+    est = narration_s + pad_s + outro_s + sfx_s + hold_s
     per_beat = narration_s / len(beats) if beats else 0
     print(f"[prompts] ~{total_words} spoken words, {narration_s:.0f}s narration "
-          f"+ {pad_s:.0f}s cut pads + {outro_s:.0f}s outro")
+          f"+ {pad_s:.0f}s cut pads + {sfx_s:.0f}s sound pauses "
+          f"+ {outro_s + hold_s:.0f}s outro/end hold")
     print(f"[prompts] estimated final video {est:.0f}s ({est / 60:.1f} min)")
     print(f"[prompts] ~{per_beat:.1f}s per beat across {len(beats)} beats")
     if n_frames:

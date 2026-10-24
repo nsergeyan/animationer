@@ -1,5 +1,6 @@
 SCRIPT:
 
+
 PASS 2 OF 2: THE VISUALS
 
 The script above is finished.
@@ -11,6 +12,7 @@ You add everything the pipeline needs to turn it into a video:
 one image_prompt and one image_prompt_alt on the first beat of each location,
 and on any beat that redraws (Section 0C)
 one edits list on every beat (Section 0C)
+one edit_alt next to every edits list (Section 41B)
 one location NAME per beat (visual_anchor and setting_anchor are always "")
 emotion tags remain untouched
 one music mood on every location (Section 47)
@@ -267,7 +269,8 @@ and on a beat that redraws (see REDRAW below). Every rule in this prompt about
 image_prompt and image_prompt_alt applies to these. Wherever a later section
 says "every beat" about them, read it as every beat that has them.
 
-edits on every OTHER beat: exactly one edit line, a list holding one string.
+edits on every OTHER beat: exactly one edit line, a list holding one string,
+plus one edit_alt (Section 41B).
 
 ONE PICTURE PER BEAT
 
@@ -359,8 +362,8 @@ previous picture.
 
 Refer to everything already in the picture with the words that introduced it
 ("the crocodile", never "the reptile"). Refer to other people by their visible
-feature, never by name: an edit has no alternate to fall back on when a name
-is refused.
+feature, never by name: a name gets an edit refused, and the edit_alt is
+there for the refusals you could not see coming.
 
 Never ask an edit for a new camera: no close-up, wide shot, angle, zoom or
 camera. An edit keeps the framing. A new framing is a redraw.
@@ -1683,6 +1686,32 @@ prompts are wrong.
 The alternate must not remove the reference character simply because the
 historical subject is different.
 
+41B. EDIT_ALT
+
+Every beat with an edit also carries edit_alt: the backup edit, sent instead
+when Flow refuses the edit. Flow checks the finished picture as well as the
+words, so a refusal is often about what the picture would show, not how the
+edit is worded.
+
+The edit_alt MUST:
+
+reach the same story moment as the edit
+leave the picture holding the same things the edit leaves, called by the
+same words, because the next edit builds on them
+follow every edit rule in Section 0C: "the character", no names, no camera,
+no style, the hands rules, the page limits
+
+The edit_alt shows the moment a different way. It is not the same action
+reworded: a reworded edit is refused like the original.
+
+Refusals seen so far, so keep them out of edit_alt:
+
+a rear view of a figure's body (a round body seen from behind)
+a photo cutout (use a doodle of the same object)
+
+edit: "the cat turns its back to the character, hiding its one eye"
+edit_alt: "the grey cat covers its face with both front paws"
+
 42. ALTERNATE STAGING
 
 The alternate must differ meaningfully from the primary.
@@ -2010,6 +2039,7 @@ Check:
 the first beat of every location has image_prompt and image_prompt_alt
 no other beat has them unless it redraws (Section 0C)
 a beat with an image_prompt has no edits; every other beat has exactly one
+every beat with an edit has an edit_alt that shows the moment differently
 every beat is exactly one picture: an image_prompt, or one edit
 no edit asks for a camera, a framing or a drawing style
 no edit says reference character or names a person
@@ -2266,6 +2296,7 @@ plan.setting_anchor
 beats[].image_prompt and beats[].image_prompt_alt where Section 0C asks for
 them
 beats[].edits: exactly one edit line on every beat without an image_prompt
+beats[].edit_alt: the backup for that edit, on every beat with edits
 beats[].sfx: one tag, only on the beats Section 48 gives a sound
 
 If Pass 1 contained no locations, the final object must additionally contain
