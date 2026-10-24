@@ -1,4 +1,4 @@
-Write a script about (FORMULA 1) it is a short video of the most interesting facts about it. Use ONLY verified information and Use in correct places JOKES, SARCASM, etc. (no cringe) here is the structure you have to fill it in:
+Write a script about (Space-universe-science fiction) it is a short video of the most interesting facts about it. Use ONLY verified information and Use in correct places JOKES, SARCASM, etc. (no cringe) here is the structure you have to fill it in:
 Use simple words, and explain everything simply so average non english native speaker can understand it.
 While writing the narration do not use any "", \,\
 AND REMEMBER YOU ARE WRITING A NARRATION THAT WILL BE USED FOR TEXT TO SPEACH AI VOICE
@@ -7,7 +7,7 @@ It is 2026. Before writing, use web search to confirm every current fact: teams,
 drivers or members and who belongs where, champions, records, numbers. Never
 rely on memory for anything that changes from season to season.
 
-I WANT ABOUT 20 BEATS, 125-145 SPOKEN WORDS IN TOTAL (about 50 seconds).
+I WANT ABOUT 18 BEATS, 105-120 SPOKEN WORDS IN TOTAL (about 50 seconds).
 Each beat is ONE short sentence. You write ONLY the narration: a second pass
 adds the pictures later, exactly one picture per beat, so a beat's length is
 how long its picture stays on screen. Never write picture descriptions, image
@@ -23,25 +23,28 @@ Never more than 3 beats of the same length in a row.
 Never go over 12 words in one beat. Split it into two beats instead.
 Count the words at the end. The total budget matters more than the beat count.
 
-HOOK (the first 3 beats, about the first 8 seconds)
+HOOK (the first 4 beats, about the first 9 seconds)
 Most viewers decide in the first few seconds whether to stay. Retention data
 showed the biggest drop during general openings, before the first name or number.
-- Beats 1 to 3 are all SHORT (3-5 words). One picture per beat, so short
+- Beat 1 is the intro line: the number of facts, the topic, and a reason to
+  stay, in 4-6 words. "Four space facts that sound fake." "Four F1 rules
+  that sound made up." Never a greeting or a question, never "today we".
+- Beats 1 to 4 are all SHORT (3-6 words). One picture per beat, so short
   beats mean a new picture every ~1.5 seconds while the viewer decides
-  whether to stay. The LONG-beat rule for big numbers starts at beat 4:
+  whether to stay. The LONG-beat rule for big numbers starts at beat 5:
   split the hook fact into short punches instead.
-- Beat 1 is the single most surprising CONCRETE fact of the whole video: a
+- Beat 2 is the single most surprising CONCRETE fact of the whole video: a
   number, a name, or a rule that sounds absurd. State it plainly.
 - Pick what sounds strange to someone who knows nothing about the topic, not
   what impresses a fan.
-- Beats 2 and 3 make it land: a short consequence or a sharper detail. Not
+- Beats 3 and 4 make it land: a short consequence or a sharper detail. Not
   background.
-- Never open with a greeting, a definition, "welcome to", "X is the peak of",
-  "X used to be", or a question. Background and "how did this happen" come
-  after beat 3.
+- After the intro line, never a greeting, a definition, "welcome to", "X is
+  the peak of", "X used to be", or a question. Background and "how did this
+  happen" come after beat 4.
 - The hook is a fact, not a joke. It is funny because it is true.
-Good: Cricket matches last five days. They stop for lunch. Then for tea.
-And then it can end in a draw.
+Good: Four cricket facts that sound fake. Matches last five days. They stop
+for lunch. Then for tea. And then it can end in a draw.
 Bad: Chess used to be incredibly quiet. Just two people staring forever.
 
 FOUR FACTS, ONE SCENE EACH
@@ -51,7 +54,7 @@ jump to a new scene.
 - Pick the 4 facts about the topic that sound strangest to someone who knows
   nothing about it. Each fact gets 4 to 6 beats. Never come back to a fact.
 - Fact 1 is the strongest of the four, and it IS the hook (the HOOK rules
-  above apply to its first 3 beats). The last fact is the second strongest,
+  above apply to beats 2 to 4). The last fact is the second strongest,
   so the video does not fade out.
 - Inside each fact: state it plainly, give one concrete comparison (a size
   next to something familiar, a number next to something everyday), then one

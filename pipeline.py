@@ -37,226 +37,208 @@ FLOW_RUNNER = config.ROOT_DIR / "flow_runner" / "runner.py"
 # a run folder under output/ (see adopt_pasted_script) and makes the whole
 # video. Set it to {} to work on the most recent run instead.
 NEW_SCRIPT = {
-  "topic": "Crazy F1 Facts",
+  "topic": "Space facts vs fiction",
   "format": "facts_short",
   "plan": {
-    "spine_question": "What are the craziest hidden facts about Formula One racing?",
+    "spine_question": "What are the weirdest verified facts about space and science fiction?",
     "hook": {
-      "fact": "F1 drivers lose up to four kilos of body weight in a single race.",
-      "why_strange_to_a_newcomer": "People assume driving a race car is like driving a normal car, not an intense physical workout that causes massive weight loss.",
-      "source": "Insane F1 Demands! (YouTube 2026 / First Call Medical)"
+      "fact": "There is a massive water ocean floating in space.",
+      "why_strange_to_a_newcomer": "People think of space as a dry vacuum, not a place with vaporized oceans larger than Earth.",
+      "source": "NASA JPL discovery of quasar APM 08279+5255"
     },
     "deflations": [
       {
-        "assumed": "Drivers just sit and steer normally.",
-        "actual": "They lose massive body weight while enduring extreme heat and G-forces.",
-        "who_decided": "The intense physics and engineering of Formula One.",
-        "build_beat": "They literally sweat it out.",
-        "drop_beat": "Cockpits hit sixty degrees Celsius while they pull HEAVY Gs."
+        "assumed": "Asteroid fields are densely packed space hazards.",
+        "actual": "Asteroids are roughly 600,000 miles apart on average.",
+        "who_decided": "Hollywood and Star Wars",
+        "build_beat": "[sarcastic] Star Wars lied about asteroid fields.",
+        "drop_beat": "In the real belt, rocks are about 600,000 miles APART."
       }
     ],
     "cast": [
       {
-        "name": "Max Verstappen",
-        "why": "Current dominant driver, shows the physical exhaustion of winning."
+        "name": "Sergei Krikalev",
+        "why": "Cosmonaut whose 803 days in orbit made him about 0.02 seconds younger."
       },
       {
-        "name": "Lewis Hamilton",
-        "why": "Famous veteran who perfectly navigates the hyper-complex steering wheel."
+        "name": "Han Solo",
+        "why": "Famous character who navigated a dangerous asteroid field, setting up the movie myth."
       },
       {
-        "name": "Lando Norris",
-        "why": "2025 World Champion, known for carrying extreme speed through corners."
-      },
-      {
-        "name": "Charles Leclerc",
-        "why": "Famous Ferrari driver who survived huge crashes thanks to the halo."
+        "name": "Neil Armstrong",
+        "why": "Face of the Apollo crews who left waste bags on the moon."
       }
     ],
     "specifics": [
       {
-        "fact": "A steering wheel costs 100,000 dollars.",
-        "source": "RTR Sports Marketing 2024 / 2026 Guide",
-        "beat": "7"
+        "fact": "APM 08279+5255 holds 140 trillion times the water in Earth's oceans.",
+        "source": "NASA",
+        "beat": "That's 140 trillion times the water in Earth's oceans."
       },
       {
-        "fact": "Lifting off the throttle generates more braking force than a road car's brakes.",
-        "source": "Formula 1 aerodynamic data",
-        "beat": "12"
-      },
-      {
-        "fact": "The halo can hold a double decker bus.",
-        "source": "Mercedes FIA briefing 2018",
-        "beat": "17"
+        "fact": "Asteroid belt average distance is 600,000 miles.",
+        "source": "NASA",
+        "beat": "In the real belt, rocks are about 600,000 miles APART."
       }
     ],
     "facts_to_check": [
       {
-        "claim": "Drivers lose 4 kilos in a race.",
-        "source": "First Call Medical / F1 Driver Weight Loss during race"
+        "claim": "Space holds a water cloud 140 trillion times Earth's oceans.",
+        "source": "NASA JPL 2011 APM 08279+5255"
       },
       {
-        "claim": "Steering wheel costs 100,000 dollars.",
-        "source": "RTR Sports Marketing"
+        "claim": "Sergei Krikalev time traveled 0.02 seconds.",
+        "source": "Special Relativity calculations for his 803 cumulative days in space"
       },
       {
-        "claim": "Halo holds 12 tons (a double decker bus).",
-        "source": "Mercedes F1 technical briefing"
+        "claim": "Asteroids are 600,000 miles apart.",
+        "source": "NASA mission planning data for the main asteroid belt"
       },
       {
-        "claim": "Lando Norris is the 2025 World Champion.",
-        "source": "2025 F1 World Championship results"
+        "claim": "Apollo missions left 96 bags of human waste on the moon.",
+        "source": "NASA Apollo surface operations records"
       }
     ],
     "locations": [
-      {"name": "the sweltering cockpit", "visual_anchor": "", "music": "none"},
-      {"name": "the steering wheel workbench", "visual_anchor": "", "music": "playful"},
-      {"name": "the high speed braking zone", "visual_anchor": "", "music": "calm"},
-      {"name": "the halo crash test rig", "visual_anchor": "", "music": "building"}
+      {"name": "quasar water cloud", "visual_anchor": "", "music": "none"},
+      {"name": "orbiting space station", "visual_anchor": "", "music": "calm"},
+      {"name": "the asteroid belt", "visual_anchor": "", "music": "playful"},
+      {"name": "the apollo landing site", "visual_anchor": "", "music": "playful"}
     ],
     "setting_anchor": ""
   },
   "beats": [
     {
-      "narration": "[thoughtful] Drivers can lose four kilos.",
-      "location": "the sweltering cockpit",
-      "image_prompt": "reference character stands at frame left, eyes wide, watching Max Verstappen, a dark navy racing suit, sweating in one dark navy Formula 1 car at frame right, a big sign reading \"-4 KG\" above, medium-wide shot",
-      "image_prompt_alt": "reference character stands at frame centre, eyes wide, beside a stocky young man with short brown hair, helmet visor raised, a dark navy racing suit, sweating in one dark navy Formula 1 car at frame left, a big sign reading \"-4 KG\" above, wide shot at eye level"
+      "narration": "[curious] Four space facts that sound fake. Space holds a GIANT ocean.",
+      "location": "quasar water cloud",
+      "image_prompt": "reference character stands at frame left, eyebrows raised in curiosity, beside one enormous swirling cloud of pale blue water vapor filling frame right, wide shot",
+      "image_prompt_alt": "reference character leans in at frame centre, head tilted curiously, as one giant pale blue cloud of water vapor curls around him from frame right, medium-wide shot"
     },
     {
-      "narration": "In a single race.",
-      "location": "the sweltering cockpit",
+      "narration": "It surrounds a black hole.",
+      "location": "quasar water cloud",
       "edits": [
-        "the sign disappears and one big round white clock appears at the top of the frame"
-      ]
-    },
-    {
-      "narration": "Most of it is sweat.",
-      "location": "the sweltering cockpit",
-      "edits": [
-        "the clock disappears and a big puddle of sweat spreads under the car in the bottom foreground"
-      ]
-    },
-    {
-      "narration": "In Singapore the cockpit gets close to sixty degrees Celsius.",
-      "location": "the sweltering cockpit",
-      "edits": [
-        "the puddle disappears and one big red thermometer reading \"60°C\" appears at frame centre between the character and the car"
+        "one big black hole with an orange rim appears at the top of the frame, the cloud curling around it"
       ],
+      "edit_alt": "the cloud swirls into a ring around one big black hole with an orange rim at the top of the frame"
+    },
+    {
+      "narration": "It's all floating water vapor.",
+      "location": "quasar water cloud",
+      "edits": [
+        "wavy steam lines rise from the cloud and the character squints at it"
+      ],
+      "edit_alt": "small puffs of white steam drift off the cloud's edges and the character's eyebrows rise"
+    },
+    {
+      "narration": "That's 140 trillion times the water in Earth's oceans.",
+      "location": "quasar water cloud",
+      "edits": [
+        "the black hole disappears and one tiny blue Earth appears in the bottom foreground beside the character, dwarfed by the cloud"
+      ],
+      "edit_alt": "the black hole disappears and one tiny blue Earth appears at the bottom foreground, the cloud bulging huge above it",
       "sfx": "shock"
     },
     {
-      "narration": "[deadpan] No wonder Max Verstappen looks tired.",
-      "location": "the sweltering cockpit",
+      "narration": "[deadpan] Also, it's colder than your freezer.",
+      "location": "quasar water cloud",
       "edits": [
-        "the thermometer disappears and the driver in the navy suit slumps forward, tongue out, exhausted"
-      ]
-    },
-    {
-      "narration": "Look at their tiny steering wheel.",
-      "location": "the steering wheel workbench",
-      "image_prompt": "reference character at frame centre leans in curiously over one small black Formula 1 steering wheel in the bottom foreground, Lewis Hamilton, long dark braids, standing at frame right, medium shot",
-      "image_prompt_alt": "reference character at frame left leans in curiously over one small black Formula 1 steering wheel at frame centre, a lean medium-height man with long dark braids, a short beard and a scarlet red racing suit standing at frame right, high-angle shot"
-    },
-    {
-      "narration": "It can cost up to... ONE hundred thousand dollars.",
-      "location": "the steering wheel workbench",
-      "edits": [
-        "a big white price tag reading \"$100,000\" appears hanging from the wheel's edge"
+        "icicles hang from the character's nose and he shivers"
       ],
-      "sfx": "money"
+      "edit_alt": "the character hugs himself, teeth chattering"
     },
     {
-      "narration": "It has about twenty five buttons and dials.",
-      "location": "the steering wheel workbench",
+      "narration": "Cosmonaut Sergei Krikalev REALLY time traveled.",
+      "location": "orbiting space station",
+      "image_prompt": "reference character stands at frame right, eyebrows raised, facing a real photo cutout of Sergei Krikalev, a cosmonaut in a dark blue flight suit, roughly pasted onto the drawing, floating at frame left, medium shot",
+      "image_prompt_alt": "reference character stands at frame centre, eyebrows raised, as a doodle of a stocky short-haired man with a broad face, a cosmonaut in a dark blue flight suit, floats sideways at frame left, wider medium shot"
+    },
+    {
+      "narration": "He spent 803 days orbiting Earth.",
+      "location": "orbiting space station",
       "edits": [
-        "the tag disappears, the wheel becomes a real photo cutout of a Formula 1 steering wheel, roughly pasted onto the drawing"
-      ]
-    },
-    {
-      "narration": "Drivers change settings many times every lap.",
-      "location": "the steering wheel workbench",
-      "edits": [
-        "one big curvy black race track line appears at the top of the frame, the character's eyes go wide"
-      ]
-    },
-    {
-      "narration": "[understated] Without looking down.",
-      "location": "the steering wheel workbench",
-      "edits": [
-        "the driver with long dark braids lifts his head and stares straight ahead, the character's eyebrows rise"
-      ]
-    },
-    {
-      "narration": "Lifting off the gas works like a brake.",
-      "location": "the high speed braking zone",
-      "image_prompt": "reference character stands at frame right, head tilted, watching Lando Norris, a papaya orange racing suit, in one papaya orange Formula 1 car slowing hard at frame left, wide shot",
-      "image_prompt_alt": "reference character stands small in the bottom foreground, head tilted, watching a young medium-build man with tousled brown hair and light stubble, a papaya orange racing suit, in one papaya orange Formula 1 car slowing hard at frame centre, low-angle shot"
-    },
-    {
-      "narration": "At top speed, that matches YOUR car's emergency stop.",
-      "location": "the high speed braking zone",
-      "edits": [
-        "one small grey family hatchback appears at the top of the frame, skidding with smoking brakes"
+        "one small blue Earth with a dotted orbit ring appears at the top of the frame, the ring looping past the cosmonaut"
       ],
-      "sfx": "shock"
+      "edit_alt": "one small blue Earth appears at the top of the frame and a dotted orbit line curves from it down to the cosmonaut"
     },
     {
-      "narration": "[flatly] The drag is that big.",
-      "location": "the high speed braking zone",
+      "narration": "Moving that fast put him 0.02 seconds into the future.",
+      "location": "orbiting space station",
       "edits": [
-        "the hatchback disappears and big curved wind lines pile up against the orange car's nose"
-      ]
-    },
-    {
-      "narration": "The air hits them like a wall.",
-      "location": "the high speed braking zone",
-      "edits": [
-        "the wind lines become one big grey brick wall at frame centre, pressing on the orange car's nose"
-      ]
-    },
-    {
-      "narration": "That same air pushes Lando Norris's car down through the corners.",
-      "location": "the high speed braking zone",
-      "edits": [
-        "the wall disappears, big downward arrows press the orange car onto a tight curved track in the bottom foreground"
-      ]
-    },
-    {
-      "narration": "Above the driver sits a titanium ring.",
-      "location": "the halo crash test rig",
-      "image_prompt": "reference character at frame left looks up, impressed, at Charles Leclerc, a slim dark-haired man in a scarlet red racing suit, sitting in one scarlet red Formula 1 car with a thin grey titanium halo ring over the cockpit, medium-wide shot",
-      "image_prompt_alt": "reference character at frame right looks up, impressed, at a slim dark-haired man in a scarlet red racing suit, tall, with short wavy hair and a clean-shaven face, sitting in one scarlet red Formula 1 car with a thin grey titanium halo ring over the cockpit, low-angle three-quarter view"
-    },
-    {
-      "narration": "This halo can hold a London double decker bus.",
-      "location": "the halo crash test rig",
-      "edits": [
-        "a real photo cutout of a red London double decker bus, roughly pasted onto the drawing, appears resting on top of the halo"
+        "a big white tag reading \"+0.02 SEC\" appears at frame centre beside the cosmonaut"
       ],
-      "sfx": "boom"
+      "edit_alt": "a big white tag reading \"+0.02 SEC\" hangs from the dotted orbit ring and the character's eyes go wide"
     },
     {
-      "narration": "That is about twelve tonnes.",
-      "location": "the halo crash test rig",
+      "narration": "He aged slower than us.",
+      "location": "orbiting space station",
       "edits": [
-        "a big white tag reading \"12 TONS\" hangs from the bus's front corner"
-      ]
-    },
-    {
-      "narration": "In twenty eighteen, a flying McLaren landed on Charles Leclerc's halo.",
-      "location": "the halo crash test rig",
-      "edits": [
-        "the bus and tag disappear and one orange Formula 1 car flies low over the halo from frame right, its tyre touching the halo"
+        "the tag and the Earth disappear and one big hourglass with red sand appears in the bottom foreground"
       ],
-      "sfx": "hit"
+      "edit_alt": "the tag and the Earth disappear and one big hourglass with red sand, barely trickling, appears at frame centre"
     },
     {
-      "narration": "[deadpan] He walked away unhurt.",
-      "location": "the halo crash test rig",
+      "narration": "[sarcastic] Star Wars lied about asteroid fields.",
+      "location": "the asteroid belt",
+      "image_prompt": "reference character stands at frame left, arms crossed, frowning as a cartoon space pilot, a man in a black vest over a white shirt, leans out of one round grey cartoon spaceship weaving through a dense swarm of brown asteroids, wide shot",
+      "image_prompt_alt": "reference character stands at frame right, arms crossed and frowning, as one small round grey cartoon spaceship with a pilot in a black vest dodges a dense swarm of brown asteroids, medium-wide shot",
+      "sfx": "wrong"
+    },
+    {
+      "narration": "In the real belt, rocks are about 600,000 miles APART.",
+      "location": "the asteroid belt",
       "edits": [
-        "the tyre disappears, the man in the scarlet red suit stands beside the car smiling, the character's eyebrows rise"
-      ]
+        "the swarm of brown asteroids disappears and a big tag reading \"600,000 MILES\" appears at the top of the frame"
+      ],
+      "edit_alt": "the brown asteroids fly apart off the page edges and a big tag reading \"600,000 MILES\" appears at frame right"
+    },
+    {
+      "narration": "Han Solo would be dodging empty space.",
+      "location": "the asteroid belt",
+      "edits": [
+        "the tag disappears and the man in the black vest yawns widely, slumping back in the spaceship"
+      ],
+      "edit_alt": "the tag disappears and the man in the black vest props his boots up on the spaceship's rim, looking bored"
+    },
+    {
+      "narration": "You could fly through it BLINDFOLDED.",
+      "location": "the asteroid belt",
+      "edits": [
+        "a big black blindfold appears over the man in the black vest's eyes and the character's jaw drops"
+      ],
+      "edit_alt": "a big black sleep mask covers the man in the black vest's eyes and the spaceship tilts lazily to one side"
+    },
+    {
+      "narration": "The moon has a trash problem.",
+      "location": "the apollo landing site",
+      "image_prompt": "reference character stands at frame right, nose wrinkled in disgust, beside Neil Armstrong, a man in a white spacesuit with a gold visor, at frame left, one big red sign reading \"DUMP\" standing between them, medium-wide shot",
+      "image_prompt_alt": "reference character stands at frame left, nose wrinkled in disgust, beside a tall slim man with his face hidden behind the visor, a man in a white spacesuit with a gold visor, at frame right, one big red sign reading \"DUMP\" towering over both, wide shot",
+      "sfx": "pop"
+    },
+    {
+      "narration": "Apollo crews left 96 bags of poop, pee and vomit.",
+      "location": "the apollo landing site",
+      "edits": [
+        "the sign disappears and a real photo cutout of one white plastic waste bag, roughly pasted onto the drawing, appears in the bottom foreground"
+      ],
+      "edit_alt": "the sign disappears and one big lumpy white plastic bag tied at the top appears in the bottom foreground"
+    },
+    {
+      "narration": "They dumped them to make room for moon rocks.",
+      "location": "the apollo landing site",
+      "edits": [
+        "the man in the white spacesuit floats upward toward the top of the frame, hugging a pile of grey moon rocks, leaving the bag below"
+      ],
+      "edit_alt": "the man in the white spacesuit rises high like a balloon, a dotted line trailing back down to the bag"
+    },
+    {
+      "narration": "[deadpan] If aliens ever land there... our POOP is waiting.",
+      "location": "the apollo landing site",
+      "edits": [
+        "the man in the white spacesuit disappears and one small green alien with two antennae appears beside the bag, staring at it"
+      ],
+      "edit_alt": "the man in the white spacesuit disappears and one small green alien with two antennae peeks over the top of the bag, eyes huge",
+      "sfx": "meme"
     }
   ]
 }
