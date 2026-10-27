@@ -298,4 +298,8 @@ dropped after the first command of a session.
 
 ## License
 
-MIT - see [LICENSE](LICENSE).
+This project is licensed under the PolyForm Noncommercial License 1.0.0 (see
+[LICENSE](LICENSE)). It is free for noncommercial use. Commercial use requires
+permission: for commercial licensing, contact sergeyan.narek@gmail.com.
+
+Commits made before this change remain available under the MIT License.
