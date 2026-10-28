@@ -33,6 +33,8 @@ export type Beat = {
   frames?: string[]; // every frame of the beat, image first; older manifests have none
   frame_starts?: number[]; // seconds from the beat's start, one per frame; else an even split
   redraw?: boolean;  // a fresh picture mid-location: dissolve in rather than jump
+  draw?: string;     // draw-in clip of the first frame (pipeline.py _draw_clip), then the still
+  draw_seconds?: number; // the clip's length; squeezed to fit when the first edit comes sooner
   audio: string;    // filename, resolved via staticFile + --public-dir
   duration: number; // seconds
   location?: string; // optional: older manifests predate it, see LectureVideo

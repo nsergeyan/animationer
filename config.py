@@ -297,6 +297,17 @@ SFX_DUCK_RAMP_SECONDS = 0.15
 # push that kind back, lower it to bring it forward.
 SFX_UNDER_DB = {"picture": 6.0, "after": 1.0, "transition": 9.0, "outro": 4.0}
 
+# --- Draw-in -----------------------------------------------------------------
+# Every chain start (a beat whose first frame is its image_prompt) opens with
+# that picture drawn onto white paper (lines, then colors) before its edits cut
+# in. "draw": false on a beat skips it there. Rendered by a separate checkout
+# of github.com/letuandat131/whiteboard-animation-vi with its own Python 3.11
+# venv, because its PyTorch does not run on this project's Python. No hand:
+# the repo's hand images carry no license.
+DRAW_IN_ENABLED = True
+DRAW_IN_REPO = Path.home() / "PycharmProjects" / "whiteboard-animation-vi"
+DRAW_IN_SECONDS = 2.5   # tested by eye: 1.8s too rushed, 3.9s too slow
+
 # --- Outro ------------------------------------------------------------------
 # The subscribe/like card, appended as a final BEAT rather than a special
 # component, so it inherits the dissolve and timing for free.

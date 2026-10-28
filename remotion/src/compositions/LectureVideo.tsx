@@ -1,4 +1,4 @@
-import { AbsoluteFill, Audio, Sequence, staticFile } from "remotion";
+import { AbsoluteFill, Audio, OffthreadVideo, Sequence, staticFile } from "remotion";
 import { TransitionSeries, linearTiming } from "@remotion/transitions";
 import { fade } from "@remotion/transitions/fade";
 import { StillImage } from "../components/StillImage";
@@ -34,9 +34,27 @@ const BeatScene: React.FC<{ beat: Beat; durationInFrames: number }> = ({
       {images.map((src, k) => {
         const from = starts[k];
         const until = k === images.length - 1 ? durationInFrames : starts[k + 1];
+        // A drawn-in first frame plays its clip, then the still: the clip ends
+        // on the picture itself, so the switch is invisible. When the first
+        // edit comes before the drawing would finish, the clip plays faster
+        // so it still completes rather than being cut off mid-line.
+        const want = k === 0 && beat.draw ? Math.round((beat.draw_seconds ?? 0) * FPS) : 0;
+        const drawn = Math.min(until - from, want);
         return (
           <Sequence key={src} from={from} durationInFrames={Math.max(1, until - from)}>
-            <StillImage src={src} />
+            {drawn > 0 && (
+              <Sequence durationInFrames={drawn}>
+                <OffthreadVideo
+                  src={staticFile(beat.draw!)}
+                  playbackRate={want / drawn}
+                  muted
+                  style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                />
+              </Sequence>
+            )}
+            <Sequence from={drawn}>
+              <StillImage src={src} />
+            </Sequence>
           </Sequence>
         );
       })}

@@ -28,7 +28,7 @@ import time
 from pathlib import Path
 
 import config
-from modules import transcriber
+from modules import draw_in, transcriber
 
 FLOW_RUNNER = config.ROOT_DIR / "flow_runner" / "runner.py"
 
@@ -2263,6 +2263,30 @@ def _audio_duration(path: Path) -> float:
     return float(out.stdout.strip())
 
 
+def _has_photo(beat: dict) -> bool:
+    """
+    Whether the beat's opening picture holds a real photo. Scripts ask for one
+    as "a real photo cutout" (pass2 Section 0B); any photo word counts, so a
+    looser phrasing is caught too. image_prompt_alt is not checked: pass2 makes
+    it a doodle stand-in for the cutout, so it never holds a photo.
+    """
+    return bool(re.search(r"\bphoto", beat.get("image_prompt") or "", re.I))
+
+
+def _draw_clip(run_dir: Path, image: Path) -> str:
+    """
+    The draw-in clip for `image`, made unless it is already there and newer
+    than the picture. Delete draws/ to redo them after changing
+    config.DRAW_IN_SECONDS.
+    """
+    clip = run_dir / "draws" / f"{image.stem}.mp4"
+    if not clip.exists() or clip.stat().st_mtime < image.stat().st_mtime:
+        print(f"[manifest] drawing in {image.name}")
+        draw_in.make_clip(image, clip, config.DRAW_IN_SECONDS)
+    # Relative to run_dir, which Remotion gets as --public-dir.
+    return f"draws/{clip.name}"
+
+
 def _make_silence(path: Path, seconds: float) -> None:
     subprocess.run(
         ["ffmpeg", "-f", "lavfi", "-i", "anullsrc=r=44100:cl=mono",
@@ -2405,6 +2429,19 @@ def cmd_manifest(args) -> int:
         # A fresh picture mid-location dissolves in rather than jumping.
         if index in redraws:
             entry["redraw"] = True
+
+        # The opening picture of every chain is drawn onto white paper, then
+        # its edits cut in on their words as usual. Only an establish frame:
+        # an edit continues the picture before it, so it has nothing to draw.
+        # Not over a real photo: lines traced out of a photograph are not
+        # drawn lines, so its draw-in looks fake.
+        if (config.DRAW_IN_ENABLED and beat.get("draw", True)
+                and by_beat.get(index, [{}])[0].get("mode") == "establish"):
+            if _has_photo(beat):
+                print(f"[manifest] beat {index}: no draw-in, its picture has a photo")
+            else:
+                entry["draw"] = _draw_clip(run_dir, image)
+                entry["draw_seconds"] = config.DRAW_IN_SECONDS
 
         frames = by_beat.get(index, [])
         if not args.silent and any(f.get("at") for f in frames[1:]):
