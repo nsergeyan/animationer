@@ -2369,6 +2369,10 @@ def cmd_manifest(args) -> int:
     for f in build_frames(data):
         by_beat.setdefault(f["beat"], []).append(f)
     redraws = _redraw_beats(beats)
+    drawing = config.DRAW_IN_ENABLED and draw_in.available()
+    if config.DRAW_IN_ENABLED and not drawing:
+        print(f"[manifest] draw-in tool not found at {config.DRAW_IN_REPO}, "
+              f"using stills (README: Setup > Draw-in)")
 
     times_path = run_dir / WORD_TIMES_FILE
     try:
@@ -2435,7 +2439,7 @@ def cmd_manifest(args) -> int:
         # an edit continues the picture before it, so it has nothing to draw.
         # Not over a real photo: lines traced out of a photograph are not
         # drawn lines, so its draw-in looks fake.
-        if (config.DRAW_IN_ENABLED and beat.get("draw", True)
+        if (drawing and beat.get("draw", True)
                 and by_beat.get(index, [{}])[0].get("mode") == "establish"):
             if _has_photo(beat):
                 print(f"[manifest] beat {index}: no draw-in, its picture has a photo")

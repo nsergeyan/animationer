@@ -19,18 +19,26 @@ import sys
 from pathlib import Path
 
 
+def _python() -> Path:
+    import config
+    return config.DRAW_IN_REPO / ".venv" / "bin" / "python"
+
+
+def available() -> bool:
+    """
+    Whether the whiteboard repo and its venv are installed. A fresh clone of
+    this repo has neither, and the pipeline then uses plain stills rather
+    than stopping over an optional effect (README, Setup > Draw-in).
+    """
+    return _python().exists()
+
+
 def make_clip(image: Path, out: Path, seconds: float) -> None:
     """Render `image` drawing itself in over `seconds` to `out` (.mp4)."""
     import config
 
-    python = config.DRAW_IN_REPO / ".venv" / "bin" / "python"
-    if not python.exists():
-        raise SystemExit(
-            f"Draw-in needs the whiteboard repo and its venv at {python}. "
-            f"Clone it to {config.DRAW_IN_REPO}, then create .venv with "
-            f"Python 3.11 and pip install -r requirements.txt.")
     out.parent.mkdir(parents=True, exist_ok=True)
-    subprocess.run([str(python), __file__, str(config.DRAW_IN_REPO),
+    subprocess.run([str(_python()), __file__, str(config.DRAW_IN_REPO),
                     str(image), str(out), str(seconds),
                     str(config.FPS), str(config.WIDTH), str(config.HEIGHT)],
                    check=True)

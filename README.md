@@ -28,6 +28,12 @@ so ignored edits (two identical frames) are listed with the command to redo
 them. Older scripts with an `image_prompt` on every beat and no edits still
 work unchanged.
 
+The first picture of every chain is **drawn in**: it appears on white paper
+line by line, then fills with its colors, over 2.5 seconds, and the edits cut
+in after it. Pictures holding a real photo cutout skip it, since a traced
+photo looks fake. The drawing is done by a separate open-source tool (see
+[Draw-in](#draw-in-optional) under Setup).
+
 ## Demo
 
 [FORMULA 1 EXPLAINED IN 3 MINUTES](https://youtu.be/F0FqhHIv47I?si=Fp-PyimVVTTh87Xz)
@@ -115,7 +121,8 @@ prompts/pass2_visuals.txt   --(LLM, by hand)--> + image prompts  =  script.json
                                         v
                                  cmd_manifest
                           pairs image+audio, measures
-                          durations, adds outro card
+                          durations, adds outro card,
+                          draws in chain starts (draws/)
                                         |
                                         v
                                   cmd_render
@@ -145,6 +152,7 @@ real `.mp4` files there, they're just too large to check in). Stage-by-stage:
 | Music | `modules/video_editor.py` `mix_moods` (classical library by mood) | working |
 | Render | `modules/video_editor.py` + `remotion/` | working |
 | Frame timing | `modules/transcriber.py` (Whisper word-alignment) | working - an edit with an `at` word changes picture as that word is spoken, cached per run in `word_times.json` |
+| Draw-in | `modules/draw_in.py` + external [whiteboard-animation-vi](https://github.com/letuandat131/whiteboard-animation-vi) | working - first picture of each chain drawn onto white paper, photo pictures skipped |
 | Edit check | `pipeline.py _report_changes` | working - after images, lists edits the model ignored (frame identical to its parent) with the command to redo them |
 | Captions | - | not built, on purpose: no burned-in captions ("the art carries the frame, the narration carries the meaning"). The word timings above could feed a karaoke-style pass later |
 | Character-consistency scoring | - | not built - no automatic re-roll of an off-model image yet |
@@ -160,6 +168,8 @@ real `.mp4` files there, they're just too large to check in). Stage-by-stage:
 - **OpenAI Whisper** - word-level alignment, used to time a picture change to
   the word it names
 - **Pillow** - pixel diff between each edit and its parent (the edit check)
+- **[whiteboard-animation-vi](https://github.com/letuandat131/whiteboard-animation-vi)**
+  (separate install, CC0) - the draw-in clips
 
 ## Project layout
 
@@ -170,6 +180,7 @@ modules/
   voice_generator.py    ElevenLabs narration, batched for voice consistency
   video_editor.py        drives the Remotion render + ffmpeg mood music mix
   transcriber.py         Whisper word-alignment, times picture changes to words
+  draw_in.py             bridge to the whiteboard repo's venv, renders draw-in clips
 flow_runner/            Playwright automation of Google Flow's web UI
   runner.py              the automation itself
   config.py               every DOM selector, with the failure each one fixes
@@ -224,6 +235,27 @@ after the image stage.
 
 Put your character/environment reference art in `assets/reference/` before
 running - every generated image is locked to it.
+
+### Draw-in (optional)
+
+The draw-in clips come from
+[whiteboard-animation-vi](https://github.com/letuandat131/whiteboard-animation-vi),
+installed next to this repo rather than inside it. Its PyTorch needs Python
+3.11 or 3.12, so it gets its own venv:
+
+```bash
+cd ..   # next to animationer/, where config.DRAW_IN_REPO expects it
+git clone https://github.com/letuandat131/whiteboard-animation-vi
+cd whiteboard-animation-vi
+python3.11 -m venv .venv
+.venv/bin/pip install -r requirements.txt
+```
+
+It runs on the CPU (about 2 seconds per clip), with no hand and no model
+download. Without it the pipeline still works: `manifest` prints one line
+saying the tool was not found and the video uses plain stills. To turn it off
+even when installed, set `DRAW_IN_ENABLED = False` in `config.py`.
+`"draw": false` on a beat skips just that beat.
 
 ### Trying it without any API keys
 
@@ -303,3 +335,6 @@ This project is licensed under the PolyForm Noncommercial License 1.0.0 (see
 permission: for commercial licensing, contact sergeyan.narek@gmail.com.
 
 Commits made before this change remain available under the MIT License.
+
+The draw-in tool, whiteboard-animation-vi, is not part of this repository and
+keeps its own licenses (its own code is CC0; see its THIRD_PARTY_NOTICES.md).
