@@ -1,0 +1,189 @@
+Write a script for (Earth, version 28.11) it is a short video that reads what is going on in the world as if the world were a phone or a game getting an update. here is the structure you have to fill it in:
+Use simple words, and explain everything simply so average non english native speaker can understand it.
+While writing the narration do not use any "", \,\
+AND REMEMBER YOU ARE WRITING A NARRATION THAT WILL BE USED FOR TEXT TO SPEACH AI VOICE
+
+It is 2026. Before writing, use web search to see what people are talking
+about right now: the big headlines of this month and the trends everyone
+notices. Confirm every real number and every name with a source. Never rely
+on memory for anything current.
+
+LENGTH: 105-117 SPOKEN WORDS IN TOTAL, NEVER MORE THAN 117.
+That is about 44 seconds of voice. The video adds pauses, pictures and
+sounds on top, so 117 words already ends at about 55 seconds. Every word
+over 117 pushes the video toward one minute.
+12 beats: the title line, then exactly 10 jokes, then the Developer notes
+line. That is only about 10 words per joke, so every word must earn its place.
+ONE JOKE IS ONE BEAT: one sentence, 7 to 12 words, where the setup and the
+punch are in the same sentence. Never split one joke over two beats. You
+write ONLY the narration: a second pass adds the pictures later, exactly one
+picture per beat. Never write picture descriptions, image ideas or any field
+other than the ones in the structure below.
+Write full sentences with all their small words (the, because, by, now).
+Never write headline fragments like "Oil. Expensive again." A listener
+hears every line once, at speaking speed, so each line must make sense the
+first time.
+Count the words at the end. The total budget matters more than the beat count.
+
+THE ONE RULE THAT MATTERS MOST: THE VIEWER ALREADY KNOWS THE TOPIC
+The joke only works if the viewer recognizes the topic in one second, and
+then hears a new, funny way to say it. Never teach the viewer news.
+Every topic is REAL. The 10 jokes are exactly 6 headlines and 4 trends:
+- 6 THIS MONTH'S HEADLINES: big world news that everyone has heard of this
+  month, the kind that is on every phone and TV. Only the biggest ones, never
+  a story only one country or one hobby follows.
+- 4 LONG-RUNNING TRENDS: big, real things that have been true for years and that everyone feels: rent and houses too expensive,
+  money gone before the end of the month, prices of everything, jobs that
+  want experience, burnout, phones and attention span, subscriptions, apps
+  for everything, AI everywhere, privacy, getting older, being tired.
+- Keep topics BROAD. "Rent is getting extremely high" is true everywhere,
+  all year. "Candy costs almost eight percent more than last year" is one
+  stat about one week, and a specific stat or date makes the line sound like
+  a news report. Never use a specific number unless the joke needs it.
+- Test every topic: would a random 50-year-old get it in one sentence with
+  no background? If it needs explaining, drop it, even if it is true and
+  interesting. Science discoveries, small countries' news, niche sports and
+  anything with a hard name are almost always a NO.
+- NAME THE REAL THING. Every joke says the real-world thing in plain words
+  (rent, billionaires, elections, AI, electricity bills). The update words
+  are the joke, never a code for the topic. Test: delete the update words
+  from the line. If you can no longer tell what really happened, rewrite it.
+  BAD: "Some high level players keep breaking the server." (Which players?
+  What server? The viewer cannot tell what it is about.)
+  GOOD: "We know billionaires keep breaking the server, but have you tried
+  being a billionaire?"
+
+THE FORMAT: UPDATE NOTES FOR THE WORLD
+Earth is the phone or the game, people are the players, and whoever runs
+Earth (the developer) makes every change on purpose.
+- Beat 1 is the title line: the name and the version, and nothing else.
+  "Earth, version 28.11. Update notes." Never a greeting, never "today we",
+  never a question.
+- Then the sections. Each section has 1 or 2 jokes, each joke one beat. The
+  section name is said first, at the start of its first joke's beat:
+  "Bug fixes. Fixed a bug where..."
+- Section names, in this order, skipping the ones you have no good joke for:
+    Downgrades (something got worse)
+    Upgrades (something "got better", often in a way that is worse)
+    Changes (something works differently now)
+    New features (a new thing everyone is using or talking about)
+    Removed (something that is gone)
+    Bug fixes (a "fix" that removes something good)
+    Known issues (a problem everyone knows and nobody fixes)
+    Developer notes (always last: a tired message from whoever runs Earth)
+- The FIRST joke is the funniest, most recognizable one, whatever its
+  section. It is the hook: a viewer decides in the first seconds whether to
+  stay. Put it first even if it breaks the order above.
+
+HOW ONE JOKE IS BUILT
+The developer did every change ON PURPOSE, for a stupid or evil reason. The
+punch is that fake reason, and it comes last in the sentence.
+Joke tools, mix them, never the same tool twice in a row:
+- The real change plus the fake motive: "[real thing] increased by [number]
+  to [the developer's absurd goal]." or "[real thing] now [does X], so that
+  [absurd goal]." The change is real, the motive is the joke.
+- The fake good reason: "[price] increased so they can [the thing they
+  obviously will not do]."
+- The bug fix that removes something good: "Fixed a bug where [a normal
+  good thing that no longer happens]." (like having money left at the end
+  of the month)
+- The known issue with a useless offer: "We are aware that [real problem],
+  but have you tried [an absurd or useless answer]?"
+- The new feature with a catch: "Introducing [real new thing], which [the
+  promise], and then [the reality]."
+- The rule taken one step too far: "[thing] now requires [the normal
+  version of itself, three times]."
+Never copy jokes from other update or patch notes videos or memes, and
+never reuse the example lines in this prompt: they only show the shape.
+Never explain a joke. When the punch has landed, the joke ends, and the next
+beat is the next joke.
+
+UPDATE WORDS, FOR EVERYONE
+Use only words that people who never play games also know: update,
+version, players, server, level up, graphics, bug, glitch, crash, error,
+loading, settings, restart, free trial, subscription, premium, low battery,
+storage full, notification, achievement unlocked.
+Never use gamer jargon: nerf, buff, mains, meta, DLC, aggro, spawn,
+cooldown, drop rate, ranked, matchmaking, loot, skins, XP, respawn, NPC,
+boss fight, debuff, speedrun.
+Never name a video game.
+
+RULES FOR NUMBERS
+- A real number (a price, a percent of a real thing, a date, a count) must
+  be REAL and go in plan.facts_to_check with a source.
+- A made-up number is allowed ONLY for something nobody can measure
+  (patience, hope, chance of a bad day, how easy something feels). Never
+  invent a number for something that can be measured.
+
+TASTE
+- Never joke about deaths, victims, wars' casualties, disasters, illness of
+  a real person, crimes against people. Fear of a war is fine; people dying
+  in one is not.
+- Politics: name the event (an election, a summit, a new tax), never which
+  side is right. Never a party, a voter, a religion, a nationality or a
+  race. Never mock a politician's looks, age or health.
+- No sex jokes, no swearing, no slurs.
+
+ENDING
+Developer notes is always the last section: one or two short, tired
+sentences, like a developer giving up. Its last line is the last line of
+the video. No summary, no "follow for more", no question to the viewer.
+Ending cold lets the video loop back into the title line.
+
+NO COMMENT QUESTION
+Do not ask the viewer anything in the narration. A question goes in the
+Instagram caption instead, written by hand. (A "have you tried" joke is
+fine: it is the developer talking, not a question to the viewer.)
+
+REAL PEOPLE
+Prefer a group (billionaires, landlords, tech companies) over names. Name a
+real person only when everyone knows them and the joke needs it. List them
+in plan.cast. Never quote what a real person said.
+{
+  "topic": "short slug-like title",
+  "format": "world_update",
+  "plan": {
+    "version": "the version said in beat 1, like 28.11",
+    "spine_question": "what is going on in the world this month",
+    "items": [
+      { "section": "", "topic": "", "kind": "headline or trend",
+        "why_everyone_knows_it": "", "joke_tool": "", "beat": "" }
+    ],
+    "cast": [ { "name": "", "why": "" } ],
+    "facts_to_check": [ { "claim": "", "source": "" } ],
+    "word_count": 0
+  },
+  "beats": [ { "narration": "" } ]
+}
+
+GIVE THE FINAL JSON FILE.
+
+ELEVENLABS V4 AUDIO TAGS RULE
+The narrator reads the update like a calm, bored developer, not an actor.
+Tags only nudge the delivery. Most beats should have NO tag. Tag roughly 1
+beat in 4.
+
+Allowed tags (use ONLY these, never invent others):
+Calm / reflective: [calm], [curious], [thoughtful], [peaceful], [content]
+Dry tone (for jokes and sarcasm): [deadpan], [flatly], [understated], [sarcastic],
+Volume: [softly], [quietly]
+Light reactions, 10% of the script: [sighs], [light chuckle]
+Throat clear (max 1 per script, only right before an awkward line): [clears throat]
+
+Placement:
+- Title line: [flatly] or no tag.
+- Punch lines: use [deadpan], [understated] or [sarcastic]. Let the words be funny, not the voice.
+- Last beat: [sighs] or [deadpan].
+
+Rules:
+- A tag goes at the START of the sentence it applies to.
+- To combine two tags, put them in one bracket with a comma: [curious, softly].
+  Never more than two.
+- A tag may repeat, but never on two beats in a row.
+- Never use loud, angry, sad, crying, shouting, gasping, laughing-hard or
+  sound-effect tags.
+- Use ellipses (...) at most twice in the script, only right before a
+  twist. You may CAPITALIZE at most one word per sentence for emphasis.
+
+PUNCTUATION FOR DELIVERY
+Comma → short pause. Period → full stop. Question mark → questioning tone. Exclamation → emphasis. Ellipsis (...) → suspense pause. CAPITALIZATION → spoken emphasis on a word.

@@ -1060,6 +1060,11 @@ Aim for 4 to 8 locations in a video. A location change is a dissolve, so do
 not change location every few beats.
 If the script says "format": "facts_short" (a ~50 second facts reel), use one
 location per fact instead: 3 to 5 in total, and no "the comment break".
+If the script says "format": "world_update" (a ~55 second reel of jokes about
+the world read as update notes), use one location per section instead: 6 to
+8 in total, and no "the comment break". Give it at most 1 reaction sound
+(Section 48) and at most 3 picture sounds: every reaction sound adds a pause,
+and in a joke reel the voice must keep going.
 
 17. LOCATION VISUAL ANCHOR
 
@@ -1909,6 +1914,7 @@ generated locations are relevant to the narration
 similar consecutive beats reuse locations when appropriate
 4 to 8 locations in total, plus "the comment break"
 (facts_short: one location per fact, 3 to 5 in total, no "the comment break")
+(world_update: one location per section, 6 to 8 in total, no "the comment break", at most 1 reaction sound, at most 3 picture sounds)
 "the comment break" has the same music mood as the location before it
 every location has a corresponding plan.locations entry
 every visual_anchor is ""
@@ -2232,6 +2238,10 @@ never cover a word. Give them to a line the viewer should react to:
 shock      an unbelievable fact
 sad        a painful, heartbreaking outcome: a lost final, an injury
 dumb       a stupid or silly outcome: an own goal, a pointless rule
+fail       the moment something goes wrong: a missed shot, a crash,
+           a sure win thrown away, a plan that backfires. NOT a silly
+           rule or idea (that is dumb) and NOT a heartbreaking loss
+           (that is sad)
 awkward    someone is embarrassed, caught out or humiliated in that moment:
            a promise broken in public, a boast that backfires. NOT irony
            or a fall from greatness ("a tiny kingdom for a man used to

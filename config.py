@@ -318,7 +318,7 @@ DRAW_IN_SECONDS = 2.5   # tested by eye: 1.8s too rushed, 3.9s too slow
 OUTRO_ENABLED = True
 # Formats that end on their last fact with no outro: in a 50s reel the 3s
 # subscribe card is 6% of the video, and ending cold lets it loop.
-NO_OUTRO_FORMATS = {"facts_short"}
+NO_OUTRO_FORMATS = {"facts_short", "world_update"}
 OUTRO_DIR = ASSETS_DIR / "outro"
 OUTRO_LINE = "If you want more of these, subscribe and hit like."
 
@@ -454,7 +454,9 @@ TARGET_VIDEO_TOLERANCE = 0.15      # warn outside +/-15%
 # Formats with their own length, keyed by the script's "format". Anything not
 # listed uses TARGET_VIDEO_SECONDS. facts_short is the 45-55s "interesting
 # facts about X" reel, first tested 2026-10-23 (prompts/pass1_facts_short.txt).
-TARGET_SECONDS_BY_FORMAT = {"facts_short": 50.0}
+# world_update is the ~55s "Earth, version 26.11" news reel read as phone
+# update notes (prompts/pass1_world_update.txt), added 2026-10-28.
+TARGET_SECONDS_BY_FORMAT = {"facts_short": 50.0, "world_update": 55.0}
 
 FPS = 30                                           # Remotion runs at 30fps
 WIDTH = 1920                                        # 16:9
