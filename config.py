@@ -257,7 +257,7 @@ SFX_ENABLED = True
 SFX_DIR = ASSETS_DIR / "sfx"
 SFX_PICTURE_TAGS = ("pop", "hit", "boom", "suspense", "fight", "money",
                     "correct", "wrong", "celebrate", "join", "leave")
-SFX_AFTER_TAGS = ("shock", "sad", "dumb", "awkward", "sus", "meme")
+SFX_AFTER_TAGS = ("shock", "sad", "dumb", "fail", "awkward", "sus", "meme")
 # Placed by the code, never tagged: a location change gets a transition sound
 # in a short pause before the dissolve, the outro gets its sound after the line.
 SFX_TRANSITION_TAG = "transition"

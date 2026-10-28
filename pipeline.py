@@ -37,208 +37,801 @@ FLOW_RUNNER = config.ROOT_DIR / "flow_runner" / "runner.py"
 # a run folder under output/ (see adopt_pasted_script) and makes the whole
 # video. Set it to {} to work on the most recent run instead.
 NEW_SCRIPT = {
-  "topic": "Space facts vs fiction",
-  "format": "facts_short",
+  "topic": "ballon-dor-explained-kane-2026",
+  "format": "explainer",
   "plan": {
-    "spine_question": "What are the weirdest verified facts about space and science fiction?",
+    "spine_question": "What is the Ballon d'Or, who decides it, and why did Harry Kane win it yesterday?",
     "hook": {
-      "fact": "There is a massive water ocean floating in space.",
-      "why_strange_to_a_newcomer": "People think of space as a dry vacuum, not a place with vaporized oceans larger than Earth.",
-      "source": "NASA JPL discovery of quasar APM 08279+5255"
+      "fact": "Football's most famous individual prize is not given by FIFA or voted on by players. A French magazine runs it and 100 journalists vote. Yesterday they picked Harry Kane.",
+      "why_strange_to_a_newcomer": "Most people assume the world's best player is chosen by FIFA, by the players, or by stats. It is actually a magazine award decided by journalists.",
+      "source": "ESPN, Oct 26 2026 (organised by France Football, voted on by 100 journalists); Sky Sports 2026 voting explainer"
     },
     "deflations": [
       {
-        "assumed": "Asteroid fields are densely packed space hazards.",
-        "actual": "Asteroids are roughly 600,000 miles apart on average.",
-        "who_decided": "Hollywood and Star Wars",
-        "build_beat": "[sarcastic] Star Wars lied about asteroid fields.",
-        "drop_beat": "In the real belt, rocks are about 600,000 miles APART."
+        "assumed": "FIFA or the players choose the best player in the world.",
+        "actual": "A French magazine, France Football, runs the award, and one journalist from each of the top 100 FIFA-ranked countries votes.",
+        "who_decided": "France Football",
+        "build_beat": "12",
+        "drop_beat": "22"
+      },
+      {
+        "assumed": "The player who wins the World Cup wins the Ballon d'Or.",
+        "actual": "Lamine Yamal won the 2026 World Cup with Spain but finished only third. Harry Kane, who won neither the World Cup nor the Champions League, won.",
+        "who_decided": "The 100-journalist jury",
+        "build_beat": "47",
+        "drop_beat": "49"
+      },
+      {
+        "assumed": "Anyone in the world could always win it.",
+        "actual": "Until 1995 only European players could win. George Weah of Liberia won in the first open year.",
+        "who_decided": "France Football",
+        "build_beat": "31",
+        "drop_beat": "33"
       }
     ],
     "cast": [
       {
-        "name": "Sergei Krikalev",
-        "why": "Cosmonaut whose 803 days in orbit made him about 0.02 seconds younger."
+        "name": "Harry Kane",
+        "why": "Won the 2026 men's Ballon d'Or yesterday; first English winner in 25 years."
       },
       {
-        "name": "Han Solo",
-        "why": "Famous character who navigated a dangerous asteroid field, setting up the movie myth."
+        "name": "Lionel Messi",
+        "why": "Record eight wins; second oldest winner at 36."
       },
       {
-        "name": "Neil Armstrong",
-        "why": "Face of the Apollo crews who left waste bags on the moon."
+        "name": "Cristiano Ronaldo",
+        "why": "Five wins; Messi's great rival in the era when two men dominated the award."
+      },
+      {
+        "name": "Lamine Yamal",
+        "why": "Won the World Cup with Spain but finished third; won his third straight Kopa Trophy."
+      },
+      {
+        "name": "Kylian Mbappé",
+        "why": "Finished second after scoring ten goals at the 2026 World Cup."
+      },
+      {
+        "name": "Stanley Matthews",
+        "why": "First ever winner in 1956, aged 41, the oldest winner ever; reason the 70th edition went to London."
+      },
+      {
+        "name": "George Weah",
+        "why": "First non-European winner (1995) and still the only African winner."
+      },
+      {
+        "name": "Alexia Putellas",
+        "why": "Won the women's Ballon d'Or yesterday for the third time."
       }
     ],
     "specifics": [
       {
-        "fact": "APM 08279+5255 holds 140 trillion times the water in Earth's oceans.",
-        "source": "NASA",
-        "beat": "That's 140 trillion times the water in Earth's oceans."
+        "fact": "Ballon d'Or means Golden Ball in French and is presented by France Football.",
+        "source": "Wikipedia, Ballon d'Or / 2025 Ballon d'Or",
+        "beat": "4-5"
       },
       {
-        "fact": "Asteroid belt average distance is 600,000 miles.",
-        "source": "NASA",
-        "beat": "In the real belt, rocks are about 600,000 miles APART."
+        "fact": "First awarded in 1956.",
+        "source": "Wikipedia, Ballon d'Or; beIN Sports",
+        "beat": "6"
+      },
+      {
+        "fact": "2026 ceremony was held in London (London Palladium), the first time in London (Zurich hosted 2010-2015 under FIFA).",
+        "source": "beIN Sports; Flashscore; Sky Sports",
+        "beat": "8-9"
+      },
+      {
+        "fact": "Ceremony was delayed 45 minutes due to traffic getting into the London Palladium.",
+        "source": "ESPN live blog, Oct 26 2026",
+        "beat": "10-11"
+      },
+      {
+        "fact": "30-player shortlist; one journalist from each of the top 100 FIFA-ranked nations; each ranks 10 players; most points wins.",
+        "source": "ESPN Oct 26 2026; Sky Sports",
+        "beat": "13-18"
+      },
+      {
+        "fact": "Criteria: individual performance, team achievements, class and fair play.",
+        "source": "Sky Sports; Flashscore",
+        "beat": "19-22"
+      },
+      {
+        "fact": "Messi has 8 wins, Ronaldo 5.",
+        "source": "ESPN Oct 26 2026; Wikipedia",
+        "beat": "24-25"
+      },
+      {
+        "fact": "Messi won his eighth in 2023 at 36, the second oldest winner ever.",
+        "source": "topendsports.com Ballon d'Or trivia; Wikipedia 2023 Ballon d'Or",
+        "beat": "27-28"
+      },
+      {
+        "fact": "Only Europeans eligible until 1995; George Weah first non-European winner and only African winner.",
+        "source": "Wikipedia, Ballon d'Or; topendsports timeline",
+        "beat": "32-34"
+      },
+      {
+        "fact": "2020 award cancelled due to the COVID-19 pandemic.",
+        "source": "topendsports timeline",
+        "beat": "36-38"
+      },
+      {
+        "fact": "2026 was the 70th edition.",
+        "source": "ESPN live blog; beIN Sports",
+        "beat": "38"
+      },
+      {
+        "fact": "Kane scored 73 goals for Bayern and England in the voting period; Bayern won Bundesliga and DFB-Pokal.",
+        "source": "ESPN Oct 26 2026; SoccerNews/Stats Perform; beIN Sports",
+        "beat": "41-42"
+      },
+      {
+        "fact": "Kane is the first Englishman to win since Michael Owen in 2001 (25 years).",
+        "source": "ESPN; Yahoo/Sporting News; SoccerNews",
+        "beat": "45-46"
+      },
+      {
+        "fact": "Spain won the 2026 World Cup; Yamal third, Mbappé second with ten World Cup goals.",
+        "source": "ESPN Oct 26 2026; Yahoo/Sporting News rankings",
+        "beat": "48-50"
+      },
+      {
+        "fact": "Putellas won her third Ballon d'Or Féminin; Yamal third straight Kopa Trophy; Unai Simón Yashin Trophy; Luis de la Fuente coach of the year.",
+        "source": "ESPN live blog; Yahoo Sports; beIN Sports",
+        "beat": "56-63"
+      },
+      {
+        "fact": "Stanley Matthews of Blackpool won the first award in 1956 aged 41, oldest ever.",
+        "source": "Wikipedia, Ballon d'Or; TNT Sports",
+        "beat": "67-68"
       }
     ],
     "facts_to_check": [
       {
-        "claim": "Space holds a water cloud 140 trillion times Earth's oceans.",
-        "source": "NASA JPL 2011 APM 08279+5255"
+        "claim": "Harry Kane won the 2026 men's Ballon d'Or on Monday 26 October 2026 in London.",
+        "source": "https://www.espn.com/soccer/story/_/id/50236983/harry-kane-2026-ballon-dor-kylian-mbappe-lamine-yamal"
       },
       {
-        "claim": "Sergei Krikalev time traveled 0.02 seconds.",
-        "source": "Special Relativity calculations for his 803 cumulative days in space"
+        "claim": "The award is organised by France Football and voted on by 100 journalists from around the world.",
+        "source": "https://www.espn.com/soccer/story/_/id/50236983/harry-kane-2026-ballon-dor-kylian-mbappe-lamine-yamal"
       },
       {
-        "claim": "Asteroids are 600,000 miles apart.",
-        "source": "NASA mission planning data for the main asteroid belt"
+        "claim": "One journalist from each of the top 100 FIFA-ranked nations votes; criteria are individual performance, team achievements, class and fair play.",
+        "source": "https://www.skysports.com/share/13582892"
       },
       {
-        "claim": "Apollo missions left 96 bags of human waste on the moon.",
-        "source": "NASA Apollo surface operations records"
+        "claim": "Jurors rank 10 players from a 30-player shortlist; most points wins.",
+        "source": "https://www.espn.com/soccer/story/_/id/50236983/harry-kane-2026-ballon-dor-kylian-mbappe-lamine-yamal"
+      },
+      {
+        "claim": "The 2026 ceremony was the first held outside Paris, in London.",
+        "source": "https://www.beinsports.com/en-us/american-football/articles/when-is-the-2026-ballon-d-or-ceremony-2026-08-24"
+      },
+      {
+        "claim": "The 2026 ceremony was the 70th edition and was delayed 45 minutes by traffic getting into the London Palladium.",
+        "source": "https://www.espn.com/soccer/story/_/id/50259091/2026-ballon-dor-live-updates-winners-results-reaction"
+      },
+      {
+        "claim": "Ballon d'Or translates as Golden Ball and was first awarded in 1956.",
+        "source": "https://en.wikipedia.org/wiki/2025_Ballon_d%27Or"
+      },
+      {
+        "claim": "Messi has won 8 Ballons d'Or and Ronaldo 5.",
+        "source": "https://www.espn.com/soccer/story/_/id/50236983/harry-kane-2026-ballon-dor-kylian-mbappe-lamine-yamal"
+      },
+      {
+        "claim": "Messi was 36 when he won his eighth in 2023, the second oldest winner ever.",
+        "source": "https://www.topendsports.com/sport/soccer/awards/ballondor-trivia.htm"
+      },
+      {
+        "claim": "Until 1995 only Europeans could win; George Weah became the first non-European winner in 1995 and is the only African winner.",
+        "source": "https://en.wikipedia.org/wiki/Ballon_d%27Or"
+      },
+      {
+        "claim": "George Weah later became president of Liberia.",
+        "source": "Widely documented; Weah served as President of Liberia 2018-2024 (verify on Wikipedia, George Weah)"
+      },
+      {
+        "claim": "The 2020 award was cancelled because of the COVID-19 pandemic.",
+        "source": "https://www.topendsports.com/sport/soccer/awards/ballondor-timeline.htm"
+      },
+      {
+        "claim": "Kane scored 73 goals for Bayern and England in the 2025-26 voting period.",
+        "source": "https://www.soccernews.com/kane-my-73-goal-season-speaks-for-itself-in-ballon-dor-race/405055/"
+      },
+      {
+        "claim": "Bayern won the Bundesliga and DFB-Pokal in 2025-26.",
+        "source": "https://www.soccernews.com/kane-my-73-goal-season-speaks-for-itself-in-ballon-dor-race/405055/"
+      },
+      {
+        "claim": "Kane is the first English winner since Michael Owen in 2001 and the fifth English winner overall.",
+        "source": "https://sports.yahoo.com/articles/ballon-dor-2026-live-updates-140001627.html"
+      },
+      {
+        "claim": "Spain won the 2026 World Cup; Mbappé finished second and Yamal third in the 2026 vote.",
+        "source": "https://sports.yahoo.com/articles/ballon-dor-2026-live-updates-140001627.html"
+      },
+      {
+        "claim": "Mbappé scored 10 goals at the 2026 World Cup.",
+        "source": "https://www.espn.com/soccer/story/_/id/50236983/harry-kane-2026-ballon-dor-kylian-mbappe-lamine-yamal"
+      },
+      {
+        "claim": "Kane thanked the voters twice in the same sentence in his speech.",
+        "source": "https://www.espn.com/soccer/story/_/id/50236983/harry-kane-2026-ballon-dor-kylian-mbappe-lamine-yamal"
+      },
+      {
+        "claim": "Women's Ballon d'Or introduced in 2018; Alexia Putellas won her third in 2026.",
+        "source": "https://www.espn.com/soccer/story/_/id/50259091/2026-ballon-dor-live-updates-winners-results-reaction"
+      },
+      {
+        "claim": "Lamine Yamal won the Kopa Trophy (best under-21) for a third straight year and said teammate Pau Cubarsí deserved it.",
+        "source": "https://www.espn.com/soccer/story/_/id/50236983/harry-kane-2026-ballon-dor-kylian-mbappe-lamine-yamal"
+      },
+      {
+        "claim": "Unai Simón won the men's Yashin Trophy and Luis de la Fuente men's coach of the year.",
+        "source": "https://sports.yahoo.com/articles/ballon-dor-2026-live-updates-151456019.html"
+      },
+      {
+        "claim": "COMMENT QUESTION ANSWER: the oldest ever winner, Stanley Matthews of Blackpool, was 41 when he won the first award in 1956.",
+        "source": "https://en.wikipedia.org/wiki/Ballon_d%27Or"
+      },
+      {
+        "claim": "London was chosen partly to honour Stanley Matthews, the first winner, on the 70th anniversary.",
+        "source": "https://www.beinsports.com/en-us/american-football/articles/when-is-the-2026-ballon-d-or-ceremony-2026-08-24"
       }
     ],
     "locations": [
-      {"name": "quasar water cloud", "visual_anchor": "", "music": "none"},
-      {"name": "orbiting space station", "visual_anchor": "", "music": "calm"},
-      {"name": "the asteroid belt", "visual_anchor": "", "music": "playful"},
-      {"name": "the apollo landing site", "visual_anchor": "", "music": "playful"}
+      {"name": "france football newsroom", "visual_anchor": "", "music": "none"},
+      {"name": "london palladium traffic jam", "visual_anchor": "", "music": "playful"},
+      {"name": "the jury voting hall", "visual_anchor": "", "music": "calm"},
+      {"name": "the messi ronaldo centre circle", "visual_anchor": "", "music": "playful"},
+      {"name": "the golden ball history vault", "visual_anchor": "", "music": "calm"},
+      {"name": "the london palladium stage", "visual_anchor": "", "music": "building"},
+      {"name": "the side awards table", "visual_anchor": "", "music": "playful"},
+      {"name": "blackpool football ground", "visual_anchor": "", "music": "calm"}
     ],
     "setting_anchor": ""
   },
   "beats": [
     {
-      "narration": "[curious] Four space facts that sound fake. Space holds a GIANT ocean.",
-      "location": "quasar water cloud",
-      "image_prompt": "reference character stands at frame left, eyebrows raised in curiosity, beside one enormous swirling cloud of pale blue water vapor filling frame right, wide shot",
-      "image_prompt_alt": "reference character leans in at frame centre, head tilted curiously, as one giant pale blue cloud of water vapor curls around him from frame right, medium-wide shot"
+      "narration": "[curious] A magazine picks football's king.",
+      "location": "france football newsroom",
+      "image_prompt": "reference character at frame left looks curious at one giant open magazine with a bright red cover at frame centre, Harry Kane, a tall blond striker with a yellow captain's armband, in a white shirt, waiting at frame right, wide shot",
+      "image_prompt_alt": "reference character sits at frame left, curious, beside one giant open magazine with a bright red cover standing upright at frame centre, a tall broad-shouldered clean-shaven man with short swept blond hair, a tall blond striker with a yellow captain's armband, in a white shirt, waiting at frame right, low-angle medium-wide shot"
     },
     {
-      "narration": "It surrounds a black hole.",
-      "location": "quasar water cloud",
+      "narration": "Not FIFA. Not the players.",
+      "location": "france football newsroom",
       "edits": [
-        "one big black hole with an orange rim appears at the top of the frame, the cloud curling around it"
+        "a big sign reading \"NOT FIFA\" appears at the top of the frame"
       ],
-      "edit_alt": "the cloud swirls into a ring around one big black hole with an orange rim at the top of the frame"
+      "edit_alt": "a big sign showing one crossed-out football boot appears at the top of the frame, the character's eyebrows rising"
     },
     {
-      "narration": "It's all floating water vapor.",
-      "location": "quasar water cloud",
+      "narration": "Yesterday, it picked Harry Kane.",
+      "location": "france football newsroom",
       "edits": [
-        "wavy steam lines rise from the cloud and the character squints at it"
+        "the sign disappears and the blond striker raises both arms in celebration"
       ],
-      "edit_alt": "small puffs of white steam drift off the cloud's edges and the character's eyebrows rise"
+      "edit_alt": "the sign disappears and the blond striker leaps high with a wide grin",
+      "sfx": "celebrate"
     },
     {
-      "narration": "That's 140 trillion times the water in Earth's oceans.",
-      "location": "quasar water cloud",
+      "narration": "The prize is called the Ballon d'Or, French for Golden Ball.",
+      "location": "france football newsroom",
       "edits": [
-        "the black hole disappears and one tiny blue Earth appears in the bottom foreground beside the character, dwarfed by the cloud"
+        "the blond striker disappears and a real photo cutout of the Ballon d'Or golden trophy, roughly pasted onto the drawing, stands big in his place"
       ],
-      "edit_alt": "the black hole disappears and one tiny blue Earth appears at the bottom foreground, the cloud bulging huge above it",
-      "sfx": "shock"
+      "edit_alt": "the blond striker disappears and one big golden trophy shaped like a football on a small black base stands in his place"
     },
     {
-      "narration": "[deadpan] Also, it's colder than your freezer.",
-      "location": "quasar water cloud",
+      "narration": "It belongs to France Football, a French magazine.",
+      "location": "france football newsroom",
       "edits": [
-        "icicles hang from the character's nose and he shivers"
+        "the giant magazine's red cover turns into big blue, white and red stripes"
       ],
-      "edit_alt": "the character hugs himself, teeth chattering"
+      "edit_alt": "the character's right arm points at the giant magazine, eyebrows raised"
     },
     {
-      "narration": "Cosmonaut Sergei Krikalev REALLY time traveled.",
-      "location": "orbiting space station",
-      "image_prompt": "reference character stands at frame right, eyebrows raised, facing a real photo cutout of Sergei Krikalev, a cosmonaut in a dark blue flight suit, roughly pasted onto the drawing, floating at frame left, medium shot",
-      "image_prompt_alt": "reference character stands at frame centre, eyebrows raised, as a doodle of a stocky short-haired man with a broad face, a cosmonaut in a dark blue flight suit, floats sideways at frame left, wider medium shot"
-    },
-    {
-      "narration": "He spent 803 days orbiting Earth.",
-      "location": "orbiting space station",
+      "narration": "It started in 1956.",
+      "location": "france football newsroom",
       "edits": [
-        "one small blue Earth with a dotted orbit ring appears at the top of the frame, the ring looping past the cosmonaut"
+        "the giant magazine turns yellowed and crinkled, one corner torn away"
       ],
-      "edit_alt": "one small blue Earth appears at the top of the frame and a dotted orbit line curves from it down to the cosmonaut"
+      "edit_alt": "the giant magazine shrinks to half its size and turns pale brown like old paper"
     },
     {
-      "narration": "Moving that fast put him 0.02 seconds into the future.",
-      "location": "orbiting space station",
+      "narration": "Every year, it names the best player on Earth.",
+      "location": "france football newsroom",
+      "image_prompt": "reference character looks unimpressed at frame centre, one big blue and green globe at frame left, one golden Ballon d'Or trophy at frame right, medium shot",
+      "image_prompt_alt": "reference character slouches at frame centre, unimpressed, one big blue and green globe at frame left, one golden football-shaped trophy on a small black base at frame right, low-angle wide shot"
+    },
+    {
+      "narration": "The party was usually held in Paris.",
+      "location": "london palladium traffic jam",
+      "image_prompt": "reference character stands bored at frame left, one golden Ballon d'Or trophy at frame centre, one tall grey Eiffel Tower at frame right, wide shot",
+      "image_prompt_alt": "reference character sits at frame left, bored, one golden football-shaped trophy on a small black base at frame centre, one tall grey lattice iron tower at frame right, high-angle medium-wide shot"
+    },
+    {
+      "narration": "This year, it moved to London for the first time.",
+      "location": "london palladium traffic jam",
       "edits": [
-        "a big white tag reading \"+0.02 SEC\" appears at frame centre beside the cosmonaut"
+        "the tower is replaced by one tall grey Big Ben clock tower at frame right"
       ],
-      "edit_alt": "a big white tag reading \"+0.02 SEC\" hangs from the dotted orbit ring and the character's eyes go wide"
+      "edit_alt": "the tower shrinks away and one tall grey square clock tower with a pointed roof rises at frame right"
     },
     {
-      "narration": "He aged slower than us.",
-      "location": "orbiting space station",
+      "narration": "And yesterday's show started forty five minutes late.",
+      "location": "london palladium traffic jam",
       "edits": [
-        "the tag and the Earth disappear and one big hourglass with red sand appears in the bottom foreground"
+        "a big red sign reading \"LATE\" hangs from the clock tower, its clock hands spinning"
       ],
-      "edit_alt": "the tag and the Earth disappear and one big hourglass with red sand, barely trickling, appears at frame centre"
+      "edit_alt": "a big red sign reading \"LATE\" appears at the top of the frame and the character's mouth drops open"
     },
     {
-      "narration": "[sarcastic] Star Wars lied about asteroid fields.",
-      "location": "the asteroid belt",
-      "image_prompt": "reference character stands at frame left, arms crossed, frowning as a cartoon space pilot, a man in a black vest over a white shirt, leans out of one round grey cartoon spaceship weaving through a dense swarm of brown asteroids, wide shot",
-      "image_prompt_alt": "reference character stands at frame right, arms crossed and frowning, as one small round grey cartoon spaceship with a pilot in a black vest dodges a dense swarm of brown asteroids, medium-wide shot",
+      "narration": "[understated] The reason? London traffic.",
+      "location": "london palladium traffic jam",
+      "edits": [
+        "the sign and the golden trophy disappear and a real photo cutout of a red London double-decker bus, roughly pasted onto the drawing, appears big at frame centre"
+      ],
+      "edit_alt": "the sign and the golden trophy disappear and one big red double-decker bus appears at frame centre, its doodle driver honking",
+      "sfx": "dumb"
+    },
+    {
+      "narration": "So who actually decides?",
+      "location": "the jury voting hall",
+      "image_prompt": "reference character stands at frame right, curious, looking at one big wooden ballot box with a red slot at frame centre, medium shot",
+      "image_prompt_alt": "reference character leans in from frame right, curious, over one big wooden ballot box with a red slot at frame centre, low-angle medium-wide shot"
+    },
+    {
+      "narration": "First, the magazine makes a list of thirty players.",
+      "location": "the jury voting hall",
+      "edits": [
+        "one long white paper list covered in dense dark marks unrolls from the top of the frame down to frame left"
+      ],
+      "edit_alt": "one tall white list pinned to a brown clipboard appears at frame left, nearly as tall as the character"
+    },
+    {
+      "narration": "Then one hundred journalists get a vote.",
+      "location": "the jury voting hall",
+      "edits": [
+        "the list disappears and three small doodle journalists in grey jackets queue at frame left, a big tag reading \"x100\" hanging from the ballot box"
+      ],
+      "edit_alt": "the list disappears and three small doodle journalists in grey jackets drop paper slips into the ballot box, a big tag reading \"x100\" on its side"
+    },
+    {
+      "narration": "One from each of FIFA's top hundred countries.",
+      "location": "the jury voting hall",
+      "edits": [
+        "the tag disappears and each journalist now waves one small flag in a different bright colour"
+      ],
+      "edit_alt": "the tag disappears and each journalist now wears one small flag badge in a different bright colour"
+    },
+    {
+      "narration": "Every journalist ranks their ten favorite players, in order.",
+      "location": "the jury voting hall",
+      "edits": [
+        "the journalists disappear and three small doodle footballers stand on the rungs of one tall wooden ladder at frame left, one above another"
+      ],
+      "edit_alt": "the journalists disappear and three small doodle footballers stand on one tall white staircase at frame left, one step above another"
+    },
+    {
+      "narration": "First place gets the most points.",
+      "location": "the jury voting hall",
+      "edits": [
+        "one big gold star appears above the top footballer's head"
+      ],
+      "edit_alt": "the top footballer grows bigger and a big gold star appears on his shirt"
+    },
+    {
+      "narration": "Most points in total wins the golden ball.",
+      "location": "the jury voting hall",
+      "edits": [
+        "the ballot box disappears and one big golden football-shaped trophy appears at frame centre, the top footballer leaning toward it"
+      ],
+      "edit_alt": "the ballot box turns into one big golden football-shaped trophy at frame centre and the character's eyebrows rise"
+    },
+    {
+      "narration": "Voters judge three things.",
+      "location": "the jury voting hall",
+      "image_prompt": "reference character stands at frame centre, attentive, beside one big white board at frame right showing three empty yellow boxes in a column, medium close-up",
+      "image_prompt_alt": "reference character sits at frame left, attentive, facing one big white board at frame right with three empty yellow squares stacked top to bottom, wide shot"
+    },
+    {
+      "narration": "Personal performance comes first, then team trophies.",
+      "location": "the jury voting hall",
+      "edits": [
+        "a small doodle footballer kicking a ball fills the top yellow box and a small hugging doodle team fills the middle one"
+      ],
+      "edit_alt": "one small doodle football boot fills the top yellow box and three tiny linked doodle figures fill the middle one"
+    },
+    {
+      "narration": "And third... class and fair play.",
+      "location": "the jury voting hall",
+      "edits": [
+        "two small doodle footballers shaking hands appear in the bottom yellow box"
+      ],
+      "edit_alt": "one small doodle footballer helping another up from the ground appears in the bottom yellow box"
+    },
+    {
+      "narration": "Players get ZERO votes.",
+      "location": "the jury voting hall",
+      "edits": [
+        "three small doodle footballers appear at frame left behind one big red X"
+      ],
+      "edit_alt": "three small doodle footballers at frame left are blocked by one big red barrier",
       "sfx": "wrong"
     },
     {
-      "narration": "In the real belt, rocks are about 600,000 miles APART.",
-      "location": "the asteroid belt",
-      "edits": [
-        "the swarm of brown asteroids disappears and a big tag reading \"600,000 MILES\" appears at the top of the frame"
-      ],
-      "edit_alt": "the brown asteroids fly apart off the page edges and a big tag reading \"600,000 MILES\" appears at frame right"
+      "narration": "For years, this vote felt like a rerun.",
+      "location": "the messi ronaldo centre circle",
+      "image_prompt": "reference character sits at frame left, bored, watching a real photo cutout of Lionel Messi, a short bearded striker in a sky-blue and white striped shirt, roughly pasted onto the drawing, face Cristiano Ronaldo, a tall muscular forward with slicked-back dark hair in a red shirt, at frame right, medium-wide shot",
+      "image_prompt_alt": "reference character sits at frame centre, bored, watching a short slim man with a dark trimmed beard and swept-back brown hair, a short bearded striker in a sky-blue and white striped shirt, at frame left face a tall muscular clean-shaven man with sharp cheekbones, a tall muscular forward with slicked-back dark hair in a red shirt, at frame right, high-angle wide shot"
     },
     {
-      "narration": "Han Solo would be dodging empty space.",
-      "location": "the asteroid belt",
+      "narration": "Lionel Messi won it a record eight times.",
+      "location": "the messi ronaldo centre circle",
       "edits": [
-        "the tag disappears and the man in the black vest yawns widely, slumping back in the spaceship"
+        "a big gold sign reading \"8\" appears above the bearded striker's head"
       ],
-      "edit_alt": "the tag disappears and the man in the black vest props his boots up on the spaceship's rim, looking bored"
+      "edit_alt": "a big gold sign reading \"8\" appears at the top of the frame and the character's eyes widen"
     },
     {
-      "narration": "You could fly through it BLINDFOLDED.",
-      "location": "the asteroid belt",
+      "narration": "Cristiano Ronaldo, his great rival, won it five times.",
+      "location": "the messi ronaldo centre circle",
       "edits": [
-        "a big black blindfold appears over the man in the black vest's eyes and the character's jaw drops"
+        "the gold sign disappears and a big red sign reading \"5\" appears above the dark-haired forward's head"
       ],
-      "edit_alt": "a big black sleep mask covers the man in the black vest's eyes and the spaceship tilts lazily to one side"
+      "edit_alt": "the gold sign disappears and the dark-haired forward puffs out his chest under a big red sign reading \"5\""
     },
     {
-      "narration": "The moon has a trash problem.",
-      "location": "the apollo landing site",
-      "image_prompt": "reference character stands at frame right, nose wrinkled in disgust, beside Neil Armstrong, a man in a white spacesuit with a gold visor, at frame left, one big red sign reading \"DUMP\" standing between them, medium-wide shot",
-      "image_prompt_alt": "reference character stands at frame left, nose wrinkled in disgust, beside a tall slim man with his face hidden behind the visor, a man in a white spacesuit with a gold visor, at frame right, one big red sign reading \"DUMP\" towering over both, wide shot",
-      "sfx": "pop"
-    },
-    {
-      "narration": "Apollo crews left 96 bags of poop, pee and vomit.",
-      "location": "the apollo landing site",
+      "narration": "From 2008 to 2023, only two other men won it.",
+      "location": "the messi ronaldo centre circle",
       "edits": [
-        "the sign disappears and a real photo cutout of one white plastic waste bag, roughly pasted onto the drawing, appears in the bottom foreground"
+        "the red sign disappears and a big white sign reading \"2 OTHERS\" appears at the top of the frame, the character's eyelids drooping"
       ],
-      "edit_alt": "the sign disappears and one big lumpy white plastic bag tied at the top appears in the bottom foreground"
-    },
-    {
-      "narration": "They dumped them to make room for moon rocks.",
-      "location": "the apollo landing site",
-      "edits": [
-        "the man in the white spacesuit floats upward toward the top of the frame, hugging a pile of grey moon rocks, leaving the bag below"
-      ],
-      "edit_alt": "the man in the white spacesuit rises high like a balloon, a dotted line trailing back down to the bag"
-    },
-    {
-      "narration": "[deadpan] If aliens ever land there... our POOP is waiting.",
-      "location": "the apollo landing site",
-      "edits": [
-        "the man in the white spacesuit disappears and one small green alien with two antennae appears beside the bag, staring at it"
-      ],
-      "edit_alt": "the man in the white spacesuit disappears and one small green alien with two antennae peeks over the top of the bag, eyes huge",
+      "edit_alt": "the red sign disappears and a big white sign reading \"2 OTHERS\" appears between the two forwards as the character slumps lower",
       "sfx": "meme"
+    },
+    {
+      "narration": "Messi won his eighth in 2023.",
+      "location": "the messi ronaldo centre circle",
+      "edits": [
+        "the white sign disappears and the bearded striker raises both arms in celebration"
+      ],
+      "edit_alt": "the white sign disappears and the bearded striker jumps high with both knees tucked"
+    },
+    {
+      "narration": "He was thirty six, the second oldest winner ever.",
+      "location": "the messi ronaldo centre circle",
+      "edits": [
+        "a big white sign reading \"AGE 36\" appears beside the bearded striker"
+      ],
+      "edit_alt": "a big white sign reading \"AGE 36\" appears at the top of the frame and the character leans in"
+    },
+    {
+      "narration": "[curious] Guess the oldest winner's age.",
+      "location": "the messi ronaldo centre circle",
+      "image_prompt": "reference character stands at frame centre, curious, leaning toward one big blue banner at frame right hidden behind one large black question mark, medium shot",
+      "image_prompt_alt": "reference character crouches at frame left, curious, peering up at one tall blue banner at frame right covered by one grey sheet with a big question mark, wide shot"
+    },
+    {
+      "narration": "Write it in the comments.",
+      "location": "the messi ronaldo centre circle",
+      "edits": [
+        "the character tilts his head and squints at the question mark"
+      ],
+      "edit_alt": "a sweat drop appears on the character's head as he leans closer to the banner"
+    },
+    {
+      "narration": "[clears throat] In the early years, Messi could not have won it.",
+      "location": "the golden ball history vault",
+      "image_prompt": "reference character at frame left looks skeptical at one tall closed blue iron gate at frame centre, George Weah, a tall lean shaven-headed striker in a red and white shirt, waiting behind it at frame right, medium-wide shot",
+      "image_prompt_alt": "reference character leans at frame left, skeptical, beside one tall closed blue iron gate at frame centre, a tall slim man with a calm narrow face, a tall lean shaven-headed striker in a red and white shirt, waiting behind it at frame right, low-angle wide shot"
+    },
+    {
+      "narration": "Until 1995, only Europeans were allowed to win.",
+      "location": "the golden ball history vault",
+      "edits": [
+        "a big gold outline map of Europe appears painted on the blue gate, glowing"
+      ],
+      "edit_alt": "the blue gate turns into a giant gold map of Europe, the character's eyebrows rising",
+      "sfx": "wrong"
+    },
+    {
+      "narration": "In the first open year, George Weah from Liberia won.",
+      "location": "the golden ball history vault",
+      "edits": [
+        "the map disappears, the blue gate swings open and the shaven-headed striker strides through"
+      ],
+      "edit_alt": "the map disappears and the blue gate falls flat as the shaven-headed striker steps over it"
+    },
+    {
+      "narration": "He is still the only African winner.",
+      "location": "the golden ball history vault",
+      "edits": [
+        "the blue gate disappears and one big green map shaped like Africa appears at frame centre beside the shaven-headed striker"
+      ],
+      "edit_alt": "the blue gate disappears and one big green map shaped like Africa appears in the bottom foreground under the shaven-headed striker's feet"
+    },
+    {
+      "narration": "Later, he became president of his country.",
+      "location": "the golden ball history vault",
+      "edits": [
+        "the green map disappears and one wooden speech lectern with a small blue and red flag appears in front of the shaven-headed striker"
+      ],
+      "edit_alt": "the green map disappears and a dark suit jacket and tie now cover the shaven-headed striker's shirt",
+      "sfx": "shock"
+    },
+    {
+      "narration": "And in 2020, nobody won at all.",
+      "location": "the golden ball history vault",
+      "image_prompt": "reference character stands at frame right, puzzled, beside one bare black trophy base on a tall white stand at frame centre, medium close-up",
+      "image_prompt_alt": "reference character sits at frame right, puzzled, staring up at one tall white stand topped by one bare black trophy base at frame centre, high-angle wide shot"
+    },
+    {
+      "narration": "The award was cancelled because of COVID.",
+      "location": "the golden ball history vault",
+      "edits": [
+        "a real photo cutout of a blue disposable face mask, roughly pasted onto the drawing, appears big at the top of the frame"
+      ],
+      "edit_alt": "one big blue paper face mask with white ear loops appears at the top of the frame"
+    },
+    {
+      "narration": "[thoughtful] Which brings us to yesterday, the seventieth Ballon d'Or.",
+      "location": "the london palladium stage",
+      "image_prompt": "reference character watches from frame left, thoughtful, as Harry Kane, a tall blond striker with a yellow captain's armband, in a white shirt, walks toward one golden Ballon d'Or trophy on a tall red stand at frame right, wide shot",
+      "image_prompt_alt": "reference character stands at frame centre, thoughtful, as a tall broad-shouldered clean-shaven man with short swept blond hair, a tall blond striker with a yellow captain's armband, in a white shirt, approaches one golden football-shaped trophy on a tall red stand at frame right, low-angle medium shot"
+    },
+    {
+      "narration": "The winner was Harry Kane, England's captain.",
+      "location": "the london palladium stage",
+      "edits": [
+        "the red stand disappears as the blond striker lifts the golden trophy high with both hands"
+      ],
+      "edit_alt": "the red stand disappears and the blond striker hugs the golden trophy to his chest with both hands, grinning",
+      "sfx": "celebrate"
+    },
+    {
+      "narration": "He plays for Bayern Munich in Germany.",
+      "location": "the london palladium stage",
+      "edits": [
+        "the blond striker's white shirt turns bright red"
+      ],
+      "edit_alt": "a long red and white scarf appears around the blond striker's neck"
+    },
+    {
+      "narration": "Last season, Kane scored seventy three goals for club and country.",
+      "location": "the london palladium stage",
+      "edits": [
+        "one huge heap of black and white footballs appears in the bottom foreground at frame right, a big white tag reading \"73\" stuck in it"
+      ],
+      "edit_alt": "one huge heap of black and white footballs spills across the bottom foreground, a big white tag reading \"73\" on a stick on top",
+      "sfx": "boom"
+    },
+    {
+      "narration": "Bayern won the German league and the German Cup.",
+      "location": "the london palladium stage",
+      "edits": [
+        "the tag and the footballs disappear and two small doodle teammates in red shirts leap in celebration at frame right"
+      ],
+      "edit_alt": "the tag and the footballs disappear and two small doodle teammates in red shirts throw confetti at frame right"
+    },
+    {
+      "narration": "For Kane, trophies were once a famous problem.",
+      "location": "the london palladium stage",
+      "image_prompt": "reference character stands at frame right, sympathetic, watching Harry Kane, a tall blond striker with a yellow captain's armband, in a white shirt, sitting slumped at frame left under one small grey rain cloud, medium shot",
+      "image_prompt_alt": "reference character sits at frame right, sympathetic, watching a tall broad-shouldered clean-shaven man with short swept blond hair, a tall blond striker with a yellow captain's armband, in a white shirt, slumped at frame left under one small grey rain cloud, high-angle wide shot"
+    },
+    {
+      "narration": "[sighs] For years, he won nothing.",
+      "location": "the london palladium stage",
+      "edits": [
+        "the rain cloud grows big and dark and pours rain onto the blond striker"
+      ],
+      "edit_alt": "the blond striker drops his head onto his knees as the rain cloud doubles in size",
+      "sfx": "sad"
+    },
+    {
+      "narration": "Now he is the first Englishman to win in twenty five years.",
+      "location": "the london palladium stage",
+      "edits": [
+        "the rain cloud disappears and one big white flag with a red cross appears at the top of the frame, the blond striker jumping up"
+      ],
+      "edit_alt": "the rain cloud turns into one big white flag with a red cross at the top of the frame and the blond striker stands up beaming"
+    },
+    {
+      "narration": "The last one was Michael Owen in 2001.",
+      "location": "the london palladium stage",
+      "edits": [
+        "a big sign reading \"25 YEARS\" hangs from the white flag"
+      ],
+      "edit_alt": "a big sign reading \"25 YEARS\" appears at frame centre between the character and the blond striker"
+    },
+    {
+      "narration": "But Kane did not win the World Cup.",
+      "location": "the london palladium stage",
+      "edits": [
+        "the sign and the white flag disappear and the blond striker shrugs, head tilted to one side"
+      ],
+      "edit_alt": "the sign and the white flag disappear and the blond striker's smile drops into a flat line"
+    },
+    {
+      "narration": "Spain won it, with Lamine Yamal.",
+      "location": "the london palladium stage",
+      "image_prompt": "reference character watches curiously from frame left as a real photo cutout of Lamine Yamal, a slim teenage winger with curly dark hair in a red Spain shirt, roughly pasted onto the drawing, cheers at frame centre beside Kylian Mbappé, a fast forward with a shaved head in a dark blue shirt, at frame right, medium-wide shot",
+      "image_prompt_alt": "reference character stands curious at frame left as a slim short young man with a thin smiling face, a slim teenage winger with curly dark hair in a red Spain shirt, cheers at frame centre beside a lean athletic man with a wide smile, a fast forward with a shaved head in a dark blue shirt, at frame right, high-angle wide shot"
+    },
+    {
+      "narration": "Yet Yamal finished third.",
+      "location": "the london palladium stage",
+      "edits": [
+        "a big bronze sign reading \"3RD\" appears above the curly-haired winger's head"
+      ],
+      "edit_alt": "a big bronze sign reading \"3RD\" appears at the top of the frame and the character's mouth drops open",
+      "sfx": "boom"
+    },
+    {
+      "narration": "Kylian Mbappé, who scored ten World Cup goals, came second.",
+      "location": "the london palladium stage",
+      "edits": [
+        "the bronze sign disappears and a big silver sign reading \"2ND\" appears above the shaved-head forward"
+      ],
+      "edit_alt": "the bronze sign disappears and a big silver sign reading \"2ND\" appears in the bottom foreground at the shaved-head forward's feet"
+    },
+    {
+      "narration": "Two of them came against England, who still won, six goals to four.",
+      "location": "the london palladium stage",
+      "edits": [
+        "the silver sign disappears and a big sign reading \"6-4\" appears above the shaved-head forward, his smile dropping"
+      ],
+      "edit_alt": "the silver sign disappears and a big sign reading \"6-4\" appears at the top of the frame as the shaved-head forward's shoulders slump"
+    },
+    {
+      "narration": "Kane thanked the voters on stage.",
+      "location": "the london palladium stage",
+      "image_prompt": "reference character watches from frame right, amused, as Harry Kane, a tall blond striker with a yellow captain's armband, in a white shirt, speaks into one tall silver microphone at frame centre, medium close-up",
+      "image_prompt_alt": "reference character sits at frame right, amused, as a tall broad-shouldered clean-shaven man with short swept blond hair, a tall blond striker with a yellow captain's armband, in a white shirt, leans into one tall silver microphone at frame centre, low-angle medium-wide shot"
+    },
+    {
+      "narration": "[deadpan] Twice. In the same sentence.",
+      "location": "the london palladium stage",
+      "edits": [
+        "a big speech bubble reading \"THANKS THANKS\" appears beside the blond striker's mouth"
+      ],
+      "edit_alt": "two big pink hearts float up from the microphone and the character's eyebrows rise",
+      "sfx": "awkward"
+    },
+    {
+      "narration": "The golden ball is not the only prize.",
+      "location": "the side awards table",
+      "image_prompt": "reference character stands at frame centre, curious, between a real photo cutout of Alexia Putellas, a tall midfielder with a long brown ponytail in a red shirt, roughly pasted onto the drawing, at frame left and Lamine Yamal, a slim teenage winger with curly dark hair in a red Spain shirt, at frame right, wide shot",
+      "image_prompt_alt": "reference character sits at frame centre, curious, between a tall athletic woman with a calm oval face, a tall midfielder with a long brown ponytail in a red shirt, at frame left and a slim short young man with a thin smiling face, a slim teenage winger with curly dark hair in a red Spain shirt, at frame right, low-angle medium-wide shot"
+    },
+    {
+      "narration": "Women have had their own Ballon d'Or since 2018.",
+      "location": "the side awards table",
+      "edits": [
+        "a big pink sign reading \"WOMEN'S BALLON D'OR\" appears above the ponytailed midfielder"
+      ],
+      "edit_alt": "a big pink sign reading \"WOMEN'S BALLON D'OR\" appears at the top of the frame and the ponytailed midfielder steps forward"
+    },
+    {
+      "narration": "Yesterday, Spain's Alexia Putellas won it for the third time.",
+      "location": "the side awards table",
+      "edits": [
+        "the pink sign disappears and a big gold sign reading \"x3\" appears above the ponytailed midfielder, who raises both arms"
+      ],
+      "edit_alt": "the pink sign disappears and a big gold sign reading \"x3\" appears in the bottom foreground before the ponytailed midfielder",
+      "sfx": "celebrate"
+    },
+    {
+      "narration": "Best young player gets the Kopa Trophy.",
+      "location": "the side awards table",
+      "edits": [
+        "the ponytailed midfielder and the gold sign disappear and one small bronze cup trophy appears at the curly-haired winger's feet"
+      ],
+      "edit_alt": "the ponytailed midfielder and the gold sign disappear and one small bronze cup trophy appears at frame centre beside the character"
+    },
+    {
+      "narration": "Lamine Yamal won it for the third year in a row.",
+      "location": "the side awards table",
+      "edits": [
+        "the curly-haired winger now holds the bronze cup trophy in both arms, grinning wide"
+      ],
+      "edit_alt": "the curly-haired winger cradles the bronze cup trophy in both arms like a baby",
+      "sfx": "celebrate"
+    },
+    {
+      "narration": "He said his teammate Cubarsí deserved it.",
+      "location": "the side awards table",
+      "edits": [
+        "one small doodle defender in a red shirt with a neat side parting appears at frame left, staring at the trophy"
+      ],
+      "edit_alt": "one small doodle defender in a red shirt with a neat side parting appears at frame left, mouth open toward the trophy"
+    },
+    {
+      "narration": "[sarcastic] He kept the trophy anyway.",
+      "location": "the side awards table",
+      "edits": [
+        "the defender's shoulders droop as the curly-haired winger hugs the trophy tighter"
+      ],
+      "edit_alt": "a sweat drop appears on the defender as the curly-haired winger squeezes his eyes shut, grinning"
+    },
+    {
+      "narration": "Cubarsí lost by two votes.",
+      "location": "the side awards table",
+      "edits": [
+        "a big sign reading \"2 VOTES\" appears above the drooping defender"
+      ],
+      "edit_alt": "a big sign reading \"2 VOTES\" appears at the top of the frame between the defender and the curly-haired winger"
+    },
+    {
+      "narration": "Best goalkeeper went to Spain's Unai Simón.",
+      "location": "the side awards table",
+      "image_prompt": "reference character watches from frame right, impressed, as Unai Simón, a bearded goalkeeper in a yellow jersey with big green gloves, dives across frame centre to stop one black and white football, medium-wide shot",
+      "image_prompt_alt": "reference character crouches at frame right, impressed, as a tall broad man with short dark hair, a bearded goalkeeper in a yellow jersey with big green gloves, dives low at frame centre to stop one black and white football, high-angle wide shot"
+    },
+    {
+      "narration": "And Spain's coach, Luis de la Fuente, won best coach.",
+      "location": "the side awards table",
+      "edits": [
+        "the football disappears and one grey-haired doodle coach in a dark tracksuit with a silver whistle appears at frame left, clapping"
+      ],
+      "edit_alt": "the football disappears and one grey-haired doodle coach in a dark tracksuit with a silver whistle appears at frame left, giving a big thumbs-up"
+    },
+    {
+      "narration": "Spain conceded one goal in eight World Cup games.",
+      "location": "the side awards table",
+      "edits": [
+        "the coach disappears and a big sign reading \"1 GOAL\" appears above the diving goalkeeper, the character's jaw dropping"
+      ],
+      "edit_alt": "the coach disappears and a big red and yellow sign reading \"1 GOAL\" appears at the top of the frame as the character's eyebrows shoot up"
+    },
+    {
+      "narration": "[curious] So why London?",
+      "location": "blackpool football ground",
+      "image_prompt": "reference character stands at frame left, curious, beside one big blue banner hidden behind one large black question mark at frame centre, a real photo cutout of Stanley Matthews, a lean grey-haired winger in a tangerine orange shirt and long baggy shorts, roughly pasted onto the drawing, at frame right, medium-wide shot",
+      "image_prompt_alt": "reference character sits at frame left, curious, beside one big blue banner hidden behind one large black question mark at frame centre, a lean older man with a long face and neatly parted hair, a lean grey-haired winger in a tangerine orange shirt and long baggy shorts, at frame right, high-angle wide shot"
+    },
+    {
+      "narration": "Because the very first winner was English.",
+      "location": "blackpool football ground",
+      "edits": [
+        "a big white tag reading \"ENGLAND\" appears beside the tangerine winger"
+      ],
+      "edit_alt": "a big white tag reading \"ENGLAND\" appears at the top of the frame and the character's eyebrows rise"
+    },
+    {
+      "narration": "In 1956, Stanley Matthews of Blackpool won the first golden ball.",
+      "location": "blackpool football ground",
+      "edits": [
+        "the tag disappears and the tangerine winger raises both arms in celebration"
+      ],
+      "edit_alt": "the tag disappears and the tangerine winger jumps high with both knees tucked",
+      "sfx": "celebrate"
+    },
+    {
+      "narration": "[softly] And he was... forty one years old.",
+      "location": "blackpool football ground",
+      "edits": [
+        "the question mark disappears and the blue banner now shows a big black \"41\""
+      ],
+      "edit_alt": "the question mark peels away, a big black \"41\" fills the blue banner and the character's eyes go wide",
+      "sfx": "shock"
+    },
+    {
+      "narration": "Seventy years later, another Englishman lifted it in London.",
+      "location": "blackpool football ground",
+      "image_prompt": "reference character watches from frame right, warmly content, as Harry Kane, a tall blond striker with a yellow captain's armband, in a white shirt, lifts one golden Ballon d'Or trophy high at frame centre, low-angle wide shot",
+      "image_prompt_alt": "reference character stands at frame right, warmly content, as a tall broad-shouldered clean-shaven man with short swept blond hair, a tall blond striker with a yellow captain's armband, in a white shirt, lifts one golden football-shaped trophy high at frame centre, medium shot"
+    },
+    {
+      "narration": "[content] And the arguing starts again tomorrow.",
+      "location": "blackpool football ground",
+      "edits": [
+        "the blond striker disappears and three small doodle fans with wide shouting mouths appear at frame left, arguing beside the golden trophy"
+      ],
+      "edit_alt": "the blond striker disappears and three small doodle fans appear at frame left, glaring at each other, as the character smiles faintly"
     }
   ]
 }
