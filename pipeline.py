@@ -2440,6 +2440,7 @@ def cmd_manifest(args) -> int:
         # Not over a real photo: lines traced out of a photograph are not
         # drawn lines, so its draw-in looks fake.
         if (drawing and beat.get("draw", True)
+                and not (index == 1 and config.DRAW_IN_SKIP_FIRST)
                 and by_beat.get(index, [{}])[0].get("mode") == "establish"):
             if _has_photo(beat):
                 print(f"[manifest] beat {index}: no draw-in, its picture has a photo")

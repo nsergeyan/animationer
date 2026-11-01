@@ -307,6 +307,10 @@ SFX_UNDER_DB = {"picture": 6.0, "after": 1.0, "transition": 9.0, "outro": 4.0}
 DRAW_IN_ENABLED = True
 DRAW_IN_REPO = Path.home() / "PycharmProjects" / "whiteboard-animation-vi"
 DRAW_IN_SECONDS = 2.5   # tested by eye: 1.8s too rushed, 3.9s too slow
+# The video's first picture shows up whole, not drawn in: the hook must be
+# readable in the first second, before anyone scrolls away. Every later chain
+# start still draws in.
+DRAW_IN_SKIP_FIRST = True
 
 # --- Outro ------------------------------------------------------------------
 # The subscribe/like card, appended as a final BEAT rather than a special
