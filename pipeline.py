@@ -37,259 +37,637 @@ FLOW_RUNNER = config.ROOT_DIR / "flow_runner" / "runner.py"
 # a run folder under output/ (see adopt_pasted_script) and makes the whole
 # video. Set it to {} to work on the most recent run instead.
 NEW_SCRIPT = {
-  "topic": "bitcoin facts that sound fake",
-  "format": "facts_short",
+  "topic": "Hockey Explained",
+  "format": "explainer",
+  "aspect": "9:16",
   "plan": {
-    "spine_question": "What are the strangest true things about Bitcoin?",
+    "spine_question": "How does professional ice hockey work and why is it so chaotic?",
     "hook": {
-      "fact": "In 2010 Laszlo Hanyecz paid 10,000 bitcoin for two Papa John's pizzas. At about $78,000 per bitcoin (Nov 1 2026) that is about $780 million.",
-      "why_strange_to_a_newcomer": "Two ordinary pizzas cost more than most skyscrapers, and the buyer did it on purpose.",
-      "source": "CoinDesk, What Is Bitcoin Pizza Day; Coinbase BTC price Nov 1 2026 ($77,871)"
+      "fact": "Hockey players can legally bare-knuckle fight during a game.",
+      "why_strange_to_a_newcomer": "In any other professional sport, throwing a punch gets you ejected or arrested, but in hockey, it's just a five-minute timeout.",
+      "source": "NHL Rulebook (Rule 46: Fighting)"
     },
     "deflations": [
       {
-        "assumed": "Someone known runs or owns Bitcoin",
-        "actual": "Its inventor is anonymous and their ~1.1 million coins have never been spent",
-        "who_decided": "Satoshi Nakamoto",
-        "build_beat": "6",
-        "drop_beat": "9"
-      },
-      {
-        "assumed": "More bitcoin can always be made",
-        "actual": "Hard cap of 21 million, last piece around 2140",
-        "who_decided": "Bitcoin's code",
-        "build_beat": "10",
-        "drop_beat": "13"
-      },
-      {
-        "assumed": "Your lost hard drive is still yours",
-        "actual": "The High Court accepted the council's argument that the drive became its property in the landfill",
-        "who_decided": "High Court, January 2025",
-        "build_beat": "14",
-        "drop_beat": "18"
+        "assumed": "Goals are the only thing that matters for scoring records.",
+        "actual": "Wayne Gretzky has more assists than anyone else has total points.",
+        "who_decided": "NHL scoring system where both goals and assists count as points.",
+        "build_beat": "Take away all his goals.",
+        "drop_beat": "He still has the most points in hockey history."
       }
     ],
     "cast": [
       {
-        "name": "Laszlo Hanyecz",
-        "why": "The programmer who bought the 10,000 bitcoin pizzas"
+        "name": "Sidney Crosby",
+        "why": "A legendary veteran used to illustrate the blistering speed and skill required to play."
       },
       {
-        "name": "Satoshi Nakamoto",
-        "why": "Bitcoin's anonymous inventor, biggest holder"
+        "name": "Connor McDavid",
+        "why": "The current face of the NHL, representing peak offensive production with his 138 points in 2026."
       },
       {
-        "name": "James Howells",
-        "why": "Welsh man whose 8,000 bitcoin hard drive is in a landfill"
+        "name": "Nathan MacKinnon",
+        "why": "Known for explosive speed, highlighting why shifts are so incredibly short and exhausting."
+      },
+      {
+        "name": "Brad Marchand",
+        "why": "Famous for taking penalties and bending rules, perfectly introducing the penalty box."
+      },
+      {
+        "name": "Jordan Staal",
+        "why": "Captain of the 2026 Stanley Cup champion Carolina Hurricanes, showcasing the ultimate goal."
+      },
+      {
+        "name": "Wayne Gretzky",
+        "why": "The ultimate historical benchmark, holding a points record that perfectly illustrates impossible dominance."
       }
     ],
     "specifics": [
       {
-        "fact": "10,000 BTC for two Papa John's pizzas, May 22 2010",
-        "source": "CoinDesk; Decrypt",
-        "beat": "2-5"
+        "fact": "A standard NHL rink is 200 feet long.",
+        "source": "NHL Rulebook (Rule 1: Rink)",
+        "beat": 6
       },
       {
-        "fact": "Satoshi holds an estimated 1.1 million BTC (Patoshi pattern, Sergio Lerner), never moved, about $85 billion",
-        "source": "news.bitcoin.com; bit.com Satoshi's stack",
-        "beat": "8-9"
+        "fact": "Connor McDavid scored 138 points in the 2025-2026 season.",
+        "source": "NHL 2025-26 season statistics",
+        "beat": 21
       },
       {
-        "fact": "21 million cap, 20 millionth coin mined March 2026, last around 2140",
-        "source": "AOL/Yahoo Finance; Jersey Evening Post Mar 11 2026",
-        "beat": "10-13"
+        "fact": "A standard minor penalty is two minutes.",
+        "source": "NHL Rulebook (Rule 16: Minor Penalties)",
+        "beat": 40
       },
       {
-        "fact": "James Howells, 2013, 8,000 BTC, Docksway landfill Newport; claim struck out Jan 2025",
-        "source": "Wikipedia, Bitcoin buried in Newport landfill; ITV Wales Jan 9 2025",
-        "beat": "14-18"
+        "fact": "The regular season is 84 games long (since 2026-27).",
+        "source": "NHL Season Structure",
+        "beat": 44
+      },
+      {
+        "fact": "The Carolina Hurricanes won the 2026 Stanley Cup.",
+        "source": "2026 Stanley Cup Final results",
+        "beat": 49
+      },
+      {
+        "fact": "A team needs 16 playoff wins to secure the Cup.",
+        "source": "NHL Playoff Format",
+        "beat": 50
+      },
+      {
+        "fact": "Wayne Gretzky scored 2,857 points.",
+        "source": "NHL all-time records",
+        "beat": 56
       }
     ],
     "facts_to_check": [
       {
-        "claim": "10,000 BTC at ~$78k = over $700 million",
-        "source": "Coinbase Nov 1 2026"
+        "claim": "Connor McDavid scored 138 points in 2026.",
+        "source": "NHL 2025-26 season statistics"
       },
       {
-        "claim": "1.1 million BTC = about $85 billion",
-        "source": "Coinbase Nov 1 2026 price x Lerner estimate"
+        "claim": "The Carolina Hurricanes won the 2026 Stanley Cup.",
+        "source": "2026 Stanley Cup Final results"
       },
       {
-        "claim": "8,000 BTC = over $600 million",
-        "source": "Coinbase Nov 1 2026"
+        "claim": "Wayne Gretzky scored 2,857 points.",
+        "source": "NHL all-time records"
       },
       {
-        "claim": "2140 is about 114 years away",
-        "source": "Jersey Evening Post Mar 11 2026"
+        "claim": "Sidney Crosby is still an active player.",
+        "source": "NHL 2026 rosters"
       },
       {
-        "claim": "Judge accepted the drive became council property",
-        "source": "LBC; ITV Wales Jan 2025"
+        "claim": "Nathan MacKinnon is an active player.",
+        "source": "NHL 2026 rosters"
+      },
+      {
+        "claim": "Brad Marchand is an active player.",
+        "source": "NHL 2026 rosters"
+      },
+      {
+        "claim": "Jordan Staal is the captain of the Carolina Hurricanes.",
+        "source": "2026 Stanley Cup Final rosters"
       }
     ],
     "locations": [
-      {
-        "name": "the pizza order",
-        "visual_anchor": "",
-        "music": "none"
-      },
-      {
-        "name": "the mystery inventor's desk",
-        "visual_anchor": "",
-        "music": "playful"
-      },
-      {
-        "name": "the bitcoin mint",
-        "visual_anchor": "",
-        "music": "calm"
-      },
-      {
-        "name": "the newport landfill",
-        "visual_anchor": "",
-        "music": "building"
-      }
+      {"name": "center ice fight", "visual_anchor": "", "music": "none"},
+      {"name": "the frozen rink", "visual_anchor": "", "music": "playful"},
+      {"name": "the scoring race", "visual_anchor": "", "music": "playful"},
+      {"name": "the team bench", "visual_anchor": "", "music": "calm"},
+      {"name": "the penalty box", "visual_anchor": "", "music": "playful"},
+      {"name": "the stanley cup final", "visual_anchor": "", "music": "building"},
+      {"name": "the gretzky record wall", "visual_anchor": "", "music": "calm"},
+      {"name": "the dressing room", "visual_anchor": "", "music": "calm"}
     ],
     "setting_anchor": ""
   },
   "beats": [
     {
-      "narration": "[curious] Four Bitcoin facts that sound fake.",
-      "location": "the pizza order",
-      "image_prompt": "reference character stands at frame right, curious, watching Laszlo Hanyecz, a programmer in a grey t-shirt hunched over one open laptop, sitting at frame left, the laptop screen showing one big orange bitcoin coin, medium-wide shot",
-      "image_prompt_alt": "reference character stands at frame right, curious, watching a programmer in a grey t-shirt hunched over one open laptop, a slim man with short brown hair, sitting cross-legged at frame left, the laptop screen showing one big orange coin marked with a B, wide shot"
+      "narration": "[curious] Hockey players bare-knuckle fight.",
+      "location": "center ice fight",
+      "image_prompt": "two doodle hockey players, one in a plain red jersey and one in a plain blue jersey, gloves and sticks dropped at their skates, swing bare-knuckle punches in the upper middle, reference character in the lower middle staring wide-eyed, low-angle shot",
+      "image_prompt_alt": "reference character stands in the lower middle, mouth open, looking up at two doodle hockey players, one in a plain red jersey and one in a plain blue jersey, grabbing each other's collars and swinging fists, medium shot",
+      "sfx": "fight"
     },
     {
-      "narration": "A man bought two pizzas.",
-      "location": "the pizza order",
+      "narration": "The referees just watch them.",
+      "location": "center ice fight",
       "edits": [
-        "a real photo cutout of two stacked pizza boxes, roughly pasted onto the drawing, appears big on the bottom foreground at frame centre"
+        "a doodle referee in a black and white striped shirt appears at the top of the frame, arms folded, watching"
       ],
-      "edit_alt": "two stacked pizza boxes with red lids appear big on the bottom foreground at frame centre, steam curling up from them"
+      "edit_alt": "a doodle referee in a black and white striped shirt leans in at the top of the frame, hands on his knees, calmly watching"
     },
     {
-      "narration": "He paid ten thousand bitcoin.",
-      "location": "the pizza order",
+      "narration": "[clears throat, deadpan] The punishment... is FIVE minutes.",
+      "location": "center ice fight",
       "edits": [
-        "one huge heap of gold bitcoin coins appears under the pizza boxes, lifting them up to the middle of the frame"
+        "a big sign reading \"5 MIN\" appears beside the referee in the upper middle, the character's eyebrows rise"
       ],
-      "edit_alt": "gold bitcoin coins pour down from the top of the frame and pile into one huge heap under the pizza boxes"
+      "edit_alt": "the character's eyelids droop as a big sign reading \"5 MIN\" drops in above the two players"
     },
     {
-      "narration": "[deadpan] Today, over seven hundred MILLION dollars.",
-      "location": "the pizza order",
+      "narration": "The game itself is fast.",
+      "location": "the frozen rink",
+      "image_prompt": "reference character in the lower middle whips his head round as Sidney Crosby in a black and gold number 87 jersey streaks up the page trailing white speed lines, low-angle shot",
+      "image_prompt_alt": "a stocky dark-haired player in a black helmet and a black and gold number 87 jersey rushes toward the top of the frame trailing white speed lines, reference character in the lower middle spinning to watch, eyes wide, high-angle shot"
+    },
+    {
+      "narration": "Sidney Crosby steps on the ice.",
+      "location": "the frozen rink",
       "edits": [
-        "the heap of coins turns into one towering stack of green dollar bills, a big tag reading \"$700 MILLION\" at the top of the frame"
+        "the player in the black and gold number 87 jersey skates down into the upper middle, a spray of white ice behind him"
       ],
-      "edit_alt": "the heap of coins grows into one towering stack of green dollar bills, a big white sign reading \"$700 MILLION\" stuck on its side",
-      "sfx": "money"
+      "edit_alt": "a spray of white ice bursts behind the player in the black and gold number 87 jersey as he crouches low in the upper middle"
     },
     {
-      "narration": "That was Laszlo Hanyecz, in 2010.",
-      "location": "the pizza order",
+      "narration": "The frozen playing surface is two hundred feet long.",
+      "location": "the frozen rink",
       "edits": [
-        "the stack of bills and the tag disappear, the pizza boxes drop to the bottom foreground and the programmer smiles at them"
+        "a long yellow measuring tape appears at frame left, running up to the top of the frame, a big white tag reading \"200 FT\" at its top end"
       ],
-      "edit_alt": "the stack of bills and the tag vanish, the pizza boxes land on the bottom foreground and the programmer grins happily"
+      "edit_alt": "a long yellow measuring tape unrolls from the character's feet up to the top of the frame, a big white tag reading \"200 FT\" at its top end"
     },
     {
-      "narration": "Nobody knows who invented Bitcoin.",
-      "location": "the mystery inventor's desk",
-      "image_prompt": "reference character stands at frame right, squinting suspiciously, beside Satoshi Nakamoto, a mystery figure in a dark hooded jacket with one big question mark for a face, at frame left, medium shot",
-      "image_prompt_alt": "reference character stands at frame centre, squinting suspiciously, as a mystery figure in a dark hooded jacket with one big question mark for a face stands at frame left, a slim figure with hands in its pockets, medium-wide shot"
-    },
-    {
-      "narration": "The inventor called themselves Satoshi Nakamoto.",
-      "location": "the mystery inventor's desk",
+      "narration": "Players balance on tiny sharpened steel blades.",
+      "location": "the frozen rink",
       "edits": [
-        "a big white name tag reading \"SATOSHI\" appears on the hooded figure's chest"
+        "the tape disappears and a real photo cutout of a hockey skate, roughly pasted onto the drawing, appears big in the centre beside the character"
       ],
-      "edit_alt": "a big white sign reading \"SATOSHI\" appears at the top of the frame, right above the hooded figure"
+      "edit_alt": "the tape disappears and one big doodle hockey skate with a silver steel blade appears in the centre beside the character"
     },
     {
-      "narration": "Satoshi's coins are worth about eighty five billion dollars.",
-      "location": "the mystery inventor's desk",
+      "narration": "[thoughtful] Crosby reaches speeds over twenty miles an hour.",
+      "location": "the frozen rink",
       "edits": [
-        "the name tag disappears and one enormous mountain of gold bitcoin coins appears at frame centre, towering over the character"
+        "the skate disappears and a big red tag reading \"20+ MPH\" appears beside the player in the upper middle"
       ],
-      "edit_alt": "the name tag disappears and gold bitcoin coins pile up at frame centre into one enormous mountain, towering over the character",
-      "sfx": "money"
+      "edit_alt": "the skate disappears and the player streaks to the top of the frame, a big red tag reading \"20+ MPH\" trailing behind him"
     },
     {
-      "narration": "[deadpan] Not one has ever been spent.",
-      "location": "the mystery inventor's desk",
+      "narration": "Just standing on those takes serious balance.",
+      "location": "the frozen rink",
       "edits": [
-        "one big padlock with a red body appears locked on the front of the mountain of coins"
+        "the red tag disappears and the player in the black and gold number 87 jersey balances on one skate, leaning sideways"
       ],
-      "edit_alt": "thick grey cobwebs appear stretched across the whole mountain of coins, and the character raises one eyebrow",
+      "edit_alt": "the red tag disappears and the character's mouth drops open as the player in the black and gold number 87 jersey tilts low into a sharp turn"
+    },
+    {
+      "narration": "[understated] And you are LEGALLY allowed to slam into people.",
+      "location": "the frozen rink",
+      "image_prompt": "reference character in the lower middle winces as a big doodle player in a white jersey body-checks Sidney Crosby in a black and gold number 87 jersey in the upper middle, medium shot",
+      "image_prompt_alt": "a stocky dark-haired player in a black helmet and a black and gold number 87 jersey bounces off a big doodle player in a white jersey shoulder to shoulder at the top of the frame, reference character in the lower middle flinching, high-angle shot",
       "sfx": "shock"
     },
     {
-      "narration": "Only twenty one million bitcoin will ever exist.",
-      "location": "the bitcoin mint",
-      "image_prompt": "reference character stands at frame left, curious, beside one tall empty glass jar at frame centre with a thick red line near its rim, a big tag reading \"21 MILLION\" at the line, medium-wide shot",
-      "image_prompt_alt": "reference character crouches at frame right, curious, looking up at one tall empty glass jar at frame left with a thick red line painted near its rim, a big tag reading \"21 MILLION\" at the line, low-angle shot"
-    },
-    {
-      "narration": "Twenty million are already mined.",
-      "location": "the bitcoin mint",
+      "narration": "They chase a small black circle.",
+      "location": "the frozen rink",
       "edits": [
-        "the tag disappears and gold bitcoin coins fill the glass jar almost up to the red line"
+        "the two players race toward one small black circle sliding at the top of the frame"
       ],
-      "edit_alt": "the tag disappears and gold bitcoin coins pour in from the top of the frame, filling the glass jar to just below the red line"
+      "edit_alt": "one small black circle slides into the upper middle and the two players lunge after it"
     },
     {
-      "narration": "[thoughtful] The very last piece arrives around 2140.",
-      "location": "the bitcoin mint",
+      "narration": "It is a hockey puck.",
+      "location": "the frozen rink",
       "edits": [
-        "a real photo cutout of one small gold bitcoin coin, roughly pasted onto the drawing, appears high at the top of the frame above the jar"
+        "the black circle grows big in the centre, a big white tag reading \"PUCK\" hanging from it"
       ],
-      "edit_alt": "one tiny gold bitcoin coin appears floating far away at the top of the frame, high above the jar"
-    },
-    {
-      "narration": "That's one hundred fourteen years from now.",
-      "location": "the bitcoin mint",
-      "edits": [
-        "the character's eyelids droop and a long white beard grows from his chin down to his feet"
-      ],
-      "edit_alt": "the character sits down on the bottom foreground at frame left, eyelids drooping, staring up at the coin"
-    },
-    {
-      "narration": "In 2013, James Howells threw out an old hard drive.",
-      "location": "the newport landfill",
-      "image_prompt": "reference character winces at frame right as James Howells, a pale man with short dark hair and a dark beard in a navy jacket, drops one small black hard drive into one green rubbish bag at frame left, medium-wide shot",
-      "image_prompt_alt": "reference character winces at frame centre as a pale man with short dark hair and a dark beard in a navy jacket, broad-shouldered and tall, drops one small black hard drive into one green rubbish bag at frame left, wide shot"
-    },
-    {
-      "narration": "It held eight thousand bitcoin.",
-      "location": "the newport landfill",
-      "edits": [
-        "a big thought bubble full of gold bitcoin coins appears at the top of the frame, rising from the green rubbish bag"
-      ],
-      "edit_alt": "a big round cloud shape full of gold bitcoin coins puffs up at the top of the frame, linked by small circles to the green rubbish bag",
+      "edit_alt": "the black circle flips up on its edge, big in the centre, and the character leans in",
       "sfx": "pop"
     },
     {
-      "narration": "Today, over six hundred million dollars.",
-      "location": "the newport landfill",
+      "narration": "[calm] The flat puck is solid hard rubber.",
+      "location": "the frozen rink",
       "edits": [
-        "the coins in the thought bubble turn into one tall stack of green dollar bills, and the character's mouth drops open"
+        "the tag and the black circle disappear and a real photo cutout of a black rubber hockey puck, roughly pasted onto the drawing, appears big in the centre"
       ],
-      "edit_alt": "the coins in the thought bubble are replaced by one tall stack of green dollar bills, and the character's eyes go wide"
+      "edit_alt": "the tag disappears and the black circle thickens into a heavy solid black rubber puck, the character's eyebrows rising"
     },
     {
-      "narration": "It's buried in a landfill in Wales.",
-      "location": "the newport landfill",
-      "image_prompt": "reference character stands small at frame left beside James Howells, a pale man with short dark hair and a dark beard in a navy jacket, both staring up at one enormous grey mountain of rubbish bags at frame right, wide shot",
-      "image_prompt_alt": "reference character stands small at frame centre beside a pale man with short dark hair and a dark beard in a navy jacket, broad-shouldered and tall, both staring up at one enormous grey mountain of rubbish bags filling frame right, long shot"
+      "narration": "Teams freeze it before games.",
+      "location": "the frozen rink",
+      "edits": [
+        "the two players disappear and one small blue freezer appears in the upper middle, the puck resting on its lid"
+      ],
+      "edit_alt": "the two players disappear and one small blue freezer with white frost on its lid opens in the upper middle, the puck inside"
     },
     {
-      "narration": "A judge ruled the drive now belongs to the council.",
-      "location": "the newport landfill",
+      "narration": "Frozen rubber slides smoother on the ice.",
+      "location": "the frozen rink",
       "edits": [
-        "a big red sign reading \"COUNCIL PROPERTY\" appears on top of the mountain of rubbish bags, and the bearded man's shoulders slump"
+        "the puck slides off the blue freezer to the top of the frame, white speed lines behind it"
       ],
-      "edit_alt": "a tall metal fence with a big red sign reading \"COUNCIL PROPERTY\" appears in front of the mountain of rubbish bags, and the bearded man's head drops",
+      "edit_alt": "the puck shoots past the character toward the top of the frame, a thin white frost trail behind it"
+    },
+    {
+      "narration": "It avoids RANDOM bouncing.",
+      "location": "the frozen rink",
+      "image_prompt": "reference character in the lower middle smirks as one frost-covered blue puck slides straight up the page while one plain black puck bounces wildly beside him, medium shot",
+      "image_prompt_alt": "reference character in the centre frowns at one plain black puck hopping in crooked zigzags beside him while one frost-covered blue puck slides in a straight line to the top of the frame, high-angle shot"
+    },
+    {
+      "narration": "You score by getting it into the net.",
+      "location": "the frozen rink",
+      "edits": [
+        "the plain black puck disappears and one big red goal net appears at the top of the frame, the blue puck sliding into it"
+      ],
+      "edit_alt": "the plain black puck disappears and the blue puck zips into one big red goal net that appears at the top of the frame"
+    },
+    {
+      "narration": "[flatly] A goalie in huge pads blocks it.",
+      "location": "the frozen rink",
+      "edits": [
+        "the blue puck bounces out of the frame as a doodle goalie in huge white pads drops in front of the red goal net"
+      ],
+      "edit_alt": "a doodle goalie in huge white pads slides across the mouth of the red goal net and the blue puck ricochets off the frame",
+      "sfx": "hit"
+    },
+    {
+      "narration": "Edmonton Oilers captain Connor McDavid leads the sport today.",
+      "location": "the scoring race",
+      "image_prompt": "a real photo cutout of Connor McDavid in a blue and orange number 97 jersey, roughly pasted onto the drawing, towers in the upper middle, reference character below looking up impressed, low-angle shot",
+      "image_prompt_alt": "reference character in the lower middle looks up, impressed, at a doodle of a tall lean dark-haired player in a white helmet and a blue and orange number 97 jersey towering over him, medium shot"
+    },
+    {
+      "narration": "He skates almost twenty five miles an hour.",
+      "location": "the scoring race",
+      "edits": [
+        "white speed lines burst behind the player in the blue and orange number 97 jersey and the character's eyes go wide"
+      ],
+      "edit_alt": "the character's head spins round as white speed lines streak past the player in the blue and orange number 97 jersey"
+    },
+    {
+      "narration": "[thoughtful] He scored one hundred thirty eight points... last season.",
+      "location": "the scoring race",
+      "edits": [
+        "a big orange banner reading \"138 PTS\" unfurls at the top of the frame above the player"
+      ],
+      "edit_alt": "a big orange banner reading \"138 PTS\" drops beside the character's head in the upper middle, his mouth falling open",
+      "sfx": "boom"
+    },
+    {
+      "narration": "A point means a goal or an assist.",
+      "location": "the scoring race",
+      "edits": [
+        "the banner disappears and one red goal net appears in the centre, a black puck flying into it"
+      ],
+      "edit_alt": "the banner disappears and one red goal net appears at frame left beside the character, a black puck already in its mesh"
+    },
+    {
+      "narration": "Ice hockey is exhausting.",
+      "location": "the team bench",
+      "image_prompt": "reference character in the lower middle pants, already tired, as Nathan MacKinnon in a burgundy number 29 jersey sprints toward the top of the frame, sweat flying, medium shot",
+      "image_prompt_alt": "reference character in the centre hunches, panting, below a muscular dark-haired player in a burgundy helmet and a burgundy number 29 jersey sprinting up the page with drops of sweat flying, low-angle shot"
+    },
+    {
+      "narration": "Players get tired very fast.",
+      "location": "the team bench",
+      "edits": [
+        "big sweat drops pour off the player in the burgundy number 29 jersey and his shoulders sag"
+      ],
+      "edit_alt": "the player in the burgundy number 29 jersey bends over, gasping, white steam rising off his helmet"
+    },
+    {
+      "narration": "[sighs] Nathan MacKinnon cannot sprint forever.",
+      "location": "the team bench",
+      "edits": [
+        "a big red fuel gauge appears at the top of the frame above the player, its needle on empty"
+      ],
+      "edit_alt": "a big red fuel gauge drops in beside the character's head in the upper middle, needle on empty, his eyelids drooping"
+    },
+    {
+      "narration": "So players skate in short, hard shifts.",
+      "location": "the team bench",
+      "edits": [
+        "the fuel gauge disappears and a big red stopwatch appears at the top of the frame, its hand racing"
+      ],
+      "edit_alt": "the fuel gauge disappears and a big red stopwatch swings in beside the player's helmet in the upper middle, ticking fast"
+    },
+    {
+      "narration": "A shift lasts about forty five seconds.",
+      "location": "the team bench",
+      "edits": [
+        "a big white tag reading \"45 SEC\" hangs from the red stopwatch"
+      ],
+      "edit_alt": "the red stopwatch's hand stops and a big white tag reading \"45 SEC\" pops up beside it, the character nodding"
+    },
+    {
+      "narration": "Then they skate to the bench.",
+      "location": "the team bench",
+      "edits": [
+        "the tag and stopwatch disappear and the player glides down to one long red bench beside the character"
+      ],
+      "edit_alt": "the tag and stopwatch disappear and one long red bench appears beside the character, the player in the burgundy number 29 jersey coasting onto it"
+    },
+    {
+      "narration": "New players jump right over the tall boards.",
+      "location": "the team bench",
+      "image_prompt": "one doodle player in a plain burgundy jersey leaps over one tall white board toward the top of the frame, reference character in the lower middle ducking, eyebrows raised, low-angle shot",
+      "image_prompt_alt": "reference character crouches at frame left in the lower half as one doodle player in a plain burgundy jersey and helmet hurdles one tall white board above him, skates first, high-angle shot",
+      "sfx": "join"
+    },
+    {
+      "narration": "The game does not stop for this.",
+      "location": "the team bench",
+      "edits": [
+        "the white board disappears and a black puck streaks across the upper middle past the landing player"
+      ],
+      "edit_alt": "the white board disappears and the player lands chasing a black puck that zips to the top of the frame"
+    },
+    {
+      "narration": "[deadpan] It looks like TOTAL chaos.",
+      "location": "the team bench",
+      "edits": [
+        "two more doodle players in plain burgundy jerseys tumble in at the top of the frame, sticks tangled"
+      ],
+      "edit_alt": "two more doodle players in plain burgundy jerseys crash in at the top of the frame and the character's eyes spin",
+      "sfx": "meme"
+    },
+    {
+      "narration": "This happens while the puck keeps moving.",
+      "location": "the team bench",
+      "edits": [
+        "the black puck slides between the tangled players' skates down into the centre"
+      ],
+      "edit_alt": "the black puck keeps sliding past the character's feet, his head turning to follow it"
+    },
+    {
+      "narration": "Players break the rules a lot.",
+      "location": "the penalty box",
+      "image_prompt": "a real photo cutout of Brad Marchand in a red number 63 jersey, roughly pasted onto the drawing, grins slyly in the upper middle, reference character below narrowing his eyes, medium shot",
+      "image_prompt_alt": "reference character at frame left in the lower half squints up at a doodle of a short wiry dark-haired player with a pointed grin in a red number 63 jersey, stick held low, at the top of the frame, low-angle shot"
+    },
+    {
+      "narration": "Brad Marchand might trip someone with his stick.",
+      "location": "the penalty box",
+      "edits": [
+        "a doodle player in a white jersey appears in the centre, tripping over the stick of the player in the red number 63 jersey"
+      ],
+      "edit_alt": "a doodle player in a plain white jersey skates into the centre and topples forward, his skates caught on a hooked stick blade",
       "sfx": "wrong"
+    },
+    {
+      "narration": "The referee blows a loud whistle to stop play.",
+      "location": "the penalty box",
+      "edits": [
+        "the player in the white jersey disappears and a doodle referee in a black and white striped shirt appears at the top of the frame, whistle in his mouth"
+      ],
+      "edit_alt": "the player in the white jersey disappears and a doodle referee in a black and white striped shirt skates in at the top of the frame, cheeks puffed on a silver whistle"
+    },
+    {
+      "narration": "[understated] Marchand sits in the penalty box.",
+      "location": "the penalty box",
+      "edits": [
+        "the referee disappears and one small glass box appears in the upper middle, the player in the red number 63 jersey sitting inside"
+      ],
+      "edit_alt": "the referee disappears and the player in the red number 63 jersey slumps onto a bench inside one small glass box in the upper middle",
+      "sfx": "leave"
+    },
+    {
+      "narration": "He stays in a glass room.",
+      "location": "the penalty box",
+      "edits": [
+        "the glass box's door slams shut and the player in the red number 63 jersey slouches sulking inside"
+      ],
+      "edit_alt": "the character leans in to peer at the glass box, his eyebrows raised at the sulking player inside"
+    },
+    {
+      "narration": "His team LOSES a player.",
+      "location": "the penalty box",
+      "edits": [
+        "a big red sign reading \"4 VS 5\" appears at the top of the frame above the glass box"
+      ],
+      "edit_alt": "a big red sign reading \"4 VS 5\" drops in at the top of the frame and the character's mouth drops open"
+    },
+    {
+      "narration": "The other team gets a power play.",
+      "location": "the penalty box",
+      "image_prompt": "three doodle hockey players in plain white jerseys and helmets, sticks in hand, skate after one black puck toward one red hockey goal net at the top of the frame, reference character in the lower middle leaning in curiously, high-angle shot",
+      "image_prompt_alt": "reference character at frame left in the lower half watches, eyebrows raised, as three doodle hockey players in plain white jerseys and helmets pass a black puck with their sticks around one red hockey goal net in the upper middle, medium shot"
+    },
+    {
+      "narration": "[curious] They get two minutes to score with an extra player.",
+      "location": "the penalty box",
+      "edits": [
+        "the red goal net disappears and a big red clock reading \"2:00\" appears at the top of the frame above the players"
+      ],
+      "edit_alt": "the red goal net disappears and a big red clock reading \"2:00\" drops in beside the character in the upper middle, his eyes widening"
+    },
+    {
+      "narration": "[thoughtful] Guess Wayne Gretzky's total points.",
+      "location": "the penalty box",
+      "edits": [
+        "the three players and the red clock disappear and one big banner covered by a grey cloth appears in the upper middle, one large question mark on the cloth"
+      ],
+      "edit_alt": "the three players and the red clock disappear and one large black question mark rises over one big banner covered by a grey cloth at the top of the frame"
+    },
+    {
+      "narration": "Write it in the comments.",
+      "location": "the penalty box",
+      "edits": [
+        "the character tilts his head, leaning in curiously toward the grey cloth"
+      ],
+      "edit_alt": "the character's eyebrows rise as he squints at the grey cloth, one sweat drop appearing"
+    },
+    {
+      "narration": "The season is long.",
+      "location": "the stanley cup final",
+      "image_prompt": "reference character in the lower middle trudges, exhausted, at the start of one long icy path winding up to one small red flag at the top of the frame, high-angle shot",
+      "image_prompt_alt": "reference character in the centre stares up, eyelids drooping, at one long icy road zigzagging up the page to one small red flag at the top of the frame, low-angle shot"
+    },
+    {
+      "narration": "It lasts eighty four games.",
+      "location": "the stanley cup final",
+      "edits": [
+        "a big white sign reading \"84 GAMES\" appears beside the path in the upper middle"
+      ],
+      "edit_alt": "a big white sign reading \"84 GAMES\" pops up beside the character's head and his shoulders sag"
+    },
+    {
+      "narration": "Only the best teams make the playoffs.",
+      "location": "the stanley cup final",
+      "edits": [
+        "the sign and the red flag disappear and three doodle players in plain red, blue and green jerseys race up the path"
+      ],
+      "edit_alt": "the sign and the red flag disappear and three doodle players in plain red, blue and green jerseys scramble up the path, one far ahead"
+    },
+    {
+      "narration": "They play short elimination series.",
+      "location": "the stanley cup final",
+      "edits": [
+        "the players in blue and green jerseys tumble off the path and vanish, the player in the red jersey climbing on"
+      ],
+      "edit_alt": "the players in blue and green jerseys trip and slide out of the frame as the player in the red jersey reaches the upper middle"
+    },
+    {
+      "narration": "The prize is the Stanley Cup.",
+      "location": "the stanley cup final",
+      "edits": [
+        "the icy path disappears and a real photo cutout of the Stanley Cup trophy, roughly pasted onto the drawing, appears big at the top of the frame"
+      ],
+      "edit_alt": "the icy path disappears and one huge silver cup trophy on a tall tiered base appears at the top of the frame",
+      "sfx": "celebrate"
+    },
+    {
+      "narration": "[calm] It is the oldest North American professional sports trophy.",
+      "location": "the stanley cup final",
+      "edits": [
+        "the character's mouth drops open as he leans back, staring up at the cup"
+      ],
+      "edit_alt": "the player in the red jersey stops and gazes up at the cup, the character's eyebrows rising"
+    },
+    {
+      "narration": "Jordan Staal lifted the twenty twenty six Stanley Cup.",
+      "location": "the stanley cup final",
+      "image_prompt": "reference character in the lower middle grins up as Jordan Staal in a red number 11 jersey with a white captain's C lifts one huge silver cup trophy overhead, low-angle shot",
+      "image_prompt_alt": "reference character at frame left in the lower half grins up at a tall broad dark-haired player with a thick beard in a red number 11 jersey with a white captain's C hoisting one huge silver cup trophy above his head, medium shot"
+    },
+    {
+      "narration": "You need sixteen playoff victories.",
+      "location": "the stanley cup final",
+      "edits": [
+        "a big red banner reading \"16 WINS\" appears at the top of the frame above the silver cup"
+      ],
+      "edit_alt": "a big red banner reading \"16 WINS\" unrolls beside the character in the upper middle, the character nodding"
+    },
+    {
+      "narration": "[flatly] The massive trophy is polished silver.",
+      "location": "the stanley cup final",
+      "edits": [
+        "the banner disappears and the silver cup grows huge, nearly filling the top of the frame"
+      ],
+      "edit_alt": "the banner disappears and the character leans in close, his reflection showing on the curved silver cup"
+    },
+    {
+      "narration": "Every winning player gets their name engraved on it.",
+      "location": "the stanley cup final",
+      "edits": [
+        "one new row of tiny black letters appears on the silver cup's band, the character leaning in"
+      ],
+      "edit_alt": "the character's eyes go wide as a fresh row of tiny black letters scratches onto the silver cup's base"
+    },
+    {
+      "narration": "The metal is covered in tiny letters.",
+      "location": "the stanley cup final",
+      "edits": [
+        "tiny black letters spread over the whole silver cup from rim to base"
+      ],
+      "edit_alt": "the whole silver cup fills with tiny black letters and the character squints hard"
+    },
+    {
+      "narration": "One record nobody gets near.",
+      "location": "the gretzky record wall",
+      "image_prompt": "a real photo cutout of Wayne Gretzky in a blue and orange number 99 jersey, roughly pasted onto the drawing, beside one big banner covered by a grey cloth, reference character below curious, medium shot",
+      "image_prompt_alt": "reference character in the lower middle gazes curiously up at a doodle of a slim blond-haired player with tousled hair in a blue and orange number 99 jersey beside one big banner covered by a grey cloth at the top of the frame, low-angle shot"
+    },
+    {
+      "narration": "Nobody will ever catch Wayne Gretzky.",
+      "location": "the gretzky record wall",
+      "edits": [
+        "the character tilts his head far back, eyebrows raised, looking up at the player"
+      ],
+      "edit_alt": "the character's mouth falls slightly open as he slowly shakes his head below the player"
+    },
+    {
+      "narration": "[thoughtful] He scored... two thousand eight hundred fifty seven points.",
+      "location": "the gretzky record wall",
+      "edits": [
+        "the grey cloth falls away from the banner, showing big red numbers reading \"2,857\""
+      ],
+      "edit_alt": "the grey cloth lifts off the banner, revealing big red numbers reading \"2,857\", the character's eyes going wide",
+      "sfx": "boom"
+    },
+    {
+      "narration": "That number looks unbreakable.",
+      "location": "the gretzky record wall",
+      "edits": [
+        "a big steel padlock appears hanging from the banner's bottom edge"
+      ],
+      "edit_alt": "a big steel padlock clamps onto the banner's bottom edge and the character's eyebrows rise"
+    },
+    {
+      "narration": "[curious] Take away all his goals.",
+      "location": "the gretzky record wall",
+      "edits": [
+        "the padlock disappears and part of the banner's red numbers fade away, the character leaning in, squinting"
+      ],
+      "edit_alt": "the padlock disappears and the banner's red numbers blur and smudge, the character's eyebrows rising"
+    },
+    {
+      "narration": "He STILL has the most points in hockey history.",
+      "location": "the gretzky record wall",
+      "edits": [
+        "the banner's red numbers are replaced by big gold letters reading \"STILL #1\" and the character's jaw drops"
+      ],
+      "edit_alt": "big gold letters reading \"STILL #1\" stamp across the banner and the character stumbles back a step",
+      "sfx": "shock"
+    },
+    {
+      "narration": "Nobody else is even close.",
+      "location": "the gretzky record wall",
+      "edits": [
+        "the character bows deeply toward the player in the blue and orange number 99 jersey"
+      ],
+      "edit_alt": "the character drops to one knee below the player in the blue and orange number 99 jersey, head lowered"
+    },
+    {
+      "narration": "Today players just try to survive.",
+      "location": "the dressing room",
+      "image_prompt": "one battered doodle player in a dented green helmet limps up the page in the upper middle, reference character in the lower middle watching with a resigned smile, full-body shot",
+      "image_prompt_alt": "reference character at frame left in the lower half sighs, eyelids heavy, as one doodle player in a dented green helmet and torn plain grey jersey staggers toward the top of the frame, high-angle shot"
+    },
+    {
+      "narration": "They hit each other hard.",
+      "location": "the dressing room",
+      "edits": [
+        "a doodle player in a plain purple jersey slams shoulder-first into the player in the dented green helmet at the top of the frame"
+      ],
+      "edit_alt": "a doodle player in a plain purple jersey bumps the player in the dented green helmet, both bouncing apart in the upper middle",
+      "sfx": "hit"
+    },
+    {
+      "narration": "[light chuckle] Sometimes they lose their teeth.",
+      "location": "the dressing room",
+      "edits": [
+        "the player in the purple jersey skates out of the frame and the player in the dented green helmet grins, a big gap in his front teeth"
+      ],
+      "edit_alt": "the player in the purple jersey leaves the frame and the character's eyes widen at the gap-toothed smile under the dented green helmet"
+    },
+    {
+      "narration": "Then they just keep on playing.",
+      "location": "the dressing room",
+      "edits": [
+        "the player in the dented green helmet skates off to the top of the frame, white speed lines behind him"
+      ],
+      "edit_alt": "the player in the dented green helmet turns and races up the page, the character watching him go"
+    },
+    {
+      "narration": "[content] That is ice hockey... in a nutshell.",
+      "location": "the dressing room",
+      "edits": [
+        "one big brown walnut shell appears in the centre beside the character, a tiny doodle rink inside it, the character smiling"
+      ],
+      "edit_alt": "one giant brown walnut shell cracks open in the centre beside the character, revealing a tiny ice rink with red lines, the character grinning"
     }
   ]
 }
