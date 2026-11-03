@@ -289,6 +289,18 @@ MODEL_SUBMENU_MARKER = "arrow_drop_down"
 # Seconds to wait for the model menu to open.
 MODEL_MENU_WAIT = 8.0
 
+# The aspect ratio sits in the same settings panel, as a row of buttons labelled
+# "16:9  4:3  1:1  3:4  9:16" (seen 2026-11-02). Flow remembers the last choice
+# per account, so it is set on every run: a YouTube run straight after a reel
+# would otherwise come out tall.
+#
+# The chip shows the current ratio as a Material icon ligature, e.g. "Nano
+# Banana Pro crop_16_9 x1". crop_16_9 is the one seen in the chip text;
+# crop_9_16 is the icon's Material name but has NOT been seen yet. When the
+# chip shows none of these, the runner trusts the click and the shape check on
+# the first saved image (runner._check_shape) is what catches a miss.
+ASPECT_CHIP_MARKERS = {"16:9": "crop_16_9", "9:16": "crop_9_16"}
+
 # --- Startup ---------------------------------------------------------------
 # How long to wait for the prompt box to show up. This doubles as the login
 # wait: if you are signed out, sign in during this window and the run carries

@@ -1,0 +1,2707 @@
+SCRIPT:
+{
+  "topic": "Hockey Explained",
+  "format": "explainer",
+  "plan": {
+    "spine_question": "How does professional ice hockey work and why is it so chaotic?",
+    "hook": {
+      "fact": "Hockey players can legally bare-knuckle fight during a game.",
+      "why_strange_to_a_newcomer": "In any other professional sport, throwing a punch gets you ejected or arrested, but in hockey, it's just a five-minute timeout.",
+      "source": "NHL Rulebook (Rule 46: Fighting)"
+    },
+    "deflations": [
+      {
+        "assumed": "Goals are the only thing that matters for scoring records.",
+        "actual": "Wayne Gretzky has more assists than anyone else has total points.",
+        "who_decided": "NHL scoring system where both goals and assists count as points.",
+        "build_beat": "Take away all his goals.",
+        "drop_beat": "He still has the most points in hockey history."
+      }
+    ],
+    "cast": [
+      {
+        "name": "Sidney Crosby",
+        "why": "A legendary veteran used to illustrate the blistering speed and skill required to play."
+      },
+      {
+        "name": "Connor McDavid",
+        "why": "The current face of the NHL, representing peak offensive production with his 138 points in 2026."
+      },
+      {
+        "name": "Nathan MacKinnon",
+        "why": "Known for explosive speed, highlighting why shifts are so incredibly short and exhausting."
+      },
+      {
+        "name": "Brad Marchand",
+        "why": "Famous for taking penalties and bending rules, perfectly introducing the penalty box."
+      },
+      {
+        "name": "Jordan Staal",
+        "why": "Captain of the 2026 Stanley Cup champion Carolina Hurricanes, showcasing the ultimate goal."
+      },
+      {
+        "name": "Wayne Gretzky",
+        "why": "The ultimate historical benchmark, holding a points record that perfectly illustrates impossible dominance."
+      }
+    ],
+    "specifics": [
+      {
+        "fact": "A standard NHL rink is 200 feet long.",
+        "source": "NHL Rulebook (Rule 1: Rink)",
+        "beat": 6
+      },
+      {
+        "fact": "Connor McDavid scored 138 points in the 2025-2026 season.",
+        "source": "NHL 2025-26 season statistics",
+        "beat": 21
+      },
+      {
+        "fact": "A standard minor penalty is two minutes.",
+        "source": "NHL Rulebook (Rule 16: Minor Penalties)",
+        "beat": 40
+      },
+      {
+        "fact": "The regular season is 82 games long.",
+        "source": "NHL Season Structure",
+        "beat": 44
+      },
+      {
+        "fact": "The Carolina Hurricanes won the 2026 Stanley Cup.",
+        "source": "2026 Stanley Cup Final results",
+        "beat": 49
+      },
+      {
+        "fact": "A team needs 16 playoff wins to secure the Cup.",
+        "source": "NHL Playoff Format",
+        "beat": 50
+      },
+      {
+        "fact": "Wayne Gretzky scored 2,857 points.",
+        "source": "NHL all-time records",
+        "beat": 56
+      }
+    ],
+    "facts_to_check": [
+      {
+        "claim": "Connor McDavid scored 138 points in 2026.",
+        "source": "NHL 2025-26 season statistics"
+      },
+      {
+        "claim": "The Carolina Hurricanes won the 2026 Stanley Cup.",
+        "source": "2026 Stanley Cup Final results"
+      },
+      {
+        "claim": "Wayne Gretzky scored 2,857 points.",
+        "source": "NHL all-time records"
+      },
+      {
+        "claim": "Sidney Crosby is still an active player.",
+        "source": "NHL 2026 rosters"
+      },
+      {
+        "claim": "Nathan MacKinnon is an active player.",
+        "source": "NHL 2026 rosters"
+      },
+      {
+        "claim": "Brad Marchand is an active player.",
+        "source": "NHL 2026 rosters"
+      },
+      {
+        "claim": "Jordan Staal is the captain of the Carolina Hurricanes.",
+        "source": "2026 Stanley Cup Final rosters"
+      }
+    ]
+  },
+  "beats": [
+    {
+      "narration": "[curious] Hockey players bare-knuckle fight."
+    },
+    {
+      "narration": "The referees just watch them."
+    },
+    {
+      "narration": "[clears throat, deadpan] The punishment... is FIVE minutes."
+    },
+    {
+      "narration": "The real game is incredibly fast."
+    },
+    {
+      "narration": "Sidney Crosby steps on the ice."
+    },
+    {
+      "narration": "The frozen playing surface is two hundred feet long."
+    },
+    {
+      "narration": "Players balance on tiny sharpened steel blades."
+    },
+    {
+      "narration": "[thoughtful] Crosby reaches speeds over twenty miles an hour."
+    },
+    {
+      "narration": "It takes immense physical skill and balance."
+    },
+    {
+      "narration": "[understated] And you are LEGALLY allowed to slam into people."
+    },
+    {
+      "narration": "They chase a small black circle."
+    },
+    {
+      "narration": "It is a hockey puck."
+    },
+    {
+      "narration": "[calm] The flat puck is solid hard rubber."
+    },
+    {
+      "narration": "Teams freeze it before games."
+    },
+    {
+      "narration": "Frozen rubber glides much faster on the ice."
+    },
+    {
+      "narration": "It avoids RANDOM bouncing."
+    },
+    {
+      "narration": "The ultimate goal is hitting it into the net."
+    },
+    {
+      "narration": "[flatly] A goalie wearing huge pads aggressively blocks it."
+    },
+    {
+      "narration": "Edmonton Oilers captain Connor McDavid dominates the sport today."
+    },
+    {
+      "narration": "He skates faster than anyone."
+    },
+    {
+      "narration": "[thoughtful] He scored one hundred thirty eight points... in twenty twenty six."
+    },
+    {
+      "narration": "A point means a goal or an assist."
+    },
+    {
+      "narration": "Ice hockey is completely exhausting."
+    },
+    {
+      "narration": "Players get tired very fast."
+    },
+    {
+      "narration": "[sighs] Nathan MacKinnon cannot sprint forever."
+    },
+    {
+      "narration": "Teams take extremely short and intense shifts."
+    },
+    {
+      "narration": "A shift lasts about forty five seconds."
+    },
+    {
+      "narration": "Then they skate directly toward the team bench area."
+    },
+    {
+      "narration": "New players jump right over the tall boards."
+    },
+    {
+      "narration": "The game does not stop for this."
+    },
+    {
+      "narration": "[deadpan] It looks like TOTAL chaotic madness."
+    },
+    {
+      "narration": "This happens while the puck keeps moving."
+    },
+    {
+      "narration": "Players often break the strict rules."
+    },
+    {
+      "narration": "Brad Marchand might trip someone with his stick."
+    },
+    {
+      "narration": "The referee blows a loud whistle to stop play."
+    },
+    {
+      "narration": "[understated] Marchand sits in the penalty box."
+    },
+    {
+      "narration": "He stays in a glass room."
+    },
+    {
+      "narration": "His team LOSES a player."
+    },
+    {
+      "narration": "The other team gets a power play."
+    },
+    {
+      "narration": "[curious] This creates a HUGE scoring advantage for two minutes."
+    },
+    {
+      "narration": "[thoughtful] Guess Wayne Gretzky's total points."
+    },
+    {
+      "narration": "Write it in the comments."
+    },
+    {
+      "narration": "The season is a grueling marathon."
+    },
+    {
+      "narration": "It lasts for exactly eighty two brutal games."
+    },
+    {
+      "narration": "Only the very best teams survive for the playoffs."
+    },
+    {
+      "narration": "They play short elimination series."
+    },
+    {
+      "narration": "The prize is the Stanley Cup."
+    },
+    {
+      "narration": "[calm] It is the oldest North American professional sports trophy."
+    },
+    {
+      "narration": "Jordan Staal lifted the twenty twenty six Stanley Cup."
+    },
+    {
+      "narration": "You need sixteen playoff victories."
+    },
+    {
+      "narration": "[flatly] The massive trophy is polished silver."
+    },
+    {
+      "narration": "Every winner gets their name engraved on it permanently."
+    },
+    {
+      "narration": "The metal is covered in tiny letters."
+    },
+    {
+      "narration": "One record remains totally untouched."
+    },
+    {
+      "narration": "Nobody will ever catch Wayne Gretzky."
+    },
+    {
+      "narration": "[thoughtful] He scored... two thousand eight hundred fifty seven points."
+    },
+    {
+      "narration": "That number is completely unbreakable."
+    },
+    {
+      "narration": "[curious] Take away all his goals."
+    },
+    {
+      "narration": "He STILL has the most points in hockey history."
+    },
+    {
+      "narration": "That is incredibly dominant."
+    },
+    {
+      "narration": "Today players just try to survive."
+    },
+    {
+      "narration": "They hit each other hard."
+    },
+    {
+      "narration": "[light chuckle] Sometimes they lose their teeth."
+    },
+    {
+      "narration": "Then they just keep on playing."
+    },
+    {
+      "narration": "[content] That is professional ice hockey... in a simple nutshell."
+    }
+  ]
+}
+
+PASS 2 OF 2: THE VISUALS
+
+The script above is finished.
+
+You do not write narration, you do not judge it, and you do not improve it.
+
+You add everything the pipeline needs to turn it into a video:
+
+one image_prompt and one image_prompt_alt on the first beat of each location,
+and on any beat that redraws (Section 0C)
+one edits list on every beat (Section 0C)
+one edit_alt next to every edits list (Section 41B)
+one location NAME per beat (visual_anchor and setting_anchor are always "")
+emotion tags remain untouched
+one music mood on every location (Section 47)
+one "sfx" tag on the few beats that earn a sound effect (Section 48)
+
+Your output is the complete final JSON: the pass 1 object with your fields
+merged into it.
+
+The visual pass is optimized for Nano Banana.
+
+IMPORTANT LOCATION RULE:
+
+The input script may contain narration only and may contain NO locations.
+
+Do NOT assume that Pass 1 provides locations.
+
+If Pass 1 contains no locations, you MUST creatively generate the locations
+yourself from the narration before writing the visual prompts.
+
+The generated locations must be physically believable, visually interesting,
+specific to the subject being discussed, and useful for staging the
+reference character.
+
+Locations are NOT drawn. Every frame is a plain white page (Section 0B).
+A location is only a name that groups beats into scenes: the video dissolves
+where the location changes and hard cuts inside one. Pick locations to split
+the video into its natural chapters.
+
+Do not merely invent generic locations such as "room", "office", "studio",
+"warehouse", "lab", "street", or "hallway" unless the narration genuinely
+requires that exact environment.
+
+Instead, infer what physical environment would make each part of the
+narration interesting to see.
+
+The location name may be a literal place where the event happened OR a
+storytelling environment, named for what that chapter of the narration is
+about. The name is never drawn.
+
+The location does not need to be historically literal when a more useful
+visual storytelling environment would communicate the narration better.
+
+For example:
+
+narration about lost NASA recordings
+→ "forgotten aerospace archive"
+
+narration about an absurd conspiracy
+→ "cramped conspiracy evidence workshop"
+
+narration about strange scientific experiments
+→ "crowded experimental workshop"
+
+narration about political decisions
+→ "government back-room briefing chamber"
+
+narration about old radio transmissions
+→ "underground radio monitoring room"
+
+narration about unexplained photographs
+→ "forensic photography archive"
+
+narration about conflicting historical evidence
+→ "overcrowded historical evidence room"
+
+The generated location should feel specific, memorable, and visually useful.
+
+Do NOT make every location comedic.
+
+When the narration is absurd, humorous, suspicious, or ridiculous, the physical
+location may contain slightly absurd but believable visual staging.
+
+The humour comes from the situation, the reference character's reaction, a
+short label, or a rare photo cutout (Section 0B), never from scenery.
+
+The location must still make sense for the subject.
+
+The primary prompt uses canonical names for recognizable subjects OTHER THAN
+THE REFERENCE CHARACTER.
+
+The reference character is ALWAYS represented by the exact phrase:
+
+reference character
+
+The alternate removes canonical names for OTHER named subjects and replaces
+them with physical descriptions, while the reference character remains:
+
+reference character
+
+0. PRIORITY
+
+If two instructions collide, the earlier section wins.
+
+Work in this order:
+
+Copy topic, format, and the whole plan across unchanged EXCEPT for locations
+when locations are missing or insufficient.
+
+The page is vertical, 9:16 (Section 0A).
+
+Determine whether Pass 1 contains usable locations.
+
+If locations are present and clearly appropriate, preserve them exactly.
+
+If locations are missing, incomplete, or unusable, generate the necessary
+locations yourself from the narration.
+
+Create the complete location system before writing image prompts.
+
+Plan each location as one scene (Section 0C) before writing its prompts.
+
+Set plan.locations[].visual_anchor to "" for every location.
+
+Set plan.setting_anchor to "".
+
+Copy every beat's location and narration across character for character when
+the location already exists in Pass 1.
+
+When a beat has no location, assign it one of the generated locations.
+
+Preserve every emotion tag exactly.
+
+Identify the reference character and every other visually relevant character
+or named subject in each beat.
+
+Write image_prompt and image_prompt_alt where Section 0C asks for them, and
+edits for every beat, beats 1 to N in order.
+
+Give every location a music mood (Section 47).
+
+Tag the few beats that earn a sound effect (Section 48).
+
+Run Section 41 by checking every beat individually.
+
+Output one raw JSON object and nothing else.
+
+0A. VERTICAL PAGE (9:16)
+
+This video is a 9:16 vertical reel. Put "aspect": "9:16" in the output JSON,
+right after "format". Never write 9:16 or vertical inside a prompt: the pipeline adds the
+shape to every prompt itself (Section 32).
+
+The page is a phone screen, tall and narrow. This section overrides every
+later rule about where things go on the page.
+
+THE SPOTS ARE STACKED
+
+In place of frame left, frame centre and frame right, the page has four spots,
+top to bottom:
+
+top of the frame
+upper middle
+centre
+lower middle
+
+Use frame left or frame right only for something small right beside the
+reference character. There is no room for two big things side by side.
+
+KEEP THE BOTTOM FIFTH EMPTY
+
+Instagram covers the bottom of a reel with the caption and username, and the
+right edge with its buttons.
+
+- The reference character stands in the lower middle, never on the bottom
+  edge.
+- Labels and quoted words go in the upper half, never at the bottom and never
+  against the right edge.
+
+STACK, DO NOT LINE UP
+
+Anything that would sit side by side on a wide page goes one above the other:
+
+BAD:
+
+one red car at frame left and one blue car at frame right
+
+GOOD:
+
+one red car in the upper middle, one blue car in the lower middle beside the
+reference character
+
+TALL SUBJECTS WIN
+
+Prefer moments that are naturally tall: something towering over him, a stack,
+a pile, a tall building, a thing falling from the top of the frame, a height
+comparison. Turn wide subjects so they run up the page: a race track or a court
+seen from one end so it stretches away to the top of the frame, a queue as a
+column, a timeline running top to bottom.
+
+one huge grey pile of rubbish bags rising to the top of the frame, the
+reference character small in the lower middle staring up at it, low-angle shot
+
+FRAMING
+
+Never write wide shot or long shot. Use full-body shot, medium shot, close-up,
+low-angle shot looking up, or high-angle shot looking down. A low-angle shot
+looking up at something huge suits a tall page best.
+
+EDITS
+
+Every position an edit names (Section 0C, SAY WHERE AND HOW BIG) uses the
+stacked spots. "Moves across the page" becomes "falls from the top of the
+frame" or "rises to the upper middle".
+
+0B. THE WHITE PAGE LOOK
+
+This section overrides every later section about rooms, scenery, materials,
+colour and text.
+
+Every frame is a plain white page. Never describe a room, floor, wall, sky,
+ground, horizon, furniture, buildings or scenery unless that one object IS the
+point of the beat.
+
+Each frame holds the reference character plus at most TWO other things.
+
+A crowd or group is at most three doodle figures.
+
+Other people, famous ones included, are simple doodle figures identified by
+one or two signature features (long braids, a scarlet red racing suit). Never
+ask for them to look realistic.
+
+Colour only one or two key objects. Name the colour on the object:
+one scarlet red racing car.
+
+Name the exact kind of every vehicle and object, never only its brand or its
+owner. A brand name alone draws that brand's best-known product, which can be
+the wrong kind of thing entirely.
+
+Simple and big beats detailed and small. If the frame needs explaining, it has
+too much in it.
+
+LABELS
+
+At most 1 beat in 4 may carry words, and only when the words are the joke or
+the key fact. 1 to 3 words, in double quotes, attached to an object:
+
+a big sign reading "NOPE"
+a price tag reading "$15 MILLION"
+a speech bubble reading "WHY"
+
+Never more than one label per beat. Labels go in image_prompt or in an edit
+(Section 0C), never in narration.
+
+Draw every label BIG: a big sign, a big tag, a big speech bubble. A small one
+comes out too small to read in the video.
+
+PHOTO CUTOUTS
+
+Aim for about 1 beat in 10 (7 or 8 in a 75-beat script), spread across the
+whole video, not bunched in one section. Hard limit: 1 beat in 6, never in
+two beats in a row.
+
+Use one when seeing the REAL object makes the beat land harder than a doodle
+would: an absurd price, a ridiculous real thing, a "yes, this actually
+exists" moment, or a real surviving artefact the narration points at. Never
+just because an object is mentioned.
+
+ONE thing only: one object, or one famous real person from plan.cast. Never
+a face or body part on its own, an animal, a place, or the reference
+character.
+
+A real person as a photo cutout is the collage look: the photo of that one
+person, pasted into a doodle world. Everything else in the frame stays doodle:
+the reference character, the vehicles, the props, other people. Use it where
+seeing the REAL person lands harder than a doodle would, usually the beat that
+introduces them. Section 0D still holds: only doing something true of them.
+
+Write it with this exact phrase:
+
+a real photo cutout of <object or person>, roughly pasted onto the drawing
+
+Example:
+
+reference character stares, eyes wide, at a real photo cutout of a Formula 1
+steering wheel, roughly pasted onto the drawing, medium shot
+
+The image_prompt_alt of a photo beat replaces the cutout with a doodle of the
+same object or person, without the name. The alt is the fallback when Flow
+refuses, so it must be the safe version.
+
+A photo person stays a photo through the edits after it. Keep those edits to
+pose and gesture (folds his arms, waves); never ask an edit to change a photo
+person's face.
+
+0C. CHAINED FRAMES
+
+This section overrides every later section about how many prompts a beat
+gets, and about varying camera, placement and framing from beat to beat.
+
+The video is animated by editing. Each location opens with one drawn picture.
+Every later picture in that location is a small edit of the picture just
+before it: the image tool sees only that previous picture and your edit line,
+and changes nothing else. Small changes, cut together every 1.5 to 4 seconds,
+are what make the stills move.
+
+THE COMMENT QUESTION
+
+Near the middle, Pass 1 has 2 short beats that ask the viewer to guess
+something, and a later beat that gives the answer. They are ordinary beats of
+their chapter: same location, chained edits like every other beat, no
+location of their own. On the question beats, the thing being guessed is in
+the picture but hidden: covered by a cloth, turned away, or replaced by one
+large question mark, and the reference character looks at it curiously. On
+the answer beat, show the answer clearly (the full trophy shelf, the number on
+a banner). Never draw a comment box, phone, app screen, buttons or any other
+interface.
+
+PLAN EACH LOCATION AS ONE SCENE
+
+Before writing any prompt for a location, decide:
+
+what its opening picture shows
+what its last picture shows
+the steps from one to the other, one per picture, in the order the narration
+gets to them
+
+Every edit belongs on that path. Edits that go nowhere make a slideshow of the
+same picture.
+
+So a beat carries:
+
+image_prompt and image_prompt_alt ONLY on the first beat of each location,
+and on a beat that redraws (see REDRAW below). Every rule in this prompt about
+image_prompt and image_prompt_alt applies to these. Wherever a later section
+says "every beat" about them, read it as every beat that has them.
+
+edits on every OTHER beat: exactly one edit line, a list holding one string,
+plus one edit_alt (Section 41B).
+
+ONE PICTURE PER BEAT
+
+Every beat is exactly one picture: its image_prompt, or its one edit. Never
+both, never more than one edit. The picture appears as the beat starts and
+stays up for the whole beat, so the beat's length is how long it is on screen
+(short beats about 1.5 seconds, long ones 3 to 4). The narration already
+mixes short, medium and long beats, so the pictures get that rhythm for free.
+
+Make each beat's edit show what THAT beat says, since it appears exactly as
+the beat is spoken.
+
+WRITING AN EDIT
+
+One line of 4 to 15 words that says only what changes. Start with the thing
+that changes:
+
+the character's eyes go wide
+the crocodile opens its jaws wide
+a big sign reading "LATE" appears above the door
+the measuring tape disappears
+
+Change one or two things per edit, and make the change visible at a glance. A
+cut between two nearly identical pictures looks like a glitch, not motion.
+
+Good edits: a pose or expression change, a thing appearing or disappearing, a
+thing moving across the page, a label appearing, a figure turning, a thing
+changing colour or size.
+
+SAY WHERE AND HOW BIG
+
+Anything an edit adds gets a position relative to what is already in the
+picture, and a size. Without them the image tool puts it wherever there is
+room: "a car appears behind the crocodile" came back with the car sitting on
+the crocodile's back, and "a small tag" came back too small to read.
+
+one big red car appears on the ground at frame right, past the crocodile's tail
+a big white tag reading "6 M" hangs from the end of the tape
+
+USE THE WHOLE PAGE
+
+The page has five spots: frame left, frame centre, frame right, top of the
+frame, and the bottom foreground. Left alone, every new thing lands in the
+same spot as the last one, so a whole location looks like one picture with
+its right side swapped out.
+
+- Every edit that adds something names its spot. No position is not allowed.
+- A new thing never goes in the spot the previous added thing used, unless
+  it replaces it on purpose.
+- Within one location, use at least three different spots.
+- Labels and tags go at the top of the frame or right next to what they
+  label, not always above the same thing.
+- The reference character does not have to stay in one place: on a redraw
+  or a new location, put him at frame centre or frame right sometimes.
+- Vary size too: one thing big in the foreground, the next small and far.
+
+REACTIONS ARE THE SAFEST MOTION
+
+When a line adds nothing new to the picture, change the character's FACE or
+HEAD: his eyes go wide, his eyebrows rise, his eyelids droop, his mouth drops
+open, he tilts his head, he leans in, a sweat drop appears. These are the most
+reliable edits there are. Never let two pictures in a row look the same.
+
+TWO ARMS, TWO HANDS
+
+An edit that changes an arm pose often ADDS an arm instead of moving the old
+one: "the character checking his wrist", while one hand held a bat up, came
+back with three arms. "The character holding up one finger" was given to a
+batter gripping his bat with both hands, who grew a third hand. So:
+
+Keep track of what each figure's hands are doing through the chain, from the
+opening picture on.
+
+Never give the character an arm or hand action in an edit, even with both
+hands free. No reaching, pointing, waving, wrist checks, crossed arms, shrugs,
+head scratches, clapping or holding up fingers. Use a face or head reaction
+instead, or make the change around him (a sign, a tag, an object appearing).
+"The character's right arm reaches up, rubbing out the numbers", hands empty,
+still came back with a third arm growing out of his head (2026-11-02). An arm
+pose belongs in an image_prompt, where the figure is drawn fresh.
+
+When both hands are free, at most ONE arm action every 4 edits, and say which
+arm and where it ends up: "the character's right arm points at the sign".
+Never an arm action and a new held object in the same edit.
+
+The same goes for every other figure in the picture: once a figure holds
+something, its arms stay as they are.
+
+In edits the reference character is "the character". Never write reference
+character in an edit: an edit has no character art attached, only the
+previous picture.
+
+Refer to everything already in the picture with the words that introduced it
+("the crocodile", never "the reptile"). Refer to other people by their visible
+feature, never by name: a name gets an edit refused, and the edit_alt is
+there for the refusals you could not see coming.
+
+Never ask an edit for a new camera: no close-up, wide shot, angle, zoom or
+camera. An edit keeps the framing. A new framing is a redraw.
+
+Never describe the drawing style, the page or the background in an edit. They
+carry over by themselves.
+
+THE PAGE STAYS SIMPLE
+
+Section 0B's limits hold for every picture in the chain, not just the first:
+the reference character plus at most two other things. Edits pile up, so an
+edit that adds a thing when two are already on the page must remove one in
+the same line:
+
+the measuring tape disappears and one big red car appears on the ground at
+frame right, past the crocodile's tail
+
+Labels stay at most 1 beat in 4, counting labels added by edits. A label stays
+on the page until an edit removes it, so the next beat's edit removes it,
+unless that beat is still about it.
+
+A photo cutout of an object is added by an edit, never by a redraw. The limits
+in PHOTO CUTOUTS still apply.
+
+REDRAW
+
+Every edit drifts a little and the drift compounds: the page turns grey and
+grainy and the lines go soft. After about 5 edits in a row, give the next
+beat a fresh image_prompt and image_prompt_alt even when
+the location has not changed, describing the scene as it now stands. Redraw
+also when a beat needs a new framing.
+
+Do not redraw more often than that. Every redraw is a visible jump.
+
+The opening image_prompt of a location sets the stage for the edits after it:
+place the reference character and the things the next beats will act on, with
+room to move. Section 23's variety of placement and framing now happens at
+redraws, not on every beat.
+
+Example, three beats in one location:
+
+{
+"narration": "The saltwater crocodile is the largest reptile alive today.",
+"location": "northern australian riverbank",
+"image_prompt": "reference character stands at frame left looking curious at one huge green saltwater crocodile lying beside him, wide shot",
+"image_prompt_alt": "reference character stands at frame left, curious, beside one huge green crocodile with a long bumpy back lying flat, wide shot"
+},
+{
+"narration": "Big males can grow longer than six meters.",
+"location": "northern australian riverbank",
+"edits": [
+"a long yellow measuring tape appears along the crocodile from nose to tail, a big white tag reading \"6 M\" at its end"
+]
+},
+{
+"narration": "That is longer than a small car.",
+"location": "northern australian riverbank",
+"edits": [
+"the tape disappears and one big red car appears on the ground at frame right, past the crocodile's tail, clearly shorter than it"
+]
+}
+
+0D. THE TOPIC'S OWN CAST
+
+This section overrides Sections 6 and 12 wherever they would leave a frame
+with a nameless stand-in.
+
+Show the famous characters from the topic's universe, or the famous real
+people of the topic. plan.cast lists them. If it is missing, choose the 3 to 8
+most iconic ones yourself and add plan.cast.
+
+When a beat talks about a role one of them fills, show that one instead of a
+nameless doodle figure.
+
+Only where it is TRUE of them, or plainly an illustration of a general rule.
+Never pin a failure, a crash, a scandal or any claim on a real person the
+narration does not name.
+
+Spread the cast across the video: each icon recurs within its chapter, with
+the same signature feature word for word every time (Section 26).
+
+Bring a cast member in through an image_prompt, never through an edit. An edit
+cannot carry a name (Section 0C), and a nameless edit draws a generic figure.
+Once they are in the picture, edits refer to them by their signature feature.
+
+Plan each location so the cast members it needs are already in its opening
+picture. A redraw only to bring someone in is a visible jump: do it only when
+the chain is due a redraw anyway.
+
+The page limit still holds: at most two things besides the reference
+character (Section 0B).
+
+A nameless sports figure carries the gear that names the sport in every
+picture it appears in fresh: a hockey player has a helmet and a stick, a
+tennis player a racket. "Three players swarm toward one red goal net" with no
+gear came back as soccer, ball and all, in a hockey video (2026-11-02). Name
+the sport's object too: "one red hockey goal net", "one black puck".
+
+1. THE REFERENCE CHARACTER: PERSISTENT VISUAL NARRATOR
+
+This is the most important character rule.
+
+The recurring main character is called:
+
+reference character
+
+The exact lowercase phrase reference character MUST appear in every
+image_prompt.
+
+The exact lowercase phrase reference character MUST appear in every
+image_prompt_alt.
+
+The reference character is a persistent visual narrator/observer.
+
+They are allowed to appear in every beat even when the narration does not
+explicitly mention them.
+
+Their presence does NOT mean that they are one of the historical people being
+discussed.
+
+They are the visual stand-in for the viewer/narrator and can quietly react to
+the information being presented.
+
+The reference character should therefore usually be doing one of these:
+
+sitting at the desk
+leaning against the desk
+standing beside a visual prop
+looking at a diagram
+staring at a photograph
+watching another character
+sitting on the couch
+standing beside the shadow board
+examining an object
+looking skeptical
+looking bored
+looking annoyed
+looking unimpressed
+looking confused
+looking curious
+looking tired
+looking surprised
+looking toward the relevant evidence
+quietly observing the event
+
+The reference character should NOT automatically become the subject of the
+historical event.
+
+For example, if the narration discusses Apollo astronauts, do NOT turn the
+reference character into an Apollo astronaut unless the script specifically
+requires that.
+
+Instead, the reference character can observe the astronaut material from the
+edge of the frame.
+
+2. REFERENCE CHARACTER EMOTIONAL BASELINE
+
+The reference character has a recurring personality:
+
+slightly bored, skeptical, unimpressed, or mildly irritated by the absurdity
+of what is being discussed.
+
+This personality should appear subtly throughout the visuals.
+
+The reference character may look:
+
+bored
+tired
+skeptical
+mildly annoyed
+unimpressed
+deadpan
+confused
+curious
+resigned
+
+Choose the emotion that best fits the beat.
+
+Do not make the character wildly expressive in every shot.
+
+The default should be a restrained, slightly bored or unimpressed reaction.
+
+When the narration contains a particularly absurd claim, the reference
+character may visibly look more annoyed or incredulous.
+
+When the narration reveals useful evidence, the reference character may look
+curious or interested.
+
+When the narration reaches a major reveal, the reference character may look
+genuinely annoyed, disappointed, surprised, or skeptical as appropriate.
+
+When the narration reaches the final payoff, the reference character may look
+tired, resigned, or amused.
+
+IMPORTANT:
+
+Narration emotion tags such as:
+
+[sarcastic]
+[laughs]
+[annoyed]
+[thoughtful]
+
+describe the AUDIO DELIVERY.
+
+They do NOT automatically require the reference character to perform the same
+emotion physically.
+
+Use the narration's meaning and context to choose the reference character's
+visual reaction.
+
+3. THE REFERENCE CHARACTER MUST NOT HIJACK THE SCENE
+
+The reference character is persistent, but they must remain visually secondary
+when the beat describes an important historical event.
+
+The reference character can be:
+
+foreground observer
+side-positioned observer
+seated nearby
+standing at the edge
+partially turned toward the evidence
+looking at a diagram
+watching another character
+
+But do not make the reference character replace:
+
+astronauts
+NASA engineers
+Soviet operators
+historical figures
+crowds
+workers
+scientists
+other required subjects
+
+The reference character is an observer unless the narration specifically
+requires them to participate.
+
+WHEN THE BEAT IS A STORY EVENT, THE STORY OWNS THE FRAME
+
+A beat describing something HAPPENING is staged as that thing happening, with
+the named characters in the foreground performing it, and the reference
+character pushed to the edge: at the frame edge, seen from behind, small in
+the background, or partly out of frame.
+
+Within any run of beats that tells one story, AT LEAST HALF the beats must be
+staged this way.
+
+The failure to avoid is a whole video of one man standing beside an object
+with an expression on his face. It is the same picture sixty times, the
+objects become interchangeable, and the story never appears on screen at all.
+
+Count it before you finish. If most beats in a section are the reference
+character plus a prop, the section is wrong and must be restaged.
+
+The reference character still appears in every beat. He just stops being the
+subject of most of them.
+
+4. REFERENCE CHARACTER IS ALWAYS PRESENT
+
+For this pipeline, the reference character is a persistent recurring visual
+element.
+
+Therefore:
+
+EVERY image_prompt MUST contain:
+
+reference character
+
+EVERY image_prompt_alt MUST contain:
+
+reference character
+
+The reference character must also be visually present in every resulting frame.
+
+If the beat contains a historical scene, place the reference character as a
+visually separate observer.
+
+If the beat contains an object, diagram, photograph, or physical demonstration,
+place the reference character beside it or observing it.
+
+If the beat discusses something happening elsewhere, the reference character
+can react to a physical representation of that subject.
+
+Examples:
+
+reference character sits beside a lunar photograph
+
+reference character stands beside a shadow diagram
+
+reference character watches two aerospace workers examine equipment
+
+reference character sits on the couch with a skeptical expression while a
+large lunar photograph rests on the nearby table
+
+Do NOT omit the reference character simply because the narration does not
+explicitly mention them.
+
+5. THE REFERENCE CHARACTER IS NOT THE ONLY CHARACTER
+
+This remains important.
+
+reference character identifies the recurring visual narrator.
+
+It does NOT mean that every person in the frame must be the reference
+character.
+
+If the script requires another person or group to be visually represented,
+show that person or group as a separate subject.
+
+Never replace them with reference character.
+
+Never merge them into reference character.
+
+The reference character may observe them.
+
+6. CHARACTER CASTING RULE
+
+For every beat, determine the complete visual cast.
+
+Internally identify:
+
+reference character
+other named characters
+other unnamed characters
+groups or crowds
+
+Then determine which subjects are visually necessary.
+
+The reference character is always required.
+
+Other characters are only required when the narration, plan, or visual event
+actually benefits from showing them.
+
+IMPORTANT:
+
+A person merely mentioned in narration does NOT automatically need to appear.
+
+For example:
+
+"Shot in a Hollywood basement by a famous movie director."
+
+does not require showing a specific movie director.
+
+The visual can instead show:
+
+reference character + film equipment + staged lunar set
+
+unless a specific director is genuinely being depicted.
+
+7. CANONICAL NAMES IN PRIMARY PROMPTS
+
+For characters OTHER THAN the reference character:
+
+If an official or canonical name exists and that character is visually present,
+the primary prompt MUST use the canonical name.
+
+This applies to real people AND to fictional characters, creatures and objects
+from a named show, film, book, game or comic.
+
+Real people:
+
+Neil Armstrong
+Buzz Aldrin
+Stanley Kubrick
+Nikita Khrushchev
+
+Fictional subjects, named together with the work so the name is unambiguous:
+
+Tanjiro Kamado from Demon Slayer
+Nezuko from Demon Slayer
+Alphonse Elric from Fullmetal Alchemist
+Gojo Satoru from Jujutsu Kaisen
+a Titan from Attack on Titan
+
+Write the name the way the audience would say it out loud.
+
+DO NOT STRIP THE NAME OUT
+
+When the narration is about a named work, replacing its characters with
+generic strangers is the most damaging thing this pass can do.
+
+"a lean teenage boy in a dark navy school blazer" is not Light Yagami. It is a
+stranger. The viewer came to see Light Yagami, the narration says Light
+Yagami, and the picture shows somebody else. Every beat of that section is
+then carried by the voice alone and the image contributes nothing.
+
+The primary prompt names whoever the narration names and shows on screen.
+
+Do not pre-emptively remove a name because the character might be
+copyrighted, trademarked or recognizable. That decision belongs to the image
+tool and to the alternate prompt, which exists precisely so a refused name has
+a fallback. It is not made in this pass.
+
+A NAME ALONE IS NOT ENOUGH
+
+The name tells the image model WHO. It does not guarantee the model knows
+them, and a name it does not recognize renders as a generic person.
+
+So every canonical name in a primary is followed by that character's ONE
+signature visible feature: the single detail that identifies them in
+silhouette.
+
+Nezuko from Demon Slayer, a bamboo muzzle strapped across her mouth
+Alphonse Elric, a towering hollow steel suit of armor
+Gojo Satoru, a white-haired man in a black cloth blindfold
+Yuji Itadori, a pink-haired boy in a black school uniform
+a Titan, an enormous bald giant with an oversized grinning mouth
+
+Choose each character's signature feature ONCE and reuse it WORD FOR WORD in
+every beat that character appears in.
+
+That feature is also what makes the alternate a real backup: the alternate is
+the same sentence with the name deleted and the signature feature kept, so a
+refused name still produces a recognizable picture.
+
+NAME THE WORK TOO
+
+When a beat is about the show itself rather than about a person, name the work
+and attach it to a visible object from it.
+
+Do not invent a canonical name.
+
+Do not use a canonical name merely because the narration mentions a person if
+that person is not visually present.
+
+Do not use a canonical name for the reference character. See 8.
+
+8. REFERENCE CHARACTER CANONICAL NAME OVERRIDE
+
+If the narration names the person represented by the reference character,
+DO NOT use that person's name in either image prompt.
+
+Always use:
+
+reference character
+
+The reference character's identity is controlled by the external reference
+image/system and must never be replaced with a canonical name.
+
+9. OTHER NAMED CHARACTERS IN ALTERNATE PROMPTS
+
+For characters OTHER THAN the reference character:
+
+PRIMARY:
+
+canonical name + physical scene
+
+ALT:
+
+physical description + physical scene
+
+The alternate must describe the same person.
+
+Do not replace a named historical person with reference character.
+
+ALTERNATE LENGTH
+
+A canonical name costs two words. A description that actually identifies the
+person costs about twenty. The alternate therefore does NOT share the primary's
+budget.
+
+Base target 20 to 30 words, as in the primary.
+Add up to 20 further words for EACH named character whose name you replaced.
+
+no named characters   20 to 30 words
+one named character   up to 50 words
+two named characters  up to 70 words
+
+Spend the extra words on the characters, not on the scene or the location.
+
+Describe each named character with:
+
+build and height
+hair colour and shape
+face covering or eyewear
+one garment with its colour
+the signature feature chosen for them in 7, word for word
+
+The alternate is the primary with the canonical name deleted and the signature
+feature kept. Nothing else about the character changes.
+
+Write each character's description ONCE and reuse it WORD FOR WORD in every
+beat that character appears in. A description paraphrased between beats is a
+different instruction to the image model each time, and the character visibly
+drifts across the video.
+
+10. MULTIPLE CHARACTERS
+
+If the script requires multiple characters, all required characters must appear
+in both primary and alternate.
+
+The reference character must also remain present.
+
+Example:
+
+PRIMARY:
+
+reference character watches Neil Armstrong and Buzz Aldrin beside the lunar
+module, Armstrong on the left, Aldrin beside an equipment rack, medium
+three-shot
+
+ALT:
+
+reference character watches two men in bulky white pressure suits with clear
+bubble helmets and rectangular life-support packs beside the lunar module, the
+taller one on the left, the shorter one beside an equipment rack, wider
+three-shot
+
+The alternate must preserve:
+
+same number of required characters
+same character identities
+same relative relationships
+same action
+same story moment
+
+The reference character remains present in both.
+
+11. GROUPS AND CROWDS
+
+If the narration requires a group, preserve the group in both prompts.
+
+The reference character remains separate from the group unless the narration
+specifically makes them a member of it.
+
+Example:
+
+PRIMARY:
+
+reference character watches three NASA engineers in headsets crowded around
+one blue console, all turning toward him, medium-wide shot
+
+ALT:
+
+reference character watches three doodle engineers in pale shirts and headsets
+crowded around one blue console, all turning toward him, wider side angle
+
+12. DO NOT INVENT CHARACTERS
+
+The reference character is NOT considered an invented character.
+
+They are a mandatory persistent visual narrator.
+
+Additional characters should only appear when:
+
+the narration explicitly requires them
+the visual event logically requires them
+the plan requires them
+they are needed to depict the described interaction
+
+Do not add random:
+
+astronauts
+engineers
+soldiers
+scientists
+bystanders
+crowds
+family members
+movie directors
+
+just to make the frame more populated.
+
+The only exception is the mandatory reference character.
+
+13. SAME CAST IN PRIMARY AND ALTERNATE
+
+The primary and alternate must depict the same required cast.
+
+The reference character must appear in both.
+
+If PRIMARY contains:
+
+reference character + Neil Armstrong + Buzz Aldrin
+
+ALT must contain:
+
+reference character + physical Neil Armstrong description +
+physical Buzz Aldrin description
+
+Do not remove a required character in the alternate.
+
+Do not introduce a new required character in the alternate.
+
+Do not merge two distinct characters into one.
+
+Do not replace any required character with the reference character.
+
+14. SCRIPT IS READ-ONLY
+
+Every narration string in the output must be byte-identical to the input.
+
+This includes emotion tags.
+
+Never:
+
+reword
+resize
+split
+merge
+fix grammar
+swap words
+add clauses
+remove clauses
+reorder beats
+add beats
+drop beats
+
+If a location already exists in Pass 1, preserve it unchanged.
+
+If a beat has no location, generate one.
+
+Generated locations are the ONLY new narrative-supporting information that may
+be introduced by the visual pass.
+
+The visual prompt may interpret the narration, but it must NEVER modify the
+narration.
+
+15. LOCATION GENERATION
+
+The input may contain no locations.
+
+Before creating image prompts, inspect every beat and determine whether it has
+a usable physical location.
+
+If a usable location is present:
+
+preserve it exactly
+reuse it consistently
+set its visual_anchor to ""
+
+If a location is absent:
+
+invent a concrete physical location based on the narration.
+
+If the existing location is too generic to support useful visualization, you
+may replace it with a more specific generated physical location ONLY when the
+location was not explicitly supplied by the original plan.
+
+Never overwrite an explicit Pass 1 location merely because you prefer another
+one.
+
+Every beat must ultimately have a physical location.
+
+A generated location should answer:
+
+"Where could I physically stage this narration so that the resulting image is
+interesting and immediately connected to the subject?"
+
+THE REAL SETTING WINS WHEN THERE IS ONE
+
+If the narration retells a story that has its own known setting, use that
+setting. A metaphor location, an evidence room or a storytelling environment
+is for narration that has NO physical place of its own.
+
+Getting this wrong looks like this: a section about a modern Japanese school
+story staged in a wood-panelled detective study with a chessboard, a brass
+magnifying lens and a deerstalker hat. Those props come from a different
+story. They tell the viewer they are watching the wrong thing.
+
+Do not import the furniture of a genre the subject does not belong to.
+
+Match the location to the subject's own world: its country, its period, its
+kind of building.
+
+The location may be:
+
+literal
+reconstructed
+archival
+investigative
+scientific
+historical
+technical
+domestic
+institutional
+industrial
+governmental
+eccentric
+slightly absurd
+
+depending on the narration.
+
+Do not use random locations unrelated to the subject.
+
+16. LOCATION DESIGN
+
+Locations are chapter names, not pictures. Keep them short and concrete so a
+reader of the JSON can see where each chapter starts:
+
+the pit lane
+the factory
+race weekend
+the money
+
+Aim for 4 to 8 locations in a video. A location change is a dissolve, so do
+not change location every few beats.
+If the script says "format": "facts_short" (a ~50 second facts reel), use one
+location per fact instead: 3 to 5 in total, and no "the comment break".
+
+17. LOCATION VISUAL ANCHOR
+
+plan.locations[].visual_anchor is ALWAYS "".
+
+The white page is the only background. Anything written here would be pasted
+into every beat of the location and draw a room over the white page.
+
+18. LOCATION CONTINUITY
+
+If multiple beats clearly belong to the same conceptual environment, reuse the
+same location.
+
+Do not invent a completely new room for every sentence.
+
+A location can evolve through:
+
+movable objects
+characters
+evidence
+equipment
+temporary activity
+
+In this video a location is one continuously animated scene: it opens with one
+picture and evolves through edits (Section 0C). The camera only changes at a
+redraw.
+
+Create a new location when:
+
+the subject changes substantially
+the physical environment needs to change
+the story moves to a fundamentally different setting
+another environment provides substantially better visualization
+
+Maintain strong continuity within recurring locations.
+
+19. LOCATION NAME RULE
+
+Every beat MUST have a location.
+
+Every location must have a short concrete name.
+
+Good:
+
+"forgotten aerospace archive"
+
+"underground radio monitoring room"
+
+"cramped evidence workshop"
+
+"government map room"
+
+Bad:
+
+"the mystery"
+
+"the conspiracy"
+
+"the problem"
+
+"the evidence"
+
+"the past"
+
+A location name must describe a physical place.
+
+20. DO NOT WRITE THE LOCATION INTO THE BEAT
+
+The location is never drawn. Do not describe it, its walls, its floor or its
+furniture in a beat.
+
+The beat prompt describes what changes from beat to beat:
+
+characters
+actions
+body positions
+reference character reaction
+important objects
+camera position
+framing
+story-specific changes
+
+21. SETTING ANCHOR
+
+plan.setting_anchor is ALWAYS "". Same reason as Section 17.
+
+22. PRIMARY IMAGE PROMPT
+
+Each image_prompt is one single line.
+
+Target 12 to 20 words with no named characters in the frame.
+
+Add up to 10 further words for EACH named character, to pay for their
+canonical name and their signature visible feature:
+
+no named characters    12 to 20 words, hard ceiling 24
+one named character    up to 30 words
+two named characters   up to 40 words
+
+Spend the extra words on the characters, never on scenery. There is no
+scenery: the frame is a white page.
+
+A name is never dropped to stay inside a word count. If the prompt is too
+long, cut scenery, cut the second object, cut the adjective on the furniture.
+Never cut the name.
+
+Start lowercase.
+
+Do not include the location name.
+
+The primary prompt must combine:
+
+reference character
+canonical names for other named characters when visually present
+each named character's signature visible feature
+physical action or pose
+at most two important objects or figures
+the colour of one or two key objects
+framing
+a clear, exaggerated reaction from the reference character
+
+The reference character does not have to be the main subject.
+
+Example:
+
+reference character stands with a bored skeptical expression beside one
+astronaut doodle planting a red and white flag, medium-wide shot
+
+23. REFERENCE CHARACTER PLACEMENT
+
+Placement is chosen only where a picture is drawn fresh: a location's first
+beat and a redraw (Section 0C). Inside a chain he stays where he is unless an
+edit moves him.
+
+Do not force the reference character into the center of every frame.
+
+Vary their placement naturally:
+
+foreground left
+foreground right
+seated in the background
+standing beside the evidence
+leaning against furniture
+partially turned toward the subject
+beside a board
+beside a photograph
+seated on the couch
+standing near the edge of the frame
+
+The reference character should feel like a recurring host silently reacting to
+the explanation.
+
+24. REFERENCE CHARACTER REACTION VARIATION
+
+Avoid repeating the exact same reaction in every beat.
+
+Inside a chain a reaction changes through an edit: "the character raises one
+eyebrow", "the character's eyes go wide".
+
+Vary subtle reactions according to context:
+
+bored
+skeptical
+unimpressed
+curious
+mildly annoyed
+confused
+resigned
+surprised
+thoughtful
+amused
+disappointed
+
+THE DEFAULT REACTION FOLLOWS THE SCRIPT'S STANCE
+
+There is no single default mood. Read the narration and the plan and decide
+what the script is doing, then pick the resting state from that:
+
+the script argues AGAINST its subject (a debunk, a myth, a bad idea)
+  resting state: skeptical, unimpressed, mildly irritated
+
+the script argues FOR its subject (a recommendation, a list of good things,
+praise, a pitch)
+  resting state: interested, warming, increasingly won over
+
+the script is neutral explanation
+  resting state: attentive, mildly curious
+
+A recommendation video whose host looks bored beside every recommendation is
+arguing with its own narration. The picture always loses that argument,
+because the viewer believes the face.
+
+THE REACTION MUST AGREE WITH THE LINE IT SITS UNDER
+
+Never pair a praising, awed, excited or emotional narration line with a bored,
+unimpressed, deadpan or reluctant reaction.
+
+Never pair a mocking or deflating line with an admiring reaction.
+
+Across a whole video the reactions should travel. Doubtful at the top, moved
+or convinced by the end, if that is the journey the narration takes.
+
+Default toward restrained reactions.
+
+Do not make every beat exaggerated.
+
+Do not make the character smile in every frame.
+
+Do not make the character angry in every frame.
+
+Do not make the character point at the camera in every frame.
+
+25. PHYSICAL DESCRIPTION
+
+Every non-named person must be physically described.
+
+Every group must be physically described.
+
+Every creature must be physically described.
+
+Every vehicle must be physically described.
+
+Every newly introduced major object must be physically described.
+
+The reference character does not need to be physically re-described if the
+reference system already provides their appearance.
+
+BAD:
+
+two engineers stand nearby
+
+GOOD:
+
+two engineers in pale blue shirts, dark trousers, black shoes, and headsets
+stand beside the console while reference character watches from the foreground
+
+26. RECURRING CHARACTER CONTINUITY
+
+Recurring characters must retain their core appearance.
+
+Keep consistent:
+
+approximate height
+build
+hair
+face-defining features
+clothing
+footwear
+accessories
+distinctive markings
+colour palette
+
+The reference character is always identified with:
+
+reference character
+
+Do not randomly change the reference character's appearance from beat to beat.
+
+Do not describe contradictory clothing or physical traits for the reference
+character.
+
+Other recurring characters should also remain visually consistent.
+
+27. NO DATES OR ERA NAMES IN VISUAL PROMPTS
+
+Never put dates, decades, centuries, or era names in:
+
+image_prompt
+image_prompt_alt
+visual_anchor
+setting_anchor
+
+Do not use:
+
+nineteenth century
+medieval
+Victorian
+1800s
+ancient era
+futuristic era
+1960s
+1980s
+
+Translate dates into visible physical evidence:
+
+clothing
+architecture
+equipment
+vehicles
+materials
+construction
+
+28. COLOUR REQUIREMENTS
+
+Every primary and alternate prompt should contain:
+
+a clear physical action or pose
+a clear spatial relationship
+a clear framing choice
+one important object or figure
+one named colour on that object
+
+Everything else stays black lines on white. Attach colours to visible objects.
+Never colour the background.
+
+29. OBJECT PLACEMENT
+
+Place things relative to the reference character or the frame, never relative
+to walls, floors or ceilings, which do not exist:
+
+beside the reference character
+at frame left
+held in both hands
+towering over the reference character
+crossing the foreground
+
+BAD:
+
+a steel cabinet set against the back wall
+
+GOOD:
+
+one grey steel cabinet towering over the reference character
+
+30. ONE OBJECT OF EACH TYPE
+
+Do not unnecessarily multiply identical objects.
+
+When exactly one object matters, use:
+
+one
+a single
+
+This reduces unwanted object multiplication.
+
+NEVER ASK FOR A COUNT ABOVE FIVE
+
+The image model cannot count. Past about five it produces an approximate
+smear, so an exact number in a prompt is spent words that buy an unreadable
+frame.
+
+BANNED in any prompt:
+
+thirty-seven slim black video cases
+sixty-four episodes on a shelf
+ten small gold trophy cups
+rows of twelve desks
+
+Numerals and spelled-out numbers above five are both banned.
+
+Show quantity by CONTRAST instead, which survives any render:
+
+one black notebook beside one enormous heap of identical notebooks
+a single red case standing in front of a wall of black cases
+one short shelf beside one shelf running the whole length of the wall
+
+Up to five of something is fine, and only when the count itself matters.
+
+31. POSITIVE CONSTRUCTION
+
+Describe visible things.
+
+Avoid unnecessary negative constructions.
+
+BAD:
+
+an empty room with no windows
+
+GOOD:
+
+one closed steel door beside the reference character
+
+32. NO STYLE INSTRUCTIONS
+
+Never include:
+
+art style
+medium
+rendering style
+aspect ratio
+camera brand
+artistic movement
+illustration style
+cinematic
+photorealistic
+realistic
+anime style
+3D render
+
+The pipeline supplies visual style separately.
+
+33. FRAMING
+
+Use explicit framing.
+
+Examples:
+
+wide shot at eye level
+medium shot
+close-up
+low-angle shot
+high-angle shot
+three-quarter view
+medium two-shot
+long shot
+overhead shot
+
+Framing is chosen only where a picture is drawn fresh: a location's first
+beat and a redraw (Section 0C). Inside a chain the framing never changes;
+edits keep it. Vary framing between locations and between redraws, never
+between edits.
+
+The framing can change the reference character's position while preserving the
+same story moment.
+
+34. BACK-OF-CAMERA CONTINUITY
+
+If using:
+
+from behind
+rear view
+walking away
+facing away
+over the shoulder
+
+make the physical orientation explicit.
+
+Do not describe front-facing anatomy in a rear-facing shot.
+
+WHEN THE REFERENCE CHARACTER IS SEEN FROM BEHIND, SAY HE HAS NO FACE
+
+The reference image is a single front-facing pose. Asked for his back, the
+image model has nothing to work from, pastes the front-facing head onto a
+rear-facing body, and the head comes out rotated 180 degrees.
+
+Any prompt that turns the reference character away from the camera MUST carry
+this clause, word for word:
+
+showing the back of his plain white head with no face
+
+This applies to the alternate as well as the primary.
+
+It applies only when the REFERENCE CHARACTER is the one turned away. If the
+camera sits behind another character's shoulder, phrase it as "past the
+shoulder of X" so the rule is not triggered for the wrong person.
+
+35. AVOID PHOTOGRAPHIC TRIGGER LANGUAGE
+
+The ONLY exception is the exact photo cutout phrase from Section 0B.
+
+Avoid unnecessary rendering language such as:
+
+lighting
+lit
+dimly lit
+sunlit
+moonlit
+lamplight
+backlit
+overcast
+glow
+glowing
+gleaming
+shiny
+sparkling
+shadowy
+haze
+hazy
+blurred
+out of focus
+depth of field
+cinematic
+realistic
+photo
+photographic
+atmospheric
+dramatic
+magnificent
+
+Describe physical objects instead.
+
+A PHOTOGRAPH INSIDE THE SCENE IS STILL A RENDER WORD
+
+Even when a picture is a genuine physical object in the room, the word
+"photograph" or "photo" pushes the whole frame toward a photographic render.
+
+Call it what it physically is:
+
+a framed portrait of a smiling brown-haired woman
+a small framed picture on the shelf
+a square paper print pinned to the wall
+
+36. HAND AND GRASPING CONTROL
+
+Avoid unnecessary hand-specific actions.
+
+Prefer:
+
+leaning against
+standing over
+sitting beside
+crouching beside
+resting one arm across
+positioned beside
+standing behind
+kneeling near
+looking toward
+watching
+observing
+
+If an object is important, place it:
+
+on a surface
+at the character's feet
+beside the character
+against nearby structure
+
+37. CONTAINERS
+
+Do not name containers by their contents.
+
+BAD:
+
+vaccine vials inside a medical box
+
+GOOD:
+
+small glass vials with metal caps arranged inside a rectangular white
+plastic case with molded compartments
+
+Describe:
+
+shape
+material
+colour
+fittings
+physical arrangement
+
+38. FUNCTION-NAMED SURFACES
+
+Do not rely on functional labels.
+
+BAD:
+
+a control panel
+
+GOOD:
+
+a rectangular grey metal panel with rows of small circular dials, toggle
+switches, red indicator lamps, and black cables entering its lower edge
+
+39. TEXT AND LETTERING
+
+Readable words appear ONLY as a Section 0B label: 1 to 3 words in double
+quotes, at most 1 beat in 4.
+
+Every other surface that would carry writing (screens, papers, notebooks,
+posters, scoreboards) is described by what it shows, not what it says:
+
+a monitor showing a wavy green line
+a sheet of white paper covered with dense dark marks
+
+Never use the words headline, titled, inscription or blueprint. Never ask for
+a screen showing words.
+
+Clothing in a colour is a PLAIN garment: "a plain red jersey", "a plain blue
+cap". A colour word on clothing without "plain" gets written on it as text:
+"two hockey players in red and blue jerseys" came back with RED and BLUE
+lettered across their chests (2026-11-02). A real team or player keeps their
+number, which is a real detail ("a blue and orange number 97 jersey").
+
+39B. DO NOT COVER THE REFERENCE CHARACTER
+
+The style block asks for childlike art, and the reference character reads as a
+small childlike figure. Putting a covering over him trips the image tool's
+safety filter.
+
+Never write him:
+
+under a blanket
+wrapped in a sheet
+tucked into a bed
+under a quilt or towel
+covered by cloth of any kind
+
+Observed: a beat staging him on a couch with a blanket over his knees was
+refused in BOTH its primary and its alternate, and the run stopped dead. The
+same beat staged sitting back with one arm along the cushions passed.
+
+Show him resting by his posture instead: sitting back, slouched, feet up,
+one arm along the cushions, leaning on the armrest.
+
+40. GRAPHIC CONTENT
+
+Avoid unnecessary graphic content.
+
+When violence is involved, use safe visible aftermath where possible.
+
+Preserve the story event without unnecessarily depicting graphic injury.
+
+41. IMAGE_PROMPT_ALT
+
+The alternate is the backup prompt.
+
+It MUST depict the same:
+
+reference character
+other required characters
+actions
+story moment
+location
+important objects
+story event
+reference character reaction category
+
+The alternate MUST contain:
+
+reference character
+
+The alternate MUST NOT use canonical names for other named characters.
+
+Instead, describe those characters physically, keeping the signature feature
+from the primary word for word. See 7.
+
+The alternate is a name-free version of the same picture, not a second guess
+at what the picture should be. If the only difference between primary and
+alternate is the camera angle, the primary is missing its names and both
+prompts are wrong.
+
+The alternate must not remove the reference character simply because the
+historical subject is different.
+
+41B. EDIT_ALT
+
+Every beat with an edit also carries edit_alt: the backup edit, sent instead
+when Flow refuses the edit. Flow checks the finished picture as well as the
+words, so a refusal is often about what the picture would show, not how the
+edit is worded.
+
+The edit_alt MUST:
+
+reach the same story moment as the edit
+leave the picture holding the same things the edit leaves, called by the
+same words, because the next edit builds on them
+follow every edit rule in Section 0C: "the character", no names, no camera,
+no style, the hands rules, the page limits
+
+The edit_alt shows the moment a different way. It is not the same action
+reworded: a reworded edit is refused like the original.
+
+Refusals seen so far, so keep them out of edit_alt:
+
+a rear view of a figure's body (a round body seen from behind)
+a photo cutout (use a doodle of the same object)
+
+edit: "the cat turns its back to the character, hiding its one eye"
+edit_alt: "the grey cat covers its face with both front paws"
+
+42. ALTERNATE STAGING
+
+The alternate must differ meaningfully from the primary.
+
+Change at least one major visual variable.
+
+Preferably change two.
+
+Possible changes:
+
+camera distance
+framing family
+foreground object
+reference character position
+other character position
+closest character
+visible environmental feature
+camera height
+viewing angle
+spatial arrangement
+
+Do not merely reorder words.
+
+The alternate is a genuine backup angle.
+
+The alternate must still preserve the same story event and cast.
+
+43. REFERENCE CHARACTER + HISTORICAL SUBJECT RULE
+
+When a beat describes a historical event, separate the roles.
+
+The historical subject performs the historical action.
+
+The reference character observes or reacts.
+
+BAD:
+
+reference character plants the American flag on the moon
+
+if the narration is describing the Apollo astronauts doing so.
+
+GOOD:
+
+reference character watches from the foreground with a skeptical expression
+while Neil Armstrong stands beside the planted American flag, medium-wide shot,
+white fabric pressure suit, brushed metal equipment case, red flag stripes,
+blue equipment markings
+
+This distinction is extremely important.
+
+The reference character should not accidentally rewrite history.
+
+44. VISUALIZATION OF ABSTRACT OR SPOKEN CLAIMS
+
+When the narration discusses an idea rather than a physical event, visualize
+the idea using physical evidence, diagrams, objects, photographs, or reactions.
+
+The reference character can interact with or observe the visual explanation.
+
+Examples:
+
+For:
+
+Next problem: The shadows.
+
+Use:
+
+reference character stands beside a board displaying lunar photographs and
+simple shadow lines, looking mildly skeptical
+
+For:
+
+Okay, what about the stars?
+
+Use:
+
+reference character looks upward beside a dark lunar photograph while a bright
+surface photograph rests on a board nearby
+
+For:
+
+The Soviet Union.
+
+Use:
+
+reference character sits with a skeptical expression beside a physical globe
+and radio equipment while a Soviet operator appears in the background
+
+Do not force the reference character to literally become the thing being
+discussed.
+
+FACTS ARE NOT TROPHIES
+
+When the narration states a ranking, an award, a sales figure, an episode
+count, a box office record or a popularity claim, DO NOT stage it as a prize.
+
+Banned as the subject of a beat:
+
+trophies
+medals
+podiums
+crowns
+rosettes
+certificates
+stacks of gold coins
+display cases
+a shelf of identical boxes standing for an episode count
+
+These props are interchangeable. Five different subjects staged with five
+trophies produce five frames that look like the same frame, and the viewer
+learns nothing about which subject is which. At most ONE award prop may appear
+in an entire video, and only when the narration is literally about receiving
+an award.
+
+Stage the achievement with the thing that achieved it.
+
+BAD, for "it stayed top of the rankings for ten years":
+
+reference character stands beside a podium stacked with ten gold trophy cups
+
+GOOD, for the same line:
+
+reference character looks up at the towering hollow steel armor of Alphonse
+Elric standing over him, one steel hand resting on the workbench, low-angle
+shot
+
+BAD, for "only thirty-seven episodes with zero filler":
+
+reference character beside a shelf holding thirty-seven slim black video cases
+
+GOOD, for the same line:
+
+reference character watches Light Yagami from Death Note, a neat brown-haired
+boy in a dark school blazer, writing at speed in the black notebook while one
+untouched notebook lies beside him, medium two-shot
+
+The number stays in the narration, where it is already clear. The picture's
+job is the subject, not the scoreboard.
+
+45. VISUAL METAPHOR ON THE WHITE PAGE
+
+When the narration is hard to show literally, make ONE simple visual metaphor
+out of the reference character and one or two objects. Exaggerate size and
+contrast instead of adding things.
+
+Narration about something enormously expensive:
+
+reference character holding one tiny coin beside one gold race car towering
+over him
+
+Narration about a rule nobody understands:
+
+reference character staring, eyes spinning, at one huge scroll unrolling past
+the frame edge
+
+Narration about a team of hundreds:
+
+reference character dwarfed by three doodle engineers, a sign reading "x200"
+
+The metaphor carries the beat. Never build a room to explain it.
+
+46. FINAL VALIDATION
+
+Go through every beat individually.
+
+Do not rely on memory.
+
+SCRIPT INTEGRITY
+
+Check:
+
+every narration is byte-identical
+emotion tags are unchanged
+beat count matches exactly
+beat order matches exactly
+explicit Pass 1 locations are unchanged
+every beat has a location
+every location matches a plan location
+no narration was rewritten
+no beat was split
+no beat was merged
+no beat was added
+no beat was dropped
+
+LOCATION GENERATION
+
+Check:
+
+if Pass 1 had no locations, locations were generated
+every beat has a physical location
+every plan location has "music": calm, playful, building or none
+the first location is none, no other location is none
+2 or 3 different moods, building at most once
+generated locations are relevant to the narration
+similar consecutive beats reuse locations when appropriate
+4 to 8 locations in total, plus "the comment break"
+(facts_short: one location per fact, 3 to 5 in total, no "the comment break")
+"the comment break" has the same music mood as the location before it
+every location has a corresponding plan.locations entry
+every visual_anchor is ""
+setting_anchor is ""
+no beat describes a room, wall, floor, sky or scenery
+
+SOUND EFFECTS (Section 48)
+
+Check:
+
+every "sfx" value is one of the tags in Section 48, spelled exactly
+no beat is tagged transition or outro
+at most 1 beat in 3 has a picture sound
+at most 6 reaction sounds in the whole video
+at most 2 of them are meme or sus
+reaction sounds are about 8 beats apart or more
+no sound in the first 3 beats except a picture sound that fits the hook
+every tag matches what that beat's line literally says
+awkward only where someone is embarrassed in that moment, never on irony
+
+WHITE PAGE (Section 0B)
+
+Check:
+
+every frame is the reference character plus at most two other things
+no group larger than three figures
+colour on one or two key objects only
+at most 1 beat in 4 carries a quoted label, 1 to 3 words, counting edits
+every label is drawn big
+plan.cast exists and every chapter shows at least one of its icons
+no real person is shown doing something the narration does not say of them
+every cast member enters through an image_prompt, never through an edit
+every edit that adds a thing says where it goes and how big it is
+each beat's edit shows what that beat says
+every label is removed by the next beat's edit, unless that beat is still
+about it
+every vehicle and object is named by its exact kind, never by brand alone
+cast members are in the opening picture of their location wherever possible
+every location was planned as one scene, and its edits go somewhere
+no two pictures in a row look the same
+about 1 beat in 10 has a photo cutout (hard limit 1 in 6), never two in a row
+every photo cutout uses the exact phrase and is one object or one plan.cast
+person, with everything else in the frame doodle
+every photo beat's image_prompt_alt is a doodle, with no photo cutout
+
+REFERENCE CHARACTER
+
+For EVERY beat that has an image_prompt:
+
+image_prompt contains the exact phrase reference character
+image_prompt_alt contains the exact phrase reference character
+reference character is physically present
+reference character is not replaced by a proper name
+reference character is not replaced by a synonym
+reference character remains visually consistent
+reference character has a subtle reaction appropriate to the beat
+reference character does not automatically become the historical subject
+reference character does not replace required characters
+reference character can act as a quiet observer when the narration concerns
+another subject
+
+OTHER CHARACTERS
+
+For EVERY beat that has an image_prompt:
+
+identify all characters actually required by the visual event
+keep distinct characters visually distinct
+include all required characters in the primary
+include the same required characters in the alternate
+do not invent unnecessary characters
+do not remove required characters
+do not merge distinct characters
+do not turn other characters into reference character
+
+PRIMARY NAMING
+
+For other named characters:
+
+use canonical names when they are visually present
+canonical names are used for fictional characters too, not only real people
+no named character was silently downgraded to a generic description
+every named character carries their signature visible feature
+each character's signature feature is word for word identical in every beat
+when the video covers several named works, every one of them is named in at
+least one primary prompt
+do not use canonical names for the reference character
+do not add irrelevant canonical names
+canonical names must correspond to actual visible subjects
+
+Count the names before finishing. If the narration names characters or works
+and ZERO primary prompts contain a canonical name, this pass has failed and
+must be rewritten.
+
+ALTERNATE NAMING
+
+For other named characters:
+
+remove canonical names
+provide concrete physical descriptions
+preserve identity through appearance
+preserve the same character count
+preserve the same character relationships
+
+The reference character remains:
+
+reference character
+
+REFERENCE CHARACTER CONTINUITY
+
+Check:
+
+reference character appears in every beat
+reference character remains the same person
+reference character does not randomly change appearance
+reference character's clothing and physical traits remain consistent
+reference character's reactions vary naturally
+the resting emotional state matches the script's stance toward its subject,
+not a fixed default
+no praising narration line sits under a bored or unimpressed reaction
+the reactions travel across the video rather than repeating one state
+emotional reactions do not become exaggerated without reason
+narration emotion tags do not automatically dictate physical acting
+
+PROMPT COUNT
+
+Check:
+
+the first beat of every location has image_prompt and image_prompt_alt
+no other beat has them unless it redraws (Section 0C)
+a beat with an image_prompt has no edits; every other beat has exactly one
+every beat with an edit has an edit_alt that shows the moment differently
+every beat is exactly one picture: an image_prompt, or one edit
+no edit asks for a camera, a framing or a drawing style
+no edit says reference character or names a person
+no edit gives an arm or hand action to a figure whose hand holds something,
+and arm actions are at most one every 4 edits
+every adding edit names a spot, and no location uses fewer than three spots
+no location runs more than about 5 edits without a redraw
+no picture in a chain holds more than two things besides the reference
+character
+every primary is 20 to 30 words, plus up to 12 words per named character
+no primary with no named characters exceeds 35 words
+no name was dropped to fit a word count
+every alternate is 20 to 30 words plus up to 20 words per replaced name
+alternate character descriptions are word for word identical across beats
+no two primary prompts are identical
+no alternate is identical to its primary
+every alternate differs from its primary by removed canonical names, not by
+camera angle alone
+
+VISUAL QUALITY
+
+Check:
+
+no prompt asks for more than five of anything
+no beat uses an award, trophy, medal, podium, crown or box-count prop to stand
+in for a fact
+at least half the beats in each story section stage the story rather than the
+reference character beside an object
+each location belongs to its subject's own world
+clear subject identity
+clear physical action
+clear spatial relationship
+explicit framing
+one named colour on the key object
+the important object placed relative to the reference character
+recurring characters remain consistent
+story progression is visually represented
+reference character is visually integrated rather than awkwardly pasted into
+the frame
+
+BANNED BEHAVIOUR
+
+Check every prompt for:
+
+unnecessary negative construction
+abstract nouns
+dates
+decades
+centuries
+era names
+unexplained bare nouns
+generic environments
+generic replacement for named characters
+a canonical name removed from a primary because the character is fictional,
+copyrighted or recognizable
+a named character described only by clothing
+a signature feature paraphrased between beats
+exact counts above five
+numbers spelled out above five
+award props standing in for a ranking, a record or an episode count
+props borrowed from a genre the subject does not belong to
+a bored, deadpan or unimpressed reaction under a praising narration line
+a story section in which most beats are the reference character beside a prop
+an alternate that differs from its primary only by camera angle
+missing reference character
+missing script-required characters
+invented characters other than the mandatory reference character
+canonical character names replacing reference character
+canonical names in alternate prompts for other characters
+unnecessary text requests
+function-only object descriptions
+container contents used as container names
+style instructions
+aspect ratios
+photographic rendering instructions
+unnecessary graphic content
+vague spatial relationships
+duplicated framing between locations or redraws
+reference character performing an action that belongs to another historical
+subject
+reference character replacing another required character
+unnecessarily changing locations between related beats
+generic generated locations with no connection to the narration
+
+PRIMARY / ALTERNATE RELATIONSHIP
+
+For every beat that has an image_prompt:
+
+PRIMARY =
+reference character
++
+canonical names for other named characters when visually present
++
+each named character's signature visible feature
++
+concrete scene
++
+reference character reaction
+
+ALTERNATE =
+reference character
++
+the same signature visible features with the canonical names deleted
++
+concrete scene
++
+reference character reaction
+
+The alternate exists so that a name the image tool refuses still has a
+recognizable picture to fall back on. That only works if the primary carried a
+name in the first place.
+
+Both must depict:
+
+SAME REFERENCE CHARACTER
+SAME OTHER REQUIRED CHARACTERS
+SAME CAST
+SAME STORY ACTION
+SAME MOMENT
+SAME LOCATION
+SAME IMPORTANT OBJECTS
+SAME STORY EVENT
+
+The alternate must additionally change the staging enough to function as a real
+backup attempt.
+
+The reference character may move position between primary and alternate, but
+must remain the same person and remain an observer unless the script explicitly
+requires participation.
+
+47. MUSIC MOOD
+
+The background music changes with the scenes. Give every entry in
+plan.locations a "music" field with exactly one of these moods:
+
+calm      explaining, everyday life, setup, aftermath, wrapping up
+playful   light and upbeat: openings, fun facts, things going well
+building  rising stakes toward one big moment: competition, chaos, a
+          climax. Its peak lands at the END of the location, so give it
+          to the location where the story peaks.
+none      no music, narration only. Give it to the FIRST location and
+          nowhere else: the hook plays on the voice alone and the music
+          enters when the story moves to the second location.
+
+Use only these four words. Any other word stops the pipeline.
+
+Use 2 or 3 different moods per video, not counting none.
+
+Use building at most once, or on consecutive locations that lead to the
+same peak.
+
+A location revisited later keeps its mood, so its music comes back with it.
+
+Match the mood to what happens in the location, not to the topic as a whole.
+
+Example:
+
+"locations": [
+  {"name": "the gridiron field", "visual_anchor": "", "music": "none"},
+  {"name": "the living room couch", "visual_anchor": "", "music": "calm"},
+  {"name": "the super bowl stadium", "visual_anchor": "", "music": "building"}
+]
+
+Do not write a music_prompt.
+
+48. SOUND EFFECTS
+
+A few beats get a short sound effect. Give such a beat an "sfx" field with
+exactly one tag. The code picks the sound file and the timing from the tag:
+you only choose the tag.
+
+Picture sounds play the moment the beat's picture appears, under the voice.
+Give them to a beat whose picture shows the thing the sound belongs to:
+
+pop        something appears: a sign, a label, an object
+hit        a collision, a tackle, a punch, a throw
+boom       a big reveal, the biggest number
+suspense   tension, time running out, something about to happen
+fight      a fight, a match or a round starts
+money      money, prices, salaries, prize money
+correct    the right answer, a good idea, a rule that works
+wrong      illegal, a mistake, a rule broken, "no"
+celebrate  a title, a trophy, a win
+join       someone arrives or joins: a signing, a new player
+leave      someone leaves: a retirement, a departure, a sending off
+
+Reaction sounds play AFTER the line, in a short pause the code adds, so they
+never cover a word. Give them to a line the viewer should react to:
+
+shock      an unbelievable fact
+sad        a painful, heartbreaking outcome: a lost final, an injury
+dumb       a stupid or silly outcome: an own goal, a pointless rule
+fail       the moment something goes wrong: a missed shot, a crash,
+           a sure win thrown away, a plan that backfires. NOT a silly
+           rule or idea (that is dumb) and NOT a heartbreaking loss
+           (that is sad)
+awkward    someone is embarrassed, caught out or humiliated in that moment:
+           a promise broken in public, a boast that backfires. NOT irony
+           or a fall from greatness ("a tiny kingdom for a man used to
+           conquering countries" is not awkward: leave it untagged)
+sus        something suspicious, a scandal, a conspiracy
+meme       one big comic moment
+
+Limits (the pipeline stops on the first two):
+
+at most 6 reaction sounds in the whole video
+at most 2 of them are meme or sus
+at most 1 beat in 3 has a picture sound
+reaction sounds about 8 beats apart or more
+
+Do not tag transition or outro. Location changes and the outro get their
+sounds automatically.
+
+Most beats have no sound. A sound is punctuation: it lands because the
+beats around it are quiet. When unsure, leave it out.
+
+The sound reacts to the fact, it is not the joke. Tag what the line
+literally says (a tackle gets hit, a lost final gets sad). Never tag a
+plain setup line just to make it funnier.
+
+Keep the first 3 beats quiet: the hook plays on the voice alone. A picture
+sound on the hook picture is fine when it fits.
+
+Example:
+
+{"narration": "Throwing the ball ahead is strictly illegal.",
+ "location": "the backward pass pitch",
+ "edits": ["a big red sign reading \"NO FORWARD\" appears at the top of the frame"],
+ "sfx": "wrong"}
+
+{"narration": "They beat New Zealand by one single point.",
+ "location": "the world cup final",
+ "edits": ["the tag disappears and the player in black sinks to his knees"],
+ "sfx": "sad"}
+
+49. OUTPUT
+
+Output one raw JSON object and nothing else.
+
+Do not output:
+
+markdown fences
+explanations
+commentary
+validation notes
+analysis
+headings outside the JSON
+additional prose
+
+The final JSON must contain the complete pass 1 object with all required
+visual fields merged into it.
+
+The final object must preserve all original pass 1 information and add:
+
+plan.locations[].visual_anchor
+plan.locations[].music
+plan.setting_anchor
+beats[].image_prompt and beats[].image_prompt_alt where Section 0C asks for
+them
+beats[].edits: exactly one edit line on every beat without an image_prompt
+beats[].edit_alt: the backup for that edit, on every beat with edits
+beats[].sfx: one tag, only on the beats Section 48 gives a sound
+
+If Pass 1 contained no locations, the final object must additionally contain
+the generated location assignments required to make every beat physically
+visualizable.
+
+The final response must be valid JSON.
+
+No text may appear before or after the JSON.

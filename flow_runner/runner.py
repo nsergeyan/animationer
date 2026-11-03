@@ -553,6 +553,95 @@ def ensure_single_output(page) -> bool:
     return False
 
 
+# The run's aspect ratio, from frames.json ("16:9" or "9:16"). Module state like
+# _LADDER_RUNG: every frame of a run shares it.
+_ASPECT = "16:9"
+
+
+def _chip_aspect(page) -> str | None:
+    """The ratio the chip shows, or None when it shows no known marker."""
+    _, text = _model_chip(page)
+    for aspect, marker in config.ASPECT_CHIP_MARKERS.items():
+        if marker in (text or ""):
+            return aspect
+    return None
+
+
+def ensure_aspect(page) -> bool:
+    """
+    Set Flow's aspect ratio to the run's. True once it is set, or once the
+    click went through when the chip shows no known marker.
+
+    Same settings panel as ensure_single_output. A chip that clearly shows a
+    DIFFERENT ratio afterwards is a failure: a whole run in the wrong shape is
+    worse than no run.
+    """
+    shown = _chip_aspect(page)
+    if shown == _ASPECT:
+        print(f"[aspect] already {_ASPECT}")
+        return True
+    print(f"[aspect] switching to {_ASPECT}")
+    chip, text = _model_chip(page)
+    if chip is None:
+        print("[aspect] model chip not found")
+        return False
+    try:
+        chip.click()
+        page.wait_for_timeout(1000)
+    except Exception as exc:
+        print(f"[aspect] could not open the settings ({type(exc).__name__})")
+        return False
+    option = find_clickable_with_text(page, _ASPECT)
+    if option is None:
+        print(f"[aspect] no {_ASPECT} option in the settings panel")
+        diagnose(page, f"{_ASPECT} option not found")
+        page.keyboard.press("Escape")
+        return False
+    try:
+        option.click(timeout=config.CLICK_TIMEOUT_MS)
+    except PlaywrightTimeoutError:
+        print(f"[aspect] the {_ASPECT} option could not be clicked")
+        return False
+    page.wait_for_timeout(800)
+    page.keyboard.press("Escape")
+    page.wait_for_timeout(800)
+
+    shown = _chip_aspect(page)
+    if shown == _ASPECT:
+        print(f"[aspect] now {_ASPECT}")
+        return True
+    if shown is None:
+        _, text = _model_chip(page)
+        print(f"[aspect] clicked {_ASPECT}; the chip shows no known marker "
+              f"({' '.join(text.split())[:48]!r}), the first image's shape "
+              f"will confirm it")
+        return True
+    print(f"[aspect] the chip still shows {shown}")
+    return False
+
+
+def _right_shape(width: int, height: int) -> bool:
+    """Is a width x height image the run's shape (tall for 9:16, else wide)?"""
+    return (height > width) == (_ASPECT == "9:16")
+
+
+def _check_shape(dest: Path) -> None:
+    """
+    Stop the run when a saved image is not the run's shape. The image is
+    deleted first, so a resume does not count it as done.
+    """
+    from PIL import Image
+    try:
+        with Image.open(dest) as img:
+            width, height = img.size
+    except Exception:
+        return  # unreadable here; the render will show it
+    if _right_shape(width, height):
+        return
+    dest.unlink()
+    raise WrongAspect(f"{dest.name} came out {width}x{height}, not {_ASPECT}")
+
+
 def ensure_model(page) -> bool:
     """
     Switch Flow to the run's current model if it is not already selected.
@@ -813,13 +902,26 @@ _FIND_PROMPT_ADD_JS = """
     b => (b.innerText || '').trim() === agentText);
   if (!agent) return null;
 
+  // Search only inside the prompt bar: the nearest ancestor of Agent that
+  // also holds the generate button. 2026-11-02: tall 9:16 gallery tiles
+  // reach under the floating bar, and a tile's hidden hover button sat
+  // closer to Agent than the real +, so the run clicked an invisible button.
+  let bar = agent.parentElement;
+  while (bar && !bar.querySelector('[aria-label="Start generation"]'))
+    bar = bar.parentElement;
+  const pool = bar ? [...bar.querySelectorAll('button, [role="button"]')]
+                   : clickable;
+
   const a = agent.getBoundingClientRect();
   const centre = (r) => [r.left + r.width / 2, r.top + r.height / 2];
   const [ax, ay] = centre(a);
 
   let best = null, bestDist = Infinity;
-  for (const b of clickable) {
+  for (const b of pool) {
     if (b === agent) continue;
+    // A hover button is in the layout but hidden until hovered.
+    if (b.checkVisibility && !b.checkVisibility(
+          {opacityProperty: true, visibilityProperty: true})) continue;
     const text = (b.innerText || '').trim().toLowerCase();
     const label = (b.getAttribute('aria-label') || '').toLowerCase();
     // Match the FIRST TOKEN, not the whole string. These controls render as a
@@ -935,10 +1037,27 @@ def _open_asset_picker(page) -> bool:
     print("[ref] opening reference picker via the prompt bar +")
     try:
         trigger.click(timeout=config.CLICK_TIMEOUT_MS)
-    except PlaywrightTimeoutError:
-        print("[ref] the + was found but something intercepted the click")
+    except PlaywrightTimeoutError as exc:
+        # Playwright's first line says WHY: "intercepts pointer events",
+        # "not enabled" or "not stable". 2026-11-02 a run died here twice with
+        # no cover visible in the screenshot, and the reason was thrown away.
+        # The first line is only "Timeout exceeded"; the reason is further
+        # down Playwright's call log, so print the lines that name one.
+        lines = [l.strip() for l in str(exc).splitlines()]
+        reason = [l for l in lines if re.search(
+            r"intercepts|not enabled|not stable|not visible", l)]
+        print(f"[ref] the + did not take a normal click: {lines[0][:120]}")
+        for line in (reason or lines[1:4])[-3:]:
+            print(f"[ref]   {line[:160]}")
         diagnose(page, "prompt bar add button click intercepted")
-        return False
+        # A JS click fires on the button itself, skipping Playwright's
+        # checks. The poll below still confirms the picker really opened.
+        print("[ref] trying a direct click on the +")
+        try:
+            trigger.evaluate("(el) => el.click()")
+        except Exception as js_exc:
+            print(f"[ref] the direct click failed too ({type(js_exc).__name__})")
+            return False
 
     # The picker's contents load asynchronously, so poll rather than assume a
     # fixed wait is long enough.
@@ -1737,6 +1856,7 @@ _IDENTIFY_JS = """
     src: src,
     ready: el.complete && el.naturalWidth > 0,
     width: el.naturalWidth,
+    height: el.naturalHeight,
   };
 }
 """
@@ -1863,7 +1983,8 @@ def wait_for_new_image(page, baseline_ids: set[str], baseline_rejections: int = 
         # nothing at all: whether the new image was being read as pre-existing,
         # was still loading, or was simply not in the DOM produced identical
         # output, and those need completely different fixes.
-        skipped = {"pre-existing": 0, "duplicate": 0, "loading": 0, "small": 0}
+        skipped = {"pre-existing": 0, "duplicate": 0, "loading": 0, "small": 0,
+                   "wrong shape": 0}
         for element, info in _all_images(page):
             if info["id"] in baseline_ids:
                 skipped["pre-existing"] += 1
@@ -1876,6 +1997,13 @@ def wait_for_new_image(page, baseline_ids: set[str], baseline_rejections: int = 
                 continue
             if info["width"] < config.MIN_RESULT_WIDTH:
                 skipped["small"] += 1
+                continue
+            # The grid is virtualised, so an old image from an earlier video
+            # can scroll back in and look new. 2026-11-02 a 9:16 run took an
+            # old 16:9 frame that way. Never a candidate when it is the wrong
+            # shape; the real generation is still on its way.
+            if not _right_shape(info["width"], info.get("height", 0)):
+                skipped["wrong shape"] += 1
                 continue
             seen_ids.add(info["id"])
             fresh.append((element, info))
@@ -1990,6 +2118,10 @@ class SceneUnrecoverable(RuntimeError):
 
 class QuotaExhausted(RuntimeError):
     """Out of daily credits. Every remaining scene would fail the same way."""
+
+
+class WrongAspect(RuntimeError):
+    """A saved image is not the run's shape. Every later frame would be too."""
 
 
 class ModelQuotaExhausted(RuntimeError):
@@ -2366,6 +2498,7 @@ def _attempt(page, name: str, prompt: str, ensure=None) -> None:
         raise RuntimeError(f"Refusing to save pre-existing image {media_id}")
 
     dest = save_image(page, element, src, name)
+    _check_shape(dest)
     remember_media_id(name, media_id)
     # Timed so a model change (Lite vs full) can be compared with real numbers
     # rather than guessed at. Typing dominates wall clock; this is the part a
@@ -2477,11 +2610,15 @@ def main() -> int:
     if args.output:
         config.OUTPUT_DIR = args.output
 
+    global _ASPECT
     frames = []
     if args.inspect:
         pass
     elif args.frames:
         frames = load_frames(args.frames)
+        # Older frames.json files have no aspect; they are all 16:9.
+        _ASPECT = json.loads(args.frames.read_text(encoding="utf-8")).get(
+            "aspect", "16:9")
     else:
         scenes = load_scenes(args.scenes)
         # Fallback descriptions, line-for-line with scenes.txt. Used only when
@@ -2560,6 +2697,12 @@ def main() -> int:
         # chip): double the credits, and with two new images the one an edit
         # picks as "newest" is a coin toss. Switch it to one; if that cannot
         # be done, stop rather than run on it.
+        if not ensure_aspect(page):
+            print(f"\nStopping: could not set Flow to {_ASPECT}. Open the model "
+                  f"menu in the prompt bar, pick {_ASPECT}, then re-run.")
+            context.close()
+            return 2
+
         if not ensure_single_output(page):
             print("\nStopping: Flow makes more than one image per prompt and "
                   "the switch to x1 did not take.")
@@ -2656,6 +2799,12 @@ def main() -> int:
                     print(f"Reword beat {frame['beat']} in script.json, then re-run.")
                     context.close()
                     return 4
+                except WrongAspect as exc:
+                    print(f"\n[STOPPED] {exc}")
+                    print(f"Open the model menu in the prompt bar, pick "
+                          f"{_ASPECT}, then re-run. It resumes at {name}.")
+                    context.close()
+                    return 2
                 except Exception as exc:
                     print(f"    [FAIL] {type(exc).__name__}: {exc}")
                     if attempt == 1:

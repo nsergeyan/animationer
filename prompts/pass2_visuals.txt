@@ -344,10 +344,13 @@ batter gripping his bat with both hands, who grew a third hand. So:
 Keep track of what each figure's hands are doing through the chain, from the
 opening picture on.
 
-Never give the character an arm or hand action while either hand is
-holding something. No pointing, waving, wrist checks, crossed arms, shrugs,
+Never give the character an arm or hand action in an edit, even with both
+hands free. No reaching, pointing, waving, wrist checks, crossed arms, shrugs,
 head scratches, clapping or holding up fingers. Use a face or head reaction
 instead, or make the change around him (a sign, a tag, an object appearing).
+"The character's right arm reaches up, rubbing out the numbers", hands empty,
+still came back with a third arm growing out of his head (2026-11-02). An arm
+pose belongs in an image_prompt, where the figure is drawn fresh.
 
 When both hands are free, at most ONE arm action every 4 edits, and say which
 arm and where it ends up: "the character's right arm points at the sign".
@@ -455,6 +458,12 @@ the chain is due a redraw anyway.
 
 The page limit still holds: at most two things besides the reference
 character (Section 0B).
+
+A nameless sports figure carries the gear that names the sport in every
+picture it appears in fresh: a hockey player has a helmet and a stick, a
+tennis player a racket. "Three players swarm toward one red goal net" with no
+gear came back as soccer, ball and all, in a hockey video (2026-11-02). Name
+the sport's object too: "one red hockey goal net", "one black puck".
 
 1. THE REFERENCE CHARACTER: PERSISTENT VISUAL NARRATOR
 
@@ -1624,6 +1633,12 @@ a sheet of white paper covered with dense dark marks
 
 Never use the words headline, titled, inscription or blueprint. Never ask for
 a screen showing words.
+
+Clothing in a colour is a PLAIN garment: "a plain red jersey", "a plain blue
+cap". A colour word on clothing without "plain" gets written on it as text:
+"two hockey players in red and blue jerseys" came back with RED and BLUE
+lettered across their chests (2026-11-02). A real team or player keeps their
+number, which is a real detail ("a blue and orange number 97 jersey").
 
 39B. DO NOT COVER THE REFERENCE CHARACTER
 

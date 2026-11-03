@@ -63,7 +63,13 @@ const BeatScene: React.FC<{ beat: Beat; durationInFrames: number }> = ({
   );
 };
 
-export const LectureVideo: React.FC<{ beats: Beat[] }> = ({ beats }) => {
+// width/height are read by Root's calculateMetadata (the video's size), not
+// here: every picture fills the frame whatever its shape.
+export const LectureVideo: React.FC<{
+  beats: Beat[];
+  width?: number;
+  height?: number;
+}> = ({ beats }) => {
   return (
     <TransitionSeries>
       {beats.flatMap((beat, i) => {

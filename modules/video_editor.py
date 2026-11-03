@@ -19,7 +19,8 @@ import config
 
 
 def render(manifest_path: Path, run_dir: Path,
-           moods: dict[str, str] | None = None) -> Path:
+           moods: dict[str, str] | None = None,
+           size: tuple[int, int] = (config.WIDTH, config.HEIGHT)) -> Path:
     """
     Render the video from the manifest and return the final .mp4 path.
 
@@ -34,7 +35,8 @@ def render(manifest_path: Path, run_dir: Path,
     # Remotion only sees what LectureVideo needs; the sound effects are mixed
     # in afterwards by mix_sfx.
     props = json.dumps({"beats": [{k: v for k, v in b.items() if k != "sfx"}
-                                  for b in beats]})
+                                  for b in beats],
+                        "width": size[0], "height": size[1]})
 
     cmd = [
         "npx", "remotion", "render",

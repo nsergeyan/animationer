@@ -33,14 +33,15 @@ def available() -> bool:
     return _python().exists()
 
 
-def make_clip(image: Path, out: Path, seconds: float) -> None:
-    """Render `image` drawing itself in over `seconds` to `out` (.mp4)."""
+def make_clip(image: Path, out: Path, seconds: float,
+              size: tuple[int, int]) -> None:
+    """Render `image` drawing itself in over `seconds` to `out` (.mp4) at `size`."""
     import config
 
     out.parent.mkdir(parents=True, exist_ok=True)
     subprocess.run([str(_python()), __file__, str(config.DRAW_IN_REPO),
                     str(image), str(out), str(seconds),
-                    str(config.FPS), str(config.WIDTH), str(config.HEIGHT)],
+                    str(config.FPS), str(size[0]), str(size[1])],
                    check=True)
 
 

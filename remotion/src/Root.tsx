@@ -19,11 +19,15 @@ export const RemotionRoot: React.FC = () => {
         // Both sides call totalFrames so the rule lives in exactly one place -
         // see the Timeline section of constants.ts for why summing the audio
         // is no longer enough.
+        //
+        // The size comes from the script's "aspect" (video_editor passes it),
+        // so one composition renders 16:9 and 9:16. WIDTH/HEIGHT is the
+        // default for a render started without it.
         return {
           durationInFrames: totalFrames(props.beats ?? []),
           fps: FPS,
-          width: WIDTH,
-          height: HEIGHT,
+          width: props.width ?? WIDTH,
+          height: props.height ?? HEIGHT,
         };
       }}
     />

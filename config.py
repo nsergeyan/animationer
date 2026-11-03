@@ -97,19 +97,34 @@ ELEVENLABS_API_KEY = os.getenv("ELEVENLABS_API_KEY")
 # chained video came back with captions nobody wrote ("CHECO?!", "WOW! LEWIS
 # HAMILTON!", "NEW CADDY"). The scribble clause above covers writing ON
 # things, not the model narrating the scene in big letters of its own.
+# 2026-11-02: "flat bucket-fill colour" became "flat solid colour". The first
+# hockey frame came back with a red BUCKET hanging off the player in the red
+# jersey: the model drew the paint tool's name as an object. Same failure as
+# rule 3 above (naming a paint program invites drawing the program).
 STYLE_BLOCK = (
     "Crude MS Paint doodle drawn shakily with a mouse on a plain white page. "
     "Thick wobbly black outlines, flat 2D, deliberately low-effort. People are "
     "simple doodle figures with big round eyes and exaggerated faces. Mostly "
-    "black lines on white, with a flat bucket-fill colour on one or two key "
+    "black lines on white, with a flat solid colour on one or two key "
     "objects only. A few things, drawn large, floating on empty white. Words "
     "appear only where the scene quotes them, in wobbly hand-drawn capitals; "
     "all other writing is unreadable scribble. The only words on the page are "
     "the quoted ones: no captions, titles or exclamations of its own. A photo "
     "cutout appears only "
     "where the scene asks for one. No application window, toolbar or canvas "
-    "edge. Keep the subject clear of all four edges. 16:9 horizontal."
+    "edge."
 )
+
+# The last sentence of every fresh prompt, by the script's "aspect". Split off
+# STYLE_BLOCK on 2026-11-02 when 9:16 reels arrived; the 16:9 sentence is the
+# exact text STYLE_BLOCK always ended with, so wide prompts are unchanged.
+# Instagram lays the caption and username over about the bottom fifth of a
+# reel, so a tall page keeps that band empty.
+STYLE_SHAPE = {
+    "16:9": "Keep the subject clear of all four edges. 16:9 horizontal.",
+    "9:16": ("Keep the subject clear of all four edges, and leave the bottom "
+             "fifth of the page empty white. 9:16 vertical."),
+}
 
 # --- Chained frames ----------------------------------------------------------
 # 2026-10-11: a beat can show several frames, and every frame after the first in
@@ -463,6 +478,13 @@ TARGET_SECONDS_BY_FORMAT = {"facts_short": 50.0}
 FPS = 30                                           # Remotion runs at 30fps
 WIDTH = 1920                                        # 16:9
 HEIGHT = 1080
+
+# Video size by the script's "aspect" (2026-11-02). 16:9 is the default and the
+# YouTube long-form shape; 9:16 is the phone-screen reel for Instagram, drawn
+# tall by Flow rather than cropped out of a wide picture. A script without
+# "aspect" is 16:9, so every older run renders as it always did.
+DEFAULT_ASPECT = "16:9"
+ASPECTS = {"16:9": (WIDTH, HEIGHT), "9:16": (HEIGHT, WIDTH)}
 
 # --- Transitions -------------------------------------------------------------
 # ALL of these mirror remotion/src/constants.ts and are kept in sync BY HAND.

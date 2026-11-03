@@ -450,10 +450,20 @@ def load_script(run_dir: Path) -> dict:
                     f"Beat {i} has no picture of its own, and it opens "
                     f"{'the video' if i == 1 else 'a new location'}, so there "
                     f"is no picture to hold. Give it an image_prompt.")
+    script_aspect(data)
     # Builds the frame list once purely to fail here, on the script, rather
     # than halfway through a Flow run.
     build_frames(data)
     return data
+
+
+def script_aspect(data: dict) -> str:
+    """The script's picture shape, config.DEFAULT_ASPECT unless it says otherwise."""
+    aspect = (data.get("aspect") or config.DEFAULT_ASPECT).strip()
+    if aspect not in config.ASPECTS:
+        raise SystemExit(f"script.json aspect {aspect!r} is not one of "
+                         f"{', '.join(config.ASPECTS)}.")
+    return aspect
 
 
 # --- Naming contract -------------------------------------------------------
@@ -637,6 +647,7 @@ def build_frames(data: dict) -> list[dict]:
     there, so the new place needs its own first picture.
     """
     setting_anchor, location_anchors = _anchor_map(data)
+    style = f"{config.STYLE_BLOCK} {config.STYLE_SHAPE[script_aspect(data)]}"
     frames: list[dict] = []
     for index, beat in enumerate(data["beats"], 1):
         loc = _loc(beat)
@@ -665,7 +676,7 @@ def build_frames(data: dict) -> list[dict]:
 
                 def full(t: str) -> str:
                     return " ".join(part for part in (
-                        config.STYLE_BLOCK, _fragment(_scene_text(t)), anchor
+                        style, _fragment(_scene_text(t)), anchor
                     ) if part)
 
                 frame["prompt"] = full(text)
@@ -923,6 +934,8 @@ def cmd_prompts(args) -> int:
     out_path.write_text(json.dumps({
         "generated_by": "pipeline.py prompts from script.json - do not edit "
                         "by hand, edit script.json and re-run",
+        # flow_runner sets Flow's aspect ratio from this before the first frame.
+        "aspect": script_aspect(data),
         "frames": frames,
     }, indent=2), encoding="utf-8")
 
@@ -1731,7 +1744,7 @@ def _has_photo(beat: dict) -> bool:
     return bool(re.search(r"\bphoto", beat.get("image_prompt") or "", re.I))
 
 
-def _draw_clip(run_dir: Path, image: Path) -> str:
+def _draw_clip(run_dir: Path, image: Path, size: tuple[int, int]) -> str:
     """
     The draw-in clip for `image`, made unless it is already there and newer
     than the picture. Delete draws/ to redo them after changing
@@ -1740,7 +1753,7 @@ def _draw_clip(run_dir: Path, image: Path) -> str:
     clip = run_dir / "draws" / f"{image.stem}.mp4"
     if not clip.exists() or clip.stat().st_mtime < image.stat().st_mtime:
         print(f"[manifest] drawing in {image.name}")
-        draw_in.make_clip(image, clip, config.DRAW_IN_SECONDS)
+        draw_in.make_clip(image, clip, config.DRAW_IN_SECONDS, size)
     # Relative to run_dir, which Remotion gets as --public-dir.
     return f"draws/{clip.name}"
 
@@ -1903,7 +1916,8 @@ def cmd_manifest(args) -> int:
             if _has_photo(beat):
                 print(f"[manifest] beat {index}: no draw-in, its picture has a photo")
             else:
-                entry["draw"] = _draw_clip(run_dir, image)
+                entry["draw"] = _draw_clip(run_dir, image,
+                                           config.ASPECTS[script_aspect(data)])
                 entry["draw_seconds"] = config.DRAW_IN_SECONDS
 
         frames = by_beat.get(index, [])
@@ -2105,8 +2119,10 @@ def cmd_render(args) -> int:
     if not manifest.exists():
         raise SystemExit(f"No manifest.json in {run_dir}. Run: pipeline.py manifest")
 
-    moods = music_moods(load_script(run_dir))
-    final = video_editor.render(manifest, run_dir, moods=moods)
+    data = load_script(run_dir)
+    moods = music_moods(data)
+    final = video_editor.render(manifest, run_dir, moods=moods,
+                                size=config.ASPECTS[script_aspect(data)])
     print(f"[render] done -> {final}")
     return 0
 
