@@ -37,637 +37,499 @@ FLOW_RUNNER = config.ROOT_DIR / "flow_runner" / "runner.py"
 # a run folder under output/ (see adopt_pasted_script) and makes the whole
 # video. Set it to {} to work on the most recent run instead.
 NEW_SCRIPT = {
-  "topic": "Hockey Explained",
+  "topic": "jujutsu-kaisen-explained",
   "format": "explainer",
   "aspect": "9:16",
   "plan": {
-    "spine_question": "How does professional ice hockey work and why is it so chaotic?",
+    "spine_question": "What is Jujutsu Kaisen and why is the whole world watching it?",
     "hook": {
-      "fact": "Hockey players can legally bare-knuckle fight during a game.",
-      "why_strange_to_a_newcomer": "In any other professional sport, throwing a punch gets you ejected or arrested, but in hockey, it's just a five-minute timeout.",
-      "source": "NHL Rulebook (Rule 46: Fighting)"
+      "fact": "In 2023, one anime set a Guinness World Record.",
+      "why_strange_to_a_newcomer": "It beat Attack on Titan and One Piece as the most in-demand animated show of 2023.",
+      "source": "Guinness World Records 2024 for Most in-demand animated TV show"
     },
     "deflations": [
       {
-        "assumed": "Goals are the only thing that matters for scoring records.",
-        "actual": "Wayne Gretzky has more assists than anyone else has total points.",
-        "who_decided": "NHL scoring system where both goals and assists count as points.",
-        "build_beat": "Take away all his goals.",
-        "drop_beat": "He still has the most points in hockey history."
+        "assumed": "The creator loves their most popular character.",
+        "actual": "Gege Akutami keeps mocking Satoru Gojo (told Gojo voters to pick Nanami).",
+        "who_decided": "Gege Akutami",
+        "build_beat": "He topped the fan popularity polls.",
+        "drop_beat": "[light chuckle] But his own creator keeps mocking him."
       }
     ],
     "cast": [
       {
-        "name": "Sidney Crosby",
-        "why": "A legendary veteran used to illustrate the blistering speed and skill required to play."
+        "name": "Yuji Itadori",
+        "why": "The teenage protagonist who accidentally starts everything by eating a cursed finger."
       },
       {
-        "name": "Connor McDavid",
-        "why": "The current face of the NHL, representing peak offensive production with his 138 points in 2026."
+        "name": "Ryomen Sukuna",
+        "why": "The ancient evil king of curses who shares Yuji's body."
       },
       {
-        "name": "Nathan MacKinnon",
-        "why": "Known for explosive speed, highlighting why shifts are so incredibly short and exhausting."
+        "name": "Satoru Gojo",
+        "why": "The blindfolded strongest teacher who drove the internet crazy."
       },
       {
-        "name": "Brad Marchand",
-        "why": "Famous for taking penalties and bending rules, perfectly introducing the penalty box."
-      },
-      {
-        "name": "Jordan Staal",
-        "why": "Captain of the 2026 Stanley Cup champion Carolina Hurricanes, showcasing the ultimate goal."
-      },
-      {
-        "name": "Wayne Gretzky",
-        "why": "The ultimate historical benchmark, holding a points record that perfectly illustrates impossible dominance."
+        "name": "Gege Akutami",
+        "why": "The one-eyed cat avatar author known for killing beloved characters."
       }
     ],
     "specifics": [
       {
-        "fact": "A standard NHL rink is 200 feet long.",
-        "source": "NHL Rulebook (Rule 1: Rink)",
-        "beat": 6
+        "fact": "Guinness World Record for most in-demand animated TV show.",
+        "source": "Guinness World Records 2024",
+        "beat": "In 2023, one anime set a Guinness World Record."
       },
       {
-        "fact": "Connor McDavid scored 138 points in the 2025-2026 season.",
-        "source": "NHL 2025-26 season statistics",
-        "beat": 21
+        "fact": "Manga circulation passed 150 million in late 2025.",
+        "source": "Weekly Shonen Jump Shueisha announcement December 2025",
+        "beat": "The manga has passed one hundred fifty million copies."
       },
       {
-        "fact": "A standard minor penalty is two minutes.",
-        "source": "NHL Rulebook (Rule 16: Minor Penalties)",
-        "beat": 40
-      },
-      {
-        "fact": "The regular season is 84 games long (since 2026-27).",
-        "source": "NHL Season Structure",
-        "beat": 44
-      },
-      {
-        "fact": "The Carolina Hurricanes won the 2026 Stanley Cup.",
-        "source": "2026 Stanley Cup Final results",
-        "beat": 49
-      },
-      {
-        "fact": "A team needs 16 playoff wins to secure the Cup.",
-        "source": "NHL Playoff Format",
-        "beat": 50
-      },
-      {
-        "fact": "Wayne Gretzky scored 2,857 points.",
-        "source": "NHL all-time records",
-        "beat": 56
+        "fact": "Season 3 aired in 2026 covering the Culling Game arc.",
+        "source": "Jump Festa 2026 announcement",
+        "beat": "It started in January 2026, after a two-year wait."
       }
     ],
     "facts_to_check": [
       {
-        "claim": "Connor McDavid scored 138 points in 2026.",
-        "source": "NHL 2025-26 season statistics"
+        "claim": "Jujutsu Kaisen broke the Guinness record for most in-demand animated TV show beating Attack on Titan and One Piece.",
+        "source": "Guinness World Records April 2024"
       },
       {
-        "claim": "The Carolina Hurricanes won the 2026 Stanley Cup.",
-        "source": "2026 Stanley Cup Final results"
+        "claim": "The manga ended serialization in 2024.",
+        "source": "Weekly Shonen Jump Issue 44 September 2024"
       },
       {
-        "claim": "Wayne Gretzky scored 2,857 points.",
-        "source": "NHL all-time records"
+        "claim": "The manga reached 150 million copies in circulation.",
+        "source": "Shueisha Announcement December 2025"
       },
       {
-        "claim": "Sidney Crosby is still an active player.",
-        "source": "NHL 2026 rosters"
-      },
-      {
-        "claim": "Nathan MacKinnon is an active player.",
-        "source": "NHL 2026 rosters"
-      },
-      {
-        "claim": "Brad Marchand is an active player.",
-        "source": "NHL 2026 rosters"
-      },
-      {
-        "claim": "Jordan Staal is the captain of the Carolina Hurricanes.",
-        "source": "2026 Stanley Cup Final rosters"
+        "claim": "Season 3 aired in early 2026 and covers the Culling Game arc.",
+        "source": "Jump Festa 2026 announcement"
       }
     ],
     "locations": [
-      {"name": "center ice fight", "visual_anchor": "", "music": "none"},
-      {"name": "the frozen rink", "visual_anchor": "", "music": "playful"},
-      {"name": "the scoring race", "visual_anchor": "", "music": "playful"},
-      {"name": "the team bench", "visual_anchor": "", "music": "calm"},
-      {"name": "the penalty box", "visual_anchor": "", "music": "playful"},
-      {"name": "the stanley cup final", "visual_anchor": "", "music": "building"},
-      {"name": "the gretzky record wall", "visual_anchor": "", "music": "calm"},
-      {"name": "the dressing room", "visual_anchor": "", "music": "calm"}
+      {"name": "the global ratings race", "visual_anchor": "", "music": "none"},
+      {"name": "sugisawa high school", "visual_anchor": "", "music": "calm"},
+      {"name": "jujutsu high training yard", "visual_anchor": "", "music": "playful"},
+      {"name": "the author's paper pile", "visual_anchor": "", "music": "calm"},
+      {"name": "the animation studio", "visual_anchor": "", "music": "playful"},
+      {"name": "the farewell altar", "visual_anchor": "", "music": "calm"},
+      {"name": "the culling game colony", "visual_anchor": "", "music": "building"},
+      {"name": "the sales summit", "visual_anchor": "", "music": "calm"}
     ],
     "setting_anchor": ""
   },
   "beats": [
     {
-      "narration": "[curious] Hockey players bare-knuckle fight.",
-      "location": "center ice fight",
-      "image_prompt": "two doodle hockey players, one in a plain red jersey and one in a plain blue jersey, gloves and sticks dropped at their skates, swing bare-knuckle punches in the upper middle, reference character in the lower middle staring wide-eyed, low-angle shot",
-      "image_prompt_alt": "reference character stands in the lower middle, mouth open, looking up at two doodle hockey players, one in a plain red jersey and one in a plain blue jersey, grabbing each other's collars and swinging fists, medium shot",
-      "sfx": "fight"
+      "narration": "[curious] In 2023, one anime set a Guinness World Record.",
+      "location": "the global ratings race",
+      "image_prompt": "reference character, curious, in the lower middle below Yuji Itadori from Jujutsu Kaisen, drawn as a crude wobbly doodle in the same simple style as the reference character, spiky pink hair and a black school uniform with a red hood, and a Titan from Attack on Titan, drawn as a crude wobbly doodle in the same simple style as the reference character, a plain black outline on the white page, an enormous bald giant with an oversized grinning mouth, towering to the top of the frame, low-angle shot",
+      "image_prompt_alt": "reference character stands in the lower middle, eyes wide, as an enormous bald giant with an oversized grinning mouth leans down from the top of the frame over a sturdy teenage boy with spiky pink hair and a black school uniform with a red hood in the centre, medium shot"
     },
     {
-      "narration": "The referees just watch them.",
-      "location": "center ice fight",
-      "edits": [
-        "a doodle referee in a black and white striped shirt appears at the top of the frame, arms folded, watching"
-      ],
-      "edit_alt": "a doodle referee in a black and white striped shirt leans in at the top of the frame, hands on his knees, calmly watching"
+      "narration": "It beat Attack on Titan.",
+      "location": "the global ratings race",
+      "edits": ["the giant shrinks to doll size and topples over at the pink-haired boy's feet"],
+      "edit_alt": "the giant sinks down until only its grinning bald head pokes up beside the boy's feet"
     },
     {
-      "narration": "[clears throat, deadpan] The punishment... is FIVE minutes.",
-      "location": "center ice fight",
-      "edits": [
-        "a big sign reading \"5 MIN\" appears beside the referee in the upper middle, the character's eyebrows rise"
-      ],
-      "edit_alt": "the character's eyelids droop as a big sign reading \"5 MIN\" drops in above the two players"
+      "narration": "It beat One Piece too.",
+      "location": "the global ratings race",
+      "edits": ["the fallen giant at the boy's feet disappears completely and one small yellow straw hat lands upside down at frame left"],
+      "edit_alt": "the fallen giant at the boy's feet disappears completely and one crumpled yellow straw hat lies flat beside the character"
     },
     {
-      "narration": "The game itself is fast.",
-      "location": "the frozen rink",
-      "image_prompt": "reference character in the lower middle whips his head round as Sidney Crosby in a black and gold number 87 jersey streaks up the page trailing white speed lines, low-angle shot",
-      "image_prompt_alt": "a stocky dark-haired player in a black helmet and a black and gold number 87 jersey rushes toward the top of the frame trailing white speed lines, reference character in the lower middle spinning to watch, eyes wide, high-angle shot"
+      "narration": "[calm] Jujutsu Kaisen became the most in-demand animated show on earth.",
+      "location": "the global ratings race",
+      "edits": ["the straw hat disappears and one big blue globe appears in the upper middle, the whole globe inside the frame"],
+      "edit_alt": "the straw hat disappears and one big blue globe floats above the pink-haired boy's head",
+      "sfx": "boom"
     },
     {
-      "narration": "Sidney Crosby steps on the ice.",
-      "location": "the frozen rink",
-      "edits": [
-        "the player in the black and gold number 87 jersey skates down into the upper middle, a spray of white ice behind him"
-      ],
-      "edit_alt": "a spray of white ice bursts behind the player in the black and gold number 87 jersey as he crouches low in the upper middle"
+      "narration": "The whole world was watching.",
+      "location": "the global ratings race",
+      "edits": ["six big doodle faces appear on the globe, every one staring down at the boy"],
+      "edit_alt": "two huge round eyes open on the globe, staring down at the pink-haired boy"
     },
     {
-      "narration": "The frozen playing surface is two hundred feet long.",
-      "location": "the frozen rink",
-      "edits": [
-        "a long yellow measuring tape appears at frame left, running up to the top of the frame, a big white tag reading \"200 FT\" at its top end"
-      ],
-      "edit_alt": "a long yellow measuring tape unrolls from the character's feet up to the top of the frame, a big white tag reading \"200 FT\" at its top end"
+      "narration": "But what exactly is it?",
+      "location": "the global ratings race",
+      "edits": ["the globe disappears and one big black question mark appears beside the character's head"],
+      "edit_alt": "the globe disappears and one big black question mark floats over the pink-haired boy's head"
     },
     {
-      "narration": "Players balance on tiny sharpened steel blades.",
-      "location": "the frozen rink",
-      "edits": [
-        "the tape disappears and a real photo cutout of a hockey skate, roughly pasted onto the drawing, appears big in the centre beside the character"
-      ],
-      "edit_alt": "the tape disappears and one big doodle hockey skate with a silver steel blade appears in the centre beside the character"
+      "narration": "[thoughtful] The story begins in modern Japan.",
+      "location": "sugisawa high school",
+      "image_prompt": "reference character, attentive, in the lower middle below one tall grey school building with a round clock, full-body shot",
+      "image_prompt_alt": "reference character stands at frame left in the lower middle, mildly curious, gazing up at one tall grey concrete school building topped by a round clock face, low-angle shot"
     },
     {
-      "narration": "[thoughtful] Crosby reaches speeds over twenty miles an hour.",
-      "location": "the frozen rink",
-      "edits": [
-        "the skate disappears and a big red tag reading \"20+ MPH\" appears beside the player in the upper middle"
-      ],
-      "edit_alt": "the skate disappears and the player streaks to the top of the frame, a big red tag reading \"20+ MPH\" trailing behind him"
+      "narration": "When people feel fear or hate, it turns into monsters.",
+      "location": "sugisawa high school",
+      "edits": ["one sobbing doodle student appears at frame left, dark purple smoke rising from his head"],
+      "edit_alt": "one slumped doodle student appears at frame left, dark purple smoke pooling at his feet"
     },
     {
-      "narration": "Just standing on those takes serious balance.",
-      "location": "the frozen rink",
-      "edits": [
-        "the red tag disappears and the player in the black and gold number 87 jersey balances on one skate, leaning sideways"
-      ],
-      "edit_alt": "the red tag disappears and the character's mouth drops open as the player in the black and gold number 87 jersey tilts low into a sharp turn"
-    },
-    {
-      "narration": "[understated] And you are LEGALLY allowed to slam into people.",
-      "location": "the frozen rink",
-      "image_prompt": "reference character in the lower middle winces as a big doodle player in a white jersey body-checks Sidney Crosby in a black and gold number 87 jersey in the upper middle, medium shot",
-      "image_prompt_alt": "a stocky dark-haired player in a black helmet and a black and gold number 87 jersey bounces off a big doodle player in a white jersey shoulder to shoulder at the top of the frame, reference character in the lower middle flinching, high-angle shot",
-      "sfx": "shock"
-    },
-    {
-      "narration": "They chase a small black circle.",
-      "location": "the frozen rink",
-      "edits": [
-        "the two players race toward one small black circle sliding at the top of the frame"
-      ],
-      "edit_alt": "one small black circle slides into the upper middle and the two players lunge after it"
-    },
-    {
-      "narration": "It is a hockey puck.",
-      "location": "the frozen rink",
-      "edits": [
-        "the black circle grows big in the centre, a big white tag reading \"PUCK\" hanging from it"
-      ],
-      "edit_alt": "the black circle flips up on its edge, big in the centre, and the character leans in",
+      "narration": "Invisible monsters called curses.",
+      "location": "sugisawa high school",
+      "edits": ["the school building vanishes; the purple smoke forms one lumpy purple monster at the top"],
+      "edit_alt": "the school building vanishes and one lumpy purple monster peeks over the top of the frame",
       "sfx": "pop"
     },
     {
-      "narration": "[calm] The flat puck is solid hard rubber.",
-      "location": "the frozen rink",
-      "edits": [
-        "the tag and the black circle disappear and a real photo cutout of a black rubber hockey puck, roughly pasted onto the drawing, appears big in the centre"
-      ],
-      "edit_alt": "the tag disappears and the black circle thickens into a heavy solid black rubber puck, the character's eyebrows rising"
+      "narration": "[deadpan] They look like absolute NIGHTMARES.",
+      "location": "sugisawa high school",
+      "edits": ["the monster grows crooked fangs and four bulging eyes, the character's mouth dropping open"],
+      "edit_alt": "the monster stretches a huge jagged grin across its body, the character leaning back wide-eyed"
     },
     {
-      "narration": "Teams freeze it before games.",
-      "location": "the frozen rink",
-      "edits": [
-        "the two players disappear and one small blue freezer appears in the upper middle, the puck resting on its lid"
-      ],
-      "edit_alt": "the two players disappear and one small blue freezer with white frost on its lid opens in the upper middle, the puck inside"
+      "narration": "Sorcerers hunt them in secret.",
+      "location": "sugisawa high school",
+      "edits": ["the student disappears and one doodle teenager in a plain black school uniform leaps fists first at the monster"],
+      "edit_alt": "the student disappears and one doodle teenager in a plain black school uniform kicks the monster sideways"
     },
     {
-      "narration": "Frozen rubber slides smoother on the ice.",
-      "location": "the frozen rink",
-      "edits": [
-        "the puck slides off the blue freezer to the top of the frame, white speed lines behind it"
-      ],
-      "edit_alt": "the puck shoots past the character toward the top of the frame, a thin white frost trail behind it"
+      "narration": "Our hero is Yuji Itadori, a normal kid.",
+      "location": "sugisawa high school",
+      "image_prompt": "reference character at frame right in the lower middle, mildly curious, watching Yuji Itadori from Jujutsu Kaisen, drawn as a crude wobbly doodle in the same simple style as the reference character, spiky pink hair and a black school uniform with a red hood, arms at his sides, medium shot",
+      "image_prompt_alt": "reference character stands close in the lower middle, head tilted, studying a sturdy teenage boy with spiky pink hair and a black school uniform with a red hood standing in the centre with a cheerful grin, full-body shot"
     },
     {
-      "narration": "It avoids RANDOM bouncing.",
-      "location": "the frozen rink",
-      "image_prompt": "reference character in the lower middle smirks as one frost-covered blue puck slides straight up the page while one plain black puck bounces wildly beside him, medium shot",
-      "image_prompt_alt": "reference character in the centre frowns at one plain black puck hopping in crooked zigzags beside him while one frost-covered blue puck slides in a straight line to the top of the frame, high-angle shot"
+      "narration": "To save his friends, Yuji does something disgusting.",
+      "location": "sugisawa high school",
+      "edits": ["one small wooden box with an open lid appears at the pink-haired boy's feet"],
+      "edit_alt": "the pink-haired boy crouches over one small open wooden box in the centre, grinning"
     },
     {
-      "narration": "You score by getting it into the net.",
-      "location": "the frozen rink",
-      "edits": [
-        "the plain black puck disappears and one big red goal net appears at the top of the frame, the blue puck sliding into it"
-      ],
-      "edit_alt": "the plain black puck disappears and the blue puck zips into one big red goal net that appears at the top of the frame"
+      "narration": "He eats a rotten cursed finger.",
+      "location": "sugisawa high school",
+      "edits": ["the pink-haired boy's right hand lifts one shriveled black finger into his open mouth"],
+      "edit_alt": "the pink-haired boy gulps, cheeks bulging, the open wooden box now empty at his feet",
+      "sfx": "dumb"
     },
     {
-      "narration": "[flatly] A goalie in huge pads blocks it.",
-      "location": "the frozen rink",
-      "edits": [
-        "the blue puck bounces out of the frame as a doodle goalie in huge white pads drops in front of the red goal net"
-      ],
-      "edit_alt": "a doodle goalie in huge white pads slides across the mouth of the red goal net and the blue puck ricochets off the frame",
-      "sfx": "hit"
+      "narration": "The finger belonged to Ryomen Sukuna.",
+      "location": "sugisawa high school",
+      "edits": ["the box disappears and black tattoo stripes spread across the pink-haired boy's face"],
+      "edit_alt": "the box disappears and the pink-haired boy's eyes turn sharp and red, black marks beneath them"
     },
     {
-      "narration": "Edmonton Oilers captain Connor McDavid leads the sport today.",
-      "location": "the scoring race",
-      "image_prompt": "a real photo cutout of Connor McDavid in a blue and orange number 97 jersey, roughly pasted onto the drawing, towers in the upper middle, reference character below looking up impressed, low-angle shot",
-      "image_prompt_alt": "reference character in the lower middle looks up, impressed, at a doodle of a tall lean dark-haired player in a white helmet and a blue and orange number 97 jersey towering over him, medium shot"
+      "narration": "[understated] Sukuna is the king of curses.",
+      "location": "sugisawa high school",
+      "edits": ["a small grinning mouth opens on the pink-haired boy's cheek"],
+      "edit_alt": "a second pair of eyes opens beneath the pink-haired boy's own eyes"
     },
     {
-      "narration": "He skates almost twenty five miles an hour.",
-      "location": "the scoring race",
-      "edits": [
-        "white speed lines burst behind the player in the blue and orange number 97 jersey and the character's eyes go wide"
-      ],
-      "edit_alt": "the character's head spins round as white speed lines streak past the player in the blue and orange number 97 jersey"
+      "narration": "He is basically pure ancient evil.",
+      "location": "sugisawa high school",
+      "edits": ["the character's eyes go wide, one big sweat drop on his forehead"],
+      "edit_alt": "the character leans back, eyebrows raised high, mouth pressed into a nervous line"
     },
     {
-      "narration": "[thoughtful] He scored one hundred thirty eight points... last season.",
-      "location": "the scoring race",
-      "edits": [
-        "a big orange banner reading \"138 PTS\" unfurls at the top of the frame above the player"
-      ],
-      "edit_alt": "a big orange banner reading \"138 PTS\" drops beside the character's head in the upper middle, his mouth falling open",
-      "sfx": "boom"
+      "narration": "And now he lives inside Yuji.",
+      "location": "sugisawa high school",
+      "image_prompt": "reference character, uneasy, at frame left in the lower middle as Ryomen Sukuna from Jujutsu Kaisen, drawn as a crude wobbly doodle in the same simple style as the reference character, a tall man with black tattoo stripes across his face and a white kimono, rises out of the back of Yuji Itadori from Jujutsu Kaisen, drawn as a crude wobbly doodle in the same simple style as the reference character, spiky pink hair and a black school uniform with a red hood, low-angle shot looking up",
+      "image_prompt_alt": "reference character stands small at frame right, uneasy, as a tall lean man with short spiky pink hair, black tattoo stripes across his face and a white kimono, towers out of the shoulders of a sturdy teenage boy with spiky pink hair and a black school uniform with a red hood, medium shot"
     },
     {
-      "narration": "A point means a goal or an assist.",
-      "location": "the scoring race",
-      "edits": [
-        "the banner disappears and one red goal net appears in the centre, a black puck flying into it"
-      ],
-      "edit_alt": "the banner disappears and one red goal net appears at frame left beside the character, a black puck already in its mesh"
+      "narration": "[calm] He's always waiting for a chance to take over.",
+      "location": "sugisawa high school",
+      "edits": ["the tattooed man leans down over the pink-haired boy, grinning, and the boy's eyes turn red"],
+      "edit_alt": "black tattoo stripes creep onto the pink-haired boy's face as the tattooed man grins",
+      "sfx": "suspense"
     },
     {
-      "narration": "Ice hockey is exhausting.",
-      "location": "the team bench",
-      "image_prompt": "reference character in the lower middle pants, already tired, as Nathan MacKinnon in a burgundy number 29 jersey sprints toward the top of the frame, sweat flying, medium shot",
-      "image_prompt_alt": "reference character in the centre hunches, panting, below a muscular dark-haired player in a burgundy helmet and a burgundy number 29 jersey sprinting up the page with drops of sweat flying, low-angle shot"
+      "narration": "[thoughtful] So Yuji joins a secret sorcerer school in Tokyo.",
+      "location": "jujutsu high training yard",
+      "image_prompt": "reference character at frame right in the lower middle, curious, beside Yuji Itadori from Jujutsu Kaisen, drawn as a crude wobbly doodle in the same simple style as the reference character, spiky pink hair and a black school uniform with a red hood, under one tall red wooden temple gate, full-body shot",
+      "image_prompt_alt": "reference character, curious, stands close in the lower middle as a sturdy teenage boy with spiky pink hair and a black school uniform with a red hood grins beneath one tall red wooden temple gate rising to the top of the frame, low-angle shot"
     },
     {
-      "narration": "Players get tired very fast.",
-      "location": "the team bench",
-      "edits": [
-        "big sweat drops pour off the player in the burgundy number 29 jersey and his shoulders sag"
-      ],
-      "edit_alt": "the player in the burgundy number 29 jersey bends over, gasping, white steam rising off his helmet"
+      "narration": "Here he learns about cursed energy.",
+      "location": "jujutsu high training yard",
+      "edits": ["swirling blue energy wraps around both of the pink-haired boy's fists"],
+      "edit_alt": "blue flames crackle up the pink-haired boy's arms from his fists"
     },
     {
-      "narration": "[sighs] Nathan MacKinnon cannot sprint forever.",
-      "location": "the team bench",
-      "edits": [
-        "a big red fuel gauge appears at the top of the frame above the player, its needle on empty"
-      ],
-      "edit_alt": "a big red fuel gauge drops in beside the character's head in the upper middle, needle on empty, his eyelids drooping"
+      "narration": "It's magic powered by bad feelings.",
+      "location": "jujutsu high training yard",
+      "edits": ["a big speech bubble reading \"DARK MAGIC?\" rises from the character into the upper middle"],
+      "edit_alt": "the character squints at the blue energy, a big speech bubble reading \"DARK MAGIC?\" beside him"
     },
     {
-      "narration": "So players skate in short, hard shifts.",
-      "location": "the team bench",
-      "edits": [
-        "the fuel gauge disappears and a big red stopwatch appears at the top of the frame, its hand racing"
-      ],
-      "edit_alt": "the fuel gauge disappears and a big red stopwatch swings in beside the player's helmet in the upper middle, ticking fast"
+      "narration": "Sorcerers use it to destroy curses.",
+      "location": "jujutsu high training yard",
+      "edits": ["the gate and speech bubble vanish; one small purple monster bursts apart at frame left"],
+      "edit_alt": "the gate and speech bubble vanish; one small purple monster tumbles away at frame left, cracked in half"
     },
     {
-      "narration": "A shift lasts about forty five seconds.",
-      "location": "the team bench",
-      "edits": [
-        "a big white tag reading \"45 SEC\" hangs from the red stopwatch"
-      ],
-      "edit_alt": "the red stopwatch's hand stops and a big white tag reading \"45 SEC\" pops up beside it, the character nodding"
-    },
-    {
-      "narration": "Then they skate to the bench.",
-      "location": "the team bench",
-      "edits": [
-        "the tag and stopwatch disappear and the player glides down to one long red bench beside the character"
-      ],
-      "edit_alt": "the tag and stopwatch disappear and one long red bench appears beside the character, the player in the burgundy number 29 jersey coasting onto it"
-    },
-    {
-      "narration": "New players jump right over the tall boards.",
-      "location": "the team bench",
-      "image_prompt": "one doodle player in a plain burgundy jersey leaps over one tall white board toward the top of the frame, reference character in the lower middle ducking, eyebrows raised, low-angle shot",
-      "image_prompt_alt": "reference character crouches at frame left in the lower half as one doodle player in a plain burgundy jersey and helmet hurdles one tall white board above him, skates first, high-angle shot",
+      "narration": "Then there's his teacher, Satoru Gojo.",
+      "location": "jujutsu high training yard",
+      "image_prompt": "reference character in the lower middle, impressed, looking up at Satoru Gojo from Jujutsu Kaisen, drawn as a crude wobbly doodle in the same simple style as the reference character, a very tall man with white spiky hair and a black cloth blindfold, hands in his coat pockets, low-angle shot looking up",
+      "image_prompt_alt": "reference character stands at frame right in the lower middle, impressed, as a very tall slim man in a dark high-collar coat with white spiky hair and a black cloth blindfold strides into the centre, hands in pockets, full-body shot",
       "sfx": "join"
     },
     {
-      "narration": "The game does not stop for this.",
-      "location": "the team bench",
-      "edits": [
-        "the white board disappears and a black puck streaks across the upper middle past the landing player"
-      ],
-      "edit_alt": "the white board disappears and the player lands chasing a black puck that zips to the top of the frame"
-    },
-    {
-      "narration": "[deadpan] It looks like TOTAL chaos.",
-      "location": "the team bench",
-      "edits": [
-        "two more doodle players in plain burgundy jerseys tumble in at the top of the frame, sticks tangled"
-      ],
-      "edit_alt": "two more doodle players in plain burgundy jerseys crash in at the top of the frame and the character's eyes spin",
+      "narration": "[deadpan] He wears a blindfold everywhere.",
+      "location": "jujutsu high training yard",
+      "edits": ["a real photo cutout of a black cloth blindfold, roughly pasted onto the drawing, floats at the top of the frame"],
+      "edit_alt": "one big doodle black cloth blindfold floats at the top of the frame",
       "sfx": "meme"
     },
     {
-      "narration": "This happens while the puck keeps moving.",
-      "location": "the team bench",
-      "edits": [
-        "the black puck slides between the tangled players' skates down into the centre"
-      ],
-      "edit_alt": "the black puck keeps sliding past the character's feet, his head turning to follow it"
+      "narration": "He is the strongest sorcerer alive.",
+      "location": "jujutsu high training yard",
+      "edits": ["the floating blindfold disappears and a big sign reading \"STRONGEST\" hangs high above the blindfolded man's hair, the whole word in view"],
+      "edit_alt": "the floating blindfold disappears and a big sign reading \"STRONGEST\" drops in at the top of the frame"
     },
     {
-      "narration": "Players break the rules a lot.",
-      "location": "the penalty box",
-      "image_prompt": "a real photo cutout of Brad Marchand in a red number 63 jersey, roughly pasted onto the drawing, grins slyly in the upper middle, reference character below narrowing his eyes, medium shot",
-      "image_prompt_alt": "reference character at frame left in the lower half squints up at a doodle of a short wiry dark-haired player with a pointed grin in a red number 63 jersey, stick held low, at the top of the frame, low-angle shot"
+      "narration": "He has a power called Infinity.",
+      "location": "jujutsu high training yard",
+      "edits": ["the sign disappears and the air around the blindfolded man twists into a blue spiral"],
+      "edit_alt": "the sign disappears and a big blue swirl bends around the blindfolded man like a whirlpool"
     },
     {
-      "narration": "Brad Marchand might trip someone with his stick.",
-      "location": "the penalty box",
-      "edits": [
-        "a doodle player in a white jersey appears in the centre, tripping over the stick of the player in the red number 63 jersey"
-      ],
-      "edit_alt": "a doodle player in a plain white jersey skates into the centre and topples forward, his skates caught on a hooked stick blade",
-      "sfx": "wrong"
-    },
-    {
-      "narration": "The referee blows a loud whistle to stop play.",
-      "location": "the penalty box",
-      "edits": [
-        "the player in the white jersey disappears and a doodle referee in a black and white striped shirt appears at the top of the frame, whistle in his mouth"
-      ],
-      "edit_alt": "the player in the white jersey disappears and a doodle referee in a black and white striped shirt skates in at the top of the frame, cheeks puffed on a silver whistle"
-    },
-    {
-      "narration": "[understated] Marchand sits in the penalty box.",
-      "location": "the penalty box",
-      "edits": [
-        "the referee disappears and one small glass box appears in the upper middle, the player in the red number 63 jersey sitting inside"
-      ],
-      "edit_alt": "the referee disappears and the player in the red number 63 jersey slumps onto a bench inside one small glass box in the upper middle",
-      "sfx": "leave"
-    },
-    {
-      "narration": "He stays in a glass room.",
-      "location": "the penalty box",
-      "edits": [
-        "the glass box's door slams shut and the player in the red number 63 jersey slouches sulking inside"
-      ],
-      "edit_alt": "the character leans in to peer at the glass box, his eyebrows raised at the sulking player inside"
-    },
-    {
-      "narration": "His team LOSES a player.",
-      "location": "the penalty box",
-      "edits": [
-        "a big red sign reading \"4 VS 5\" appears at the top of the frame above the glass box"
-      ],
-      "edit_alt": "a big red sign reading \"4 VS 5\" drops in at the top of the frame and the character's mouth drops open"
-    },
-    {
-      "narration": "The other team gets a power play.",
-      "location": "the penalty box",
-      "image_prompt": "three doodle hockey players in plain white jerseys and helmets, sticks in hand, skate after one black puck toward one red hockey goal net at the top of the frame, reference character in the lower middle leaning in curiously, high-angle shot",
-      "image_prompt_alt": "reference character at frame left in the lower half watches, eyebrows raised, as three doodle hockey players in plain white jerseys and helmets pass a black puck with their sticks around one red hockey goal net in the upper middle, medium shot"
-    },
-    {
-      "narration": "[curious] They get two minutes to score with an extra player.",
-      "location": "the penalty box",
-      "edits": [
-        "the red goal net disappears and a big red clock reading \"2:00\" appears at the top of the frame above the players"
-      ],
-      "edit_alt": "the red goal net disappears and a big red clock reading \"2:00\" drops in beside the character in the upper middle, his eyes widening"
-    },
-    {
-      "narration": "[thoughtful] Guess Wayne Gretzky's total points.",
-      "location": "the penalty box",
-      "edits": [
-        "the three players and the red clock disappear and one big banner covered by a grey cloth appears in the upper middle, one large question mark on the cloth"
-      ],
-      "edit_alt": "the three players and the red clock disappear and one large black question mark rises over one big banner covered by a grey cloth at the top of the frame"
-    },
-    {
-      "narration": "Write it in the comments.",
-      "location": "the penalty box",
-      "edits": [
-        "the character tilts his head, leaning in curiously toward the grey cloth"
-      ],
-      "edit_alt": "the character's eyebrows rise as he squints at the grey cloth, one sweat drop appearing"
-    },
-    {
-      "narration": "The season is long.",
-      "location": "the stanley cup final",
-      "image_prompt": "reference character in the lower middle trudges, exhausted, at the start of one long icy path winding up to one small red flag at the top of the frame, high-angle shot",
-      "image_prompt_alt": "reference character in the centre stares up, eyelids drooping, at one long icy road zigzagging up the page to one small red flag at the top of the frame, low-angle shot"
-    },
-    {
-      "narration": "It lasts eighty four games.",
-      "location": "the stanley cup final",
-      "edits": [
-        "a big white sign reading \"84 GAMES\" appears beside the path in the upper middle"
-      ],
-      "edit_alt": "a big white sign reading \"84 GAMES\" pops up beside the character's head and his shoulders sag"
-    },
-    {
-      "narration": "Only the best teams make the playoffs.",
-      "location": "the stanley cup final",
-      "edits": [
-        "the sign and the red flag disappear and three doodle players in plain red, blue and green jerseys race up the path"
-      ],
-      "edit_alt": "the sign and the red flag disappear and three doodle players in plain red, blue and green jerseys scramble up the path, one far ahead"
-    },
-    {
-      "narration": "They play short elimination series.",
-      "location": "the stanley cup final",
-      "edits": [
-        "the players in blue and green jerseys tumble off the path and vanish, the player in the red jersey climbing on"
-      ],
-      "edit_alt": "the players in blue and green jerseys trip and slide out of the frame as the player in the red jersey reaches the upper middle"
-    },
-    {
-      "narration": "The prize is the Stanley Cup.",
-      "location": "the stanley cup final",
-      "edits": [
-        "the icy path disappears and a real photo cutout of the Stanley Cup trophy, roughly pasted onto the drawing, appears big at the top of the frame"
-      ],
-      "edit_alt": "the icy path disappears and one huge silver cup trophy on a tall tiered base appears at the top of the frame",
-      "sfx": "celebrate"
-    },
-    {
-      "narration": "[calm] It is the oldest North American professional sports trophy.",
-      "location": "the stanley cup final",
-      "edits": [
-        "the character's mouth drops open as he leans back, staring up at the cup"
-      ],
-      "edit_alt": "the player in the red jersey stops and gazes up at the cup, the character's eyebrows rising"
-    },
-    {
-      "narration": "Jordan Staal lifted the twenty twenty six Stanley Cup.",
-      "location": "the stanley cup final",
-      "image_prompt": "reference character in the lower middle grins up as Jordan Staal in a red number 11 jersey with a white captain's C lifts one huge silver cup trophy overhead, low-angle shot",
-      "image_prompt_alt": "reference character at frame left in the lower half grins up at a tall broad dark-haired player with a thick beard in a red number 11 jersey with a white captain's C hoisting one huge silver cup trophy above his head, medium shot"
-    },
-    {
-      "narration": "You need sixteen playoff victories.",
-      "location": "the stanley cup final",
-      "edits": [
-        "a big red banner reading \"16 WINS\" appears at the top of the frame above the silver cup"
-      ],
-      "edit_alt": "a big red banner reading \"16 WINS\" unrolls beside the character in the upper middle, the character nodding"
-    },
-    {
-      "narration": "[flatly] The massive trophy is polished silver.",
-      "location": "the stanley cup final",
-      "edits": [
-        "the banner disappears and the silver cup grows huge, nearly filling the top of the frame"
-      ],
-      "edit_alt": "the banner disappears and the character leans in close, his reflection showing on the curved silver cup"
-    },
-    {
-      "narration": "Every winning player gets their name engraved on it.",
-      "location": "the stanley cup final",
-      "edits": [
-        "one new row of tiny black letters appears on the silver cup's band, the character leaning in"
-      ],
-      "edit_alt": "the character's eyes go wide as a fresh row of tiny black letters scratches onto the silver cup's base"
-    },
-    {
-      "narration": "The metal is covered in tiny letters.",
-      "location": "the stanley cup final",
-      "edits": [
-        "tiny black letters spread over the whole silver cup from rim to base"
-      ],
-      "edit_alt": "the whole silver cup fills with tiny black letters and the character squints hard"
-    },
-    {
-      "narration": "One record nobody gets near.",
-      "location": "the gretzky record wall",
-      "image_prompt": "a real photo cutout of Wayne Gretzky in a blue and orange number 99 jersey, roughly pasted onto the drawing, beside one big banner covered by a grey cloth, reference character below curious, medium shot",
-      "image_prompt_alt": "reference character in the lower middle gazes curiously up at a doodle of a slim blond-haired player with tousled hair in a blue and orange number 99 jersey beside one big banner covered by a grey cloth at the top of the frame, low-angle shot"
-    },
-    {
-      "narration": "Nobody will ever catch Wayne Gretzky.",
-      "location": "the gretzky record wall",
-      "edits": [
-        "the character tilts his head far back, eyebrows raised, looking up at the player"
-      ],
-      "edit_alt": "the character's mouth falls slightly open as he slowly shakes his head below the player"
-    },
-    {
-      "narration": "[thoughtful] He scored... two thousand eight hundred fifty seven points.",
-      "location": "the gretzky record wall",
-      "edits": [
-        "the grey cloth falls away from the banner, showing big red numbers reading \"2,857\""
-      ],
-      "edit_alt": "the grey cloth lifts off the banner, revealing big red numbers reading \"2,857\", the character's eyes going wide",
-      "sfx": "boom"
-    },
-    {
-      "narration": "That number looks unbreakable.",
-      "location": "the gretzky record wall",
-      "edits": [
-        "a big steel padlock appears hanging from the banner's bottom edge"
-      ],
-      "edit_alt": "a big steel padlock clamps onto the banner's bottom edge and the character's eyebrows rise"
-    },
-    {
-      "narration": "[curious] Take away all his goals.",
-      "location": "the gretzky record wall",
-      "edits": [
-        "the padlock disappears and part of the banner's red numbers fade away, the character leaning in, squinting"
-      ],
-      "edit_alt": "the padlock disappears and the banner's red numbers blur and smudge, the character's eyebrows rising"
-    },
-    {
-      "narration": "He STILL has the most points in hockey history.",
-      "location": "the gretzky record wall",
-      "edits": [
-        "the banner's red numbers are replaced by big gold letters reading \"STILL #1\" and the character's jaw drops"
-      ],
-      "edit_alt": "big gold letters reading \"STILL #1\" stamp across the banner and the character stumbles back a step",
-      "sfx": "shock"
-    },
-    {
-      "narration": "Nobody else is even close.",
-      "location": "the gretzky record wall",
-      "edits": [
-        "the character bows deeply toward the player in the blue and orange number 99 jersey"
-      ],
-      "edit_alt": "the character drops to one knee below the player in the blue and orange number 99 jersey, head lowered"
-    },
-    {
-      "narration": "Today players just try to survive.",
-      "location": "the dressing room",
-      "image_prompt": "one battered doodle player in a dented green helmet limps up the page in the upper middle, reference character in the lower middle watching with a resigned smile, full-body shot",
-      "image_prompt_alt": "reference character at frame left in the lower half sighs, eyelids heavy, as one doodle player in a dented green helmet and torn plain grey jersey staggers toward the top of the frame, high-angle shot"
-    },
-    {
-      "narration": "They hit each other hard.",
-      "location": "the dressing room",
-      "edits": [
-        "a doodle player in a plain purple jersey slams shoulder-first into the player in the dented green helmet at the top of the frame"
-      ],
-      "edit_alt": "a doodle player in a plain purple jersey bumps the player in the dented green helmet, both bouncing apart in the upper middle",
+      "narration": "[calm] Anything coming at him slows down and never arrives.",
+      "location": "jujutsu high training yard",
+      "edits": ["one purple monster at frame left bounces off an invisible wall beside the blindfolded man"],
+      "edit_alt": "one purple monster at frame left freezes in midair, stuck just short of the blindfolded man",
       "sfx": "hit"
     },
     {
-      "narration": "[light chuckle] Sometimes they lose their teeth.",
-      "location": "the dressing room",
-      "edits": [
-        "the player in the purple jersey skates out of the frame and the player in the dented green helmet grins, a big gap in his front teeth"
-      ],
-      "edit_alt": "the player in the purple jersey leaves the frame and the character's eyes widen at the gap-toothed smile under the dented green helmet"
+      "narration": "Fans went ABSOLUTELY crazy for him.",
+      "location": "jujutsu high training yard",
+      "edits": ["the monster disappears and three small screaming doodle fans with heart eyes pop up in the upper middle"],
+      "edit_alt": "the monster disappears and three small doodle fans in the upper middle wave tiny blue flags"
     },
     {
-      "narration": "Then they just keep on playing.",
-      "location": "the dressing room",
-      "edits": [
-        "the player in the dented green helmet skates off to the top of the frame, white speed lines behind him"
-      ],
-      "edit_alt": "the player in the dented green helmet turns and races up the page, the character watching him go"
+      "narration": "He topped the fan popularity polls.",
+      "location": "jujutsu high training yard",
+      "image_prompt": "reference character in the lower middle, grinning and won over, below Satoru Gojo from Jujutsu Kaisen, drawn as a crude wobbly doodle in the same simple style as the reference character, a very tall man with white spiky hair and a black cloth blindfold, sitting on top of one tall shape completely covered by a big red sheet, like a covered statue, full-body shot",
+      "image_prompt_alt": "reference character stands at frame left, impressed, below a very tall slim man in a dark high-collar coat with white spiky hair and a black cloth blindfold, perched cross-legged atop one towering shape completely covered by a big red sheet, like a covered statue, low-angle shot"
     },
     {
-      "narration": "[content] That is ice hockey... in a nutshell.",
-      "location": "the dressing room",
-      "edits": [
-        "one big brown walnut shell appears in the centre beside the character, a tiny doodle rink inside it, the character smiling"
-      ],
-      "edit_alt": "one giant brown walnut shell cracks open in the centre beside the character, revealing a tiny ice rink with red lines, the character grinning"
+      "narration": "[curious] Quick guess: how many copies has the manga sold?",
+      "location": "jujutsu high training yard",
+      "edits": ["one big black question mark appears on the red cloth, the round-headed character tilting his head"],
+      "edit_alt": "a big black question mark appears at the top of the frame above the red cloth, the round-headed character squinting"
+    },
+    {
+      "narration": "Write your guess in the comments.",
+      "location": "jujutsu high training yard",
+      "edits": ["the round-headed character leans toward the red cloth, eyes narrowed in curiosity"],
+      "edit_alt": "the round-headed character's eyebrows rise as he stares up at the question mark, mouth open"
+    },
+    {
+      "narration": "[light chuckle] But his own creator keeps mocking him.",
+      "location": "the author's paper pile",
+      "image_prompt": "reference character in the lower middle, amused, watching Gege Akutami's self-portrait, a big grey doodle cat with only one eye, as tall as the reference character, glaring up from white paper at Satoru Gojo from Jujutsu Kaisen, drawn as a crude wobbly doodle in the same simple style as the reference character, a very tall man with white spiky hair and a black cloth blindfold, medium shot",
+      "image_prompt_alt": "reference character at frame right, amused, as a manga author's self-portrait, a big grey doodle cat with only one eye, as tall as the reference character, scowls from white paper at a very tall slim man in a dark high-collar coat with white spiky hair and a black cloth blindfold towering in the upper middle, low-angle shot",
+      "sfx": "shock"
+    },
+    {
+      "narration": "The author goes by Gege Akutami.",
+      "location": "the author's paper pile",
+      "edits": ["a big name tag reading \"GEGE\" hangs from the grey cat's neck"],
+      "edit_alt": "a big name tag reading \"GEGE\" sticks onto the paper stack beside the grey cat"
+    },
+    {
+      "narration": "Gege only appears as a one-eyed cat.",
+      "location": "the author's paper pile",
+      "edits": ["the name tag and the blindfolded man disappear; a big one-eyed grey cat drawing appears on the paper"],
+      "edit_alt": "the name tag and the blindfolded man disappear; a big one-eyed grey cat drawing appears pinned at the top of the frame"
+    },
+    {
+      "narration": "[deadpan] And this little cat loves hurting its fans.",
+      "location": "the author's paper pile",
+      "edits": ["the grey cat grins wickedly, two small red devil horns sprouting from its head"],
+      "edit_alt": "the grey cat narrows its eyes into a sly smirk, a tiny red devil tail curling behind it"
+    },
+    {
+      "narration": "Fan favourite characters die all the time.",
+      "location": "the author's paper pile",
+      "edits": ["the cat drawing disappears and three big doodle figures topple flat in the upper middle"],
+      "edit_alt": "the cat drawing disappears and three big doodle figures in the upper middle tip over like dominoes"
+    },
+    {
+      "narration": "Nobody is safe.",
+      "location": "the author's paper pile",
+      "edits": ["the round-headed character's mouth drops open, both eyebrows shooting up"],
+      "edit_alt": "the round-headed character leans back, eyes wide, a big sweat drop sliding down his cheek"
+    },
+    {
+      "narration": "And readers kept coming back.",
+      "location": "the author's paper pile",
+      "edits": ["the figures disappear and one big fishing hook dangles from the top of the frame"],
+      "edit_alt": "the figures disappear and one big silver fishing hook swings down beside the grey cat"
+    },
+    {
+      "narration": "The anime made it even bigger.",
+      "location": "the animation studio",
+      "image_prompt": "reference character at frame left in the lower middle, impressed, watching Yuji Itadori from Jujutsu Kaisen, drawn as a crude wobbly doodle in the same simple style as the reference character, spiky pink hair and a black school uniform with a red hood, leaping upward in a flying punch, low-angle shot looking up",
+      "image_prompt_alt": "reference character stands at frame right, eyes wide and impressed, as a sturdy teenage boy with spiky pink hair and a black school uniform with a red hood flies up toward the top of the frame, one fist thrust forward, full-body shot"
+    },
+    {
+      "narration": "Studio Mappa makes the anime.",
+      "location": "the animation studio",
+      "edits": ["a real photo cutout of an animation desk, roughly pasted onto the drawing, at frame left"],
+      "edit_alt": "one tilted white doodle drawing desk with a pencil cup appears at frame left",
+      "sfx": "pop"
+    },
+    {
+      "narration": "The fights move fast and smooth.",
+      "location": "the animation studio",
+      "edits": ["the desk disappears and long curving speed lines trail behind the pink-haired boy"],
+      "edit_alt": "the desk disappears and a ribbon of swirling motion lines wraps around the pink-haired boy"
+    },
+    {
+      "narration": "[thoughtful] In big fights, the camera spins around the fighters.",
+      "location": "the animation studio",
+      "edits": ["one big purple monster drops in at the top, spinning lines ringing it and the boy"],
+      "edit_alt": "one big purple monster crashes in at the top, meeting the pink-haired boy's fist"
+    },
+    {
+      "narration": "Over seventy percent of its fans are Gen Z.",
+      "location": "the animation studio",
+      "edits": ["the round-headed character leans in, mouth open in wonder"],
+      "edit_alt": "the round-headed character's eyebrows shoot up, a delighted grin spreading across his face"
+    },
+    {
+      "narration": "For a lot of fans, it raised the bar.",
+      "location": "the animation studio",
+      "edits": ["the monster disappears and one red high-jump bar appears high at the top of the frame"],
+      "edit_alt": "the monster disappears and one long red ruler line stretches across the top above the boy"
+    },
+    {
+      "narration": "Every punch looks like it hurts.",
+      "location": "the animation studio",
+      "image_prompt": "reference character at frame right in the lower middle, wincing, watching Yuji Itadori from Jujutsu Kaisen, drawn as a crude wobbly doodle in the same simple style as the reference character, spiky pink hair and a black school uniform with a red hood, slamming one fist into a purple monster's cheek, medium shot",
+      "image_prompt_alt": "reference character in the lower middle, flinching, as a sturdy teenage boy with spiky pink hair and a black school uniform with a red hood drives one fist deep into a lumpy purple monster in the upper middle, low-angle shot",
+      "sfx": "hit"
+    },
+    {
+      "narration": "After this, other shows look slow.",
+      "location": "the animation studio",
+      "edits": ["the monster disappears and one small grey boxy television at frame left cracks down the middle"],
+      "edit_alt": "the monster disappears and one small grey boxy television at frame left tips over, its screen split"
+    },
+    {
+      "narration": "And the hype kept growing.",
+      "location": "the animation studio",
+      "edits": ["the television vanishes; one big red thermometer at the top bursts at its tip"],
+      "edit_alt": "the television vanishes; one big red thermometer rises in the upper middle, its red line shooting past the top"
+    },
+    {
+      "narration": "The manga ended in September 2024.",
+      "location": "the farewell altar",
+      "image_prompt": "reference character in the lower middle, wistful, beside Yuji Itadori from Jujutsu Kaisen, drawn as a crude wobbly doodle in the same simple style as the reference character, spiky pink hair and a black school uniform with a red hood, head bowed over one closed black book at his feet, medium shot",
+      "image_prompt_alt": "reference character stands at frame left, quiet and wistful, as a sturdy teenage boy with spiky pink hair and a black school uniform with a red hood waves goodbye in the centre, one closed black book lying at his feet, full-body shot"
+    },
+    {
+      "narration": "[deadpan] Fans took the deaths very personally.",
+      "location": "the farewell altar",
+      "edits": ["the black book disappears and two big crying doodle fans appear in the upper middle"],
+      "edit_alt": "the black book disappears and two big doodle fans in the upper middle hug each other, sobbing",
+      "sfx": "sad"
+    },
+    {
+      "narration": "In Malaysia, fans built a real shrine for one character.",
+      "location": "the farewell altar",
+      "edits": ["the fans vanish; a real photo cutout of a fan altar with candles, roughly pasted onto the drawing, at frame left"],
+      "edit_alt": "the fans vanish and one small doodle altar with candles and flowers appears at frame left"
+    },
+    {
+      "narration": "Then season three arrived.",
+      "location": "the culling game colony",
+      "image_prompt": "reference character at frame left in the lower middle, excited, watching Yuji Itadori from Jujutsu Kaisen, drawn as a crude wobbly doodle in the same simple style as the reference character, spiky pink hair and a black school uniform with a red hood, in a fighting stance as one huge red number three falls from the top, full-body shot",
+      "image_prompt_alt": "reference character stands at frame right, eager, as a sturdy teenage boy with spiky pink hair and a black school uniform with a red hood crouches ready in the centre, one huge red number three crashing down beside him, low-angle shot"
+    },
+    {
+      "narration": "It started in January 2026, after a two-year wait.",
+      "location": "the culling game colony",
+      "edits": ["the round-headed character grins, eyebrows raised, as the number three lands beside the pink-haired boy"],
+      "edit_alt": "the number three thuds down in the upper middle and the round-headed character's eyes go wide with delight"
+    },
+    {
+      "narration": "It covers the Culling Game.",
+      "location": "the culling game colony",
+      "edits": ["the number three vanishes; one tall grey barrier dome rises at the top of the frame"],
+      "edit_alt": "the number three vanishes; one huge grey barrier dome closes over the top of the frame like a lid"
+    },
+    {
+      "narration": "A deadly game where players must fight to survive.",
+      "location": "the culling game colony",
+      "edits": ["the dome vanishes; one doodle fighter in a plain grey hoodie leaps down at the boy"],
+      "edit_alt": "the dome vanishes; one doodle fighter in a plain grey hoodie squares up to the boy in the upper middle",
+      "sfx": "fight"
+    },
+    {
+      "narration": "Crunchyroll streams it outside Asia.",
+      "location": "the culling game colony",
+      "edits": ["the hooded fighter vanishes completely; a big real photo cutout of a wifi router, roughly pasted onto the drawing, in the upper middle"],
+      "edit_alt": "the hooded fighter vanishes completely and one big black doodle wifi router in the upper middle bursts into grey smoke"
+    },
+    {
+      "narration": "And new fans kept discovering the manga.",
+      "location": "the culling game colony",
+      "edits": ["the router vanishes; the pink-haired boy grins over one flattened purple monster at his feet"],
+      "edit_alt": "the router vanishes; the pink-haired boy stands tall, one small purple monster knocked flat beside him"
+    },
+    {
+      "narration": "Even after the ending, sales kept climbing.",
+      "location": "the culling game colony",
+      "edits": ["red flames rise behind the pink-haired boy all the way to the top of the frame"],
+      "edit_alt": "the pink-haired boy stands up taller, a wall of red flames roaring up behind him"
+    },
+    {
+      "narration": "Remember your guess?",
+      "location": "the sales summit",
+      "image_prompt": "reference character in the lower middle, curious, below Satoru Gojo from Jujutsu Kaisen, drawn as a crude wobbly doodle in the same simple style as the reference character, a very tall man with white spiky hair and a black cloth blindfold, sitting on top of one tall shape completely covered by a big red sheet, like a covered statue marked with a black question mark, low-angle shot looking up",
+      "image_prompt_alt": "reference character stands at frame right, eager, beneath a very tall slim man in a dark high-collar coat with white spiky hair and a black cloth blindfold perched atop one towering shape completely covered by a big red sheet, like a covered statue with a black question mark, medium shot"
+    },
+    {
+      "narration": "[thoughtful] The manga has passed one hundred fifty million copies.",
+      "location": "the sales summit",
+      "edits": ["the red cloth falls away, showing one towering manga stack; a big banner reading \"150 MILLION\" unrolls high above the blindfolded man's head, the whole number in view"],
+      "edit_alt": "the red cloth slides off a towering manga stack, a big banner reading \"150 MILLION\" unrolling high above the blindfolded man's head, the whole number in view",
+      "sfx": "boom"
+    },
+    {
+      "narration": "That's more than Attack on Titan.",
+      "location": "the sales summit",
+      "edits": ["the manga stack turns into a real photo cutout of a tall comic book stack, roughly pasted onto the drawing"],
+      "edit_alt": "the manga stack grows taller and taller until it pokes past the top of the frame"
+    },
+    {
+      "narration": "It's darker than most action anime.",
+      "location": "the sales summit",
+      "edits": ["the manga stack and banner vanish and the blindfolded man now stands on the ground beside the round-headed character; one grey plaster mold splits in half in the upper middle"],
+      "edit_alt": "the manga stack and banner vanish and the blindfolded man now stands on the ground beside the round-headed character; one grey plaster mold in the upper middle shatters into chunks"
+    },
+    {
+      "narration": "[curious] So, is it worth watching?",
+      "location": "the sales summit",
+      "edits": ["the mold disappears and the blindfolded man's blindfold slips down, showing bright blue eyes"],
+      "edit_alt": "the mold disappears and the blindfolded man tips his head down, blindfold sliding off one bright blue eye"
+    },
+    {
+      "narration": "If you want friendship speeches, maybe not.",
+      "location": "the sales summit",
+      "edits": ["a big sign reading \"FRIENDSHIP POWER\" with a big red X appears at the top of the frame"],
+      "edit_alt": "a big sign reading \"FRIENDSHIP POWER\" in the upper middle cracks in half and tips over"
+    },
+    {
+      "narration": "If you want monsters and brutal fights, yes.",
+      "location": "the sales summit",
+      "image_prompt": "reference character in the lower middle, content, watching Yuji Itadori from Jujutsu Kaisen, drawn as a crude wobbly doodle in the same simple style as the reference character, spiky pink hair and a black school uniform with a red hood, back to back with Satoru Gojo from Jujutsu Kaisen, drawn as a crude wobbly doodle in the same simple style as the reference character, a very tall man with white spiky hair and a black cloth blindfold, purple smoke curling around them, medium shot",
+      "image_prompt_alt": "reference character stands at frame right, smiling softly, below a sturdy teenage boy with spiky pink hair and a black school uniform with a red hood beside a very tall slim man in a dark high-collar coat with white spiky hair and a black cloth blindfold, purple smoke swirling up to the top, low-angle shot"
+    },
+    {
+      "narration": "[content] And you don't need to watch any other anime first.",
+      "location": "the sales summit",
+      "edits": ["the purple smoke rises into a tall spiral at the top, the round-headed character smiling warmly"],
+      "edit_alt": "the round-headed character's eyes crinkle into a warm smile as the purple smoke thickens around the pair"
     }
   ]
 }
