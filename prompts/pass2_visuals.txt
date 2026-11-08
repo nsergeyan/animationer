@@ -164,6 +164,11 @@ Other people, famous ones included, are simple doodle figures identified by
 one or two signature features (long braids, a scarlet red racing suit). Never
 ask for them to look realistic.
 
+Describe a figure by what it wears, never by a fantasy job word. "a doodle
+sorcerer" drew a wizard with a pointy hat and a staff, while the show's
+sorcerers wear school uniforms: "a doodle teenager in a plain black school
+uniform".
+
 Colour only one or two key objects. Name the colour on the object:
 one scarlet red racing car.
 
@@ -188,6 +193,12 @@ Never more than one label per beat. Labels go in image_prompt or in an edit
 
 Draw every label BIG: a big sign, a big tag, a big speech bubble. A small one
 comes out too small to read in the video.
+
+Every object an edit adds is big too. "tiny" and "small" props (a cat, three
+toppling figures, a router) came out unreadable on a phone.
+
+A sign or banner hangs high above everyone's heads, "the whole word in view".
+Otherwise a head covers the text: "150 MILLION" came back as "150 ...LLION".
 
 PHOTO CUTOUTS
 
@@ -362,6 +373,16 @@ something, its arms stay as they are.
 In edits the reference character is "the character". Never write reference
 character in an edit: an edit has no character art attached, only the
 previous picture.
+
+When another figure is in the picture, write "the round-headed character".
+Plain "the character" got applied to the other figure instead (Gojo, Yuji).
+
+When an edit removes something, add how it looks NOW to the words that
+introduced it: "the fallen giant at the boy's feet disappears completely". "the
+giant disappears", after the giant had shrunk and fallen, left it on screen
+for four more beats. Removing a thing someone sits or stands on removes them
+too: say where they go ("the blindfolded man now stands on the ground beside
+the round-headed character").
 
 Refer to everything already in the picture with the words that introduced it
 ("the crocodile", never "the reptile"). Refer to other people by their visible
@@ -745,6 +766,23 @@ Gojo Satoru from Jujutsu Kaisen
 a Titan from Attack on Titan
 
 Write the name the way the audience would say it out loud.
+
+A character from a DRAWN work (anime, manga, comic, cartoon, game) also gets,
+right after the work's name, exactly:
+
+drawn as a crude wobbly doodle in the same simple style as the reference character
+
+The name pulls the official art, and that beats the style block: without this
+phrase Gojo and Sukuna came back as full manga drawings with shading and
+fabric folds (Jujutsu Kaisen video, 2026-11). A huge or grey-skinned figure
+(a Titan, a giant) also gets: a plain black outline on the white page
+
+Gojo Satoru from Jujutsu Kaisen, drawn as a crude wobbly doodle in the same
+simple style as the reference character, a very tall man with white spiky
+hair and a black cloth blindfold
+
+Real people do not get the phrase: footballers and drivers have always come
+out as doodles, since there is no single official drawing of them to copy.
 
 DO NOT STRIP THE NAME OUT
 
