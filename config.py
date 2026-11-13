@@ -341,6 +341,23 @@ NO_OUTRO_FORMATS = {"facts_short"}
 OUTRO_DIR = ASSETS_DIR / "outro"
 OUTRO_LINE = "If you want more of these, subscribe and hit like."
 
+# --- Clips ------------------------------------------------------------------
+# `pipeline.py clip` re-renders a run of beats from a finished video as a
+# vertical YouTube Short that points at the full video. Which beats is decided
+# outside the code: pass 2 writes them into the script as a top-level "clips"
+# list (pass2_visuals.txt Section 48B).
+#
+# The closing card works like the outro: one voice line, generated ONCE and
+# cached in CLIP_OUTRO_DIR. Delete outro.mp3 in there after changing the line.
+# A picture dropped in that folder becomes the card; with none, the normal
+# outro card is used.
+CLIP_OUTRO_DIR = ASSETS_DIR / "clip_outro"
+CLIP_OUTRO_LINE = "The full video is on my YouTube channel."
+# Wanted length of a clip before the closing card. Outside it `clip` only
+# warns: the pick is a person's (or an LLM's) call, not the code's.
+CLIP_MIN_SECONDS = 25
+CLIP_MAX_SECONDS = 50
+
 # --- ElevenLabs ------------------------------------------------------------
 # The US regional endpoint serves the good render. The global default
 # (api.elevenlabs.io) returns a flat/robotic voice on this account - it only

@@ -11,6 +11,8 @@ re-run on its own and finished work is skipped on the next run.
                picture changes to their words, adds the outro beat
     render     manifest.json -> final.mp4 via Remotion, then the music mix
                (one classical piece per run of locations with the same mood)
+    clip       optional, after render: the script's "clips" -> clips/*.mp4,
+               the best moments as vertical Shorts that point at the full video
 
 With no subcommand every stage runs in order (`all`). `check` reports what is
 present and what is missing without doing anything.
@@ -2006,7 +2008,8 @@ def _make_silence(path: Path, seconds: float) -> None:
     )
 
 
-def _outro_assets() -> tuple[Path, Path] | None:
+def _outro_assets(folder: Path | None = None,
+                  line: str | None = None) -> tuple[Path, Path] | None:
     """
     The cached outro image and voice line, generating them if missing.
 
@@ -2014,28 +2017,33 @@ def _outro_assets() -> tuple[Path, Path] | None:
     every upload, and no API calls after the first run. Returns None if the
     voice line cannot be produced, so a failure here never blocks a render.
     """
-    config.OUTRO_DIR.mkdir(parents=True, exist_ok=True)
+    folder = folder or config.OUTRO_DIR
+    line = line or config.OUTRO_LINE
+    folder.mkdir(parents=True, exist_ok=True)
 
-    image = next((p for p in sorted(config.OUTRO_DIR.iterdir())
-                  if p.suffix.lower() in (".png", ".jpg", ".jpeg", ".webp")), None)
+    def card(where: Path) -> Path | None:
+        if not where.exists():
+            return None
+        return next((p for p in sorted(where.iterdir())
+                     if p.suffix.lower() in (".png", ".jpg", ".jpeg", ".webp")), None)
+
+    image = card(folder) or card(config.OUTRO_DIR)
     if image is None:
         # Fall back to the character reference so this works out of the box.
         # Drop a purpose-made card in assets/outro/ to replace it.
-        image = next((p for p in sorted(config.REFERENCE_DIR.iterdir())
-                      if p.suffix.lower() in (".png", ".jpg", ".jpeg", ".webp")),
-                     None) if config.REFERENCE_DIR.exists() else None
+        image = card(config.REFERENCE_DIR)
         if image is None:
             print("[outro] no image available, skipping outro")
             return None
         print(f"[outro] using {image.name} as the card "
-              f"(put your own in {config.OUTRO_DIR.name}/ to replace it)")
+              f"(put your own in {folder.name}/ to replace it)")
 
-    audio = config.OUTRO_DIR / "outro.mp3"
+    audio = folder / "outro.mp3"
     if not audio.exists():
         from modules import voice_generator
         print("[outro] generating the voice line once (cached from now on)")
         try:
-            made, _ = voice_generator.generate(config.OUTRO_LINE, 0, config.OUTRO_DIR)
+            made, _ = voice_generator.generate(line, 0, folder)
             made.replace(audio)
         except Exception as exc:
             print(f"[outro] voice failed ({type(exc).__name__}), skipping outro")
@@ -2286,6 +2294,10 @@ def _demo_image(path: Path, index: int, total: int, caption: str) -> None:
     draw.text((config.WIDTH / 2 - (box[2] - box[0]) / 2, config.HEIGHT - 170),
               label, fill=(20, 20, 20), font=small)
 
+    `folder` and `line` default to the subscribe outro. A clip's closing card
+    passes its own (config.CLIP_OUTRO_*) and borrows the outro's picture
+    until its folder holds one.
+
     # Corner marks make any crop visible: the frame is static now, so all
     # four should sit fully on screen for the whole beat.
     for x, y in ((60, 60), (config.WIDTH - 160, 60),
@@ -2499,3 +2511,151 @@ def main() -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
+# --- clip ------------------------------------------------------------------
+
+def _clip_picks(data: dict, beats_arg: str | None) -> list[dict]:
+    """
+    The beat ranges to cut, as [{"beats": [first, last], "title": str}]:
+    --beats when given, else the script's top-level "clips", which the pass 2
+    prompt writes with the rest of the script (Section 48B).
+    """
+    if beats_arg:
+        m = re.fullmatch(r"\s*(\d+)\s*-\s*(\d+)\s*", beats_arg)
+        if not m:
+            raise SystemExit(f"--beats wants a range like 12-24, got {beats_arg!r}.")
+        return [{"beats": [int(m[1]), int(m[2])], "title": ""}]
+
+    picks = []
+    for item in data.get("clips") or []:
+        beats = item.get("beats") if isinstance(item, dict) else None
+        if (not isinstance(beats, list) or len(beats) != 2
+                or not all(isinstance(n, int) for n in beats)):
+            raise SystemExit(f"script.json: every clip needs \"beats\": "
+                             f"[first, last], got {item!r}.")
+        picks.append({"beats": beats, "title": str(item.get("title") or "")})
+    return picks
+
+
+def _clip_beats(entries: list[dict], first: int, last: int) -> list[dict]:
+    """
+    Beats first..last as a manifest of their own. The opening beat loses its
+    draw-in: the hook has to be readable in the first second, same reason as
+    DRAW_IN_SKIP_FIRST. (A change of place puts its sound on the beat BEFORE
+    it, so the opening beat carries no whoosh to remove.)
+    """
+    beats = [dict(e) for e in entries if first <= e["index"] <= last]
+    head = beats[0]
+    head.pop("redraw", None)
+    if config.DRAW_IN_SKIP_FIRST:
+        head.pop("draw", None)
+        head.pop("draw_seconds", None)
+    return beats
+
+
+def _to_vertical(path: Path) -> None:
+    """
+    Put a 16:9 clip in the middle of a white 9:16 frame, in place. Nothing is
+    cropped, and on the white-page style the bars read as more paper.
+    """
+    w, h = config.ASPECTS["9:16"]
+    tmp = path.with_name(path.stem + ".tall.mp4")
+    subprocess.run(
+        ["ffmpeg", "-v", "error", "-y", "-i", str(path),
+         "-vf", f"scale={w}:-2,pad={w}:{h}:(ow-iw)/2:(oh-ih)/2:white",
+         "-c:a", "copy", str(tmp)],
+        check=True,
+    )
+    tmp.replace(path)
+
+
+def cmd_clip(args) -> int:
+    """
+    Cut the best moments of a finished video into vertical Shorts, each
+    ending on a card that sends the viewer to the full video.
+
+    A clip is the same beats rendered again, not a slice of final.mp4: the
+    music starts with the clip instead of mid-phrase, the first picture does
+    not dissolve in from one the viewer never saw, and the closing card comes
+    in like any other beat.
+    """
+    from modules import transcriber, video_editor
+
+    run_dir = resolve_run(args.run)
+    manifest = run_dir / "manifest.json"
+    if not manifest.exists():
+        raise SystemExit(f"No manifest.json in {run_dir}. Run: pipeline.py manifest")
+
+    data = load_script(run_dir)
+    # Everything but the subscribe outro: a clip ends on its own card.
+    entries = [e for e in json.loads(manifest.read_text())
+               if e.get("audio") != "audio/outro.mp3"]
+
+    picks = _clip_picks(data, args.beats)
+    if not picks:
+        print(f"[clip] {run_dir.name}/script.json has no \"clips\". Scripts "
+              f"written before pass 2 Section 48B have none:")
+        print("  add \"clips\": [{\"beats\": [1, 12]}] to it, or pass --beats 1-12")
+        return 1
+
+    known = {e["index"] for e in entries}
+    for pick in picks:
+        first, last = pick["beats"]
+        if first > last or first not in known or last not in known:
+            raise SystemExit(f"[clip] beats {first}-{last} is not a range inside "
+                             f"this video's beats {min(known)}-{max(known)}.")
+
+    assets = _outro_assets(config.CLIP_OUTRO_DIR, config.CLIP_OUTRO_LINE)
+    card = None
+    if assets:
+        image_src, audio_src = assets
+        out_image = run_dir / "images" / f"clip_outro{image_src.suffix.lower()}"
+        out_audio = run_dir / "audio" / "clip_outro.mp3"
+        shutil.copy(image_src, out_image)
+        shutil.copy(audio_src, out_audio)
+        card = {
+            "narration": transcriber.strip_tags(config.CLIP_OUTRO_LINE),
+            "image": f"images/{out_image.name}",
+            "audio": f"audio/{out_audio.name}",
+            "duration": round(_audio_duration(out_audio), 3),
+        }
+
+    aspect = script_aspect(data)
+    moods = music_moods(data)
+    clips_dir = run_dir / "clips"
+    clips_dir.mkdir(exist_ok=True)
+
+    for pick in picks:
+        first, last = pick["beats"]
+        beats = _clip_beats(entries, first, last)
+        seconds = video_editor._beat_starts(beats)[1] - OUTRO_HOLD_SECONDS
+        label = f"beats {first}-{last}, {seconds:.0f}s"
+        if pick["title"]:
+            label += f", {pick['title']}"
+        if not config.CLIP_MIN_SECONDS <= seconds <= config.CLIP_MAX_SECONDS:
+            print(f"[clip] WARNING {label}: wanted {config.CLIP_MIN_SECONDS}-"
+                  f"{config.CLIP_MAX_SECONDS}s before the card")
+        if card:
+            beats.append({"index": last + 1, **card})
+
+        out = clips_dir / f"clip_{first:03d}-{last:03d}.mp4"
+        if (out.exists() and not args.force
+                and out.stat().st_mtime >= manifest.stat().st_mtime):
+            print(f"[clip] have {out.name} ({label}), --force to redo")
+            continue
+
+        print(f"[clip] {label}")
+        clip_manifest = out.with_suffix(".json")
+        clip_manifest.write_text(json.dumps(beats, indent=2, ensure_ascii=False))
+        video_editor.render(clip_manifest, run_dir, moods=moods,
+                            size=config.ASPECTS[aspect], out_path=out)
+        if aspect != "9:16":
+            _to_vertical(out)
+        print(f"[clip] done -> {out}")
+    return 0
+
+
+    sp = with_run("clip", "best moments -> vertical Shorts in clips/", cmd_clip)
+    sp.add_argument("--beats", metavar="FIRST-LAST",
+                    help="cut this one range instead of the script's clips")
+    sp.add_argument("--force", action="store_true", help="redo existing clips")
+

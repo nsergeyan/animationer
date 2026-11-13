@@ -20,16 +20,18 @@ import config
 
 def render(manifest_path: Path, run_dir: Path,
            moods: dict[str, str] | None = None,
-           size: tuple[int, int] = (config.WIDTH, config.HEIGHT)) -> Path:
+           size: tuple[int, int] = (config.WIDTH, config.HEIGHT),
+           out_path: Path | None = None) -> Path:
     """
     Render the video from the manifest and return the final .mp4 path.
+    `out_path` is run_dir/final.mp4 unless given (a clip renders beside it).
 
     `moods` maps location name -> mood. When given, the bed is built from the
     mood library and changes with the scenes (mix_moods); otherwise the single
     bed from find_music (an older run's own music.mp3) is laid under the
     whole video (mix_music).
     """
-    out_path = run_dir / "final.mp4"
+    out_path = out_path or run_dir / "final.mp4"
 
     beats = json.loads(manifest_path.read_text())
     # Remotion only sees what LectureVideo needs; the sound effects are mixed

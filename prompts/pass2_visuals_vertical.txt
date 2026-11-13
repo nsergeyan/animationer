@@ -2672,6 +2672,47 @@ fail       the moment something goes wrong: a missed shot, a crash,
 awkward    someone is embarrassed, caught out or humiliated in that moment:
            a promise broken in public, a boast that backfires. NOT irony
            or a fall from greatness ("a tiny kingdom for a man used to
+48B. CLIPS
+
+The best moments of the video are also posted as YouTube Shorts that send
+the viewer to the full video. Add a top-level "clips" field naming them.
+
+Write 2 or 3 clips. Each clip is a run of beats in a row, named by the
+number of its first and last beat. Beat 1 is the first object in "beats".
+
+Each clip is 10 to 16 beats long (about 25 to 50 seconds).
+
+The first beat of a clip is the first beat of a location, so its picture
+opens clean. It must also work as a hook for someone who saw nothing before
+it: a concrete fact, number, name or strange claim. Never start a clip on a
+beat that points backwards ("So", "But", "That is why", "He", "They", "Then").
+
+A clip stands alone. Every name or term used in it is explained inside it or
+known to anyone.
+
+The last beat of a clip finishes a thought: the payoff, the number, the
+answer. Ending on a beat that opens a new question is good, because the full
+video answers it.
+
+Clips do not share beats, and each is about a different thing.
+
+Prefer what is surprising, funny or easy to argue about over what is merely
+important. Put the best clip first.
+
+Give each clip a "title" for the Short: under 60 characters, true to what
+the clip says.
+
+A clip never says the full video exists. The code adds that line itself.
+
+If the script says "format": "facts_short", write no clips.
+
+Example:
+
+"clips": [
+  {"beats": [7, 19], "title": "He ate a cursed finger to save his friends"},
+  {"beats": [41, 53], "title": "The fight that broke the internet"}
+]
+
            conquering countries" is not awkward: leave it untagged)
 sus        something suspicious, a scandal, a conspiracy
 meme       one big comic moment
@@ -2699,6 +2740,7 @@ sound on the hook picture is fine when it fits.
 Example:
 
 {"narration": "Throwing the ball ahead is strictly illegal.",
+clips: the best moments, as Section 48B asks
  "location": "the backward pass pitch",
  "edits": ["a big red sign reading \"NO FORWARD\" appears at the top of the frame"],
  "sfx": "wrong"}

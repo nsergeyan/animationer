@@ -197,6 +197,7 @@ assets/
     moods/                 calm/ playful/ building/: the mood library (audio gitignored,
                            CREDITS.txt lists where to download every file)
   outro/                   cached subscribe/like outro clip (generated once, reused)
+  clip_outro/              cached "full video is on my channel" line that ends every clip
 output/                  one folder per video run (gitignored, generated)
 ```
 
@@ -303,6 +304,7 @@ python pipeline.py images    --run my-video-slug --only 12,14.2
 python pipeline.py voice     --run my-video-slug   # ElevenLabs -> audio/
 python pipeline.py manifest  --run my-video-slug    # pair everything + durations
 python pipeline.py render    --run my-video-slug    # Remotion -> final.mp4
+python pipeline.py clip      --run my-video-slug    # best moments -> clips/*.mp4 (vertical Shorts)
 
 python pipeline.py check     --run my-video-slug    # what's done, what's missing, ignored edits
 python pipeline.py demo      --run my-video-slug    # fake a full run, no API calls
